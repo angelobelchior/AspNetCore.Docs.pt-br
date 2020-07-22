@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 0f2741a78b58d7380fcbe84e97f5a08ef291c27b
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 896eed0e55986678b6bb86638ca92b04a77b4fef
+ms.sourcegitcommit: d00a200bc8347af794b24184da14ad5c8b6bba9a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944514"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86869933"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor Associação de dados
 
@@ -167,7 +167,7 @@ O componente filho a seguir ( `ChildComponent` ) tem um `Year` parâmetro de com
 }
 ```
 
-<xref:Microsoft.AspNetCore.Components.EventCallback%601>é explicado em <xref:blazor/components/event-handling#eventcallback> .
+O <xref:Microsoft.AspNetCore.Components.EventCallback%601> deve ser nomeado como o nome do parâmetro de componente seguido pelo `Changed` sufixo ( `{PARAMETER NAME}Changed` ), `YearChanged` no exemplo anterior. Para obter mais informações sobre o <xref:Microsoft.AspNetCore.Components.EventCallback%601>, consulte <xref:blazor/components/event-handling#eventcallback>.
 
 O seguinte componente pai usa:
 
