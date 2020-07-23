@@ -5,7 +5,7 @@ description: Saiba como testar a lógica do controlador no ASP.NET Core com o Mo
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 7/22/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: 487e054675e40c158250fff5d38fc0e6930a68a8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e75c3a382904011e30ed50dfd465a15210c64368
+ms.sourcegitcommit: c86b4e2955dc1724f2eaa7c97894ad8b3bf763fb
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408637"
+ms.lasthandoff: 07/22/2020
+ms.locfileid: "86949076"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Lógica do controlador de teste de unidade no ASP.NET Core
 
@@ -357,4 +357,5 @@ Para uma sessão `id` válida, o teste final confirmará se:
 * <xref:test/integration-tests>
 * [Criar e executar testes de unidade com o Visual Studio](/visualstudio/test/unit-test-your-code)
 * [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. (*Não é mantido ou não tem suporte da Microsoft.*)
+* [JustMockLite](https://github.com/telerik/JustMockLite): uma estrutura fictícia para desenvolvedores .net. (*Não é mantido ou não tem suporte da Microsoft.*)
 
