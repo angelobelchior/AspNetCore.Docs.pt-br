@@ -5,26 +5,26 @@ description: Saiba como usar o atributo Authorize para restringir o acesso a ASP
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: security/authorization/simple
-ms.openlocfilehash: 6bd83473e168ba9100d4f6041d5d71139762b46c
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 09514032349d489b73d5bb785f11e44ca18b169c
+ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060105"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160241"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>Autorização simples no ASP.NET Core
 
 <a name="security-authorization-simple"></a>
 
-A autorização no ASP.NET Core é controlada com <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> e seus vários parâmetros. Em sua forma mais simples, aplicar o `[Authorize]` atributo a um controlador, uma ação ou uma Razor página, limita o acesso a esse componente a qualquer usuário autenticado.
+A autorização no ASP.NET Core é controlada com <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> e seus vários parâmetros. Em sua forma mais simples, aplicar o `[Authorize]` atributo a um controlador, uma ação ou uma :::no-loc(Razor)::: página, limita o acesso a esse componente a qualquer usuário autenticado.
 
 Por exemplo, o código a seguir limita o acesso ao `AccountController` para qualquer usuário autenticado.
 
@@ -82,13 +82,15 @@ Isso permitiria apenas usuários autenticados para o `AccountController` , excet
 > [!WARNING]
 > `[AllowAnonymous]`ignora todas as instruções de autorização. Se você combinar `[AllowAnonymous]` e qualquer `[Authorize]` atributo, os `[Authorize]` atributos serão ignorados. Por exemplo, se você aplicar `[AllowAnonymous]` no nível do controlador, todos os `[Authorize]` atributos no mesmo controlador (ou em qualquer ação dentro dele) serão ignorados.
 
+[!INCLUDE[](~/includes/requireAuth.md)]
+
 <a name="aarp"></a>
 
-## <a name="authorize-attribute-and-razor-pages"></a>Autorizar atributo e Razor páginas
+## <a name="authorize-attribute-and-no-locrazor-pages"></a>Autorizar atributo e :::no-loc(Razor)::: páginas
 
-O <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ***não*** pode ser aplicado a Razor manipuladores de página. Por exemplo, `[Authorize]` não pode ser aplicado a `OnGet` , `OnPost` ou a qualquer outro manipulador de página. Considere o uso de um controlador MVC ASP.NET Core para páginas com diferentes requisitos de autorização para diferentes manipuladores.
+O <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ***não*** pode ser aplicado a :::no-loc(Razor)::: manipuladores de página. Por exemplo, `[Authorize]` não pode ser aplicado a `OnGet` , `OnPost` ou a qualquer outro manipulador de página. Considere o uso de um controlador MVC ASP.NET Core para páginas com diferentes requisitos de autorização para diferentes manipuladores.
 
-As duas abordagens a seguir podem ser usadas para aplicar a autorização aos Razor métodos do manipulador de página:
+As duas abordagens a seguir podem ser usadas para aplicar a autorização aos :::no-loc(Razor)::: métodos do manipulador de página:
 
 * Use páginas separadas para manipuladores de página que exigem autorização diferente. Moveu o conteúdo compartilhado em uma ou mais [exibições parciais](xref:mvc/views/partial). Quando possível, essa é a abordagem recomendada.
 * Para o conteúdo que deve compartilhar uma página comum, escreva um filtro que execute a autorização como parte do [IAsyncPageFilter. OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A). O projeto GitHub [PageHandlerAuth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) demonstra essa abordagem:
@@ -101,4 +103,4 @@ As duas abordagens a seguir podem ser usadas para aplicar a autorização aos Ra
 > * Compor com atributos de autorização aplicados à página, ao modelo de página ou globalmente. A composição de atributos de autorização resulta em autenticação e autorização em execução várias vezes quando você tem mais `AuthorizeAttribute` ou `AuthorizeFilter` instâncias também aplicadas à página.
 > * Trabalhe em conjunto com o restante de ASP.NET Core sistema de autenticação e autorização. Você deve verificar se o uso dessa abordagem funciona corretamente para seu aplicativo.
 
-Não há planos para dar suporte aos `AuthorizeAttribute` Razor manipuladores de página. 
+Não há planos para dar suporte aos `AuthorizeAttribute` :::no-loc(Razor)::: manipuladores de página. 

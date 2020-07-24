@@ -4,22 +4,22 @@ author: scottaddie
 description: Saiba como otimizar recursos estáticos em um aplicativo Web ASP.NET Core aplicando técnicas de agrupamento e minificação.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/15/2020
+ms.date: 07/23/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: de7c155189008e1f78bfb1eba062fcc86f9e4839
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5db6ab3d790257c677c0a4ed7e605eb39c2982ed
+ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401903"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87159717"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Empacotar e reduzirr ativos estáticos no ASP.NET Core
 
@@ -61,7 +61,7 @@ Original | Renomeado
 
 A tabela a seguir descreve as diferenças entre os ativos de carregamento individualmente e o uso de agrupamento e minificação:
 
-Ação | Com B/M | Sem B/M | Alteração
+Ação | Com B/M | Sem B/M | Alterar
 --- | :---: | :---: | :---:
 Solicitações de arquivo  | 7   | 18     | 157%
 KB transferidos | 156 | 264,68 | 70%
@@ -71,19 +71,19 @@ Os navegadores são bastante detalhados em relação aos cabeçalhos de solicita
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>Escolher uma estratégia de agrupamento e minificação
 
-Os modelos de Razor projeto MVC e pages fornecem uma solução para Agrupamento e minificação que consistem em um arquivo de configuração JSON. Ferramentas de terceiros, como o executor de tarefas do [Grunt](xref:client-side/using-grunt) , realizam as mesmas tarefas com um pouco mais de complexidade. Uma ferramenta de terceiros é uma ótima opção quando seu fluxo de trabalho de desenvolvimento requer processamento além do agrupamento e minificação &mdash; , como a otimização de imagem e de retratação. Usando agrupamento e minificação de tempo de design, os arquivos reduzidos são criados antes da implantação do aplicativo. O agrupamento e o minificar antes da implantação proporcionam a vantagem da carga reduzida do servidor. No entanto, é importante reconhecer que o agrupamento de tempo de design e minificação aumenta a complexidade da compilação e só funciona com arquivos estáticos.
+Os modelos de :::no-loc(Razor)::: projeto MVC e pages fornecem uma solução para Agrupamento e minificação que consistem em um arquivo de configuração JSON. Ferramentas de terceiros, como o executor de tarefas do [Grunt](xref:client-side/using-grunt) , realizam as mesmas tarefas com um pouco mais de complexidade. Uma ferramenta de terceiros é uma ótima opção quando seu fluxo de trabalho de desenvolvimento requer processamento além do agrupamento e minificação &mdash; , como a otimização de imagem e de retratação. Usando agrupamento e minificação de tempo de design, os arquivos reduzidos são criados antes da implantação do aplicativo. O agrupamento e o minificar antes da implantação proporcionam a vantagem da carga reduzida do servidor. No entanto, é importante reconhecer que o agrupamento de tempo de design e minificação aumenta a complexidade da compilação e só funciona com arquivos estáticos.
 
 ## <a name="configure-bundling-and-minification"></a>Configurar agrupamento e minificação
 
 ::: moniker range="<= aspnetcore-2.0"
 
-No ASP.NET Core 2,0 ou anterior, os modelos de Razor projeto MVC e pages fornecem um *bundleconfig.jsno* arquivo de configuração que define as opções para cada pacote:
+No ASP.NET Core 2,0 ou anterior, os modelos de :::no-loc(Razor)::: projeto MVC e pages fornecem um *bundleconfig.jsno* arquivo de configuração que define as opções para cada pacote:
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno*, à raiz do projeto MVC ou de Razor páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
+No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno*, à raiz do projeto MVC ou de :::no-loc(Razor)::: páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
 
 ::: moniker-end
 
@@ -174,13 +174,13 @@ Adicione um *package.jsno* arquivo, com o seguinte `devDependencies` , à raiz d
 
 Instale as dependências executando o seguinte comando no mesmo nível que *package.jsem*:
 
-```console
+```bash
 npm i
 ```
 
 Instale a CLI do Gulp como uma dependência global:
 
-```console
+```bash
 npm i -g gulp-cli
 ```
 
@@ -190,9 +190,12 @@ Copie o arquivo de *gulpfile.js* abaixo para a raiz do projeto:
 
 ### <a name="run-gulp-tasks"></a>Executar tarefas do Gulp
 
-Para disparar a tarefa Gulp minificação antes que o projeto seja compilado no Visual Studio, adicione o seguinte [destino do MSBuild](/visualstudio/msbuild/msbuild-targets) ao arquivo *. csproj:
+Para disparar a tarefa Gulp minificação antes da compilação do projeto no Visual Studio:
 
-[!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
+1. Instale o pacote NuGet do [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier) .
+1. Adicione o seguinte [destino do MSBuild](/visualstudio/msbuild/msbuild-targets) ao arquivo de projeto:
+
+    [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
 Neste exemplo, todas as tarefas definidas no `MyPreCompileTarget` destino são executadas antes do destino predefinido `Build` . Uma saída semelhante à seguinte aparece na janela de saída do Visual Studio:
 
@@ -212,4 +215,4 @@ Neste exemplo, todas as tarefas definidas no `MyPreCompileTarget` destino são e
 
 * [Usar o Grunt](xref:client-side/using-grunt)
 * [Usar vários ambientes](xref:fundamentals/environments)
-* [Auxiliares de Marca](xref:mvc/views/tag-helpers/intro)
+* [Auxiliares de Marcas](xref:mvc/views/tag-helpers/intro)

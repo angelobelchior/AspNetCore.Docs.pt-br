@@ -9,7 +9,7 @@
 >
 > Uma correção de aceitação para esse bug está contida no [SDK do .NET Core 3.1.301 e posterior](https://dotnet.microsoft.com/download/dotnet-core/3.1). O código a seguir define uma opção interna que corrige esse bug:
 >
->```
+>```csharp
 >public static void Main(string[] args)
 >{
 >    AppContext.SetSwitch("Microsoft.AspNetCore.Routing.UseCorrectCatchAllBehavior", 
