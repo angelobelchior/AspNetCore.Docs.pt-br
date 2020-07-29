@@ -1,18 +1,18 @@
 ---
-title: 'Configurar ASP.NET Core:::no-loc(Identity):::'
+title: Configurar ASP.NET CoreIdentity
 author: AdrienTorris
-description: 'Entenda ASP.NET Core :::no-loc(Identity)::: valores padrão e saiba como configurar :::no-loc(Identity)::: Propriedades para usar valores personalizados.'
+description: Entenda ASP.NET Core Identity valores padrão e saiba como configurar Identity Propriedades para usar valores personalizados.
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/identity-configuration
 ms.openlocfilehash: 5c999b426742cf75b1997f5b40223e2dda112901
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -21,42 +21,42 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 07/24/2020
 ms.locfileid: "87160290"
 ---
-# <a name="configure-aspnet-core-no-locidentity"></a>Configurar ASP.NET Core:::no-loc(Identity):::
+# <a name="configure-aspnet-core-no-locidentity"></a>Configurar ASP.NET CoreIdentity
 
-ASP.NET Core :::no-loc(Identity)::: usa valores padrão para configurações como política de senha, bloqueio e configuração de cookie. Essas configurações podem ser substituídas na `Startup` classe.
+ASP.NET Core Identity usa valores padrão para configurações como política de senha, bloqueio e configuração de cookie. Essas configurações podem ser substituídas na `Startup` classe.
 
-## <a name="no-locidentity-options"></a>:::no-loc(Identity):::Opções
+## <a name="no-locidentity-options"></a>IdentityOpções
 
-A classe [ :::no-loc(Identity)::: Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa as opções que podem ser usadas para configurar o :::no-loc(Identity)::: sistema. `:::no-loc(Identity):::Options`deve ser definido **após** a chamada `Add:::no-loc(Identity):::` ou `AddDefault:::no-loc(Identity):::` .
+A classe [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa as opções que podem ser usadas para configurar o Identity sistema. `IdentityOptions`deve ser definido **após** a chamada `AddIdentity` ou `AddDefaultIdentity` .
 
-### <a name="claims-no-locidentity"></a>Declarações:::no-loc(Identity):::
+### <a name="claims-no-locidentity"></a>DeclaraçõesIdentity
 
-[ :::no-loc(Identity)::: Options. Claims :::no-loc(Identity)::: ](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica [as :::no-loc(Identity)::: Opções de declarações](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) com as propriedades mostradas na tabela a seguir.
+[ Identity Options. Claims Identity ](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica [as Identity Opções de declarações](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) com as propriedades mostradas na tabela a seguir.
 
 | Propriedade | Descrição | Padrão |
 | -------- | ----------- | :-----: |
 | [RoleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | Obtém ou define o tipo de declaração usado para uma declaração de função. | [ClaimTypes. Role](/dotnet/api/system.security.claims.claimtypes.role) |
-| [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Obtém ou define o tipo de declaração usado para a declaração de carimbo de segurança. | `AspNet.:::no-loc(Identity):::.SecurityStamp` |
+| [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Obtém ou define o tipo de declaração usado para a declaração de carimbo de segurança. | `AspNet.Identity.SecurityStamp` |
 | [UserIdClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.useridclaimtype) | Obtém ou define o tipo de declaração usado para a declaração de identificador de usuário. | [ClaimTypes. NameIdentifier](/dotnet/api/system.security.claims.claimtypes.nameidentifier) |
 | [UserNameClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.usernameclaimtype) | Obtém ou define o tipo de declaração usado para a declaração de nome de usuário. | [ClaimTypes.Name](/dotnet/api/system.security.claims.claimtypes.name) |
 
 ### <a name="lockout"></a>Bloquear
 
-O bloqueio é definido no método [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_) :
+O bloqueio é definido no método [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_Identity_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_) :
 
-[!code-csharp[](identity-configuration/sample/Areas/:::no-loc(Identity):::/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
+[!code-csharp[](identity-configuration/sample/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
 
-O código anterior se baseia no `Login` :::no-loc(Identity)::: modelo. 
+O código anterior se baseia no `Login` Identity modelo. 
 
 As opções de bloqueio são definidas em `StartUp.ConfigureServices` :
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_lock)]
 
-O código anterior define as [ :::no-loc(Identity)::: Opções](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [lockoptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) com valores padrão.
+O código anterior define as [ Identity Opções](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [lockoptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) com valores padrão.
 
 Uma autenticação bem-sucedida redefine a contagem de tentativas de acesso com falha e redefine o relógio.
 
-[ :::no-loc(Identity)::: Options. Lock](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) especifica o [lockoptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) com as propriedades mostradas na tabela.
+[ Identity Options. Lock](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) especifica o [lockoptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) com as propriedades mostradas na tabela.
 
 | Propriedade | Descrição | Padrão |
 | -------- | ----------- | :-----: |
@@ -66,18 +66,18 @@ Uma autenticação bem-sucedida redefine a contagem de tentativas de acesso com 
 
 ### <a name="password"></a>Senha
 
-Por padrão, :::no-loc(Identity)::: o requer que as senhas contenham um caractere maiúsculo, um caractere minúsculo, um dígito e um caractere não alfanumérico. As senhas devem ter pelo menos seis caracteres.
+Por padrão, Identity o requer que as senhas contenham um caractere maiúsculo, um caractere minúsculo, um dígito e um caractere não alfanumérico. As senhas devem ter pelo menos seis caracteres.
 
 As senhas são configuradas com:
 
-* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordOptions>em `Startup.ConfigureServices` .
-* [ `[StringLength]` atributos](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) de `Password` Propriedades se o :::no-loc(Identity)::: for [com Scaffold no aplicativo](xref:security/authentication/scaffold-identity). `InputModel``Password`as propriedades são encontradas nos seguintes arquivos:
-  * `Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs`
-  * `Areas/:::no-loc(Identity):::/Pages/Account/ResetPassword.cshtml.cs`
+* <xref:Microsoft.AspNetCore.Identity.PasswordOptions>em `Startup.ConfigureServices` .
+* [ `[StringLength]` atributos](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) de `Password` Propriedades se o Identity for [com Scaffold no aplicativo](xref:security/authentication/scaffold-identity). `InputModel``Password`as propriedades são encontradas nos seguintes arquivos:
+  * `Areas/Identity/Pages/Account/Register.cshtml.cs`
+  * `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_pw)]
 
-[ :::no-loc(Identity)::: Opções. senha](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) especifica a [passwordoptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) com as propriedades mostradas na tabela.
+[ Identity Opções. senha](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) especifica a [passwordoptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) com as propriedades mostradas na tabela.
 
 | Propriedade | Descrição | Padrão |
 | -------- | ----------- | :-----: |
@@ -94,7 +94,7 @@ O código a seguir define `SignIn` as configurações (para valores padrão):
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_si)]
 
-[ :::no-loc(Identity)::: Options. SignIn](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) especifica o [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) com as propriedades mostradas na tabela.
+[ Identity Options. SignIn](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) especifica o [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) com as propriedades mostradas na tabela.
 
 | Propriedade | Descrição | Padrão |
 | -------- | ----------- | :-----: |
@@ -103,7 +103,7 @@ O código a seguir define `SignIn` as configurações (para valores padrão):
 
 ### <a name="tokens"></a>Tokens
 
-[ :::no-loc(Identity)::: Options. Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) especifica o [tokenoptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) com as propriedades mostradas na tabela.
+[ Identity Options. Tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) especifica o [tokenoptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) com as propriedades mostradas na tabela.
 
 | Propriedade | Descrição |
 | -------- | ----------- |
@@ -118,7 +118,7 @@ O código a seguir define `SignIn` as configurações (para valores padrão):
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_user)]
 
-[ :::no-loc(Identity)::: Options. User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) especifica o [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) com as propriedades mostradas na tabela.
+[ Identity Options. User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) especifica o [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) com as propriedades mostradas na tabela.
 
 | Propriedade | Descrição | Padrão |
 | -------- | ----------- | :-----: |
@@ -127,7 +127,7 @@ O código a seguir define `SignIn` as configurações (para valores padrão):
 
 ### <a name="cookie-settings"></a>Configurações de cookie
 
-Configure o cookie do aplicativo no `Startup.ConfigureServices` . [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_:::no-loc(Identity):::ServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) deve ser chamado **depois** `Add:::no-loc(Identity):::` de chamar `AddDefault:::no-loc(Identity):::` ou.
+Configure o cookie do aplicativo no `Startup.ConfigureServices` . [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) deve ser chamado **depois** `AddIdentity` de chamar `AddDefaultIdentity` ou.
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
@@ -135,17 +135,17 @@ Para obter mais informações, consulte [CookieAuthenticationOptions](/dotnet/ap
 
 ## <a name="password-hasher-options"></a>Opções de hash de senha
 
-<xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions>Obtém e define opções para o hash de senha.
+<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions>Obtém e define opções para o hash de senha.
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.CompatibilityMode> | O modo de compatibilidade usado ao aplicar o hash de novas senhas. O padrão é <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherCompatibilityMode.:::no-loc(Identity):::V3>. O primeiro byte de uma senha com hash, chamado de *marcador de formato*, especifica a versão do algoritmo de hash usado para fazer o hash da senha. Ao verificar uma senha em relação a um hash, o <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasher`1.VerifyHashedPassword*> método seleciona o algoritmo correto com base no primeiro byte. Um cliente é capaz de autenticar, independentemente de qual versão do algoritmo foi usada para fazer o hash da senha. Definir o modo de compatibilidade afeta o hash de *novas senhas*. |
-| <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.IterationCount> | O número de iterações usadas ao aplicar o hash de senhas usando PBKDF2. Esse valor é usado somente quando o <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.CompatibilityMode> é definido como <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherCompatibilityMode.:::no-loc(Identity):::V3> . O valor deve ser um inteiro positivo e o padrão é `10000` . |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | O modo de compatibilidade usado ao aplicar o hash de novas senhas. O padrão é <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. O primeiro byte de uma senha com hash, chamado de *marcador de formato*, especifica a versão do algoritmo de hash usado para fazer o hash da senha. Ao verificar uma senha em relação a um hash, o <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método seleciona o algoritmo correto com base no primeiro byte. Um cliente é capaz de autenticar, independentemente de qual versão do algoritmo foi usada para fazer o hash da senha. Definir o modo de compatibilidade afeta o hash de *novas senhas*. |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | O número de iterações usadas ao aplicar o hash de senhas usando PBKDF2. Esse valor é usado somente quando o <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> é definido como <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> . O valor deve ser um inteiro positivo e o padrão é `10000` . |
 
-No exemplo a seguir, o <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.IterationCount> é definido como `12000` em `Startup.ConfigureServices` :
+No exemplo a seguir, o <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> é definido como `12000` em `Startup.ConfigureServices` :
 
 ```csharp
-// using Microsoft.AspNetCore.:::no-loc(Identity):::;
+// using Microsoft.AspNetCore.Identity;
 
 services.Configure<PasswordHasherOptions>(option =>
 {

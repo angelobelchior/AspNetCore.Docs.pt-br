@@ -6,13 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/index
 ms.openlocfilehash: a230e1ae85a54ddf16900b2ee7ed4a18d45e4ea2
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -49,7 +49,7 @@ O `AddAuthentication` parâmetro `JwtBearerDefaults.AuthenticationScheme` é o n
 
 Se vários esquemas forem usados, as políticas de autorização (ou atributos de autorização) poderão [especificar o esquema de autenticação (ou esquemas)](xref:security/authorization/limitingidentitybyscheme) que dependem para autenticar o usuário. No exemplo acima, o esquema de autenticação de cookie poderia ser usado especificando seu nome ( `CookieAuthenticationDefaults.AuthenticationScheme` por padrão, embora um nome diferente possa ser fornecido ao chamar `AddCookie` ).
 
-Em alguns casos, a chamada para `AddAuthentication` é feita automaticamente por outros métodos de extensão. Por exemplo, ao usar [ASP.NET Core :::no-loc(Identity)::: ](xref:security/authentication/identity), `AddAuthentication` é chamado internamente.
+Em alguns casos, a chamada para `AddAuthentication` é feita automaticamente por outros métodos de extensão. Por exemplo, ao usar [ASP.NET Core Identity ](xref:security/authentication/identity), `AddAuthentication` é chamado internamente.
 
 O middleware de autenticação é adicionado no `Startup.Configure` chamando o <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> método de extensão no do aplicativo `IApplicationBuilder` . Chamar `UseAuthentication` registra o middleware que usa os esquemas de autenticação registrados anteriormente. Chame `UseAuthentication` antes de qualquer middleware que dependa dos usuários que estão sendo autenticados. Ao usar o roteamento de ponto de extremidade, a chamada para `UseAuthentication` deve ir:
 

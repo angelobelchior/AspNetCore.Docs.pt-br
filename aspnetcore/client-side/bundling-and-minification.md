@@ -6,13 +6,13 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/23/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 5db6ab3d790257c677c0a4ed7e605eb39c2982ed
 ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
@@ -71,19 +71,19 @@ Os navegadores são bastante detalhados em relação aos cabeçalhos de solicita
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>Escolher uma estratégia de agrupamento e minificação
 
-Os modelos de :::no-loc(Razor)::: projeto MVC e pages fornecem uma solução para Agrupamento e minificação que consistem em um arquivo de configuração JSON. Ferramentas de terceiros, como o executor de tarefas do [Grunt](xref:client-side/using-grunt) , realizam as mesmas tarefas com um pouco mais de complexidade. Uma ferramenta de terceiros é uma ótima opção quando seu fluxo de trabalho de desenvolvimento requer processamento além do agrupamento e minificação &mdash; , como a otimização de imagem e de retratação. Usando agrupamento e minificação de tempo de design, os arquivos reduzidos são criados antes da implantação do aplicativo. O agrupamento e o minificar antes da implantação proporcionam a vantagem da carga reduzida do servidor. No entanto, é importante reconhecer que o agrupamento de tempo de design e minificação aumenta a complexidade da compilação e só funciona com arquivos estáticos.
+Os modelos de Razor projeto MVC e pages fornecem uma solução para Agrupamento e minificação que consistem em um arquivo de configuração JSON. Ferramentas de terceiros, como o executor de tarefas do [Grunt](xref:client-side/using-grunt) , realizam as mesmas tarefas com um pouco mais de complexidade. Uma ferramenta de terceiros é uma ótima opção quando seu fluxo de trabalho de desenvolvimento requer processamento além do agrupamento e minificação &mdash; , como a otimização de imagem e de retratação. Usando agrupamento e minificação de tempo de design, os arquivos reduzidos são criados antes da implantação do aplicativo. O agrupamento e o minificar antes da implantação proporcionam a vantagem da carga reduzida do servidor. No entanto, é importante reconhecer que o agrupamento de tempo de design e minificação aumenta a complexidade da compilação e só funciona com arquivos estáticos.
 
 ## <a name="configure-bundling-and-minification"></a>Configurar agrupamento e minificação
 
 ::: moniker range="<= aspnetcore-2.0"
 
-No ASP.NET Core 2,0 ou anterior, os modelos de :::no-loc(Razor)::: projeto MVC e pages fornecem um *bundleconfig.jsno* arquivo de configuração que define as opções para cada pacote:
+No ASP.NET Core 2,0 ou anterior, os modelos de Razor projeto MVC e pages fornecem um *bundleconfig.jsno* arquivo de configuração que define as opções para cada pacote:
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno*, à raiz do projeto MVC ou de :::no-loc(Razor)::: páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
+No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno*, à raiz do projeto MVC ou de Razor páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
 
 ::: moniker-end
 

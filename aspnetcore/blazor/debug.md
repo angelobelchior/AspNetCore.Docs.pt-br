@@ -1,19 +1,19 @@
 ---
-title: 'ASP.NET Core de depuração:::no-loc(Blazor WebAssembly):::'
+title: ASP.NET Core de depuraçãoBlazor WebAssembly
 author: guardrex
-description: 'Saiba como depurar :::no-loc(Blazor)::: aplicativos.'
+description: Saiba como depurar Blazor aplicativos.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/15/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: blazor/debug
 ms.openlocfilehash: 14943b9f7847ac9144addfdf16a003f6fc8c340c
 ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
@@ -22,11 +22,11 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 07/24/2020
 ms.locfileid: "87159709"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração:::no-loc(Blazor WebAssembly):::
+# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuraçãoBlazor WebAssembly
 
 [Daniel Roth](https://github.com/danroth27)
 
-:::no-loc(Blazor WebAssembly):::os aplicativos podem ser depurados usando as ferramentas de desenvolvimento do navegador em navegadores baseados em Chromium (borda/Chrome). Como alternativa, você pode depurar seu aplicativo usando o Visual Studio ou Visual Studio Code.
+Blazor WebAssemblyos aplicativos podem ser depurados usando as ferramentas de desenvolvimento do navegador em navegadores baseados em Chromium (borda/Chrome). Como alternativa, você pode depurar seu aplicativo usando o Visual Studio ou Visual Studio Code.
 
 Os cenários disponíveis incluem:
 
@@ -53,7 +53,7 @@ A depuração requer um dos seguintes navegadores:
 
 ## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>Habilitar depuração para Visual Studio e Visual Studio Code
 
-Para habilitar a depuração para um :::no-loc(Blazor WebAssembly)::: aplicativo existente, atualize o `launchSettings.json` arquivo no projeto de inicialização para incluir a seguinte `inspectUri` propriedade em cada perfil de inicialização:
+Para habilitar a depuração para um Blazor WebAssembly aplicativo existente, atualize o `launchSettings.json` arquivo no projeto de inicialização para incluir a seguinte `inspectUri` propriedade em cada perfil de inicialização:
 
 ```json
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
@@ -65,16 +65,16 @@ Uma vez atualizado, o `launchSettings.json` arquivo deve ser semelhante ao exemp
 
 A `inspectUri` Propriedade:
 
-* Permite que o IDE detecte que o aplicativo é um :::no-loc(Blazor WebAssembly)::: aplicativo.
-* Instrui a infraestrutura de depuração de script para se conectar ao navegador por meio :::no-loc(Blazor)::: do proxy de depuração.
+* Permite que o IDE detecte que o aplicativo é um Blazor WebAssembly aplicativo.
+* Instrui a infraestrutura de depuração de script para se conectar ao navegador por meio Blazor do proxy de depuração.
 
 Os valores de espaço reservado para o protocolo WebSockets ( `wsProtocol` ), host ( `url.hostname` ), porta ( `url.port` ) e URI do Inspetor no navegador iniciado ( `browserInspectUri` ) são fornecidos pela estrutura.
 
 ## <a name="visual-studio"></a>Visual Studio
 
-Para depurar um :::no-loc(Blazor WebAssembly)::: aplicativo no Visual Studio:
+Para depurar um Blazor WebAssembly aplicativo no Visual Studio:
 
-1. Crie um novo aplicativo hospedado ASP.NET Core :::no-loc(Blazor WebAssembly)::: .
+1. Crie um novo aplicativo hospedado ASP.NET Core Blazor WebAssembly .
 1. Pressione <kbd>F5</kbd> para executar o aplicativo no depurador.
 1. Defina um ponto de interrupção no `Pages/Counter.razor` no `IncrementCount` método.
 1. Navegue até a **`Counter`** guia e selecione o botão para atingir o ponto de interrupção:
@@ -87,7 +87,7 @@ Para depurar um :::no-loc(Blazor WebAssembly)::: aplicativo no Visual Studio:
 
 1. Pressione <kbd>F5</kbd> para continuar a execução.
 
-Ao depurar seu :::no-loc(Blazor WebAssembly)::: aplicativo, você também pode depurar o código do servidor:
+Ao depurar seu Blazor WebAssembly aplicativo, você também pode depurar o código do servidor:
 
 1. Defina um ponto de interrupção na `Pages/FetchData.razor` página em <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> .
 1. Defina um ponto de interrupção no `WeatherForecastController` `Get` Método Action.
@@ -105,9 +105,9 @@ Ao depurar seu :::no-loc(Blazor WebAssembly)::: aplicativo, você também pode d
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-### <a name="debug-standalone-no-locblazor-webassembly"></a>Depurar autônomo:::no-loc(Blazor WebAssembly):::
+### <a name="debug-standalone-no-locblazor-webassembly"></a>Depurar autônomoBlazor WebAssembly
 
-1. Abra o :::no-loc(Blazor WebAssembly)::: aplicativo autônomo no vs Code.
+1. Abra o Blazor WebAssembly aplicativo autônomo no vs Code.
 
    Se você receber a notificação a seguir, será necessária uma configuração adicional para habilitar a depuração:
    
@@ -119,7 +119,7 @@ Ao depurar seu :::no-loc(Blazor WebAssembly)::: aplicativo, você também pode d
 
 1. Inicie a depuração usando o atalho de teclado <kbd>F5</kbd> ou o item de menu.
 
-1. Quando solicitado, selecione a opção de ** :::no-loc(Blazor WebAssembly)::: depuração** para iniciar a depuração.
+1. Quando solicitado, selecione a opção de ** Blazor WebAssembly depuração** para iniciar a depuração.
 
    ![Lista de opções de depuração disponíveis](index/_static/blazor-vscode-debugtypes.png)
 
@@ -129,9 +129,9 @@ Ao depurar seu :::no-loc(Blazor WebAssembly)::: aplicativo, você também pode d
 
    ![Contador de depuração no VS Code](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
 
-### <a name="debug-hosted-no-locblazor-webassembly"></a>Depuração hospedada:::no-loc(Blazor WebAssembly):::
+### <a name="debug-hosted-no-locblazor-webassembly"></a>Depuração hospedadaBlazor WebAssembly
 
-1. Abra a :::no-loc(Blazor WebAssembly)::: pasta de solução do aplicativo hospedado no vs Code.
+1. Abra a Blazor WebAssembly pasta de solução do aplicativo hospedado no vs Code.
 
 1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim** na barra superior.
 
@@ -143,13 +143,13 @@ Um `launch.json` arquivo é gerado com a configuração de inicialização para 
 
 ### <a name="attach-to-an-existing-debugging-session"></a>Anexar a uma sessão de depuração existente
 
-Para anexar a um aplicativo em execução :::no-loc(Blazor)::: , crie um `launch.json` arquivo com a seguinte configuração:
+Para anexar a um aplicativo em execução Blazor , crie um `launch.json` arquivo com a seguinte configuração:
 
 ```json
 {
   "type": "blazorwasm",
   "request": "attach",
-  "name": "Attach to Existing :::no-loc(Blazor WebAssembly)::: Application"
+  "name": "Attach to Existing Blazor WebAssembly Application"
 }
 ```
 
@@ -162,11 +162,11 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 
 | Opção    | Descrição |
 | --------- | ----------- |
-| `request` | Use `launch` para iniciar e anexar uma sessão de depuração a um :::no-loc(Blazor WebAssembly)::: aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução. |
+| `request` | Use `launch` para iniciar e anexar uma sessão de depuração a um Blazor WebAssembly aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução. |
 | `url`     | A URL a ser aberta no navegador durante a depuração. O padrão é `https://localhost:5001`. |
 | `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. O padrão é `chrome`. |
 | `trace`   | Usado para gerar logs do depurador JS. Defina como `true` para gerar logs. |
-| `hosted`  | Deve ser definido como `true` se estiver iniciando e depurando um :::no-loc(Blazor WebAssembly)::: aplicativo hospedado. |
+| `hosted`  | Deve ser definido como `true` se estiver iniciando e depurando um Blazor WebAssembly aplicativo hospedado. |
 | `webRoot` | Especifica o caminho absoluto do servidor Web. Deve ser definido se um aplicativo for servido de uma sub-roteiro. |
 | `timeout` | O número de milissegundos a aguardar a sessão de depuração ser anexada. O padrão é 30.000 milissegundos (30 segundos). |
 | `program` | Uma referência ao executável para executar o servidor do aplicativo hospedado. Deve ser definido se `hosted` for `true` . |
@@ -175,7 +175,7 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 
 ### <a name="example-launch-configurations"></a>Exemplo de configurações de inicialização
 
-#### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Iniciar e depurar um :::no-loc(Blazor WebAssembly)::: aplicativo autônomo
+#### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Iniciar e depurar um Blazor WebAssembly aplicativo autônomo
 
 ```json
 {
@@ -196,13 +196,13 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 }
 ```
 
-#### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Iniciar e depurar um :::no-loc(Blazor WebAssembly)::: aplicativo hospedado com o Microsoft Edge
+#### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Iniciar e depurar um Blazor WebAssembly aplicativo hospedado com o Microsoft Edge
 
 A configuração do navegador usa como padrão o Google Chrome. Ao usar o Microsoft Edge para depuração, defina `browser` como `edge` . Para usar o Google Chrome, não defina a `browser` opção ou defina o valor da opção como `chrome` .
 
 ```json
 {
-  "name": "Launch and Debug Hosted :::no-loc(Blazor WebAssembly)::: App",
+  "name": "Launch and Debug Hosted Blazor WebAssembly App",
   "type": "blazorwasm",
   "request": "launch",
   "hosted": true,
@@ -230,11 +230,11 @@ No exemplo anterior, `MyHostedApp.Server.dll` é o assembly do aplicativo do *se
 
 1. No código do componente ( `.razor` arquivos) e em arquivos de código C# ( `.cs` ), os pontos de interrupção definidos por você são atingidos quando o código é executado. Depois que um ponto de interrupção é atingido, a etapa única (<kbd>F10</kbd>) por meio da execução do código ou retomar (<kbd>F8</kbd>) normalmente.
 
-:::no-loc(Blazor):::fornece um proxy de depuração que implementa o [protocolo devtools do Chrome](https://chromedevtools.github.io/devtools-protocol/) e aumenta o protocolo com o. Informações específicas de rede. Quando o atalho de teclado de depuração é pressionado, :::no-loc(Blazor)::: o aponta para o Chrome devtools no proxy. O proxy se conecta à janela do navegador que você está procurando depurar (portanto, a necessidade de habilitar a depuração remota).
+Blazorfornece um proxy de depuração que implementa o [protocolo devtools do Chrome](https://chromedevtools.github.io/devtools-protocol/) e aumenta o protocolo com o. Informações específicas de rede. Quando o atalho de teclado de depuração é pressionado, Blazor o aponta para o Chrome devtools no proxy. O proxy se conecta à janela do navegador que você está procurando depurar (portanto, a necessidade de habilitar a depuração remota).
 
 ## <a name="browser-source-maps"></a>Mapas de origem do navegador
 
-Os mapas de origem do navegador permitem que o navegador mapeie arquivos compilados de volta para seus arquivos de origem originais e normalmente são usados para depuração do lado do cliente. No entanto, o :::no-loc(Blazor)::: atualmente não mapeia C# diretamente para JavaScript/WASM. Em vez disso, a :::no-loc(Blazor)::: interpretação de Il no navegador, portanto, os mapas de origem não são relevantes.
+Os mapas de origem do navegador permitem que o navegador mapeie arquivos compilados de volta para seus arquivos de origem originais e normalmente são usados para depuração do lado do cliente. No entanto, o Blazor atualmente não mapeia C# diretamente para JavaScript/WASM. Em vez disso, a Blazor interpretação de Il no navegador, portanto, os mapas de origem não são relevantes.
 
 ## <a name="troubleshoot"></a>Solucionar problemas
 
