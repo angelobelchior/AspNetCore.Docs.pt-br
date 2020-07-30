@@ -15,10 +15,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-web-api
 ms.openlocfilehash: 2383934070a65b8131e890a170186b736d3fcec0
-ms.sourcegitcommit: d00a200bc8347af794b24184da14ad5c8b6bba9a
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/21/2020
+ms.lasthandoff: 07/28/2020
 ms.locfileid: "86869985"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
@@ -29,7 +29,7 @@ Este tutorial ensina os conceitos básicos da criação de uma API Web com o ASP
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Neste tutorial, você aprende a:
+Neste tutorial, você aprenderá como:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -512,7 +512,7 @@ Consulte [o tutorial: chamar uma API Web do ASP.NET Core com JavaScript](xref:tu
 
 ::: moniker range="< aspnetcore-3.0"
 
-Neste tutorial, você aprende a:
+Neste tutorial, você aprenderá como:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -917,7 +917,7 @@ Adicione um arquivo HTML chamado *index.html* ao diretório *wwwroot*. Substitua
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo seguinte código:
+Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo código a seguir:
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 

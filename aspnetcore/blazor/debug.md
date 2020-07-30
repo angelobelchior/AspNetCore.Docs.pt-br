@@ -5,7 +5,7 @@ description: Saiba como depurar Blazor aplicativos.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/15/2020
+ms.date: 07/27/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 14943b9f7847ac9144addfdf16a003f6fc8c340c
-ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
+ms.openlocfilehash: b4199c3a99af5875c5d9a87f29f7c7e2758ffd71
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87159709"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87303554"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuraçãoBlazor WebAssembly
 
@@ -109,13 +109,15 @@ Ao depurar seu Blazor WebAssembly aplicativo, você também pode depurar o códi
 
 1. Abra o Blazor WebAssembly aplicativo autônomo no vs Code.
 
-   Se você receber a notificação a seguir, será necessária uma configuração adicional para habilitar a depuração:
+   Você pode receber a seguinte notificação de que a configuração adicional é necessária para habilitar a depuração:
    
-   * Confirme se você tem as extensões corretas instaladas.
-   * Confirme se a depuração de visualização do JavaScript está habilitada.
-   * Recarregue a janela.
-
    ![Configuração adicional necessária](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
+   
+   Se você receber a notificação:
+
+   * Confirme se a extensão mais recente [do C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) está instalada. Para inspecionar as extensões instaladas, abra **Exibir**  >  **extensões** na barra de menus ou selecione o ícone **extensões** na barra lateral **atividade** .
+   * Confirme se a depuração de visualização do JavaScript está habilitada. Abra as configurações na barra de menus (configurações de preferências de**arquivo**  >  **Preferences**  >  **Settings**). Pesquise usando as palavras-chave `debug preview` . Nos resultados da pesquisa, confirme se a caixa de seleção para **depurar > JavaScript: usar visualização** está marcada.
+   * Recarregue a janela.
 
 1. Inicie a depuração usando o atalho de teclado <kbd>F5</kbd> ou o item de menu.
 
