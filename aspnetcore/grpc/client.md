@@ -4,7 +4,7 @@ author: jamesnk
 description: Saiba como chamar serviços gRPCs com o cliente .NET gRPC.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 04/21/2020
+ms.date: 07/27/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 9ebe36cdb17e858fd82216b090e3e89169197101
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0d8856bba5afaaed4d9552480e4ae5dcbb7704d5
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87303541"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Chamar os serviços gRPC com o cliente .NET
 
@@ -50,6 +50,19 @@ var counterClient = new Count.CounterClient(channel);
 // Use clients to call gRPC services
 ```
 
+### <a name="configure-tls"></a>Configurar TLS
+
+Um cliente gRPC deve usar a mesma segurança de nível de conexão que o serviço chamado. o protocolo TLS do gRPC é configurado quando o canal gRPC é criado. Um cliente gRPC gera um erro ao chamar um serviço e a segurança no nível de conexão do canal e do serviço não correspondem.
+
+Para configurar um canal do gRPC para usar o TLS, verifique se o endereço do servidor começa com `https` . Por exemplo, `GrpcChannel.ForAddress("https://localhost:5001")` usa o protocolo HTTPS. O canal gRPC automaticamente negotates uma conexão protegida pelo TLS e usa uma conexão segura para fazer chamadas gRPC.
+
+> [!TIP]
+> o gRPC dá suporte à autenticação de certificado do cliente sobre TLS. Para obter informações sobre como configurar certificados de cliente com um canal do gRPC, consulte <xref:grpc/authn-and-authz#client-certificate-authentication> .
+
+Para chamar serviços gRPCs não seguros, verifique se o endereço do servidor começa com `http` . Por exemplo, `GrpcChannel.ForAddress("http://localhost:5000")` usa o protocolo http. No .NET Core 3,1 ou posterior, é necessária configuração adicional para [chamar serviços gRPCs inseguros com o cliente .net](xref:grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client).
+
+### <a name="client-performance"></a>Desempenho do cliente
+
 Desempenho e uso do canal e do cliente:
 
 * A criação de um canal pode ser uma operação cara. Reutilizar um canal para chamadas gRPC fornece benefícios de desempenho.
@@ -59,9 +72,6 @@ Desempenho e uso do canal e do cliente:
 * Clientes criados a partir do canal podem fazer várias chamadas simultâneas.
 
 `GrpcChannel.ForAddress`Não é a única opção para criar um cliente gRPC. Se estiver chamando serviços gRPC de um aplicativo ASP.NET Core, considere a [integração do gRPC Client Factory](xref:grpc/clientfactory). a integração do gRPC com `HttpClientFactory` oferece uma alternativa centralizada para a criação de clientes do gRPC.
-
-> [!NOTE]
-> A configuração adicional é necessária para [chamar serviços gRPCs inseguros com o cliente .net](xref:grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client).
 
 > [!NOTE]
 > Não há suporte para a chamada de gRPC sobre HTTP/2 com `Grpc.Net.Client` atualmente no Xamarin. Estamos trabalhando para melhorar o suporte a HTTP/2 em uma versão futura do Xamarin. [Grpc. Core](https://www.nuget.org/packages/Grpc.Core) e [Grpc-Web](xref:grpc/browser) são alternativas viáveis que funcionam hoje.
@@ -196,7 +206,7 @@ Console.WriteLine("Greeting: " + response.Message);
 // Greeting: Hello World
 
 var trailers = call.GetTrailers();
-var myValue = trailers.First(e => e.Key == "my-trailer-name");
+var myValue = trailers.GetValue("my-trailer-name");
 ```
 
 As chamadas de streaming de servidor e bidirecional devem terminar de aguardar o fluxo de resposta antes de chamar `GetTrailers()` :
@@ -212,7 +222,7 @@ await foreach (var response in call.ResponseStream.ReadAllAsync())
 }
 
 var trailers = call.GetTrailers();
-var myValue = trailers.First(e => e.Key == "my-trailer-name");
+var myValue = trailers.GetValue("my-trailer-name");
 ```
 
 os trailers de gRPC também podem ser acessados do `RpcException` . Um serviço pode retornar os trailers com um status de gRPC não OK. Nessa situação, os trailers são recuperados da exceção gerada pelo cliente gRPC:
@@ -230,12 +240,12 @@ try
     // Greeting: Hello World
 
     var trailers = call.GetTrailers();
-    myValue = trailers.First(e => e.Key == "my-trailer-name");
+    myValue = trailers.GetValue("my-trailer-name");
 }
 catch (RpcException ex)
 {
     var trailers = ex.Trailers;
-    myValue = trailers.First(e => e.Key == "my-trailer-name");
+    myValue = trailers.GetValue("my-trailer-name");
 }
 ```
 
