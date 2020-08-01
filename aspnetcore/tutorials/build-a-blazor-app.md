@@ -5,7 +5,7 @@ description: Crie um Blazor aplicativo passo a passo.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2020
+ms.date: 07/30/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 174a8e561701bb3ebd68ed05e42dfc3d70a9b450
-ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
+ms.openlocfilehash: b58c0c3db685d0a5b082aaf2eb434635bd10e2eb
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86176233"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444039"
 ---
-# <a name="build-a-blazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
+# <a name="build-a-no-locblazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
 Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
 
@@ -32,9 +32,15 @@ Este tutorial mostra como criar e modificar um Blazor aplicativo. Você aprender
 > * Criar um projeto de aplicativo de lista de tarefas Blazor
 > * Modificar Razor componentes
 > * Usar manipulação de eventos e vinculação de dados em componentes
-> * Usar injeção de dependência (DI) e roteamento em um Blazor aplicativo
+> * Usar o roteamento em um Blazor aplicativo
 
 No final deste tutorial, você terá um aplicativo de lista de tarefas em funcionamento.
+
+## <a name="prerequisites"></a>Pré-requisitos
+
+[!INCLUDE[](~/includes/3.1-SDK.md)]
+
+## <a name="create-a-todo-list-no-locblazor-app"></a>Criar um aplicativo de lista de tarefas pendentes Blazor
 
 1. Crie um novo Blazor aplicativo chamado `TodoList` em um shell de comando:
 
@@ -140,7 +146,7 @@ Neste tutorial, você aprendeu a:
 > * Criar um projeto de aplicativo de lista de tarefas Blazor
 > * Modificar Razor componentes
 > * Usar manipulação de eventos e vinculação de dados em componentes
-> * Usar injeção de dependência (DI) e roteamento em um Blazor aplicativo
+> * Usar o roteamento em um Blazor aplicativo
 
 Saiba mais sobre as ferramentas para ASP.NET Core Blazor :
 
