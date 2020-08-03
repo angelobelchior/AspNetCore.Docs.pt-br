@@ -5,7 +5,7 @@ Aplicativos de servidor mais poseriais residem na memória do servidor. Isso sig
 
 Você pode usar serviços singleton com estado em aplicativos mais incrivelmente se eles forem projetados especificamente para ele. Por exemplo, é possível usar um cache de memória como um singleton porque ele requer uma chave para acessar uma determinada entrada, supondo que os usuários não tenham controle de quais chaves de cache são usadas.
 
-**Além disso, por motivos de segurança, você não deve usar em aplicativos mais potentes <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> .** Os aplicativos mais bem executados fora do contexto do pipeline de ASP.NET Core e <xref:Microsoft.AspNetCore.Http.HttpContext> não há garantia de que estejam disponíveis no <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> , nem é garantido que esteja mantendo o contexto que iniciou o aplicativo mais incrivelmente.
+**Além disso, por motivos de segurança, você não deve usar em aplicativos mais potentes <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> .** Aplicativos mais incrivelmente executados fora do contexto do pipeline de ASP.NET Core. O <xref:Microsoft.AspNetCore.Http.HttpContext> não tem garantia de estar disponível dentro do <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> , nem é garantido que esteja segurando o contexto que iniciou o aplicativo mais incrivelmente.
 
 A maneira recomendada de passar o estado da solicitação para o aplicativo mais fácil é por meio de parâmetros para o componente raiz na renderização inicial do aplicativo:
 
