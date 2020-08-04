@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 6b9653356659700ae8396a01b38c04d59a86625f
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 92fd893963f049e014325d4f55affa789979647a
+ms.sourcegitcommit: 37f6f2e13ceb4eae268d20973d76e4b83acf6a24
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059884"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87526271"
 ---
-# <a name="aspnet-core-blazor-lifecycle"></a>BlazorCiclo de vida ASP.NET Core
+# <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCiclo de vida ASP.NET Core
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
@@ -90,7 +90,7 @@ Se algum manipulador de eventos estiver configurado, desvincule-os na alienaçã
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A>ou <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet%2A> são chamados:
 
-* Depois que o componente é inicializado no <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> ou no <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A> .
+* Depois que o componente é inicializado no <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A> ou no <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> .
 * Quando o componente pai é renderizado novamente e fornece:
   * Somente tipos irmutáveis de primitivo conhecidos dos quais pelo menos um parâmetro foi alterado.
   * Qualquer parâmetro de tipo complexo. A estrutura não pode saber se os valores de um parâmetro de tipo complexo foram modificados internamente e, portanto, trata o conjunto de parâmetros como alterado.
@@ -187,37 +187,6 @@ No `FetchData` componente dos Blazor modelos, <xref:Microsoft.AspNetCore.Compone
 
 [!code-razor[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
 
-## <a name="component-disposal-with-idisposable"></a>Descarte de componentes com IDisposable
-
-Se um componente implementa <xref:System.IDisposable> , o [ `Dispose` método](/dotnet/standard/garbage-collection/implementing-dispose) é chamado quando o componente é removido da interface do usuário. O componente a seguir usa `@implements IDisposable` o e o `Dispose` método:
-
-```razor
-@using System
-@implements IDisposable
-
-...
-
-@code {
-    public void Dispose()
-    {
-        ...
-    }
-}
-```
-
-> [!NOTE]
-> A chamada <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> no `Dispose` não tem suporte. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>pode ser invocado como parte da subdivisão do renderizador, portanto, não há suporte para a solicitação de atualizações da interface do usuário nesse ponto.
-
-Cancele a assinatura de manipuladores de eventos de eventos .NET. Os exemplos de [ Blazor formulário](xref:blazor/forms-validation) a seguir mostram como desvincular um manipulador de eventos no `Dispose` método:
-
-* Campo privado e abordagem lambda
-
-  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-1.razor?highlight=23,28)]
-
-* Abordagem do método privado
-
-  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-2.razor?highlight=16,26)]
-
 ## <a name="handle-errors"></a>Tratar erros
 
 Para obter informações sobre como lidar com erros durante a execução do método de ciclo de vida, consulte <xref:blazor/fundamentals/handle-errors#lifecycle-methods> .
@@ -285,6 +254,37 @@ Para obter mais informações sobre o <xref:Microsoft.AspNetCore.Mvc.TagHelpers.
 ## <a name="detect-when-the-app-is-prerendering"></a>Detectar quando o aplicativo está sendo renderizado
 
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
+
+## <a name="component-disposal-with-idisposable"></a>Descarte de componentes com IDisposable
+
+Se um componente implementa <xref:System.IDisposable> , o [ `Dispose` método](/dotnet/standard/garbage-collection/implementing-dispose) é chamado quando o componente é removido da interface do usuário. A alienação pode ocorrer a qualquer momento, incluindo durante a [inicialização do componente](#component-initialization-methods). O componente a seguir usa `@implements IDisposable` o e o `Dispose` método:
+
+```razor
+@using System
+@implements IDisposable
+
+...
+
+@code {
+    public void Dispose()
+    {
+        ...
+    }
+}
+```
+
+> [!NOTE]
+> A chamada <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> no `Dispose` não tem suporte. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>pode ser invocado como parte da subdivisão do renderizador, portanto, não há suporte para a solicitação de atualizações da interface do usuário nesse ponto.
+
+Cancele a assinatura de manipuladores de eventos de eventos .NET. Os exemplos de [ Blazor formulário](xref:blazor/forms-validation) a seguir mostram como desvincular um manipulador de eventos no `Dispose` método:
+
+* Campo privado e abordagem lambda
+
+  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-1.razor?highlight=23,28)]
+
+* Abordagem do método privado
+
+  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-2.razor?highlight=16,26)]
 
 ## <a name="cancelable-background-work"></a>Trabalho em segundo plano cancelável
 
