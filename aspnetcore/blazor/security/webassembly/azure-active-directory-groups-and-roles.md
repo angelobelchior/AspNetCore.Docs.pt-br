@@ -5,7 +5,7 @@ description: Saiba como configurar o Blazor WebAssembly para usar grupos de Azur
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,47 +15,61 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 6e27b062d7b5a1b72804fe5d4ea31ec65358ce45
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 68071be9fb9f7a097c0c3693293bf8295e0173f1
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402150"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818801"
 ---
-# <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a><span data-ttu-id="5bc36-103">Grupos do Azure AD, funções administrativas e funções definidas pelo usuário</span><span class="sxs-lookup"><span data-stu-id="5bc36-103">Azure AD Groups, Administrative Roles, and user-defined roles</span></span>
+# <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a><span data-ttu-id="c87de-103">Grupos do Azure AD, funções administrativas e funções definidas pelo usuário</span><span class="sxs-lookup"><span data-stu-id="c87de-103">Azure AD Groups, Administrative Roles, and user-defined roles</span></span>
 
-<span data-ttu-id="5bc36-104">De [Luke Latham](https://github.com/guardrex) e [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="5bc36-104">By [Luke Latham](https://github.com/guardrex) and [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
+<span data-ttu-id="c87de-104">De [Luke Latham](https://github.com/guardrex) e [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="c87de-104">By [Luke Latham](https://github.com/guardrex) and [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
 
-<span data-ttu-id="5bc36-105">Azure Active Directory (AAD) fornece várias abordagens de autorização que podem ser combinadas com ASP.NET Core Identity :</span><span class="sxs-lookup"><span data-stu-id="5bc36-105">Azure Active Directory (AAD) provides several authorization approaches that can be combined with ASP.NET Core Identity:</span></span>
+<span data-ttu-id="c87de-105">Azure Active Directory (AAD) fornece várias abordagens de autorização que podem ser combinadas com ASP.NET Core Identity :</span><span class="sxs-lookup"><span data-stu-id="c87de-105">Azure Active Directory (AAD) provides several authorization approaches that can be combined with ASP.NET Core Identity:</span></span>
 
-* <span data-ttu-id="5bc36-106">Grupos definidos pelo usuário</span><span class="sxs-lookup"><span data-stu-id="5bc36-106">User-defined groups</span></span>
-  * <span data-ttu-id="5bc36-107">Segurança</span><span class="sxs-lookup"><span data-stu-id="5bc36-107">Security</span></span>
-  * <span data-ttu-id="5bc36-108">O365</span><span class="sxs-lookup"><span data-stu-id="5bc36-108">O365</span></span>
-  * <span data-ttu-id="5bc36-109">Distribuição</span><span class="sxs-lookup"><span data-stu-id="5bc36-109">Distribution</span></span>
-* <span data-ttu-id="5bc36-110">Funções</span><span class="sxs-lookup"><span data-stu-id="5bc36-110">Roles</span></span>
-  * <span data-ttu-id="5bc36-111">Funções administrativas internas</span><span class="sxs-lookup"><span data-stu-id="5bc36-111">Built-in Administrative Roles</span></span>
-  * <span data-ttu-id="5bc36-112">Funções definidas pelo usuário</span><span class="sxs-lookup"><span data-stu-id="5bc36-112">User-defined roles</span></span>
+* <span data-ttu-id="c87de-106">Grupos definidos pelo usuário</span><span class="sxs-lookup"><span data-stu-id="c87de-106">User-defined groups</span></span>
+  * <span data-ttu-id="c87de-107">Segurança</span><span class="sxs-lookup"><span data-stu-id="c87de-107">Security</span></span>
+  * <span data-ttu-id="c87de-108">O365</span><span class="sxs-lookup"><span data-stu-id="c87de-108">O365</span></span>
+  * <span data-ttu-id="c87de-109">Distribuição</span><span class="sxs-lookup"><span data-stu-id="c87de-109">Distribution</span></span>
+* <span data-ttu-id="c87de-110">Funções</span><span class="sxs-lookup"><span data-stu-id="c87de-110">Roles</span></span>
+  * <span data-ttu-id="c87de-111">Funções administrativas internas</span><span class="sxs-lookup"><span data-stu-id="c87de-111">Built-in Administrative Roles</span></span>
+  * <span data-ttu-id="c87de-112">Funções definidas pelo usuário</span><span class="sxs-lookup"><span data-stu-id="c87de-112">User-defined roles</span></span>
 
-<span data-ttu-id="5bc36-113">As diretrizes neste artigo se aplicam aos Blazor WebAssembly cenários de implantação do AAD descritos nos tópicos a seguir:</span><span class="sxs-lookup"><span data-stu-id="5bc36-113">The guidance in this article applies to the Blazor WebAssembly AAD deployment scenarios described in the following topics:</span></span>
+<span data-ttu-id="c87de-113">As diretrizes neste artigo se aplicam aos Blazor WebAssembly cenários de implantação do AAD descritos nos tópicos a seguir:</span><span class="sxs-lookup"><span data-stu-id="c87de-113">The guidance in this article applies to the Blazor WebAssembly AAD deployment scenarios described in the following topics:</span></span>
 
-* [<span data-ttu-id="5bc36-114">Aplicativo autônomo com contas Microsoft</span><span class="sxs-lookup"><span data-stu-id="5bc36-114">Standalone with Microsoft Accounts</span></span>](xref:blazor/security/webassembly/standalone-with-microsoft-accounts)
-* [<span data-ttu-id="5bc36-115">Aplicativo autônomo com o AAD</span><span class="sxs-lookup"><span data-stu-id="5bc36-115">Standalone with AAD</span></span>](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
-* [<span data-ttu-id="5bc36-116">Aplicativo hospedado com o AAD</span><span class="sxs-lookup"><span data-stu-id="5bc36-116">Hosted with AAD</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
+* [<span data-ttu-id="c87de-114">Aplicativo autônomo com contas Microsoft</span><span class="sxs-lookup"><span data-stu-id="c87de-114">Standalone with Microsoft Accounts</span></span>](xref:blazor/security/webassembly/standalone-with-microsoft-accounts)
+* [<span data-ttu-id="c87de-115">Aplicativo autônomo com o AAD</span><span class="sxs-lookup"><span data-stu-id="c87de-115">Standalone with AAD</span></span>](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
+* [<span data-ttu-id="c87de-116">Aplicativo hospedado com o AAD</span><span class="sxs-lookup"><span data-stu-id="c87de-116">Hosted with AAD</span></span>](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
 
-### <a name="user-defined-groups-and-built-in-administrative-roles"></a><span data-ttu-id="5bc36-117">Grupos definidos pelo usuário e funções administrativas internas</span><span class="sxs-lookup"><span data-stu-id="5bc36-117">User-defined groups and built-in Administrative Roles</span></span>
+## <a name="microsoft-graph-api-permission"></a><span data-ttu-id="c87de-117">Permissão de API Microsoft Graph</span><span class="sxs-lookup"><span data-stu-id="c87de-117">Microsoft Graph API permission</span></span>
 
-<span data-ttu-id="5bc36-118">Para configurar o aplicativo no portal do Azure para fornecer uma `groups` declaração de associação, consulte os seguintes artigos do Azure.</span><span class="sxs-lookup"><span data-stu-id="5bc36-118">To configure the app in the Azure portal to provide a `groups` membership claim, see the following Azure articles.</span></span> <span data-ttu-id="5bc36-119">Atribua usuários a grupos do AAD definidos pelo usuário e funções administrativas internas.</span><span class="sxs-lookup"><span data-stu-id="5bc36-119">Assign users to user-defined AAD groups and built-in Administrative Roles.</span></span>
+<span data-ttu-id="c87de-118">Uma chamada à [API Microsoft Graph](/graph/use-the-api) é necessária para qualquer usuário de aplicativo com mais de cinco associações internas de grupo de segurança e função de administrador do AAD.</span><span class="sxs-lookup"><span data-stu-id="c87de-118">A [Microsoft Graph API](/graph/use-the-api) call is required for any app user with more than five built-in AAD Administrator role and security group memberships.</span></span>
 
-* [<span data-ttu-id="5bc36-120">As funções que usam grupos de segurança do Azure AD</span><span class="sxs-lookup"><span data-stu-id="5bc36-120">Roles using Azure AD security groups</span></span>](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
-* [<span data-ttu-id="5bc36-121">`groupMembershipClaims`Attribute</span><span class="sxs-lookup"><span data-stu-id="5bc36-121">`groupMembershipClaims` attribute</span></span>](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
+<span data-ttu-id="c87de-119">Para permitir chamadas de API do Graph, dê ao aplicativo cliente ou autônomo de uma Blazor solução hospedada qualquer uma das seguintes [permissões de API do Graph](/graph/permissions-reference) no portal do Azure:</span><span class="sxs-lookup"><span data-stu-id="c87de-119">To permit Graph API calls, give the standalone or client app of a hosted Blazor solution any of the following [Graph API permissions](/graph/permissions-reference) in the Azure portal:</span></span>
 
-<span data-ttu-id="5bc36-122">Os exemplos a seguir pressupõem que um usuário é atribuído à função de *administrador de cobrança* interna do AAD.</span><span class="sxs-lookup"><span data-stu-id="5bc36-122">The following examples assume that a user is assigned to the AAD built-in *Billing Administrator* role.</span></span>
+* `Directory.Read.All`
+* `Directory.ReadWrite.All`
+* `Directory.AccessAsUser.All`
 
-<span data-ttu-id="5bc36-123">A única `groups` declaração enviada pelo AAD apresenta os grupos e as funções do usuário como IDs de objeto (GUIDs) em uma matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="5bc36-123">The single `groups` claim sent by AAD presents the user's groups and roles as Object IDs (GUIDs) in a JSON array.</span></span> <span data-ttu-id="5bc36-124">O aplicativo deve converter a matriz JSON de grupos e funções em declarações individuais nas `group` quais o aplicativo pode criar [políticas](xref:security/authorization/policies) .</span><span class="sxs-lookup"><span data-stu-id="5bc36-124">The app must convert the JSON array of groups and roles into individual `group` claims that the app can build [policies](xref:security/authorization/policies) against.</span></span>
+<span data-ttu-id="c87de-120">`Directory.Read.All`é a permissão com privilégios mínimos e é a permissão usada para o exemplo descrito neste artigo.</span><span class="sxs-lookup"><span data-stu-id="c87de-120">`Directory.Read.All` is the least-privileged permission and is the permission used for the example described in this article.</span></span>
 
-<span data-ttu-id="5bc36-125">Estenda <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> para incluir propriedades de matriz para grupos e funções.</span><span class="sxs-lookup"><span data-stu-id="5bc36-125">Extend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> to include array properties for groups and roles.</span></span>
+## <a name="user-defined-groups-and-built-in-administrative-roles"></a><span data-ttu-id="c87de-121">Grupos definidos pelo usuário e funções administrativas internas</span><span class="sxs-lookup"><span data-stu-id="c87de-121">User-defined groups and built-in Administrative Roles</span></span>
 
-<span data-ttu-id="5bc36-126">`CustomUserAccount.cs`:</span><span class="sxs-lookup"><span data-stu-id="5bc36-126">`CustomUserAccount.cs`:</span></span>
+<span data-ttu-id="c87de-122">Para configurar o aplicativo no portal do Azure para fornecer uma `groups` declaração de associação, consulte os seguintes artigos do Azure.</span><span class="sxs-lookup"><span data-stu-id="c87de-122">To configure the app in the Azure portal to provide a `groups` membership claim, see the following Azure articles.</span></span> <span data-ttu-id="c87de-123">Atribua usuários a grupos do AAD definidos pelo usuário e funções administrativas internas.</span><span class="sxs-lookup"><span data-stu-id="c87de-123">Assign users to user-defined AAD groups and built-in Administrative Roles.</span></span>
+
+* [<span data-ttu-id="c87de-124">As funções que usam grupos de segurança do Azure AD</span><span class="sxs-lookup"><span data-stu-id="c87de-124">Roles using Azure AD security groups</span></span>](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
+* [<span data-ttu-id="c87de-125">`groupMembershipClaims`Attribute</span><span class="sxs-lookup"><span data-stu-id="c87de-125">`groupMembershipClaims` attribute</span></span>](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
+
+<span data-ttu-id="c87de-126">Os exemplos a seguir pressupõem que um usuário é atribuído à função de *administrador de cobrança* interna do AAD.</span><span class="sxs-lookup"><span data-stu-id="c87de-126">The following examples assume that a user is assigned to the AAD built-in *Billing Administrator* role.</span></span>
+
+<span data-ttu-id="c87de-127">A única `groups` declaração enviada pelo AAD apresenta os grupos e as funções do usuário como IDs de objeto (GUIDs) em uma matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="c87de-127">The single `groups` claim sent by AAD presents the user's groups and roles as Object IDs (GUIDs) in a JSON array.</span></span> <span data-ttu-id="c87de-128">O aplicativo deve converter a matriz JSON de grupos e funções em declarações individuais nas `group` quais o aplicativo pode criar [políticas](xref:security/authorization/policies) .</span><span class="sxs-lookup"><span data-stu-id="c87de-128">The app must convert the JSON array of groups and roles into individual `group` claims that the app can build [policies](xref:security/authorization/policies) against.</span></span>
+
+<span data-ttu-id="c87de-129">Quando o número de funções administrativas internas do Azure e grupos definidos pelo usuário atribuídos exceder cinco, o AAD enviará uma `hasgroups` declaração com um `true` valor em vez de enviar uma `groups` declaração.</span><span class="sxs-lookup"><span data-stu-id="c87de-129">When the number of assigned built-in Azure Administrative Roles and user-defined groups exceeds five, AAD sends a `hasgroups` claim with a `true` value instead of sending a `groups` claim.</span></span> <span data-ttu-id="c87de-130">Qualquer aplicativo que possa ter mais de cinco funções e grupos atribuídos a seus usuários deve fazer uma chamada API do Graph separada para obter funções e grupos de um usuário.</span><span class="sxs-lookup"><span data-stu-id="c87de-130">Any app that may have more than five roles and groups assigned to its users must make a separate Graph API call to obtain a user's roles and groups.</span></span> <span data-ttu-id="c87de-131">A implementação de exemplo fornecida neste artigo aborda esse cenário.</span><span class="sxs-lookup"><span data-stu-id="c87de-131">The example implementation provided in this article addresses this scenario.</span></span> <span data-ttu-id="c87de-132">Para obter mais informações, consulte o `groups` e `hasgroups` informações de declarações no artigo [tokens de acesso da plataforma de identidade da Microsoft: declarações de carga](/azure/active-directory/develop/access-tokens#payload-claims) .</span><span class="sxs-lookup"><span data-stu-id="c87de-132">For more information, see the `groups` and `hasgroups` claims information in [Microsoft identity platform access tokens: Payload claims](/azure/active-directory/develop/access-tokens#payload-claims) article.</span></span>
+
+<span data-ttu-id="c87de-133">Estenda <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> para incluir propriedades de matriz para grupos e funções.</span><span class="sxs-lookup"><span data-stu-id="c87de-133">Extend <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> to include array properties for groups and roles.</span></span> <span data-ttu-id="c87de-134">Atribua uma matriz vazia a cada propriedade para que a verificação de `null` não seja necessária quando essas propriedades forem usadas em `foreach` loops posteriormente.</span><span class="sxs-lookup"><span data-stu-id="c87de-134">Assign an empty array to each property so that checking for `null` isn't required when these properties are used in `foreach` loops later.</span></span>
+
+<span data-ttu-id="c87de-135">`CustomUserAccount.cs`:</span><span class="sxs-lookup"><span data-stu-id="c87de-135">`CustomUserAccount.cs`:</span></span>
 
 ```csharp
 using System.Text.Json.Serialization;
@@ -64,29 +78,98 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 public class CustomUserAccount : RemoteUserAccount
 {
     [JsonPropertyName("groups")]
-    public string[] Groups { get; set; }
+    public string[] Groups { get; set; } = new string[] { };
 
     [JsonPropertyName("roles")]
-    public string[] Roles { get; set; }
+    public string[] Roles { get; set; } = new string[] { };
 }
 ```
 
-<span data-ttu-id="5bc36-127">Crie uma fábrica de usuário personalizada no aplicativo autônomo ou aplicativo cliente de uma solução hospedada.</span><span class="sxs-lookup"><span data-stu-id="5bc36-127">Create a custom user factory in the standalone app or Client app of a Hosted solution.</span></span> <span data-ttu-id="5bc36-128">A fábrica a seguir também é configurada para lidar com `roles` matrizes de declaração, que são abordadas na seção [funções definidas pelo usuário](#user-defined-roles) :</span><span class="sxs-lookup"><span data-stu-id="5bc36-128">The following factory is also configured to handle `roles` claim arrays, which are covered in the [User-defined roles](#user-defined-roles) section:</span></span>
+<span data-ttu-id="c87de-136">No aplicativo autônomo ou no aplicativo cliente de uma solução hospedada Blazor , crie uma <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personalizada.</span><span class="sxs-lookup"><span data-stu-id="c87de-136">In the standalone app or the client app of a hosted Blazor solution, create a custom <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> class.</span></span> <span data-ttu-id="c87de-137">Use o escopo correto (permissão) para chamadas API do Graph que obtenham informações de função e grupo.</span><span class="sxs-lookup"><span data-stu-id="c87de-137">Use the correct scope (permission) for Graph API calls that obtain role and group information.</span></span>
+
+<span data-ttu-id="c87de-138">`GraphAPIAuthorizationMessageHandler.cs`:</span><span class="sxs-lookup"><span data-stu-id="c87de-138">`GraphAPIAuthorizationMessageHandler.cs`:</span></span>
 
 ```csharp
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+
+public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
+{
+    public GraphAPIAuthorizationMessageHandler(IAccessTokenProvider provider,
+        NavigationManager navigationManager)
+        : base(provider, navigationManager)
+    {
+        ConfigureHandler(
+            authorizedUrls: new[] { "https://graph.microsoft.com" },
+            scopes: new[] { "https://graph.microsoft.com/Directory.Read.All" });
+    }
+}
+```
+
+<span data-ttu-id="c87de-139">Em `Program.Main` ( `Program.cs` ), adicione o <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> serviço de implementação e adicione um nome <xref:System.Net.Http.HttpClient> para fazer API do Graph solicitações.</span><span class="sxs-lookup"><span data-stu-id="c87de-139">In `Program.Main` (`Program.cs`), add the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> implementation service and add a named <xref:System.Net.Http.HttpClient> for making Graph API requests.</span></span> <span data-ttu-id="c87de-140">O exemplo a seguir nomeia o cliente `GraphAPI` :</span><span class="sxs-lookup"><span data-stu-id="c87de-140">The following example names the client `GraphAPI`:</span></span>
+
+```csharp
+builder.Services.AddScoped<GraphAPIAuthorizationMessageHandler>();
+
+builder.Services.AddHttpClient("GraphAPI",
+        client => client.BaseAddress = new Uri("https://graph.microsoft.com"))
+    .AddHttpMessageHandler<GraphAPIAuthorizationMessageHandler>();
+```
+
+<span data-ttu-id="c87de-141">Crie classes de objetos de diretório do AAD para receber as funções e grupos de Protocolo Open Data (OData) de uma chamada de API do Graph.</span><span class="sxs-lookup"><span data-stu-id="c87de-141">Create AAD directory objects classes to receive the Open Data Protocol (OData) roles and groups from a Graph API call.</span></span> <span data-ttu-id="c87de-142">O OData chega no formato JSON e uma chamada para <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> popula uma instância da `DirectoryObjects` classe.</span><span class="sxs-lookup"><span data-stu-id="c87de-142">The OData arrives in JSON format, and a call to <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> populates an instance of the `DirectoryObjects` class.</span></span>
+
+<span data-ttu-id="c87de-143">`DirectoryObjects.cs`:</span><span class="sxs-lookup"><span data-stu-id="c87de-143">`DirectoryObjects.cs`:</span></span>
+
+```csharp
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+public class DirectoryObjects
+{
+    [JsonPropertyName("@odata.context")]
+    public string Context { get; set; }
+
+    [JsonPropertyName("value")]
+    public List<Value> Values { get; set; }
+}
+
+public class Value
+{
+    [JsonPropertyName("@odata.type")]
+    public string Type { get; set; }
+
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
+}
+```
+
+<span data-ttu-id="c87de-144">Crie uma fábrica de usuário personalizada para processar declarações de funções e grupos.</span><span class="sxs-lookup"><span data-stu-id="c87de-144">Create a custom user factory to process roles and groups claims.</span></span> <span data-ttu-id="c87de-145">A implementação de exemplo a seguir também manipula a `roles` matriz de declaração, que é abordada na seção [funções definidas pelo usuário](#user-defined-roles) .</span><span class="sxs-lookup"><span data-stu-id="c87de-145">The following example implementation also handles the `roles` claim array, which is covered in the [User-defined roles](#user-defined-roles) section.</span></span> <span data-ttu-id="c87de-146">Se a `hasgroups` declaração estiver presente, o nome <xref:System.Net.Http.HttpClient> será usado para fazer uma solicitação autorizada para API do Graph obter as funções e os grupos do usuário.</span><span class="sxs-lookup"><span data-stu-id="c87de-146">If the `hasgroups` claim is present, the named <xref:System.Net.Http.HttpClient> is used to make an authorized request to Graph API to obtain the user's roles and groups.</span></span> <span data-ttu-id="c87de-147">Essa implementação usa o ponto de extremidade do Microsoft Identity Platform v 1.0 `https://graph.microsoft.com/v1.0/me/memberOf` ([documentação da API](/graph/api/user-list-memberof)).</span><span class="sxs-lookup"><span data-stu-id="c87de-147">This implementation uses the Microsoft Identity Platform v1.0 endpoint `https://graph.microsoft.com/v1.0/me/memberOf` ([API documentation](/graph/api/user-list-memberof)).</span></span> <span data-ttu-id="c87de-148">As diretrizes neste tópico serão atualizadas para Identity o v 2.0 quando os pacotes MSAL forem atualizados para o v 2.0.</span><span class="sxs-lookup"><span data-stu-id="c87de-148">The guidance in this topic will be updated for Identity v2.0 when the MSAL packages are upgraded for v2.0.</span></span>
+
+<span data-ttu-id="c87de-149">`CustomAccountFactory.cs`:</span><span class="sxs-lookup"><span data-stu-id="c87de-149">`CustomAccountFactory.cs`:</span></span>
+
+```csharp
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
+using Microsoft.Extensions.Logging;
 
 public class CustomUserFactory
     : AccountClaimsPrincipalFactory<CustomUserAccount>
 {
-    public CustomUserFactory(NavigationManager navigationManager,
-        IAccessTokenProviderAccessor accessor)
+    private readonly ILogger<CustomUserFactory> _logger;
+    private readonly IHttpClientFactory _clientFactory;
+
+    public CustomUserFactory(IAccessTokenProviderAccessor accessor, 
+        IHttpClientFactory clientFactory, 
+        ILogger<CustomUserFactory> logger)
         : base(accessor)
     {
+        _clientFactory = clientFactory;
+        _logger = logger;
     }
 
     public async override ValueTask<ClaimsPrincipal> CreateUserAsync(
@@ -104,9 +187,47 @@ public class CustomUserFactory
                 userIdentity.AddClaim(new Claim("role", role));
             }
 
-            foreach (var group in account.Groups)
+            if (userIdentity.HasClaim(c => c.Type == "hasgroups"))
             {
-                userIdentity.AddClaim(new Claim("group", group));
+                try
+                {
+                    var client = _clientFactory.CreateClient("GraphAPI");
+
+                    var response = await client.GetAsync("v1.0/me/memberOf");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var userObjects = await response.Content
+                            .ReadFromJsonAsync<DirectoryObjects>();
+
+                        foreach (var obj in userObjects?.Values)
+                        {
+                            userIdentity.AddClaim(new Claim("group", obj.Id));
+                        }
+
+                        var claim = userIdentity.Claims.FirstOrDefault(
+                            c => c.Type == "hasgroups");
+
+                        userIdentity.RemoveClaim(claim);
+                    }
+                    else
+                    {
+                        _logger.LogError("Graph API request failure: {REASON}", 
+                            response.ReasonPhrase);
+                    }
+                }
+                catch (AccessTokenNotAvailableException exception)
+                {
+                    _logger.LogError("Graph API access token failure: {MESSAGE}", 
+                        exception.Message);
+                }
+            }
+            else
+            {
+                foreach (var group in account.Groups)
+                {
+                    userIdentity.AddClaim(new Claim("group", group));
+                }
             }
         }
 
@@ -115,9 +236,18 @@ public class CustomUserFactory
 }
 ```
 
-<span data-ttu-id="5bc36-129">Não é necessário fornecer código para remover a `groups` declaração original porque ela é automaticamente removida pela estrutura.</span><span class="sxs-lookup"><span data-stu-id="5bc36-129">There's no need to provide code to remove the original `groups` claim because it's automatically removed by the framework.</span></span>
+<span data-ttu-id="c87de-150">Não há necessidade de fornecer código para remover a declaração original `groups` , se presente, porque ela é automaticamente removida pela estrutura.</span><span class="sxs-lookup"><span data-stu-id="c87de-150">There's no need to provide code to remove the original `groups` claim, if present, because it's automatically removed by the framework.</span></span>
 
-<span data-ttu-id="5bc36-130">Registre a fábrica no `Program.Main` ( `Program.cs` ) do aplicativo autônomo ou aplicativo cliente de uma solução hospedada:</span><span class="sxs-lookup"><span data-stu-id="5bc36-130">Register the factory in `Program.Main` (`Program.cs`) of the standalone app or Client app of a Hosted solution:</span></span>
+> [!NOTE]
+> <span data-ttu-id="c87de-151">A abordagem neste exemplo:</span><span class="sxs-lookup"><span data-stu-id="c87de-151">The approach in this example:</span></span>
+>
+> * <span data-ttu-id="c87de-152">Adiciona uma <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personalizada para anexar tokens de acesso a solicitações de saída.</span><span class="sxs-lookup"><span data-stu-id="c87de-152">Adds a custom <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> class to attach access tokens to outgoing requests.</span></span>
+> * <span data-ttu-id="c87de-153">Adiciona um nome <xref:System.Net.Http.HttpClient> para fazer solicitações da API Web a um ponto de extremidade de API Web externo seguro.</span><span class="sxs-lookup"><span data-stu-id="c87de-153">Adds a named <xref:System.Net.Http.HttpClient> for making web API requests to a secure, external web API endpoint.</span></span>
+> * <span data-ttu-id="c87de-154">Usa o nome <xref:System.Net.Http.HttpClient> para fazer solicitações autorizadas.</span><span class="sxs-lookup"><span data-stu-id="c87de-154">Uses the named <xref:System.Net.Http.HttpClient> to make authorized requests.</span></span>
+>
+> <span data-ttu-id="c87de-155">A cobertura geral para essa abordagem é encontrada no <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> artigo.</span><span class="sxs-lookup"><span data-stu-id="c87de-155">General coverage for this approach is found in the <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> article.</span></span>
+
+<span data-ttu-id="c87de-156">Registre a fábrica no `Program.Main` ( `Program.cs` ) do aplicativo autônomo ou aplicativo cliente de uma solução hospedada Blazor .</span><span class="sxs-lookup"><span data-stu-id="c87de-156">Register the factory in `Program.Main` (`Program.cs`) of the standalone app or client app of a hosted Blazor solution.</span></span> <span data-ttu-id="c87de-157">Consentimento para o `Directory.Read.All` escopo de permissão como um escopo adicional para o aplicativo:</span><span class="sxs-lookup"><span data-stu-id="c87de-157">Consent to the `Directory.Read.All` permission scope as an additional scope for the app:</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
@@ -126,14 +256,15 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
     builder.Configuration.Bind("AzureAd", 
         options.ProviderOptions.Authentication);
     options.ProviderOptions.DefaultAccessTokenScopes.Add("...");
-    
-    ...
+
+    options.ProviderOptions.AdditionalScopesToConsent.Add(
+        "https://graph.microsoft.com/Directory.Read.All");
 })
 .AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, CustomUserAccount, 
     CustomUserFactory>();
 ```
 
-<span data-ttu-id="5bc36-131">Crie uma [política](xref:security/authorization/policies) para cada grupo ou função no `Program.Main` .</span><span class="sxs-lookup"><span data-stu-id="5bc36-131">Create a [policy](xref:security/authorization/policies) for each group or role in `Program.Main`.</span></span> <span data-ttu-id="5bc36-132">O exemplo a seguir cria uma política para a função de *administrador de cobrança* interna do AAD:</span><span class="sxs-lookup"><span data-stu-id="5bc36-132">The following example creates a policy for the AAD built-in *Billing Administrator* role:</span></span>
+<span data-ttu-id="c87de-158">Crie uma [política](xref:security/authorization/policies) para cada grupo ou função no `Program.Main` .</span><span class="sxs-lookup"><span data-stu-id="c87de-158">Create a [policy](xref:security/authorization/policies) for each group or role in `Program.Main`.</span></span> <span data-ttu-id="c87de-159">O exemplo a seguir cria uma política para a função de *administrador de cobrança* interna do AAD:</span><span class="sxs-lookup"><span data-stu-id="c87de-159">The following example creates a policy for the AAD built-in *Billing Administrator* role:</span></span>
 
 ```csharp
 builder.Services.AddAuthorizationCore(options =>
@@ -143,11 +274,11 @@ builder.Services.AddAuthorizationCore(options =>
 });
 ```
 
-<span data-ttu-id="5bc36-133">Para obter a lista completa de IDs de objeto de função do AAD, consulte a seção [IDs do grupo de funções administrativas do AAD](#aad-adminstrative-role-group-ids) .</span><span class="sxs-lookup"><span data-stu-id="5bc36-133">For the complete list of AAD role Object IDs, see the [AAD Adminstrative Role Group IDs](#aad-adminstrative-role-group-ids) section.</span></span>
+<span data-ttu-id="c87de-160">Para obter a lista completa de IDs de objeto de função do AAD, consulte a seção [IDs do grupo de funções administrativas do AAD](#aad-adminstrative-role-group-ids) .</span><span class="sxs-lookup"><span data-stu-id="c87de-160">For the complete list of AAD role Object IDs, see the [AAD Adminstrative Role Group IDs](#aad-adminstrative-role-group-ids) section.</span></span>
 
-<span data-ttu-id="5bc36-134">Nos exemplos a seguir, o aplicativo usa a política anterior para autorizar o usuário.</span><span class="sxs-lookup"><span data-stu-id="5bc36-134">In the following examples, the app uses the preceding policy to authorize the user.</span></span>
+<span data-ttu-id="c87de-161">Nos exemplos a seguir, o aplicativo usa a política anterior para autorizar o usuário.</span><span class="sxs-lookup"><span data-stu-id="c87de-161">In the following examples, the app uses the preceding policy to authorize the user.</span></span>
 
-<span data-ttu-id="5bc36-135">O [ `AuthorizeView` componente](xref:blazor/security/index#authorizeview-component) funciona com a política:</span><span class="sxs-lookup"><span data-stu-id="5bc36-135">The [`AuthorizeView` component](xref:blazor/security/index#authorizeview-component) works with the policy:</span></span>
+<span data-ttu-id="c87de-162">O [ `AuthorizeView` componente](xref:blazor/security/index#authorizeview-component) funciona com a política:</span><span class="sxs-lookup"><span data-stu-id="c87de-162">The [`AuthorizeView` component](xref:blazor/security/index#authorizeview-component) works with the policy:</span></span>
 
 ```razor
 <AuthorizeView Policy="BillingAdministrator">
@@ -166,7 +297,7 @@ builder.Services.AddAuthorizationCore(options =>
 </AuthorizeView>
 ```
 
-<span data-ttu-id="5bc36-136">O acesso a um componente inteiro pode ser baseado na política usando a [ `[Authorize]` diretiva de atributo](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ):</span><span class="sxs-lookup"><span data-stu-id="5bc36-136">Access to an entire component can be based on the policy using [`[Authorize]` attribute directive](xref:blazor/security/index#authorize-attribute) (<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>):</span></span>
+<span data-ttu-id="c87de-163">O acesso a um componente inteiro pode ser baseado na política usando a [ `[Authorize]` diretiva de atributo](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ):</span><span class="sxs-lookup"><span data-stu-id="c87de-163">Access to an entire component can be based on the policy using [`[Authorize]` attribute directive](xref:blazor/security/index#authorize-attribute) (<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>):</span></span>
 
 ```razor
 @page "/"
@@ -174,9 +305,9 @@ builder.Services.AddAuthorizationCore(options =>
 @attribute [Authorize(Policy = "BillingAdministrator")]
 ```
 
-<span data-ttu-id="5bc36-137">Se o usuário não estiver conectado, ele será redirecionado para a página de entrada do AAD e, em seguida, de volta para o componente depois de entrar.</span><span class="sxs-lookup"><span data-stu-id="5bc36-137">If the user isn't logged in, they're redirected to the AAD sign-in page and then back to the component after they sign in.</span></span>
+<span data-ttu-id="c87de-164">Se o usuário não estiver conectado, ele será redirecionado para a página de entrada do AAD e, em seguida, de volta para o componente depois de entrar.</span><span class="sxs-lookup"><span data-stu-id="c87de-164">If the user isn't logged in, they're redirected to the AAD sign-in page and then back to the component after they sign in.</span></span>
 
-<span data-ttu-id="5bc36-138">Uma verificação de política também pode ser [executada no código com lógica de procedimento](xref:blazor/security/index#procedural-logic):</span><span class="sxs-lookup"><span data-stu-id="5bc36-138">A policy check can also be [performed in code with procedural logic](xref:blazor/security/index#procedural-logic):</span></span>
+<span data-ttu-id="c87de-165">Uma verificação de política também pode ser [executada no código com lógica de procedimento](xref:blazor/security/index#procedural-logic):</span><span class="sxs-lookup"><span data-stu-id="c87de-165">A policy check can also be [performed in code with procedural logic](xref:blazor/security/index#procedural-logic):</span></span>
 
 ```razor
 @page "/checkpolicy"
@@ -214,27 +345,27 @@ builder.Services.AddAuthorizationCore(options =>
 }
 ```
 
-### <a name="user-defined-roles"></a><span data-ttu-id="5bc36-139">Funções definidas pelo usuário</span><span class="sxs-lookup"><span data-stu-id="5bc36-139">User-defined roles</span></span>
+## <a name="user-defined-roles"></a><span data-ttu-id="c87de-166">Funções definidas pelo usuário</span><span class="sxs-lookup"><span data-stu-id="c87de-166">User-defined roles</span></span>
 
-<span data-ttu-id="5bc36-140">Um aplicativo registrado no AAD também pode ser configurado para usar funções definidas pelo usuário.</span><span class="sxs-lookup"><span data-stu-id="5bc36-140">An AAD-registered app can also be configured to use user-defined roles.</span></span>
+<span data-ttu-id="c87de-167">Um aplicativo registrado no AAD também pode ser configurado para usar funções definidas pelo usuário.</span><span class="sxs-lookup"><span data-stu-id="c87de-167">An AAD-registered app can also be configured to use user-defined roles.</span></span>
 
-<span data-ttu-id="5bc36-141">Para configurar o aplicativo no portal do Azure para fornecer uma `roles` declaração de associação, consulte [como: adicionar funções de aplicativo em seu aplicativo e recebê-las no token](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) na documentação do Azure.</span><span class="sxs-lookup"><span data-stu-id="5bc36-141">To configure the app in the Azure portal to provide a `roles` membership claim, see [How to: Add app roles in your application and receive them in the token](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) in the Azure documentation.</span></span>
+<span data-ttu-id="c87de-168">Para configurar o aplicativo no portal do Azure para fornecer uma `roles` declaração de associação, consulte [como: adicionar funções de aplicativo em seu aplicativo e recebê-las no token](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) na documentação do Azure.</span><span class="sxs-lookup"><span data-stu-id="c87de-168">To configure the app in the Azure portal to provide a `roles` membership claim, see [How to: Add app roles in your application and receive them in the token](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) in the Azure documentation.</span></span>
 
-<span data-ttu-id="5bc36-142">O exemplo a seguir pressupõe que um aplicativo está configurado com duas funções:</span><span class="sxs-lookup"><span data-stu-id="5bc36-142">The following example assumes that an app is configured with two roles:</span></span>
+<span data-ttu-id="c87de-169">O exemplo a seguir pressupõe que um aplicativo está configurado com duas funções:</span><span class="sxs-lookup"><span data-stu-id="c87de-169">The following example assumes that an app is configured with two roles:</span></span>
 
 * `admin`
 * `developer`
 
 > [!NOTE]
-> <span data-ttu-id="5bc36-143">Embora não seja possível atribuir funções a grupos de segurança sem uma conta de Azure AD Premium, você pode atribuir usuários a funções e receber uma `roles` declaração para usuários com uma conta padrão do Azure.</span><span class="sxs-lookup"><span data-stu-id="5bc36-143">Although you can't assign roles to security groups without an Azure AD Premium account, you can assign users to roles and receive a `roles` claim for users with a standard Azure account.</span></span> <span data-ttu-id="5bc36-144">As diretrizes nesta seção não exigem uma conta de Azure AD Premium.</span><span class="sxs-lookup"><span data-stu-id="5bc36-144">The guidance in this section doesn't require an Azure AD Premium account.</span></span>
+> <span data-ttu-id="c87de-170">Embora não seja possível atribuir funções a grupos de segurança sem uma conta de Azure AD Premium, você pode atribuir usuários a funções e receber uma `roles` declaração para usuários com uma conta padrão do Azure.</span><span class="sxs-lookup"><span data-stu-id="c87de-170">Although you can't assign roles to security groups without an Azure AD Premium account, you can assign users to roles and receive a `roles` claim for users with a standard Azure account.</span></span> <span data-ttu-id="c87de-171">As diretrizes nesta seção não exigem uma conta de Azure AD Premium.</span><span class="sxs-lookup"><span data-stu-id="c87de-171">The guidance in this section doesn't require an Azure AD Premium account.</span></span>
 >
-> <span data-ttu-id="5bc36-145">Várias funções são atribuídas no portal do Azure ao **_adicionar novamente um usuário_** para cada atribuição de função adicional.</span><span class="sxs-lookup"><span data-stu-id="5bc36-145">Multiple roles are assigned in the Azure portal by **_re-adding a user_** for each additional role assignment.</span></span>
+> <span data-ttu-id="c87de-172">Várias funções são atribuídas no portal do Azure ao **_adicionar novamente um usuário_** para cada atribuição de função adicional.</span><span class="sxs-lookup"><span data-stu-id="c87de-172">Multiple roles are assigned in the Azure portal by **_re-adding a user_** for each additional role assignment.</span></span>
 
-<span data-ttu-id="5bc36-146">A única `roles` declaração enviada pelo AAD apresenta as funções definidas pelo usuário como `appRoles` `value` s em uma matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="5bc36-146">The single `roles` claim sent by AAD presents the user-defined roles as the `appRoles`'s `value`s in a JSON array.</span></span> <span data-ttu-id="5bc36-147">O aplicativo deve converter a matriz JSON de funções em `role` declarações individuais.</span><span class="sxs-lookup"><span data-stu-id="5bc36-147">The app must convert the JSON array of roles into individual `role` claims.</span></span>
+<span data-ttu-id="c87de-173">A única `roles` declaração enviada pelo AAD apresenta as funções definidas pelo usuário como `appRoles` `value` s em uma matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="c87de-173">The single `roles` claim sent by AAD presents the user-defined roles as the `appRoles`'s `value`s in a JSON array.</span></span> <span data-ttu-id="c87de-174">O aplicativo deve converter a matriz JSON de funções em `role` declarações individuais.</span><span class="sxs-lookup"><span data-stu-id="c87de-174">The app must convert the JSON array of roles into individual `role` claims.</span></span>
 
-<span data-ttu-id="5bc36-148">O `CustomUserFactory` mostrado na seção [grupos definidos pelo usuário e funções administrativas internas do AAD](#user-defined-groups-and-built-in-administrative-roles) é configurado para agir em uma `roles` declaração com um valor de matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="5bc36-148">The `CustomUserFactory` shown in the [User-defined groups and AAD built-in Administrative Roles](#user-defined-groups-and-built-in-administrative-roles) section is set up to act on a `roles` claim with a JSON array value.</span></span> <span data-ttu-id="5bc36-149">Adicione e registre o `CustomUserFactory` no aplicativo cliente ou aplicativo autônomo de uma solução hospedada, conforme mostrado na seção [grupos definidos pelo usuário e funções administrativas internas do AAD](#user-defined-groups-and-built-in-administrative-roles) .</span><span class="sxs-lookup"><span data-stu-id="5bc36-149">Add and register the `CustomUserFactory` in the standalone app or Client app of a Hosted solution as shown in the [User-defined groups and AAD built-in Administrative Roles](#user-defined-groups-and-built-in-administrative-roles) section.</span></span> <span data-ttu-id="5bc36-150">Não é necessário fornecer código para remover a `roles` declaração original porque ela é automaticamente removida pela estrutura.</span><span class="sxs-lookup"><span data-stu-id="5bc36-150">There's no need to provide code to remove the original `roles` claim because it's automatically removed by the framework.</span></span>
+<span data-ttu-id="c87de-175">O `CustomUserFactory` mostrado na seção [grupos definidos pelo usuário e funções administrativas internas do AAD](#user-defined-groups-and-built-in-administrative-roles) é configurado para agir em uma `roles` declaração com um valor de matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="c87de-175">The `CustomUserFactory` shown in the [User-defined groups and AAD built-in Administrative Roles](#user-defined-groups-and-built-in-administrative-roles) section is set up to act on a `roles` claim with a JSON array value.</span></span> <span data-ttu-id="c87de-176">Adicione e registre o `CustomUserFactory` no aplicativo cliente ou aplicativo autônomo de uma solução hospedada Blazor , conforme mostrado na seção [grupos definidos pelo usuário e funções administrativas internas do AAD](#user-defined-groups-and-built-in-administrative-roles) .</span><span class="sxs-lookup"><span data-stu-id="c87de-176">Add and register the `CustomUserFactory` in the standalone app or client app of a hosted Blazor solution as shown in the [User-defined groups and AAD built-in Administrative Roles](#user-defined-groups-and-built-in-administrative-roles) section.</span></span> <span data-ttu-id="c87de-177">Não é necessário fornecer código para remover a `roles` declaração original porque ela é automaticamente removida pela estrutura.</span><span class="sxs-lookup"><span data-stu-id="c87de-177">There's no need to provide code to remove the original `roles` claim because it's automatically removed by the framework.</span></span>
 
-<span data-ttu-id="5bc36-151">No aplicativo `Program.Main` autônomo ou aplicativo cliente de uma solução hospedada, especifique a declaração denominada " `role` " como a declaração de função:</span><span class="sxs-lookup"><span data-stu-id="5bc36-151">In `Program.Main` of the standalone app or Client app of a Hosted solution, specify the claim named "`role`" as the role claim:</span></span>
+<span data-ttu-id="c87de-178">No aplicativo `Program.Main` autônomo ou aplicativo cliente de uma solução hospedada Blazor , especifique a declaração denominada " `role` " como a declaração de função:</span><span class="sxs-lookup"><span data-stu-id="c87de-178">In `Program.Main` of the standalone app or client app of a hosted Blazor solution, specify the claim named "`role`" as the role claim:</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -245,13 +376,13 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-<span data-ttu-id="5bc36-152">As abordagens de autorização de componente são funcionais neste ponto.</span><span class="sxs-lookup"><span data-stu-id="5bc36-152">Component authorization approaches are functional at this point.</span></span> <span data-ttu-id="5bc36-153">Qualquer um dos mecanismos de autorização nos componentes pode usar a `admin` função para autorizar o usuário:</span><span class="sxs-lookup"><span data-stu-id="5bc36-153">Any of the authorization mechanisms in components can use the `admin` role to authorize the user:</span></span>
+<span data-ttu-id="c87de-179">As abordagens de autorização de componente são funcionais neste ponto.</span><span class="sxs-lookup"><span data-stu-id="c87de-179">Component authorization approaches are functional at this point.</span></span> <span data-ttu-id="c87de-180">Qualquer um dos mecanismos de autorização nos componentes pode usar a `admin` função para autorizar o usuário:</span><span class="sxs-lookup"><span data-stu-id="c87de-180">Any of the authorization mechanisms in components can use the `admin` role to authorize the user:</span></span>
 
-* <span data-ttu-id="5bc36-154">[ `AuthorizeView` componente](xref:blazor/security/index#authorizeview-component) (exemplo: `<AuthorizeView Roles="admin">` )</span><span class="sxs-lookup"><span data-stu-id="5bc36-154">[`AuthorizeView` component](xref:blazor/security/index#authorizeview-component) (Example: `<AuthorizeView Roles="admin">`)</span></span>
-* <span data-ttu-id="5bc36-155">[ `[Authorize]` diretiva de atributo](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) (exemplo: `@attribute [Authorize(Roles = "admin")]` )</span><span class="sxs-lookup"><span data-stu-id="5bc36-155">[`[Authorize]` attribute directive](xref:blazor/security/index#authorize-attribute) (<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>) (Example: `@attribute [Authorize(Roles = "admin")]`)</span></span>
-* <span data-ttu-id="5bc36-156">[Lógica de procedimento](xref:blazor/security/index#procedural-logic) (exemplo: `if (user.IsInRole("admin")) { ... }` )</span><span class="sxs-lookup"><span data-stu-id="5bc36-156">[Procedural logic](xref:blazor/security/index#procedural-logic) (Example: `if (user.IsInRole("admin")) { ... }`)</span></span>
+* <span data-ttu-id="c87de-181">[ `AuthorizeView` componente](xref:blazor/security/index#authorizeview-component) (exemplo: `<AuthorizeView Roles="admin">` )</span><span class="sxs-lookup"><span data-stu-id="c87de-181">[`AuthorizeView` component](xref:blazor/security/index#authorizeview-component) (Example: `<AuthorizeView Roles="admin">`)</span></span>
+* <span data-ttu-id="c87de-182">[ `[Authorize]` diretiva de atributo](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) (exemplo: `@attribute [Authorize(Roles = "admin")]` )</span><span class="sxs-lookup"><span data-stu-id="c87de-182">[`[Authorize]` attribute directive](xref:blazor/security/index#authorize-attribute) (<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>) (Example: `@attribute [Authorize(Roles = "admin")]`)</span></span>
+* <span data-ttu-id="c87de-183">[Lógica de procedimento](xref:blazor/security/index#procedural-logic) (exemplo: `if (user.IsInRole("admin")) { ... }` )</span><span class="sxs-lookup"><span data-stu-id="c87de-183">[Procedural logic](xref:blazor/security/index#procedural-logic) (Example: `if (user.IsInRole("admin")) { ... }`)</span></span>
 
-  <span data-ttu-id="5bc36-157">Há suporte para vários testes de função:</span><span class="sxs-lookup"><span data-stu-id="5bc36-157">Multiple role tests are supported:</span></span>
+  <span data-ttu-id="c87de-184">Há suporte para vários testes de função:</span><span class="sxs-lookup"><span data-stu-id="c87de-184">Multiple role tests are supported:</span></span>
 
   ```csharp
   if (user.IsInRole("admin") && user.IsInRole("developer"))
@@ -260,65 +391,65 @@ builder.Services.AddMsalAuthentication(options =>
   }
   ```
 
-## <a name="aad-adminstrative-role-group-ids"></a><span data-ttu-id="5bc36-158">IDs do grupo de funções administrativas do AAD</span><span class="sxs-lookup"><span data-stu-id="5bc36-158">AAD Adminstrative Role Group IDs</span></span>
+## <a name="aad-adminstrative-role-group-ids"></a><span data-ttu-id="c87de-185">IDs do grupo de funções administrativas do AAD</span><span class="sxs-lookup"><span data-stu-id="c87de-185">AAD Adminstrative Role Group IDs</span></span>
 
-<span data-ttu-id="5bc36-159">As IDs de objeto apresentadas na tabela a seguir são usadas para criar [políticas](xref:security/authorization/policies) para `group` declarações.</span><span class="sxs-lookup"><span data-stu-id="5bc36-159">The Object IDs presented in the following table are used to create [policies](xref:security/authorization/policies) for `group` claims.</span></span> <span data-ttu-id="5bc36-160">As políticas permitem que um aplicativo autorize usuários para várias atividades em um aplicativo.</span><span class="sxs-lookup"><span data-stu-id="5bc36-160">Policies permit an app to authorize users for various activities in an app.</span></span> <span data-ttu-id="5bc36-161">Para obter mais informações, consulte a seção [grupos definidos pelo usuário e funções administrativas internas do AAD](#user-defined-groups-and-built-in-administrative-roles) .</span><span class="sxs-lookup"><span data-stu-id="5bc36-161">For more information, see the [User-defined groups and AAD built-in Administrative Roles](#user-defined-groups-and-built-in-administrative-roles) section.</span></span>
+<span data-ttu-id="c87de-186">As IDs de objeto apresentadas na tabela a seguir são usadas para criar [políticas](xref:security/authorization/policies) para `group` declarações.</span><span class="sxs-lookup"><span data-stu-id="c87de-186">The Object IDs presented in the following table are used to create [policies](xref:security/authorization/policies) for `group` claims.</span></span> <span data-ttu-id="c87de-187">As políticas permitem que um aplicativo autorize usuários para várias atividades em um aplicativo.</span><span class="sxs-lookup"><span data-stu-id="c87de-187">Policies permit an app to authorize users for various activities in an app.</span></span> <span data-ttu-id="c87de-188">Para obter mais informações, consulte a seção [grupos definidos pelo usuário e funções administrativas internas do AAD](#user-defined-groups-and-built-in-administrative-roles) .</span><span class="sxs-lookup"><span data-stu-id="c87de-188">For more information, see the [User-defined groups and AAD built-in Administrative Roles](#user-defined-groups-and-built-in-administrative-roles) section.</span></span>
 
-<span data-ttu-id="5bc36-162">Função administrativa do AAD</span><span class="sxs-lookup"><span data-stu-id="5bc36-162">AAD Administrative Role</span></span> | <span data-ttu-id="5bc36-163">ID de objeto</span><span class="sxs-lookup"><span data-stu-id="5bc36-163">Object ID</span></span>
+<span data-ttu-id="c87de-189">Função administrativa do AAD</span><span class="sxs-lookup"><span data-stu-id="c87de-189">AAD Administrative Role</span></span> | <span data-ttu-id="c87de-190">ID de objeto</span><span class="sxs-lookup"><span data-stu-id="c87de-190">Object ID</span></span>
 --- | ---
-<span data-ttu-id="5bc36-164">Administrador de aplicativos</span><span class="sxs-lookup"><span data-stu-id="5bc36-164">Application administrator</span></span> | <span data-ttu-id="5bc36-165">fa11557b-4f15-4ddd-85d5-313c7cd74047</span><span class="sxs-lookup"><span data-stu-id="5bc36-165">fa11557b-4f15-4ddd-85d5-313c7cd74047</span></span>
-<span data-ttu-id="5bc36-166">Desenvolvedor de aplicativos</span><span class="sxs-lookup"><span data-stu-id="5bc36-166">Application developer</span></span> | <span data-ttu-id="5bc36-167">68adcbb8-9504-44f6-89f2-5cd48dc74a2c</span><span class="sxs-lookup"><span data-stu-id="5bc36-167">68adcbb8-9504-44f6-89f2-5cd48dc74a2c</span></span>
-<span data-ttu-id="5bc36-168">Administrador de autenticação</span><span class="sxs-lookup"><span data-stu-id="5bc36-168">Authentication administrator</span></span> | <span data-ttu-id="5bc36-169">02d110a1-96b1-419e-af87-746461b60ed7</span><span class="sxs-lookup"><span data-stu-id="5bc36-169">02d110a1-96b1-419e-af87-746461b60ed7</span></span>
-<span data-ttu-id="5bc36-170">Administrador do Azure DevOps</span><span class="sxs-lookup"><span data-stu-id="5bc36-170">Azure DevOps administrator</span></span> | <span data-ttu-id="5bc36-171">a5311ace-ca41-44cd-b833-8d22caa0b34f</span><span class="sxs-lookup"><span data-stu-id="5bc36-171">a5311ace-ca41-44cd-b833-8d22caa0b34f</span></span>
-<span data-ttu-id="5bc36-172">Administrador da Proteção de Informações do Azure</span><span class="sxs-lookup"><span data-stu-id="5bc36-172">Azure Information Protection administrator</span></span> | <span data-ttu-id="5bc36-173">18632dce-f9b5-4f01-abb5-37051f06860e</span><span class="sxs-lookup"><span data-stu-id="5bc36-173">18632dce-f9b5-4f01-abb5-37051f06860e</span></span>
-<span data-ttu-id="5bc36-174">Administrador do conjunto de chaves B2C IEF</span><span class="sxs-lookup"><span data-stu-id="5bc36-174">B2C IEF Keyset administrator</span></span> | <span data-ttu-id="5bc36-175">0c2e87e5-94f9-4adb-ae8c-bcafe11bd368</span><span class="sxs-lookup"><span data-stu-id="5bc36-175">0c2e87e5-94f9-4adb-ae8c-bcafe11bd368</span></span>
-<span data-ttu-id="5bc36-176">Administrador da política IEF B2C</span><span class="sxs-lookup"><span data-stu-id="5bc36-176">B2C IEF Policy administrator</span></span> | <span data-ttu-id="5bc36-177">bfcab36c-10c6-4b13-b63c-4d8b62c0c44e</span><span class="sxs-lookup"><span data-stu-id="5bc36-177">bfcab36c-10c6-4b13-b63c-4d8b62c0c44e</span></span>
-<span data-ttu-id="5bc36-178">Administrador de fluxo de usuário B2C</span><span class="sxs-lookup"><span data-stu-id="5bc36-178">B2C user flow administrator</span></span> | <span data-ttu-id="5bc36-179">baa531b7-8cf0-44ad-8f98-eded88dae827</span><span class="sxs-lookup"><span data-stu-id="5bc36-179">baa531b7-8cf0-44ad-8f98-eded88dae827</span></span>
-<span data-ttu-id="5bc36-180">Administrador de atributos de fluxo de usuário B2C</span><span class="sxs-lookup"><span data-stu-id="5bc36-180">B2C user flow attribute administrator</span></span> | <span data-ttu-id="5bc36-181">dd0baca0-a535-48c1-b871-8431abe16452</span><span class="sxs-lookup"><span data-stu-id="5bc36-181">dd0baca0-a535-48c1-b871-8431abe16452</span></span>
-<span data-ttu-id="5bc36-182">Administrador de cobrança</span><span class="sxs-lookup"><span data-stu-id="5bc36-182">Billing administrator</span></span> | <span data-ttu-id="5bc36-183">69ff516a-b57d-4697-a429-9de4af7b5609</span><span class="sxs-lookup"><span data-stu-id="5bc36-183">69ff516a-b57d-4697-a429-9de4af7b5609</span></span>
-<span data-ttu-id="5bc36-184">Administrador de aplicativos de nuvem</span><span class="sxs-lookup"><span data-stu-id="5bc36-184">Cloud application administrator</span></span> | <span data-ttu-id="5bc36-185">250b5fe3-b553-458d-9a53-b782c13c34bf</span><span class="sxs-lookup"><span data-stu-id="5bc36-185">250b5fe3-b553-458d-9a53-b782c13c34bf</span></span>
-<span data-ttu-id="5bc36-186">Administrador de dispositivo em nuvem</span><span class="sxs-lookup"><span data-stu-id="5bc36-186">Cloud device administrator</span></span> | <span data-ttu-id="5bc36-187">26cd4b44-2636-4ddb-bdfa-27feae66f86d</span><span class="sxs-lookup"><span data-stu-id="5bc36-187">26cd4b44-2636-4ddb-bdfa-27feae66f86d</span></span>
-<span data-ttu-id="5bc36-188">Administrador de conformidade</span><span class="sxs-lookup"><span data-stu-id="5bc36-188">Compliance administrator</span></span> | <span data-ttu-id="5bc36-189">9d6e1dd0-c9f8-45f8-b558-b134f700116c</span><span class="sxs-lookup"><span data-stu-id="5bc36-189">9d6e1dd0-c9f8-45f8-b558-b134f700116c</span></span>
-<span data-ttu-id="5bc36-190">Administrador de dados de conformidade</span><span class="sxs-lookup"><span data-stu-id="5bc36-190">Compliance data administrator</span></span> | <span data-ttu-id="5bc36-191">4c0ca3a2-231e-416c-9411-4abe57d5cb9d</span><span class="sxs-lookup"><span data-stu-id="5bc36-191">4c0ca3a2-231e-416c-9411-4abe57d5cb9d</span></span>
-<span data-ttu-id="5bc36-192">Administrador de acesso condicional</span><span class="sxs-lookup"><span data-stu-id="5bc36-192">Conditional Access administrator</span></span> | <span data-ttu-id="5bc36-193">8f71a611-137d-49af-87ad-e97f1fd5da76</span><span class="sxs-lookup"><span data-stu-id="5bc36-193">8f71a611-137d-49af-87ad-e97f1fd5da76</span></span>
-<span data-ttu-id="5bc36-194">Aprovador de acesso do Sistema de Proteção de Dados do Cliente</span><span class="sxs-lookup"><span data-stu-id="5bc36-194">Customer LockBox access approver</span></span> | <span data-ttu-id="5bc36-195">c18d54a8-b13e-4954-a1a4-7deaf2e4f184</span><span class="sxs-lookup"><span data-stu-id="5bc36-195">c18d54a8-b13e-4954-a1a4-7deaf2e4f184</span></span>
-<span data-ttu-id="5bc36-196">Administrador do desktop Analytics</span><span class="sxs-lookup"><span data-stu-id="5bc36-196">Desktop Analytics administrator</span></span> | <span data-ttu-id="5bc36-197">c62c4ac5-e4c6-4096-8a2f-1ee3cbaaae15</span><span class="sxs-lookup"><span data-stu-id="5bc36-197">c62c4ac5-e4c6-4096-8a2f-1ee3cbaaae15</span></span>
-<span data-ttu-id="5bc36-198">Leitores de diretórios</span><span class="sxs-lookup"><span data-stu-id="5bc36-198">Directory readers</span></span> | <span data-ttu-id="5bc36-199">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span><span class="sxs-lookup"><span data-stu-id="5bc36-199">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span></span>
-<span data-ttu-id="5bc36-200">Administrador do Dynamics 365</span><span class="sxs-lookup"><span data-stu-id="5bc36-200">Dynamics 365 administrator</span></span> | <span data-ttu-id="5bc36-201">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span><span class="sxs-lookup"><span data-stu-id="5bc36-201">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span></span>
-<span data-ttu-id="5bc36-202">Administrador do Exchange</span><span class="sxs-lookup"><span data-stu-id="5bc36-202">Exchange administrator</span></span> | <span data-ttu-id="5bc36-203">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span><span class="sxs-lookup"><span data-stu-id="5bc36-203">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span></span>
-<span data-ttu-id="5bc36-204">IdentityAdministrador de provedor externo</span><span class="sxs-lookup"><span data-stu-id="5bc36-204">External Identity Provider administrator</span></span> | <span data-ttu-id="5bc36-205">febfaeb4-e478-407a-b4b3-f4d9716618a2</span><span class="sxs-lookup"><span data-stu-id="5bc36-205">febfaeb4-e478-407a-b4b3-f4d9716618a2</span></span>
-<span data-ttu-id="5bc36-206">Administrador global</span><span class="sxs-lookup"><span data-stu-id="5bc36-206">Global administrator</span></span> | <span data-ttu-id="5bc36-207">a45ba61b-44db-462c-924b-3b2719152588</span><span class="sxs-lookup"><span data-stu-id="5bc36-207">a45ba61b-44db-462c-924b-3b2719152588</span></span>
-<span data-ttu-id="5bc36-208">Leitor global</span><span class="sxs-lookup"><span data-stu-id="5bc36-208">Global reader</span></span> | <span data-ttu-id="5bc36-209">f6903b21-6aba-4124-b44c-76671796b9d5</span><span class="sxs-lookup"><span data-stu-id="5bc36-209">f6903b21-6aba-4124-b44c-76671796b9d5</span></span>
-<span data-ttu-id="5bc36-210">Administrador de grupos</span><span class="sxs-lookup"><span data-stu-id="5bc36-210">Groups administrator</span></span> | <span data-ttu-id="5bc36-211">158b3e5a-d89d-460b-92b5-3b34985f0197</span><span class="sxs-lookup"><span data-stu-id="5bc36-211">158b3e5a-d89d-460b-92b5-3b34985f0197</span></span>
-<span data-ttu-id="5bc36-212">Emissor do convite ao convidado</span><span class="sxs-lookup"><span data-stu-id="5bc36-212">Guest inviter</span></span> | <span data-ttu-id="5bc36-213">4c730a1d-cc22-44af-8f9f-4eec635c7502</span><span class="sxs-lookup"><span data-stu-id="5bc36-213">4c730a1d-cc22-44af-8f9f-4eec635c7502</span></span>
-<span data-ttu-id="5bc36-214">Administrador de assistência técnica</span><span class="sxs-lookup"><span data-stu-id="5bc36-214">Helpdesk administrator</span></span> | <span data-ttu-id="5bc36-215">108678c8-6628-44e1-8d01-caf598a6a5f5</span><span class="sxs-lookup"><span data-stu-id="5bc36-215">108678c8-6628-44e1-8d01-caf598a6a5f5</span></span>
-<span data-ttu-id="5bc36-216">Administrador do Intune</span><span class="sxs-lookup"><span data-stu-id="5bc36-216">Intune administrator</span></span> | <span data-ttu-id="5bc36-217">79950741-23fa-4189-b2cb-46640601c497</span><span class="sxs-lookup"><span data-stu-id="5bc36-217">79950741-23fa-4189-b2cb-46640601c497</span></span>
-<span data-ttu-id="5bc36-218">Administrador do Kaizala</span><span class="sxs-lookup"><span data-stu-id="5bc36-218">Kaizala administrator</span></span> | <span data-ttu-id="5bc36-219">d6322af2-48e7-42e0-8c68-0bbe31af3412</span><span class="sxs-lookup"><span data-stu-id="5bc36-219">d6322af2-48e7-42e0-8c68-0bbe31af3412</span></span>
-<span data-ttu-id="5bc36-220">Administrador de licenças</span><span class="sxs-lookup"><span data-stu-id="5bc36-220">License administrator</span></span> | <span data-ttu-id="5bc36-221">3355458a-e423-44bf-8b98-4ac5e572cea5</span><span class="sxs-lookup"><span data-stu-id="5bc36-221">3355458a-e423-44bf-8b98-4ac5e572cea5</span></span>
-<span data-ttu-id="5bc36-222">Leitor de privacidade do centro de mensagens</span><span class="sxs-lookup"><span data-stu-id="5bc36-222">Message center privacy reader</span></span> | <span data-ttu-id="5bc36-223">6395db95-9fb8-42b9-b1ed-30a2405eee6f</span><span class="sxs-lookup"><span data-stu-id="5bc36-223">6395db95-9fb8-42b9-b1ed-30a2405eee6f</span></span>
-<span data-ttu-id="5bc36-224">Leitor do Centro de Mensagens</span><span class="sxs-lookup"><span data-stu-id="5bc36-224">Message center reader</span></span> | <span data-ttu-id="5bc36-225">fd5d37b8-4e24-434b-9e63-70ed3b759a16</span><span class="sxs-lookup"><span data-stu-id="5bc36-225">fd5d37b8-4e24-434b-9e63-70ed3b759a16</span></span>
-<span data-ttu-id="5bc36-226">Administrador de aplicativos do Office</span><span class="sxs-lookup"><span data-stu-id="5bc36-226">Office apps administrator</span></span> | <span data-ttu-id="5bc36-227">5f3870cd-b042-4f93-86d7-c9d77c664dc7</span><span class="sxs-lookup"><span data-stu-id="5bc36-227">5f3870cd-b042-4f93-86d7-c9d77c664dc7</span></span>
-<span data-ttu-id="5bc36-228">Administrador de senha</span><span class="sxs-lookup"><span data-stu-id="5bc36-228">Password administrator</span></span> | <span data-ttu-id="5bc36-229">466e48b7-5d66-4ae5-8911-1a118de74941</span><span class="sxs-lookup"><span data-stu-id="5bc36-229">466e48b7-5d66-4ae5-8911-1a118de74941</span></span>
-<span data-ttu-id="5bc36-230">Administrador do Power BI</span><span class="sxs-lookup"><span data-stu-id="5bc36-230">Power BI administrator</span></span> | <span data-ttu-id="5bc36-231">984e83b8-8337-4255-91a1-acb663175ab4</span><span class="sxs-lookup"><span data-stu-id="5bc36-231">984e83b8-8337-4255-91a1-acb663175ab4</span></span>
-<span data-ttu-id="5bc36-232">Administrador do Power Platform</span><span class="sxs-lookup"><span data-stu-id="5bc36-232">Power platform administrator</span></span> | <span data-ttu-id="5bc36-233">76d6f95e-9a15-4d7d-8d21-00de00faf9fd</span><span class="sxs-lookup"><span data-stu-id="5bc36-233">76d6f95e-9a15-4d7d-8d21-00de00faf9fd</span></span>
-<span data-ttu-id="5bc36-234">Administrador de autenticação privilegiada</span><span class="sxs-lookup"><span data-stu-id="5bc36-234">Privileged authentication administrator</span></span> | <span data-ttu-id="5bc36-235">0829f731-b46d-419F-9742-aeb122367d11</span><span class="sxs-lookup"><span data-stu-id="5bc36-235">0829f731-b46d-419f-9742-aeb122367d11</span></span>
-<span data-ttu-id="5bc36-236">Administrador de função com privilégios</span><span class="sxs-lookup"><span data-stu-id="5bc36-236">Privileged role administrator</span></span> | <span data-ttu-id="5bc36-237">f20a725a-d1c8-4107-83ea-1171c97d00c7</span><span class="sxs-lookup"><span data-stu-id="5bc36-237">f20a725a-d1c8-4107-83ea-1171c97d00c7</span></span>
-<span data-ttu-id="5bc36-238">Leitor de relatórios</span><span class="sxs-lookup"><span data-stu-id="5bc36-238">Reports reader</span></span> | <span data-ttu-id="5bc36-239">54635450-e8ed-4f2d-9632-07db2517b4de</span><span class="sxs-lookup"><span data-stu-id="5bc36-239">54635450-e8ed-4f2d-9632-07db2517b4de</span></span>
-<span data-ttu-id="5bc36-240">Administrador de pesquisas</span><span class="sxs-lookup"><span data-stu-id="5bc36-240">Search administrator</span></span> | <span data-ttu-id="5bc36-241">c770a2f1-c9ba-4e60-9176-9f52b1eb1a31</span><span class="sxs-lookup"><span data-stu-id="5bc36-241">c770a2f1-c9ba-4e60-9176-9f52b1eb1a31</span></span>
-<span data-ttu-id="5bc36-242">Editor de pesquisa</span><span class="sxs-lookup"><span data-stu-id="5bc36-242">Search editor</span></span> | <span data-ttu-id="5bc36-243">6a6858c6-5f0d-44ac-87c7-0190fbedd271</span><span class="sxs-lookup"><span data-stu-id="5bc36-243">6a6858c6-5f0d-44ac-87c7-0190fbedd271</span></span>
-<span data-ttu-id="5bc36-244">Administrador de segurança</span><span class="sxs-lookup"><span data-stu-id="5bc36-244">Security administrator</span></span> | <span data-ttu-id="5bc36-245">20fa50e3-6531-44d8-bd39-b251420568ad</span><span class="sxs-lookup"><span data-stu-id="5bc36-245">20fa50e3-6531-44d8-bd39-b251420568ad</span></span>
-<span data-ttu-id="5bc36-246">Operador de segurança</span><span class="sxs-lookup"><span data-stu-id="5bc36-246">Security operator</span></span> | <span data-ttu-id="5bc36-247">43aae017-8e51-4188-91ab-e6debd572800</span><span class="sxs-lookup"><span data-stu-id="5bc36-247">43aae017-8e51-4188-91ab-e6debd572800</span></span>
-<span data-ttu-id="5bc36-248">Leitor de segurança</span><span class="sxs-lookup"><span data-stu-id="5bc36-248">Security reader</span></span> | <span data-ttu-id="5bc36-249">45035cd3-fd97-4250-8197-3a53d3562d9b</span><span class="sxs-lookup"><span data-stu-id="5bc36-249">45035cd3-fd97-4250-8197-3a53d3562d9b</span></span>
-<span data-ttu-id="5bc36-250">Administrador de suporte a serviço</span><span class="sxs-lookup"><span data-stu-id="5bc36-250">Service support administrator</span></span> | <span data-ttu-id="5bc36-251">2c92cf45-c914-48f8-9bf9-fc14b28818ab</span><span class="sxs-lookup"><span data-stu-id="5bc36-251">2c92cf45-c914-48f8-9bf9-fc14b28818ab</span></span>
-<span data-ttu-id="5bc36-252">Administrador do SharePoint</span><span class="sxs-lookup"><span data-stu-id="5bc36-252">SharePoint administrator</span></span> | <span data-ttu-id="5bc36-253">e1c32229-875e-461d-ae24-3cb99116e86c</span><span class="sxs-lookup"><span data-stu-id="5bc36-253">e1c32229-875e-461d-ae24-3cb99116e86c</span></span>
-<span data-ttu-id="5bc36-254">Administrador do Skype for Business</span><span class="sxs-lookup"><span data-stu-id="5bc36-254">Skype for Business administrator</span></span> | <span data-ttu-id="5bc36-255">0a8cee12-e21d-43ef-abd9-f1ea85710e30</span><span class="sxs-lookup"><span data-stu-id="5bc36-255">0a8cee12-e21d-43ef-abd9-f1ea85710e30</span></span>
-<span data-ttu-id="5bc36-256">Administrador de Comunicações do Teams</span><span class="sxs-lookup"><span data-stu-id="5bc36-256">Teams Communications Administrator</span></span> | <span data-ttu-id="5bc36-257">2393e455-6e13-4743-9f52-63fcec2b6a9c</span><span class="sxs-lookup"><span data-stu-id="5bc36-257">2393e455-6e13-4743-9f52-63fcec2b6a9c</span></span>
-<span data-ttu-id="5bc36-258">Engenheiro de Suporte de Comunicações do Teams</span><span class="sxs-lookup"><span data-stu-id="5bc36-258">Teams Communications Support Engineer</span></span> | <span data-ttu-id="5bc36-259">802dd94e-d717-46f6-af98-b9167071e9fc</span><span class="sxs-lookup"><span data-stu-id="5bc36-259">802dd94e-d717-46f6-af98-b9167071e9fc</span></span>
-<span data-ttu-id="5bc36-260">Especialista em comunicações de equipes</span><span class="sxs-lookup"><span data-stu-id="5bc36-260">Teams Communications Specialist</span></span> | <span data-ttu-id="5bc36-261">ef547281-cf46-4cc6-bcaa-f5eac3f030c9</span><span class="sxs-lookup"><span data-stu-id="5bc36-261">ef547281-cf46-4cc6-bcaa-f5eac3f030c9</span></span>
-<span data-ttu-id="5bc36-262">Administrador de Serviços do Teams</span><span class="sxs-lookup"><span data-stu-id="5bc36-262">Teams Service Administrator</span></span> | <span data-ttu-id="5bc36-263">8846a0be-197b-443a-b13c-11192691fa24</span><span class="sxs-lookup"><span data-stu-id="5bc36-263">8846a0be-197b-443a-b13c-11192691fa24</span></span>
-<span data-ttu-id="5bc36-264">Administrador de usuários</span><span class="sxs-lookup"><span data-stu-id="5bc36-264">User administrator</span></span> | <span data-ttu-id="5bc36-265">1f6eed58-7dd3-460b-a298-666f975427a1</span><span class="sxs-lookup"><span data-stu-id="5bc36-265">1f6eed58-7dd3-460b-a298-666f975427a1</span></span>
+<span data-ttu-id="c87de-191">Administrador de aplicativos</span><span class="sxs-lookup"><span data-stu-id="c87de-191">Application administrator</span></span> | <span data-ttu-id="c87de-192">fa11557b-4f15-4ddd-85d5-313c7cd74047</span><span class="sxs-lookup"><span data-stu-id="c87de-192">fa11557b-4f15-4ddd-85d5-313c7cd74047</span></span>
+<span data-ttu-id="c87de-193">Desenvolvedor de aplicativos</span><span class="sxs-lookup"><span data-stu-id="c87de-193">Application developer</span></span> | <span data-ttu-id="c87de-194">68adcbb8-9504-44f6-89f2-5cd48dc74a2c</span><span class="sxs-lookup"><span data-stu-id="c87de-194">68adcbb8-9504-44f6-89f2-5cd48dc74a2c</span></span>
+<span data-ttu-id="c87de-195">Administrador de autenticação</span><span class="sxs-lookup"><span data-stu-id="c87de-195">Authentication administrator</span></span> | <span data-ttu-id="c87de-196">02d110a1-96b1-419e-af87-746461b60ed7</span><span class="sxs-lookup"><span data-stu-id="c87de-196">02d110a1-96b1-419e-af87-746461b60ed7</span></span>
+<span data-ttu-id="c87de-197">Administrador do Azure DevOps</span><span class="sxs-lookup"><span data-stu-id="c87de-197">Azure DevOps administrator</span></span> | <span data-ttu-id="c87de-198">a5311ace-ca41-44cd-b833-8d22caa0b34f</span><span class="sxs-lookup"><span data-stu-id="c87de-198">a5311ace-ca41-44cd-b833-8d22caa0b34f</span></span>
+<span data-ttu-id="c87de-199">Administrador da Proteção de Informações do Azure</span><span class="sxs-lookup"><span data-stu-id="c87de-199">Azure Information Protection administrator</span></span> | <span data-ttu-id="c87de-200">18632dce-f9b5-4f01-abb5-37051f06860e</span><span class="sxs-lookup"><span data-stu-id="c87de-200">18632dce-f9b5-4f01-abb5-37051f06860e</span></span>
+<span data-ttu-id="c87de-201">Administrador do conjunto de chaves B2C IEF</span><span class="sxs-lookup"><span data-stu-id="c87de-201">B2C IEF Keyset administrator</span></span> | <span data-ttu-id="c87de-202">0c2e87e5-94f9-4adb-ae8c-bcafe11bd368</span><span class="sxs-lookup"><span data-stu-id="c87de-202">0c2e87e5-94f9-4adb-ae8c-bcafe11bd368</span></span>
+<span data-ttu-id="c87de-203">Administrador da política IEF B2C</span><span class="sxs-lookup"><span data-stu-id="c87de-203">B2C IEF Policy administrator</span></span> | <span data-ttu-id="c87de-204">bfcab36c-10c6-4b13-b63c-4d8b62c0c44e</span><span class="sxs-lookup"><span data-stu-id="c87de-204">bfcab36c-10c6-4b13-b63c-4d8b62c0c44e</span></span>
+<span data-ttu-id="c87de-205">Administrador de fluxo de usuário B2C</span><span class="sxs-lookup"><span data-stu-id="c87de-205">B2C user flow administrator</span></span> | <span data-ttu-id="c87de-206">baa531b7-8cf0-44ad-8f98-eded88dae827</span><span class="sxs-lookup"><span data-stu-id="c87de-206">baa531b7-8cf0-44ad-8f98-eded88dae827</span></span>
+<span data-ttu-id="c87de-207">Administrador de atributos de fluxo de usuário B2C</span><span class="sxs-lookup"><span data-stu-id="c87de-207">B2C user flow attribute administrator</span></span> | <span data-ttu-id="c87de-208">dd0baca0-a535-48c1-b871-8431abe16452</span><span class="sxs-lookup"><span data-stu-id="c87de-208">dd0baca0-a535-48c1-b871-8431abe16452</span></span>
+<span data-ttu-id="c87de-209">Administrador de cobrança</span><span class="sxs-lookup"><span data-stu-id="c87de-209">Billing administrator</span></span> | <span data-ttu-id="c87de-210">69ff516a-b57d-4697-a429-9de4af7b5609</span><span class="sxs-lookup"><span data-stu-id="c87de-210">69ff516a-b57d-4697-a429-9de4af7b5609</span></span>
+<span data-ttu-id="c87de-211">Administrador de aplicativos de nuvem</span><span class="sxs-lookup"><span data-stu-id="c87de-211">Cloud application administrator</span></span> | <span data-ttu-id="c87de-212">250b5fe3-b553-458d-9a53-b782c13c34bf</span><span class="sxs-lookup"><span data-stu-id="c87de-212">250b5fe3-b553-458d-9a53-b782c13c34bf</span></span>
+<span data-ttu-id="c87de-213">Administrador de dispositivo em nuvem</span><span class="sxs-lookup"><span data-stu-id="c87de-213">Cloud device administrator</span></span> | <span data-ttu-id="c87de-214">26cd4b44-2636-4ddb-bdfa-27feae66f86d</span><span class="sxs-lookup"><span data-stu-id="c87de-214">26cd4b44-2636-4ddb-bdfa-27feae66f86d</span></span>
+<span data-ttu-id="c87de-215">Administrador de conformidade</span><span class="sxs-lookup"><span data-stu-id="c87de-215">Compliance administrator</span></span> | <span data-ttu-id="c87de-216">9d6e1dd0-c9f8-45f8-b558-b134f700116c</span><span class="sxs-lookup"><span data-stu-id="c87de-216">9d6e1dd0-c9f8-45f8-b558-b134f700116c</span></span>
+<span data-ttu-id="c87de-217">Administrador de dados de conformidade</span><span class="sxs-lookup"><span data-stu-id="c87de-217">Compliance data administrator</span></span> | <span data-ttu-id="c87de-218">4c0ca3a2-231e-416c-9411-4abe57d5cb9d</span><span class="sxs-lookup"><span data-stu-id="c87de-218">4c0ca3a2-231e-416c-9411-4abe57d5cb9d</span></span>
+<span data-ttu-id="c87de-219">Administrador de acesso condicional</span><span class="sxs-lookup"><span data-stu-id="c87de-219">Conditional Access administrator</span></span> | <span data-ttu-id="c87de-220">8f71a611-137d-49af-87ad-e97f1fd5da76</span><span class="sxs-lookup"><span data-stu-id="c87de-220">8f71a611-137d-49af-87ad-e97f1fd5da76</span></span>
+<span data-ttu-id="c87de-221">Aprovador de acesso do Sistema de Proteção de Dados do Cliente</span><span class="sxs-lookup"><span data-stu-id="c87de-221">Customer LockBox access approver</span></span> | <span data-ttu-id="c87de-222">c18d54a8-b13e-4954-a1a4-7deaf2e4f184</span><span class="sxs-lookup"><span data-stu-id="c87de-222">c18d54a8-b13e-4954-a1a4-7deaf2e4f184</span></span>
+<span data-ttu-id="c87de-223">Administrador do desktop Analytics</span><span class="sxs-lookup"><span data-stu-id="c87de-223">Desktop Analytics administrator</span></span> | <span data-ttu-id="c87de-224">c62c4ac5-e4c6-4096-8a2f-1ee3cbaaae15</span><span class="sxs-lookup"><span data-stu-id="c87de-224">c62c4ac5-e4c6-4096-8a2f-1ee3cbaaae15</span></span>
+<span data-ttu-id="c87de-225">Leitores de diretórios</span><span class="sxs-lookup"><span data-stu-id="c87de-225">Directory readers</span></span> | <span data-ttu-id="c87de-226">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span><span class="sxs-lookup"><span data-stu-id="c87de-226">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span></span>
+<span data-ttu-id="c87de-227">Administrador do Dynamics 365</span><span class="sxs-lookup"><span data-stu-id="c87de-227">Dynamics 365 administrator</span></span> | <span data-ttu-id="c87de-228">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span><span class="sxs-lookup"><span data-stu-id="c87de-228">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span></span>
+<span data-ttu-id="c87de-229">Administradores do Exchange</span><span class="sxs-lookup"><span data-stu-id="c87de-229">Exchange administrator</span></span> | <span data-ttu-id="c87de-230">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span><span class="sxs-lookup"><span data-stu-id="c87de-230">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span></span>
+<span data-ttu-id="c87de-231">IdentityAdministrador de provedor externo</span><span class="sxs-lookup"><span data-stu-id="c87de-231">External Identity Provider administrator</span></span> | <span data-ttu-id="c87de-232">febfaeb4-e478-407a-b4b3-f4d9716618a2</span><span class="sxs-lookup"><span data-stu-id="c87de-232">febfaeb4-e478-407a-b4b3-f4d9716618a2</span></span>
+<span data-ttu-id="c87de-233">Administrador global</span><span class="sxs-lookup"><span data-stu-id="c87de-233">Global administrator</span></span> | <span data-ttu-id="c87de-234">a45ba61b-44db-462c-924b-3b2719152588</span><span class="sxs-lookup"><span data-stu-id="c87de-234">a45ba61b-44db-462c-924b-3b2719152588</span></span>
+<span data-ttu-id="c87de-235">Leitor global</span><span class="sxs-lookup"><span data-stu-id="c87de-235">Global reader</span></span> | <span data-ttu-id="c87de-236">f6903b21-6aba-4124-b44c-76671796b9d5</span><span class="sxs-lookup"><span data-stu-id="c87de-236">f6903b21-6aba-4124-b44c-76671796b9d5</span></span>
+<span data-ttu-id="c87de-237">Administrador de grupos</span><span class="sxs-lookup"><span data-stu-id="c87de-237">Groups administrator</span></span> | <span data-ttu-id="c87de-238">158b3e5a-d89d-460b-92b5-3b34985f0197</span><span class="sxs-lookup"><span data-stu-id="c87de-238">158b3e5a-d89d-460b-92b5-3b34985f0197</span></span>
+<span data-ttu-id="c87de-239">Emissor do convite ao convidado</span><span class="sxs-lookup"><span data-stu-id="c87de-239">Guest inviter</span></span> | <span data-ttu-id="c87de-240">4c730a1d-cc22-44af-8f9f-4eec635c7502</span><span class="sxs-lookup"><span data-stu-id="c87de-240">4c730a1d-cc22-44af-8f9f-4eec635c7502</span></span>
+<span data-ttu-id="c87de-241">Administrador de assistência técnica</span><span class="sxs-lookup"><span data-stu-id="c87de-241">Helpdesk administrator</span></span> | <span data-ttu-id="c87de-242">108678c8-6628-44e1-8d01-caf598a6a5f5</span><span class="sxs-lookup"><span data-stu-id="c87de-242">108678c8-6628-44e1-8d01-caf598a6a5f5</span></span>
+<span data-ttu-id="c87de-243">Administrador do Intune</span><span class="sxs-lookup"><span data-stu-id="c87de-243">Intune administrator</span></span> | <span data-ttu-id="c87de-244">79950741-23fa-4189-b2cb-46640601c497</span><span class="sxs-lookup"><span data-stu-id="c87de-244">79950741-23fa-4189-b2cb-46640601c497</span></span>
+<span data-ttu-id="c87de-245">Administrador do Kaizala</span><span class="sxs-lookup"><span data-stu-id="c87de-245">Kaizala administrator</span></span> | <span data-ttu-id="c87de-246">d6322af2-48e7-42e0-8c68-0bbe31af3412</span><span class="sxs-lookup"><span data-stu-id="c87de-246">d6322af2-48e7-42e0-8c68-0bbe31af3412</span></span>
+<span data-ttu-id="c87de-247">Administrador de licenças</span><span class="sxs-lookup"><span data-stu-id="c87de-247">License administrator</span></span> | <span data-ttu-id="c87de-248">3355458a-e423-44bf-8b98-4ac5e572cea5</span><span class="sxs-lookup"><span data-stu-id="c87de-248">3355458a-e423-44bf-8b98-4ac5e572cea5</span></span>
+<span data-ttu-id="c87de-249">Leitor de privacidade do centro de mensagens</span><span class="sxs-lookup"><span data-stu-id="c87de-249">Message center privacy reader</span></span> | <span data-ttu-id="c87de-250">6395db95-9fb8-42b9-b1ed-30a2405eee6f</span><span class="sxs-lookup"><span data-stu-id="c87de-250">6395db95-9fb8-42b9-b1ed-30a2405eee6f</span></span>
+<span data-ttu-id="c87de-251">Leitor do Centro de Mensagens</span><span class="sxs-lookup"><span data-stu-id="c87de-251">Message center reader</span></span> | <span data-ttu-id="c87de-252">fd5d37b8-4e24-434b-9e63-70ed3b759a16</span><span class="sxs-lookup"><span data-stu-id="c87de-252">fd5d37b8-4e24-434b-9e63-70ed3b759a16</span></span>
+<span data-ttu-id="c87de-253">Administrador de aplicativos do Office</span><span class="sxs-lookup"><span data-stu-id="c87de-253">Office apps administrator</span></span> | <span data-ttu-id="c87de-254">5f3870cd-b042-4f93-86d7-c9d77c664dc7</span><span class="sxs-lookup"><span data-stu-id="c87de-254">5f3870cd-b042-4f93-86d7-c9d77c664dc7</span></span>
+<span data-ttu-id="c87de-255">Administrador de senha</span><span class="sxs-lookup"><span data-stu-id="c87de-255">Password administrator</span></span> | <span data-ttu-id="c87de-256">466e48b7-5d66-4ae5-8911-1a118de74941</span><span class="sxs-lookup"><span data-stu-id="c87de-256">466e48b7-5d66-4ae5-8911-1a118de74941</span></span>
+<span data-ttu-id="c87de-257">Administrador do Power BI</span><span class="sxs-lookup"><span data-stu-id="c87de-257">Power BI administrator</span></span> | <span data-ttu-id="c87de-258">984e83b8-8337-4255-91a1-acb663175ab4</span><span class="sxs-lookup"><span data-stu-id="c87de-258">984e83b8-8337-4255-91a1-acb663175ab4</span></span>
+<span data-ttu-id="c87de-259">Administrador do Power Platform</span><span class="sxs-lookup"><span data-stu-id="c87de-259">Power platform administrator</span></span> | <span data-ttu-id="c87de-260">76d6f95e-9a15-4d7d-8d21-00de00faf9fd</span><span class="sxs-lookup"><span data-stu-id="c87de-260">76d6f95e-9a15-4d7d-8d21-00de00faf9fd</span></span>
+<span data-ttu-id="c87de-261">Administrador de autenticação privilegiada</span><span class="sxs-lookup"><span data-stu-id="c87de-261">Privileged authentication administrator</span></span> | <span data-ttu-id="c87de-262">0829f731-b46d-419F-9742-aeb122367d11</span><span class="sxs-lookup"><span data-stu-id="c87de-262">0829f731-b46d-419f-9742-aeb122367d11</span></span>
+<span data-ttu-id="c87de-263">Administrador de função com privilégios</span><span class="sxs-lookup"><span data-stu-id="c87de-263">Privileged role administrator</span></span> | <span data-ttu-id="c87de-264">f20a725a-d1c8-4107-83ea-1171c97d00c7</span><span class="sxs-lookup"><span data-stu-id="c87de-264">f20a725a-d1c8-4107-83ea-1171c97d00c7</span></span>
+<span data-ttu-id="c87de-265">Leitor de relatórios</span><span class="sxs-lookup"><span data-stu-id="c87de-265">Reports reader</span></span> | <span data-ttu-id="c87de-266">54635450-e8ed-4f2d-9632-07db2517b4de</span><span class="sxs-lookup"><span data-stu-id="c87de-266">54635450-e8ed-4f2d-9632-07db2517b4de</span></span>
+<span data-ttu-id="c87de-267">Administrador de pesquisas</span><span class="sxs-lookup"><span data-stu-id="c87de-267">Search administrator</span></span> | <span data-ttu-id="c87de-268">c770a2f1-c9ba-4e60-9176-9f52b1eb1a31</span><span class="sxs-lookup"><span data-stu-id="c87de-268">c770a2f1-c9ba-4e60-9176-9f52b1eb1a31</span></span>
+<span data-ttu-id="c87de-269">Editor de pesquisa</span><span class="sxs-lookup"><span data-stu-id="c87de-269">Search editor</span></span> | <span data-ttu-id="c87de-270">6a6858c6-5f0d-44ac-87c7-0190fbedd271</span><span class="sxs-lookup"><span data-stu-id="c87de-270">6a6858c6-5f0d-44ac-87c7-0190fbedd271</span></span>
+<span data-ttu-id="c87de-271">Administrador de segurança</span><span class="sxs-lookup"><span data-stu-id="c87de-271">Security administrator</span></span> | <span data-ttu-id="c87de-272">20fa50e3-6531-44d8-bd39-b251420568ad</span><span class="sxs-lookup"><span data-stu-id="c87de-272">20fa50e3-6531-44d8-bd39-b251420568ad</span></span>
+<span data-ttu-id="c87de-273">Operador de segurança</span><span class="sxs-lookup"><span data-stu-id="c87de-273">Security operator</span></span> | <span data-ttu-id="c87de-274">43aae017-8e51-4188-91ab-e6debd572800</span><span class="sxs-lookup"><span data-stu-id="c87de-274">43aae017-8e51-4188-91ab-e6debd572800</span></span>
+<span data-ttu-id="c87de-275">Leitor de segurança</span><span class="sxs-lookup"><span data-stu-id="c87de-275">Security reader</span></span> | <span data-ttu-id="c87de-276">45035cd3-fd97-4250-8197-3a53d3562d9b</span><span class="sxs-lookup"><span data-stu-id="c87de-276">45035cd3-fd97-4250-8197-3a53d3562d9b</span></span>
+<span data-ttu-id="c87de-277">Administrador de suporte a serviço</span><span class="sxs-lookup"><span data-stu-id="c87de-277">Service support administrator</span></span> | <span data-ttu-id="c87de-278">2c92cf45-c914-48f8-9bf9-fc14b28818ab</span><span class="sxs-lookup"><span data-stu-id="c87de-278">2c92cf45-c914-48f8-9bf9-fc14b28818ab</span></span>
+<span data-ttu-id="c87de-279">Administrador do SharePoint</span><span class="sxs-lookup"><span data-stu-id="c87de-279">SharePoint administrator</span></span> | <span data-ttu-id="c87de-280">e1c32229-875e-461d-ae24-3cb99116e86c</span><span class="sxs-lookup"><span data-stu-id="c87de-280">e1c32229-875e-461d-ae24-3cb99116e86c</span></span>
+<span data-ttu-id="c87de-281">Administrador do Skype for Business</span><span class="sxs-lookup"><span data-stu-id="c87de-281">Skype for Business administrator</span></span> | <span data-ttu-id="c87de-282">0a8cee12-e21d-43ef-abd9-f1ea85710e30</span><span class="sxs-lookup"><span data-stu-id="c87de-282">0a8cee12-e21d-43ef-abd9-f1ea85710e30</span></span>
+<span data-ttu-id="c87de-283">Administrador de Comunicações do Teams</span><span class="sxs-lookup"><span data-stu-id="c87de-283">Teams Communications Administrator</span></span> | <span data-ttu-id="c87de-284">2393e455-6e13-4743-9f52-63fcec2b6a9c</span><span class="sxs-lookup"><span data-stu-id="c87de-284">2393e455-6e13-4743-9f52-63fcec2b6a9c</span></span>
+<span data-ttu-id="c87de-285">Engenheiro de Suporte de Comunicações do Teams</span><span class="sxs-lookup"><span data-stu-id="c87de-285">Teams Communications Support Engineer</span></span> | <span data-ttu-id="c87de-286">802dd94e-d717-46f6-af98-b9167071e9fc</span><span class="sxs-lookup"><span data-stu-id="c87de-286">802dd94e-d717-46f6-af98-b9167071e9fc</span></span>
+<span data-ttu-id="c87de-287">Especialista em comunicações de equipes</span><span class="sxs-lookup"><span data-stu-id="c87de-287">Teams Communications Specialist</span></span> | <span data-ttu-id="c87de-288">ef547281-cf46-4cc6-bcaa-f5eac3f030c9</span><span class="sxs-lookup"><span data-stu-id="c87de-288">ef547281-cf46-4cc6-bcaa-f5eac3f030c9</span></span>
+<span data-ttu-id="c87de-289">Administrador de Serviços do Teams</span><span class="sxs-lookup"><span data-stu-id="c87de-289">Teams Service Administrator</span></span> | <span data-ttu-id="c87de-290">8846a0be-197b-443a-b13c-11192691fa24</span><span class="sxs-lookup"><span data-stu-id="c87de-290">8846a0be-197b-443a-b13c-11192691fa24</span></span>
+<span data-ttu-id="c87de-291">Administrador de usuários</span><span class="sxs-lookup"><span data-stu-id="c87de-291">User administrator</span></span> | <span data-ttu-id="c87de-292">1f6eed58-7dd3-460b-a298-666f975427a1</span><span class="sxs-lookup"><span data-stu-id="c87de-292">1f6eed58-7dd3-460b-a298-666f975427a1</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="5bc36-266">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="5bc36-266">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="c87de-293">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="c87de-293">Additional resources</span></span>
 
 * <xref:security/authorization/claims>
 * <xref:blazor/security/index>
