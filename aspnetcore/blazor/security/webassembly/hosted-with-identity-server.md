@@ -1,7 +1,7 @@
 ---
-title: Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
+title: Proteger um aplicativo ASP.NET Core hospedado Blazor WebAssembly com o Identity servidor
 author: guardrex
-description: Para criar um novo Blazor aplicativo hospedado com autenticação de dentro do Visual Studio que usa um back-end do [ Identity servidor](https://identityserver.io/)
+description: Para criar uma nova solução hospedada Blazor com autenticação de dentro do Visual Studio que usa um back-end do [ Identity servidor](https://identityserver.io/)
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -15,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: a27d31345cfe6a4212e3c61d0d99ae6745eab052
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 87424f413ab21ae51fc1b1b2033069f5a41da566
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445171"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818879"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https://github.com/guardrex)
 
-Este artigo explica como criar um novo Blazor aplicativo hospedado que usa o [ Identity servidor do](https://identityserver.io/) para autenticar usuários e chamadas de API.
+Este artigo explica como criar uma nova solução hospedada Blazor que usa o [ Identity servidor do](https://identityserver.io/) para autenticar usuários e chamadas de API.
 
 > [!NOTE]
 > Para configurar um aplicativo autônomo ou hospedado Blazor WebAssembly para usar uma instância de servidor externa existente Identity , siga as orientações em <xref:blazor/security/webassembly/standalone-with-authentication-library> .
@@ -107,7 +107,7 @@ A `Startup` classe tem as seguintes adições.
 
 * Em `Startup.Configure`:
 
-  * O Identity middleware do servidor expõe os pontos de extremidade do Open ID Connect (OIDC):
+  * O Identity middleware do servidor expõe os pontos de extremidade do OpenID Connect (OIDC):
 
     ```csharp
     app.UseIdentityServer();
@@ -130,7 +130,7 @@ A `Startup` classe tem as seguintes adições.
 
 O <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> método auxiliar configura o [ Identity servidor](https://identityserver.io/) para cenários de ASP.NET Core. IdentityO servidor é uma estrutura avançada e extensível para lidar com questões de segurança de aplicativo. IdentityO servidor expõe complexidade desnecessária para os cenários mais comuns. Consequentemente, um conjunto de convenções e opções de configuração é fornecido para considerarmos um bom ponto de partida. Depois que a autenticação precisar ser alterada, todo o poder do Identity servidor estará disponível para personalizar a autenticação de acordo com os requisitos do aplicativo.
 
-### <a name="addidentityserverjwt"></a>Adicionar Identity ServerJwt
+### <a name="addno-locidentityserverjwt"></a>Adicionar Identity ServerJwt
 
 O <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> método auxiliar configura um esquema de política para o aplicativo como o manipulador de autenticação padrão. A política está configurada para permitir que o Identity manipule todas as solicitações roteadas para qualquer subcaminho no Identity espaço de URL `/Identity` . O <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> lida com todas as outras solicitações. Além disso, esse método:
 
@@ -195,7 +195,7 @@ builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
 ```
 
 > [!NOTE]
-> Se você estiver configurando um Blazor WebAssembly aplicativo para usar uma Identity instância de servidor existente que não faz parte de uma Blazor solução hospedada, altere o <xref:System.Net.Http.HttpClient> registro do endereço base de <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `builder.HostEnvironment.BaseAddress` ) para a URL do ponto de extremidade de autorização da API do aplicativo do servidor.
+> Se você estiver configurando um Blazor WebAssembly aplicativo para usar uma Identity instância de servidor existente que não faz parte de uma solução hospedada Blazor , altere o <xref:System.Net.Http.HttpClient> registro do endereço base de <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> ( `builder.HostEnvironment.BaseAddress` ) para a URL do ponto de extremidade de autorização da API do aplicativo do servidor.
 
 ### <a name="api-authorization-support"></a>Suporte à autorização de API
 
@@ -364,7 +364,7 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-### <a name="configure-identity-server"></a>Configurar Identity servidor
+### <a name="configure-no-locidentity-server"></a>Configurar Identity servidor
 
 Use **uma** das seguintes abordagens:
 

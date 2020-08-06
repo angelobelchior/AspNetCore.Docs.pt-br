@@ -15,20 +15,20 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: b28e4e43b88fcf8eab9e8959142cca21223c57ff
-ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
+ms.openlocfilehash: b32710e515d111b7dd6556f1db55082cd56a82b5
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86239628"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818996"
 ---
-# <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
+# <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
 
-Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
+Por [Daniel Roth](https://github.com/danroth27), [Mackinnon Buck](https://github.com/MackinnonBuck)e [Luke Latham](https://github.com/guardrex)
 
 Este artigo aborda a configuração do modelo de hospedagem.
 
-### <a name="signalr-cross-origin-negotiation-for-authentication"></a>SignalRnegociação entre origens para autenticação
+### <a name="no-locsignalr-cross-origin-negotiation-for-authentication"></a>SignalRnegociação entre origens para autenticação
 
 *Esta seção aplica-se a Blazor WebAssembly .*
 
@@ -125,13 +125,13 @@ Blazor Serveros aplicativos são configurados por padrão para PreRender a inter
 
 Não há suporte para a renderização de componentes de servidor de uma página HTML estática.
 
-## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Configurar o SignalR cliente para Blazor Server aplicativos
+## <a name="configure-the-no-locsignalr-client-for-no-locblazor-server-apps"></a>Configurar o SignalR cliente para Blazor Server aplicativos
 
 *Esta seção aplica-se a Blazor Server .*
 
 Configure o SignalR cliente usado por Blazor Server aplicativos no `Pages/_Host.cshtml` arquivo. Coloque um script que chame `Blazor.start` após o `_framework/blazor.server.js` script e dentro da `</body>` marca.
 
-### <a name="logging"></a>Registro em log
+### <a name="logging"></a>Registrando em log
 
 Para configurar o SignalR log do cliente:
 
@@ -141,7 +141,7 @@ Para configurar o SignalR log do cliente:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       Blazor.start({
         configureSignalR: function (builder) {
@@ -169,7 +169,7 @@ Para modificar os eventos de conexão:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       Blazor.start({
         reconnectionHandler: {
@@ -191,7 +191,7 @@ Para ajustar a contagem de repetição de reconexão e o intervalo:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       Blazor.start({
         reconnectionOptions: {
@@ -213,7 +213,7 @@ Para ocultar a exibição da reconexão:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       window.addEventListener('beforeunload', function () {
         Blazor.defaultReconnectionHandler._reconnectionDisplay = {};
@@ -230,6 +230,41 @@ Blazor.defaultReconnectionHandler._reconnectionDisplay =
 ```
 
 O espaço reservado `{ELEMENT ID}` é a ID do elemento HTML a ser exibido.
+
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="influence-html-head-tag-elements"></a>Influenciar `<head>` elementos de marca HTML
+
+*Esta seção aplica-se ao Blazor WebAssembly e ao Blazor Server .*
+
+Quando renderizado, `Title` os `Link` componentes, e `Meta` adicionam ou atualizam dados nos `<head>` elementos de marca HTML:
+
+```razor
+@using Microsoft.AspNetCore.Components.Web.Extensions.Head
+
+<Title Value="{TITLE}" />
+<Link href="{URL}" rel="stylesheet" />
+<Meta content="{DESCRIPTION}" name="description" />
+```
+
+No exemplo anterior, espaços reservados para `{TITLE}` , `{URL}` , e `{DESCRIPTION}` são valores de cadeia de caracteres, Razor variáveis ou Razor expressões.
+
+As seguintes características se aplicam:
+
+* Há suporte para o pré-processamento do lado do servidor.
+* O `Value` parâmetro é o único parâmetro válido para o `Title` componente.
+* Os atributos HTML fornecidos para `Meta` os `Link` componentes e são capturados em [atributos adicionais](xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters) e passados para a marca HTML renderizada.
+* Para vários `Title` componentes, o título da página reflete o `Value` do último `Title` componente renderizado.
+* Se vários `Meta` `Link` componentes ou forem incluídos com atributos idênticos, haverá exatamente uma marca HTML renderizada `Meta` por `Link` componente ou. Dois `Meta` ou mais `Link` componentes não podem se referir à mesma marca HTML renderizada.
+* As alterações nos parâmetros dos existentes `Meta` ou dos `Link` componentes são refletidas em suas marcas HTML renderizadas.
+* Quando os `Link` `Meta` componentes ou não são mais renderizados e, portanto, descartados pelo Framework, suas marcas HTML renderizadas são removidas.
+
+Quando um dos componentes do Framework é usado em um componente filho, a marca HTML renderizada influencia qualquer outro componente filho do componente pai, desde que o componente filho que contém o componente da estrutura seja renderizado. A distinção entre usar um desses componentes de estrutura em um componente filho e colocar uma marca HTML no `wwwroot/index.html` ou `Pages/_Host.cshtml` é que a marca HTML renderizada de um componente de estrutura:
+
+* Pode ser modificado pelo estado do aplicativo. Uma marca HTML embutida em código não pode ser modificada pelo estado do aplicativo.
+* É removido do HTML `<head>` quando o componente pai não é mais renderizado.
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

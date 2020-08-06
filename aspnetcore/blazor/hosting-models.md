@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 56681e713e008188d57166da9c8fd4eb6923928c
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 6e3753131388c294130f11aa913a0bb7e8127fa3
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944211"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818944"
 ---
-# <a name="aspnet-core-blazor-hosting-models"></a>BlazorModelos de hospedagem ASP.NET Core
+# <a name="aspnet-core-no-locblazor-hosting-models"></a>BlazorModelos de hospedagem ASP.NET Core
 
 Por [Daniel Roth](https://github.com/danroth27)
 
@@ -32,7 +32,7 @@ Blazoro é uma estrutura da Web criada para executar o lado do cliente no navega
 
 O modelo de hospedagem principal para o Blazor está executando o lado do cliente no navegador no Webassembly. O Blazor aplicativo, suas dependências e o tempo de execução do .NET são baixados para o navegador. O aplicativo é executado diretamente no thread da interface do usuário do navegador. As atualizações da interface do usuário e o tratamento de eventos ocorrem no mesmo processo. Os ativos do aplicativo são implantados como arquivos estáticos em um servidor Web ou serviço capaz de fornecer conteúdo estático aos clientes.
 
-![Blazor WebAssembly: O Blazor aplicativo é executado em um thread de interface do usuário dentro do navegador.](hosting-models/_static/blazor-webassembly.png)
+![::: no-Loc (Webassembly do mais alto):::: o::: no-Loc (mais alto)::: o aplicativo é executado em um thread de interface do usuário dentro do navegador.](hosting-models/_static/blazor-webassembly.png)
 
 Para criar um Blazor aplicativo usando o modelo de hospedagem do lado do cliente, use o modelo de ** Blazor WebAssembly aplicativo** ( [`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new) ).
 
@@ -63,7 +63,7 @@ O Blazor modelo de aplicativo hospedado oferece suporte a [contêineres do Docke
 
 Com o Blazor Server modelo de hospedagem, o aplicativo é executado no servidor de dentro de um aplicativo ASP.NET Core. As atualizações de interface do usuário, manipulação de eventos e chamadas JavaScript são manipuladas por uma [SignalR](xref:signalr/introduction) conexão.
 
-![O navegador interage com o aplicativo (hospedado dentro de um aplicativo ASP.NET Core) no servidor por uma SignalR conexão.](hosting-models/_static/blazor-server.png)
+![O navegador interage com o aplicativo (hospedado dentro de um aplicativo ASP.NET Core) no servidor sobre uma::: no-Loc (Signalr)::: Connection.](hosting-models/_static/blazor-server.png)
 
 Para criar um Blazor aplicativo usando o Blazor Server modelo de hospedagem, use o modelo de ** Blazor Server aplicativo** ASP.NET Core ( [`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new) ). O aplicativo ASP.NET Core hospeda o Blazor Server aplicativo e cria o SignalR ponto de extremidade onde os clientes se conectam.
 

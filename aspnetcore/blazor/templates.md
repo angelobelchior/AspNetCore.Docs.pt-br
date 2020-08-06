@@ -5,7 +5,7 @@ description: Saiba mais sobre os Blazor modelos de aplicativo ASP.NET Core e a B
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 08/04/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: f1b131947a242323295a763ba2f2473af0ccfb4f
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 65d6a3156419b57eae6c7e41a9778fa25fd88f4f
+ms.sourcegitcommit: 6eacadf1be61679ab8e6f781ece76b7395512879
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944527"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758522"
 ---
-# <a name="aspnet-core-blazor-templates"></a>Modelos de ASP.NET Core Blazor
+# <a name="aspnet-core-no-locblazor-templates"></a>Modelos de ASP.NET Core Blazor
 
 Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
 
@@ -40,17 +40,16 @@ dotnet new blazorwasm --help
 dotnet new blazorserver --help
 ```
 
-## <a name="blazor-project-structure"></a>Blazorestrutura do projeto
+## <a name="no-locblazor-project-structure"></a>Blazorestrutura do projeto
 
-Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de um Blazor modelo:
+Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de um Blazor modelo de projeto:
 
 * `Program.cs`: O ponto de entrada do aplicativo que configura:
 
   * [Host](xref:fundamentals/host/generic-host) ASP.NET Core ( Blazor Server )
   * Host Webassembly ( Blazor WebAssembly ): o código nesse arquivo é exclusivo para aplicativos criados a partir do Blazor WebAssembly modelo ( `blazorwasm` ).
-    * O `App` componente, que é o componente raiz do aplicativo, é especificado como o `app` elemento DOM para o `Add` método.
-    * Os serviços podem ser configurados com o `ConfigureServices` método no construtor de hosts (por exemplo, `builder.Services.AddSingleton<IMyDependency, MyDependency>();` ).
-    * A configuração pode ser fornecida por meio do host Builder ( `builder.Configuration` ).
+    * O `App` componente é o componente raiz do aplicativo. O `App` componente é especificado como o `app` elemento DOM ( `<app>...</app>` ) para o conjunto de componentes raiz ( `builder.RootComponents.Add<App>("app")` ).
+    * Os [Serviços](xref:blazor/fundamentals/dependency-injection) são adicionados e configurados (por exemplo, `builder.Services.AddSingleton<IMyDependency, MyDependency>()` ).
 
 * `Startup.cs`( Blazor Server ): Contém a lógica de inicialização do aplicativo. A `Startup` classe define dois métodos:
 
@@ -61,7 +60,7 @@ Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de 
 
 * `wwwroot/index.html`( Blazor WebAssembly ): A página raiz do aplicativo implementada como uma página HTML:
   * Quando qualquer página do aplicativo é solicitada inicialmente, essa página é renderizada e retornada na resposta.
-  * A página especifica onde o `App` componente raiz é renderizado. O `App` componente ( `App.razor` ) é especificado como o `app` elemento DOM para o `AddComponent` método em `Startup.Configure` .
+  * A página especifica onde o `App` componente raiz é renderizado. O componente é renderizado no local do `app` elemento DOM ( `<app>...</app>` ).
   * O `_framework/blazor.webassembly.js` arquivo JavaScript é carregado, que:
     * Baixa o tempo de execução do .NET, o aplicativo e as dependências do aplicativo.
     * Inicializa o tempo de execução para executar o aplicativo.
@@ -77,9 +76,11 @@ Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de 
   * `Error`( `Error.razor` Blazor Server somente aplicativo): renderizado quando ocorre uma exceção sem tratamento no aplicativo.
   * `FetchData`( `Pages/FetchData.razor` ): Implementa a página de busca de dados.
   * `Index`( `Pages/Index.razor` ): Implementa a Home Page.
+  
+* `Properties/launchSettings.json`: Mantém a [configuração do ambiente de desenvolvimento](xref:fundamentals/environments#development-and-launchsettingsjson).
 
 * `Shared`pasta: contém outros componentes de interface do usuário ( `.razor` ) usados pelo aplicativo:
-  * `MainLayout`( `MainLayout.razor` ): O componente de layout do aplicativo.
+  * `MainLayout`( `MainLayout.razor` ): O componente de [layout](xref:blazor/layouts)do aplicativo.
   * `NavMenu`( `NavMenu.razor` ): Implementa a navegação na barra lateral. Inclui o [ `NavLink` componente](xref:blazor/fundamentals/routing#navlink-component) ( <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ), que renderiza links de navegação para outros Razor componentes. O <xref:Microsoft.AspNetCore.Components.Routing.NavLink> componente indica automaticamente um estado selecionado quando seu componente é carregado, o que ajuda o usuário a entender qual componente está sendo exibido no momento.
 
 * `_Imports.razor`: Inclui Razor diretivas comuns para incluir nos componentes do aplicativo ( `.razor` ), como [`@using`](xref:mvc/views/razor#using) diretivas para namespaces.
@@ -88,4 +89,4 @@ Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de 
 
 * `wwwroot`: A pasta [raiz da Web](xref:fundamentals/index#web-root) para o aplicativo que contém os ativos estáticos públicos do aplicativo.
 
-* `appsettings.json`( Blazor Server ): Definições de configuração para o aplicativo.
+* `appsettings.json`: Mantém [as definições de configuração](xref:blazor/fundamentals/configuration) para o aplicativo. Em um Blazor WebAssembly aplicativo, o arquivo de configurações do aplicativo está localizado na `wwwroot` pasta. Em um Blazor Server aplicativo, o arquivo de configurações do aplicativo está localizado na raiz do projeto.

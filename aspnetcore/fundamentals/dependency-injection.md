@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 2074aa75029cf27922b43545ec18c0cd8a50eb02
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: fcfa9e93228cdf71b33e67aeab38fdd9a3295b75
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793353"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819211"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -223,7 +223,7 @@ Em aplicativos que processam solicitações, os serviços singleton são descart
 
 Os métodos de extensão de registro de serviço oferecem sobrecargas que são úteis em cenários específicos.
 
-| Método | Automático<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método | Automática<br>object<br>descarte | Vários<br>implementações | Passar argumentos |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();` | Sim | Sim | Não |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Sim | Sim | Sim |
@@ -518,7 +518,7 @@ O contêiner de serviço interno foi projetado para atender às necessidades da 
 * Suporte de `Func<T>` para inicialização lenta
 * Registro baseado em Convenção
 
-Os contêineres de terceiros a seguir podem ser usados com aplicativos ASP.NET Core:
+Os seguintes contêineres de terceiros podem ser usados com aplicativos ASP.NET Core:
 
 * [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
 * [DryIoc](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
@@ -808,7 +808,7 @@ Em aplicativos que processam solicitações, os serviços singleton são descart
 
 Os métodos de extensão de registro de serviço oferecem sobrecargas que são úteis em cenários específicos.
 
-| Método | Automático<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método | Automática<br>object<br>descarte | Vários<br>implementações | Passar argumentos |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();` | Sim | Sim | Não |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Sim | Sim | Sim |
@@ -1099,7 +1099,7 @@ O contêiner de serviço interno foi projetado para atender às necessidades da 
 * Suporte de `Func<T>` para inicialização lenta
 * Registro baseado em Convenção
 
-Os contêineres de terceiros a seguir podem ser usados com aplicativos ASP.NET Core:
+Os seguintes contêineres de terceiros podem ser usados com aplicativos ASP.NET Core:
 
 * [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
 * [DryIoc](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)

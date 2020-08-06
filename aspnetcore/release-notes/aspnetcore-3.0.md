@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 6e31a8f49ca535f98f4e073af13896386a4a0feb
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: cebfc88a8a8313bfd975001b50db6e41b6939aed
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408208"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819133"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>O que há de novo no ASP.NET Core 3,0
 
@@ -49,11 +49,11 @@ Para obter mais informações, consulte <xref:blazor/index>.
 
 Blazordissocia a lógica de renderização do componente de como as atualizações da interface do usuário são aplicadas. Blazor Serverfornece suporte para hospedar Razor componentes no servidor em um aplicativo ASP.NET Core. As atualizações da interface do usuário são manipuladas em uma SignalR conexão. Blazor Servertem suporte no ASP.NET Core 3,0.
 
-### <a name="blazor-webassembly-preview"></a>Blazor WebAssemblyApresentação
+### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssemblyApresentação
 
 Blazoros aplicativos também podem ser executados diretamente no navegador usando um tempo de execução .NET baseado em Webassembly. Blazor WebAssemblyestá em visualização e *não* tem suporte no ASP.NET Core 3,0. Blazor WebAssemblyterá suporte em uma versão futura do ASP.NET Core.
 
-### <a name="razor-components"></a>Componentes Razor
+### <a name="no-locrazor-components"></a>Componentes Razor
 
 Blazoros aplicativos são criados a partir de componentes. Os componentes são partes independentes da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Os componentes são classes normais do .NET que definem a lógica de renderização da interface do usuário e manipuladores de eventos do lado do cliente. Você pode criar aplicativos Web interativos sofisticados sem JavaScript.
 
@@ -320,16 +320,16 @@ O ASP.NET Core 3,0 agora usa <xref:System.Text.Json> por padrão para SERIALIZA�
 
 Para adicionar o Json.NET ao ASP.NET Core 3,0, consulte [adicionar Newtonsoft.Jssuporte ao formato JSON baseado em](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support).
 
-## <a name="new-razor-directives"></a>Novas Razor diretivas
+## <a name="new-no-locrazor-directives"></a>Novas Razor diretivas
 
 A lista a seguir contém novas Razor diretivas:
 
 * [`@attribute`](xref:mvc/views/razor#attribute): A `@attribute` diretiva aplica o atributo fornecido à classe da página ou exibição gerada. Por exemplo, `@attribute [Authorize]`.
 * [`@implements`](xref:mvc/views/razor#implements): A `@implements` diretiva implementa uma interface para a classe gerada. Por exemplo, `@implements IDisposable`.
 
-## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>O IdentityServer4 dá suporte à autenticação e autorização para APIs Web e SPAs
+## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityO Server4 dá suporte à autenticação e autorização para APIs Web e SPAs
 
-O ASP.NET Core 3,0 oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização da API Web. ASP.NET Core Identity para autenticação e armazenamento de usuários é combinado com o [IdentityServer4](https://identityserver.io/) para implementar o Open ID Connect.
+O ASP.NET Core 3,0 oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização da API Web. ASP.NET Core Identity para autenticação e armazenamento de usuários é combinado com o [ Identity Server4](https://identityserver.io/) para implementar o OpenID Connect.
 
 IdentityServer4 é uma estrutura de OpenID Connect e OAuth 2,0 para ASP.NET Core 3,0. Ele habilita os seguintes recursos de segurança:
 
@@ -338,7 +338,7 @@ IdentityServer4 é uma estrutura de OpenID Connect e OAuth 2,0 para ASP.NET Core
 * Controle de acesso para APIs
 * Gateway de Federação
 
-Para obter mais informações, consulte [a documentação do IdentityServer4](http://docs.identityserver.io/en/latest/index.html) ou [autenticação e autorização para Spas](xref:security/authentication/identity/spa).
+Para obter mais informações, consulte [a Identity documentação do Server4](http://docs.identityserver.io/en/latest/index.html) ou [autenticação e autorização para Spas](xref:security/authentication/identity/spa).
 
 ## <a name="certificate-and-kerberos-authentication"></a>Autenticação de certificado e Kerberos
 
@@ -509,7 +509,7 @@ Em versões anteriores do ASP.NET Core, chamando <xref:Microsoft.AspNetCore.Buil
 
 Esse cenário é corrigido no ASP.NET Core 3,0. O host habilita o [middleware de cabeçalhos encaminhados](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) quando a `ASPNETCORE_FORWARDEDHEADERS_ENABLED` variável de ambiente é definida como `true` . `ASPNETCORE_FORWARDEDHEADERS_ENABLED`é definido como `true` em nossas imagens de contêiner.
 
-## <a name="performance-improvements"></a>Melhorias de desempenho
+## <a name="performance-improvements"></a>Aprimoramentos de desempenho
 
 O ASP.NET Core 3,0 inclui muitas melhorias que reduzem o uso de memória e melhoram a taxa de transferência:
 

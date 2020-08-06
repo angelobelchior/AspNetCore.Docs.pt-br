@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: a08993a7909d67be34446815b10d32089d9e0629
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: 9f143523a6d02ac018ad2a869cc9d768ee25681f
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87444155"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819257"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuração no ASP.NET Core
 
@@ -356,6 +356,35 @@ Quando uma variável de ambiente for descoberta e carregada na configuração co
 | `SQLAZURECONNSTR_{KEY}`  | `ConnectionStrings:{KEY}`   | Chave: `ConnectionStrings:{KEY}_ProviderName`:<br>Valor: `System.Data.SqlClient`  |
 | `SQLCONNSTR_{KEY}`       | `ConnectionStrings:{KEY}`   | Chave: `ConnectionStrings:{KEY}_ProviderName`:<br>Valor: `System.Data.SqlClient`  |
 
+## <a name="file-configuration-provider"></a>Provedor de configuração de arquivo
+
+<xref:Microsoft.Extensions.Configuration.FileConfigurationProvider> é a classe base para carregamento da configuração do sistema de arquivos. Os seguintes provedores de configuração derivam de `FileConfigurationProvider` :
+
+* [Provedor de configuração INI](#ini-configuration-provider)
+* [Provedor de configuração JSON](#jcp)
+* [Provedor de configuração XML](#xml-configuration-provider)
+
+### <a name="ini-configuration-provider"></a>Provedor de configuração INI
+
+O <xref:Microsoft.Extensions.Configuration.Ini.IniConfigurationProvider> carrega a configuração de pares chave-valor do arquivo INI em runtime.
+
+O código a seguir limpa todos os provedores de configuração e adiciona vários provedores de configuração:
+
+[!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
+
+No código anterior, as configurações no *MyIniConfig.ini* e *MyIniConfig*. `Environment` . os arquivos *ini* são substituídos pelas configurações no:
+
+* [Provedor de configuração de variáveis de ambiente](#evcp)
+* [Provedor de configuração de linha de comando](#clcp).
+
+O [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contém o seguinte arquivo de *MyIniConfig.ini* :
+
+[!code-ini[](index/samples/3.x/ConfigSample/MyIniConfig.ini)]
+
+O código a seguir do [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) exibe várias das configurações anteriores:
+
+[!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
+
 <a name="jcp"></a>
 
 ### <a name="json-configuration-provider"></a>Provedor de configuração JSON
@@ -398,35 +427,6 @@ O código a seguir do [download de exemplo](https://github.com/dotnet/AspNetCore
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
 <a name="fcp"></a>
-
-## <a name="file-configuration-provider"></a>Provedor de configuração de arquivo
-
-<xref:Microsoft.Extensions.Configuration.FileConfigurationProvider> é a classe base para carregamento da configuração do sistema de arquivos. Os seguintes provedores de configuração derivam de `FileConfigurationProvider` :
-
-* [Provedor de configuração INI](#ini-configuration-provider)
-* [Provedor de configuração JSON](#jcp)
-* [Provedor de configuração XML](#xml-configuration-provider)
-
-### <a name="ini-configuration-provider"></a>Provedor de configuração INI
-
-O <xref:Microsoft.Extensions.Configuration.Ini.IniConfigurationProvider> carrega a configuração de pares chave-valor do arquivo INI em runtime.
-
-O código a seguir limpa todos os provedores de configuração e adiciona vários provedores de configuração:
-
-[!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
-
-No código anterior, as configurações no *MyIniConfig.ini* e *MyIniConfig*. `Environment` . os arquivos *ini* são substituídos pelas configurações no:
-
-* [Provedor de configuração de variáveis de ambiente](#evcp)
-* [Provedor de configuração de linha de comando](#clcp).
-
-O [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contém o seguinte arquivo de *MyIniConfig.ini* :
-
-[!code-ini[](index/samples/3.x/ConfigSample/MyIniConfig.ini)]
-
-O código a seguir do [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) exibe várias das configurações anteriores:
-
-[!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
 ### <a name="xml-configuration-provider"></a>Provedor de configuração XML
 
@@ -910,7 +910,7 @@ public class HomeController : Controller
 
 Os provedores de configuração não podem utilizar a DI, pois ela não é disponibilizada quando eles são configurados pelo host.
 
-### <a name="keys"></a>simétricas
+### <a name="keys"></a>Chaves
 
 As chaves de configuração adotam as convenções a seguir:
 
