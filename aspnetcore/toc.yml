@@ -337,14 +337,20 @@
                   href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputTextArea
                   href: blazor/forms-validation.md#built-in-forms-components
+                - name: Link
+                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: MainLayout
                   href: blazor/layouts.md#mainlayout-component
+                - name: Meta
+                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: NavLink
                   href: blazor/fundamentals/routing.md#navlink-component
                 - name: NavMenu
                   href: blazor/fundamentals/routing.md#navlink-component
                 - name: Router
                   href: blazor/fundamentals/routing.md#route-templates
+                - name: Título
+                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
             - name: Valores e parâmetros em cascata
               uid: blazor/components/cascading-values-and-parameters
             - name: Associação de dados
@@ -411,6 +417,8 @@
           uid: blazor/state-management
         - name: Depurar WebAssembly
           uid: blazor/debug
+        - name: Assemblies de carregamento lento com WebAssembly
+          uid: blazor/webassembly-lazy-load-assemblies
         - name: Desempenho do WebAssembly
           uid: blazor/webassembly-performance-best-practices
         - name: Aplicativos Web progressivos
