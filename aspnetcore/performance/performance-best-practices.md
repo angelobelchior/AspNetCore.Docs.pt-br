@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 15f3ce5a8e8d47ac567acaadcdc4bf8ba738b2ff
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f74f6ce93093adbc931dd90b32a14de5d4f89096
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408169"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913890"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Práticas recomendadas de desempenho de ASP.NET Core
 
@@ -50,7 +50,7 @@ Um problema de desempenho comum no ASP.NET Core aplicativos é bloquear chamadas
 **Fazer**:
 
 * Torne os [caminhos de código dinâmico](#understand-hot-code-paths) assíncronos.
-* Chame acesso a dados, e/s e APIs de operações de longa execução de forma assíncrona se uma API assíncrona estiver disponível. Não **use** [Task. Execute](/dotnet/api/system.threading.tasks.task.run) para tornar uma API synchronus assíncrona.
+* Chame acesso a dados, e/s e APIs de operações de longa execução de forma assíncrona se uma API assíncrona estiver disponível. Não **use** [Task. Execute](/dotnet/api/system.threading.tasks.task.run) para tornar uma API síncrona assíncrona.
 * Torne as ações de controlador/ Razor página assíncronas. A pilha de chamadas inteira é assíncrona para se beneficiar de padrões [Async/Await](/dotnet/csharp/programming-guide/concepts/async/) .
 
 Um criador de perfil, como [Perfview](https://github.com/Microsoft/perfview), pode ser usado para localizar threads frequentemente adicionados ao [pool de threads](/windows/desktop/procthread/thread-pools). O `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` evento indica um thread adicionado ao pool de threads. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
@@ -108,7 +108,7 @@ Recomendações:
 
 ## <a name="keep-common-code-paths-fast"></a>Mantenha os caminhos de código comuns rápidos
 
-Você quer que todo o seu código seja rápido. Os caminhos de código chamados com frequência são os mais importantes para otimizar. Eles incluem:
+Você quer que todo o seu código seja rápido. Os caminhos de código chamados com frequência são os mais importantes para otimizar. Elas incluem:
 
 * Componentes de middleware no pipeline de processamento de solicitação do aplicativo, especialmente o middleware é executado no início do pipeline. Esses componentes têm um grande impacto no desempenho.
 * Código que é executado para cada solicitação ou várias vezes por solicitação. Por exemplo, log personalizado, manipuladores de autorização ou inicialização de serviços transitórios.
@@ -146,7 +146,7 @@ Recomendações:
 
 ## <a name="use-the-latest-aspnet-core-release"></a>Usar a versão mais recente do ASP.NET Core
 
-Cada nova versão do ASP.NET Core inclui melhorias de desempenho. Otimizações no .NET Core e ASP.NET Core significam que as versões mais recentes geralmente superam as versões mais antigas. Por exemplo, o .NET Core 2,1 adicionou suporte para expressões regulares compiladas e se beneficiou do [span \<T> ](https://msdn.microsoft.com/magazine/mt814808.aspx). ASP.NET Core 2,2 adicionado suporte para HTTP/2. [ASP.NET Core 3,0 adiciona muitas melhorias](xref:aspnetcore-3.0) que reduzem o uso de memória e melhoram a taxa de transferência. Se o desempenho for uma prioridade, considere atualizar para a versão atual do ASP.NET Core.
+Cada nova versão do ASP.NET Core inclui melhorias de desempenho. Otimizações no .NET Core e ASP.NET Core significam que as versões mais recentes geralmente superam as versões mais antigas. Por exemplo, o .NET Core 2,1 adicionou suporte para expressões regulares compiladas e se beneficiou do [span \<T> ](/archive/msdn-magazine/2018/january/csharp-all-about-span-exploring-a-new-net-mainstay). ASP.NET Core 2,2 adicionado suporte para HTTP/2. [ASP.NET Core 3,0 adiciona muitas melhorias](xref:aspnetcore-3.0) que reduzem o uso de memória e melhoram a taxa de transferência. Se o desempenho for uma prioridade, considere atualizar para a versão atual do ASP.NET Core.
 
 ## <a name="minimize-exceptions"></a>Minimizar exceções
 

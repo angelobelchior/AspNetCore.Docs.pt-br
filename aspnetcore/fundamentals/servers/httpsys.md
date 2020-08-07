@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 27ee69130bc455ab2570556091692053d59e89a5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f7c5d75fbbbecacea8bbe3a0e54b526f000a001b
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408221"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913751"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implementação do servidor Web HTTP.sys no ASP.NET Core
 
@@ -169,7 +169,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
 
    As configurações de `UrlPrefixes` substituem as configurações `UseUrls`/`urls`/`ASPNETCORE_URLS`. Portanto, uma vantagem de usar `UseUrls`, `urls` e a variável de ambiente `ASPNETCORE_URLS` é que fica mais fácil alternar entre o Kestrel e o HTTP.sys.
 
-   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior criam vulnerabilidades de segurança no aplicativo. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos ou endereços IP em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não serão um risco à segurança se você controlar todo o domínio pai (ao contrário de `*.com`, o qual é vulnerável). Para obter mais informações, consulte [RFC 7230: Section 5,4: host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -253,7 +253,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
    Documentação de referência do *netsh.exe*:
 
    * [Comandos Netsh para HTTP (Hypertext Transfer Protocol)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadeias de caracteres de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadeias de caracteres de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Execute o aplicativo.
 
@@ -272,7 +272,7 @@ Para aplicativos hospedados pelo HTTP.sys que interagem com solicitações da In
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Habilitar a autenticação do Windows com HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API do servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API do servidor HTTP](/windows/win32/http/http-api-start-page)
 * [Repositório aspnet/HttpSysServer do GitHub (código-fonte)](https://github.com/aspnet/HttpSysServer/)
 * [O host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>
@@ -420,7 +420,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
 
    As configurações de `UrlPrefixes` substituem as configurações `UseUrls`/`urls`/`ASPNETCORE_URLS`. Portanto, uma vantagem de usar `UseUrls`, `urls` e a variável de ambiente `ASPNETCORE_URLS` é que fica mais fácil alternar entre o Kestrel e o HTTP.sys.
 
-   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior criam vulnerabilidades de segurança no aplicativo. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos ou endereços IP em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não serão um risco à segurança se você controlar todo o domínio pai (ao contrário de `*.com`, o qual é vulnerável). Para obter mais informações, consulte [RFC 7230: Section 5,4: host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -504,7 +504,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
    Documentação de referência do *netsh.exe*:
 
    * [Comandos Netsh para HTTP (Hypertext Transfer Protocol)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadeias de caracteres de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadeias de caracteres de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Execute o aplicativo.
 
@@ -523,7 +523,7 @@ Para aplicativos hospedados pelo HTTP.sys que interagem com solicitações da In
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Habilitar a autenticação do Windows com HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API do servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API do servidor HTTP](/windows/win32/http/http-api-start-page)
 * [Repositório aspnet/HttpSysServer do GitHub (código-fonte)](https://github.com/aspnet/HttpSysServer/)
 * [O host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>
@@ -673,7 +673,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
 
    As configurações de `UrlPrefixes` substituem as configurações `UseUrls`/`urls`/`ASPNETCORE_URLS`. Portanto, uma vantagem de usar `UseUrls`, `urls` e a variável de ambiente `ASPNETCORE_URLS` é que fica mais fácil alternar entre o Kestrel e o HTTP.sys.
 
-   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior criam vulnerabilidades de segurança no aplicativo. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos ou endereços IP em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não serão um risco à segurança se você controlar todo o domínio pai (ao contrário de `*.com`, o qual é vulnerável). Para obter mais informações, consulte [RFC 7230: Section 5,4: host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -757,7 +757,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
    Documentação de referência do *netsh.exe*:
 
    * [Comandos Netsh para HTTP (Hypertext Transfer Protocol)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadeias de caracteres de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadeias de caracteres de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Execute o aplicativo.
 
@@ -776,7 +776,7 @@ Para aplicativos hospedados pelo HTTP.sys que interagem com solicitações da In
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Habilitar a autenticação do Windows com HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API do servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API do servidor HTTP](/windows/win32/http/http-api-start-page)
 * [Repositório aspnet/HttpSysServer do GitHub (código-fonte)](https://github.com/aspnet/HttpSysServer/)
 * [O host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>
@@ -926,7 +926,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
 
    As configurações de `UrlPrefixes` substituem as configurações `UseUrls`/`urls`/`ASPNETCORE_URLS`. Portanto, uma vantagem de usar `UseUrls`, `urls` e a variável de ambiente `ASPNETCORE_URLS` é que fica mais fácil alternar entre o Kestrel e o HTTP.sys.
 
-   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   O HTTP.sys usa os [formatos de cadeia de caracteres UrlPrefix da API do Servidor HTTP](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior criam vulnerabilidades de segurança no aplicativo. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos ou endereços IP em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não serão um risco à segurança se você controlar todo o domínio pai (ao contrário de `*.com`, o qual é vulnerável). Para obter mais informações, consulte [RFC 7230: Section 5,4: host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -1010,7 +1010,7 @@ No Visual Studio, o perfil de inicialização padrão destina-se ao IIS Express.
    Documentação de referência do *netsh.exe*:
 
    * [Comandos Netsh para HTTP (Hypertext Transfer Protocol)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadeias de caracteres de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadeias de caracteres de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Execute o aplicativo.
 
@@ -1029,7 +1029,7 @@ Para aplicativos hospedados pelo HTTP.sys que interagem com solicitações da In
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Habilitar a autenticação do Windows com HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API do servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API do servidor HTTP](/windows/win32/http/http-api-start-page)
 * [Repositório aspnet/HttpSysServer do GitHub (código-fonte)](https://github.com/aspnet/HttpSysServer/)
 * [O host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>

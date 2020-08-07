@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 65ef506d5857afb71113a0309613a2cbd82893be
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 096862b7149679c14e3d1ca17d38468a14e438a2
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399537"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913871"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurar a proteção de dados do ASP.NET Core
 
@@ -357,7 +357,7 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> O algoritmo de codificação de bloco simétrico deve ter um comprimento de chave de >= 128 bits, um tamanho de bloco de >= 64 bits e deve dar suporte à criptografia do modo CBC com o preenchimento de #7 PKCS. O algoritmo de hash deve ter um tamanho de Resumo de >= 128 bits e deve ter suporte para ser aberto com o \_ \_ sinalizador de sinalizador HMAC de manipulação de BCRYPT alg \_ \_ . As \* Propriedades do provedor podem ser definidas como NULL para usar o provedor padrão para o algoritmo especificado. Consulte a documentação do [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) para obter mais informações.
+> O algoritmo de codificação de bloco simétrico deve ter um comprimento de chave de >= 128 bits, um tamanho de bloco de >= 64 bits e deve dar suporte à criptografia do modo CBC com o preenchimento de #7 PKCS. O algoritmo de hash deve ter um tamanho de Resumo de >= 128 bits e deve ter suporte para ser aberto com o \_ \_ sinalizador de sinalizador HMAC de manipulação de BCRYPT alg \_ \_ . As \* Propriedades do provedor podem ser definidas como NULL para usar o provedor padrão para o algoritmo especificado. Consulte a documentação do [BCryptOpenAlgorithmProvider](/windows/win32/api/bcrypt/nf-bcrypt-bcryptopenalgorithmprovider) para obter mais informações.
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -400,7 +400,7 @@ services.AddDataProtection()
 ::: moniker-end
 
 > [!NOTE]
-> O algoritmo de codificação de bloco simétrico deve ter um comprimento de chave de >= 128 bits, um tamanho de bloco de exatamente 128 bits e deve dar suporte à criptografia GCM. Você pode definir a propriedade [EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) como NULL para usar o provedor padrão para o algoritmo especificado. Consulte a documentação do [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) para obter mais informações.
+> O algoritmo de codificação de bloco simétrico deve ter um comprimento de chave de >= 128 bits, um tamanho de bloco de exatamente 128 bits e deve dar suporte à criptografia GCM. Você pode definir a propriedade [EncryptionAlgorithmProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration.encryptionalgorithmprovider) como NULL para usar o provedor padrão para o algoritmo especificado. Consulte a documentação do [BCryptOpenAlgorithmProvider](/windows/win32/api/bcrypt/nf-bcrypt-bcryptopenalgorithmprovider) para obter mais informações.
 
 ### <a name="specifying-other-custom-algorithms"></a>Especificando outros algoritmos personalizados
 

@@ -13,24 +13,24 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 0c81dc2fd83cb9327dad46dab840d4352de89baf
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5648ae9e75b48fa4749ed6bcc01b91559dbd2939
+ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85409027"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87913771"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Desenvolver aplicativos ASP.NET Core usando um observador de arquivo
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT) e [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
-a [inspeção dotnet](https://www.nuget.org/packages/dotnet-watch) é uma ferramenta que executa um comando [CLI do .NET Core](/dotnet/core/tools) quando os arquivos de origem são alterados. Por exemplo, uma alteração de arquivo pode disparar uma compilação, execução de teste ou uma implantação.
+`dotnet watch`é uma ferramenta que executa um comando [CLI do .NET Core](/dotnet/core/tools) quando os arquivos de origem são alterados. Por exemplo, uma alteração de arquivo pode disparar uma compilação, execução de teste ou uma implantação.
 
 Este tutorial usa um aplicativo de API Web existente com dois pontos de extremidade: um que retorna uma soma e outro que retorna um produto. O método de produto tem um bug, que é corrigido neste tutorial.
 
 Baixe o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Ele consiste em dois projetos: *WebApp* (uma API Web ASP.NET Core) e *WebAppTests* (testes de unidade para a API Web).
 
-Em um shell de comando, navegue até a pasta *WebApp*. Execute o comando a seguir:
+Em um shell de comando, navegue até a pasta *WebApp*. Execute o seguinte comando:
 
 ```dotnetcli
 dotnet run
@@ -183,7 +183,7 @@ Se a meta é observar ambos os projetos, crie um arquivo de projeto personalizad
 </Project>
 ```
 
-Para iniciar a observação de arquivo em ambos os projetos, mude para a pasta de *teste*. Execute o comando a seguir:
+Para iniciar a observação de arquivo em ambos os projetos, mude para a pasta de *teste*. Execute o seguinte comando:
 
 ```dotnetcli
 dotnet watch msbuild /t:Test
