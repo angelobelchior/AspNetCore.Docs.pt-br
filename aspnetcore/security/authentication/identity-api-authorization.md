@@ -15,16 +15,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 2b587517268208dcf66cd2895b7aa22bfa381f84
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: c06f1d4bf772d7726d19163fcdee8c92d4006cd2
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060352"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819107"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Autenticação e autorização para SPAs
 
-O ASP.NET Core 3,0 ou posterior oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização de API. ASP.NET Core Identity para autenticação e armazenamento de usuários é combinado com o [IdentityServer](https://identityserver.io/) para implementar o Open ID Connect.
+O ASP.NET Core 3,0 ou posterior oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização de API. ASP.NET Core Identity para autenticar e armazenar usuários é combinado com o [ Identity servidor](https://identityserver.io/) para implementar o OpenID Connect.
 
 Um parâmetro de autenticação foi adicionado aos modelos de projeto **angular** e **reajam** que é semelhante ao parâmetro de autenticação nos modelos de projeto de **aplicativo Web (Model-View-Controller)** (MVC) e **aplicativo Web** ( Razor páginas). Os valores de parâmetro permitidos são **None** e **individual**. O modelo de projeto **React.js e Redux** não dá suporte ao parâmetro de autenticação neste momento.
 
@@ -52,7 +52,7 @@ As seções a seguir descrevem as adições ao projeto quando o suporte à auten
 
 ### <a name="startup-class"></a>Classe de inicialização
 
-Os exemplos de código a seguir dependem do pacote NuGet [Microsoft. AspNetCore. ApiAuthorization. IdentityServer](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.IdentityServer) . Os exemplos configuram a autenticação e a autorização da API usando os <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiResourceCollection.AddIdentityServerJwt%2A> métodos de extensão e. Os projetos que usam os modelos de projeto de SPA de reagir ou angulares com autenticação incluem uma referência a esse pacote.
+Os exemplos de código a seguir contam com o [Microsoft. AspNetCore. ApiAuthorization. Identity Pacote NuGet do servidor](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.IdentityServer) . Os exemplos configuram a autenticação e a autorização da API usando os <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiResourceCollection.AddIdentityServerJwt%2A> métodos de extensão e. Os projetos que usam os modelos de projeto de SPA de reagir ou angulares com autenticação incluem uma referência a esse pacote.
 
 A `Startup` classe tem as seguintes adições:
 
@@ -67,14 +67,14 @@ A `Startup` classe tem as seguintes adições:
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * IdentityServer com um `AddApiAuthorization` método auxiliar adicional que configura algumas convenções de ASP.NET Core padrão na parte superior do IdentityServer:
+  * IdentityServidor com um `AddApiAuthorization` método auxiliar adicional que configura algumas convenções de ASP.NET Core padrão na parte superior do Identity servidor:
 
     ```csharp
     services.AddIdentityServer()
         .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
     ```
 
-  * Autenticação com um `AddIdentityServerJwt` método auxiliar adicional que configura o aplicativo para validar tokens JWT produzidos por IdentityServer:
+  * Autenticação com um `AddIdentityServerJwt` método auxiliar adicional que configura o aplicativo para validar tokens JWT produzidos pelo Identity servidor:
 
     ```csharp
     services.AddAuthentication()
@@ -88,7 +88,7 @@ A `Startup` classe tem as seguintes adições:
     app.UseAuthentication();
     ```
 
-  * O middleware IdentityServer que expõe os pontos de extremidade do Open ID Connect:
+  * O Identity middleware de servidor que expõe os pontos de extremidade do OpenID Connect:
 
     ```csharp
     app.UseIdentityServer();
@@ -96,11 +96,11 @@ A `Startup` classe tem as seguintes adições:
 
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
-Esse método auxiliar configura o IdentityServer para usar nossa configuração com suporte. O IdentityServer é uma estrutura avançada e extensível para lidar com questões de segurança de aplicativo. Ao mesmo tempo, isso expõe uma complexidade desnecessária para os cenários mais comuns. Consequentemente, um conjunto de convenções e opções de configuração é fornecido para você que são considerados um bom ponto de partida. Depois que a autenticação precisar ser alterada, toda a potência do IdentityServer ainda estará disponível para personalizar a autenticação de acordo com suas necessidades.
+Esse método auxiliar configura o Identity servidor para usar nossa configuração com suporte. IdentityO servidor é uma estrutura avançada e extensível para lidar com questões de segurança de aplicativo. Ao mesmo tempo, isso expõe uma complexidade desnecessária para os cenários mais comuns. Consequentemente, um conjunto de convenções e opções de configuração é fornecido para você que são considerados um bom ponto de partida. Depois que a autenticação precisar ser alterada, todo o poder do Identity servidor ainda estará disponível para personalizar a autenticação de acordo com suas necessidades.
 
-### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
+### <a name="addno-locidentityserverjwt"></a>Adicionar Identity ServerJwt
 
-Esse método auxiliar configura um esquema de política para o aplicativo como o manipulador de autenticação padrão. A política está configurada para permitir que o Identity manipule todas as solicitações roteadas para qualquer subcaminho no Identity espaço de URL "/ Identity ". O `JwtBearerHandler` lida com todas as outras solicitações. Além disso, esse método registra um `<<ApplicationName>>API` recurso de API com IdentityServer com um escopo padrão `<<ApplicationName>>API` e configura o middleware de token de portador JWT para validar tokens emitidos por IdentityServer para o aplicativo.
+Esse método auxiliar configura um esquema de política para o aplicativo como o manipulador de autenticação padrão. A política está configurada para permitir que o Identity manipule todas as solicitações roteadas para qualquer subcaminho no Identity espaço de URL "/ Identity ". O `JwtBearerHandler` lida com todas as outras solicitações. Além disso, esse método registra um `<<ApplicationName>>API` recurso de API com Identity o servidor com um escopo padrão `<<ApplicationName>>API` e configura o middleware do token de portador JWT para validar tokens emitidos pelo Identity servidor para o aplicativo.
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
@@ -108,7 +108,7 @@ No arquivo *Controllers\WeatherForecastController.cs* , observe o `[Authorize]` 
 
 ### <a name="applicationdbcontext"></a>ApplicationDbContext
 
-No arquivo *Data\ApplicationDbContext.cs* , observe que o mesmo `DbContext` é usado em Identity com a exceção que ele estende `ApiAuthorizationDbContext` (uma classe mais derivada de `IdentityDbContext` ) para incluir o esquema para IdentityServer.
+No arquivo *Data\ApplicationDbContext.cs* , observe que o mesmo `DbContext` é usado em Identity com a exceção que ele estende `ApiAuthorizationDbContext` (uma classe mais derivada de `IdentityDbContext` ) para incluir o esquema para o Identity servidor.
 
 Para obter controle total do esquema de banco de dados, herde de uma das Identity `DbContext` classes disponíveis e configure o contexto para incluir o Identity esquema chamando `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` no `OnModelCreating` método.
 
@@ -273,7 +273,7 @@ async populateWeatherData() {
 
 Para implantar o aplicativo na produção, os seguintes recursos precisam ser provisionados:
 
-* Um banco de dados para armazenar as Identity contas de usuário e as concessões IdentityServer.
+* Um banco de dados para armazenar as Identity contas de usuário e o Identity servidor concede.
 * Um certificado de produção a ser usado para tokens de assinatura.
   * Não há requisitos específicos para esse certificado; pode ser um certificado autoassinado ou um certificado provisionado por meio de uma autoridade de certificação.
   * Ele pode ser gerado por meio de ferramentas padrão, como o PowerShell ou o OpenSSL.
@@ -310,25 +310,25 @@ Depois de configurar o aplicativo e as configurações do aplicativo no portal d
 
 ## <a name="other-configuration-options"></a>Outras opções de configuração
 
-O suporte para a autorização da API se baseia no IdentityServer com um conjunto de convenções, valores padrão e aprimoramentos para simplificar a experiência do SPAs. Não é necessário dizer que todo o poder do IdentityServer está disponível nos bastidores se as integrações ASP.NET Core não abrangem seu cenário. O suporte a ASP.NET Core concentra-se em aplicativos de "primeira parte", onde todos os aplicativos são criados e implantados pela nossa organização. Dessa forma, o suporte não é oferecido para coisas como autorização ou Federação. Para esses cenários, use o IdentityServer e siga sua documentação.
+O suporte para a autorização da API baseia-se na parte superior do Identity servidor com um conjunto de convenções, valores padrão e aprimoramentos para simplificar a experiência do spas. Não é necessário dizer que todo o poder do Identity servidor está disponível nos bastidores se as integrações do ASP.NET Core não abrangem seu cenário. O suporte a ASP.NET Core concentra-se em aplicativos de "primeira parte", onde todos os aplicativos são criados e implantados pela nossa organização. Dessa forma, o suporte não é oferecido para coisas como autorização ou Federação. Para esses cenários, use Identity o servidor e siga sua documentação.
 
 ### <a name="application-profiles"></a>Perfis de aplicativo
 
 Perfis de aplicativo são configurações predefinidas para aplicativos que definem ainda mais seus parâmetros. Neste momento, há suporte para os seguintes perfis:
 
-* `IdentityServerSPA`: Representa um SPA hospedado juntamente com IdentityServer como uma única unidade.
+* `IdentityServerSPA`: Representa um SPA hospedado junto Identity com o servidor como uma única unidade.
   * O `redirect_uri` padrão é `/authentication/login-callback` .
   * O `post_logout_redirect_uri` padrão é `/authentication/logout-callback` .
   * O conjunto de escopos inclui o `openid` , o `profile` e todos os escopos definidos para as APIs no aplicativo.
   * O conjunto de tipos de resposta permitidos OIDC é `id_token token` ou cada um deles individualmente ( `id_token` , `token` ).
   * O modo de resposta permitido é `fragment` .
-* `SPA`: Representa um SPA que não é hospedado com IdentityServer.
+* `SPA`: Representa um SPA que não é hospedado com o Identity servidor.
   * O conjunto de escopos inclui o `openid` , o `profile` e todos os escopos definidos para as APIs no aplicativo.
   * O conjunto de tipos de resposta permitidos OIDC é `id_token token` ou cada um deles individualmente ( `id_token` , `token` ).
   * O modo de resposta permitido é `fragment` .
-* `IdentityServerJwt`: Representa uma API que é hospedada juntamente com IdentityServer.
+* `IdentityServerJwt`: Representa uma API que é hospedada junto com o Identity servidor.
   * O aplicativo é configurado para ter um único escopo que usa como padrão o nome do aplicativo.
-* `API`: Representa uma API que não é hospedada com IdentityServer.
+* `API`: Representa uma API que não é hospedada com o Identity servidor.
   * O aplicativo é configurado para ter um único escopo que usa como padrão o nome do aplicativo.
 
 ### <a name="configuration-through-appsettings"></a>Configuração através de AppSettings
