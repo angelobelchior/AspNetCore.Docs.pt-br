@@ -6,6 +6,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 49d185ce941d5f8e841224e7de3b72b8350a1c47
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 48b59fea5da3872fb29cacd9edbedd14de9e602f
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407896"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019411"
 ---
-# <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Usar ASP.NET Core SignalR com TypeScript e webpack
+# <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a>Usar ASP.NET Core SignalR com TypeScript e webpack
 
 Por [Sébastien Sougnez](https://twitter.com/ssougnez) e [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -72,7 +74,7 @@ Configure o Visual Studio para pesquisar o npm na variável de ambiente *PATH*. 
 A configuração do Visual Studio foi concluída.
 
 1. Use a opção de menu **arquivo**  >  **novo**  >  **projeto** e escolha o modelo de **aplicativo Web ASP.NET Core** . Selecione **Avançar**.
-1. Nomeie o projeto *SignalRWebPack*e selecione **criar**.
+1. Nomeie o projeto * SignalR webpack*e selecione **criar**.
 1. Selecione *.NET Core* na lista suspensa estrutura de destino e selecione *ASP.NET Core 3,1* na lista suspensa seletor de estrutura. Selecione o modelo **vazio** e selecione **criar**.
 
 Adicione o `Microsoft.TypeScript.MSBuild` pacote ao projeto:
@@ -90,8 +92,8 @@ dotnet new web -o SignalRWebPack
 code -r SignalRWebPack
 ```
 
-* O `dotnet new` comando cria um aplicativo Web vazio ASP.NET Core em um diretório *SignalRWebPack* .
-* O `code` comando abre a pasta *SignalRWebPack* na instância atual do Visual Studio Code.
+* O `dotnet new` comando cria um aplicativo Web vazio ASP.NET Core em um diretório do * SignalR webpack* .
+* O `code` comando abre a pasta * SignalR webpack* na instância atual do Visual Studio Code.
 
 Execute o seguinte comando CLI do .NET Core no **terminal integrado**:
 
@@ -200,11 +202,11 @@ As etapas a seguir configuram a conversão do TypeScript para JavaScript e o agr
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseSignalR&highlight=3)]
 
-1. Em `Startup.ConfigureServices` , chame [addsignalr](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_).
+1. Em `Startup.ConfigureServices` , chame [Adicionar SignalR ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_).
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
-1. Crie um novo diretório chamado *hubs* na raiz do projeto *SignalRWebPack/* para armazenar o SignalR Hub.
+1. Crie um novo diretório chamado *hubs* na raiz do projeto * SignalR webpack/* para armazenar o SignalR Hub.
 
 1. Crie o hub *Hubs/ChatHub.cs* com o código a seguir:
 
@@ -283,7 +285,7 @@ Confirme que o aplicativo funciona com as seguintes etapas.
 
     O servidor Web inicia o aplicativo e o disponibiliza no localhost.
 
-1. Abra um navegador em `http://localhost:<port_number>`. O arquivo *wwwroot/index.html* é fornecido. Copie a URL da barra de endereços.
+1. Abra um navegador para `http://localhost:<port_number>`. O arquivo *wwwroot/index.html* é fornecido. Copie a URL da barra de endereços.
 
 1. Abra outra instância do navegador (qualquer navegador). Cole a URL na barra de endereços.
 
@@ -328,7 +330,7 @@ Configure o Visual Studio para pesquisar o npm na variável de ambiente *PATH*. 
 A configuração do Visual Studio foi concluída. É hora de criar o projeto.
 
 1. Use a opção do menu **Arquivo** > **Novo** > **Projeto** e escolha o modelo **Aplicativo Web do ASP.NET Core**.
-1. Nomeie o projeto *SignalRWebPack*e selecione **criar**.
+1. Nomeie o projeto * SignalR webpack*e selecione **criar**.
 1. Selecione *.NET Core* no menu suspenso da estrutura de destino e selecione *ASP.NET Core 2.2* no menu suspenso do seletor de estrutura. Selecione o modelo **vazio** e selecione **criar**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -339,7 +341,7 @@ Execute o comando a seguir no **Terminal Integrado**:
 dotnet new web -o SignalRWebPack
 ```
 
-Um aplicativo Web ASP.NET Core vazio, direcionado ao .NET Core, será criado em um diretório *SignalRWebPack*.
+Um aplicativo Web ASP.NET Core vazio, destinado ao .NET Core, é criado em um diretório do * SignalR webpack* .
 
 ---
 
@@ -436,7 +438,7 @@ As etapas a seguir configuram a conversão do TypeScript para JavaScript e o agr
 
     O código precedente permite que o servidor localize e forneça o arquivo *index.html*, se o usuário inserir a URL completa ou a URL raiz do aplicativo Web.
 
-1. Chame [Addsignalr](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) em `Startup.ConfigureServices` . Ele adiciona os SignalR serviços ao projeto.
+1. Chame [Adicionar SignalR ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) em `Startup.ConfigureServices` . Ele adiciona os SignalR serviços ao projeto.
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_AddSignalR)]
 
@@ -518,7 +520,7 @@ Confirme que o aplicativo funciona com as seguintes etapas.
 
     O servidor Web inicia o aplicativo e o disponibiliza no localhost.
 
-1. Abra um navegador em `http://localhost:<port_number>`. O arquivo *wwwroot/index.html* é fornecido. Copie a URL da barra de endereços.
+1. Abra um navegador para `http://localhost:<port_number>`. O arquivo *wwwroot/index.html* é fornecido. Copie a URL da barra de endereços.
 
 1. Abra outra instância do navegador (qualquer navegador). Cole a URL na barra de endereços.
 

@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 2/25/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: b6a189907f521d7d9d18c1373747a13ab38a621f
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: ad6eac246e5bc7039158981bbe96036389512e4f
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87444161"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019229"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -29,7 +31,7 @@ Este tutorial ensina os conceitos básicos da criação de uma API Web com o ASP
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Neste tutorial, você aprende a:
+Neste tutorial, você aprenderá como:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -512,7 +514,7 @@ Consulte [o tutorial: chamar uma API Web do ASP.NET Core com JavaScript](xref:tu
 
 ::: moniker range="< aspnetcore-3.0"
 
-Neste tutorial, você aprende a:
+Neste tutorial, você aprenderá como:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -917,7 +919,7 @@ Adicione um arquivo HTML chamado *index.html* ao diretório *wwwroot*. Substitua
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo código a seguir:
+Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo seguinte código:
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 
@@ -964,7 +966,7 @@ A exclusão de um item pendente é feita definindo o `type` na chamada do AJAX c
 
 [Exibir ou baixar o código de exemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consulte [como baixar](xref:index#how-to-download-a-sample).
 
-Para obter mais informações, consulte os seguintes recursos:
+Para saber mais, consulte os recursos a seguir:
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>

@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 65d8bbcdaed76a308b924ba024219e8f520bb585
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 7d2ff774b7654993e2cd9b126db252f81a3032d3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399277"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018748"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Auxiliar de Marca de Cache no ASP.NET Core MVC
 
@@ -109,7 +111,7 @@ Exemplo:
 
 | Tipo de Atributo | Exemplos                                    |
 | -------------- | ------------------------------------------- |
-| Cadeia de caracteres         | `User-Agent`, `User-Agent,content-encoding` |
+| String         | `User-Agent`, `User-Agent,content-encoding` |
 
 `vary-by-header` aceita uma lista delimitada por vírgulas de valores de cabeçalho que disparam uma atualização do cache quando eles mudam.
 
@@ -125,7 +127,7 @@ O exemplo a seguir monitora o valor do cabeçalho `User-Agent`. O exemplo armaze
 
 | Tipo de Atributo | Exemplos             |
 | -------------- | -------------------- |
-| Cadeia de caracteres         | `Make`, `Make,Model` |
+| String         | `Make`, `Make,Model` |
 
 `vary-by-query` aceita uma lista delimitada por vírgula de <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> em uma cadeia de consulta (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>) que dispara uma atualização do cache quando o valor de qualquer chave listada é alterado.
 
@@ -141,7 +143,7 @@ O exemplo a seguir monitora os valores de `Make` e `Model`. O exemplo armazena e
 
 | Tipo de Atributo | Exemplos             |
 | -------------- | -------------------- |
-| Cadeia de caracteres         | `Make`, `Make,Model` |
+| String         | `Make`, `Make,Model` |
 
 `vary-by-route` aceita uma lista delimitada por vírgulas de nomes de parâmetros de rota que disparam uma atualização do cache quando o valor de parâmetro de dados de rota muda.
 
@@ -163,15 +165,15 @@ routes.MapRoute(
 </cache>
 ```
 
-### <a name="vary-by-cookie"></a>vary-by-cookie
+### <a name="vary-by-no-loccookie"></a>variar porcookie
 
 | Tipo de Atributo | Exemplos                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
-| Cadeia de caracteres         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
+| String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
-`vary-by-cookie` aceita uma lista delimitada por vírgulas de nomes de cookie que disparam uma atualização do cache quando os valores de cookie mudam.
+`vary-by-cookie`aceita uma lista delimitada por vírgulas de cookie nomes que disparam uma atualização de cache quando os cookie valores são alterados.
 
-O exemplo a seguir monitora o cookie associado a ASP.NET Core Identity . Quando um usuário é autenticado, uma alteração no Identity Cookie dispara uma atualização do cache:
+O exemplo a seguir monitora o cookie associado a ASP.NET Core Identity . Quando um usuário é autenticado, uma alteração no Identity cookie dispara uma atualização do cache:
 
 ```cshtml
 <cache vary-by-cookie=".AspNetCore.Identity.Application">
@@ -195,13 +197,13 @@ O exemplo a seguir monitora o usuário conectado atual para disparar uma atualiz
 </cache>
 ```
 
-Usar esse atributo mantém o conteúdo no cache durante um ciclo de entrada e saída. Quando o valor é definido como `true`, um ciclo de autenticação invalida o cache para o usuário autenticado. O cache é invalidado porque um novo valor de cookie exclusivo é gerado quando um usuário é autenticado. O cache é mantido para o estado anônimo quando nenhum cookie está presente ou quando o cookie expirou. Se o usuário **não** estiver autenticado, o cache será mantido.
+Usar esse atributo mantém o conteúdo no cache durante um ciclo de entrada e saída. Quando o valor é definido como `true`, um ciclo de autenticação invalida o cache para o usuário autenticado. O cache é invalidado porque um novo cookie valor exclusivo é gerado quando um usuário é autenticado. O cache é mantido para o estado anônimo quando não cookie está presente ou o expirou cookie . Se o usuário **não** estiver autenticado, o cache será mantido.
 
 ### <a name="vary-by"></a>vary-by
 
 | Tipo de Atributo | Exemplo  |
 | -------------- | -------- |
-| Cadeia de caracteres         | `@Model` |
+| String         | `@Model` |
 
 `vary-by` permite a personalização de quais dados são armazenados em cache. Quando o objeto referenciado pelo valor de cadeia de caracteres do atributo é alterado, o conteúdo do Auxiliar de Marca de Cache é atualizado. Frequentemente, uma concatenação de cadeia de caracteres de valores do modelo é atribuída a este atributo. Na verdade, isso resulta em um cenário em que uma atualização de qualquer um dos valores concatenados invalida o cache.
 

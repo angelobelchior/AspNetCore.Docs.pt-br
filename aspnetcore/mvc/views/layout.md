@@ -5,6 +5,8 @@ description: Saiba como usar layouts comuns, compartilhar diretivas e executar u
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 08e6284a6c5fc8e8926651f6fe873a71df449acb
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 4d5032f02db28341d7781dd57d58d776636fd16d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406648"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020438"
 ---
 # <a name="layout-in-aspnet-core"></a>Layout no ASP.NET Core
 
@@ -41,7 +43,7 @@ A maioria dos aplicativos Web tem um layout comum que fornece aos usuários uma 
 
 ![Exemplo de layout da página](layout/_static/page-layout.png)
 
-Estruturas HTML comuns, como scripts e folhas de estilo, também são usadas com frequência por muitas páginas em um aplicativo. Todos esses elementos compartilhados podem ser definidos em um arquivo de *layout*, que pode então ser referenciado por qualquer exibição usada no aplicativo. Os layouts reduzem o código duplicado em exibições.
+Estruturas HTML comuns, como scripts e folhas de estilo, também são usadas frequentemente por muitas páginas em um aplicativo. Todos esses elementos compartilhados podem ser definidos em um arquivo de *layout* , que pode ser referenciado por qualquer exibição usada no aplicativo. Os layouts reduzem o código duplicado nas exibições.
 
 Por convenção, o layout padrão de um aplicativo ASP.NET Core é chamado *_Layout.cshtml*. Os arquivos de layout para novos projetos do ASP.NET Core criados com os modelos são:
 
@@ -53,7 +55,7 @@ Por convenção, o layout padrão de um aplicativo ASP.NET Core é chamado *_Lay
 
   ![Pasta das exibições no Gerenciador de Soluções](layout/_static/mvc-web-project-views.png)
 
-O layout define um modelo de nível superior para exibições no aplicativo. Os aplicativos não exigem um layout. Os aplicativos podem definir mais de um layout, com diferentes exibições especificando diferentes layouts.
+O layout define um modelo de nível superior para exibições no aplicativo. Aplicativos não exigem um layout. Os aplicativos podem definir mais de um layout, com diferentes exibições que especificam layouts diferentes.
 
 O código a seguir mostra o arquivo de layout para um modelo de projeto criado com um controlador e exibições:
 

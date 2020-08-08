@@ -5,6 +5,8 @@ description: Parte 3 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.date: 08/17/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 898f3be045755a0ee14c738b6ffc104408ded7b6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f8942e52b3b438817e3d1041a2c6b568eb662469
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407766"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020386"
 ---
-# <a name="part-3-scaffolded-razor-pages-in-aspnet-core"></a>Parte 3, com Scaffold Razor páginas em ASP.NET Core
+# <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3, com Scaffold Razor páginas em ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -72,7 +74,7 @@ A `@model` diretiva especifica o tipo do modelo passado para a Razor página. No
 
 ### <a name="the-layout-page"></a>A página de layout
 
-Selecione os links de menu (**RazorPagesMovie**, **Página Inicial** e **Privacidade**). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml*. Abra o arquivo *Pages/Shared/_Layout.cshtml*.
+Selecione os links de menu (** Razor PagesMovie**, **Home**e **Privacy**). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml*. Abra o arquivo *Pages/Shared/_Layout.cshtml*.
 
 Os modelos de [layout](xref:mvc/views/layout) permitem que o layout do contêiner HTML seja:
 
@@ -104,7 +106,7 @@ A linha `@*Markup removed for brevity.*@` é um Razor comentário. Ao contrário
 
 ### <a name="update-the-layout"></a>Atualizar o layout
 
-Altere o elemento `<title>` no arquivo *Pages/Shared/_Layout.cshtml* para exibir **Movie**, em vez de **RazorPagesMovie**.
+Altere o `<title>` elemento no arquivo *pages/Shared/_Layout. cshtml* para exibir o **filme** em vez de ** Razor PagesMovie**.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -153,7 +155,7 @@ Se há algum erro de modelo, o formulário é reexibido juntamente com quaisquer
 
 Se não há nenhum erro de modelo, os dados são salvos e o navegador é redirecionado à página Índice.
 
-### <a name="the-create-razor-page"></a>A Razor página criar
+### <a name="the-create-no-locrazor-page"></a>A Razor página criar
 
 Examine o arquivo de página *páginas/filmes/Create. cshtml* Razor :
 
@@ -263,7 +265,7 @@ A `@model` diretiva especifica o tipo do modelo passado para a Razor página. No
 
 ### <a name="the-layout-page"></a>A página de layout
 
-Selecione os links de menu (**RazorPagesMovie**, **Página Inicial** e **Privacidade**). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml*. Abra o arquivo *Pages/Shared/_Layout.cshtml*.
+Selecione os links de menu (** Razor PagesMovie**, **Home**e **Privacy**). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml*. Abra o arquivo *Pages/Shared/_Layout.cshtml*.
 
 Os modelos de [layout](xref:mvc/views/layout) permitem especificar o layout de contêiner HTML do site em um lugar e, em seguida, aplicá-lo a várias páginas do site. Localize a linha `@RenderBody()`. `RenderBody` é um espaço reservado em que todas as visualizações específicas da página criadas são mostradas, *encapsuladas* na página de layout. Por exemplo, se você selecionar o link **Privacidade**, a exibição **Pages/Privacy.cshtml** será renderizada dentro do método `RenderBody`.
 
@@ -290,7 +292,7 @@ A linha `@*Markup removed for brevity.*@` é um Razor comentário que não apare
 
 ### <a name="update-the-layout"></a>Atualizar o layout
 
-Altere o elemento `<title>` no arquivo *Pages/Shared/_Layout.cshtml* para exibir **Movie**, em vez de **RazorPagesMovie**.
+Altere o `<title>` elemento no arquivo *pages/Shared/_Layout. cshtml* para exibir o **filme** em vez de ** Razor PagesMovie**.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
@@ -339,7 +341,7 @@ Se há algum erro de modelo, o formulário é reexibido juntamente com quaisquer
 
 Se não há nenhum erro de modelo, os dados são salvos e o navegador é redirecionado à página Índice.
 
-### <a name="the-create-razor-page"></a>A Razor página criar
+### <a name="the-create-no-locrazor-page"></a>A Razor página criar
 
 Examine o arquivo de página *páginas/filmes/Create. cshtml* Razor :
 

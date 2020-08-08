@@ -6,6 +6,8 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: b3dcb3a80e8d5150d8513ef558531749d0884568
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 6ec531a04a220f75f5793cb2c7b5232908dbd883
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400148"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019151"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Model binding no ASP.NET Core
 
@@ -155,13 +157,13 @@ Não aplique `[FromBody]` a mais de um parâmetro por método de ação. Depois 
 
 ### <a name="additional-sources"></a>Fontes adicionais
 
-Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor*. Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados de cookies ou estado de sessão. Para obter dados de uma nova fonte:
+Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor*. Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados do cookie estado da sessão ou do. Para obter dados de uma nova fonte:
 
 * Crie uma classe que implementa `IValueProvider`.
 * Crie uma classe que implementa `IValueProviderFactory`.
 * Registre a classe de alocador em `Startup.ConfigureServices`.
 
-O aplicativo de exemplo inclui um [provedor de valor](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) e um exemplo de [alocador](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtém valores de cookies. Aqui está o código de registro em `Startup.ConfigureServices`:
+O aplicativo de exemplo inclui um [provedor de valor](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) e um exemplo de [fábrica](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtém valores de cookie s. Aqui está o código de registro em `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -200,7 +202,7 @@ A mesma estratégia será recomendada se você não desejar que erros de convers
 
 Os tipos simples em que o associador de modelos pode converter cadeias de caracteres de origem incluem os seguintes:
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Booliano](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
 * [º](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
@@ -282,13 +284,13 @@ Vários atributos internos estão disponíveis para controlar o model binding de
 
 ### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Aqui está um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Este é um exemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Atributo [BindNever]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Aqui está um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Este é um exemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -488,7 +490,7 @@ Você pode estender o model binding escrevendo um associador de modelos personal
 
 ## <a name="manual-model-binding"></a>Model binding manual 
 
-O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Aqui está um exemplo:
+O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Este é um exemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
@@ -641,13 +643,13 @@ Não aplique `[FromBody]` a mais de um parâmetro por método de ação. Depois 
 
 ### <a name="additional-sources"></a>Fontes adicionais
 
-Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor*. Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados de cookies ou estado de sessão. Para obter dados de uma nova fonte:
+Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor*. Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados do cookie estado da sessão ou do. Para obter dados de uma nova fonte:
 
 * Crie uma classe que implementa `IValueProvider`.
 * Crie uma classe que implementa `IValueProviderFactory`.
 * Registre a classe de alocador em `Startup.ConfigureServices`.
 
-O aplicativo de exemplo inclui um [provedor de valor](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) e um exemplo de [alocador](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtém valores de cookies. Aqui está o código de registro em `Startup.ConfigureServices`:
+O aplicativo de exemplo inclui um [provedor de valor](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) e um exemplo de [fábrica](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtém valores de cookie s. Aqui está o código de registro em `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -686,7 +688,7 @@ A mesma estratégia será recomendada se você não desejar que erros de convers
 
 Os tipos simples em que o associador de modelos pode converter cadeias de caracteres de origem incluem os seguintes:
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Booliano](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
 * [º](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
@@ -768,13 +770,13 @@ Vários atributos internos estão disponíveis para controlar o model binding de
 
 ### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Aqui está um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Este é um exemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Atributo [BindNever]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Aqui está um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Este é um exemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -956,7 +958,7 @@ Você pode estender o model binding escrevendo um associador de modelos personal
 
 ## <a name="manual-model-binding"></a>Model binding manual
 
-O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Aqui está um exemplo:
+O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Este é um exemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 

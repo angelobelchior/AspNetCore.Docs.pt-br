@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 0d13c44b5538f617343a89a441856d4a3f0cc7f1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 7e1463671323cddd2b95c03de994d497449d7884
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399940"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019086"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de cache de resposta em ASP.NET Core
 
@@ -112,7 +114,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | `Authorization` | A resposta não será armazenada em cache se o cabeçalho existir. |
 | `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>públicos</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Um `Pragma: no-cache` cabeçalho na solicitação produz o mesmo efeito que `Cache-Control: no-cache` . Esse cabeçalho é substituído pelas diretivas relevantes no `Cache-Control` cabeçalho, se presente. Considerado para compatibilidade com versões anteriores com HTTP/1.0. |
-| `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookies impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [provedor TempData baseado em cookie](xref:fundamentals/app-state#tempdata)).  |
+| `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookie s impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [ cookie provedor TempData baseado](xref:fundamentals/app-state#tempdata)em Caching).  |
 | `Vary` | O `Vary` cabeçalho é usado para variar a resposta armazenada em cache por outro cabeçalho. Por exemplo, armazene respostas em cache por meio da codificação, incluindo o `Vary: Accept-Encoding` cabeçalho, que armazena em cache as respostas para solicitações com cabeçalhos `Accept-Encoding: gzip` e `Accept-Encoding: text/plain` separadamente. Uma resposta com um valor de cabeçalho de `*` nunca é armazenada. |
 | `Expires` | Uma resposta considerada obsoleta por esse cabeçalho não é armazenada ou recuperada, a menos que seja substituída por outros `Cache-Control` cabeçalhos. |
 | `If-None-Match` | A resposta completa será servida do cache se o valor não for `*` e a `ETag` da resposta não corresponder a nenhum dos valores fornecidos. Caso contrário, uma resposta 304 (não modificada) é servida. |
@@ -256,7 +258,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | `Authorization` | A resposta não será armazenada em cache se o cabeçalho existir. |
 | `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>públicos</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Um `Pragma: no-cache` cabeçalho na solicitação produz o mesmo efeito que `Cache-Control: no-cache` . Esse cabeçalho é substituído pelas diretivas relevantes no `Cache-Control` cabeçalho, se presente. Considerado para compatibilidade com versões anteriores com HTTP/1.0. |
-| `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookies impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [provedor TempData baseado em cookie](xref:fundamentals/app-state#tempdata)).  |
+| `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookie s impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [ cookie provedor TempData baseado](xref:fundamentals/app-state#tempdata)em Caching).  |
 | `Vary` | O `Vary` cabeçalho é usado para variar a resposta armazenada em cache por outro cabeçalho. Por exemplo, armazene respostas em cache por meio da codificação, incluindo o `Vary: Accept-Encoding` cabeçalho, que armazena em cache as respostas para solicitações com cabeçalhos `Accept-Encoding: gzip` e `Accept-Encoding: text/plain` separadamente. Uma resposta com um valor de cabeçalho de `*` nunca é armazenada. |
 | `Expires` | Uma resposta considerada obsoleta por esse cabeçalho não é armazenada ou recuperada, a menos que seja substituída por outros `Cache-Control` cabeçalhos. |
 | `If-None-Match` | A resposta completa será servida do cache se o valor não for `*` e a `ETag` da resposta não corresponder a nenhum dos valores fornecidos. Caso contrário, uma resposta 304 (não modificada) é servida. |

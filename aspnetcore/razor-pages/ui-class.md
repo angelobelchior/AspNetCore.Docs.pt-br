@@ -6,6 +6,8 @@ ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 1d37ebaa913a2815b79b16875049bbf91f9fb941
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 042ef8dcc7135e0c60baec972d405380d85a6a10
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404386"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019216"
 ---
-# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Criar interface do usuário reutilizável usando o Razor projeto de biblioteca de classes no ASP.NET Core
+# <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Criar interface do usuário reutilizável usando o Razor projeto de biblioteca de classes no ASP.NET Core
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -31,13 +33,13 @@ Razorexibições, páginas, controladores, modelos de página, [ Razor component
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="create-a-class-library-containing-razor-ui"></a>Criar uma biblioteca de classes que contém a Razor interface do usuário
+## <a name="create-a-class-library-containing-no-locrazor-ui"></a>Criar uma biblioteca de classes que contém a Razor interface do usuário
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * No Visual Studio, selecione **criar novo um novo projeto**.
 * Selecione ** Razor biblioteca de classes** > **Avançar**.
-* Nomeie a biblioteca (por exemplo, "RazorClassLib"), > **criar**. Para evitar uma colisão de nome de arquivo com a biblioteca de exibição gerada, verifique se o nome da biblioteca não termina em `.Views`.
+* Nomeie a biblioteca (por exemplo, " Razor ClassLib"), > **criar**. Para evitar uma colisão de nome de arquivo com a biblioteca de exibição gerada, verifique se o nome da biblioteca não termina em `.Views`.
 * Selecione **páginas de suporte e exibições** se você precisar dar suporte a exibições. Por padrão, há Razor suporte apenas para páginas. Selecione **Criar**.
 
 O Razor modelo de biblioteca de classes (RCL) usa como padrão o Razor desenvolvimento de componentes por padrão. A opção **páginas e exibições de suporte** oferece suporte a páginas e exibições.
@@ -73,7 +75,7 @@ Quando uma exibição, exibição parcial ou Razor página é encontrada no apli
 
 No download de exemplo, renomeie *WebApp1/Areas/MyFeature2* como *WebApp1/Areas/MyFeature* para testar a precedência.
 
-Copie a exibição parcial *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* para *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*. Atualize a marcação para indicar o novo local. Crie e execute o aplicativo para verificar se a versão da parcial do aplicativo está sendo usada.
+Copie a exibição parcial * Razor UIClassLib/areas/MyFeature/Pages/shared/_Message. cshtml* para *WebApp1/areas/MyFeature/Pages/Shared/_Message. cshtml*. Atualize a marcação para indicar o novo local. Crie e execute o aplicativo para verificar se a versão da parcial do aplicativo está sendo usada.
 
 ### <a name="rcl-pages-layout"></a>Layout de páginas RCL
 
@@ -82,7 +84,7 @@ Para fazer referência ao conteúdo do RCL como se ele fosse parte da pasta *pá
 * *RazorUIClassLib/páginas*
 * *RazorUIClassLib/páginas/compartilhado*
 
-Suponha que *RazorUIClassLib/Pages/Shared* contenham dois arquivos parciais: *_Header. cshtml* e *_Footer. cshtml*. As `<partial>` marcas podem ser adicionadas ao arquivo *_Layout. cshtml* :
+Suponha que * Razor UIClassLib/Pages/Shared* contenham dois arquivos parciais: *_Header. cshtml* e *_Footer. cshtml*. As `<partial>` marcas podem ser adicionadas ao arquivo *_Layout. cshtml* :
 
 ```cshtml
 <body>
@@ -198,13 +200,13 @@ Razorexibições, páginas, controladores, modelos de página, [ Razor component
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="create-a-class-library-containing-razor-ui"></a>Criar uma biblioteca de classes que contém a Razor interface do usuário
+## <a name="create-a-class-library-containing-no-locrazor-ui"></a>Criar uma biblioteca de classes que contém a Razor interface do usuário
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * No menu **Arquivo** do Visual Studio, selecione **Novo** > **Projeto**.
 * Selecione **Aplicativo Web ASP.NET Core**.
-* Dê um nome à biblioteca (por exemplo, "RazorClassLib") > **OK**. Para evitar uma colisão de nome de arquivo com a biblioteca de exibição gerada, verifique se o nome da biblioteca não termina em `.Views`.
+* Nomeie a biblioteca (por exemplo, " Razor ClassLib") > **OK**. Para evitar uma colisão de nome de arquivo com a biblioteca de exibição gerada, verifique se o nome da biblioteca não termina em `.Views`.
 * Verifique se o **ASP.NET Core 2.1** ou posterior está selecionado.
 * Selecione ** Razor biblioteca de classes** > **OK**.
 
@@ -235,7 +237,7 @@ A RCL pode ser referenciada por:
 * Pacote do NuGet. Confira [Criando pacotes do NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) e [Criar e publicar um pacote do NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).
 * *{ProjectName}.csproj*. Confira [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).
 
-## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>Walkthrough: criar um projeto RCL e usar de um Razor projeto de páginas
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-no-locrazor-pages-project"></a>Walkthrough: criar um projeto RCL e usar de um Razor projeto de páginas
 
 Você pode baixar o [projeto completo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) e testá-lo em vez de criá-lo. O download de exemplo contém um código adicional e links que facilitam o teste do projeto. Você pode deixar comentários [nesse problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/6098) com suas opiniões sobre os exemplos de download em relação às instruções passo a passo.
 
@@ -275,10 +277,10 @@ Crie o projeto da RCL:
 
 * No menu **Arquivo** do Visual Studio, selecione **Novo** > **Projeto**.
 * Selecione **Aplicativo Web ASP.NET Core**.
-* Nomeie o aplicativo **RazorUIClassLib** como > **OK**.
+* Nomeie o aplicativo ** Razor UIClassLib** como > **OK**.
 * Verifique se o **ASP.NET Core 2.1** ou posterior está selecionado.
 * Selecione ** Razor biblioteca de classes** > **OK**.
-* Adicione um Razor arquivo de exibição parcial chamado *RazorUIClassLib/areas/MyFeature/Pages/Shared/_Message. cshtml*.
+* Adicione um Razor arquivo de exibição parcial chamado * Razor UIClassLib/areas/MyFeature/Pages/Shared/_Message. cshtml*.
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
@@ -300,13 +302,13 @@ O arquivo *_ViewStart. cshtml* é necessário para usar o layout do Razor projet
 
 ---
 
-### <a name="add-razor-files-and-folders-to-the-project"></a>Adicionar Razor arquivos e pastas ao projeto
+### <a name="add-no-locrazor-files-and-folders-to-the-project"></a>Adicionar Razor arquivos e pastas ao projeto
 
-* Substitua a marcação em *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* pelo código a seguir:
+* Substitua a marcação em * Razor UIClassLib/areas/MyFeature/páginas/Shared/_Message. cshtml* pelo código a seguir:
 
   [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
 
-* Substitua a marcação em *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml* pelo código a seguir:
+* Substitua a marcação em * Razor UIClassLib/areas/MyFeature/Pages/página1. cshtml* pelo seguinte código:
 
   [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
@@ -324,9 +326,9 @@ O arquivo *_ViewStart. cshtml* é necessário para usar o layout do Razor projet
   dotnet build RazorUIClassLib
   ```
 
-A saída do build contém *RazorUIClassLib.dll* e *RazorUIClassLib.Views.dll*. *RazorUIClassLib.Views.dll* contém o Razor conteúdo compilado.
+A saída da compilação contém * RazorUIClassLib.dll* e * RazorUIClassLib.Views.dll*. * RazorUIClassLib.Views.dll* contém o Razor conteúdo compilado.
 
-### <a name="use-the-razor-ui-library-from-a-razor-pages-project"></a>Usar a Razor biblioteca de interface do usuário de um Razor projeto de páginas
+### <a name="use-the-no-locrazor-ui-library-from-a-no-locrazor-pages-project"></a>Usar a Razor biblioteca de interface do usuário de um Razor projeto de páginas
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -340,9 +342,9 @@ Criar o Razor aplicativo Web de páginas:
 
 * No **Gerenciador de Soluções**, clique com o botão direito do mouse em **WebApp1** e selecione **Definir como projeto de inicialização**.
 * No **Gerenciador de Soluções**, clique com o botão direito do mouse em **WebApp1** e selecione **Dependências de Build** > **Dependências do Projeto**.
-* Marque **RazorUIClassLib** como uma dependência de **WebApp1**.
+* Verifique ** Razor UIClassLib** como uma dependência de **WebApp1**.
 * No **Gerenciador de Soluções**, clique com o botão direito do mouse em **WebApp1** e selecione **Adicionar** > **Referência**.
-* Na caixa de diálogo **Gerenciador de Referências**, marque **RazorUIClassLib** > **OK**.
+* Na caixa de diálogo **Gerenciador de referências** , marque ** Razor UIClassLib** > **OK**.
 
 Execute o aplicativo.
 
@@ -377,7 +379,7 @@ Quando uma exibição, exibição parcial ou Razor página é encontrada no apli
 
 No download de exemplo, renomeie *WebApp1/Areas/MyFeature2* como *WebApp1/Areas/MyFeature* para testar a precedência.
 
-Copie a exibição parcial *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* para *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*. Atualize a marcação para indicar o novo local. Crie e execute o aplicativo para verificar se a versão da parcial do aplicativo está sendo usada.
+Copie a exibição parcial * Razor UIClassLib/areas/MyFeature/Pages/shared/_Message. cshtml* para *WebApp1/areas/MyFeature/Pages/Shared/_Message. cshtml*. Atualize a marcação para indicar o novo local. Crie e execute o aplicativo para verificar se a versão da parcial do aplicativo está sendo usada.
 
 ### <a name="rcl-pages-layout"></a>Layout de páginas RCL
 
@@ -386,7 +388,7 @@ Para fazer referência ao conteúdo do RCL como se ele fosse parte da pasta *pá
 * *RazorUIClassLib/páginas*
 * *RazorUIClassLib/páginas/compartilhado*
 
-Suponha que *RazorUIClassLib/Pages/Shared* contenham dois arquivos parciais: *_Header. cshtml* e *_Footer. cshtml*. As `<partial>` marcas podem ser adicionadas ao arquivo *_Layout. cshtml* :
+Suponha que * Razor UIClassLib/Pages/Shared* contenham dois arquivos parciais: *_Header. cshtml* e *_Footer. cshtml*. As `<partial>` marcas podem ser adicionadas ao arquivo *_Layout. cshtml* :
 
 ```cshtml
 <body>

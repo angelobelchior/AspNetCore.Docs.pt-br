@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/introduction
-ms.openlocfilehash: bf41d5a756c988b239824c19ef7a9d177a93a4a1
-ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
+ms.openlocfilehash: b29711e8e1ef1558731ba58ca2ff14000af19ca2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87913826"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019350"
 ---
 # <a name="aspnet-core-data-protection"></a>Proteção de dados do ASP.NET Core
 
@@ -31,7 +33,7 @@ O ASP.NET Core pilha de proteção de dados foi projetado para servir como a sub
 
 A declaração geral do problema pode ser disparada de forma sucinta em uma única frase: preciso manter informações confiáveis para recuperação posterior, mas não confio no mecanismo de persistência. Em termos da Web, isso pode ser escrito como "preciso fazer ida e volta em estado confiável por meio de um cliente não confiável".
 
-O exemplo canônico disso é um cookie de autenticação ou um token de portador. O servidor gera um token "Eu sou Groot e tem permissões XYZ" e o passa para o cliente. Em alguma data futura, o cliente apresentará esse token de volta ao servidor, mas o servidor precisa de algum tipo de garantia de que o cliente não tenha forjado o token. Portanto, o primeiro requisito: autenticidade (também conhecido como integridade, prova de adulteração).
+O exemplo canônico disso é um token de autenticação cookie ou portador. O servidor gera um token "Eu sou Groot e tem permissões XYZ" e o passa para o cliente. Em alguma data futura, o cliente apresentará esse token de volta ao servidor, mas o servidor precisa de algum tipo de garantia de que o cliente não tenha forjado o token. Portanto, o primeiro requisito: autenticidade (também conhecido como integridade, prova de adulteração).
 
 Como o estado persistente é confiável pelo servidor, antecipamos que esse Estado pode conter informações específicas para o ambiente operacional. Isso pode estar na forma de um caminho de arquivo, uma permissão, um identificador ou outra referência indireta ou alguma outra parte dos dados específicos do servidor. Essas informações geralmente não devem ser divulgadas para um cliente não confiável. Portanto, o segundo requisito: confidencialidade.
 

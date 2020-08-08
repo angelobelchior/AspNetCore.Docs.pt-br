@@ -5,6 +5,8 @@ description: Parte 4 de Razor páginas e Entity Framework série de tutoriais.
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 7d326bd5d8204d98e2f13b433f49fd740557905f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ebdcf5605e8b4067c52841b138184e51668f9c25
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405673"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019645"
 ---
-# <a name="part-4-razor-pages-with-ef-core-migrations-in-aspnet-core"></a>Parte 4, Razor páginas com EF Core migrações no ASP.NET Core
+# <a name="part-4-no-locrazor-pages-with-ef-core-migrations-in-aspnet-core"></a>Parte 4, Razor páginas com EF Core migrações no ASP.NET Core
 
 Por [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) e [Rick Anderson](https://twitter.com/RickAndMSFT)
 

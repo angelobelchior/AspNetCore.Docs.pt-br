@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 700370fd11a0df40a45c47e8c378d5bdd0c60009
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: cd6624d107fb19da92a7e58a747cc85e876a6ba4
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212693"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018631"
 ---
-# <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>RazorPáginas com Entity Framework Core no ASP.NET Core-tutorial 1 de 8
+# <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>RazorPáginas com Entity Framework Core no ASP.NET Core-tutorial 1 de 8
 
 Por [Tom Dykstra](https://github.com/tdykstra) e [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -498,7 +500,7 @@ Os usuários podem exibir e atualizar informações de alunos, cursos e instruto
 
 O estilo de interface do usuário deste site é próximo ao que é gerado pelos modelos internos. O foco do tutorial está em EF Core com Razor páginas, não na interface do usuário.
 
-## <a name="create-the-contosouniversity-razor-pages-web-app"></a>Criar o Razor aplicativo Web ContosoUniversity Pages
+## <a name="create-the-contosouniversity-no-locrazor-pages-web-app"></a>Criar o Razor aplicativo Web ContosoUniversity Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -673,7 +675,7 @@ O código a seguir mostra o arquivo *Program.cs* atualizado.
 
 ### <a name="test-the-app"></a>Testar o aplicativo
 
-Execute o aplicativo e aceite a política de cookies. Este aplicativo não armazena informações pessoais. Você pode ler sobre a política de cookies em [Suporte para a RGPD (Regulamento Geral sobre a Proteção de Dados) da UE](xref:security/gdpr).
+Execute o aplicativo e aceite a cookie política. Este aplicativo não armazena informações pessoais. Você pode ler sobre a cookie política no [suporte de regulamento geral sobre a proteção de dados da UE (GDPR)](xref:security/gdpr).
 
 * Selecione o link **Alunos** e **Criar Novo**.
 * Teste os links Editar, Detalhes e Excluir.
@@ -776,6 +778,6 @@ No próximo tutorial, as operações CRUD (criar, ler, atualizar e excluir) bás
 * [Versão do YouTube deste tutorial](https://www.youtube.com/watch?v=P7iTtQnkrNs)
 
 > [!div class="step-by-step"]
-> [Avançar](xref:data/ef-rp/crud)
+> [Próximo](xref:data/ef-rp/crud)
 
 ::: moniker-end
