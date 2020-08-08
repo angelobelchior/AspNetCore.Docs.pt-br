@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 5c3314991d05ea868fe9190bb3a0206b27fd920f
-ms.sourcegitcommit: b06511252f165dd4590ba9b5beca4153fa220779
+ms.openlocfilehash: 7d2d563eef60cb8eead95c6792bcac2cda16a859
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85459760"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021335"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Cache de resposta no ASP.NET Core
 
@@ -42,7 +44,7 @@ A [especificação de cache HTTP 1,1](https://tools.ietf.org/html/rfc7234) descr
 | Diretiva                                                       | Ação |
 | --------------------------------------------------------------- | ------ |
 | [público](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Um cache pode armazenar a resposta. |
-| [pessoal](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | A resposta não deve ser armazenada por um cache compartilhado. Um cache privado pode armazenar e reutilizar a resposta. |
+| [particulares](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | A resposta não deve ser armazenada por um cache compartilhado. Um cache privado pode armazenar e reutilizar a resposta. |
 | [idade máxima](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | O cliente não aceita uma resposta cuja idade é maior que o número especificado de segundos. Exemplos: `max-age=60` (60 segundos), `max-age=2592000` (1 mês) |
 | [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **Em solicitações**: um cache não deve usar uma resposta armazenada para atender à solicitação. O servidor de origem regenera a resposta para o cliente e o middleware atualiza a resposta armazenada em seu cache.<br><br>**Em respostas**: a resposta não deve ser usada para uma solicitação subsequente sem validação no servidor de origem. |
 | [sem armazenamento](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **Em solicitações**: um cache não deve armazenar a solicitação.<br><br>**Em respostas**: um cache não deve armazenar nenhuma parte da resposta. |
@@ -66,7 +68,7 @@ Não há nenhum controle de desenvolvedor sobre esse comportamento de cache ao u
 
 ## <a name="other-caching-technology-in-aspnet-core"></a>Outra tecnologia de cache no ASP.NET Core
 
-### <a name="in-memory-caching"></a>Cache in-memory
+### <a name="in-memory-caching"></a>cache na memória
 
 O cache na memória usa a memória do servidor para armazenar dados armazenados em cache. Esse tipo de cache é adequado para um único servidor ou para vários servidores usando *sessões adesivas*. Sessões adesivas significa que as solicitações de um cliente são sempre roteadas para o mesmo servidor para processamento.
 
@@ -132,8 +134,8 @@ Vary: User-Agent
 
 <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore>Substitui a maioria das outras propriedades. Quando essa propriedade é definida como `true` , o `Cache-Control` cabeçalho é definido como `no-store` . Se <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> é definido como `None` :
 
-* `Cache-Control` está definido como `no-store,no-cache`.
-* `Pragma` está definido como `no-cache`.
+* `Cache-Control` é definido como `no-store,no-cache`.
+* `Pragma` é definido como `no-cache`.
 
 Se <xref:Microsoft.AspNetCore.Mvc.CacheProfile.NoStore> é `false` e <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> é `None` , `Cache-Control` e `Pragma` são definidos como `no-cache` .
 

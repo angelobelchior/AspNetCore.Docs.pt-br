@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.0
-ms.openlocfilehash: 97d8606ba6bef0bb8bf23d1553c7cb5681fbdbd8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1ec51bf054f1f0d60ed27ee280f436e6d4c8c4b0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404360"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021186"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Novidades do ASP.NET Core 2.0
 
 Este artigo destaca as alterações mais significativas no ASP.NET Core 2.0, com links para a documentação relevante.
 
-## <a name="razor-pages"></a>RazorPages
+## <a name="no-locrazor-pages"></a>RazorPages
 
 RazorAs páginas são um novo recurso do ASP.NET Core MVC que torna os cenários voltados para a página de codificação mais fáceis e produtivos.
 
@@ -72,7 +74,7 @@ Novos modelos estão disponíveis para configurar a autenticação para aplicati
 
 Para obter informações sobre o status da documentação planejada, consulte o [problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/3054).
 
-## <a name="identity-update"></a>atualização de Identity
+## <a name="no-locidentity-update"></a>atualização de Identity
 
 Tornamos mais fácil criar APIs Web seguras usando o Identity no ASP.NET Core 2,0. Você pode adquirir tokens de acesso para acessar suas APIs Web usando a [MSAL (Biblioteca de Autenticação da Microsoft)](https://www.nuget.org/packages/Microsoft.Identity.Client).
 
@@ -136,7 +138,7 @@ Razora exibição de pré-compilação é habilitada durante a publicação por 
 
 Para obter mais informações, consulte [ Razor Exibir compilação e pré-compilação no ASP.NET Core](xref:mvc/views/view-compilation).
 
-## <a name="razor-support-for-c-71"></a>Razorsuporte para C# 7,1
+## <a name="no-locrazor-support-for-c-71"></a>Razorsuporte para C# 7,1
 
 O Razor mecanismo de exibição foi atualizado para funcionar com o novo compilador Roslyn. Isso inclui suporte para recursos do C# 7.1 como expressões padrão, nomes de tupla inferidos e correspondência de padrões com genéricos. Para usar o C# 7.1 em seu projeto, adicione a seguinte propriedade no arquivo de projeto e, em seguida, recarregue a solução:
 

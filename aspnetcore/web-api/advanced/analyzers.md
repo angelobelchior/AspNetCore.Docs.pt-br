@@ -7,6 +7,8 @@ ms.author: prkrishn
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 1f44fd65836cc42ffb2303890eefb053b61c4c30
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 571046052dbe131e9cdcf981aaee0921ed8c2ea1
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399459"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021842"
 ---
 # <a name="use-web-api-analyzers"></a>Usar os analisadores da API Web
 
@@ -58,7 +60,7 @@ Instale o pacote NuGet [Microsoft. AspNetCore. Mvc. API. Analyzers](https://www.
 Da janela **Console do Gerenciador de Pacotes**:
   * Vá para **Exibir** > **outro** > **console do Gerenciador de pacotes**do Windows.
   * Navegue até o diretório no qual o arquivo *ApiConventions.csproj* está localizado.
-  * Execute o comando a seguir:
+  * Execute o seguinte comando:
 
     ```powershell
     Install-Package Microsoft.AspNetCore.Mvc.Api.Analyzers
@@ -81,7 +83,7 @@ dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
 
 ### <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Execute o comando a seguir:
+Execute o seguinte comando:
 
 ```dotnetcli
 dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers

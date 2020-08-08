@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,24 +17,24 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 1757d205b583c8b3f3bbf845594d7228f8d45175
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: bd7432fc29d0cda003abed1f0e522bdddf2e4efc
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408546"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022206"
 ---
-# <a name="use-hubs-in-signalr-for-aspnet-core"></a>Usar hubs no SignalR para ASP.NET Core
+# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>Usar hubs no SignalR para ASP.NET Core
 
 Por [Rachel appel](https://twitter.com/rachelappel) e [Kevin Griffin](https://twitter.com/1kevgriff)
 
 [Exibir ou baixar o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(como baixar)](xref:index#how-to-download-a-sample)
 
-## <a name="what-is-a-signalr-hub"></a>O que é um SignalR Hub
+## <a name="what-is-a-no-locsignalr-hub"></a>O que é um SignalR Hub
 
 A SignalR API de hubs permite chamar métodos em clientes conectados do servidor. No código do servidor, você define os métodos que são chamados pelo cliente. No código do cliente, você define os métodos que são chamados do servidor. SignalRCuida de tudo nos bastidores que possibilitam a comunicação de cliente para servidor e servidor para cliente em tempo real possível.
 
-## <a name="configure-signalr-hubs"></a>Configurar SignalR hubs
+## <a name="configure-no-locsignalr-hubs"></a>Configurar SignalR hubs
 
 O SignalR middleware requer alguns serviços, que são configurados chamando `services.AddSignalR` .
 

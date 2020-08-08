@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 05/17/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/groups
-ms.openlocfilehash: af76402d02ee4273deadac246f275c1ae7ad84ac
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3a1182b793c7d05a11f0b5f16f4d406a9063f023
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408507"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021023"
 ---
-# <a name="manage-users-and-groups-in-signalr"></a>Gerenciar usuários e grupos noSignalR
+# <a name="manage-users-and-groups-in-no-locsignalr"></a>Gerenciar usuários e grupos noSignalR
 
 Por [Brennan Conroy](https://github.com/BrennanConroy)
 
@@ -30,7 +32,7 @@ SignalRpermite que as mensagens sejam enviadas a todas as conexões associadas a
 
 [Exibir ou baixar o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [(como baixar)](xref:index#how-to-download-a-sample)
 
-## <a name="users-in-signalr"></a>Usuários noSignalR
+## <a name="users-in-no-locsignalr"></a>Usuários noSignalR
 
 Um único usuário no SignalR pode ter várias conexões com um aplicativo. Por exemplo, um usuário pode estar conectado à área de trabalho e ao seu telefone. Cada dispositivo tem uma SignalR conexão separada, mas todos eles estão associados ao mesmo usuário. Se uma mensagem for enviada ao usuário, todas as conexões associadas a esse usuário receberão a mensagem. O identificador de usuário para uma conexão pode ser acessado pela `Context.UserIdentifier` propriedade no Hub.
 
@@ -43,7 +45,7 @@ Envie uma mensagem para um usuário específico passando o identificador de usu�
 
 [!code-csharp[Configure service](groups/sample/Hubs/ChatHub.cs?range=29-32)]
 
-## <a name="groups-in-signalr"></a>Grupos emSignalR
+## <a name="groups-in-no-locsignalr"></a>Grupos emSignalR
 
 Um grupo é uma coleção de conexões associadas a um nome. As mensagens podem ser enviadas a todas as conexões em um grupo. Os grupos são a maneira recomendada de enviar para uma conexão ou várias conexões, pois os grupos são gerenciados pelo aplicativo. Uma conexão pode ser membro de vários grupos. Os grupos são ideais para algo como um aplicativo de chat, onde cada sala pode ser representada como um grupo. As conexões são adicionadas ou removidas dos grupos por meio dos `AddToGroupAsync` `RemoveFromGroupAsync` métodos e.
 

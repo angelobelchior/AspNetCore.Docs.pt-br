@@ -6,6 +6,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/21/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 91d7108748f3e2ae4d7db3791ebc1536e104e2a8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 51b9eae0d4746001696e0795467eaf4c0ab2c990
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406947"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022024"
 ---
-# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutorial: introdução ao ASP.NET CoreSignalR
+# <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Tutorial: introdução ao ASP.NET CoreSignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -36,7 +38,7 @@ Este tutorial ensina as noções básicas da criação de um aplicativo em tempo
 
 No final, você terá um aplicativo de chat funcionando:
 
-![SignalRaplicativo de exemplo](signalr/_static/3.x/signalr-get-started-finished.png)
+![::: no-Loc (Signalr)::: aplicativo de exemplo](signalr/_static/3.x/signalr-get-started-finished.png)
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
@@ -62,7 +64,7 @@ No final, você terá um aplicativo de chat funcionando:
 
 * Na caixa de diálogo **Criar novo projeto**, selecione **Aplicativo Web ASP.NET Core** e depois selecione **Avançar**.
 
-* Na caixa de diálogo **Configurar seu novo projeto**, nomeie o projeto *SignalRChat* e, em seguida, selecione **Criar**.
+* Na caixa de diálogo **configurar seu novo projeto** , nomeie o projeto como * SignalR chat*e, em seguida, selecione **criar**.
 
 * Na caixa de diálogo **criar um novo aplicativo web ASP.NET Core** , selecione **.net Core** e **ASP.NET Core 3,0**. 
 
@@ -89,11 +91,11 @@ No final, você terá um aplicativo de chat funcionando:
 
 * Verifique se a **Estrutura de Destino** está definida para **.NET Core 3.0** e, em seguida, selecione **Avançar**.
 
-* Nomeie o projeto como *SignalRChat* e, em seguida, selecione **Criar**.
+* Nomeie o projeto como * SignalR chat*e, em seguida, selecione **criar**.
 
 ---
 
-## <a name="add-the-signalr-client-library"></a>Adicionar a SignalR biblioteca de cliente
+## <a name="add-the-no-locsignalr-client-library"></a>Adicionar a SignalR biblioteca de cliente
 
 A SignalR biblioteca de servidores está incluída na estrutura compartilhada do ASP.NET Core 3,0. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg*. unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.
 
@@ -148,7 +150,7 @@ A SignalR biblioteca de servidores está incluída na estrutura compartilhada do
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* Navegue até a pasta do projeto, que inclui o arquivo *SignalRChat.csproj*.
+* Navegue até a pasta do projeto (aquela que contém o arquivo * SignalR chat. csproj* ).
 
 * Execute o comando a seguir para obter a SignalR biblioteca de cliente usando LibMan.
 
@@ -171,11 +173,11 @@ A SignalR biblioteca de servidores está incluída na estrutura compartilhada do
 
 ---
 
-## <a name="create-a-signalr-hub"></a>Criar um SignalR Hub
+## <a name="create-a-no-locsignalr-hub"></a>Criar um SignalR Hub
 
 Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com a comunicação entre cliente e servidor.
 
-* Na pasta do projeto SignalRChat, crie uma pasta *Hubs*.
+* Na SignalR pasta do projeto de chat, crie uma pasta *hubs* .
 
 * Na pasta *Hubs*, crie um arquivo *ChatHub.cs* com o código a seguir:
 
@@ -185,7 +187,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
   O método `SendMessage` pode ser chamado por um cliente conectado para enviar uma mensagem a todos os clientes. O código cliente do JavaScript que chama o método é mostrado posteriormente no tutorial. SignalRo código é assíncrono para fornecer a escalabilidade máxima.
 
-## <a name="configure-signalr"></a>configurar SignalR
+## <a name="configure-no-locsignalr"></a>configurar SignalR
 
 O SignalR servidor deve ser configurado para passar SignalR solicitações para SignalR .
 
@@ -195,7 +197,7 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
 
   Essas alterações adicionam SignalR à injeção de dependência ASP.NET Core e aos sistemas de roteamento.
 
-## <a name="add-signalr-client-code"></a>Adicionar SignalR código de cliente
+## <a name="add-no-locsignalr-client-code"></a>Adicionar SignalR código de cliente
 
 * Substitua o conteúdo *Pages\Index.cshtml* pelo código a seguir:
 
@@ -243,7 +245,7 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
 
   O nome e a mensagem são exibidos em ambas as páginas instantaneamente.
 
-  ![SignalRaplicativo de exemplo](signalr/_static/3.x/signalr-get-started-finished.png)
+  ![::: no-Loc (Signalr)::: aplicativo de exemplo](signalr/_static/3.x/signalr-get-started-finished.png)
 
 > [!TIP]
 > * Se o aplicativo não funcionar, abra as ferramentas para desenvolvedores do navegador (F12) e acesse o console. Você pode encontrar erros relacionados ao código HTML e JavaScript. Por exemplo, suponha que você coloque *signalr.js* em uma pasta diferente daquela direcionada. Nesse caso, a referência a esse arquivo não funcionará e ocorrerá um erro 404 no console.
@@ -267,7 +269,7 @@ Este tutorial ensina as noções básicas da criação de um aplicativo em tempo
 > * Crie um SignalR Hub. 
 > * Configure o projeto a ser usado SignalR . 
 > * Adicione o código que envia mensagens de qualquer cliente para todos os clientes conectados.  
-No final, você terá um aplicativo de chat em funcionamento: ![SignalR aplicativo de exemplo](signalr/_static/2.x/signalr-get-started-finished.png)   
+No final, você terá um aplicativo de chat de trabalho: ![ ::: no-Loc (signalr)::: aplicativo de exemplo](signalr/_static/2.x/signalr-get-started-finished.png)   
 
 ## <a name="prerequisites"></a>Pré-requisitos    
 
@@ -291,7 +293,7 @@ No final, você terá um aplicativo de chat em funcionamento: ![SignalR aplicati
 
 * No menu, selecione **Arquivo > Novo Projeto**. 
 
-* Na caixa de diálogo **Novo Projeto**, selecione **Instalado > Visual C# > Web > Aplicativo Web ASP.NET Core**. Dê ao projeto o nome de *SignalRChat*. 
+* Na caixa de diálogo **Novo Projeto**, selecione **Instalado > Visual C# > Web > Aplicativo Web ASP.NET Core**. Nomeie o projeto como * SignalR chat*.   
 
   ![Caixa de diálogo Novo Projeto no Visual Studio](signalr/_static/2.x/signalr-new-project-dialog.png)    
 
@@ -308,8 +310,8 @@ No final, você terá um aplicativo de chat em funcionamento: ![SignalR aplicati
 * Execute os seguintes comandos:   
 
    ```dotnetcli 
-   dotnet new webapp -o SignalRChat 
-   code -r SignalRChat  
+   dotnet new webapp -o SignalRChat   
+   code -r SignalRChat    
    ```  
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)   
@@ -320,11 +322,11 @@ No final, você terá um aplicativo de chat em funcionamento: ![SignalR aplicati
 
 * Selecione **Avançar**.  
 
-* Nomeie o projeto como *SignalRChat* e, em seguida, selecione **Criar**.   
+* Nomeie o projeto como * SignalR chat*e, em seguida, selecione **criar**. 
 
 --- 
 
-## <a name="add-the-signalr-client-library"></a>Adicionar a SignalR biblioteca de cliente 
+## <a name="add-the-no-locsignalr-client-library"></a>Adicionar a SignalR biblioteca de cliente 
 
 A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App` metapacote. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg*. unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.   
 
@@ -381,7 +383,7 @@ A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App`
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
   ```   
 
-* Navegue até a pasta do projeto, que inclui o arquivo *SignalRChat.csproj*. 
+* Navegue até a pasta do projeto (aquela que contém o arquivo * SignalR chat. csproj* ).   
 
 * Execute o comando a seguir para obter a SignalR biblioteca de cliente usando LibMan.    
 
@@ -404,11 +406,11 @@ A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App`
 
 --- 
 
-## <a name="create-a-signalr-hub"></a>Criar um SignalR Hub   
+## <a name="create-a-no-locsignalr-hub"></a>Criar um SignalR Hub   
 
 Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com a comunicação entre cliente e servidor.   
 
-* Na pasta do projeto SignalRChat, crie uma pasta *Hubs*.    
+* Na SignalR pasta do projeto de chat, crie uma pasta *hubs* .  
 
 * Na pasta *Hubs*, crie um arquivo *ChatHub.cs* com o código a seguir: 
 
@@ -418,7 +420,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
   O método `SendMessage` pode ser chamado por um cliente conectado para enviar uma mensagem a todos os clientes. O código cliente do JavaScript que chama o método é mostrado posteriormente no tutorial. SignalRo código é assíncrono para fornecer a escalabilidade máxima.    
 
-## <a name="configure-signalr"></a>configurar SignalR  
+## <a name="configure-no-locsignalr"></a>configurar SignalR  
 
 O SignalR servidor deve ser configurado para passar SignalR solicitações para SignalR .    
 
@@ -428,7 +430,7 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
 
   Essas alterações são adicionadas SignalR ao sistema de injeção de dependência ASP.NET Core e ao pipeline de middleware.  
 
-## <a name="add-signalr-client-code"></a>Adicionar SignalR código de cliente    
+## <a name="add-no-locsignalr-client-code"></a>Adicionar SignalR código de cliente    
 
 * Substitua o conteúdo *Pages\Index.cshtml* pelo código a seguir:  
 
@@ -476,7 +478,7 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
 
   O nome e a mensagem são exibidos em ambas as páginas instantaneamente.   
 
-  ![SignalRaplicativo de exemplo](signalr/_static/2.x/signalr-get-started-finished.png) 
+  ![::: no-Loc (Signalr)::: aplicativo de exemplo](signalr/_static/2.x/signalr-get-started-finished.png) 
 
 > [!TIP]    
 > Se o aplicativo não funcionar, abra as ferramentas para desenvolvedores do navegador (F12) e acesse o console. Você pode encontrar erros relacionados ao código HTML e JavaScript. Por exemplo, suponha que você coloque *signalr.js* em uma pasta diferente daquela direcionada. Nesse caso, a referência a esse arquivo não funcionará e ocorrerá um erro 404 no console.   

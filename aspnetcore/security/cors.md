@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: dc8e68ef482025443147eeb27bd3f245c1a1a5ed
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: ee640ded37f40175e3e150f713fa970e9705b62c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212892"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021101"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Habilitar as solicitações entre origens (CORS) no ASP.NET Core
 
@@ -272,7 +274,7 @@ A especificação CORS chama esses cabeçalhos *cabeçalhos de resposta simples*
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupAllowSubdomain.cs?name=snippet5)]
 ### <a name="credentials-in-cross-origin-requests"></a>Credenciais em solicitações entre origens
 
-As credenciais exigem tratamento especial em uma solicitação CORS. Por padrão, o navegador não envia credenciais com uma solicitação entre origens. As credenciais incluem cookies e esquemas de autenticação HTTP. Para enviar credenciais com uma solicitação entre origens, o cliente deve definir `XMLHttpRequest.withCredentials` como `true` .
+As credenciais exigem tratamento especial em uma solicitação CORS. Por padrão, o navegador não envia credenciais com uma solicitação entre origens. As credenciais incluem cookie s e esquemas de autenticação http. Para enviar credenciais com uma solicitação entre origens, o cliente deve definir `XMLHttpRequest.withCredentials` como `true` .
 
 Usando `XMLHttpRequest` diretamente:
 
@@ -464,7 +466,7 @@ Vary: Accept-Encoding
 X-Powered-By: ASP.NET
 ```
 
-**Cabeçalhos da solicitação**
+**Cabeçalhos de solicitação**
 
 ```
 Accept: */*
@@ -502,7 +504,7 @@ Vary: Origin
 X-Powered-By: ASP.NET
 ```
 
-**Cabeçalhos da solicitação**
+**Cabeçalhos de solicitação**
 
 ```
 Accept: */*
@@ -819,7 +821,7 @@ A especificação CORS chama esses cabeçalhos *cabeçalhos de resposta simples*
 
 ### <a name="credentials-in-cross-origin-requests"></a>Credenciais em solicitações entre origens
 
-As credenciais exigem tratamento especial em uma solicitação CORS. Por padrão, o navegador não envia credenciais com uma solicitação entre origens. As credenciais incluem cookies e esquemas de autenticação HTTP. Para enviar credenciais com uma solicitação entre origens, o cliente deve definir `XMLHttpRequest.withCredentials` como `true` .
+As credenciais exigem tratamento especial em uma solicitação CORS. Por padrão, o navegador não envia credenciais com uma solicitação entre origens. As credenciais incluem cookie s e esquemas de autenticação http. Para enviar credenciais com uma solicitação entre origens, o cliente deve definir `XMLHttpRequest.withCredentials` como `true` .
 
 Usando `XMLHttpRequest` diretamente:
 

@@ -5,6 +5,8 @@ description: Esta série de tutoriais mostra como usar Razor páginas no ASP.NET
 ms.author: riande
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 77b230f14b4eef60d771daf8fe09288a9dd3c69c
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 5fb841de2fa9a04cf05aaf08f255041ee1952638
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212997"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021088"
 ---
-# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutorial: introdução às Razor páginas no ASP.NET Core
+# <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Tutorial: introdução às Razor páginas no ASP.NET Core
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -44,7 +46,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 ![Página Inicial ou de Índice](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Pré-requisitos
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -60,7 +62,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 ---
 
-## <a name="create-a-razor-pages-web-app"></a>Criar um Razor aplicativo Web de páginas
+## <a name="create-a-no-locrazor-pages-web-app"></a>Criar um Razor aplicativo Web de páginas
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -84,7 +86,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 * Altere para o diretório (`cd`) que contém o projeto.
 
-* Execute os comandos a seguir:
+* Execute os seguintes comandos:
 
   ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
@@ -94,7 +96,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
   * O `dotnet new` comando cria um novo Razor projeto de páginas na pasta * Razor PagesMovie* .
   * O `code` comando abre a pasta * Razor PagesMovie* na instância atual do Visual Studio Code.
 
-* Depois que o ícone de chama de OmniSharp da barra de status fica verde, uma caixa de diálogo solicita **que os ativos necessários compilem e depurem estão faltando em ' Razor PagesMovie '. Adicioná-los?** Selecione **Sim**.
+* Depois que o ícone de chama de OmniSharp da barra de status fica verde, uma caixa de diálogo solicita **que os ativos necessários compilem e depurem estão faltando em ' Razor PagesMovie '. Adicioná-los?** Selecione **Sim** na barra superior.
 
   Um diretório *.vscode*, contendo os arquivos *launch.json* e *tasks.json*, é adicionado ao diretório raiz do projeto.
 
@@ -188,7 +190,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 ![Página Inicial ou de Índice](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Pré-requisitos
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -204,7 +206,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 ---
 
-## <a name="create-a-razor-pages-web-app"></a>Criar um Razor aplicativo Web de páginas
+## <a name="create-a-no-locrazor-pages-web-app"></a>Criar um Razor aplicativo Web de páginas
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -232,7 +234,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 * Altere para o diretório (`cd`) que contém o projeto.
 
-* Execute os comandos a seguir:
+* Execute os seguintes comandos:
 
   ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
@@ -242,7 +244,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
   * O `dotnet new` comando cria um novo Razor projeto de páginas na pasta * Razor PagesMovie* .
   * O `code` comando abre a pasta * Razor PagesMovie* na instância atual do Visual Studio Code.
 
-* Depois que o ícone de chama de OmniSharp da barra de status fica verde, uma caixa de diálogo solicita **que os ativos necessários compilem e depurem estão faltando em ' Razor PagesMovie '. Adicioná-los?** Selecione **Sim**.
+* Depois que o ícone de chama de OmniSharp da barra de status fica verde, uma caixa de diálogo solicita **que os ativos necessários compilem e depurem estão faltando em ' Razor PagesMovie '. Adicioná-los?** Selecione **Sim** na barra superior.
 
   Um diretório *.vscode*, contendo os arquivos *launch.json* e *tasks.json*, é adicionado ao diretório raiz do projeto.
 
@@ -356,7 +358,7 @@ Contém o ponto de entrada para o programa. Para obter mais informações, consu
 
 ### <a name="startupcs"></a>Startup.cs
 
-Contém o código que configura o comportamento do aplicativo, como se ele requer o consentimento para cookies. Para obter mais informações, consulte <xref:fundamentals/startup>.
+Contém o código que configura o comportamento do aplicativo, como se ele requer consentimento para cookie s. Para obter mais informações, consulte <xref:fundamentals/startup>.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

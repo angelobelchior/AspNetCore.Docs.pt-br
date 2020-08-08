@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: d805d57fd1e2d83d0148900993e4bf6108a13028
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: aa078fa30217d737d579b97d4de9704b5d1dd8a3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408403"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022076"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publicar um aplicativo ASP.NET Core no Azure com o Visual Studio
 
@@ -194,7 +196,7 @@ Clique em **Publicar**. O Visual Studio publica seu aplicativo no Azure. Quando 
 
 ![Verifique se a tarefa está concluída](publish-to-azure-webapp-using-vs/_static/final.png)
 
-### <a name="clean-up"></a>Limpar
+### <a name="clean-up"></a>Limpeza
 
 Quando você concluir o teste do aplicativo, acesse o [portal do Azure](https://portal.azure.com/) e exclua o aplicativo.
 

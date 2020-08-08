@@ -5,6 +5,8 @@ description: Saiba como criar um aplicativo ASP.NET Core com confirmação de em
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 1156ddd2921afbfeccaf077ca29d267f8b1e844a
-ms.sourcegitcommit: 3544941682869734ea0113e24e02ed0ec9e1a9ec
+ms.openlocfilehash: 7016c2c1997d961f4b3d3cf513fc1769bd65247b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/18/2020
-ms.locfileid: "86464547"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021608"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmação de conta e de recuperação de senha no ASP.NET Core
 
@@ -235,7 +237,7 @@ Habilitar a confirmação de conta em um site com usuários bloqueia todos os us
 
 [SDK do .NET Core 2,2 ou posterior](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-identity"></a>Criar um aplicativo Web e ScaffoldIdentity
+## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Criar um aplicativo Web e ScaffoldIdentity
 
 Execute os comandos a seguir para criar um aplicativo Web com autenticação.
 

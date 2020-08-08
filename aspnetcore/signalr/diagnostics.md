@@ -7,6 +7,8 @@ ms.author: anurse
 ms.custom: signalr
 ms.date: 06/12/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: f2b864d47c98a031872be676a68143bd79f49829
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 61733fe4fbcd7b94662404a39a288ff2ce75ec53
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85409092"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021829"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>Registro em log e diagnóstico no ASP.NET CoreSignalR
+# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro em log e diagnóstico no ASP.NET CoreSignalR
 
 Por [Andrew Stanton-enfermaria](https://twitter.com/anurse)
 
@@ -69,7 +71,7 @@ Se você estiver executando o em um aplicativo de console, o [agente de log do c
 
 O Visual Studio exibe a saída de log na janela **saída** . Selecione a opção de menu suspenso do **ASP.NET Core Web Server** .
 
-### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
 
 Habilite a opção de **log do aplicativo (Filesystem)** na seção **logs de diagnóstico** do portal do serviço Azure app e configure o **nível** como `Verbose` . Os logs devem estar disponíveis no serviço de **streaming de log** e nos logs no sistema de arquivos do serviço de aplicativo. Para obter mais informações, consulte [Azure log streaming](xref:fundamentals/logging/index#azure-log-streaming).
 
@@ -218,11 +220,11 @@ Você pode anexar arquivos de diagnóstico a problemas do GitHub renomeando-os p
 
 Métricas é uma representação de medidas de dados em intervalos de tempo. Por exemplo, solicitações por segundo. Os dados de métricas permitem a observação do estado de um aplicativo em um alto nível. As métricas do .NET gRPC são emitidas usando <xref:System.Diagnostics.Tracing.EventCounter> .
 
-### <a name="signalr-server-metrics"></a>SignalRmétricas do servidor
+### <a name="no-locsignalr-server-metrics"></a>SignalRmétricas do servidor
 
 SignalRas métricas do servidor são relatadas na <xref:Microsoft.AspNetCore.Http.Connections> origem do evento.
 
-| Name                    | Descrição                 |
+| Nome                    | Descrição                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | Total de conexões iniciadas   |
 | `connections-stopped`   | Total de conexões interrompidas   |

@@ -5,6 +5,8 @@ description: Descubra os vários tópicos de implementação da proteção de da
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/index
-ms.openlocfilehash: a54d5a093e4de7f3f1f267dcfb06ac4457f9ca82
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b56e8c88bb53fe9ca28a7aefd5660e8217178ffa
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400421"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022245"
 ---
 # <a name="aspnet-core-data-protection-implementation"></a>Implementação da proteção de dados do ASP.NET Core
 

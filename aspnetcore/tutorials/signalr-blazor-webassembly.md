@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: d5aa7520a637b18e014519134dfe2d2139e7c11d
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.openlocfilehash: 3d7ae49142849c589a1a20c33d30e87747ad1935
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147776"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021621"
 ---
-# <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>Usar ASP.NET Core SignalR comBlazor WebAssembly
+# <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Usar ASP.NET Core SignalR comBlazor WebAssembly
 
 Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
 
@@ -61,7 +63,7 @@ No final deste tutorial, você terá um aplicativo de chat em funcionamento.
 
 ---
 
-## <a name="create-a-hosted-blazor-webassembly-app-project"></a>Criar um Blazor WebAssembly projeto de aplicativo hospedado
+## <a name="create-a-hosted-no-locblazor-webassembly-app-project"></a>Criar um Blazor WebAssembly projeto de aplicativo hospedado
 
 Siga as orientações para sua escolha de ferramentas:
 
@@ -122,7 +124,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 ---
 
-## <a name="add-the-signalr-client-library"></a>Adicionar a SignalR biblioteca de cliente
+## <a name="add-the-no-locsignalr-client-library"></a>Adicionar a SignalR biblioteca de cliente
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -169,13 +171,13 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ---
 
-## <a name="add-a-signalr-hub"></a>Adicionar um SignalR Hub
+## <a name="add-a-no-locsignalr-hub"></a>Adicionar um SignalR Hub
 
 No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione a seguinte `ChatHub` classe ( `Hubs/ChatHub.cs` ):
 
 [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Hubs/ChatHub.cs)]
 
-## <a name="add-services-and-an-endpoint-for-the-signalr-hub"></a>Adicionar serviços e um ponto de extremidade para o SignalR Hub
+## <a name="add-services-and-an-endpoint-for-the-no-locsignalr-hub"></a>Adicionar serviços e um ponto de extremidade para o SignalR Hub
 
 1. No projeto `BlazorSignalRApp.Server`, abra o arquivo `Startup.cs`.
 
@@ -196,7 +198,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
    [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
 
-## <a name="add-razor-component-code-for-chat"></a>Adicionar Razor código de componente para o chat
+## <a name="add-no-locrazor-component-code-for-chat"></a>Adicionar Razor código de componente para o chat
 
 1. No projeto `BlazorSignalRApp.Client`, abra o arquivo `Pages/Index.razor`.
 
@@ -216,7 +218,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 1. Escolha o navegador, insira um nome e uma mensagem e selecione o botão para enviar a mensagem. O nome e a mensagem são exibidos em ambas as páginas instantaneamente:
 
-   ![SignalRBlazor WebAssemblyaplicativo de exemplo aberto em duas janelas de navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![::: no-Loc (Signalr):::::: no-Loc (Webassembly do mais alto)::: aplicativo de exemplo aberto em duas janelas do navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Aspas: *Star Trek VI: o país não descoberto* &copy; 1991 de [extrema importância](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -234,7 +236,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 1. Escolha o navegador, insira um nome e uma mensagem e selecione o botão para enviar a mensagem. O nome e a mensagem são exibidos em ambas as páginas instantaneamente:
 
-   ![SignalRBlazor WebAssemblyaplicativo de exemplo aberto em duas janelas de navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![::: no-Loc (Signalr):::::: no-Loc (Webassembly do mais alto)::: aplicativo de exemplo aberto em duas janelas do navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Aspas: *Star Trek VI: o país não descoberto* &copy; 1991 de [extrema importância](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -246,7 +248,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 1. Escolha o navegador, insira um nome e uma mensagem e selecione o botão para enviar a mensagem. O nome e a mensagem são exibidos em ambas as páginas instantaneamente:
 
-   ![SignalRBlazor WebAssemblyaplicativo de exemplo aberto em duas janelas de navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![::: no-Loc (Signalr):::::: no-Loc (Webassembly do mais alto)::: aplicativo de exemplo aberto em duas janelas do navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Aspas: *Star Trek VI: o país não descoberto* &copy; 1991 de [extrema importância](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -263,7 +265,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 1. Escolha o navegador, insira um nome e uma mensagem e selecione o botão para enviar a mensagem. O nome e a mensagem são exibidos em ambas as páginas instantaneamente:
 
-   ![SignalRBlazor WebAssemblyaplicativo de exemplo aberto em duas janelas de navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![::: no-Loc (Signalr):::::: no-Loc (Webassembly do mais alto)::: aplicativo de exemplo aberto em duas janelas do navegador mostrando mensagens trocadas.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Aspas: *Star Trek VI: o país não descoberto* &copy; 1991 de [extrema importância](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 

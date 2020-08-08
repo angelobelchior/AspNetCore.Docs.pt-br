@@ -5,6 +5,8 @@ description: Saiba como o ASP.NET Core MVC é uma estrutura avançada para a cri
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 68a0b14eb0897f6ff6e24e74b1fe5536bee1adfe
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 64bee1966eff40e9057166adfafbf78d0cc5b6aa
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405842"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021439"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Visão geral sobre o ASP.NET Core MVC
 
@@ -77,7 +79,7 @@ ASP.NET Core MVC inclui o seguinte:
 * [Capacidade de teste](#testability)
 * [RazorExibir mecanismo](#razor-view-engine)
 * [Exibições com rigidez de tipos](#strongly-typed-views)
-* [Auxiliares de Marca](#tag-helpers)
+* [Auxiliares de Marcas](#tag-helpers)
 * [Exibir componentes](#view-components)
 
 ### <a name="routing"></a>Roteamento
@@ -194,7 +196,7 @@ Use a geração de links para habilitar o suporte para hipermídia. Habilite o s
 
 O uso pela estrutura da injeção de dependência e de interfaces a torna adequada para teste de unidade. Além disso, a estrutura inclui recursos (como um provedor TestHost e InMemory para o Entity Framework) que também agiliza e facilita a execução de [testes de integração](xref:test/integration-tests). Saiba mais sobre [como testar a lógica do controlador](controllers/testing.md).
 
-### <a name="razor-view-engine"></a>RazorExibir mecanismo
+### <a name="no-locrazor-view-engine"></a>RazorExibir mecanismo
 
 [ASP.NET Core exibições do MVC](views/overview.md) usam o [ Razor mecanismo de exibição](views/razor.md) para renderizar exibições. Razoré uma linguagem de marcação de modelo compacto, expressiva e fluida para definir exibições usando código C# inserido. Razoré usado para gerar dinamicamente o conteúdo da Web no servidor. Você pode combinar o código do servidor com o código e o conteúdo do lado cliente de maneira limpa.
 

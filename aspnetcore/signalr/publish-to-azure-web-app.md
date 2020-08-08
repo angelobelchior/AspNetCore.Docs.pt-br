@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: d3f48b3171012b03fcaf7665c2089b27d37bbeca
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3163a2743c544d0a07d92eb7547e77c3b200ac83
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408832"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022531"
 ---
-# <a name="publish-an-aspnet-core-signalr-app-to-azure-app-service"></a>Publicar um SignalR aplicativo de ASP.NET Core no serviço Azure app
+# <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>Publicar um SignalR aplicativo de ASP.NET Core no serviço Azure app
 
 Por [Brady GASTER](https://twitter.com/bradygaster)
 
@@ -47,12 +49,12 @@ Este artigo aborda a publicação usando as ferramentas do Visual Studio. Visual
    | ------------------ | ----------- |
    | **Nome**           | Nome exclusivo do aplicativo. |
    | **Assinatura**   | Assinatura do Azure que o aplicativo usa. |
-   | **Grupo de recursos** | Grupo de recursos relacionados aos quais o aplicativo pertence. |
+   | **Grupo de Recursos** | Grupo de recursos relacionados aos quais o aplicativo pertence. |
    | **Plano de hospedagem**   | Plano de preços para o aplicativo Web. |
 
 1. Selecione o ** SignalR serviço do Azure** na lista suspensa **dependências**  >  **Adicionar** :
 
-   ![Área de dependências mostrando a seleção do serviço do Azure SignalR na lista suspensa adicionar](publish-to-azure-web-app/_static/signalr-service-dependency.png)
+   ![Área de dependências mostrando a seleção de Azure::: no-Loc (Signalr)::: Service na lista suspensa adicionar](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 
 1. Na caixa de diálogo ** SignalR serviço do Azure** , selecione **criar uma nova SignalR instância de serviço do Azure**.
 
@@ -78,7 +80,7 @@ Se ocorrer um erro de *Gateway insatisfatório HTTP 502,2* ao implantar um aplic
 
 Para aplicativos hospedados sem o SignalR serviço do Azure, habilite:
 
-* [Afinidade arr](https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity-cookie-(ARR-cookie)-for-Azure-web-apps.html) para rotear solicitações de um usuário de volta para a mesma instância do serviço de aplicativo. A configuração padrão é **on**.
+* [Afinidade ARR] ( https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity- cookie -(Arr- cookie ) -for-Azure-web-apps.html) para rotear solicitações de um usuário de volta para a mesma instância do serviço de aplicativo. A configuração padrão é **on**.
 * [Web Sockets](xref:fundamentals/websockets) para permitir que o transporte de soquetes da Web funcione. A configuração padrão é **off**.
 
 1. Na portal do Azure, navegue até o aplicativo Web nos **serviços de aplicativos**.

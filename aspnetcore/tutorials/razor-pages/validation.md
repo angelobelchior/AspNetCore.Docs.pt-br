@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 1bc9b2b081c58392bd2c226ebedc804b43810bc2
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: dad2e667cb6fa3ace7cb5e5dcb982511357ed49b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408845"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021517"
 ---
-# <a name="part-8-add-validation-to-an-aspnet-core-razor-page"></a>Parte 8, adicionar validação a uma página de ASP.NET Core Razor
+# <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a>Parte 8, adicionar validação a uma página de ASP.NET Core Razor
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -63,7 +65,7 @@ Os atributos de validação especificam o comportamento que você deseja impor n
 
 Ter as regras de validação automaticamente impostas pelo ASP.NET Core ajuda a tornar seu aplicativo mais robusto. Também garante que você não se esqueça de validar algo e inadvertidamente permita dados incorretos no banco de dados.
 
-### <a name="validation-error-ui-in-razor-pages"></a>IU de erro de validação em Razor páginas
+### <a name="validation-error-ui-in-no-locrazor-pages"></a>IU de erro de validação em Razor páginas
 
 Execute o aplicativo e navegue para Pages/Movies.
 

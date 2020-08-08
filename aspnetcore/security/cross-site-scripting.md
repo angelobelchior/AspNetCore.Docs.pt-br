@@ -5,6 +5,8 @@ description: Saiba mais sobre scripts entre sites (XSS) e técnicas para abordar
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: a94fe1612c023468238f09a91ddb0346b65d52ba
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 24fab313c3af30cfd4143ba29a33ba25bfcdf9a9
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408013"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021803"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir XSS (script entre sites) no ASP.NET Core
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-O XSS (script entre sites) é uma vulnerabilidade de segurança que permite que um invasor coloque scripts do lado do cliente (geralmente JavaScript) em páginas da Web. Quando outros usuários carregam páginas afetadas, os scripts do invasor serão executados, permitindo que o invasor roube cookies e tokens de sessão, altere o conteúdo da página da Web por meio da manipulação DOM ou redirecione o navegador para outra página. As vulnerabilidades de XSS geralmente ocorrem quando um aplicativo usa a entrada do usuário e a envia para uma página sem validar, codificar ou escapar dela.
+O XSS (script entre sites) é uma vulnerabilidade de segurança que permite que um invasor coloque scripts do lado do cliente (geralmente JavaScript) em páginas da Web. Quando outros usuários carregam páginas afetadas, os scripts do invasor serão executados, permitindo que o invasor roube cookie s e tokens de sessão, altere o conteúdo da página da Web por meio da manipulação DOM ou redirecione o navegador para outra página. As vulnerabilidades de XSS geralmente ocorrem quando um aplicativo usa a entrada do usuário e a envia para uma página sem validar, codificar ou escapar dela.
 
 ## <a name="protecting-your-application-against-xss"></a>Protegendo seu aplicativo contra XSS
 
@@ -40,7 +42,7 @@ Em um nível básico, o XSS funciona ao enganar seu aplicativo para inserir uma 
 
 5. Antes de colocar dados não confiáveis em uma cadeia de caracteres de consulta de URL, verifique se ela é codificada em URL.
 
-## <a name="html-encoding-using-razor"></a>Codificação HTML usandoRazor
+## <a name="html-encoding-using-no-locrazor"></a>Codificação HTML usandoRazor
 
 O Razor mecanismo usado no MVC codifica automaticamente todas as saídas originadas de variáveis, a menos que você trabalhe muito difícil para impedi-lo de fazer isso. Ele usa regras de codificação de atributo HTML sempre que você usa a *@* diretiva. Como a codificação de atributo HTML é um superconjunto de codificação HTML isso significa que você não precisa se preocupar com a possibilidade de usar codificação HTML ou codificação de atributo HTML. Você deve garantir que use apenas @ em um contexto HTML, não ao tentar inserir uma entrada não confiável diretamente no JavaScript. Os auxiliares de marca também codificam a entrada usada nos parâmetros de marca.
 
@@ -63,7 +65,7 @@ Essa exibição gera o conteúdo da variável *untrustedInput* . Essa variável 
 >[!WARNING]
 > ASP.NET Core MVC fornece uma `HtmlString` classe que não é codificada automaticamente na saída. Isso nunca deve ser usado em combinação com a entrada não confiável, pois isso vai expor uma vulnerabilidade de XSS.
 
-## <a name="javascript-encoding-using-razor"></a>Codificação JavaScript usandoRazor
+## <a name="javascript-encoding-using-no-locrazor"></a>Codificação JavaScript usandoRazor
 
 Pode haver ocasiões em que você deseja inserir um valor em JavaScript para processar em sua exibição. Há duas maneiras de fazer isso. A maneira mais segura de inserir valores é inserir o valor em um atributo de dados de uma marca e recuperá-lo em seu JavaScript. Por exemplo:
 
@@ -174,7 +176,7 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>Parâmetros de URL de codificação
 
-Se você quiser criar uma cadeia de caracteres de consulta de URL com entrada não confiável como um valor, use o `UrlEncoder` para codificar o valor. Por exemplo,
+Se você quiser criar uma cadeia de caracteres de consulta de URL com entrada não confiável como um valor, use o `UrlEncoder` para codificar o valor. Por exemplo:
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";

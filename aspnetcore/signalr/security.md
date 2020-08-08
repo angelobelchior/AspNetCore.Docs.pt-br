@@ -7,6 +7,8 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: 4e125fd6c4ad2cd4989d692dd28a63638218ee57
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e004899e334738f723cb98638cb31de8d314a830
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400408"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022466"
 ---
-# <a name="security-considerations-in-aspnet-core-signalr"></a>Considerações de segurança no ASP.NET CoreSignalR
+# <a name="security-considerations-in-aspnet-core-no-locsignalr"></a>Considerações de segurança no ASP.NET CoreSignalR
 
 Por [Andrew Stanton-enfermaria](https://twitter.com/anurse)
 
@@ -41,12 +43,12 @@ Para obter mais informações sobre como configurar o CORS, consulte [habilitar 
 
 * Permitir as origens esperadas específicas. Permitir qualquer origem é possível, mas **não** é seguro ou recomendado.
 * Os métodos HTTP `GET` e `POST` devem ser permitidos.
-* As credenciais devem ser permitidas para que as sessões adesivas baseadas em cookie funcionem corretamente. Eles devem ser habilitados mesmo quando a autenticação não é usada.
+* As credenciais devem ser permitidas para cookie que as sessões adesivas baseadas no funcionem corretamente. Eles devem ser habilitados mesmo quando a autenticação não é usada.
 
 ::: moniker range=">= aspnetcore-5.0"
 
 No entanto, no 5,0, fornecemos uma opção no cliente TypeScript para não usar credenciais.
-A opção de não usar credenciais só deve ser usada quando você souber 100% de que as credenciais como cookies não são necessárias em seu aplicativo (cookies são usados pelo serviço de aplicativo do Azure ao usar vários servidores para sessões adesivas).
+A opção de não usar credenciais só deve ser usada quando você souber 100% de que as credenciais como Cookie s não são necessárias em seu aplicativo ( cookie s são usadas pelo serviço de aplicativo do Azure ao usar vários servidores para sessões adesivas).
 
 ::: moniker-end
 

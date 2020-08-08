@@ -6,6 +6,8 @@ ms.author: riande
 ms.date: 01/21/2020
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: d89bf0bdfa9b10378d78c7fcedaa80eb68debe12
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a321747a609dbb23f75165d4992a4dd55c10c1d5
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399927"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021725"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory com o ASP.NET Core
 
@@ -28,8 +30,8 @@ Esses tutoriais e exemplos demonstram a autenticação no ASP.NET Core usando a 
 ## <a name="application-scenarios"></a>Cenários de aplicativo
 
 * [Início Rápido: Adicionar entrada com a Microsoft para um aplicativo Web do ASP.NET Core](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
-* [Aplicativo Web que assina usuários](/azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore)
-* [Aplicativo Web que faz chamadas a APIs Web](/azure/active-directory/develop/scenario-web-app-call-api-overview)
+* [Aplicativo Web que conecta os usuários](/azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore)
+* [Aplicativo Web que chama as APIs Web](/azure/active-directory/develop/scenario-web-app-call-api-overview)
 * [API Web protegida](/azure/active-directory/develop/scenario-protected-web-api-overview)
 * [API Web que faz chamadas a outras APIs Web](/azure/active-directory/develop/scenario-web-api-call-api-overview)
 * [Aplicativo Web que conecta usuários com Azure AD B2C](xref:security/authentication/azure-ad-b2c)

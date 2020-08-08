@@ -5,6 +5,8 @@ description: Parte 4 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 68764a5b8c908012cc0053aa4e3ea071f2ce423d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 6d1a93a9cab49d33181e88b7fdc0f203a1e2546c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400902"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022414"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>Parte 4, com um banco de dados e ASP.NET Core
 
@@ -261,7 +263,7 @@ O código a seguir mostra o arquivo *Program.cs* atualizado.
 
 Um aplicativo de produção não chamaria `Database.Migrate`. Ele é adicionado ao código anterior para evitar a exceção a seguir quando `Update-Database` não foi executado:
 
-SqlException: não pode abrir o banco de dados "RazorPagesMovieContext-21" solicitado pelo logon. Falha no logon.
+SqlException: não é possível abrir Razor o banco de dados "PagesMovieContext-21" solicitado pelo logon. Falha no logon.
 O logon falhou para o usuário 'user name'.
 
 ### <a name="test-the-app"></a>Testar o aplicativo

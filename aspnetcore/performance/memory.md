@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: d261a26de7b9ba77e5f9787ae2eb37293257a0fc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 09df67657c9b6e4e59d6a1379bf801c289028819
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406388"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020932"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gerenciamento de memória e coleta de lixo (GC) no ASP.NET Core
 
@@ -206,7 +208,7 @@ Alguns objetos do .NET Core dependem da memória nativa. A memória nativa **nã
 
 O .NET fornece a <xref:System.IDisposable> interface para permitir que os desenvolvedores liberem memória nativa. Mesmo se <xref:System.IDisposable.Dispose*> não for chamado, as classes implementadas corretamente serão chamadas `Dispose` quando o [finalizador](/dotnet/csharp/programming-guide/classes-and-structs/destructors) for executado.
 
-Considere o código a seguir:
+Considere o seguinte código:
 
 ```csharp
 [HttpGet("fileprovider")]
@@ -355,7 +357,7 @@ Consulte o seguinte para obter uma maneira melhor de lidar com o tempo de vida d
 * [HttpClient e gerenciamento de tempo de vida](/aspnet/core/fundamentals/http-requests#httpclient-and-lifetime-management)
 * [Blog de fábrica do HTTPClient](https://devblogs.microsoft.com/aspnet/asp-net-core-2-1-preview1-introducing-httpclient-factory/)
  
-### <a name="object-pooling"></a>Pooling de objetos
+### <a name="object-pooling"></a>Pool de objetos
 
 O exemplo anterior mostrou como a `HttpClient` instância pode ser tornada estática e reutilizada por todas as solicitações. A reutilização impede a execução de recursos.
 

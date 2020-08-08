@@ -6,6 +6,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 7c24340af0f0d589d683b0134d186bf9304d91b1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8fd42c7d31edd20c2aae7577c5a490b54ab8129c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403437"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022258"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Introdução ao NSwag e ao ASP.NET Core
 
@@ -60,7 +62,7 @@ Use uma das seguintes abordagens para instalar o pacote do NuGet do NSwag:
 * Da janela **Console do Gerenciador de Pacotes**:
   * Ir para **Exibir**  >  **outro**  >  **console do Gerenciador de pacotes** do Windows
   * Navegue para o diretório no qual o arquivo *TodoApi.csproj* está localizado
-  * Execute o comando a seguir:
+  * Execute o seguinte comando:
 
     ```powershell
     Install-Package NSwag.AspNetCore
@@ -81,7 +83,7 @@ Use uma das seguintes abordagens para instalar o pacote do NuGet do NSwag:
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Execute o comando a seguir:
+Execute o seguinte comando:
 
 ```dotnetcli
 dotnet add TodoApi.csproj package NSwag.AspNetCore
@@ -101,7 +103,7 @@ Realize estas etapas para adicionar e configurar o Swagger em seu aplicativo ASP
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-7)]
 
-* Inicie o aplicativo. Navegue até:
+* Iniciar o aplicativo. Navegue até:
   * `http://localhost:<port>/swagger` para exibir a interface do usuário do Swagger.
   * `http://localhost:<port>/swagger/v1/swagger.json` para exibir a especificação do Swagger.
 
@@ -118,7 +120,7 @@ Você pode tirar proveito dos recursos de geração de código do NSwag, escolhe
 ### <a name="generate-code-with-nswagstudio"></a>Gerar o código com NSwagStudio
 
 * Instale o NSwagStudio, seguindo as instruções no [repositório GitHub do NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio). Na página de versão do NSwag, você pode baixar uma versão do XCOPY que pode ser iniciada sem privilégios de instalação e administrador.
-* Inicie o NSwagStudio e insira a URL do arquivo *swagger.json* na caixa de texto **URL de Especificação do Swagger**. Por exemplo, *http://localhost:44354/swagger/v1/swagger.json* .
+* Inicie o NSwagStudio e insira a URL do arquivo *swagger.json* na caixa de texto **URL de Especificação do Swagger**. Por exemplo, *http://localhost:44354/swagger/v1/swagger.json*.
 * Clique no botão **Criar Cópia local** para gerar uma representação JSON de sua especificação do Swagger.
 
   ![Criar uma cópia local da especificação do Swagger](web-api-help-pages-using-swagger/_static/CreateLocalCopy-NSwagStudio.PNG)
@@ -197,7 +199,7 @@ A interface do usuário do Swagger exibe as informações da versão:
 
 ![Interface do usuário do Swagger com informações de versão](web-api-help-pages-using-swagger/_static/custom-info-nswag.png)
 
-### <a name="xml-comments"></a>comentários XML
+### <a name="xml-comments"></a>Comentários XML
 
 Para habilitar os comentários XML, execute as seguintes etapas:
 

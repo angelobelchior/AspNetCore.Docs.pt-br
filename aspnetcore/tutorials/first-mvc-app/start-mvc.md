@@ -5,6 +5,8 @@ description: Saiba como começar a usar o ASP.NET Core MVC.
 ms.author: riande
 ms.date: 10/16/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: d4eb1744b1186704603430584b3da0793f90ee49
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 3df00af8e6bca0dbf2d7871f383dd67b465aa5da
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86213087"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021166"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introdução ao ASP.NET Core MVC
 
@@ -91,7 +93,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
    code -r MvcMovie
    ```
 
-  * Uma caixa de diálogo aparece com os **ativos necessários para compilação e depuração estão ausentes em ' MvcMovie '. Adicioná-los?**  Selecione **Sim**.
+  * Uma caixa de diálogo aparece com os **ativos necessários para compilação e depuração estão ausentes em ' MvcMovie '. Adicioná-los?**  Selecione **Sim**
 
   * `dotnet new mvc -o MvcMovie`: cria um novo projeto do ASP.NET Core MVC na pasta *MvcMovie*.
   * `code -r MvcMovie`: Carrega o arquivo de projeto *MvcMovie. csproj* em Visual Studio Code.
@@ -173,7 +175,7 @@ Selecione **executar**  >  **Iniciar sem depuração** para iniciar o aplicativo
 Na próxima parte deste tutorial, você saberá mais sobre o MVC e começará a escrever um pouco de código.
 
 > [!div class="step-by-step"]
-> [Avançar](adding-controller.md)
+> [Próximo](adding-controller.md)
 
 ::: moniker-end
 
@@ -244,7 +246,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
    code -r MvcMovie
    ```
 
-  * Uma caixa de diálogo aparece com os **ativos necessários para compilação e depuração estão ausentes em ' MvcMovie '. Adicioná-los?**  Selecione **Sim**.
+  * Uma caixa de diálogo aparece com os **ativos necessários para compilação e depuração estão ausentes em ' MvcMovie '. Adicioná-los?**  Selecione **Sim**
 
   * `dotnet new mvc -o MvcMovie`: cria um novo projeto do ASP.NET Core MVC na pasta *MvcMovie*.
   * `code -r MvcMovie`: Carrega o arquivo de projeto *MvcMovie. csproj* em Visual Studio Code.
@@ -336,6 +338,6 @@ Selecione **executar**  >  **Iniciar sem depuração** para iniciar o aplicativo
 Na próxima parte deste tutorial, você saberá mais sobre o MVC e começará a escrever um pouco de código.
 
 > [!div class="step-by-step"]
-> [Avançar](adding-controller.md)
+> [Próximo](adding-controller.md)
 
 ::: moniker-end

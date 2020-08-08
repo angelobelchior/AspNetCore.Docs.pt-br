@@ -7,6 +7,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/20/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: ead745ae8843173bb25b94672005cc6ce295db2e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0fb19aa19703e68812b83f0631f029dd66a3d64e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403372"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021322"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Testar APIs Web com o HTTP REPL
 
@@ -36,11 +38,11 @@ Os [verbos HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelin
 
 * [DELETE](#test-http-delete-requests)
 * [GET](#test-http-get-requests)
-* [PRINCIPAL](#test-http-head-requests)
+* [HEAD](#test-http-head-requests)
 * [Opções](#test-http-options-requests)
 * [DISTRIBUÍDO](#test-http-patch-requests)
 * [POST](#test-http-post-requests)
-* [Posicione](#test-http-put-requests)
+* [PUT](#test-http-put-requests)
 
 Para acompanhar, [exiba ou baixe a API Web de exemplo do ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([como baixar](xref:index#how-to-download-a-sample)).
 
@@ -363,7 +365,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Para iniciar o editor de texto padrão com argumentos específicos da CLI, defina a chave `editor.command.default.arguments`. Por exemplo, imagine que o Visual Studio Code é o editor de texto padrão e que você quer que o HTTP REPL sempre o abra em uma nova sessão com as extensões desabilitadas. Execute o comando a seguir:
+Para iniciar o editor de texto padrão com argumentos específicos da CLI, defina a chave `editor.command.default.arguments`. Por exemplo, imagine que o Visual Studio Code é o editor de texto padrão e que você quer que o HTTP REPL sempre o abra em uma nova sessão com as extensões desabilitadas. Execute o seguinte comando:
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -996,7 +998,7 @@ Se você executar com frequência o mesmo conjunto de comandos HTTP REPL, consid
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt
     ```
 
-    A saída a seguir é exibida:
+    O seguinte resultado é exibido:
 
     ```console
     https://localhost:5001/~ set base https://localhost:5001

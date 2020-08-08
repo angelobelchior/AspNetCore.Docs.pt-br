@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 83f5b2da8fdba784131e8d159171b8433b13a091
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1dd931d0ee654b888814df8a0d0675d32b5c3a20
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406466"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020958"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compactação de resposta no ASP.NET Core
 
@@ -53,12 +55,12 @@ Quando um cliente pode processar conteúdo compactado, o cliente deve informar o
 | `Accept-Encoding`valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sim (padrão)        | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | No                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | No                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Yes                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificador "sem codificação": a resposta não deve ser codificada. |
-| `pack200-gzip`                  | No                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
+| `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Não                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Sim                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Sim                  | Identificador "sem codificação": a resposta não deve ser codificada. |
+| `pack200-gzip`                  | Não                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Sim                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
 
 Para obter mais informações, consulte a [lista de código de conteúdo oficial da IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -299,12 +301,12 @@ Quando um cliente pode processar conteúdo compactado, o cliente deve informar o
 | `Accept-Encoding`valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sim (padrão)        | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | No                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | No                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Yes                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificador "sem codificação": a resposta não deve ser codificada. |
-| `pack200-gzip`                  | No                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
+| `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Não                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Sim                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Sim                  | Identificador "sem codificação": a resposta não deve ser codificada. |
+| `pack200-gzip`                  | Não                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Sim                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
 
 Para obter mais informações, consulte a [lista de código de conteúdo oficial da IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -544,12 +546,12 @@ Quando um cliente pode processar conteúdo compactado, o cliente deve informar o
 | `Accept-Encoding`valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Não                   | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | No                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | No                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Não                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Sim (padrão)        | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificador "sem codificação": a resposta não deve ser codificada. |
-| `pack200-gzip`                  | No                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
+| `identity`                      | Sim                  | Identificador "sem codificação": a resposta não deve ser codificada. |
+| `pack200-gzip`                  | Não                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Sim                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
 
 Para obter mais informações, consulte a [lista de código de conteúdo oficial da IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 

@@ -5,6 +5,8 @@ description: Saiba mais sobre o gerenciamento de chaves de proteção de dados e
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: f758c814280ee09a240d99cc59cdab2dc4590df6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b39187d93247dc83c34bbbe6ec6accfd77108794
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407090"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021374"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Gerenciamento e tempo de vida de chaves da proteção de dados no ASP.NET Core
 
@@ -31,7 +33,7 @@ O aplicativo tenta detectar seu ambiente operacional e manipular a configuraçã
 1. Se o aplicativo estiver hospedado em [aplicativos do Azure](https://azure.microsoft.com/services/app-service/), as chaves serão mantidas na pasta *%Home%\ASP.NET\DataProtection-Keys* . Essa pasta é apoiada pelo repositório de rede e é sincronizada em todos os computadores que hospedam o aplicativo.
    * As chaves não são protegidas em repouso.
    * A pasta *dataprotection-Keys* fornece o anel de chave para todas as instâncias de um aplicativo em um único slot de implantação.
-   * Slots de implantação separados, como de preparo e produção, não compartilham um anel de chave. Quando você alterna entre os slots de implantação, por exemplo, trocando preparo para produção ou usando testes A/B, qualquer aplicativo usando a proteção de dados não será capaz de descriptografar dados armazenados usando o anel de chave dentro do slot anterior. Isso leva aos usuários que estão sendo desconectados de um aplicativo que usa a autenticação de cookie de ASP.NET Core padrão, pois ele usa a proteção de dados para proteger seus cookies. Se você quiser anéis de chave independentes de slot, use um provedor de anel de chave externa, como o armazenamento de BLOBs do Azure, Azure Key Vault, um repositório SQL ou cache Redis.
+   * Slots de implantação separados, como de preparo e produção, não compartilham um anel de chave. Quando você alterna entre os slots de implantação, por exemplo, trocando preparo para produção ou usando testes A/B, qualquer aplicativo usando a proteção de dados não será capaz de descriptografar dados armazenados usando o anel de chave dentro do slot anterior. Isso leva aos usuários que estão sendo desconectados de um aplicativo que usa a autenticação de ASP.NET Core padrão cookie , pois usa a proteção de dados para proteger seus cookie s. Se você quiser anéis de chave independentes de slot, use um provedor de anel de chave externa, como o armazenamento de BLOBs do Azure, Azure Key Vault, um repositório SQL ou cache Redis.
 
 1. Se o perfil do usuário estiver disponível, as chaves serão mantidas na pasta *%LocalAppData%\ASP.NET\DataProtection-Keys* . Se o sistema operacional for Windows, as chaves serão criptografadas em repouso usando DPAPI.
 

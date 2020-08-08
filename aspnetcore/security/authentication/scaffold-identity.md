@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/1/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: a8ca520d84d382b95cd4c0e2962ba4e5c922049e
-ms.sourcegitcommit: 3544941682869734ea0113e24e02ed0ec9e1a9ec
+ms.openlocfilehash: 4404a5513d9dc989e50c904f3e7863de59991939
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/18/2020
-ms.locfileid: "86464560"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022323"
 ---
-# <a name="scaffold-identity-in-aspnet-core-projects"></a>Scaffold Identity em projetos de ASP.NET Core
+# <a name="scaffold-no-locidentity-in-aspnet-core-projects"></a>Scaffold Identity em projetos de ASP.NET Core
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -52,7 +54,7 @@ O código anterior comenta o código que está duplicado em *áreas/ Identity / 
 
 Normalmente, os aplicativos que foram criados com contas individuais ***não*** devem criar um novo contexto de dados.
 
-## <a name="scaffold-identity-into-an-empty-project"></a>Scaffold Identity em um projeto vazio
+## <a name="scaffold-no-locidentity-into-an-empty-project"></a>Scaffold Identity em um projeto vazio
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
@@ -64,7 +66,7 @@ Atualize a `Startup` classe com um código semelhante ao seguinte:
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a>Scaffold Identity em um Razor projeto sem autorização existente
+## <a name="scaffold-no-locidentity-into-a-no-locrazor-project-without-existing-authorization"></a>Scaffold Identity em um Razor projeto sem autorização existente
 
 <!--  Updated for 3.0
 set projNam=RPnoAuth
@@ -117,7 +119,7 @@ Opcional: Adicione o logon Partial ( `_LoginPartial` ) ao arquivo de layout:
 
 [!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Scaffold Identity em um Razor projeto com autorização
+## <a name="scaffold-no-locidentity-into-a-no-locrazor-project-with-authorization"></a>Scaffold Identity em um Razor projeto com autorização
 
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
@@ -134,7 +136,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 Algumas Identity opções são configuradas em *áreas/ Identity / Identity HostingStartup.cs*. Para obter mais informações, consulte [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
-## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Scaffold Identity em um projeto MVC sem autorização existente
+## <a name="scaffold-no-locidentity-into-an-mvc-project-without-existing-authorization"></a>Scaffold Identity em um projeto MVC sem autorização existente
 
 <!--
 set projNam=MvcNoAuth
@@ -168,7 +170,7 @@ Atualize a `Startup` classe com um código semelhante ao seguinte:
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>Scaffold Identity em um projeto MVC com autorização
+## <a name="scaffold-no-locidentity-into-an-mvc-project-with-authorization"></a>Scaffold Identity em um projeto MVC com autorização
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
@@ -180,7 +182,7 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext  --fi
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-## <a name="scaffold-identity-into-a-blazor-server-project-without-existing-authorization"></a>Scaffold Identity em um Blazor Server projeto sem autorização existente
+## <a name="scaffold-no-locidentity-into-a-no-locblazor-server-project-without-existing-authorization"></a>Scaffold Identity em um Blazor Server projeto sem autorização existente
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
@@ -194,7 +196,7 @@ Identityé configurado em *áreas/ Identity / Identity HostingStartup.cs*. Para 
 
 Tokens podem ser passados para componentes:
 
-* Quando os tokens de autenticação são provisionados e salvos no cookie de autenticação, eles podem ser passados para componentes.
+* Quando os tokens de autenticação são provisionados e salvos na autenticação cookie , eles podem ser passados para os componentes do.
 * Razoros componentes não podem usar `HttpContext` diretamente, portanto, não há como obter um [token de XSRF (falsificação de solicitação)](xref:security/anti-request-forgery) para postar no Identity ponto de extremidade de logout em `/Identity/Account/Logout` . Um token XSRF pode ser passado para componentes.
 
 Para obter mais informações, consulte <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app>.
@@ -293,11 +295,11 @@ No `MainLayout` componente (*Shared/MainLayout. Razor*), adicione o `LoginDispla
 
 Como Blazor Server o usa páginas Razor Identity de páginas, o estilo da interface do usuário é alterado quando um visitante navega entre Identity páginas e componentes. Você tem duas opções para abordar os estilos de incongruous:
 
-#### <a name="build-identity-components"></a>Componentes de compilação Identity
+#### <a name="build-no-locidentity-components"></a>Componentes de compilação Identity
 
 Uma abordagem para usar componentes do Identity em vez de páginas é criar Identity componentes. Como `SignInManager` e `UserManager` não têm suporte em Razor componentes, use pontos de extremidade de API no Blazor Server aplicativo para processar ações de conta de usuário.
 
-#### <a name="use-a-custom-layout-with-blazor-app-styles"></a>Usar um layout personalizado com Blazor estilos de aplicativo
+#### <a name="use-a-custom-layout-with-no-locblazor-app-styles"></a>Usar um layout personalizado com Blazor estilos de aplicativo
 
 O Identity layout de páginas e os estilos podem ser modificados para produzir páginas que usam o Blazor tema padrão.
 
@@ -362,7 +364,7 @@ No arquivo *pages/Shared/layout. cshtml* , faça as seguintes alterações:
   <script src="_framework/blazor.server.js"></script>
   ```
 
-## <a name="scaffold-identity-into-a-blazor-server-project-with-authorization"></a>Scaffold Identity em um Blazor Server projeto com autorização
+## <a name="scaffold-no-locidentity-into-a-no-locblazor-server-project-with-authorization"></a>Scaffold Identity em um Blazor Server projeto com autorização
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
@@ -370,7 +372,7 @@ Algumas Identity opções são configuradas em *áreas/ Identity / Identity Host
 
 <a name="full"></a>
 
-## <a name="create-full-identity-ui-source"></a>Criar Identity origem da interface do usuário completa
+## <a name="create-full-no-locidentity-ui-source"></a>Criar Identity origem da interface do usuário completa
 
 Para manter o controle total da Identity interface do usuário, execute o Identity scaffolder e selecione **substituir todos os arquivos**.
 
@@ -476,7 +478,7 @@ O código a seguir descreve como adicionar um usuário:
 
 Uma abordagem semelhante pode ser seguida para cenários de produção.
 
-## <a name="prevent-publish-of-static-identity-assets"></a>Impedir a publicação de Identity ativos estáticos
+## <a name="prevent-publish-of-static-no-locidentity-assets"></a>Impedir a publicação de Identity ativos estáticos
 
 Para evitar a publicação de ativos estáticos na Identity raiz da Web, consulte <xref:security/authentication/identity#prevent-publish-of-static-identity-assets> .
 
@@ -501,7 +503,7 @@ Quando o Identity scaffolder é executado, um arquivo de *ScaffoldingReadme.txt*
 > [!NOTE]
 > Os serviços são necessários ao usar a [autenticação de dois fatores](xref:security/authentication/identity-enable-qrcodes), [confirmação de conta e recuperação de senha](xref:security/authentication/accconfirm)e outros recursos de segurança com o Identity . Serviços ou stubs de serviço não são gerados quando scaffolding Identity . Os serviços para habilitar esses recursos devem ser adicionados manualmente. Por exemplo, consulte [exigir confirmação de email](xref:security/authentication/accconfirm#require-email-confirmation).
 
-## <a name="scaffold-identity-into-an-empty-project"></a>Scaffold Identity em um projeto vazio
+## <a name="scaffold-no-locidentity-into-an-empty-project"></a>Scaffold Identity em um projeto vazio
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
@@ -513,7 +515,7 @@ Adicione as seguintes chamadas realçadas à `Startup` classe:
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-## <a name="scaffold-identity-into-a-razor-project-without-existing-authorization"></a>Scaffold Identity em um Razor projeto sem autorização existente
+## <a name="scaffold-no-locidentity-into-a-no-locrazor-project-without-existing-authorization"></a>Scaffold Identity em um Razor projeto sem autorização existente
 
 <!--  Updated for 3.0
 set projNam=RPnoAuth
@@ -558,7 +560,7 @@ Opcional: Adicione o logon Partial ( `_LoginPartial` ) ao arquivo de layout:
 
 [!code-cshtml[](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
-## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Scaffold Identity em um Razor projeto com autorização
+## <a name="scaffold-no-locidentity-into-a-no-locrazor-project-with-authorization"></a>Scaffold Identity em um Razor projeto com autorização
 
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
@@ -575,7 +577,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 Algumas Identity opções são configuradas em *áreas/ Identity / Identity HostingStartup.cs*. Para obter mais informações, consulte [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
-## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Scaffold Identity em um projeto MVC sem autorização existente
+## <a name="scaffold-no-locidentity-into-an-mvc-project-without-existing-authorization"></a>Scaffold Identity em um projeto MVC sem autorização existente
 
 <!--
 set projNam=MvcNoAuth
@@ -609,7 +611,7 @@ Chamar [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuild
 
 [!INCLUDE[](~/includes/scaffold-identity/hsts.md)]
 
-## <a name="scaffold-identity-into-an-mvc-project-with-authorization"></a>Scaffold Identity em um projeto MVC com autorização
+## <a name="scaffold-no-locidentity-into-an-mvc-project-with-authorization"></a>Scaffold Identity em um projeto MVC com autorização
 
 <!--
 dotnet new mvc -au Individual -o MvcAuth
@@ -625,7 +627,7 @@ Exclua as *páginas/pasta compartilhada* e os arquivos nessa pasta.
 
 <a name="full"></a>
 
-## <a name="create-full-identity-ui-source"></a>Criar Identity origem da interface do usuário completa
+## <a name="create-full-no-locidentity-ui-source"></a>Criar Identity origem da interface do usuário completa
 
 Para manter o controle total da Identity interface do usuário, execute o Identity scaffolder e selecione **substituir todos os arquivos**.
 

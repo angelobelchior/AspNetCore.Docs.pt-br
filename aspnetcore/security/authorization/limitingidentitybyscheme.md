@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,16 +16,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 042b22a220d961773437e9d85d5f0c5782e29bea
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 66b307a3629e18e49b5bb6e65a156054c0002ba8
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406011"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022102"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Autorizar com um esquema específico no ASP.NET Core
 
-Em alguns cenários, como SPAs (aplicativos de página única), é comum usar vários métodos de autenticação. Por exemplo, o aplicativo pode usar a autenticação baseada em cookie para fazer logon e autenticação de portador JWT para solicitações de JavaScript. Em alguns casos, o aplicativo pode ter várias instâncias de um manipulador de autenticação. Por exemplo, dois manipuladores de cookies em que um contém uma identidade básica e um é criado quando uma MFA (autenticação multifator) foi disparada. A MFA pode ser disparada porque o usuário solicitou uma operação que requer segurança extra. Para obter mais informações sobre a imposição de MFA quando um usuário solicita um recurso que requer MFA, consulte a seção problema de proteção do GitHub [com MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).
+Em alguns cenários, como SPAs (aplicativos de página única), é comum usar vários métodos de autenticação. Por exemplo, o aplicativo pode usar a cookie autenticação com base para fazer logon e autenticação de portador JWT para solicitações de JavaScript. Em alguns casos, o aplicativo pode ter várias instâncias de um manipulador de autenticação. Por exemplo, dois cookie manipuladores em que um contém uma identidade básica e outro são criados quando uma MFA (autenticação multifator) foi disparada. A MFA pode ser disparada porque o usuário solicitou uma operação que requer segurança extra. Para obter mais informações sobre a imposição de MFA quando um usuário solicita um recurso que requer MFA, consulte a seção problema de proteção do GitHub [com MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).
 
 Um esquema de autenticação é nomeado quando o serviço de autenticação é configurado durante a autenticação. Por exemplo:
 
@@ -43,7 +45,7 @@ public void ConfigureServices(IServiceCollection services)
         });
 ```
 
-No código anterior, dois manipuladores de autenticação foram adicionados: um para cookies e outro para portador.
+No código anterior, dois manipuladores de autenticação foram adicionados: um para cookie s e outro para portador.
 
 >[!NOTE]
 >Especificar o esquema padrão resulta na `HttpContext.User` propriedade que está sendo definida para essa identidade. Se esse comportamento não for desejado, desabilite-o invocando a forma sem parâmetros de `AddAuthentication` .
@@ -63,7 +65,7 @@ public class MixedController : Controller
         JwtBearerDefaults.AuthenticationScheme;
 ```
 
-No exemplo anterior, os manipuladores de cookie e portador executam e têm a oportunidade de criar e acrescentar uma identidade para o usuário atual. Ao especificar apenas um único esquema, o manipulador correspondente é executado.
+No exemplo anterior, os cookie manipuladores e de portador são executados e têm a oportunidade de criar e acrescentar uma identidade para o usuário atual. Ao especificar apenas um único esquema, o manipulador correspondente é executado.
 
 ```csharp
 [Authorize(AuthenticationSchemes = 
@@ -71,7 +73,7 @@ No exemplo anterior, os manipuladores de cookie e portador executam e têm a opo
 public class MixedController : Controller
 ```
 
-No código anterior, apenas o manipulador com o esquema "portador" é executado. Todas as identidades baseadas em cookies são ignoradas.
+No código anterior, apenas o manipulador com o esquema "portador" é executado. As cookie identidades baseadas em qualquer um são ignoradas.
 
 ## <a name="selecting-the-scheme-with-policies"></a>Selecionando o esquema com políticas
 

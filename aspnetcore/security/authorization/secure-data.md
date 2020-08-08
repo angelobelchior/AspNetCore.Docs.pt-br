@@ -6,6 +6,8 @@ ms.author: riande
 ms.date: 7/18/2020
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: 7d4c10fa0b1c569179fc3e0a518917ec0185c51f
-ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
+ms.openlocfilehash: 44777369693f9eb29d78c3ba638db2e692f430ae
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87160276"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021179"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Criar um aplicativo Web ASP.NET Core com dados de usuário protegidos por autorização
 
@@ -330,9 +332,9 @@ Uma maneira fácil de testar o aplicativo concluído é iniciar três navegadore
 
 | Usuário                | Propagado pelo aplicativo | Opções                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | No                | Edite/exclua os próprios dados.                |
-| manager@contoso.com | Yes               | Aprovar/rejeitar e editar/excluir os próprios dados. |
-| admin@contoso.com   | Yes               | Aprovar/rejeitar e editar/excluir todos os dados. |
+| test@example.com    | Não                | Edite/exclua os próprios dados.                |
+| manager@contoso.com | Sim               | Aprovar/rejeitar e editar/excluir os próprios dados. |
+| admin@contoso.com   | Sim               | Aprovar/rejeitar e editar/excluir todos os dados. |
 
 Crie um contato no navegador do administrador. Copie a URL para excluir e editar do contato do administrador. Cole esses links no navegador do usuário de teste para verificar se o usuário de teste não pode executar essas operações.
 
@@ -657,9 +659,9 @@ Uma maneira fácil de testar o aplicativo concluído é iniciar três navegadore
 
 | Usuário                | Propagado pelo aplicativo | Opções                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | No                | Edite/exclua os próprios dados.                |
-| manager@contoso.com | Yes               | Aprovar/rejeitar e editar/excluir os próprios dados. |
-| admin@contoso.com   | Yes               | Aprovar/rejeitar e editar/excluir todos os dados. |
+| test@example.com    | Não                | Edite/exclua os próprios dados.                |
+| manager@contoso.com | Sim               | Aprovar/rejeitar e editar/excluir os próprios dados. |
+| admin@contoso.com   | Sim               | Aprovar/rejeitar e editar/excluir todos os dados. |
 
 Crie um contato no navegador do administrador. Copie a URL para excluir e editar do contato do administrador. Cole esses links no navegador do usuário de teste para verificar se o usuário de teste não pode executar essas operações.
 

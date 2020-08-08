@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: 626003ad75333cfaf17a3ea97549ca82650469a8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b8942020e98d0f985e5445bb1816c540bcb7829b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407363"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021400"
 ---
-# <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Métodos de filtro para Razor páginas no ASP.NET Core
+# <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtro para Razor páginas no ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -57,7 +59,7 @@ RazorOs filtros de página fornecem os seguintes métodos, que podem ser aplicad
 
 Implemente **ou** a versão assíncrona ou a versão síncrona de uma interface de filtro, **não** ambas. Primeiro, a estrutura verifica se o filtro implementa a interface assíncrona e, se for esse o caso, a chama. Caso contrário, ela chama os métodos da interface síncrona. Se ambas as interfaces forem implementadas, somente os métodos assíncronos serão chamados. A mesma regra aplica-se para substituições em páginas. Implemente a versão síncrona ou a assíncrona da substituição, não ambas.
 
-## <a name="implement-razor-page-filters-globally"></a>Implementar Razor filtros de página globalmente
+## <a name="implement-no-locrazor-page-filters-globally"></a>Implementar Razor filtros de página globalmente
 
 O código a seguir implementa `IAsyncPageFilter`:
 
@@ -81,7 +83,7 @@ O código a seguir habilita o `SamplePageFilter`:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/StartupSync.cs?name=snippet2)]
 
-## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implementar Razor filtros de página substituindo métodos de filtro
+## <a name="implement-no-locrazor-page-filters-by-overriding-filter-methods"></a>Implementar Razor filtros de página substituindo métodos de filtro
 
 O código a seguir substitui os Razor filtros de página assíncrona:
 
@@ -149,7 +151,7 @@ RazorOs filtros de página fornecem os seguintes métodos, que podem ser aplicad
 > [!NOTE]
 > Implemente **ou** a versão assíncrona ou a versão síncrona de uma interface de filtro, não ambas. Primeiro, a estrutura verifica se o filtro implementa a interface assíncrona e, se for esse o caso, a chama. Caso contrário, ela chama os métodos da interface síncrona. Se ambas as interfaces forem implementadas, somente os métodos assíncronos serão chamados. A mesma regra aplica-se para substituições em páginas. Implemente a versão síncrona ou a assíncrona da substituição, não ambas.
 
-## <a name="implement-razor-page-filters-globally"></a>Implementar Razor filtros de página globalmente
+## <a name="implement-no-locrazor-page-filters-globally"></a>Implementar Razor filtros de página globalmente
 
 O código a seguir implementa `IAsyncPageFilter`:
 
@@ -177,7 +179,7 @@ O código a seguir habilita o `SamplePageFilter`:
 
 [!code-csharp[Main](filter/sample/PageFilter/StartupSync.cs?name=snippet2&highlight=11)]
 
-## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implementar Razor filtros de página substituindo métodos de filtro
+## <a name="implement-no-locrazor-page-filters-by-overriding-filter-methods"></a>Implementar Razor filtros de página substituindo métodos de filtro
 
 O código a seguir substitui os Razor filtros de página síncrona:
 
