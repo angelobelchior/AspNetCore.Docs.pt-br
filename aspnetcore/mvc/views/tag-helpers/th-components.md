@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 58781880764b26a67d71e70c225ab4ed4e5da109
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 736288b6e7d2e9be7f23f6df02183a813951eb56
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406700"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014718"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Componentes do Auxiliar de Marca no ASP.NET Core
 
@@ -80,7 +82,7 @@ Se a classe do Componente do Auxiliar de Marca não for gerenciada com <xref:Mic
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Startup.cs?name=snippet_ConfigureServices&highlight=12-15)]
 
-### <a name="registration-via-razor-file"></a>Registro via Razor arquivo
+### <a name="registration-via-no-locrazor-file"></a>Registro via Razor arquivo
 
 Se o componente auxiliar de marca não estiver registrado com DI, ele poderá ser registrado em uma Razor página de páginas ou em uma exibição do MVC. Essa técnica é usada para controlar a marcação injetada e a ordem de execução do componente de um Razor arquivo.
 

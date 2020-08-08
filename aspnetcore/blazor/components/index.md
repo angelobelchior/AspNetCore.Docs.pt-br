@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/14/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 1312ae531b0acb0ce09137cc2bae6299ddda5c32
-ms.sourcegitcommit: e6b3dd344521ce320d5c2121bbc27c211df87e57
+ms.openlocfilehash: a145cfd551650445f9ff35259cbedf71ebb686f0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/19/2020
-ms.locfileid: "86468841"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014588"
 ---
-# <a name="create-and-use-aspnet-core-razor-components"></a>Criar e usar componentes de ASP.NET Core Razor
+# <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
 Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)e [Tobias Bartsch](https://www.aveo-solutions.com/)
 
@@ -34,7 +36,7 @@ Blazoros aplicativos são criados usando *componentes*. Um componente é uma par
 
 Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML. Um componente no Blazor é conhecido formalmente como um * Razor componente*.
 
-### <a name="razor-syntax"></a>Sintaxe de Razor
+### <a name="no-locrazor-syntax"></a>Sintaxe de Razor
 
 Razoros componentes em Blazor aplicativos usam extensivamente a Razor sintaxe. Se você não estiver familiarizado com a Razor linguagem de marcação, recomendamos a leitura <xref:mvc/views/razor> antes de continuar.
 
@@ -796,7 +798,7 @@ O exemplo a seguir mostra como usar o `MarkupString` tipo para adicionar um bloc
 }
 ```
 
-## <a name="razor-templates"></a>Razormodelo
+## <a name="no-locrazor-templates"></a>Razormodelo
 
 Os fragmentos de renderização podem ser definidos usando a Razor sintaxe do modelo. Razoros modelos são uma maneira de definir um trecho de interface do usuário e assumir o seguinte formato:
 

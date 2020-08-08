@@ -5,6 +5,8 @@ description: ''
 ms.author: riande
 ms.date: 12/07/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 362dd16db358f7ceb6730bde908fff9854c73a84
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 92672b2d05ee6bbdfcf0255ae14529a5c28c41b7
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403645"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014978"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrar módulos e manipuladores HTTP para ASP.NET Core middleware
 
@@ -291,7 +293,7 @@ Fornece uma ID exclusiva para cada solicitação. Muito útil para incluir em se
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Host)]
 
-**HttpContext. Request. cookies** se traduz em:
+**HttpContext. Request. Cookie o s** se traduz em:
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Cookies)]
 
@@ -374,9 +376,9 @@ O `SetHeaders` método de retorno de chamada ficaria assim:
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetHeaders)]
 
-**HttpContext. Response. cookies**
+**HttpContext. Response. Cookie &**
 
-Os cookies viajam para o navegador em um cabeçalho de resposta *Set-cookie* . Como resultado, o envio de cookies requer o mesmo retorno de chamada usado para enviar cabeçalhos de resposta:
+Cookieos s viajam para o navegador em um cabeçalho *set- Cookie * Response. Como resultado, o envio de cookie s requer o mesmo retorno de chamada usado para enviar cabeçalhos de resposta:
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)
@@ -393,6 +395,6 @@ O `SetCookies` método de retorno de chamada seria semelhante ao seguinte:
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Visão geral de manipuladores HTTP e módulos HTTP](/iis/configuration/system.webserver/)
-* [Configuration](xref:fundamentals/configuration/index)
+* [Configuração](xref:fundamentals/configuration/index)
 * [Inicialização de aplicativos](xref:fundamentals/startup)
 * [Middleware](xref:fundamentals/middleware/index)

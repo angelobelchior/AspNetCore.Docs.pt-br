@@ -6,6 +6,8 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/next-steps
-ms.openlocfilehash: 6e7f46a0c78575e52a8182829f7b3d2bddec70f6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: feff73b307791c0a7ad8968b5145c0388df1ca10
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400330"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012574"
 ---
 # <a name="next-steps"></a>Próximas etapas
 
@@ -27,7 +29,7 @@ Neste guia, você criou um pipeline do DevOps para um aplicativo de exemplo ASP.
 
 Além de hospedagem na Web e DevOps, o Azure tem uma ampla gama de serviços de PaaS (plataforma como serviço) úteis para ASP.NET Core desenvolvedores. Esta seção fornece uma breve visão geral de alguns dos serviços mais usados.
 
-## <a name="storage-and-databases"></a>Armazenamento e bancos de dados
+## <a name="storage-and-databases"></a>Armazenamento e banco de dados
 
 O [cache Redis](/azure/redis-cache/) é um cache de dados de baixa latência e alta taxa de transferência disponível como um serviço. Ele pode ser usado para cache de saída de página, reduzindo solicitações de banco de dados e fornecendo ASP.NET Core estado de sessão em várias instâncias de um aplicativo.
 
@@ -41,7 +43,7 @@ O [banco de dados SQL do Azure](/azure/sql-database/) fornece funcionalidade fam
 
 [Azure Active Directory](/azure/active-directory/) e [Azure Active Directory B2C](/azure/active-directory-b2c/) são serviços de identidade. A Azure Active Directory é projetada para cenários empresariais e habilita a colaboração B2B (entre empresas) do Azure AD, enquanto Azure Active Directory B2C se destina a cenários entre clientes, incluindo a entrada de rede social.
 
-## <a name="mobile"></a>Dispositivos móveis
+## <a name="mobile"></a>Móvel
 
 Os [hubs de notificação](/azure/notification-hubs/) são um mecanismo de notificação por push de várias plataformas e escalonáveis para enviar rapidamente milhões de mensagens para aplicativos em execução em vários tipos de dispositivos.
 

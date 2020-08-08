@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/03/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 81ab2bb139dfcbea712d4eb51acfc9d7f6767d46
-ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
+ms.openlocfilehash: 15531c39a66a9f6dfd0f5c20cf960e4db5a78074
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87818827"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013795"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly cenários de segurança adicionais
 
@@ -444,7 +446,7 @@ Para obter mais informações sobre as opções de API de busca, consulte [MDN W
 
 ## <a name="cross-origin-resource-sharing-cors"></a>CORS (compartilhamento de recursos entre origens)
 
-Ao enviar credenciais (cookies/cabeçalhos de autorização) em solicitações CORS, o `Authorization` cabeçalho deve ser permitido pela política CORS.
+Ao enviar credenciais ( cookie s/cabeçalhos de autorização) em solicitações CORS, o `Authorization` cabeçalho deve ser permitido pela política CORS.
 
 A política a seguir inclui a configuração para o:
 
@@ -467,13 +469,13 @@ Para obter mais informações, consulte <xref:security/cors> e o componente test
 
 ## <a name="handle-token-request-errors"></a>Manipular erros de solicitação de token
 
-Quando um aplicativo de página única (SPA) autentica um usuário usando o OpenID Connect (OIDC), o estado de autenticação é mantido localmente no SPA e no Identity provedor (IP) na forma de um cookie de sessão definido como resultado do usuário que fornece suas credenciais.
+Quando um aplicativo de página única (SPA) autentica um usuário usando o OpenID Connect (OIDC), o estado de autenticação é mantido localmente no SPA e no Identity provedor (IP) na forma de uma sessão cookie definida como resultado do usuário que fornece suas credenciais.
 
 Os tokens emitidos pelo IP para o usuário normalmente são válidos por curto período de tempo, cerca de uma hora normalmente, de modo que o aplicativo cliente deve buscar regularmente novos tokens. Caso contrário, o usuário será desconectado após os tokens concedidos expirarem. Na maioria dos casos, os clientes do OIDC são capazes de provisionar novos tokens sem exigir que o usuário se autentique novamente graças ao estado de autenticação ou "sessão" que é mantido dentro do IP.
 
 Há alguns casos em que o cliente não pode obter um token sem interação do usuário, por exemplo, quando por algum motivo o usuário faz logoff explicitamente do IP. Esse cenário ocorre se um usuário visita `https://login.microsoftonline.com` e faz logoff. Nesses cenários, o aplicativo não sabe imediatamente que o usuário fez logoff. Qualquer token que o cliente contém pode não ser mais válido. Além disso, o cliente não é capaz de provisionar um novo token sem interação do usuário depois que o token atual expira.
 
-Esses cenários não são específicos para a autenticação baseada em token. Eles fazem parte da natureza do SPAs. Um SPA que usa cookies também falha ao chamar uma API de servidor se o cookie de autenticação for removido.
+Esses cenários não são específicos para a autenticação baseada em token. Eles fazem parte da natureza do SPAs. Um SPA usando cookie s também falha ao chamar uma API de servidor se a autenticação cookie for removida.
 
 Quando um aplicativo executa chamadas à API para recursos protegidos, você deve estar atento ao seguinte:
 

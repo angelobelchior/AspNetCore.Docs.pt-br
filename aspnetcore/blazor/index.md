@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 06/19/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 30f11a137e711b1cf7a8b036af92fbb5fa2a1f05
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ad543087243658f09a23e4f6d957d0c6aa77b361
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402566"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014172"
 ---
-# <a name="introduction-to-aspnet-core-blazor"></a>Introdução ao ASP.NET CoreBlazor
+# <a name="introduction-to-aspnet-core-no-locblazor"></a>Introdução ao ASP.NET CoreBlazor
 
 Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
 
@@ -118,7 +120,7 @@ A execução de código .NET dentro de navegadores da Web é possibilitada pelo 
 
 O código WebAssembly pode acessar a funcionalidade completa do navegador por meio de JavaScript, chamado *Interoperabilidade do JavaScript* (ou *Interop do JavaScript*). O código .NET executado por meio da WebAssembly no navegador é executado na área restrita do JavaScript do navegador com as proteções que a área restrita oferece contra ações mal intencionadas no computador cliente.
 
-![Blazor WebAssemblyexecuta o código .NET no navegador com Webassembly.](index/_static/blazor-webassembly.png)
+![::: no-Loc (Webassembly do mais alto)::: executa o código .NET no navegador com Webassembly.](index/_static/blazor-webassembly.png)
 
 Quando um Blazor WebAssembly aplicativo é compilado e executado em um navegador:
 
@@ -140,7 +142,7 @@ O runtime realiza o envio de eventos da interface do usuário do navegador para 
 
 A conexão usada pelo Blazor Server para se comunicar com o navegador também é usada para lidar com as chamadas de interoperabilidade do JavaScript.
 
-![Blazor Serverexecuta o código .NET no servidor e interage com o Modelo de Objeto do Documento no cliente por uma SignalR conexão](index/_static/blazor-server.png)
+![::: no-Loc (servidor de maior número)::: executa o código .NET no servidor e interage com o Modelo de Objeto do Documento no cliente sobre uma::: no-Loc (Signalr)::: Connection](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>Interoperabilidade do JavaScript
 

@@ -5,6 +5,8 @@ description: Saiba como migrar a autenticação e a identidade de um projeto MVC
 ms.author: riande
 ms.date: 3/22/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,22 +15,22 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/identity
-ms.openlocfilehash: 995de894bc77c4db5e5683b36e691b0c5a3463d3
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8a6cc1e612dbf59dc2db2eca165dd1a03ab92f81
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403749"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014926"
 ---
-# <a name="migrate-authentication-and-identity-to-aspnet-core"></a>Migrar autenticação e Identity para ASP.NET Core
+# <a name="migrate-authentication-and-no-locidentity-to-aspnet-core"></a>Migrar autenticação e Identity para ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/)
 
 No artigo anterior, [migramos a configuração de um projeto MVC ASP.net para ASP.NET Core MVC](xref:migration/configuration). Neste artigo, migramos os recursos de registro, logon e gerenciamento de usuário.
 
-## <a name="configure-identity-and-membership"></a>Configurar Identity e associar
+## <a name="configure-no-locidentity-and-membership"></a>Configurar Identity e associar
 
-No ASP.NET MVC, os recursos de autenticação e identidade são configurados usando ASP.NET Identity no *Startup.auth.cs* e no *IdentityConfig.cs*, localizados na pasta *App_Start* . No ASP.NET Core MVC, esses recursos são configurados em *Startup.cs*.
+No ASP.NET MVC, os recursos de autenticação e identidade são configurados usando ASP.NET Identity no *Startup.auth.cs* e no * Identity Config.cs*, localizados na pasta *App_Start* . No ASP.NET Core MVC, esses recursos são configurados em *Startup.cs*.
 
 Instale os seguintes pacotes NuGet:
 
@@ -53,7 +55,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Neste ponto, há dois tipos referenciados no código acima que ainda não migramos do projeto MVC do ASP.NET: `ApplicationDbContext` e `ApplicationUser` . Crie uma nova pasta *modelos* no projeto ASP.NET Core e adicione duas classes a ela correspondente a esses tipos. Você encontrará as versões do ASP.NET MVC dessas classes no */Models/IdentityModels.cs*, mas usaremos um arquivo por classe no projeto migrado, pois isso é mais claro.
+Neste ponto, há dois tipos referenciados no código acima que ainda não migramos do projeto MVC do ASP.NET: `ApplicationDbContext` e `ApplicationUser` . Crie uma nova pasta *modelos* no projeto ASP.NET Core e adicione duas classes a ela correspondente a esses tipos. Você encontrará as versões do ASP.NET MVC dessas classes no */Models/ Identity Models.cs*, mas usaremos um arquivo por classe no projeto migrado, pois isso é mais claro.
 
 *ApplicationUser.cs*:
 

@@ -5,6 +5,8 @@ description: Este artigo descreve as etapas mais comuns para migrar a autentica�
 ms.author: scaddie
 ms.date: 06/21/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: dacf6fa7191f51f36b9ba65a90746a26f958fc03
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 46f10df25235b532f188eda2a079aef71070cd6d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408663"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015284"
 ---
-# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Migrar autenticação e Identity para ASP.NET Core 2,0
+# <a name="migrate-authentication-and-no-locidentity-to-aspnet-core-20"></a>Migrar autenticação e Identity para ASP.NET Core 2,0
 
 Por [Scott Addie](https://github.com/scottaddie) e [Hao Kung](https://github.com/HaoK)
 
@@ -86,19 +88,19 @@ O `UseAuthentication` método adiciona um único componente de middleware de aut
 
 Abaixo estão 2,0 instruções de migração para cada esquema de autenticação principal.
 
-### <a name="cookie-based-authentication"></a>Autenticação baseada em cookie
+### <a name="no-loccookie-based-authentication"></a>Cookieautenticação baseada em
 
 Selecione uma das duas opções abaixo e faça as alterações necessárias em *Startup.cs*:
 
-1. Usar cookies comIdentity
+1. Usar cookie s comIdentity
     - Substituir `UseIdentity` por `UseAuthentication` no `Configure` método:
 
         ```csharp
         app.UseAuthentication();
         ```
 
-    - Invoque o `AddIdentity` método no `ConfigureServices` método para adicionar os serviços de autenticação de cookie.
-    - Opcionalmente, invoque o `ConfigureApplicationCookie` `ConfigureExternalCookie` método ou no `ConfigureServices` método para ajustar as configurações de Identity Cookie.
+    - Invoque o `AddIdentity` método no `ConfigureServices` método para adicionar os cookie serviços de autenticação.
+    - Opcionalmente, invoque o `ConfigureApplicationCookie` `ConfigureExternalCookie` método ou no `ConfigureServices` método para ajustar as Identity cookie configurações.
 
         ```csharp
         services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -108,7 +110,7 @@ Selecione uma das duas opções abaixo e faça as alterações necessárias em *
         services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
         ```
 
-2. Usar cookies semIdentity
+2. Usar cookie s semIdentity
     - Substitua a `UseCookieAuthentication` chamada de método no `Configure` método por `UseAuthentication` :
 
         ```csharp
@@ -277,7 +279,7 @@ Em 2,0, essas duas propriedades foram removidas como propriedades na `Authentica
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 ```
 
-No trecho de código anterior, o esquema padrão é definido como `CookieAuthenticationDefaults.AuthenticationScheme` ("cookies").
+No trecho de código anterior, o esquema padrão é definido como `CookieAuthenticationDefaults.AuthenticationScheme` (" Cookie s").
 
 Como alternativa, use uma versão sobrecarregada do `AddAuthentication` método para definir mais de uma propriedade. No exemplo de método sobrecarregado a seguir, o esquema padrão é definido como `CookieAuthenticationDefaults.AuthenticationScheme` . O esquema de autenticação pode, opcionalmente, ser especificado em seus `[Authorize]` atributos individuais ou políticas de autorização.
 
@@ -293,7 +295,7 @@ Defina um esquema padrão em 2,0 se uma das seguintes condições for verdadeira
 - Você deseja que o usuário seja conectado automaticamente
 - Você usa o `[Authorize]` atributo ou as políticas de autorização sem especificar esquemas
 
-Uma exceção a essa regra é o `AddIdentity` método. Esse método adiciona cookies para você e define os esquemas de autenticação e desafio padrão para o cookie do aplicativo `IdentityConstants.ApplicationScheme` . Além disso, ele define o esquema de entrada padrão para o cookie externo `IdentityConstants.ExternalScheme` .
+Uma exceção a essa regra é o `AddIdentity` método. Esse método adiciona cookie s para você e define os esquemas de autenticação e desafio padrão para o aplicativo cookie `IdentityConstants.ApplicationScheme` . Além disso, ele define o esquema de entrada padrão para o externo cookie `IdentityConstants.ExternalScheme` .
 
 <a name="obsolete-interface"></a>
 
@@ -342,11 +344,11 @@ Para obter mais informações, consulte <xref:security/authentication/windowsaut
 
 <a name="identity-cookie-options"></a>
 
-## <a name="identitycookieoptions-instances"></a>Instâncias de IdentityCookieOptions
+## <a name="no-locidentityno-loccookieoptions-instances"></a>IdentityCookieInstâncias de opções
 
-Um efeito colateral das alterações 2,0 é a opção de usar opções nomeadas em vez de instâncias de opções de cookie. A capacidade de personalizar os Identity nomes de esquema de cookie é removida.
+Um efeito colateral das alterações 2,0 é a opção de usar opções nomeadas em vez de cookie instâncias de opções. A capacidade de personalizar os Identity cookie nomes de esquema é removida.
 
-Por exemplo, os projetos 1. x usam [injeção de Construtor](xref:mvc/controllers/dependency-injection#constructor-injection) para passar um parâmetro para `IdentityCookieOptions` *AccountController.cs* e *ManageController.cs*. O esquema de autenticação de cookie externo é acessado na instância fornecida:
+Por exemplo, os projetos 1. x usam [injeção de Construtor](xref:mvc/controllers/dependency-injection#constructor-injection) para passar um parâmetro para `IdentityCookieOptions` *AccountController.cs* e *ManageController.cs*. O cookie esquema de autenticação externa é acessado da instância fornecida:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
@@ -368,7 +370,7 @@ Resolva a chamada recém adicionada `SignOutAsync` importando o namespace a segu
 
 <a name="navigation-properties"></a>
 
-## <a name="add-identityuser-poco-navigation-properties"></a>Adicionar propriedades de navegação do IdentityUser POCO
+## <a name="add-no-locidentityuser-poco-navigation-properties"></a>Adicionar Identity Propriedades de navegação do usuário poco
 
 As propriedades de navegação principal do Entity Framework (EF) do `IdentityUser` poco de base (objeto comum CLR) foram removidas. Se o projeto 1. x usou essas propriedades, adicione-as manualmente de volta ao projeto 2,0:
 

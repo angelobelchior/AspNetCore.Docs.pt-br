@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 1d24ebe900dfcdeb8b7bcc97f1d212deea9cecae
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 59b6e4cb2f466594d8a105a239e175e9c7b37ad8
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402722"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014237"
 ---
-# <a name="aspnet-core-blazor-globalization-and-localization"></a>ASP.NET Core Blazor globalização e localização
+# <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor globalização e localização
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
@@ -81,20 +83,20 @@ Blazor Serveros aplicativos são localizados usando o [middleware de localizaç�
 
 A cultura pode ser definida usando uma das seguintes abordagens:
 
-* [Cookies](#cookies)
+* [Cookie&](#cookies)
 * [Fornecer interface do usuário para escolher a cultura](#provide-ui-to-choose-the-culture)
 
 Para obter mais informações e exemplos, consulte <xref:fundamentals/localization>.
 
-#### <a name="cookies"></a>Cookies
+#### <a name="no-loccookies"></a>Cookies
 
-Um cookie de cultura de localização pode persistir a cultura do usuário. O middleware de localização lê o cookie em solicitações subsequentes para definir a cultura do usuário. 
+Uma cultura de localização cookie pode persistir a cultura do usuário. O middleware de localização lê o cookie em solicitações subsequentes para definir a cultura do usuário. 
 
-O uso de um cookie garante que a conexão WebSocket possa propagar corretamente a cultura. Se os esquemas de localização forem baseados no caminho da URL ou na cadeia de caracteres de consulta, o esquema pode não ser capaz de trabalhar com WebSockets, portanto, falha ao persistir a cultura. Portanto, o uso de um cookie de cultura de localização é a abordagem recomendada.
+O uso de um cookie garante que a conexão WebSocket possa propagar corretamente a cultura. Se os esquemas de localização forem baseados no caminho da URL ou na cadeia de caracteres de consulta, o esquema pode não ser capaz de trabalhar com WebSockets, portanto, falha ao persistir a cultura. Portanto, o uso de uma cultura de localização cookie é a abordagem recomendada.
 
-Qualquer técnica pode ser usada para atribuir uma cultura se a cultura persistir em um cookie de localização. Se o aplicativo já tiver um esquema de localização estabelecido para ASP.NET Core do lado do servidor, continue a usar a infraestrutura de localização existente do aplicativo e defina o cookie de cultura de localização no esquema do aplicativo.
+Qualquer técnica pode ser usada para atribuir uma cultura se a cultura for persistida em uma localização cookie . Se o aplicativo já tiver um esquema de localização estabelecido para ASP.NET Core do lado do servidor, continue a usar a infraestrutura de localização existente do aplicativo e defina a cultura de localização cookie no esquema do aplicativo.
 
-O exemplo a seguir mostra como definir a cultura atual em um cookie que pode ser lido pelo middleware de localização. Crie uma Razor expressão no `Pages/_Host.cshtml` arquivo imediatamente dentro da marca de abertura `<body>` :
+O exemplo a seguir mostra como definir a cultura atual em um cookie que pode ser lida pelo middleware de localização. Crie uma Razor expressão no `Pages/_Host.cshtml` arquivo imediatamente dentro da marca de abertura `<body>` :
 
 ```cshtml
 @using System.Globalization

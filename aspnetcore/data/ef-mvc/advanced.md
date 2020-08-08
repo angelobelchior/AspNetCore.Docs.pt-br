@@ -7,6 +7,8 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: ebeb581cf79f2d2ab60de7df43d042fa3185cd32
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 36b45339f7c3f79eca20a3467c10e896f260601f
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212734"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012976"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Tutorial: Saiba mais sobre cenários avançados – ASP.NET MVC com EF Core
 
@@ -150,7 +152,7 @@ INNER JOIN (
 ORDER BY [t].[ID]
 ```
 
-Você observará algo aqui que pode ser surpreendente: o SQL seleciona até 2 linhas (`TOP(2)`) da tabela Person. O método `SingleOrDefaultAsync` não é resolvido para uma 1 linha no servidor. Veja por quê:
+Você observará algo aqui que pode ser surpreendente: o SQL seleciona até 2 linhas (`TOP(2)`) da tabela Person. O método `SingleOrDefaultAsync` não é resolvido para uma 1 linha no servidor. Eis o motivo:
 
 * Se a consulta retorna várias linhas, o método retorna nulo.
 * Para determinar se a consulta retorna várias linhas, o EF precisa verificar se ela retorna pelo menos 2.

@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/logging
-ms.openlocfilehash: 1f4b18bdea02016fb76b75dd01a8fcbeab9b2bc9
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c2e8ee24c135b3c2f9b6be5b0e0efa54750c68b2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402826"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014351"
 ---
-# <a name="aspnet-core-blazor-logging"></a>Log de ASP.NET Core Blazor
+# <a name="aspnet-core-no-locblazor-logging"></a>Log de ASP.NET Core Blazor
 
 ## Blazor WebAssembly
 
@@ -47,7 +49,7 @@ A configuração de log pode ser carregada de arquivos de configurações do apl
 
 Para obter diretrizes gerais de log de ASP.NET Core, consulte <xref:fundamentals/logging/index> .
 
-## <a name="blazor-webassembly-signalr-net-client-logging"></a>Blazor WebAssemblySignalRLog de cliente .net
+## <a name="no-locblazor-webassembly-no-locsignalr-net-client-logging"></a>Blazor WebAssemblySignalRLog de cliente .net
 
 Insira um <xref:Microsoft.Extensions.Logging.ILoggerProvider> para adicionar um `WebAssemblyConsoleLogger` aos provedores de log passados para <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder> . Ao contrário de um tradicional <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger> , `WebAssemblyConsoleLogger` é um wrapper em relação às APIs de log específicas do navegador (por exemplo, `console.log` ). O uso de `WebAssemblyConsoleLogger` torna o registro em log possível no mono dentro de um contexto do navegador.
 
@@ -63,7 +65,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-## <a name="log-in-razor-components"></a>Componentes de logon Razor
+## <a name="log-in-no-locrazor-components"></a>Componentes de logon Razor
 
 Os agentes respeitam a configuração de inicialização do aplicativo.
 

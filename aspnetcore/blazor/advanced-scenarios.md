@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: bdea9f2fe5c552b56414bb49588733c8dc2a34db
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d6446447a51e22b7df1289e7ef20a4a6381c2b20
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400213"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012521"
 ---
-# <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor cenários avançados
+# <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core Blazor cenários avançados
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
-## <a name="blazor-server-circuit-handler"></a>Blazor Servermanipulador de circuito
+## <a name="no-locblazor-server-circuit-handler"></a>Blazor Servermanipulador de circuito
 
 Blazor Serverpermite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Um manipulador de circuito é implementado derivando de `CircuitHandler` e registrando a classe no contêiner de serviço do aplicativo. O exemplo a seguir de um manipulador de circuito rastreia SignalR conexões abertas:
 
@@ -163,14 +165,14 @@ builder.AddContent(1, "Second");
 
 Quando o código é executado pela primeira vez, se `someFlag` for `true` , o Construtor receberá:
 
-| Sequência | Digite      | Dados   |
+| Sequência | Type      | Dados   |
 | :------: | --------- | :----: |
 | 0        | Nó de texto | Primeiro  |
 | 1        | Nó de texto | Segundo |
 
 Imagine que `someFlag` se torna `false` e a marcação é renderizada novamente. Desta vez, o Construtor recebe:
 
-| Sequência | Digite       | Dados   |
+| Sequência | Type       | Dados   |
 | :------: | ---------- | :----: |
 | 1        | Nó de texto  | Segundo |
 
@@ -195,14 +197,14 @@ builder.AddContent(seq++, "Second");
 
 Agora, a primeira saída é:
 
-| Sequência | Digite      | Dados   |
+| Sequência | Type      | Dados   |
 | :------: | --------- | :----: |
 | 0        | Nó de texto | Primeiro  |
 | 1        | Nó de texto | Segundo |
 
 Esse resultado é idêntico ao caso anterior, portanto, não existem problemas negativos. `someFlag`está `false` no segundo processamento e a saída é:
 
-| Sequência | Digite      | Dados   |
+| Sequência | Type      | Dados   |
 | :------: | --------- | ------ |
 | 0        | Nó de texto | Segundo |
 
@@ -223,7 +225,7 @@ Esse é um exemplo trivial. Em casos mais realistas com estruturas complexas e p
 * Se os números de sequência forem codificados, o algoritmo diff só exigirá que os números de sequência aumentem de valor. O valor inicial e as lacunas são irrelevantes. Uma opção legítima é usar o número de linha de código como o número de sequência, ou começar de zero e aumentar por um ou centenas (ou qualquer intervalo preferencial). 
 * Blazorusa números de sequência, enquanto outras estruturas de interface do usuário de diferenciação de árvore não as usam. A comparação é muito mais rápida quando números de sequência são usados e Blazor tem a vantagem de uma etapa de compilação que lida com números de sequência automaticamente para desenvolvedores que criam `.razor` arquivos.
 
-## <a name="perform-large-data-transfers-in-blazor-server-apps"></a>Executar grandes transferências de dados em Blazor Server aplicativos
+## <a name="perform-large-data-transfers-in-no-locblazor-server-apps"></a>Executar grandes transferências de dados em Blazor Server aplicativos
 
 Em alguns cenários, grandes quantidades de dados devem ser transferidas entre o JavaScript e o Blazor . Normalmente, grandes transferências de dados ocorrem quando:
 

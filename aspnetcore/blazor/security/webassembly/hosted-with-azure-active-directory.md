@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/08/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: d2732819dd8f18da1f99965bb91e5eb3670ff4db
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 0e76e7ff744894edf303a6bc2c48fec05b41848f
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445184"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013847"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com Azure Active Directory
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com Azure Active Directory
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https://github.com/guardrex)
 
@@ -100,7 +102,7 @@ Em **permissões de API**:
 1. Escolha **Adicionar permissões**.
 1. Selecione o botão **conceder consentimento de administrador para {nome do locatário}** . Clique em **Sim** para confirmar.
 
-### <a name="create-the-app"></a>Crie o aplicativo
+### <a name="create-the-app"></a>Criar o aplicativo
 
 Em uma pasta vazia, substitua os espaços reservados no comando a seguir pelas informações registradas anteriormente e execute o comando em um shell de comando:
 
@@ -162,7 +164,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="useridentityname"></a>Usuário. Identity . Nomes
+### <a name="userno-locidentityname"></a>Usuário. Identity . Nomes
 
 Por padrão, a API do aplicativo de servidor popula `User.Identity.Name` com o valor do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` tipo de declaração (por exemplo, `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com` ).
 

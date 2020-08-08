@@ -6,6 +6,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 97fe2f36aed4a2ac60a7ffc30ede5e682a838e5e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: cad1cd868ef8c972d7e0fbfec79cd1d8b49c3b6e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408689"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015329"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migrar do ASP.NET Core 1.x para 2.0
 
@@ -164,7 +166,7 @@ A partir do 2.0, é uma prática inadequada realizar qualquer ação no `BuildWe
 
 <a name="view-compilation"></a>
 
-## <a name="review-razor-view-compilation-setting"></a>Examinar Razor Exibir configuração de compilação
+## <a name="review-no-locrazor-view-compilation-setting"></a>Examinar Razor Exibir configuração de compilação
 
 Um tempo de inicialização mais rápido do aplicativo e pacotes publicados menores são de extrema importância para você. Por esses motivos, a [ Razor compilação de exibição](xref:mvc/views/view-compilation) é habilitada por padrão no ASP.NET Core 2,0.
 
@@ -198,7 +200,7 @@ Se você estiver usando o SDK do Application Insights diretamente, continue faze
 
 <a name="auth-and-identity"></a>
 
-## <a name="adopt-authenticationidentity-improvements"></a>Adote a autenticação/ Identity aprimoramentos
+## <a name="adopt-authenticationno-locidentity-improvements"></a>Adote a autenticação/ Identity aprimoramentos
 
 ASP.NET Core 2,0 tem um novo modelo de autenticação e várias alterações significativas para ASP.NET Core Identity . Se você criou seu projeto com as contas de usuário individuais habilitadas ou se tiver adicionado a autenticação manualmente ou Identity , consulte [migrar autenticação e Identity para ASP.NET Core 2,0](xref:migration/1x-to-2x/identity-2x).
 

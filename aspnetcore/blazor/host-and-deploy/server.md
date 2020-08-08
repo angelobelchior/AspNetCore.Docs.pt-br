@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: e59579046ecbfdbb4cca79bfb0e39d299e26913c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e7c8627cd27fd30288b4bcfa1ac2ffe3e9b46e29
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402592"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014211"
 ---
-# <a name="host-and-deploy-blazor-server"></a>Hospedar e implantarBlazor Server
+# <a name="host-and-deploy-no-locblazor-server"></a>Hospedar e implantarBlazor Server
 
 Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) e [Daniel Roth](https://github.com/danroth27)
 
@@ -54,13 +56,13 @@ Para obter orientação sobre a criação de Blazor aplicativos de servidor segu
 
 Cada circuito usa aproximadamente 250 KB de memória para um aplicativo estilo mínimo de *Olá, mundo*. O tamanho de um circuito depende do código do aplicativo e dos requisitos de manutenção de estado associados a cada componente. Recomendamos que você meça as demandas de recursos durante o desenvolvimento para seu aplicativo e infraestrutura, mas a linha de base a seguir pode ser um ponto de partida para planejar seu destino de implantação: se você espera que seu aplicativo ofereça suporte a 5.000 usuários simultâneos, considere o orçamento de pelo menos 1,3 GB de memória do servidor para o aplicativo (ou ~ 273 KB por usuário).
 
-### <a name="signalr-configuration"></a>SignalRconfiguração
+### <a name="no-locsignalr-configuration"></a>SignalRconfiguração
 
 Blazor Serveros aplicativos usam ASP.NET Core SignalR para se comunicar com o navegador. as [ SignalR condições de hospedagem e dimensionamento do](xref:signalr/publish-to-azure-web-app) se aplicam aos Blazor Server aplicativos.
 
 Blazorfunciona melhor ao usar o WebSocket como SignalR transporte devido à latência, confiabilidade e [segurança](xref:signalr/security)menores. A sondagem longa é usada pelo SignalR quando o WebSockets não está disponível ou quando o aplicativo é explicitamente configurado para usar sondagem longa. Ao implantar no serviço Azure App, configure o aplicativo para usar Websockets nas configurações de portal do Azure para o serviço. Para obter detalhes sobre como configurar o aplicativo para Azure App serviço, consulte as [ SignalR diretrizes de publicação](xref:signalr/publish-to-azure-web-app).
 
-#### <a name="azure-signalr-service"></a>Serviço do Azure SignalR
+#### <a name="azure-no-locsignalr-service"></a>Serviço do Azure SignalR
 
 É recomendável usar [o SignalR serviço do Azure](/azure/azure-signalr) para Blazor Server aplicativos. O serviço permite escalar verticalmente um Blazor Server aplicativo para um grande número de conexões simultâneas SignalR . Além disso, o SignalR alcance global do serviço e os data centers de alto desempenho auxiliam significativamente na redução da latência devido à geografia. Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azure SignalR :
 

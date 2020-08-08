@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: b57e2a34f79691f7f2b1ed69cfad25de00c5ca13
-ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
+ms.openlocfilehash: 3e719261315ed3a17833da7751d801d79a11ee6c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86176214"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014472"
 ---
-# <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor formulários e validação
+# <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor formulários e validação
 
 Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
 
@@ -479,7 +481,7 @@ private class CustomValidator : ValidationAttribute
 > [!NOTE]
 > <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> é `null`. Não há suporte para injetar serviços para validação no `IsValid` método.
 
-### <a name="blazor-data-annotations-validation-package"></a>Blazorpacote de validação de anotações de dados
+### <a name="no-locblazor-data-annotations-validation-package"></a>Blazorpacote de validação de anotações de dados
 
 O [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) é um pacote que preenche as lacunas da experiência de validação usando o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. O pacote está *experimental*no momento.
 
@@ -613,7 +615,7 @@ Um efeito colateral da abordagem anterior é que um <xref:Microsoft.AspNetCore.C
 }
 ```
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solução de problemas
 
 > InvalidOperationException: EditForm requer um parâmetro de modelo ou um parâmetro EditContext, mas não ambos.
 

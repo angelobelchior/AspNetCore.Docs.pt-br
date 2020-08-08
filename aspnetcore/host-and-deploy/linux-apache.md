@@ -7,6 +7,8 @@ ms.author: shboyer
 ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 5efd84cc4b54c2ad21a7c038137fe68ee3a40f55
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2bf5633461996bfecaaa6b730adc9a19bb2769c4
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403983"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015550"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Hospedar o ASP.NET Core no Linux com o Apache
 
@@ -289,13 +291,13 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 
 ## <a name="data-protection"></a>Proteção de dados
 
-A [pilha de proteção de dados do ASP.NET Core](xref:security/data-protection/introduction) é usada por vários [middlewares](xref:fundamentals/middleware/index) do ASP.NET Core, incluindo o middleware de autenticação (por exemplo, o middleware de cookie) e as proteções de CSRF (solicitação intersite forjada). Mesmo se as APIs de Proteção de Dados não forem chamadas pelo código do usuário, a proteção de dados deverá ser configurada para criar um [repositório de chaves](xref:security/data-protection/implementation/key-management) criptográfico persistente. Se a proteção de dados não estiver configurada, as chaves serão mantidas na memória e descartadas quando o aplicativo for reiniciado.
+A [ASP.NET Core pilha de proteção de dados](xref:security/data-protection/introduction) é usada por vários ASP.NET Core [middleware](xref:fundamentals/middleware/index), incluindo o middleware de autenticação (por exemplo, cookie middleware) e as proteções de solicitação entre sites forjada (CSRF). Mesmo se as APIs de Proteção de Dados não forem chamadas pelo código do usuário, a proteção de dados deverá ser configurada para criar um [repositório de chaves](xref:security/data-protection/implementation/key-management) criptográfico persistente. Se a proteção de dados não estiver configurada, as chaves serão mantidas na memória e descartadas quando o aplicativo for reiniciado.
 
 Se o token de autenticação for armazenado na memória quando o aplicativo for reiniciado:
 
-* Todos os tokens de autenticação baseados em cookies serão invalidados.
+* Os cookie tokens de autenticação baseados em todos os são invalidados.
 * Os usuários precisam entrar novamente na próxima solicitação deles.
-* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookies TempData do MVC](xref:fundamentals/app-state#tempdata).
+* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookie s de TempData do MVC](xref:fundamentals/app-state#tempdata).
 
 Para configurar a proteção de dados de modo que ela mantenha e criptografe o token de autenticação, consulte:
 
@@ -447,7 +449,7 @@ sudo nano /etc/httpd/conf/httpd.conf
 
 Adicione a linha `Header set X-Content-Type-Options "nosniff"`. Salve o arquivo. Reinicie o Apache.
 
-### <a name="load-balancing"></a>Balanceamento de Carga
+### <a name="load-balancing"></a>Balanceamento de carga
 
 Este exemplo mostra como instalar e configurar o Apache no CentOS 7 e no Kestrel no mesmo computador da instância. Para não ter um ponto único de falha, o uso de *mod_proxy_balancer* e a modificação do **VirtualHost** permitiriam o gerenciamento de várias instâncias dos aplicativos Web protegidos pelo servidor proxy do Apache.
 

@@ -6,6 +6,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: afad542a18a357a77f4542511a3d2c3108dbfb31
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 97039ac1c7bcd6a1ff7b53e1579c623b26564d26
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059766"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014887"
 ---
-# <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Migrar da autenticação de associação do ASP.NET para o ASP.NET Core 2,0Identity
+# <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-no-locidentity"></a>Migrar da autenticação de associação do ASP.NET para o ASP.NET Core 2,0Identity
 
 Por [Isaac Levin](https://isaaclevin.com)
 
@@ -38,14 +40,14 @@ Antes do ASP.NET 2,0, os desenvolvedores eram transtarefados na criação de tod
 
 Para migrar aplicativos existentes para o ASP.NET Core 2,0 Identity , os dados nessas tabelas precisam ser migrados para as tabelas usadas pelo novo Identity esquema.
 
-## <a name="aspnet-core-identity-20-schema"></a>IdentityEsquema ASP.NET Core 2,0
+## <a name="aspnet-core-no-locidentity-20-schema"></a>IdentityEsquema ASP.NET Core 2,0
 
 ASP.NET Core 2,0 segue o [Identity](/aspnet/identity/index) princípio introduzido no ASP.NET 4,5. Embora o princípio seja compartilhado, a implementação entre as estruturas é diferente, mesmo entre as versões do ASP.NET Core (consulte [migrar a autenticação e Identity para ASP.NET Core 2,0](xref:migration/1x-to-2x/index)).
 
 A maneira mais rápida de exibir o esquema para o ASP.NET Core 2,0 Identity é criar um novo aplicativo ASP.NET Core 2,0. Siga estas etapas no Visual Studio 2017:
 
 1. Selecione **Arquivo** > **Novo** > **Projeto**.
-1. Crie um novo projeto de **aplicativo Web ASP.NET Core** chamado *CoreIdentitySample*.
+1. Crie um novo projeto de **aplicativo Web ASP.NET Core** chamado *Core Identity Sample*.
 1. Selecione **ASP.NET Core 2,0** na lista suspensa e, em seguida, selecione **aplicativo Web**. Este modelo produz um aplicativo de [ Razor páginas](xref:razor-pages/index) . Antes de clicar em **OK**, clique em **alterar autenticação**.
 1. Escolha **contas de usuário individuais** para os Identity modelos. Por fim, clique em **OK**e em **OK**. O Visual Studio cria um projeto usando o Identity modelo de ASP.NET Core.
 1. Selecione **ferramentas**  >  **Gerenciador de pacotes NuGet**  >  **console do Gerenciador de pacotes** para abrir a janela do **console do Gerenciador de pacotes** (PMC).
@@ -67,7 +69,7 @@ A maneira mais rápida de exibir o esquema para o ASP.NET Core 2,0 Identity é c
 
     O `Update-Database` comando criou o banco de dados especificado com o esquema e qualquer dado necessário para a inicialização do aplicativo. A imagem a seguir ilustra a estrutura de tabela criada com as etapas anteriores.
 
-    ![IdentityTabelas](identity/_static/identity-tables.png)
+    ![::: no-Loc (identidade)::: tabelas](identity/_static/identity-tables.png)
 
 ## <a name="migrate-the-schema"></a>Migrar o esquema
 
@@ -75,7 +77,7 @@ Há diferenças sutis nas estruturas de tabela e nos campos para associação e 
 
 ### <a name="users"></a>Usuários
 
-|Identity<br>( `dbo.AspNetUsers` ) coluna  |Tipo     |Associação<br>( `dbo.aspnet_Users`  /  `dbo.aspnet_Membership` ) coluna|Tipo      |
+|Identity<br>( `dbo.AspNetUsers` ) coluna  |Type     |Associação<br>( `dbo.aspnet_Users`  /  `dbo.aspnet_Membership` ) coluna|Type      |
 |-------------------------------------------|-----------------------------------------------------------------------|
 | `Id`                            | `string`| `aspnet_Users.UserId`                                      | `string` |
 | `UserName`                      | `string`| `aspnet_Users.UserName`                                    | `string` |
@@ -90,7 +92,7 @@ Há diferenças sutis nas estruturas de tabela e nos campos para associação e 
 
 ### <a name="roles"></a>Funções
 
-|Identity<br>( `dbo.AspNetRoles` ) coluna|Tipo|Associação<br>( `dbo.aspnet_Roles` ) coluna|Tipo|
+|Identity<br>( `dbo.AspNetRoles` ) coluna|Type|Associação<br>( `dbo.aspnet_Roles` ) coluna|Type|
 |----------------------------------------|-----------------------------------|
 |`Id`                           |`string`|`RoleId`         | `string`        |
 |`Name`                         |`string`|`RoleName`       | `string`        |
@@ -98,12 +100,12 @@ Há diferenças sutis nas estruturas de tabela e nos campos para associação e 
 
 ### <a name="user-roles"></a>Funções de usuário
 
-|Identity<br>( `dbo.AspNetUserRoles` ) coluna|Tipo|Associação<br>( `dbo.aspnet_UsersInRoles` ) coluna|Tipo|
+|Identity<br>( `dbo.AspNetUserRoles` ) coluna|Type|Associação<br>( `dbo.aspnet_UsersInRoles` ) coluna|Type|
 |-------------------------|----------|--------------|---------------------------|
 |`RoleId`                 |`string`  |`RoleId`      |`string`                   |
 |`UserId`                 |`string`  |`UserId`      |`string`                   |
 
-Referencie as tabelas de mapeamento anteriores ao criar um script de migração para *usuários* e *funções*. O exemplo a seguir pressupõe que você tenha dois bancos de dados em um servidor de banco de dados. Um banco de dados contém o esquema de associação do ASP.NET existente. O outro banco de dados *CoreIdentitySample* foi criado usando as etapas descritas anteriormente. Os comentários são incluídos embutidos para obter mais detalhes.
+Referencie as tabelas de mapeamento anteriores ao criar um script de migração para *usuários* e *funções*. O exemplo a seguir pressupõe que você tenha dois bancos de dados em um servidor de banco de dados. Um banco de dados contém o esquema de associação do ASP.NET existente. O outro banco de dados de * Identity exemplo principal* foi criado usando as etapas descritas anteriormente. Os comentários são incluídos embutidos para obter mais detalhes.
 
 ```sql
 -- THIS SCRIPT NEEDS TO RUN FROM THE CONTEXT OF THE MEMBERSHIP DB

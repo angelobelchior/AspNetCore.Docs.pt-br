@@ -5,6 +5,8 @@ description: Saiba como iniciar a migração de um projeto MVC do ASP.NET para A
 ms.author: wpickett
 ms.date: 06/18/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: 6a645d0e5959b4301ee7d2bcfc692f7499574dc4
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 17f2a2532c58c3796835328260231d63f8fb2e40
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407317"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015043"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrar do ASP.NET MVC para o ASP.NET Core MVC
 

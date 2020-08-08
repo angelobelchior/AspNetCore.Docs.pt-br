@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/03/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 9d596e38a1d8350cd4a27f2fec4b262a0edf1015
-ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
+ms.openlocfilehash: 06059e0f9ff6a3f4073d8d01d1ac541c30ad1ab1
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87818839"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014185"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET CoreBlazor WebAssembly
 
@@ -406,7 +408,7 @@ Uma *implantação autônoma* serve o Blazor WebAssembly aplicativo como um conj
 
 Os ativos de implantação autônomo são publicados na `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` pasta.
 
-### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
 
 Blazor WebAssemblyos aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
 

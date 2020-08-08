@@ -7,6 +7,8 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: f6ee60bf5e75256a9bf330f56b2f09b06f720a85
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: f97d551348ca31cc35ab5b04493ea702311a069e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212798"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012950"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutorial: manipular o ASP.NET MVC de simultaneidade com EF Core
 
@@ -79,7 +81,7 @@ Algumas das opções incluem o seguinte:
 
 * Controle qual propriedade um usuário modificou e atualize apenas as colunas correspondentes no banco de dados.
 
-     No cenário de exemplo, nenhum dado é perdido, porque propriedades diferentes foram atualizadas pelos dois usuários. Na próxima vez que alguém navegar pelo departamento de inglês, verá as alterações de Alice e de Julio – a data de início de 1/9/2013 e um orçamento de zero dólar. Esse método de atualização pode reduzir a quantidade de conflitos que podem resultar em perda de dados, mas ele não poderá evitar a perda de dados se forem feitas alterações concorrentes à mesma propriedade de uma entidade. Se o Entity Framework funciona dessa maneira depende de como o código de atualização é implementado. Geralmente, isso não é prático em um aplicativo Web, porque pode exigir que você mantenha grandes quantidades de estado para manter o controle de todos os valores de propriedade originais de uma entidade, bem como novos valores. A manutenção de grandes quantidades de estado pode afetar o desempenho do aplicativo, pois exige recursos do servidor ou deve ser incluída na própria página da Web (por exemplo, em campos ocultos) ou em um cookie.
+     No cenário de exemplo, nenhum dado é perdido, porque propriedades diferentes foram atualizadas pelos dois usuários. Na próxima vez que alguém navegar pelo departamento de inglês, verá as alterações de Alice e de Julio – a data de início de 1/9/2013 e um orçamento de zero dólar. Esse método de atualização pode reduzir a quantidade de conflitos que podem resultar em perda de dados, mas ele não poderá evitar a perda de dados se forem feitas alterações concorrentes à mesma propriedade de uma entidade. Se o Entity Framework funciona dessa maneira depende de como o código de atualização é implementado. Geralmente, isso não é prático em um aplicativo Web, porque pode exigir que você mantenha grandes quantidades de estado para manter o controle de todos os valores de propriedade originais de uma entidade, bem como novos valores. A manutenção de grandes quantidades de estado pode afetar o desempenho do aplicativo porque ele requer recursos do servidor ou deve ser incluído na própria página da Web (por exemplo, em campos ocultos) ou em um cookie .
 
 * Você não pode deixar a alteração de Julio substituir a alteração de Alice.
 

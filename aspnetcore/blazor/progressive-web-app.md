@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 237a8fceb75ba724625f018cf94c8d5bc5acfdad
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1c33a3abd2ebee60a4025d4598495d276663dc9b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402579"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014159"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Crie aplicativos Web progressivos com ASP.NET CoreBlazor WebAssembly
+# <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Crie aplicativos Web progressivos com ASP.NET CoreBlazor WebAssembly
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -69,13 +71,13 @@ Opcionalmente, o PWA pode ser configurado para um aplicativo criado a partir do 
 
 Ao visitar um aplicativo criado usando o modelo do PWA, os usuários têm a opção de instalar o aplicativo no menu Iniciar, no Dock ou na tela inicial do sistema operacional. A maneira como essa opção é apresentada depende do navegador do usuário. Ao usar navegadores baseados em desktop Chromium, como Edge ou Chrome, um botão **Adicionar** é exibido na barra de URL. Depois que o usuário selecionar o botão **Adicionar** , ele receberá uma caixa de diálogo de confirmação:
 
-![O diaglog de confirmação no Google Chrome apresenta um botão de botão de instalação para o usuário para o aplicativo ' MyBlazorPwa '.](progressive-web-app/_static/image2.png)
+![O diaglog de confirmação no Google Chrome apresenta um botão de instalação para o usuário para o aplicativo ' My::: no-Loc (mais alto):::P wa '.](progressive-web-app/_static/image2.png)
 
 No iOS, os visitantes podem instalar o PWA usando o botão **compartilhar** do Safari e sua opção **Adicionar à homescreen** . No Chrome para Android, os usuários devem selecionar o botão de **menu** no canto superior direito, seguido por **Adicionar à tela inicial**.
 
 Uma vez instalado, o aplicativo aparece em sua própria janela sem uma barra de endereços:
 
-![O aplicativo ' MyBlazorPwa ' é executado no Google Chrome sem uma barra de endereços.](progressive-web-app/_static/image3.png)
+![O aplicativo ' My::: no-Loc (mais incrivelmente):::P wa ' é executado no Google Chrome sem uma barra de endereços.](progressive-web-app/_static/image3.png)
 
 Para personalizar o título, o esquema de cores, o ícone ou outros detalhes da janela, consulte o `manifest.json` arquivo no diretório do projeto `wwwroot` . O esquema desse arquivo é definido por padrões da Web. Para obter mais informações, consulte [MDN Web docs: manifesto do aplicativo Web](https://developer.mozilla.org/docs/Web/Manifest).
 
@@ -164,7 +166,7 @@ Considere o que acontece quando o usuário navega pela primeira vez para uma URL
 
 O operador de serviço padrão contém uma lógica de caso especial para solicitações de navegação. O trabalho de serviço resolve as solicitações retornando o conteúdo armazenado em cache para `/index.html` , independentemente da URL solicitada. Essa lógica é implementada na `onFetch` função dentro do `service-worker.published.js` .
 
-Se seu aplicativo tiver determinadas URLs que devem retornar o HTML renderizado pelo servidor e não atender `/index.html` do cache, você precisará editar a lógica em seu trabalho de serviço. Se todas as URLs que contêm `/Identity/` precisam ser tratadas como solicitações regulares somente online para o servidor, modifique a `service-worker.published.js` `onFetch` lógica. Localize o código a seguir:
+Se seu aplicativo tiver determinadas URLs que devem retornar o HTML renderizado pelo servidor e não atender `/index.html` do cache, você precisará editar a lógica em seu trabalho de serviço. Se todas as URLs que contêm `/Identity/` precisam ser tratadas como solicitações regulares somente online para o servidor, modifique a `service-worker.published.js` `onFetch` lógica. Localize o seguinte código:
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate';

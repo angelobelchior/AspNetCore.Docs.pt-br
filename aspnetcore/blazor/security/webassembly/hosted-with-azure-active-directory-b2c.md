@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/08/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 40ec40423de82926bd861ef352546b3dfe63dae0
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 4949964c3fd0139aa679cc6af28b7cf29e581f0f
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445249"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013938"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com Azure Active Directory B2C
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com Azure Active Directory B2C
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https://github.com/guardrex)
 
@@ -106,7 +108,7 @@ No mínimo, selecione o atributo de usuário nome de exibição de **declaraçõ
 
 Registre o nome do fluxo de usuário de entrada e de entrada criado para o aplicativo (por exemplo, `B2C_1_signupsignin` ).
 
-### <a name="create-the-app"></a>Crie o aplicativo
+### <a name="create-the-app"></a>Criar o aplicativo
 
 Substitua os espaços reservados no comando a seguir pelas informações registradas anteriormente e execute o comando em um shell de comando:
 
@@ -171,7 +173,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="useridentityname"></a>Usuário. Identity . Nomes
+### <a name="userno-locidentityname"></a>Usuário. Identity . Nomes
 
 Por padrão, o `User.Identity.Name` não é preenchido.
 

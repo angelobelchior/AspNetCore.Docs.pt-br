@@ -6,6 +6,8 @@ ms.author: scaddie
 ms.date: 10/24/2018
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/cicd
-ms.openlocfilehash: 0edded18d766d6f2af08f6be5dbecbfd52a14a35
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 780d233014c26e37886d6bc5bd8fcb23d857dff0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400551"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012600"
 ---
-# <a name="continuous-integration-and-deployment"></a>Integração e implantação contínuas
+# <a name="continuous-integration-and-deployment"></a>Integração contínua e implantação
 
 No capítulo anterior, você criou um repositório git local para o aplicativo leitor de feed simples. Neste capítulo, você publicará esse código em um repositório GitHub e construirá um pipeline de Azure DevOps Services usando Azure Pipelines. O pipeline permite compilações e implantações contínuas do aplicativo. Qualquer confirmação ao repositório do GitHub dispara uma compilação e uma implantação para o slot de preparo do aplicativo Web do Azure.
 
@@ -46,19 +48,19 @@ Nesta seção, você concluirá as seguintes tarefas:
 1. Selecione sua conta na lista suspensa **proprietário** e insira *leitor de feed simples* na caixa de texto nome do **repositório** .
 1. Clique no botão **criar repositório** .
 1. Abra o Shell de comando do computador local. Navegue até o diretório no qual o repositório Git do *leitor de feeds simples* está armazenado.
-1. Renomeie o remoto de *origem* existente para *upstream*. Execute o comando a seguir:
+1. Renomeie o remoto de *origem* existente para *upstream*. Execute o seguinte comando:
 
     ```console
     git remote rename origin upstream
     ```
 
-1. Adicione um novo ponto remoto de *origem* apontando para sua cópia do repositório no github. Execute o comando a seguir:
+1. Adicione um novo ponto remoto de *origem* apontando para sua cópia do repositório no github. Execute o seguinte comando:
 
     ```console
     git remote add origin https://github.com/<GitHub_username>/simple-feed-reader/
     ```
 
-1. Publique seu repositório git local no repositório GitHub recém-criado. Execute o comando a seguir:
+1. Publique seu repositório git local no repositório GitHub recém-criado. Execute o seguinte comando:
 
     ```console
     git push -u origin master
@@ -116,7 +118,7 @@ Há três etapas distintas a serem concluídas. A conclusão das etapas nas trê
 1. Clique no botão de reticências ao lado do botão **repositório** . Selecione o *<GitHub_username> repositório/Simple-Feed-Reader* na lista. Clique no botão **Selecionar**.
 1. Selecione a ramificação *mestre* do **Branch padrão para a lista suspensa de compilações manuais e agendadas** . Clique no botão **Continuar**. A página seleção de modelo é exibida.
 
-### <a name="create-the-build-definition"></a>Criar a definição de compilação
+### <a name="create-the-build-definition"></a>Criar a definição de build
 
 1. Na página seleção de modelo, insira *ASP.NET Core* na caixa de pesquisa:
 
@@ -289,7 +291,7 @@ Clicar na tarefa de permuta de slot revela a seguinte configuração de tarefa:
 
 Os detalhes de assinatura, grupo de recursos, tipo de serviço, nome do aplicativo Web e slot de implantação são fornecidos. A caixa de seleção **alternar com produção** está marcada. Consequentemente, os bits implantados no slot de *preparo* são trocados no ambiente de produção.
 
-## <a name="additional-reading"></a>Leitura adicional
+## <a name="additional-reading"></a>Leituras adicionais
 
 * [Criar seu primeiro pipeline com o Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 * [Compilar e projeto do .NET Core](/azure/devops/pipelines/languages/dotnet-core)

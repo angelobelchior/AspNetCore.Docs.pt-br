@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: aab0ec0d142d840ae2b480add9e0416fb27e378e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 75bb92908525d18af57f408e8ebba53c6eec88b2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403905"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015511"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configure o ASP.NET Core para trabalhar com servidores proxy e balanceadores de carga
 
@@ -292,7 +294,7 @@ services.AddCertificateForwarding(options =>
 });
 ```
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solução de problemas
 
 Quando os cabeçalhos não são encaminhados conforme o esperado, habilite [registro em log](xref:fundamentals/logging/index). Se os logs não fornecerem informações suficientes para solucionar o problema, enumere os cabeçalhos de solicitação recebidos pelo servidor. Use middleware embutido para gravar cabeçalhos de solicitação para uma resposta do aplicativo ou para log dos cabeçalhos. 
 
@@ -620,7 +622,7 @@ if (string.Equals(
 }
 ```
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solução de problemas
 
 Quando os cabeçalhos não são encaminhados conforme o esperado, habilite [registro em log](xref:fundamentals/logging/index). Se os logs não fornecerem informações suficientes para solucionar o problema, enumere os cabeçalhos de solicitação recebidos pelo servidor. Use middleware embutido para gravar cabeçalhos de solicitação para uma resposta do aplicativo ou para log dos cabeçalhos. 
 

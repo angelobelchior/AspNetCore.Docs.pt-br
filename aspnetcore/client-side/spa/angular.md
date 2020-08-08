@@ -7,6 +7,8 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/06/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/angular
-ms.openlocfilehash: 1c91f1adadca8b339e4daf33207ca60008679810
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ce29d891b0fba2581d352637c2ae50ac792b785e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401773"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013158"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Usar o modelo de projeto Angular com o ASP.NET Core
 
@@ -129,7 +131,7 @@ Quando você iniciar seu aplicativo ASP.NET Core, ele não inicializará um serv
 
 ### <a name="pass-data-from-net-code-into-typescript-code"></a>Passar dados de código .NET para código do TypeScript
 
-Durante a SSR, convém passar dados por solicitação, do aplicativo ASP.NET Core para o aplicativo do Angular. Por exemplo, você pode transmitir informações de cookie ou algo lido de um banco de dados. Para fazer isso, edite a classe *Startup*. No retorno de chamada para `UseSpaPrerendering`, defina um valor para `options.SupplyData` como o seguinte:
+Durante a SSR, convém passar dados por solicitação, do aplicativo ASP.NET Core para o aplicativo do Angular. Por exemplo, você pode passar cookie informações ou algo lido de um banco de dados. Para fazer isso, edite a classe *Startup*. No retorno de chamada para `UseSpaPrerendering`, defina um valor para `options.SupplyData` como o seguinte:
 
 ```csharp
 options.SupplyData = (context, data) =>

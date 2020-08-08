@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/28/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 7ad85de1a566c993e59203a5efe31458f3acdc53
-ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
+ms.openlocfilehash: 1c4b1def75a76b8392427fd6916a7b5927737cac
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87303619"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015446"
 ---
 # <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>Perfis de publicação do Visual Studio (. pubxml) para implantação de aplicativo ASP.NET Core
 
@@ -138,7 +140,7 @@ Crie um perfil de publicação no Visual Studio escolhendo um dos seguintes cami
 
 A guia **Publicar** da página de capacidades do aplicativo é exibida. Se o projeto não tiver um perfil de publicação, a página **Escolher um destino de publicação** é exibida. Você deverá selecionar um dos seguintes destinos de publicação:
 
-* Serviço de aplicativo do Azure
+* Serviço de Aplicativo do Azure
 * Serviço de Aplicativo do Azure no Linux
 * Máquinas Virtuais do Azure
 * Pasta
@@ -264,7 +266,7 @@ MSBuild file.
 No exemplo anterior:
 
 * A propriedade `<ExcludeApp_Data>` está presente, simplesmente para satisfazer um requisito de esquema XML. A propriedade `<ExcludeApp_Data>` não tem efeito sobre o processo de publicação, mesmo se houver uma pasta *App_Data* na raiz do projeto. A pasta *App_Data* não recebe tratamento especial, como faz em projetos do ASP.NET 4.x.
-* A propriedade `<LastUsedBuildConfiguration>` está definida como `Release`. Ao publicar no Visual Studio, o valor de `<LastUsedBuildConfiguration>` é definido usando o valor quando o processo de publicação é iniciado. `<LastUsedBuildConfiguration>` é especial e não deve ser substituída em um arquivo do MSBuild importado. Essa propriedade pode, no entanto, ser substituída na linha de comando usando uma das abordagens a seguir.
+* A propriedade `<LastUsedBuildConfiguration>` é definida como `Release`. Ao publicar no Visual Studio, o valor de `<LastUsedBuildConfiguration>` é definido usando o valor quando o processo de publicação é iniciado. `<LastUsedBuildConfiguration>` é especial e não deve ser substituída em um arquivo do MSBuild importado. Essa propriedade pode, no entanto, ser substituída na linha de comando usando uma das abordagens a seguir.
   * Usando a CLI do .NET Core:
 
     ```dotnetcli
@@ -499,7 +501,7 @@ Adicione a propriedade `<AllowUntrustedCertificate>` com um valor `True` ao perf
 
 Para exibir os arquivos em uma implantação de aplicativo Web do Serviço de Aplicativo do Azure, use o [serviço Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Acrescente o token `scm` ao nome do aplicativo Web. Por exemplo:
 
-| URL                                    | Resultado       |
+| URL                                    | Result       |
 | -------------------------------------- | ------------ |
 | `http://mysite.azurewebsites.net/`     | Aplicativo Web      |
 | `http://mysite.scm.azurewebsites.net/` | Serviço Kudu |

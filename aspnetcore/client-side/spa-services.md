@@ -7,6 +7,8 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 05f76a7d341fc5c55b8234b6ff6d2be5aa61d6fd
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2c91fa13c6fcb92c5985cae21c175c0a2a2a313e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401825"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013262"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Use os serviços JavaScript para criar aplicativos de página única no ASP.NET Core
 
@@ -233,7 +235,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 Uma lista de modelos SPA disponíveis é exibida:
 
-| Modelos                                 | Nome curto | Idioma | Marcações        |
+| Modelos                                 | Nome curto | Idioma | Marcas        |
 | ------------------------------------------| :--------: | :------: | :---------: |
 | ASP.NET Core MVC com angular             | angular    | [C#]     | Web/MVC/SPA |
 | ASP.NET Core MVC com React.js            | react      | [C#]     | Web/MVC/SPA |
@@ -286,7 +288,7 @@ Usando o aplicativo angular como um exemplo, dois casos de teste Jasmine já sã
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Abra o prompt de comando no diretório *ClientApp* Execute o comando a seguir:
+Abra o prompt de comando no diretório *ClientApp* Execute o seguinte comando:
 
 ```console
 npm test

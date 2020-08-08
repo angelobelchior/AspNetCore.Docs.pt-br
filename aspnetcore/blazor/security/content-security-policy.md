@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 5c53ac64d3ae1b365b40c519eb119f913d58cad1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: bbe4bf1b0999d66471743c9efa1a9a9f121f2e05
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402436"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014030"
 ---
-# <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>Impor uma política de segurança de conteúdo para ASP.NET CoreBlazor
+# <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Impor uma política de segurança de conteúdo para ASP.NET CoreBlazor
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https://github.com/guardrex)
 
@@ -154,7 +156,7 @@ Embora `report-uri` o não seja mais recomendado para uso, ambas as diretivas de
 
 Testar e atualizar a política de um aplicativo a cada versão.
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solução de problemas
 
 * Os erros aparecem no console de ferramentas para desenvolvedores do navegador. Os navegadores fornecem informações sobre:
   * Elementos que não estão em conformidade com a política.

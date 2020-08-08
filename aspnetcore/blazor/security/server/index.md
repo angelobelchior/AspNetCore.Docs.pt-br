@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,20 +17,20 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 69a24fc955a0f2fb524ec817eb50372052f538a1
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 4dc9040b9410304eb33e5df7c47db2f9a42152d3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944250"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013990"
 ---
-# <a name="secure-aspnet-core-blazor-server-apps"></a>Proteger ASP.NET Core Blazor Server aplicativos
+# <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Proteger ASP.NET Core Blazor Server aplicativos
 
 Por [Luke Latham](https://github.com/guardrex)
 
 Blazor Serveros aplicativos são configurados para segurança da mesma maneira que ASP.NET Core aplicativos. Para obter mais informações, consulte os artigos em <xref:security/index> . Os tópicos desta visão geral se aplicam especificamente ao Blazor Server . 
 
-## <a name="blazor-server-project-template"></a>Blazor Servermodelo de projeto
+## <a name="no-locblazor-server-project-template"></a>Blazor Servermodelo de projeto
 
 O Blazor Server modelo de projeto pode ser configurado para autenticação quando o projeto é criado.
 
@@ -109,7 +111,7 @@ Para obter mais informações, consulte o [`dotnet new`](/dotnet/core/tools/dotn
 
 ---
 
-## <a name="scaffold-identity"></a>ScaffoldIdentity
+## <a name="scaffold-no-locidentity"></a>ScaffoldIdentity
 
 Scaffold Identity em um Blazor Server projeto:
 

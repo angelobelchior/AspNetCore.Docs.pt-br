@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/08/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 3b477b45ae70c6ad66578fbf0ed18589cecbec8d
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.openlocfilehash: ce09acc5d123db90e48e95df01770b64f85a848d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147739"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013743"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com Azure Active Directory B2C
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com Azure Active Directory B2C
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https://github.com/guardrex)
 
@@ -197,5 +199,5 @@ Para obter mais informações, consulte as seguintes seções do artigo *cenári
 * <xref:blazor/security/webassembly/additional-scenarios>
 * [Solicitações de API Web não autenticadas ou não autorizadas em um aplicativo com um cliente padrão seguro](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
-* [Tutorial - Criar um locatário do Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant)
+* [Tutorial: Criar um locatário do Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant)
 * [Documentação da plataforma de identidade da Microsoft](/azure/active-directory/develop/)

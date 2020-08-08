@@ -6,6 +6,8 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 7cf6395b6f57413d85532ed15e5a875af10f905b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 4349e8a994cfa4007ce847b2952c53f4223f1b3d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400382"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012352"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Implantar um aplicativo no serviço de aplicativo
 
@@ -81,7 +83,7 @@ Em um shell de comando, baixe o código, compile o projeto e execute-o da seguin
 
 Para implantar o aplicativo, você precisará criar um [aplicativo Web](/azure/app-service/app-service-web-overview)do serviço de aplicativo. Após a criação do aplicativo Web, você irá implantá-lo a partir de seu computador local usando o git.
 
-1. Entrar no [Azure Cloud Shell](https://shell.azure.com/bash). Observação: quando você entra pela primeira vez, Cloud Shell solicita a criação de uma conta de armazenamento para arquivos de configuração. Aceite os padrões ou forneça um nome exclusivo.
+1. Entre no [Azure cloud Shell](https://shell.azure.com/bash). Observação: quando você entra pela primeira vez, Cloud Shell solicita a criação de uma conta de armazenamento para arquivos de configuração. Aceite os padrões ou forneça um nome exclusivo.
 
 2. Use o Cloud Shell para as etapas a seguir.
 
@@ -246,7 +248,7 @@ Nesta seção, as seguintes tarefas foram concluídas:
 
 Na próxima seção, você aprenderá a criar um pipeline do DevOps com o Azure Pipelines.
 
-## <a name="additional-reading"></a>Leitura adicional
+## <a name="additional-reading"></a>Leituras adicionais
 
 * [Visão geral dos aplicativos Web](/azure/app-service/app-service-web-overview)
 * [Criar um aplicativo Web .NET Core e do Banco de Dados SQL no Serviço de Aplicativo do Azure](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)

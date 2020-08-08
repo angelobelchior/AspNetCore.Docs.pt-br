@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: b32710e515d111b7dd6556f1db55082cd56a82b5
-ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
+ms.openlocfilehash: dbad91e46a95d9ab5ec62d66e0d9a18938ff4520
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87818996"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014458"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
 
@@ -32,7 +34,7 @@ Este artigo aborda a configuração do modelo de hospedagem.
 
 *Esta seção aplica-se a Blazor WebAssembly .*
 
-Para configurar SignalR o cliente subjacente do para enviar credenciais, como cookies ou cabeçalhos de autenticação http:
+Para configurar SignalR o cliente subjacente do para enviar credenciais, como os cookie cabeçalhos de autenticação s ou http:
 
 * Use <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> para definir <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.BrowserRequestCredentials.Include> as solicitações entre origens [`fetch`](https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch) :
 
@@ -231,11 +233,9 @@ Blazor.defaultReconnectionHandler._reconnectionDisplay =
 
 O espaço reservado `{ELEMENT ID}` é a ID do elemento HTML a ser exibido.
 
-::: moniker range=">= aspnetcore-5.0"
-
 ## <a name="influence-html-head-tag-elements"></a>Influenciar `<head>` elementos de marca HTML
 
-*Esta seção aplica-se ao Blazor WebAssembly e ao Blazor Server .*
+*Esta seção se aplica à próxima versão ASP.NET Core 5,0 do Blazor WebAssembly e do Blazor Server .*
 
 Quando renderizado, `Title` os `Link` componentes, e `Meta` adicionam ou atualizam dados nos `<head>` elementos de marca HTML:
 
@@ -263,8 +263,6 @@ Quando um dos componentes do Framework é usado em um componente filho, a marca 
 
 * Pode ser modificado pelo estado do aplicativo. Uma marca HTML embutida em código não pode ser modificada pelo estado do aplicativo.
 * É removido do HTML `<head>` quando o componente pai não é mais renderizado.
-
-::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

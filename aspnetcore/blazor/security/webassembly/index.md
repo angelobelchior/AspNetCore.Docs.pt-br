@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/16/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 8d75852c74b33fe538d05c5945829e0726a5030f
-ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
+ms.openlocfilehash: fef638d592cacfe2f4f67e522900979993905859
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87818814"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013587"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core seguroBlazor WebAssembly
 
@@ -34,11 +36,11 @@ Blazor WebAssemblydá suporte à autenticação e à autorização de aplicativo
 
 O suporte de autenticação no Blazor WebAssembly é criado sobre a `oidc-client.js` biblioteca, que é usada para lidar com os detalhes do protocolo de autenticação subjacente.
 
-Existem outras opções para autenticar SPAs, como o uso de cookies SameSite. No entanto, o design de engenharia do Blazor WebAssembly é liquidado em OAuth e OIDC como a melhor opção para autenticação em Blazor WebAssembly aplicativos. [A autenticação baseada em token](xref:security/anti-request-forgery#token-based-authentication) baseada em [tokens Web JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) foi escolhida pela [autenticação baseada em cookie](xref:security/anti-request-forgery#cookie-based-authentication) para motivos funcionais e de segurança:
+Existem outras opções para autenticar SPAs, como o uso de SameSite cookie s. No entanto, o design de engenharia do Blazor WebAssembly é liquidado em OAuth e OIDC como a melhor opção para autenticação em Blazor WebAssembly aplicativos. [A autenticação baseada em token](xref:security/anti-request-forgery#token-based-authentication) baseada em [tokens Web JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) foi escolhida para [ cookie autenticação baseada](xref:security/anti-request-forgery#cookie-based-authentication) em excesso por motivos funcionais e de segurança:
 
 * O uso de um protocolo baseado em token oferece uma área de superfície de ataque menor, pois os tokens não são enviados em todas as solicitações.
 * Os pontos de extremidade do servidor não exigem proteção contra [falsificação de solicitação entre sites (CSRF)](xref:security/anti-request-forgery) porque os tokens são enviados explicitamente. Isso permite que você hospede Blazor WebAssembly aplicativos junto a aplicativos MVC ou Razor páginas.
-* Tokens têm permissões mais estreitas do que cookies. Por exemplo, os tokens não podem ser usados para gerenciar a conta de usuário ou alterar a senha de um usuário, a menos que essa funcionalidade seja explicitamente implementada.
+* Tokens têm permissões mais estreitas do que cookie s. Por exemplo, os tokens não podem ser usados para gerenciar a conta de usuário ou alterar a senha de um usuário, a menos que essa funcionalidade seja explicitamente implementada.
 * Os tokens têm um tempo de vida curto, uma hora por padrão, o que limita a janela de ataque. Os tokens também podem ser revogados a qualquer momento.
 * As JWTs independentes oferecem garantias ao cliente e ao servidor sobre o processo de autenticação. Por exemplo, um cliente tem os meios para detectar e validar que os tokens recebidos são legítimos e foram emitidos como parte de um determinado processo de autenticação. Se um terceiro tentar alternar um token no meio do processo de autenticação, o cliente poderá detectar o token comutado e evitar usá-lo.
 * Tokens com OAuth e OIDC não dependem do agente do usuário se comportarem corretamente para garantir que o aplicativo seja seguro.

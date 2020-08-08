@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 7b19ac9170fc99a3524fedda419bd03498aa999a
-ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
+ms.openlocfilehash: d2ebb5d3c3a1c3629a5bf563aecfd6fc147715d6
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87913784"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014016"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>BlazorAutenticação e autorização do ASP.NET Core
 
@@ -59,7 +61,7 @@ Para obter mais informações sobre como criar aplicativos e configuração, con
 
 ### <a name="no-locblazor-server-authentication"></a>autenticação Blazor Server
 
-Blazor Serveros aplicativos operam em uma conexão em tempo real que é criada usando o SignalR . A [autenticação em SignalR aplicativos baseados no](xref:signalr/authn-and-authz) é tratada quando a conexão é estabelecida. A autenticação pode ser baseada em um cookie ou um algum outro token de portador.
+Blazor Serveros aplicativos operam em uma conexão em tempo real que é criada usando o SignalR . A [autenticação em SignalR aplicativos baseados no](xref:signalr/authn-and-authz) é tratada quando a conexão é estabelecida. A autenticação pode ser baseada em um cookie ou algum outro token de portador.
 
 O <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> serviço interno para Blazor Server aplicativos obtém dados de estado de autenticação do ASP.NET Core `HttpContext.User` . É assim que o estado de autenticação se integra aos mecanismos existentes de autenticação de ASP.NET Core.
 

@@ -6,6 +6,8 @@ ms.author: casoper
 ms.date: 08/07/2018
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/index
-ms.openlocfilehash: 138a8e04e057e5679c3d2b84d5351a3a4ab7cd8c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 10df1eab6de064b824ce067aff3ecc07e81c38fd
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400343"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012261"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>DevOps com ASP.NET Core e Azure
 
@@ -53,7 +55,7 @@ Saiba onde obter as ferramentas usadas neste guia.
 
 Aprenda os vários métodos para implantar um aplicativo ASP.NET Core no Serviço de Aplicativo do Azure.
 
-### <a name="continuous-integration-and-deployment"></a>[Integração e implantação contínuas](xref:azure/devops/cicd)
+### <a name="continuous-integration-and-deployment"></a>[Integração contínua e implantação](xref:azure/devops/cicd)
 
 Crie uma solução de implantação e integração contínua de ponta a ponta para seu aplicativo ASP.NET Core com o GitHub, o Azure DevOps Services e o Azure.
 
@@ -69,7 +71,7 @@ Outros roteiros de aprendizado para desenvolvedores do ASP.NET Core que estão a
 
 Se esta é sua primeira experiência com a computação em nuvem, estes artigos explicam os conceitos básicos.
 
-* [O que é a computação em nuvem?](https://azure.microsoft.com/overview/what-is-cloud-computing/)
+* [O que é computação em nuvem?](https://azure.microsoft.com/overview/what-is-cloud-computing/)
 * [Exemplos de computação em nuvem](https://azure.microsoft.com/overview/examples-of-cloud-computing/)
 * [O que é IaaS?](https://azure.microsoft.com/overview/what-is-iaas/)
 * [O que é PaaS?](https://azure.microsoft.com/overview/what-is-paas/)
