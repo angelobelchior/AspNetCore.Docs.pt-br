@@ -5,6 +5,8 @@ description: Os esquemas de política de autenticação facilitam a tarefa de te
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,16 +15,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/policyschemes
-ms.openlocfilehash: a8bde9633f06f41ebcb55480eb2322544db4b4da
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ddee613bf9c603542f17adf59a835a2ddbdc25a3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408754"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017799"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>Esquemas de política no ASP.NET Core
 
-Os esquemas de diretiva de autenticação facilitam a utilização de um único esquema de autenticação lógica, o que pode usar várias abordagens. Por exemplo, um esquema de política pode usar a autenticação do Google para desafios e a autenticação de cookie para todo o resto. Os esquemas de política de autenticação o fazem:
+Os esquemas de diretiva de autenticação facilitam a utilização de um único esquema de autenticação lógica, o que pode usar várias abordagens. Por exemplo, um esquema de política pode usar a autenticação do Google para desafios e a cookie autenticação para todo o resto. Os esquemas de política de autenticação o fazem:
 
 * É fácil encaminhar qualquer ação de autenticação para outro esquema.
 * Encaminhe dinamicamente com base na solicitação.
@@ -36,11 +38,11 @@ Todos os esquemas de autenticação que usam derivado <xref:Microsoft.AspNetCore
 
 ## <a name="examples"></a>Exemplos
 
-O exemplo a seguir mostra um esquema de nível superior que combina esquemas de nível inferior. A autenticação do Google é usada para desafios e a autenticação de cookie é usada para todo o resto:
+O exemplo a seguir mostra um esquema de nível superior que combina esquemas de nível inferior. A autenticação do Google é usada para desafios e a cookie autenticação é usada para tudo o mais:
 
 [!code-csharp[sample](policyschemes/samples/Startup.cs?name=snippet1)]
 
-O exemplo a seguir habilita a seleção dinâmica de esquemas de acordo com a solicitação. Ou seja, como misturar cookies e autenticação de API:
+O exemplo a seguir habilita a seleção dinâmica de esquemas de acordo com a solicitação. Ou seja, como misturar a cookie autenticação de s e de API:
 
  <!-- REVIEW, missing If set in public Func<HttpContext, string> ForwardDefaultSelector -->
 

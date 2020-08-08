@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/1/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: fcf79966abf7a023773ef892636530278b668c44
-ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
+ms.openlocfilehash: 06c4f215c1c8d970cdfe41e395f39d4215b693f7
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87303606"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016850"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -806,7 +808,7 @@ Em seguida, os **valores aceitos** podem ser usados para expandir o modelo de ro
 
 Valores explicitamente fornecidos que não correspondem a um segmento da rota são adicionados à cadeia de caracteres de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
+| Valores de ambiente                     | Valores explícitos                        | Result                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |
@@ -1571,7 +1573,7 @@ Os valores de ambiente que não correspondem a um parâmetro são ignorados. Os 
 
 Valores fornecidos explicitamente, mas que não correspondem a um segmento da rota, são adicionados à cadeia de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
+| Valores de ambiente                     | Valores explícitos                        | Result                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |
@@ -1977,7 +1979,7 @@ Os valores de ambiente que não correspondem a um parâmetro são ignorados. Os 
 
 Valores fornecidos explicitamente, mas que não correspondem a um segmento da rota, são adicionados à cadeia de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
+| Valores de ambiente                     | Valores explícitos                        | Result                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |

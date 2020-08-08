@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/7/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 951ae53876edf345af1a3eb32cb9be1b9668fa53
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0594303f3ae8c57a0a7776900e6b2a6781c919db
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404165"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015823"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Hospedar o ASP.NET Core no Windows com o IIS
 
@@ -148,7 +150,7 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-| Opção                         | Padrão | Configuração |
+| Opção                         | Padrão | Setting |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Se `true`, o Servidor do IIS define o `HttpContext.User` autenticado pela [Autenticação do Windows](xref:security/authentication/windowsauth). Se `false`, o servidor fornecerá apenas uma identidade para `HttpContext.User` e responderá a desafios quando explicitamente solicitado pelo `AuthenticationScheme`. A autenticação do Windows deve estar habilitada no IIS para que o `AutomaticAuthentication` funcione. Para obter mais informações, veja [Autenticação do Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Configura o nome de exibição mostrado aos usuários em páginas de logon. |
@@ -166,7 +168,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Opção                         | Padrão | Configuração |
+| Opção                         | Padrão | Setting |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Se `true`, o [middleware de integração do IIS](#enable-the-iisintegration-components) define o `HttpContext.User` autenticado pela [Autenticação do Windows](xref:security/authentication/windowsauth). Se `false`, o middleware fornecerá apenas uma identidade para `HttpContext.User` e responderá a desafios quando explicitamente solicitado pelo `AuthenticationScheme`. A autenticação do Windows deve estar habilitada no IIS para que o `AutomaticAuthentication` funcione. Saiba mais no tópico [Autenticação do Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Configura o nome de exibição mostrado aos usuários em páginas de logon. |
@@ -354,7 +356,7 @@ Ao implantar aplicativos para servidores com [Implantação da Web](/iis/install
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada de **ApplicationPoolIdentity** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 **Configuração de Autenticação do Windows (opcional)**  
 Para saber mais, veja [Configurar a Autenticação do Windows](xref:security/authentication/windowsauth).
@@ -414,9 +416,9 @@ A [pilha Proteção de Dados do ASP.NET Core](xref:security/data-protection/intr
 
 Se o token de autenticação for armazenado na memória quando o aplicativo for reiniciado:
 
-* Todos os tokens de autenticação baseados em cookies serão invalidados. 
+* Os cookie tokens de autenticação baseados em todos os são invalidados. 
 * Os usuários precisam entrar novamente na próxima solicitação deles. 
-* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookies TempData do MVC](xref:fundamentals/app-state#tempdata).
+* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookie s de TempData do MVC](xref:fundamentals/app-state#tempdata).
 
 Para configurar a proteção de dados no IIS para persistir o token de autenticação, use **uma** das seguintes abordagens:
 
@@ -510,9 +512,9 @@ O isolamento do pool de aplicativos é determinado pelo modelo de hospedagem:
 
 A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos**. Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
 
-## <a name="application-pool-identity"></a>Pool de aplicativosIdentity
+## <a name="application-pool-no-locidentity"></a>Pool de aplicativosIdentity
 
-Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPoolIdentity**:
+Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity **:
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 
@@ -770,7 +772,7 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-| Opção                         | Padrão | Configuração |
+| Opção                         | Padrão | Setting |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Se `true`, o Servidor do IIS define o `HttpContext.User` autenticado pela [Autenticação do Windows](xref:security/authentication/windowsauth). Se `false`, o servidor fornecerá apenas uma identidade para `HttpContext.User` e responderá a desafios quando explicitamente solicitado pelo `AuthenticationScheme`. A autenticação do Windows deve estar habilitada no IIS para que o `AutomaticAuthentication` funcione. Para obter mais informações, veja [Autenticação do Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Configura o nome de exibição mostrado aos usuários em páginas de logon. |
@@ -786,7 +788,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Opção                         | Padrão | Configuração |
+| Opção                         | Padrão | Setting |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Se `true`, o [middleware de integração do IIS](#enable-the-iisintegration-components) define o `HttpContext.User` autenticado pela [Autenticação do Windows](xref:security/authentication/windowsauth). Se `false`, o middleware fornecerá apenas uma identidade para `HttpContext.User` e responderá a desafios quando explicitamente solicitado pelo `AuthenticationScheme`. A autenticação do Windows deve estar habilitada no IIS para que o `AutomaticAuthentication` funcione. Saiba mais no tópico [Autenticação do Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Configura o nome de exibição mostrado aos usuários em páginas de logon. |
@@ -954,7 +956,7 @@ Ao implantar aplicativos para servidores com [Implantação da Web](/iis/install
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada de **ApplicationPoolIdentity** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 **Configuração de Autenticação do Windows (opcional)**  
 Para saber mais, veja [Configurar a Autenticação do Windows](xref:security/authentication/windowsauth).
@@ -1014,9 +1016,9 @@ A [pilha Proteção de Dados do ASP.NET Core](xref:security/data-protection/intr
 
 Se o token de autenticação for armazenado na memória quando o aplicativo for reiniciado:
 
-* Todos os tokens de autenticação baseados em cookies serão invalidados. 
+* Os cookie tokens de autenticação baseados em todos os são invalidados. 
 * Os usuários precisam entrar novamente na próxima solicitação deles. 
-* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookies TempData do MVC](xref:fundamentals/app-state#tempdata).
+* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookie s de TempData do MVC](xref:fundamentals/app-state#tempdata).
 
 Para configurar a proteção de dados no IIS para persistir o token de autenticação, use **uma** das seguintes abordagens:
 
@@ -1110,9 +1112,9 @@ O isolamento do pool de aplicativos é determinado pelo modelo de hospedagem:
 
 A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos**. Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
 
-## <a name="application-pool-identity"></a>Pool de aplicativosIdentity
+## <a name="application-pool-no-locidentity"></a>Pool de aplicativosIdentity
 
-Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPoolIdentity**:
+Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity **:
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 
@@ -1340,7 +1342,7 @@ Para obter mais informações sobre o `CreateDefaultBuilder`, consulte <xref:fun
 
 ### <a name="iis-options"></a>Opções do IIS
 
-| Opção                         | Padrão | Configuração |
+| Opção                         | Padrão | Setting |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Se `true`, o Servidor do IIS define o `HttpContext.User` autenticado pela [Autenticação do Windows](xref:security/authentication/windowsauth). Se `false`, o servidor fornecerá apenas uma identidade para `HttpContext.User` e responderá a desafios quando explicitamente solicitado pelo `AuthenticationScheme`. A autenticação do Windows deve estar habilitada no IIS para que o `AutomaticAuthentication` funcione. Para obter mais informações, veja [Autenticação do Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Configura o nome de exibição mostrado aos usuários em páginas de logon. |
@@ -1354,7 +1356,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Opção                         | Padrão | Configuração |
+| Opção                         | Padrão | Setting |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Se `true`, o [middleware de integração do IIS](#enable-the-iisintegration-components) define o `HttpContext.User` autenticado pela [Autenticação do Windows](xref:security/authentication/windowsauth). Se `false`, o middleware fornecerá apenas uma identidade para `HttpContext.User` e responderá a desafios quando explicitamente solicitado pelo `AuthenticationScheme`. A autenticação do Windows deve estar habilitada no IIS para que o `AutomaticAuthentication` funcione. Saiba mais no tópico [Autenticação do Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Configura o nome de exibição mostrado aos usuários em páginas de logon. |
@@ -1522,7 +1524,7 @@ Ao implantar aplicativos para servidores com [Implantação da Web](/iis/install
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada de **ApplicationPoolIdentity** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 **Configuração de Autenticação do Windows (opcional)**  
 Para saber mais, veja [Configurar a Autenticação do Windows](xref:security/authentication/windowsauth).
@@ -1582,9 +1584,9 @@ A [pilha Proteção de Dados do ASP.NET Core](xref:security/data-protection/intr
 
 Se o token de autenticação for armazenado na memória quando o aplicativo for reiniciado:
 
-* Todos os tokens de autenticação baseados em cookies serão invalidados. 
+* Os cookie tokens de autenticação baseados em todos os são invalidados. 
 * Os usuários precisam entrar novamente na próxima solicitação deles. 
-* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookies TempData do MVC](xref:fundamentals/app-state#tempdata).
+* Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados. Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookie s de TempData do MVC](xref:fundamentals/app-state#tempdata).
 
 Para configurar a proteção de dados no IIS para persistir o token de autenticação, use **uma** das seguintes abordagens:
 
@@ -1706,9 +1708,9 @@ Aplicativos ASP.NET Core são configurados para usar outros provedores de config
 
 Ao hospedar vários sites em um servidor, é recomendável isolar os aplicativos uns dos outros, executando cada aplicativo em seu próprio pool de aplicativo. A caixa de diálogo **Adicionar Site** do IIS usa como padrão essa configuração. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos**. Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
 
-## <a name="application-pool-identity"></a>Pool de aplicativosIdentity
+## <a name="application-pool-no-locidentity"></a>Pool de aplicativosIdentity
 
-Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPoolIdentity**:
+Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity **:
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 

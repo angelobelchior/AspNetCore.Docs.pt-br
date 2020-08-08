@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: getting-started
-ms.openlocfilehash: b88460cdff5d8c30c6a28afdb4f67e8e0b6b819c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 74df2ade64e0821dcbb28252e8a637f81d15e375
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403359"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016473"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutorial: introdução ao ASP.NET Core
 
@@ -101,7 +103,7 @@ dotnet watch run
 
 Depois que o shell de comando indicar que o aplicativo foi iniciado, navegue até `https://localhost:5001`.
 
-## <a name="edit-a-razor-page"></a>Editar uma Razor página
+## <a name="edit-a-no-locrazor-page"></a>Editar uma Razor página
 
 Abra *pages/index. cshtml* e modifique e salve a página com a seguinte marcação realçada:
 

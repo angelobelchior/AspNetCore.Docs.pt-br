@@ -6,6 +6,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/target-aspnetcore
-ms.openlocfilehash: 1c794092b856a916a318956d7cfb357d46a22d1d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a6c20c61f7f33706e620fcbc239b2cc4bace15f0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399641"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016486"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Usar ASP.NET Core APIs em uma biblioteca de classes
 
@@ -48,7 +50,7 @@ Para fazer referência a ASP.NET Core, adicione o seguinte `<FrameworkReference>
 
 A referência a ASP.NET Core dessa maneira só tem suporte em projetos destinados ao .NET Core 3. x.
 
-## <a name="include-blazor-extensibility"></a>Incluir Blazor extensibilidade
+## <a name="include-no-locblazor-extensibility"></a>Incluir Blazor extensibilidade
 
 Blazordá suporte ao Webassembly (WASM) e [modelos de hospedagem](xref:blazor/hosting-models)de servidor. A menos que haja um motivo específico para não, uma biblioteca de [ Razor componentes](xref:blazor/components/index) deve dar suporte a ambos os modelos de hospedagem. Uma Razor biblioteca de componentes deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).
 
@@ -104,12 +106,12 @@ Para obter mais informações sobre bibliotecas que contêm Razor componentes, c
 Esta seção descreve as recomendações para bibliotecas que incluem:
 
 * [Razorexibições ou Razor páginas](#razor-views-or-razor-pages)
-* [Auxiliares de Marca](#tag-helpers)
+* [Auxiliares de Marcas](#tag-helpers)
 * [Componentes da exibição](#view-components)
 
 Esta seção não aborda vários destinos para dar suporte a várias versões do MVC. Para obter orientação sobre como dar suporte a várias versões de ASP.NET Core, consulte [suporte para várias versões de ASP.NET Core](#support-multiple-aspnet-core-versions).
 
-### <a name="razor-views-or-razor-pages"></a>Razorexibições ou Razor páginas
+### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Razorexibições ou Razor páginas
 
 Um projeto que inclui [ Razor exibições](xref:mvc/views/overview) ou [ Razor páginas](xref:razor-pages/index) deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).
 
@@ -220,7 +222,7 @@ Por exemplo, leituras e gravações síncronas em fluxos de solicitação e resp
 
 ## <a name="use-an-api-introduced-in-30"></a>Usar uma API introduzida em 3,0
 
-Imagine que você deseja usar uma API de ASP.NET Core que foi introduzida no ASP.NET Core 3,0. Considere as perguntas a seguir:
+Imagine que você deseja usar uma API de ASP.NET Core que foi introduzida no ASP.NET Core 3,0. Considere as seguintes perguntas:
 
 1. A biblioteca requer a nova API?
 1. A biblioteca pode implementar esse recurso de forma diferente?

@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: 3d90788fa300bf099f44aa284e77879698240a74
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e6069e5051530e88c43d99758d891b53c9f35233
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407818"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016889"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>OWIN (Open Web Interface para .NET) com o ASP.NET Core
 
@@ -245,7 +247,7 @@ O OWIN depende de um objeto `IDictionary<string,object>` para transmitir informa
 
 ### <a name="request-data-owin-v100"></a>Dados de solicitação (OWIN v1.0.0)
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | owin.RequestScheme | `String` |  |
 | owin.RequestMethod  | `String` | |    
@@ -258,13 +260,13 @@ O OWIN depende de um objeto `IDictionary<string,object>` para transmitir informa
 
 ### <a name="request-data-owin-v110"></a>Dados de solicitação (OWIN v1.1.0)
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | owin.RequestId | `String` | Opcional |
 
 ### <a name="response-data-owin-v100"></a>Dados de resposta (OWIN v1.0.0)
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | owin.ResponseStatusCode | `int` | Opcional |
 | owin.ResponseReasonPhrase | `String` | Opcional |
@@ -273,14 +275,14 @@ O OWIN depende de um objeto `IDictionary<string,object>` para transmitir informa
 
 ### <a name="other-data-owin-v100"></a>Outros dados (OWIN v1.0.0)
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
 
 ### <a name="common-keys"></a>Chaves comuns
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | ssl.ClientCertificate | `X509Certificate` |  |
 | ssl.LoadClientCertAsync  | `Func<Task>` | |    
@@ -293,13 +295,13 @@ O OWIN depende de um objeto `IDictionary<string,object>` para transmitir informa
 
 ### <a name="sendfiles-v030"></a>SendFiles v0.3.0
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | Consulte [Assinatura do delegado](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Por solicitação |
 
 ### <a name="opaque-v030"></a>Opaque v0.3.0
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | opaque.Version | `String` |  |
 | opaque.Upgrade | `OpaqueUpgrade` | Consulte [Assinatura do delegado](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -308,7 +310,7 @@ O OWIN depende de um objeto `IDictionary<string,object>` para transmitir informa
 
 ### <a name="websocket-v030"></a>WebSocket v0.3.0
 
-| Chave               | Valor (tipo) | Descrição |
+| Key               | Valor (tipo) | Descrição |
 | ----------------- | ------------ | ----------- |
 | websocket.Version | `String` |  |
 | websocket.Accept | `WebSocketAccept` | Consulte [Assinatura do delegado](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |

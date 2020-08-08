@@ -5,6 +5,8 @@ description: Saiba como diagnosticar problemas com a localização em aplicativo
 ms.author: riande
 ms.date: 01/24/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/troubleshoot-aspnet-core-localization
-ms.openlocfilehash: 48f75b4fbfdb2078f07efeffd8d4105366998876
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 801ae3a708d23308cbf909ceeace160e3c0db1bd
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407077"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016460"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Solucionar problemas de Localização no ASP.NET Core
 
@@ -58,7 +60,7 @@ As causas comuns para não localizar recursos incluem:
 - O recurso está ausente do `resx` para alguns idiomas, mas presente em outros.
 - Se ainda houver problemas, verifique as mensagens de log de localização (que estão no nível de log `Debug`) para saber mais detalhes sobre os recursos ausentes.
 
-_**Dica:** Ao usar `CookieRequestCultureProvider` o, verifique se aspas simples não são usadas com as culturas dentro do valor do cookie de localização. Por exemplo, `c='en-UK'|uic='en-US'` é um valor de cookie inválido, enquanto `c=en-UK|uic=en-US` é um válido._
+_**Dica:** Ao usar `CookieRequestCultureProvider` , verifique se aspas simples não são usadas com as culturas dentro do cookie valor de localização. Por exemplo, `c='en-UK'|uic='en-US'` é um cookie valor inválido, enquanto `c=en-UK|uic=en-US` é um válido._
 
 ## <a name="resources--class-libraries-issues"></a>Problemas de bibliotecas de recursos e classes
 

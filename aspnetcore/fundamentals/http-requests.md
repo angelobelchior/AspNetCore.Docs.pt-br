@@ -7,6 +7,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/09/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: fb9001c06228b4290ca1e0c7cfb6b1338f431cd6
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: ef6ed0911c2615ea543b1c2cea31a9a453f0c604
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87444108"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017227"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Fazer solicitações HTTP usando IHttpClientFactory no ASP.NET Core
 
@@ -359,18 +361,18 @@ As abordagens anteriores resolvem os problemas de gerenciamento de recursos que 
 - O `SocketsHttpHandler` compartilha conexões entre `HttpClient` instâncias. Esse compartilhamento impede o esgotamento de soquete.
 - O `SocketsHttpHandler` ciclos se conexões de acordo com o `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="cookies"></a>Cookies
+### <a name="no-loccookies"></a>Cookies
 
-As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados. O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto. Para aplicativos que exigem cookies, considere o:
+As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados. O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto. Para aplicativos que exigem cookie s, considere o:
 
- - Desabilitando a manipulação automática de cookies
+ - Desabilitando a cookie manipulação automática
  - Evitá`IHttpClientFactory`
 
-Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar o tratamento automático de cookies:
+Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a cookie manipulação automática:
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Registro em log
+## <a name="logging"></a>Registrando em log
 
 Os clientes criado pelo `IHttpClientFactory` registram mensagens de log para todas as solicitações. Habilite o nível de informações apropriado na configuração de log para ver as mensagens de log padrão. Os registros em log adicionais, como o registro em log dos cabeçalhos de solicitação, estão incluídos somente no nível de rastreamento.
 
@@ -677,18 +679,18 @@ As abordagens anteriores resolvem os problemas de gerenciamento de recursos que 
 - O `SocketsHttpHandler` compartilha conexões entre `HttpClient` instâncias. Esse compartilhamento impede o esgotamento de soquete.
 - O `SocketsHttpHandler` ciclos se conexões de acordo com o `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="cookies"></a>Cookies
+### <a name="no-loccookies"></a>Cookies
 
-As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados. O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto. Para aplicativos que exigem cookies, considere o:
+As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados. O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto. Para aplicativos que exigem cookie s, considere o:
 
- - Desabilitando a manipulação automática de cookies
+ - Desabilitando a cookie manipulação automática
  - Evitá`IHttpClientFactory`
 
-Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar o tratamento automático de cookies:
+Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a cookie manipulação automática:
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Registro em log
+## <a name="logging"></a>Registrando em log
 
 Os clientes criado pelo `IHttpClientFactory` registram mensagens de log para todas as solicitações. Habilite o nível apropriado de informações na configuração de log para ver as mensagens de log padrão. Os registros em log adicionais, como o registro em log dos cabeçalhos de solicitação, estão incluídos somente no nível de rastreamento.
 
@@ -985,18 +987,18 @@ As abordagens anteriores resolvem os problemas de gerenciamento de recursos que 
 - O `SocketsHttpHandler` compartilha conexões entre `HttpClient` instâncias. Esse compartilhamento impede o esgotamento de soquete.
 - O `SocketsHttpHandler` ciclos se conexões de acordo com o `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="cookies"></a>Cookies
+### <a name="no-loccookies"></a>Cookies
 
-As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados. O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto. Para aplicativos que exigem cookies, considere o:
+As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados. O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto. Para aplicativos que exigem cookie s, considere o:
 
- - Desabilitando a manipulação automática de cookies
+ - Desabilitando a cookie manipulação automática
  - Evitá`IHttpClientFactory`
 
-Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar o tratamento automático de cookies:
+Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a cookie manipulação automática:
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Registro em log
+## <a name="logging"></a>Registrando em log
 
 Os clientes criado pelo `IHttpClientFactory` registram mensagens de log para todas as solicitações. Habilite o nível apropriado de informações na configuração de log para ver as mensagens de log padrão. Os registros em log adicionais, como o registro em log dos cabeçalhos de solicitação, estão incluídos somente no nível de rastreamento.
 

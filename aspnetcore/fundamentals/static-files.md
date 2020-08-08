@@ -6,18 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 6/23/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 3f4fc6f7d9d44d76d0504d9666df41571fd0b12c
-ms.sourcegitcommit: d306407dc5bfe6fdfbac482214b3f59371b582bc
+ms.openlocfilehash: 32f794d498533e846343831d2360e98939105fb1
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/04/2020
-ms.locfileid: "85951946"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016668"
 ---
 # <a name="static-files-in-aspnet-core"></a>Arquivos estáticos no ASP.NET Core
 
@@ -283,7 +285,7 @@ Os arquivos estáticos podem ser acessados por meio de um caminho relativo à [r
   * `images`
   * `js`
 
-O formato do URI para acessar um arquivo na *images* subpasta imagens *é \<server_address> http:// \<image_file_name> /images/*. Por exemplo, *http://localhost:9189/images/banner3.svg* .
+O formato do URI para acessar um arquivo na *images* subpasta imagens *é \<server_address> http:// \<image_file_name> /images/*. Por exemplo, *http://localhost:9189/images/banner3.svg*.
 
 Se estiver direcionando o .NET Framework, adicione o pacote [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) ao projeto. Se você estiver direcionando para o .NET Core, o [metapacote Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) incluirá esse pacote.
 

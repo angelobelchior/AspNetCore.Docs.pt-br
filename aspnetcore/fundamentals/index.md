@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/index
-ms.openlocfilehash: c797ce8bcb22aec2b56df2f3b108da4cbfde263d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f141e9248a702ad9a1d9737f82543a0ccc8fb573
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403294"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017201"
 ---
 # <a name="aspnet-core-fundamentals"></a>Conceitos básicos do ASP.NET Core
 
@@ -161,7 +163,7 @@ O ASP.NET Core dá suporte a uma API de registro em log que funciona com uma sé
 * Rastreamento de Eventos no Windows
 * Log de eventos do Windows
 * TraceSource
-* Serviço de aplicativo do Azure
+* Serviço de Aplicativo do Azure
 * Azure Application Insights
 
 Para criar logs, resolva um <xref:Microsoft.Extensions.Logging.ILogger%601> serviço de injeção de dependência (di) e métodos de registro em log de chamada, como <xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*> . Por exemplo:
@@ -408,7 +410,7 @@ O ASP.NET Core dá suporte a uma API de registro em log que funciona com uma sé
 * Rastreamento de Eventos no Windows
 * Log de eventos do Windows
 * TraceSource
-* Serviço de aplicativo do Azure
+* Serviço de Aplicativo do Azure
 * Azure Application Insights
 
 Escreva logs de qualquer lugar no código do aplicativo obtendo um objeto `ILogger` da DI e chamando os métodos de log.

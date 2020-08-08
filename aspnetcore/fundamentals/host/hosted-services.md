@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: ebc39e7a6869911d464a340caea8eadc93ea72e0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5ad99a261356540782b9e4d601e1a38724d50a97
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407195"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017370"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tarefas em segundo plano com serviços hospedados no ASP.NET Core
 
@@ -134,7 +136,7 @@ Para usar [serviços com escopo](xref:fundamentals/dependency-injection#service-
 
 O serviço da tarefa em segundo plano com escopo contém a lógica da tarefa em segundo plano. No exemplo a seguir:
 
-* O serviço é assíncrono. O método `DoWork` retorna um `Task`. Para fins de demonstração, um atraso de dez segundos é aguardado no `DoWork` método.
+* O serviço é assíncrono. O método `DoWork` retorna uma `Task`. Para fins de demonstração, um atraso de dez segundos é aguardado no `DoWork` método.
 * Um <xref:Microsoft.Extensions.Logging.ILogger> é injetado no serviço.
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ScopedProcessingService.cs?name=snippet1)]

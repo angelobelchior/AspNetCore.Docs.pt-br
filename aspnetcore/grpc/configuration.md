@@ -7,6 +7,8 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: e56410d2e9a893a406ec5b60841c2b70dca7205c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e6767aedcf9c6dbcbd7eec97e1c7a5b6161992aa
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403554"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016187"
 ---
 # <a name="grpc-for-net-configuration"></a>configuração do gRPC para .NET
 
@@ -59,7 +61,7 @@ a configuração do cliente gRPC está definida em `GrpcChannelOptions` . A tabe
 | LoggerFactory | `null` | O `LoggerFactory` usado pelo cliente para registrar informações sobre chamadas gRPC. Uma `LoggerFactory` instância pode ser resolvida da injeção de dependência ou criada usando `LoggerFactory.Create` . Para obter exemplos de configuração de registro em log, consulte <xref:grpc/diagnostics#grpc-client-logging> . |
 | MaxSendMessageSize | `null` | O tamanho máximo da mensagem em bytes que pode ser enviado do cliente. A tentativa de enviar uma mensagem que exceda o tamanho máximo da mensagem configurada resultará em uma exceção. Quando definido como `null` , o tamanho da mensagem é ilimitado. |
 | <span style="word-break:normal;word-wrap:normal">MaxReceiveMessageSize</span> | 4 MB | O tamanho máximo da mensagem em bytes que pode ser recebido pelo cliente. Se o cliente receber uma mensagem que exceda esse limite, ele lançará uma exceção. Aumentar esse valor permite que o cliente receba mensagens maiores, mas pode afetar negativamente o consumo de memória. Quando definido como `null` , o tamanho da mensagem é ilimitado. |
-| Credenciais | `null` | Uma instância `ChannelCredentials`. As credenciais são usadas para adicionar metadados de autenticação a chamadas gRPC. |
+| Credenciais | `null` | Uma instância de `ChannelCredentials`. As credenciais são usadas para adicionar metadados de autenticação a chamadas gRPC. |
 | CompressionProviders | gzip | Uma coleção de provedores de compactação usados para compactar e descompactar mensagens. Os provedores de compactação personalizados podem ser criados e adicionados à coleção. Os provedores configurados padrão dão suporte à compactação **gzip** . |
 
 O seguinte código:

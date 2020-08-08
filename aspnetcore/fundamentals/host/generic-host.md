@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/17/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 26aef561ba299403df0dad9893fecd5e2a15ab0e
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 7f662aac3714e49e6a3a63175415a1a63b0940c2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86213005"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017422"
 ---
 # <a name="net-generic-host"></a>Host Genérico .NET
 
@@ -33,7 +35,7 @@ Os modelos de ASP.NET Core criam um host genérico do .NET Core, <xref:Microsoft
 Um *host* é um objeto que encapsula os recursos de um aplicativo, tais como:
 
 * DI (injeção de dependência)
-* Registro em log
+* Registrando em log
 * Configuração
 * Implementações de `IHostedService`
 
@@ -225,7 +227,7 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-Para obter mais informações, confira:
+Para obter mais informações, consulte:
 
 * [Conceitos básicos: raiz de conteúdo](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
@@ -437,7 +439,7 @@ Para definir esse valor, use a variável de ambiente ou a chamada `UseWebRoot` e
 webBuilder.UseWebRoot("public");
 ```
 
-Para obter mais informações, confira:
+Para obter mais informações, consulte:
 
 * [Conceitos básicos: raiz da Web](xref:fundamentals/index#web-root)
 * [ContentRoot](#contentroot)
@@ -1010,7 +1012,7 @@ Os modelos de ASP.NET Core criam um host genérico do .NET Core ( <xref:Microsof
 Um *host* é um objeto que encapsula os recursos de um aplicativo, tais como:
 
 * DI (injeção de dependência)
-* Registro em log
+* Registrando em log
 * Configuração
 * Implementações de `IHostedService`
 
@@ -1200,7 +1202,7 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-Para obter mais informações, confira:
+Para obter mais informações, consulte:
 
 * [Conceitos básicos: raiz de conteúdo](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
@@ -1425,7 +1427,7 @@ Para definir esse valor, use a variável de ambiente ou a chamada `UseWebRoot` e
 webBuilder.UseWebRoot("public");
 ```
 
-Para obter mais informações, confira:
+Para obter mais informações, consulte:
 
 * [Conceitos básicos: raiz da Web](xref:fundamentals/index#web-root)
 * [ContentRoot](#contentroot)

@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/5/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/httpcontext
-ms.openlocfilehash: d4512c9fa136e518fa0230c0cf9c607519eed6d8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2b8ac1d6c6cdeee14b74c5b14206bff51982c711
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399446"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017240"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Acessar o HttpContext no ASP.NET Core
 
 ASP.NET Core aplicativos acessam `HttpContext` por meio da <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> interface e sua implementação padrão <xref:Microsoft.AspNetCore.Http.HttpContextAccessor> . Só é necessário usar o `IHttpContextAccessor` quando você precisar acessar o `HttpContext` em um serviço.
 
-## <a name="use-httpcontext-from-razor-pages"></a>Usar HttpContext de Razor páginas
+## <a name="use-httpcontext-from-no-locrazor-pages"></a>Usar HttpContext de Razor páginas
 
 As Razor páginas <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> expõem a <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> Propriedade:
 
@@ -42,9 +44,9 @@ public class AboutModel : PageModel
 }
 ```
 
-## <a name="use-httpcontext-from-a-razor-view"></a>Usar HttpContext de uma Razor exibição
+## <a name="use-httpcontext-from-a-no-locrazor-view"></a>Usar HttpContext de uma Razor exibição
 
-Razoras exibições expõem `HttpContext` diretamente por meio de uma propriedade [RazorPage. Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) na exibição. O exemplo a seguir recupera o nome de usuário atual em um aplicativo de intranet usando a autenticação do Windows:
+Razoras exibições expõem o `HttpContext` diretamente por meio de uma propriedade [ Razor Page. Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) na exibição. O exemplo a seguir recupera o nome de usuário atual em um aplicativo de intranet usando a autenticação do Windows:
 
 ```cshtml
 @{
@@ -173,6 +175,6 @@ public class EmailController : Controller
 }
 ```
 
-## <a name="blazor-and-shared-state"></a>Blazore estado compartilhado
+## <a name="no-locblazor-and-shared-state"></a>Blazore estado compartilhado
 
 [!INCLUDE[](~/includes/blazor-security/blazor-shared-state.md)]

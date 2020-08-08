@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: 30123e043a7c152b5719af8092b2ab42a70d2787
-ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.openlocfilehash: c05129c0f239fb28c83ab1c561dd910305eeb54b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86407613"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017630"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gerenciamento de sessão e estado no ASP.NET Core
 
@@ -37,23 +39,23 @@ O estado pode ser armazenado usando várias abordagens. Cada abordagem é descri
 
 | Abordagem de armazenamento | Mecanismo de armazenamento |
 | ---------------- | ----------------- |
-| [Arar](#cookies) | Cookies HTTP. Pode incluir dados armazenados usando o código do aplicativo do lado do servidor. |
-| [Estado da sessão](#session-state) | Cookies HTTP e o código de aplicativo do lado do servidor |
-| [TempData](#tempdata) | Estado de sessão ou cookies HTTP |
+| [Cookie&](#cookies) | HTTP cookie s. Pode incluir dados armazenados usando o código do aplicativo do lado do servidor. |
+| [Estado da sessão](#session-state) | HTTP cookie s e código do aplicativo no lado do servidor |
+| [TempData](#tempdata) | cookieEstado de sessão ou http s |
 | [Cadeias de consulta](#query-strings) | Cadeias de caracteres de consulta HTTP |
 | [Campos ocultos](#hidden-fields) | Campos de formulário HTTP |
 | [HttpContext.Items](#httpcontextitems) | Código do aplicativo do lado do servidor |
 | [Cache](#cache) | Código do aplicativo do lado do servidor |
 
-## <a name="cookies"></a>Cookies
+## <a name="no-loccookies"></a>Cookies
 
-Cookies armazenam dados entre solicitações. Como os cookies são enviados com cada solicitação, seu tamanho deve ser reduzido ao mínimo. Idealmente, somente um identificador deve ser armazenado em um cookie com os dados armazenados pelo aplicativo. A maioria dos navegadores restringe o tamanho do cookie a 4.096 bytes. Somente um número limitado de cookies está disponível para cada domínio.
+Cookies armazenam dados entre solicitações. Como cookie os s são enviados com cada solicitação, seu tamanho deve ser mantido no mínimo. Idealmente, apenas um identificador deve ser armazenado em um cookie com os dados armazenados pelo aplicativo. A maioria dos navegadores restringe o cookie tamanho a 4096 bytes. Apenas um número limitado de cookie s está disponível para cada domínio.
 
-Uma vez que os cookies estão sujeitos à adulteração, eles devem ser validados pelo aplicativo. Os cookies podem ser excluídos por usuários e expirarem em clientes. No entanto, os cookies geralmente são a forma mais durável de persistência de dados no cliente.
+Como cookie os s estão sujeitos à violação, eles devem ser validados pelo aplicativo. Cookieos s podem ser excluídos por usuários e expiram em clientes. No entanto, cookie s geralmente são a forma mais durável de persistência de dados no cliente.
 
-Frequentemente, cookies são usados para personalização quando o conteúdo é personalizado para um usuário conhecido. O usuário é apenas identificado, e não autenticado, na maioria dos casos. O cookie pode armazenar o nome do usuário, o nome da conta ou a ID de usuário exclusiva, como um GUID. O cookie pode ser usado para acessar as configurações personalizadas do usuário, como sua cor de plano de fundo de site preferencial.
+Cookieos s geralmente são usados para personalização, onde o conteúdo é personalizado para um usuário conhecido. O usuário é apenas identificado, e não autenticado, na maioria dos casos. O cookie pode armazenar o nome do usuário, o nome da conta ou a ID de usuário exclusiva, como um GUID. O cookie pode ser usado para acessar as configurações personalizadas do usuário, como sua cor de plano de fundo de site preferencial.
 
-Consulte as [normas gerais de proteção de dados da União Europeia (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection) ao emitir cookies e lidar com questões de privacidade. Para obter mais informações, veja [Suporte ao RGPD (Regulamento Geral sobre a Proteção de Dados) no ASP.NET Core](xref:security/gdpr).
+Consulte as [normas gerais de proteção de dados da União Europeia (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection) ao emitir cookie s e lidar com questões de privacidade. Para obter mais informações, veja [Suporte ao RGPD (Regulamento Geral sobre a Proteção de Dados) no ASP.NET Core](xref:security/gdpr).
 
 ## <a name="session-state"></a>Estado de sessão
 
@@ -61,31 +63,31 @@ Estado de sessão é um cenário do ASP.NET Core para o armazenamento de dados d
 
 A sessão não tem suporte em [SignalR](xref:signalr/index) aplicativos porque um [ SignalR Hub](xref:signalr/hubs) pode ser executado independentemente de um contexto http. Por exemplo, isso pode ocorrer quando uma solicitação de sondagem longa é mantida aberta por um hub além do tempo de vida do contexto HTTP da solicitação.
 
-ASP.NET Core mantém o estado da sessão fornecendo um cookie ao cliente que contém uma ID de sessão. A ID da sessão do cookie:
+ASP.NET Core mantém o estado de sessão fornecendo um cookie para o cliente que contém uma ID de sessão. A cookie ID da sessão:
 
 * É enviado para o aplicativo com cada solicitação.
 * É usado pelo aplicativo para buscar os dados da sessão.
 
 Estado de sessão exibe os seguintes comportamentos:
 
-* O cookie de sessão é específico para o navegador. As sessões não são compartilhadas entre navegadores.
-* Cookies da sessão são excluídos quando a sessão do navegador termina.
-* Se um cookie for recebido de uma sessão expirada, será criada uma nova sessão que usa o mesmo cookie de sessão.
+* A sessão cookie é específica para o navegador. As sessões não são compartilhadas entre navegadores.
+* cookieOs s de sessão são excluídos quando a sessão do navegador termina.
+* Se um cookie for recebido para uma sessão expirada, será criada uma nova sessão que usa a mesma sessão cookie .
 * Sessões vazias não são mantidas. A sessão deve ter pelo menos um valor definido para persistir a sessão entre solicitações. Quando uma sessão não é mantida, uma nova ID de sessão é gerada para cada nova solicitação.
 * O aplicativo mantém uma sessão por um tempo limitado após a última solicitação. O aplicativo define o tempo limite da sessão ou usa o valor padrão de 20 minutos. O estado da sessão é ideal para armazenar dados do usuário:
   * Isso é específico para uma sessão específica.
   * Onde os dados não exigem armazenamento permanente entre as sessões.
 * Os dados da sessão são excluídos quando a <xref:Microsoft.AspNetCore.Http.ISession.Clear%2A?displayProperty=nameWithType> implementação é chamada ou quando a sessão expira.
-* Não há nenhum mecanismo padrão para informar o código do aplicativo de que um navegador cliente foi fechado ou quando o cookie de sessão foi excluído ou expirou no cliente.
-* Os cookies de estado de sessão não são marcados como essenciais por padrão. O estado da sessão não funciona, a menos que o rastreamento seja permitido pelo visitante do site. Para obter mais informações, consulte <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
+* Não há um mecanismo padrão para informar ao código do aplicativo que um navegador cliente foi fechado ou quando a sessão cookie foi excluída ou expirou no cliente.
+* Os Estados cookie de sessão s não são marcados como essenciais por padrão. O estado da sessão não funciona, a menos que o rastreamento seja permitido pelo visitante do site. Para obter mais informações, consulte <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
 
 > [!WARNING]
-> Não armazene dados confidenciais no estado de sessão. O usuário não pode fechar o navegador e limpar o cookie de sessão. Alguns navegadores mantêm cookies de sessão válidos entre as janelas do navegador. Uma sessão pode não estar restrita a um único usuário. O próximo usuário pode continuar a procurar o aplicativo com o mesmo cookie de sessão.
+> Não armazene dados confidenciais no estado de sessão. O usuário pode não fechar o navegador e limpar a sessão cookie . Alguns navegadores mantêm sessões válidas cookie em janelas de navegador. Uma sessão pode não estar restrita a um único usuário. O próximo usuário pode continuar a procurar o aplicativo com a mesma sessão cookie .
 
 O provedor de cache na memória armazena dados de sessão na memória do servidor em que o aplicativo reside. Em um cenário de farm de servidores:
 
 * Use *sessões persistentes* para vincular cada sessão a uma instância de aplicativo específico em um servidor individual. O [Serviço de Aplicativo do Azure](https://azure.microsoft.com/services/app-service/) usa o [ARR (Application Request Routing)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) para impor as sessões persistentes por padrão. Entretanto, sessões autoadesivas podem afetar a escalabilidade e complicar atualizações de aplicativos Web. Uma abordagem melhor é usar um Redis ou cache distribuído do SQL Server, que não requer sessões persistentes. Para obter mais informações, consulte <xref:performance/caching/distributed>.
-* O cookie de sessão é criptografado via <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> . A Proteção de Dados deve ser configurada corretamente para ler os cookies de sessão em cada computador. Para obter mais informações, veja <xref:security/data-protection/introduction> e [Provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers).
+* A sessão cookie é criptografada via <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> . A proteção de dados deve ser configurada corretamente para ler os cookie s de sessão em cada computador. Para obter mais informações, veja <xref:security/data-protection/introduction> e [Provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers).
 
 ### <a name="configure-session-state"></a>Configurar o estado de sessão
 
@@ -112,7 +114,7 @@ A ordem do middleware é importante.  Chame `UseSession` After `UseRouting` e be
 
 `HttpContext.Session` não pode ser acessado antes que `UseSession` tenha sido chamado.
 
-Não é possível criar uma nova sessão com um novo cookie de sessão depois que o aplicativo começou a gravar no fluxo de resposta. A exceção é registrada no log do servidor Web e não é exibida no navegador.
+Uma nova sessão com uma nova sessão cookie não pode ser criada depois que o aplicativo começa a gravar no fluxo de resposta. A exceção é registrada no log do servidor Web e não é exibida no navegador.
 
 ### <a name="load-session-state-asynchronously"></a>Carregue o estado de sessão de maneira assíncrona
 
@@ -126,17 +128,17 @@ Para substituir os padrões de sessão, use <xref:Microsoft.AspNetCore.Builder.S
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie. <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>o padrão é `false` . |
-| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | O `IdleTimeout` indica por quanto tempo a sessão pode ficar ociosa antes de seu conteúdo ser abandonado. Cada acesso à sessão redefine o tempo limite. Essa configuração aplica-se somente ao conteúdo da sessão, não ao cookie. O padrão é de 20 minutos. |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie . <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>o padrão é `false` . |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | O `IdleTimeout` indica por quanto tempo a sessão pode ficar ociosa antes de seu conteúdo ser abandonado. Cada acesso à sessão redefine o tempo limite. Essa configuração se aplica somente ao conteúdo da sessão, não ao cookie . O padrão é de 20 minutos. |
 | <xref:Microsoft.AspNetCore.Builder.SessionOptions.IOTimeout> | O tempo máximo permitido para carregar uma sessão do repositório ou para confirmá-la de volta para o repositório. Essa configuração pode se aplicar somente a operações assíncronas. Esse tempo limite pode ser desabilitado usando <xref:System.Threading.Timeout.InfiniteTimeSpan> . O padrão é 1 minuto. |
 
-A sessão usa um cookie para rastrear e identificar solicitações de um único navegador. Por padrão, esse cookie se chama `.AspNetCore.Session`, e usa um caminho de `/`. Como o padrão do cookie não especifica um domínio, ele não é disponibilizado para o script do lado do cliente na página (porque o <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> padrão é `true` ).
+A sessão usa um cookie para rastrear e identificar solicitações de um único navegador. Por padrão, isso cookie é chamado `.AspNetCore.Session` e usa um caminho de `/` . Como o cookie padrão não especifica um domínio, ele não é disponibilizado para o script do lado do cliente na página (porque o <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> padrão é `true` ).
 
-Para substituir os padrões de sessão do cookie, use <xref:Microsoft.AspNetCore.Builder.SessionOptions>:
+Para substituir cookie os padrões de sessão, use <xref:Microsoft.AspNetCore.Builder.SessionOptions> :
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Startup2.cs?name=snippet1&highlight=5-10)]
 
-O aplicativo usa a <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriedade para determinar por quanto tempo uma sessão pode ficar ociosa antes que seu conteúdo no cache do servidor seja abandonado. Essa propriedade é independente da expiração do cookie. Cada solicitação que passa pelo [Middleware da Sessão](xref:Microsoft.AspNetCore.Session.SessionMiddleware) redefine o tempo limite.
+O aplicativo usa a <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriedade para determinar por quanto tempo uma sessão pode ficar ociosa antes que seu conteúdo no cache do servidor seja abandonado. Essa propriedade é independente da cookie expiração. Cada solicitação que passa pelo [Middleware da Sessão](xref:Microsoft.AspNetCore.Session.SessionMiddleware) redefine o tempo limite.
 
 Estado de sessão é *sem bloqueio*. Se duas solicitações tentarem simultaneamente modificar o conteúdo de uma sessão, a última solicitação substituirá a primeira. `Session` é implementado como uma *sessão coerente*, o que significa que todo o conteúdo é armazenado junto. Quando duas solicitações buscam modificar valores de sessão diferentes, a última solicitação pode substituir as alterações de sessão feitas pelo primeira.
 
@@ -185,7 +187,7 @@ O exemplo a seguir mostra como definir e obter um objeto serializável com a `Se
 ASP.NET Core expõe as Razor páginas [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) ou Controller <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> . Essa propriedade armazena dados até que eles sejam lidos em outra solicitação. Os métodos [Keep (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) e [Peek (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) podem ser usados para examinar os dados sem exclusão no final da solicitação. [Manter](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) marca todos os itens no dicionário para retenção. `TempData` é:
 
 * Útil para redirecionamento quando os dados são necessários para mais de uma única solicitação.
-* Implementado por `TempData` provedores usando cookies ou o estado da sessão.
+* Implementado por `TempData` provedores usando o cookie estado de sessão ou s.
 
 ## <a name="tempdata-samples"></a>Amostras de TempData
 
@@ -211,23 +213,23 @@ O código a seguir exibe `TempData["Message"]` , mas no final da solicitação, 
 
 ### <a name="tempdata-providers"></a>Provedores de TempData
 
-O provedor TempData baseado em cookies é usado por padrão para armazenar TempData em cookies.
+O cookie provedor TempData baseado em é usado por padrão para armazenar TempData em cookie s.
 
-Os dados do cookie são criptografados usando <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> , codificados com <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> e, em seguida, em bloco. O tamanho máximo do cookie é menor que [4096 bytes](http://www.faqs.org/rfcs/rfc2965.html) devido à criptografia e ao agrupamento. Os dados do cookie não são compactados porque a compactação de dados criptografados pode levar a problemas de segurança, como os ataques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) e [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Para obter mais informações sobre o provedor TempData baseado em cookie, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider> .
+Os cookie dados são criptografados usando <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> , codificados com <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> , em seguida, em bloco. O cookie tamanho máximo é menor que [4096 bytes](http://www.faqs.org/rfcs/rfc2965.html) devido à criptografia e ao agrupamento. Os cookie dados não são compactados porque a compactação de dados criptografados pode levar a problemas de segurança, como ataques de [crime](https://wikipedia.org/wiki/CRIME_(security_exploit)) e [violação](https://wikipedia.org/wiki/BREACH_(security_exploit)) . Para obter mais informações sobre o cookie provedor TempData baseado em, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider> .
 
 ### <a name="choose-a-tempdata-provider"></a>Escolha um provedor de TempData
 
 Escolher um provedor de TempData envolve várias considerações, como:
 
 * O aplicativo já usa estado de sessão? Nesse caso, usar o provedor de estado de sessão TempData não tem nenhum custo adicional para o aplicativo além do tamanho dos dados.
-* O aplicativo usa TempData somente com moderação para quantidades relativamente pequenas de dados, até 500 bytes? Em caso afirmativo, o provedor de TempData do cookie adiciona um pequeno custo a cada solicitação que transportar TempData. Caso contrário, o provedor de TempData do estado de sessão pode ser útil para evitar fazer viagens de ida e volta para uma grande quantidade de dados a cada solicitação até que TempData seja consumido.
-* O aplicativo é executado em um farm de servidores em vários servidores? Se for o caso, não será necessária nenhuma configuração adicional para usar o provedor TempData do cookie fora da Proteção de Dados (confira <xref:security/data-protection/introduction> e [Provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers)).
+* O aplicativo usa TempData somente com moderação para quantidades relativamente pequenas de dados, até 500 bytes? Nesse caso, o cookie provedor TempData adiciona um pequeno custo a cada solicitação que transporta TempData. Caso contrário, o provedor de TempData do estado de sessão pode ser útil para evitar fazer viagens de ida e volta para uma grande quantidade de dados a cada solicitação até que TempData seja consumido.
+* O aplicativo é executado em um farm de servidores em vários servidores? Nesse caso, não há nenhuma configuração adicional necessária para usar o cookie provedor TempData fora da proteção de dados (consulte <xref:security/data-protection/introduction> e [provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers)).
 
-A maioria dos clientes da Web, como navegadores da Web, impõe limites no tamanho máximo de cada cookie e no número total de cookies. Ao usar o provedor de TempData do cookie, verifique se o aplicativo não excederá [esses limites](http://www.faqs.org/rfcs/rfc2965.html). Considere o tamanho total dos dados. Conta para aumento no tamanho de cookie devido à criptografia e ao agrupamento.
+A maioria dos clientes da Web, como navegadores da Web, impõe limites no tamanho máximo de cada um cookie e o número total de cookie s. Ao usar o cookie provedor TempData, verifique se o aplicativo não excederá [esses limites](http://www.faqs.org/rfcs/rfc2965.html). Considere o tamanho total dos dados. Conta com aumentos de cookie tamanho devido à criptografia e agrupamento.
 
 ### <a name="configure-the-tempdata-provider"></a>Configurar o provedor de TempData
 
-O provedor de TempData baseado em cookie é habilitado por padrão.
+O cookie provedor TempData baseado em é habilitado por padrão.
 
 Para habilitar o provedor TempData baseado em sessão, use o <xref:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcBuilderExtensions.AddSessionStateTempDataProvider%2A> método de extensão. Apenas uma chamada para `AddSessionStateTempDataProvider` é necessária:
 
@@ -284,7 +286,7 @@ O middleware de sessão pode falhar ao persistir uma sessão se o armazenamento 
 
 A abordagem recomendada para verificar se há erros é chamar `await feature.Session.CommitAsync` quando o aplicativo é concluído gravando na sessão. <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> gerará uma exceção se o repositório de backup não estiver disponível. Se `CommitAsync` falhar, o aplicativo poderá processar a exceção. <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*>gera sob as mesmas condições quando o armazenamento de dados está indisponível.
   
-## <a name="signalr-and-session-state"></a>SignalRe estado da sessão
+## <a name="no-locsignalr-and-session-state"></a>SignalRe estado da sessão
 
 SignalRos aplicativos não devem usar o estado de sessão para armazenar informações. SignalRos aplicativos podem armazenar por estado de conexão no `Context.Items` no Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
@@ -307,24 +309,24 @@ O estado pode ser armazenado usando várias abordagens. Cada abordagem é descri
 
 | Abordagem de armazenamento | Mecanismo de armazenamento |
 | ---------------- | ----------------- |
-| [Arar](#cookies) | Cookies HTTP (podem incluir dados armazenados usando o código de aplicativo do lado do servidor) |
-| [Estado da sessão](#session-state) | Cookies HTTP e o código de aplicativo do lado do servidor |
-| [TempData](#tempdata) | Estado de sessão ou cookies HTTP |
+| [Cookie&](#cookies) | HTTP cookie s (pode incluir dados armazenados usando o código do aplicativo no lado do servidor) |
+| [Estado da sessão](#session-state) | HTTP cookie s e código do aplicativo no lado do servidor |
+| [TempData](#tempdata) | cookieEstado de sessão ou http s |
 | [Cadeias de consulta](#query-strings) | Cadeias de caracteres de consulta HTTP |
 | [Campos ocultos](#hidden-fields) | Campos de formulário HTTP |
 | [HttpContext.Items](#httpcontextitems) | Código do aplicativo do lado do servidor |
 | [Cache](#cache) | Código do aplicativo do lado do servidor |
 | [Injeção de dependência](#dependency-injection) | Código do aplicativo do lado do servidor |
 
-## <a name="cookies"></a>Cookies
+## <a name="no-loccookies"></a>Cookies
 
-Cookies armazenam dados entre solicitações. Como os cookies são enviados com cada solicitação, seu tamanho deve ser reduzido ao mínimo. Idealmente, somente um identificador deve ser armazenado em um cookie com os dados armazenados pelo aplicativo. A maioria dos navegadores restringe o tamanho do cookie a 4.096 bytes. Somente um número limitado de cookies está disponível para cada domínio.
+Cookies armazenam dados entre solicitações. Como cookie os s são enviados com cada solicitação, seu tamanho deve ser mantido no mínimo. Idealmente, apenas um identificador deve ser armazenado em um cookie com os dados armazenados pelo aplicativo. A maioria dos navegadores restringe o cookie tamanho a 4096 bytes. Apenas um número limitado de cookie s está disponível para cada domínio.
 
-Uma vez que os cookies estão sujeitos à adulteração, eles devem ser validados pelo aplicativo. Os cookies podem ser excluídos por usuários e expirarem em clientes. No entanto, os cookies geralmente são a forma mais durável de persistência de dados no cliente.
+Como cookie os s estão sujeitos à violação, eles devem ser validados pelo aplicativo. Cookieos s podem ser excluídos por usuários e expiram em clientes. No entanto, cookie s geralmente são a forma mais durável de persistência de dados no cliente.
 
-Frequentemente, cookies são usados para personalização quando o conteúdo é personalizado para um usuário conhecido. O usuário é apenas identificado, e não autenticado, na maioria dos casos. O cookie pode armazenar o nome do usuário, o nome da conta ou a ID de usuário único (como um GUID). Você pode usar o cookie para acessar as configurações personalizadas do usuário, como cor preferida da tela de fundo do site.
+Cookieos s geralmente são usados para personalização, onde o conteúdo é personalizado para um usuário conhecido. O usuário é apenas identificado, e não autenticado, na maioria dos casos. O cookie pode armazenar o nome do usuário, o nome da conta ou a ID de usuário exclusiva (como um GUID). Você pode usar o cookie para acessar as configurações personalizadas do usuário, como sua cor de plano de fundo de site preferencial.
 
-Esteja ciente do [RGPD (Regulamento Geral sobre a Proteção de Dados) da União Europeia](https://ec.europa.eu/info/law/law-topic/data-protection) ao emitir cookies e lidar com questões de privacidade. Para obter mais informações, veja [Suporte ao RGPD (Regulamento Geral sobre a Proteção de Dados) no ASP.NET Core](xref:security/gdpr).
+Lembre-se das [normas gerais de proteção de dados (GDPR) da União Europeia](https://ec.europa.eu/info/law/law-topic/data-protection) ao emitir cookie s e lidar com questões de privacidade. Para obter mais informações, veja [Suporte ao RGPD (Regulamento Geral sobre a Proteção de Dados) no ASP.NET Core](xref:security/gdpr).
 
 ## <a name="session-state"></a>Estado de sessão
 
@@ -333,26 +335,26 @@ Estado de sessão é um cenário do ASP.NET Core para o armazenamento de dados d
 > [!NOTE]
 > A sessão não tem suporte em [SignalR](xref:signalr/index) aplicativos porque um [ SignalR Hub](xref:signalr/hubs) pode ser executado independentemente de um contexto http. Por exemplo, isso pode ocorrer quando uma solicitação de sondagem longa é mantida aberta por um hub além do tempo de vida do contexto HTTP da solicitação.
 
-O ASP.NET Core mantém o estado de sessão fornecendo um cookie para o cliente que contém uma ID de sessão, que é enviada para o aplicativo com cada solicitação. O aplicativo usa a ID da sessão para buscar os dados da sessão.
+ASP.NET Core mantém o estado de sessão fornecendo um cookie para o cliente que contém uma ID de sessão, que é enviada ao aplicativo com cada solicitação. O aplicativo usa a ID da sessão para buscar os dados da sessão.
 
 Estado de sessão exibe os seguintes comportamentos:
 
-* Uma vez que o cookie da sessão é específico ao navegador, não é possível compartilhar sessões entre navegadores.
-* Cookies da sessão são excluídos quando a sessão do navegador termina.
-* Se um cookie for recebido de uma sessão expirada, será criada uma nova sessão que usa o mesmo cookie de sessão.
+* Como a sessão cookie é específica para o navegador, as sessões não são compartilhadas entre os navegadores.
+* cookieOs s de sessão são excluídos quando a sessão do navegador termina.
+* Se um cookie for recebido para uma sessão expirada, será criada uma nova sessão que usa a mesma sessão cookie .
 * Sessões vazias não são mantidas&mdash;a sessão deve ter pelo menos um valor definido nela para que mantenha a sessão entre solicitações. Quando uma sessão não é mantida, uma nova ID de sessão é gerada para cada nova solicitação.
 * O aplicativo mantém uma sessão por um tempo limitado após a última solicitação. O aplicativo define o tempo limite da sessão ou usa o valor padrão de 20 minutos. Estado de sessão é ideal para armazenar dados de usuário específicos para uma sessão em particular, mas em que os dados não requerem armazenamento permanente entre sessões.
 * Os dados da sessão são excluídos quando a <xref:Microsoft.AspNetCore.Http.ISession.Clear%2A?displayProperty=nameWithType> implementação é chamada ou quando a sessão expira.
-* Não há nenhum mecanismo padrão para informar o código do aplicativo de que um navegador cliente foi fechado ou quando o cookie de sessão foi excluído ou expirou no cliente.
-* Os modelos ASP.NET Core MVC e de Razor páginas incluem suporte para regulamento geral sobre a proteção de dados (GDPR). Os cookies do estado de sessão não são marcados como essenciais por padrão, portanto, o estado de sessão não é funcional, a menos que o rastreamento seja permitido pelo visitante do site. Para obter mais informações, consulte <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
+* Não há um mecanismo padrão para informar ao código do aplicativo que um navegador cliente foi fechado ou quando a sessão cookie foi excluída ou expirou no cliente.
+* Os modelos ASP.NET Core MVC e de Razor páginas incluem suporte para regulamento geral sobre a proteção de dados (GDPR). Os Estados de sessão cookie não são marcados como essenciais por padrão, portanto, o estado da sessão não é funcional, a menos que o rastreamento seja permitido pelo visitante do site. Para obter mais informações, consulte <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
 
 > [!WARNING]
-> Não armazene dados confidenciais no estado de sessão. O usuário não pode fechar o navegador e limpar o cookie de sessão. Alguns navegadores mantêm cookies de sessão válidos entre as janelas do navegador. Uma sessão não pode ser restringida a um único usuário&mdash;o próximo usuário pode continuar a procurar o aplicativo com o mesmo cookie de sessão.
+> Não armazene dados confidenciais no estado de sessão. O usuário pode não fechar o navegador e limpar a sessão cookie . Alguns navegadores mantêm sessões válidas cookie em janelas de navegador. Uma sessão pode não estar restrita a um único usuário &mdash; . o próximo usuário pode continuar a procurar o aplicativo com a mesma sessão cookie .
 
 O provedor de cache na memória armazena dados de sessão na memória do servidor em que o aplicativo reside. Em um cenário de farm de servidores:
 
 * Use *sessões persistentes* para vincular cada sessão a uma instância de aplicativo específico em um servidor individual. O [Serviço de Aplicativo do Azure](https://azure.microsoft.com/services/app-service/) usa o [ARR (Application Request Routing)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) para impor as sessões persistentes por padrão. Entretanto, sessões autoadesivas podem afetar a escalabilidade e complicar atualizações de aplicativos Web. Uma abordagem melhor é usar um Redis ou cache distribuído do SQL Server, que não requer sessões persistentes. Para obter mais informações, consulte <xref:performance/caching/distributed>.
-* O cookie de sessão é criptografado via <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> . A Proteção de Dados deve ser configurada corretamente para ler os cookies de sessão em cada computador. Para obter mais informações, veja <xref:security/data-protection/introduction> e [Provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers).
+* A sessão cookie é criptografada via <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> . A proteção de dados deve ser configurada corretamente para ler os cookie s de sessão em cada computador. Para obter mais informações, veja <xref:security/data-protection/introduction> e [Provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers).
 
 ### <a name="configure-session-state"></a>Configurar o estado de sessão
 
@@ -372,7 +374,7 @@ A ordem do middleware é importante. No exemplo anterior, uma exceção `Invalid
 
 `HttpContext.Session` não pode ser acessado antes que `UseSession` tenha sido chamado.
 
-Não é possível criar uma nova sessão com um novo cookie de sessão depois que o aplicativo começou a gravar no fluxo de resposta. A exceção é registrada no log do servidor Web e não é exibida no navegador.
+Uma nova sessão com uma nova sessão cookie não pode ser criada depois que o aplicativo começa a gravar no fluxo de resposta. A exceção é registrada no log do servidor Web e não é exibida no navegador.
 
 ### <a name="load-session-state-asynchronously"></a>Carregue o estado de sessão de maneira assíncrona
 
@@ -386,17 +388,17 @@ Para substituir os padrões de sessão, use <xref:Microsoft.AspNetCore.Builder.S
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie. <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>o padrão é `false` . |
-| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | O `IdleTimeout` indica por quanto tempo a sessão pode ficar ociosa antes de seu conteúdo ser abandonado. Cada acesso à sessão redefine o tempo limite. Essa configuração aplica-se somente ao conteúdo da sessão, não ao cookie. O padrão é de 20 minutos. |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie . <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>o padrão é `false` . |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | O `IdleTimeout` indica por quanto tempo a sessão pode ficar ociosa antes de seu conteúdo ser abandonado. Cada acesso à sessão redefine o tempo limite. Essa configuração se aplica somente ao conteúdo da sessão, não ao cookie . O padrão é de 20 minutos. |
 | <xref:Microsoft.AspNetCore.Builder.SessionOptions.IOTimeout> | O tempo máximo permitido para carregar uma sessão do repositório ou para confirmá-la de volta para o repositório. Essa configuração pode se aplicar somente a operações assíncronas. Esse tempo limite pode ser desabilitado usando <xref:System.Threading.Timeout.InfiniteTimeSpan> . O padrão é 1 minuto. |
 
-A sessão usa um cookie para rastrear e identificar solicitações de um único navegador. Por padrão, esse cookie se chama `.AspNetCore.Session`, e usa um caminho de `/`. Como o padrão do cookie não especifica um domínio, ele não é disponibilizado para o script do lado do cliente na página (porque o <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> padrão é `true` ).
+A sessão usa um cookie para rastrear e identificar solicitações de um único navegador. Por padrão, isso cookie é chamado `.AspNetCore.Session` e usa um caminho de `/` . Como o cookie padrão não especifica um domínio, ele não é disponibilizado para o script do lado do cliente na página (porque o <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> padrão é `true` ).
 
-Para substituir os padrões de sessão do cookie, use `SessionOptions`:
+Para substituir cookie os padrões de sessão, use `SessionOptions` :
 
 [!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=14-19)]
 
-O aplicativo usa a <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriedade para determinar por quanto tempo uma sessão pode ficar ociosa antes que seu conteúdo no cache do servidor seja abandonado. Essa propriedade é independente da expiração do cookie. Cada solicitação que passa pelo [Middleware da Sessão](xref:Microsoft.AspNetCore.Session.SessionMiddleware) redefine o tempo limite.
+O aplicativo usa a <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriedade para determinar por quanto tempo uma sessão pode ficar ociosa antes que seu conteúdo no cache do servidor seja abandonado. Essa propriedade é independente da cookie expiração. Cada solicitação que passa pelo [Middleware da Sessão](xref:Microsoft.AspNetCore.Session.SessionMiddleware) redefine o tempo limite.
 
 Estado de sessão é *sem bloqueio*. Se duas solicitações tentarem simultaneamente modificar o conteúdo de uma sessão, a última solicitação substituirá a primeira. `Session` é implementado como uma *sessão coerente*, o que significa que todo o conteúdo é armazenado junto. Quando duas solicitações buscam modificar valores de sessão diferentes, a última solicitação pode substituir as alterações de sessão feitas pelo primeira.
 
@@ -442,7 +444,7 @@ O exemplo a seguir mostra como definir e obter um objeto serializável com os m�
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core expõe as Razor páginas [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) ou Controller <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> . Essa propriedade armazena dados até que eles sejam lidos em outra solicitação. Os métodos [Keep (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) e [Peek (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) podem ser usados para examinar os dados sem exclusão no final da solicitação. [Keep ()](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) marca todos os itens no dicionário para retenção. `TempData`é particularmente útil para o redirecionamento quando os dados são necessários para mais do que uma única solicitação. `TempData`é implementado por `TempData` provedores usando cookies ou o estado de sessão.
+ASP.NET Core expõe as Razor páginas [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) ou Controller <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> . Essa propriedade armazena dados até que eles sejam lidos em outra solicitação. Os métodos [Keep (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) e [Peek (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) podem ser usados para examinar os dados sem exclusão no final da solicitação. [Keep ()](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) marca todos os itens no dicionário para retenção. `TempData`é particularmente útil para o redirecionamento quando os dados são necessários para mais do que uma única solicitação. `TempData`é implementado por `TempData` provedores usando o cookie estado de sessão ou s.
 
 ## <a name="tempdata-samples"></a>Amostras de TempData
 
@@ -468,24 +470,24 @@ O código a seguir exibe `TempData["Message"]` , mas no final da solicitação, 
 
 ### <a name="tempdata-providers"></a>Provedores de TempData
 
-O provedor TempData baseado em cookies é usado por padrão para armazenar TempData em cookies.
+O cookie provedor TempData baseado em é usado por padrão para armazenar TempData em cookie s.
 
-Os dados do cookie são criptografados usando <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> , codificados com <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> e, em seguida, em bloco. Como o cookie é dividido em partes, o limite de tamanho de cookie único encontrado no ASP.NET Core 1.x não se aplica. Os dados do cookie não são compactados porque a compactação de dados criptografados pode levar a problemas de segurança, como os ataques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) e [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Para obter mais informações sobre o provedor TempData baseado em cookie, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider> .
+Os cookie dados são criptografados usando <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> , codificados com <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> , em seguida, em bloco. Como o cookie é fragmentado, o cookie limite de tamanho único encontrado em ASP.NET Core 1. x não se aplica. Os cookie dados não são compactados porque a compactação de dados criptografados pode levar a problemas de segurança, como ataques de [crime](https://wikipedia.org/wiki/CRIME_(security_exploit)) e [violação](https://wikipedia.org/wiki/BREACH_(security_exploit)) . Para obter mais informações sobre o cookie provedor TempData baseado em, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider> .
 
 ### <a name="choose-a-tempdata-provider"></a>Escolha um provedor de TempData
 
 Escolher um provedor de TempData envolve várias considerações, como:
 
 1. O aplicativo já usa estado de sessão? Se for o caso, usar o provedor de TempData do estado de sessão não terá custos adicionais para o aplicativo (além do tamanho dos dados).
-2. O aplicativo usa TempData apenas raramente para quantidades relativamente pequenas de dados (até 500 bytes)? Em caso afirmativo, o provedor de TempData do cookie adiciona um pequeno custo a cada solicitação que transportar TempData. Caso contrário, o provedor de TempData do estado de sessão pode ser útil para evitar fazer viagens de ida e volta para uma grande quantidade de dados a cada solicitação até que TempData seja consumido.
-3. O aplicativo é executado em um farm de servidores em vários servidores? Se for o caso, não será necessária nenhuma configuração adicional para usar o provedor TempData do cookie fora da Proteção de Dados (confira <xref:security/data-protection/introduction> e [Provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers)).
+2. O aplicativo usa TempData apenas raramente para quantidades relativamente pequenas de dados (até 500 bytes)? Nesse caso, o cookie provedor TempData adiciona um pequeno custo a cada solicitação que transporta TempData. Caso contrário, o provedor de TempData do estado de sessão pode ser útil para evitar fazer viagens de ida e volta para uma grande quantidade de dados a cada solicitação até que TempData seja consumido.
+3. O aplicativo é executado em um farm de servidores em vários servidores? Nesse caso, não há nenhuma configuração adicional necessária para usar o cookie provedor TempData fora da proteção de dados (consulte <xref:security/data-protection/introduction> e [provedores de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-providers)).
 
 > [!NOTE]
-> A maioria dos clientes da Web (como navegadores da Web) impõem limites quanto ao tamanho máximo de cada cookie, o número total de cookies ou ambos. Ao usar o provedor TempData do cookie, verifique se o aplicativo não ultrapassará esses limites. Considere o tamanho total dos dados. Conta para aumento no tamanho de cookie devido à criptografia e ao agrupamento.
+> A maioria dos clientes da Web (como navegadores da Web) impõe limites no tamanho máximo de cada um cookie , o número total de cookie s ou ambos. Ao usar o cookie provedor TempData, verifique se o aplicativo não excederá esses limites. Considere o tamanho total dos dados. Conta com aumentos de cookie tamanho devido à criptografia e agrupamento.
 
 ### <a name="configure-the-tempdata-provider"></a>Configurar o provedor de TempData
 
-O provedor de TempData baseado em cookie é habilitado por padrão.
+O cookie provedor TempData baseado em é habilitado por padrão.
 
 Para habilitar o provedor TempData baseado em sessão, use o <xref:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcBuilderExtensions.AddSessionStateTempDataProvider%2A> método de extensão:
 
@@ -595,7 +597,7 @@ Use a [Injeção de dependência](xref:fundamentals/dependency-injection) para d
 
   A abordagem recomendada para verificar se há erros é chamar `await feature.Session.CommitAsync();` do código de aplicativo quando o aplicativo tiver terminado de gravar na sessão. `CommitAsync` gerará uma exceção se o repositório de backup não estiver disponível. Se `CommitAsync` falhar, o aplicativo poderá processar a exceção. `LoadAsync` gera sob as mesmas condições em que o armazenamento de dados não está disponível.
   
-## <a name="signalr-and-session-state"></a>SignalRe estado da sessão
+## <a name="no-locsignalr-and-session-state"></a>SignalRe estado da sessão
 
 SignalRos aplicativos não devem usar o estado de sessão para armazenar informações. SignalRos aplicativos podem armazenar por estado de conexão no `Context.Items` no Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 

@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 9ffeebbf8125ddac5d6e621e411c4e86c5bd34b1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 11de6b04f6813161e5eaee294f3e67e223ae0db3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399303"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015914"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Implantar aplicativos ASP.NET Core no Serviço de Aplicativo do Azure
 
@@ -131,7 +133,7 @@ Para monitoramento, registro em log e informações de solução de problemas, v
 [Monitorar aplicativos no Serviço de Aplicativo do Azure](/azure/app-service/web-sites-monitor)  
 Saiba como examinar as cotas e métricas para aplicativos e planos do Serviço de Aplicativo.
 
-[Habilitar o log de diagnóstico para aplicativos no serviço Azure App](/azure/app-service/web-sites-enable-diagnostic-log)  
+[Habilitar log de diagnósticos para aplicativos no Serviço de Aplicativo do Azure](/azure/app-service/web-sites-enable-diagnostic-log)  
 Descubra como habilitar e acessar o log de diagnósticos para os códigos de status HTTP, solicitações com falha e atividade do servidor Web.
 
 <xref:fundamentals/error-handling>  
@@ -147,7 +149,7 @@ Consulte os erros comuns de configuração de implantação para aplicativos hos
 
 [Chaves de proteção de dados](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) são mantidas na pasta *%HOME%\ASP.NET\DataProtection-Keys*. Essa pasta é apoiada pelo repositório de rede e é sincronizada em todos os computadores que hospedam o aplicativo. As chaves não são protegidas em repouso. Essa pasta fornece o anel de chave para todas as instâncias de um aplicativo em um único slot de implantação. Slots de implantação separados, como de preparo e produção, não compartilham um anel de chave.
 
-Quando ocorre a troca entre os slots de implantação, nenhum sistema que usa a proteção de dados consegue descriptografar dados armazenados usando o anel de chave dentro do slot anterior. O middleware de cookie do ASP.NET usa a proteção de dados para proteger seus cookies. Com isso, os usuários são desconectados de um aplicativo que usa o Middleware de Cookie padrão do ASP.NET. Para uma solução de anel de chave independente de slot, use um provedor de anel de chave externo, como:
+Quando ocorre a troca entre os slots de implantação, nenhum sistema que usa a proteção de dados consegue descriptografar dados armazenados usando o anel de chave dentro do slot anterior. CookieO middleware ASP.NET usa a proteção de dados para proteger seus cookie s. Isso leva aos usuários que estão sendo desconectados de um aplicativo que usa o middleware ASP.NET padrão Cookie . Para uma solução de anel de chave independente de slot, use um provedor de anel de chave externo, como:
 
 * Armazenamento do Blobs do Azure
 * Cofre de Chave do Azure
@@ -208,7 +210,7 @@ Se ocorrer um problema usando a extensão de site de visualização, abra um [pr
 1. No portal do Azure, navegue até o Serviço de Aplicativo.
 1. Selecione o aplicativo Web.
 1. Insira "ex" na caixa de pesquisa para filtrar por "Extensões" ou role para baixo na lista de ferramentas de gerenciamento.
-1. Selecione **extensões**.
+1. Selecione **Extensões**.
 1. Selecione **Adicionar**.
 1. Selecione a extensão **Runtime do ASP.NET Core {X.Y} ({x64|x86})** na lista, em que `{X.Y}` é a versão prévia do ASP.NET Core e `{x64|x86}` especifica a plataforma.
 1. Selecione **OK** para aceitar os termos legais.

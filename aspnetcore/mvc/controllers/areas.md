@@ -5,6 +5,8 @@ description: Saiba por que as áreas são um recurso do ASP.NET MVC usado para o
 ms.author: riande
 ms.date: 03/21/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: f4471f54e92b940ecb0eabab82f03e0c77a0509f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: af765eebfa8bfd147bd3b721508b5794d15d64a7
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406401"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018436"
 ---
 # <a name="areas-in-aspnet-core"></a>Áreas no ASP.NET Core
 
@@ -68,7 +70,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
         * HomeController.cs
         * ManageController.cs
       * Exibições
-        * Página Inicial
+        * Início
           * Index.cshtml
         * Gerenciar
           * Index.cshtml
@@ -77,7 +79,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
       * Controladores
         * HomeController.cs
       * Exibições
-        * Página Inicial
+        * Início
           * Index.cshtml
 
 Enquanto o layout anterior é típico ao usar áreas, somente os arquivos de exibição são necessários para usar essa estrutura de pastas. Pesquisas de descoberta de exibição para um arquivo de exibição de área correspondente, na seguinte ordem:
@@ -162,7 +164,7 @@ O código a seguir altera a pasta da área padrão de `"Areas"` para `"MyAreas"`
 
 <a name="arp"></a>
 
-## <a name="areas-with-razor-pages"></a>Áreas com Razor páginas
+## <a name="areas-with-no-locrazor-pages"></a>Áreas com Razor páginas
 
 Áreas com Razor páginas exigem uma `Areas/<area name>/Pages` pasta na raiz do aplicativo. A seguinte estrutura de pasta é usada com o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples):
 
@@ -179,7 +181,7 @@ O código a seguir altera a pasta da área padrão de `"Areas"` para `"MyAreas"`
           * Sobre
           * Índice
 
-### <a name="link-generation-with-razor-pages-and-areas"></a>Geração de link com Razor páginas e áreas
+### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>Geração de link com Razor páginas e áreas
 
 O código a seguir do [download do exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) mostra a geração de links com a área especificada (por exemplo, `asp-area="Products"`):
 
@@ -222,7 +224,7 @@ No arquivo anterior, o namespace e a diretiva `@addTagHelper` são importados pa
 
 Para saber mais, confira [Gerenciar o escopo do Auxiliar de Marcação](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) e [Importar diretivas compartilhadas](xref:mvc/views/layout#importing-shared-directives).
 
-### <a name="shared-layout-for-razor-pages-areas"></a>Layout compartilhado para Razor áreas de páginas
+### <a name="shared-layout-for-no-locrazor-pages-areas"></a>Layout compartilhado para Razor áreas de páginas
 
 Para compartilhar um layout comum para o aplicativo inteiro, mova o *_ViewStart.cshtml* para a pasta raiz do aplicativo.
 
@@ -270,7 +272,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
         * HomeController.cs
         * ManageController.cs
       * Exibições
-        * Página Inicial
+        * Início
           * Index.cshtml
         * Gerenciar
           * Index.cshtml
@@ -279,7 +281,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
       * Controladores
         * HomeController.cs
       * Exibições
-        * Página Inicial
+        * Início
           * Index.cshtml
 
 Enquanto o layout anterior é típico ao usar áreas, somente os arquivos de exibição são necessários para usar essa estrutura de pastas. Pesquisas de descoberta de exibição para um arquivo de exibição de área correspondente, na seguinte ordem:
@@ -349,7 +351,7 @@ O código a seguir altera a pasta da área padrão de `"Areas"` para `"MyAreas"`
 
 <a name="arp"></a>
 
-## <a name="areas-with-razor-pages"></a>Áreas com Razor páginas
+## <a name="areas-with-no-locrazor-pages"></a>Áreas com Razor páginas
 
 Áreas com Razor páginas exigem uma `Areas/<area name>/Pages` pasta na raiz do aplicativo. A seguinte estrutura de pasta é usada com o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples):
 
@@ -366,7 +368,7 @@ O código a seguir altera a pasta da área padrão de `"Areas"` para `"MyAreas"`
           * Sobre
           * Índice
 
-### <a name="link-generation-with-razor-pages-and-areas"></a>Geração de link com Razor páginas e áreas
+### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>Geração de link com Razor páginas e áreas
 
 O código a seguir do [download do exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) mostra a geração de links com a área especificada (por exemplo, `asp-area="Products"`):
 
@@ -411,7 +413,7 @@ No arquivo anterior, o namespace e a diretiva `@addTagHelper` são importados pa
 
 Para saber mais, confira [Gerenciar o escopo do Auxiliar de Marcação](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) e [Importar diretivas compartilhadas](xref:mvc/views/layout#importing-shared-directives).
 
-### <a name="shared-layout-for-razor-pages-areas"></a>Layout compartilhado para Razor áreas de páginas
+### <a name="shared-layout-for-no-locrazor-pages-areas"></a>Layout compartilhado para Razor áreas de páginas
 
 Para compartilhar um layout comum para o aplicativo inteiro, mova o *_ViewStart.cshtml* para a pasta raiz do aplicativo.
 

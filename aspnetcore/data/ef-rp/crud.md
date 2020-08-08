@@ -5,6 +5,8 @@ description: Parte 2 de Razor páginas e Entity Framework série de tutoriais.
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 46846d99230620e45d8a2baab46df320425cfb6c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f205e7741c8e901e9219bec2028c7bee98129161
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401201"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018358"
 ---
-# <a name="part-2-razor-pages-with-ef-core-in-aspnet-core---crud"></a>Parte 2, Razor páginas com EF Core em ASP.NET Core-CRUD
+# <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>Parte 2, Razor páginas com EF Core em ASP.NET Core-CRUD
 
 Por [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) e [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -393,7 +395,7 @@ O código anterior recupera a entidade selecionada e, em seguida, chama o métod
 * A exceção de BD é capturada.
 * O método `OnGetAsync` das páginas Excluir é chamado com `saveChangesError=true`.
 
-### <a name="update-the-delete-razor-page"></a>Atualizar a Razor página excluir
+### <a name="update-the-delete-no-locrazor-page"></a>Atualizar a Razor página excluir
 
 Adicione a seguinte mensagem de erro realçada à Razor página excluir.
 <!--

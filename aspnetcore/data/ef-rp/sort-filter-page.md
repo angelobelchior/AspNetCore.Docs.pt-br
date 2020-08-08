@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 496221bb4e34e1f9e4177d1934786a77d8c9b411
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 5bfea63cc1ff85adbe5ce572858b78a8e86b2280
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212539"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017721"
 ---
-# <a name="part-3-razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Parte 3, Razor páginas com EF Core em ASP.NET Core-classificar, filtrar, paginação
+# <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Parte 3, Razor páginas com EF Core em ASP.NET Core-classificar, filtrar, paginação
 
 Por [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT) e [Jon P Smith](https://twitter.com/thereformedprog)
 
@@ -134,7 +136,7 @@ Há uma penalidade de desempenho por chamar `ToUpper`. O código `ToUpper` adici
 
 Para obter mais informações, confira [Como usar consulta que não diferencia maiúsculas de minúsculas com o provedor SQLite](https://github.com/aspnet/EntityFrameworkCore/issues/11414).
 
-### <a name="update-the-razor-page"></a>Atualizar a Razor página
+### <a name="update-the-no-locrazor-page"></a>Atualizar a Razor página
 
 Substitua o código em *Pages/Students/index.cshtml* para criar um botão de **Pesquisa** e um cromado classificado.
 
@@ -211,7 +213,7 @@ Se a cadeia de caracteres de pesquisa é alterada durante a paginação, a pági
 
   Os dois pontos de interrogação em `pageIndex` na chamada `PaginatedList.CreateAsync` representam o [operador de união de nulo](/dotnet/csharp/language-reference/operators/null-conditional-operator). O operador de união de nulo define um valor padrão para um tipo que permite valor nulo. A expressão `(pageIndex ?? 1)` significará retornar o valor de `pageIndex` se ele tiver um valor. Se `pageIndex` não tiver um valor, 1 será retornado.
 
-### <a name="add-paging-links-to-the-razor-page"></a>Adicionar links de paginação à Razor página
+### <a name="add-paging-links-to-the-no-locrazor-page"></a>Adicionar links de paginação à Razor página
 
 Substitua o código em *Students/index. cshtml* pelo código a seguir. As alterações são realçadas:
 
@@ -247,7 +249,7 @@ Crie *SchoolViewModels/EnrollmentDateGroup.cs* com o seguinte código:
 
 [!code-csharp[Main](intro/samples/cu30/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="create-the-razor-page"></a>Criar a Razor página
+### <a name="create-the-no-locrazor-page"></a>Criar a Razor página
 
 Crie um arquivo *Pages/About.cshtml* com o seguinte código:
 
@@ -467,7 +469,7 @@ O método `PaginatedList.CreateAsync` converte a consulta de alunos em uma únic
 
 Os dois pontos de interrogação em `PaginatedList.CreateAsync` representam o [operador de união de nulo](/dotnet/csharp/language-reference/operators/null-conditional-operator). O operador de união de nulo define um valor padrão para um tipo que permite valor nulo. A expressão `(pageIndex ?? 1)` significará retornar o valor de `pageIndex` se ele tiver um valor. Se `pageIndex` não tiver um valor, 1 será retornado.
 
-## <a name="add-paging-links-to-the-student-razor-page"></a>Adicionar links de paginação à página do aluno Razor
+## <a name="add-paging-links-to-the-student-no-locrazor-page"></a>Adicionar links de paginação à página do aluno Razor
 
 Atualize a marcação em *Students/Index.cshtml*. As alterações são realçadas:
 
@@ -521,7 +523,7 @@ Atualize o arquivo *Pages/About.cshtml.cs* com o seguinte código:
 
 A instrução LINQ agrupa as entidades de alunos por data de registro, calcula o número de entidades em cada grupo e armazena os resultados em uma coleção de objetos de modelo de exibição `EnrollmentDateGroup`.
 
-### <a name="modify-the-about-razor-page"></a>Modificar a Razor página sobre
+### <a name="modify-the-about-no-locrazor-page"></a>Modificar a Razor página sobre
 
 Substitua o código no arquivo *Pages/About.cshtml* pelo seguinte código:
 

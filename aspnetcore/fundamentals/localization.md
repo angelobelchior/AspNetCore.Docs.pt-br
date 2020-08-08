@@ -5,6 +5,8 @@ description: Saiba como o ASP.NET Core fornece serviços e middleware para local
 ms.author: riande
 ms.date: 11/30/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 412cd7a39a0eed6800e15d235102ed367da5f746
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 9fd68d3b412c2cef6125c657653f605689ca6e70
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793483"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017214"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalização e localização no ASP.NET Core
 
@@ -247,7 +249,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir a [cultura e a cultura da interface do usuário](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para aplicativos que usam a abordagem do cabeçalho Accept-Language ou do cookie, a adição de uma cadeia de caracteres de consulta à URL é útil para depurar e testar o código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir a [cultura e a cultura da interface do usuário](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
    `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
 
@@ -257,13 +259,13 @@ Se você passar somente uma das duas (`culture` ou `ui-culture`), o provedor da 
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
 
-Em geral, aplicativos de produção fornecerão um mecanismo para definir a cultura com o cookie de cultura do ASP.NET Core. Use o método `MakeCookieValue` para criar um cookie.
+Os aplicativos de produção geralmente fornecerão um mecanismo para definir a cultura com a cultura ASP.NET Core cookie . Use o `MakeCookieValue` método para criar um cookie .
 
-O `CookieRequestCultureProvider` `DefaultCookieName` retorna o nome de cookie padrão usado para rastrear as informações de cultura preferencial do usuário. O nome padrão do cookie é `.AspNetCore.Culture`.
+O `CookieRequestCultureProvider` `DefaultCookieName` retorna o cookie nome padrão usado para controlar as informações de cultura preferencial do usuário. O cookie nome padrão é `.AspNetCore.Culture` .
 
-O formato do cookie é `c=%LANGCODE%|uic=%LANGCODE%`, em que `c` é `Culture` e `uic` é `UICulture`, por exemplo:
+O cookie formato é `c=%LANGCODE%|uic=%LANGCODE%` , em que é `c` `Culture` e `uic` é `UICulture` , por exemplo:
 
 ```
 c=en-UK|uic=en-US
@@ -330,7 +332,7 @@ O arquivo *Views/Shared/_SelectLanguagePartial.cshtml* é adicionado à seção 
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
-O método `SetLanguage` define o cookie de cultura.
+O `SetLanguage` método define a cultura cookie .
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
@@ -601,7 +603,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir a [cultura e a cultura da interface do usuário](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para aplicativos que usam a abordagem do cabeçalho Accept-Language ou do cookie, a adição de uma cadeia de caracteres de consulta à URL é útil para depurar e testar o código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir a [cultura e a cultura da interface do usuário](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX
@@ -613,13 +615,13 @@ Se você passar somente uma das duas (`culture` ou `ui-culture`), o provedor da 
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
 
-Em geral, aplicativos de produção fornecerão um mecanismo para definir a cultura com o cookie de cultura do ASP.NET Core. Use o método `MakeCookieValue` para criar um cookie.
+Os aplicativos de produção geralmente fornecerão um mecanismo para definir a cultura com a cultura ASP.NET Core cookie . Use o `MakeCookieValue` método para criar um cookie .
 
-O `CookieRequestCultureProvider` `DefaultCookieName` retorna o nome de cookie padrão usado para rastrear as informações de cultura preferencial do usuário. O nome padrão do cookie é `.AspNetCore.Culture`.
+O `CookieRequestCultureProvider` `DefaultCookieName` retorna o cookie nome padrão usado para controlar as informações de cultura preferencial do usuário. O cookie nome padrão é `.AspNetCore.Culture` .
 
-O formato do cookie é `c=%LANGCODE%|uic=%LANGCODE%`, em que `c` é `Culture` e `uic` é `UICulture`, por exemplo:
+O cookie formato é `c=%LANGCODE%|uic=%LANGCODE%` , em que é `c` `Culture` e `uic` é `UICulture` , por exemplo:
 
 ```
 c=en-UK|uic=en-US
@@ -686,7 +688,7 @@ O arquivo *Views/Shared/_SelectLanguagePartial.cshtml* é adicionado à seção 
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
-O método `SetLanguage` define o cookie de cultura.
+O `SetLanguage` método define a cultura cookie .
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
@@ -956,7 +958,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir a [cultura e a cultura da interface do usuário](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para aplicativos que usam a abordagem do cabeçalho Accept-Language ou do cookie, a adição de uma cadeia de caracteres de consulta à URL é útil para depurar e testar o código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir a [cultura e a cultura da interface do usuário](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX
@@ -968,13 +970,13 @@ Se você passar somente uma das duas (`culture` ou `ui-culture`), o provedor da 
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
 
-Em geral, aplicativos de produção fornecerão um mecanismo para definir a cultura com o cookie de cultura do ASP.NET Core. Use o método `MakeCookieValue` para criar um cookie.
+Os aplicativos de produção geralmente fornecerão um mecanismo para definir a cultura com a cultura ASP.NET Core cookie . Use o `MakeCookieValue` método para criar um cookie .
 
-O `CookieRequestCultureProvider` `DefaultCookieName` retorna o nome de cookie padrão usado para rastrear as informações de cultura preferencial do usuário. O nome padrão do cookie é `.AspNetCore.Culture`.
+O `CookieRequestCultureProvider` `DefaultCookieName` retorna o cookie nome padrão usado para controlar as informações de cultura preferencial do usuário. O cookie nome padrão é `.AspNetCore.Culture` .
 
-O formato do cookie é `c=%LANGCODE%|uic=%LANGCODE%`, em que `c` é `Culture` e `uic` é `UICulture`, por exemplo:
+O cookie formato é `c=%LANGCODE%|uic=%LANGCODE%` , em que é `c` `Culture` e `uic` é `UICulture` , por exemplo:
 
 ```
 c=en-UK|uic=en-US
@@ -1064,7 +1066,7 @@ O arquivo *Views/Shared/_SelectLanguagePartial.cshtml* é adicionado à seção 
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
-O método `SetLanguage` define o cookie de cultura.
+O `SetLanguage` método define a cultura cookie .
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 

@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 1b0402ceccde0f2410ac29e9c6a251110c81eafa
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8f21e02409a04b06c06dff5b0a113b0f21d59090
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408130"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015862"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Referência de erros comuns para o Serviço de Aplicativo do Azure e o IIS com o ASP.NET Core
 
@@ -173,7 +175,7 @@ Solucionar problemas:
 
   Para obter mais informações, confira [Instalar o pacote de hospedagem do .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPoolIdentity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
+* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity ** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
 
 * Se você desinstalou o Pacote de Hospedagem do ASP.NET Core e instalou uma versão anterior do pacote de hospedagem, o arquivo *applicationHost.config* não inclui uma seção para o Módulo do ASP.NET Core. Abra *applicationHost.config* em *%windir%/System32/inetsrv/config* e encontre o grupo de seção `<configuration><configSections><sectionGroup name="system.webServer">`. Se estiver faltando a seção do Módulo do ASP.NET Core no grupo de seções, adicione o elemento da seção:
 
@@ -451,7 +453,7 @@ Solucionar problemas:
 
   Para obter mais informações, confira [Instalar o pacote de hospedagem do .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPoolIdentity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
+* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity ** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
 
 * Se você desinstalou o Pacote de Hospedagem do ASP.NET Core e instalou uma versão anterior do pacote de hospedagem, o arquivo *applicationHost.config* não inclui uma seção para o Módulo do ASP.NET Core. Abra *applicationHost.config* em *%windir%/System32/inetsrv/config* e encontre o grupo de seção `<configuration><configSections><sectionGroup name="system.webServer">`. Se estiver faltando a seção do Módulo do ASP.NET Core no grupo de seções, adicione o elemento da seção:
 
