@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 6a2c9fe6dde725129e293a3137c1281bfb1a30ef
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 46f8cbc5ef3d9fe00a5151160a9119f68a9fe572
+ms.sourcegitcommit: 68d03d1aee8906b53bda66f8f1e0747efc3007e6
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021049"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88051804"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2, adicionar um controlador a um aplicativo ASP.NET Core MVC
 
@@ -47,7 +47,7 @@ Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los
 * Em **Gerenciador de soluções**, clique com o botão direito do mouse em **controladores >** 
    ![ menu contextual adicionar > controlador](adding-controller/_static/add_controller.png)
 
-* Na caixa de diálogo **Adicionar Scaffold**, selecione **Controlador MVC – Vazio**
+* Na caixa de diálogo **Adicionar Scaffold** , selecione **classe de controlador-vazia**
 
   ![Adicionar o controlador MVC e nomeá-lo](adding-controller/_static/ac.png)
 
@@ -64,7 +64,7 @@ Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o b
 No **Gerenciador de Soluções**, clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo**.
 ![Menu contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Selecione **ASP.NET Core** e **Classe do Controlador MVC**.
+Selecione **ASP.NET Core** e **classe de controlador**.
 
 Nomeie o controlador **HelloWorldController**.
 
