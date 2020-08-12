@@ -3,7 +3,7 @@ title: Próximas etapas-DevOps com o ASP.NET Core e o Azure
 author: CamSoper
 description: Outros caminhos de aprendizagem para DevOps com o ASP.NET Core e o Azure.
 ms.author: casoper
-ms.custom: mvc, seodec18
+ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
 - cookie
@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/next-steps
-ms.openlocfilehash: feff73b307791c0a7ad8968b5145c0388df1ca10
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a9a6b0a588b7813f9d6e2b215630a1b9100be890
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012574"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130425"
 ---
 # <a name="next-steps"></a>Próximas etapas
 

@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 77cbe123cd11193f862a7ea0c46d8ac1ec69f888
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8f48165e2501ea17de6d5cd540f1d6ff088d3173
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013639"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130269"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com contas da Microsoft
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https://github.com/guardrex)
 
-Para criar um Blazor WebAssembly aplicativo autônomo que usa [contas da Microsoft com o Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) para autenticação:
+Para criar um [ Blazor WebAssembly aplicativo autônomo](xref:blazor/hosting-models#blazor-webassembly) que usa [contas da Microsoft com o Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) para autenticação:
 
 [Criar um locatário do AAD e um aplicativo Web](/azure/active-directory/develop/v2-overview)
 

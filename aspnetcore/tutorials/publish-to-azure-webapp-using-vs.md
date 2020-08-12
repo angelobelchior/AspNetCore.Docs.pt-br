@@ -3,7 +3,7 @@ title: Publicar um aplicativo ASP.NET Core no Azure com o Visual Studio
 author: rick-anderson
 description: Aprenda como publicar um aplicativo ASP.NET Core no Serviço de Aplicativo do Azure usando o Visual Studio.
 ms.author: riande
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.date: 07/10/2019
 no-loc:
 - cookie
@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: aa078fa30217d737d579b97d4de9704b5d1dd8a3
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 1fced12700fcd5910c1484ebb9190c7652b2646e
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022076"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130698"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publicar um aplicativo ASP.NET Core no Azure com o Visual Studio
 
@@ -174,7 +174,7 @@ Na página **Configurações** da caixa de diálogo **Publicar**:
 * Expanda **bancos de dados** e marque **usar esta cadeia de conexão em tempo de execução**.
 * Expanda **Entity Framework migrações** e marque **aplicar esta migração ao publicar**.
 
-* Selecione **Salvar**. O Visual Studio retorna para a caixa de diálogo **Publicar**. 
+* Clique em **Salvar**. O Visual Studio retorna para a caixa de diálogo **Publicar**. 
 
 ![Caixa de diálogo Publicar: painel Configurações](publish-to-azure-webapp-using-vs/_static/pp_settings.png)
 
@@ -196,7 +196,7 @@ Clique em **Publicar**. O Visual Studio publica seu aplicativo no Azure. Quando 
 
 ![Verifique se a tarefa está concluída](publish-to-azure-webapp-using-vs/_static/final.png)
 
-### <a name="clean-up"></a>Limpeza
+### <a name="clean-up"></a>Limpar
 
 Quando você concluir o teste do aplicativo, acesse o [portal do Azure](https://portal.azure.com/) e exclua o aplicativo.
 

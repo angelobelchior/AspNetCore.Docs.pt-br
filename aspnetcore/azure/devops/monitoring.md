@@ -3,7 +3,7 @@ title: Monitorar e depurar-DevOps com o ASP.NET Core e o Azure
 author: CamSoper
 description: Monitorando e Depurando seu código como parte de uma solução DevOps com ASP.NET Core e o Azure
 ms.author: casoper
-ms.custom: mvc, seodec18
+ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
 - cookie
@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: 9e8b48df5a3ecf78e315c7f33b5ab75d6f329cc2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 98d7c820b20f4f4c6b57f283ef718ce056dcdcae
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012768"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130490"
 ---
 # <a name="monitor-and-debug"></a>Monitorar e depurar
 
@@ -102,7 +102,7 @@ Os logs do servidor Web e do aplicativo são desabilitados por padrão no servi�
 1. Ative o **registro em log do aplicativo (Filesystem)**. Se solicitado, clique na caixa para instalar as extensões para habilitar o log de aplicativo no aplicativo Web.
 1. Defina o **log do servidor Web** no **sistema de arquivos**.
 1. Insira o **período de retenção** em dias. Por exemplo, 30.
-1. Clique em **Salvar**.
+1. Clique em **Save** (Salvar).
 
 Os logs do ASP.NET Core e do servidor Web (serviço de aplicativo) são gerados para o aplicativo Web. Eles podem ser baixados usando as informações de FTP/FTPS exibidas. A senha é a mesma que as credenciais de implantação criadas anteriormente neste guia. Os logs podem ser [transmitidos diretamente para seu computador local com o PowerShell ou CLI do Azure](/azure/app-service/web-sites-enable-diagnostic-log#download). Os logs também podem ser [exibidos em Application insights](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights).
 

@@ -3,7 +3,7 @@ title: Implantação contínua no Azure com o Visual Studio e o GIT com o ASP.NE
 author: rick-anderson
 description: Saiba como criar um aplicativo Web ASP.NET Core usando o Visual Studio e implantá-lo no Serviço de Aplicativo do Azure, usando o Git para implantação contínua.
 ms.author: riande
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.date: 12/06/2018
 no-loc:
 - cookie
@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: af983a2bc8a2802f9be07b30ab733ed2cfb7933c
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0def05f73fd5264b1fb01e0a2ae4fd8d70588d9c
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016083"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130555"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Implantação contínua no Azure com o Visual Studio e o GIT com o ASP.NET Core
 
@@ -116,7 +116,7 @@ O GIT é um sistema de controle de versão distribuída que pode ser usado para 
 
    * Selecione **configurações**  >  **credenciais de implantação**. A folha **Definir credenciais de implantação** é exibida.
    * Digite um nome de usuário e senha. Salve a senha para uso posterior ao configurar o GIT.
-   * Selecione **Salvar**.
+   * Clique em **Salvar**.
 
 1. Na folha **Aplicativo Web**, selecione **Configurações** > **Propriedades**. A URL do repositório GIT remoto no qual você implantará será mostrada em **URL do GIT**.
 

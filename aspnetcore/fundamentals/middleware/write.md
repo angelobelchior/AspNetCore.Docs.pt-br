@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/write
-ms.openlocfilehash: dd6a26d07e20f9795bbe3fbe6da59027e757782e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 480120718959a364ce8008949c3b76c558c0e995
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016912"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130581"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>Escrever middleware do ASP.NET Core personalizado
 
@@ -85,6 +85,8 @@ public class CustomMiddleware
 }
 ```
 
+[As opções de tempo de vida e de registro](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contêm um exemplo completo de middleware com serviços de tempo de vida com *escopo* .
+
 ## <a name="middleware-extension-method"></a>Método de extensão de middleware
 
 O seguinte método de extensão expõe o middleware por meio do <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder>:
@@ -97,6 +99,7 @@ O código a seguir chama o middleware de `Startup.Configure`:
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
+* [As opções de tempo de vida e de registro](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contêm um exemplo completo de middleware com serviços de tempo de vida com *escopo*, *transitório*e *singleton* .
 * <xref:fundamentals/middleware/index>
 * <xref:test/middleware>
 * <xref:migration/http-modules>

@@ -3,7 +3,7 @@ title: Publicar um aplicativo ASP.NET Core no Azure com o Visual Studio Code
 author: rick-anderson
 description: Saiba como publicar um aplicativo ASP.NET Core no Serviço de Aplicativo do Azure usando o Visual Studio Code
 ms.author: riserrad
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.date: 07/10/2019
 no-loc:
 - cookie
@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: a07786b1ae7e92e73d4336d0dd0bdbf99b571a0a
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 28074d64e9d4d0ec35af06e8b6daae939e316b2b
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022310"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130204"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>Publicar um aplicativo ASP.NET Core no Azure com o Visual Studio Code
 
