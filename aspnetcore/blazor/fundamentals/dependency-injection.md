@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: c8209b9374b448562c173f9f879e75a5da5f2301
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 40c47213021bf82150be2b41201b6af3228e4485
+ms.sourcegitcommit: 4df445e7d49a99f81625430f728c28e5d6bf2107
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014406"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88253558"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Injeção de dependência de ASP.NET Core Blazor
 
 Por [Rainer Stropek](https://www.timecockpit.com) e [Mike Rousos](https://github.com/mjrousos)
 
-Blazordá suporte à [injeção de dependência (di)](xref:fundamentals/dependency-injection). Os aplicativos podem usar serviços internos injetando-os em componentes. Os aplicativos também podem definir e registrar serviços personalizados e torná-los disponíveis em todo o aplicativo por meio de DI.
+Blazor dá suporte à [injeção de dependência (di)](xref:fundamentals/dependency-injection). Os aplicativos podem usar serviços internos injetando-os em componentes. Os aplicativos também podem definir e registrar serviços personalizados e torná-los disponíveis em todo o aplicativo por meio de DI.
 
 DI é uma técnica para acessar os serviços configurados em um local central. Isso pode ser útil em Blazor aplicativos para:
 
@@ -41,7 +41,7 @@ Os serviços padrão são adicionados automaticamente à coleção de serviços 
 
 | Serviço | Tempo de vida | Descrição |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Com escopo | Fornece métodos para enviar solicitações HTTP e receber respostas HTTP de um recurso identificado por um URI.<br><br>A instância do <xref:System.Net.Http.HttpClient> em um Blazor WebAssembly aplicativo usa o navegador para manipular o tráfego HTTP em segundo plano.<br><br>Blazor Serveros aplicativos não incluem um <xref:System.Net.Http.HttpClient> configurado como um serviço por padrão. Forneça um <xref:System.Net.Http.HttpClient> para um Blazor Server aplicativo.<br><br>Para obter mais informações, consulte <xref:blazor/call-web-api>. |
+| <xref:System.Net.Http.HttpClient> | Com escopo | Fornece métodos para enviar solicitações HTTP e receber respostas HTTP de um recurso identificado por um URI.<br><br>A instância do <xref:System.Net.Http.HttpClient> em um Blazor WebAssembly aplicativo usa o navegador para manipular o tráfego HTTP em segundo plano.<br><br>Blazor Server os aplicativos não incluem um <xref:System.Net.Http.HttpClient> configurado como um serviço por padrão. Forneça um <xref:System.Net.Http.HttpClient> para um Blazor Server aplicativo.<br><br>Para obter mais informações, consulte <xref:blazor/call-web-api>. |
 | <xref:Microsoft.JSInterop.IJSRuntime> | Singleton ( Blazor WebAssembly )<br>Com escopo ( Blazor Server ) | Representa uma instância de um tempo de execução JavaScript em que as chamadas JavaScript são expedidas. Para obter mais informações, consulte <xref:blazor/call-javascript-from-dotnet>. |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager> | Singleton ( Blazor WebAssembly )<br>Com escopo ( Blazor Server ) | Contém auxiliares para trabalhar com URIs e estado de navegação. Para obter mais informações, consulte [URI e auxiliares de estado de navegação](xref:blazor/fundamentals/routing#uri-and-navigation-state-helpers). |
 
@@ -164,7 +164,7 @@ Os serviços podem ser configurados com os tempos de vida mostrados na tabela a 
 
 | Tempo de vida | Descrição |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssemblyAtualmente, os aplicativos não têm um conceito de escopos de DI. `Scoped`-serviços registrados se comportam como `Singleton` serviços. No entanto, o Blazor Server modelo de hospedagem dá suporte ao `Scoped` tempo de vida. Em Blazor Server aplicativos, um registro de serviço com escopo é definido para a *conexão*. Por esse motivo, o uso de serviços com escopo é preferencial para serviços que devem ser delimitados para o usuário atual, mesmo que a intenção atual seja executar o lado do cliente no navegador. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssembly Atualmente, os aplicativos não têm um conceito de escopos de DI. `Scoped`-serviços registrados se comportam como `Singleton` serviços. No entanto, o Blazor Server modelo de hospedagem dá suporte ao `Scoped` tempo de vida. Em Blazor Server aplicativos, um registro de serviço com escopo é definido para a *conexão*. Por esse motivo, o uso de serviços com escopo é preferencial para serviços que devem ser delimitados para o usuário atual, mesmo que a intenção atual seja executar o lado do cliente no navegador. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI cria uma *única instância* do serviço. Todos os componentes que exigem um `Singleton` serviço recebem uma instância do mesmo serviço. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Sempre que um componente Obtém uma instância de um `Transient` serviço do contêiner de serviço, ele recebe uma *nova instância* do serviço. |
 
@@ -172,7 +172,7 @@ O sistema de DI é baseado no sistema de injeção de ASP.NET Core. Para obter m
 
 ## <a name="request-a-service-in-a-component"></a>Solicitar um serviço em um componente
 
-Depois que os serviços forem adicionados à coleção de serviços, insira os serviços nos componentes usando a diretiva de [ \@ inserção](xref:mvc/views/razor#inject) Razor . [`@inject`](xref:mvc/views/razor#inject)tem dois parâmetros:
+Depois que os serviços forem adicionados à coleção de serviços, insira os serviços nos componentes usando a diretiva de [ \@ inserção](xref:mvc/views/razor#inject) Razor . [`@inject`](xref:mvc/views/razor#inject) tem dois parâmetros:
 
 * Tipo: o tipo do serviço a injetar.
 * Propriedade: o nome da propriedade que recebe o serviço de aplicativo injetado. A propriedade não requer criação manual. O compilador cria a propriedade.
@@ -210,7 +210,7 @@ Em componentes derivados da classe base, a [`@inject`](xref:mvc/views/razor#inje
 
 ## <a name="use-di-in-services"></a>Usar DI em serviços
 
-Serviços complexos podem exigir serviços adicionais. No exemplo anterior, `DataAccess` pode exigir o <xref:System.Net.Http.HttpClient> serviço padrão. [`@inject`](xref:mvc/views/razor#inject)(ou o [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) atributo) não está disponível para uso em serviços. A *injeção de Construtor* deve ser usada em seu lugar. Os serviços necessários são adicionados adicionando parâmetros ao construtor do serviço. Quando DI cria o serviço, ele reconhece os serviços que ele requer no construtor e os fornece de acordo. No exemplo a seguir, o Construtor recebe um <xref:System.Net.Http.HttpClient> via di. <xref:System.Net.Http.HttpClient>é um serviço padrão.
+Serviços complexos podem exigir serviços adicionais. No exemplo anterior, `DataAccess` pode exigir o <xref:System.Net.Http.HttpClient> serviço padrão. [`@inject`](xref:mvc/views/razor#inject) (ou o [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) atributo) não está disponível para uso em serviços. A *injeção de Construtor* deve ser usada em seu lugar. Os serviços necessários são adicionados adicionando parâmetros ao construtor do serviço. Quando DI cria o serviço, ele reconhece os serviços que ele requer no construtor e os fornece de acordo. No exemplo a seguir, o Construtor recebe um <xref:System.Net.Http.HttpClient> via di. <xref:System.Net.Http.HttpClient> é um serviço padrão.
 
 ```csharp
 public class DataAccess : IDataAccess
@@ -235,14 +235,14 @@ Em aplicativos ASP.NET Core, os serviços com escopo normalmente são incluídos
 > [!NOTE]
 > Para detectar serviços descartáveis em um aplicativo, consulte a seção [detectar descartáveis transitórios](#detect-transient-disposables) .
 
-Uma abordagem que limita um tempo de vida do serviço em Blazor aplicativos é o uso do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> tipo. <xref:Microsoft.AspNetCore.Components.OwningComponentBase>é um tipo abstrato derivado de <xref:Microsoft.AspNetCore.Components.ComponentBase> que cria um escopo de di correspondente ao tempo de vida do componente. Usando esse escopo, é possível usar os serviços de DI com um tempo de vida de escopo e tê-los ativos, desde que o componente. Quando o componente é destruído, os serviços do provedor de serviço no escopo do componente também são descartados. Isso pode ser útil para serviços que:
+Uma abordagem que limita um tempo de vida do serviço em Blazor aplicativos é o uso do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> tipo. <xref:Microsoft.AspNetCore.Components.OwningComponentBase> é um tipo abstrato derivado de <xref:Microsoft.AspNetCore.Components.ComponentBase> que cria um escopo de di correspondente ao tempo de vida do componente. Usando esse escopo, é possível usar os serviços de DI com um tempo de vida de escopo e tê-los ativos, desde que o componente. Quando o componente é destruído, os serviços do provedor de serviço no escopo do componente também são descartados. Isso pode ser útil para serviços que:
 
 * Deve ser reutilizado dentro de um componente, pois o tempo de vida transitório é inadequado.
 * Não devem ser compartilhados entre componentes, pois o tempo de vida singleton é inadequado.
 
 Duas versões do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> tipo estão disponíveis:
 
-* <xref:Microsoft.AspNetCore.Components.OwningComponentBase>é um filho abstrato e descartável do <xref:Microsoft.AspNetCore.Components.ComponentBase> tipo com uma <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> propriedade protegida do tipo <xref:System.IServiceProvider> . Esse provedor pode ser usado para resolver serviços que têm o escopo definido para o tempo de vida do componente.
+* <xref:Microsoft.AspNetCore.Components.OwningComponentBase> é um filho abstrato e descartável do <xref:Microsoft.AspNetCore.Components.ComponentBase> tipo com uma <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> propriedade protegida do tipo <xref:System.IServiceProvider> . Esse provedor pode ser usado para resolver serviços que têm o escopo definido para o tempo de vida do componente.
 
   Os serviços de DI injetados no componente usando [`@inject`](xref:mvc/views/razor#inject) ou o [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) atributo não são criados no escopo do componente. Para usar o escopo do componente, os serviços devem ser resolvidos usando o <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> ou o <xref:System.IServiceProvider.GetService%2A> . Todos os serviços resolvidos usando o <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> provedor têm suas dependências fornecidas do mesmo escopo.
 
@@ -272,7 +272,7 @@ Duas versões do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> tipo
   }
   ```
 
-* <xref:Microsoft.AspNetCore.Components.OwningComponentBase%601>deriva de <xref:Microsoft.AspNetCore.Components.OwningComponentBase> e adiciona uma <xref:Microsoft.AspNetCore.Components.OwningComponentBase%601.Service%2A> propriedade que retorna uma instância do do `T` provedor de injeção de escopo. Esse tipo é uma maneira conveniente de acessar serviços com escopo sem usar uma instância do <xref:System.IServiceProvider> quando há um serviço primário que o aplicativo requer do contêiner di usando o escopo do componente. A <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> propriedade está disponível, portanto, o aplicativo pode obter serviços de outros tipos, se necessário.
+* <xref:Microsoft.AspNetCore.Components.OwningComponentBase%601> deriva de <xref:Microsoft.AspNetCore.Components.OwningComponentBase> e adiciona uma <xref:Microsoft.AspNetCore.Components.OwningComponentBase%601.Service%2A> propriedade que retorna uma instância do do `T` provedor de injeção de escopo. Esse tipo é uma maneira conveniente de acessar serviços com escopo sem usar uma instância do <xref:System.IServiceProvider> quando há um serviço primário que o aplicativo requer do contêiner di usando o escopo do componente. A <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> propriedade está disponível, portanto, o aplicativo pode obter serviços de outros tipos, se necessário.
 
   ```razor
   @page "/users"
@@ -289,94 +289,9 @@ Duas versões do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> tipo
   </ul>
   ```
 
-## <a name="use-of-entity-framework-dbcontext-from-di"></a>Uso de Entity Framework DbContext de DI
+## <a name="use-of-an-entity-framework-core-ef-core-dbcontext-from-di"></a>Uso de um Entity Framework Core (EF Core) DbContext de DI
 
-Um tipo de serviço comum a ser recuperado de DI em aplicativos Web é Entity Framework (EF) <xref:Microsoft.EntityFrameworkCore.DbContext> objetos. O registro de serviços do EF usando <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> o adiciona o <xref:Microsoft.EntityFrameworkCore.DbContext> como um serviço com escopo por padrão. O registro como um serviço com escopo pode levar a problemas em Blazor aplicativos porque faz com que as <xref:Microsoft.EntityFrameworkCore.DbContext> instâncias sejam de longa duração e compartilhadas entre o aplicativo. <xref:Microsoft.EntityFrameworkCore.DbContext>Não é thread-safe e não deve ser usado simultaneamente.
-
-Dependendo do aplicativo, o uso do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> para limitar o escopo de um <xref:Microsoft.EntityFrameworkCore.DbContext> a um único componente *pode* resolver o problema. Se um componente não usa um <xref:Microsoft.EntityFrameworkCore.DbContext> em paralelo, derivar o componente de <xref:Microsoft.AspNetCore.Components.OwningComponentBase> e recuperar o <xref:Microsoft.EntityFrameworkCore.DbContext> de <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> é suficiente porque garante que:
-
-* Componentes separados não compartilham um <xref:Microsoft.EntityFrameworkCore.DbContext> .
-* O <xref:Microsoft.EntityFrameworkCore.DbContext> reside apenas desde que o componente dependa dele.
-
-Se um único componente pode usar um <xref:Microsoft.EntityFrameworkCore.DbContext> simultaneamente (por exemplo, sempre que um usuário seleciona um botão), mesmo usando o <xref:Microsoft.AspNetCore.Components.OwningComponentBase> não evita problemas com operações simultâneas do EF. Nesse caso, use outro <xref:Microsoft.EntityFrameworkCore.DbContext> para cada operação lógica do EF. Use uma das seguintes abordagens:
-
-* Crie o <xref:Microsoft.EntityFrameworkCore.DbContext> usando diretamente <xref:Microsoft.EntityFrameworkCore.DbContextOptions%601> como um argumento, que pode ser recuperado de di e é thread-safe.
-
-    ```razor
-    @page "/example"
-    @inject DbContextOptions<AppDbContext> DbContextOptions
-
-    <ul>
-        @foreach (var item in data)
-        {
-            <li>@item</li>
-        }
-    </ul>
-
-    <button @onclick="LoadData">Load Data</button>
-
-    @code {
-        private List<string> data = new List<string>();
-
-        private async Task LoadData()
-        {
-            data = await GetAsync();
-            StateHasChanged();
-        }
-
-        public async Task<List<string>> GetAsync()
-        {
-            using (var context = new AppDbContext(DbContextOptions))
-            {
-                return await context.Products.Select(p => p.Name).ToListAsync();
-            }
-        }
-    }
-    ```
-
-* Registre o <xref:Microsoft.EntityFrameworkCore.DbContext> no contêiner de serviço com um tempo de vida transitório:
-  * Ao registrar o contexto, use <xref:Microsoft.OData.ServiceLifetime.Transient?displayProperty=nameWithType> . O <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> método de extensão usa dois parâmetros opcionais do tipo <xref:Microsoft.Extensions.DependencyInjection.ServiceLifetime> . Para usar essa abordagem, somente o `contextLifetime` parâmetro precisa ser <xref:Microsoft.OData.ServiceLifetime.Transient?displayProperty=nameWithType> . `optionsLifetime`pode manter seu valor padrão de <xref:Microsoft.OData.ServiceLifetime.Scoped?displayProperty=nameWithType> .
-
-    ```csharp
-    services.AddDbContext<AppDbContext>(options =>
-         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),
-         ServiceLifetime.Transient);
-    ```  
-
-  * O transitório <xref:Microsoft.EntityFrameworkCore.DbContext> pode ser injetado como normal (usando [`@inject`](xref:mvc/views/razor#inject) ) em componentes que não executarão várias operações de EF em paralelo. Os que podem executar várias operações de EF simultaneamente podem solicitar <xref:Microsoft.EntityFrameworkCore.DbContext> objetos separados para cada operação em paralelo usando <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> .
-
-    ```razor
-    @page "/example"
-    @using Microsoft.Extensions.DependencyInjection
-    @inject IServiceProvider ServiceProvider
-
-    <ul>
-        @foreach (var item in data)
-        {
-            <li>@item</li>
-        }
-    </ul>
-
-    <button @onclick="LoadData">Load Data</button>
-
-    @code {
-        private List<string> data = new List<string>();
-
-        private async Task LoadData()
-        {
-            data = await GetAsync();
-            StateHasChanged();
-        }
-
-        public async Task<List<string>> GetAsync()
-        {
-            using (var context = ServiceProvider.GetRequiredService<AppDbContext>())
-            {
-                return await context.Products.Select(p => p.Name).ToListAsync();
-            }
-        }
-    }
-    ```
+Para obter mais informações, consulte <xref:blazor/blazor-server-ef-core>.
 
 ## <a name="detect-transient-disposables"></a>Detectar descartáveis transitórios
 
@@ -409,5 +324,5 @@ O `TransientDependency` no exemplo a seguir é detectado ( `Startup.cs` ):
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * <xref:fundamentals/dependency-injection>
-* [`IDisposable`Diretrizes para instâncias transitórias e compartilhadas](xref:fundamentals/dependency-injection#idisposable-guidance-for-transient-and-shared-instances)
+* [`IDisposable` Diretrizes para instâncias transitórias e compartilhadas](xref:fundamentals/dependency-injection#idisposable-guidance-for-transient-and-shared-instances)
 * <xref:mvc/views/dependency-injection>

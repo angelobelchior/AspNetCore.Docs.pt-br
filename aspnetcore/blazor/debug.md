@@ -5,7 +5,7 @@ description: Saiba como depurar Blazor aplicativos.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/30/2020
+ms.date: 08/14/2020
 no-loc:
 - cookie
 - Cookie
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 838ed1a10ab3312e449782a29c305a976265550c
-ms.sourcegitcommit: 503b348e9046fcd969de85898394a1ea8274ec38
+ms.openlocfilehash: 7b5dac5c634ae3eef180ef2c7c7287da94342169
+ms.sourcegitcommit: 4df445e7d49a99f81625430f728c28e5d6bf2107
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227586"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88253571"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -284,3 +284,13 @@ protected override async Task OnInitializedAsync()
     ...
 }
 ```
+
+### <a name="visual-studio-timeout"></a>Tempo limite do Visual Studio
+
+Se o Visual Studio lançar uma exceção de que o adaptador de depuração falhou ao ser iniciado mencionando que o tempo limite foi atingido, você poderá ajustar o tempo limite com uma configuração de registro:
+
+```console
+VsRegEdit.exe set "<VSInstallFolder>" HKCU JSDebugger\Options\Debugging "BlazorTimeoutInMilliseconds" dword {TIMEOUT}
+```
+
+O `{TIMEOUT}` espaço reservado no comando anterior é em milissegundos. Por exemplo, um minuto é atribuído como `60000` .
