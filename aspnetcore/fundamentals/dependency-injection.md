@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 0d8b349d0381e2902907ea841e07bbc96db5b847
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: b0ba7c7598df13413c00934a30e03681129de98a
+ms.sourcegitcommit: 503b348e9046fcd969de85898394a1ea8274ec38
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130623"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88227573"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -111,9 +111,9 @@ O `ConfigureServices` método atualizado registra a nova `IMyDependency` impleme
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/StartupMyDependency2.cs?name=snippet1)]
 
-`MyDependency2`solicita um <xref:Microsoft.Extensions.Logging.ILogger`1> no construtor. Não é incomum usar a injeção de dependência de uma maneira encadeada. Por sua vez, cada dependência solicitada solicita suas próprias dependências. O contêiner resolve as dependências no grafo e retorna o serviço totalmente resolvido. O conjunto de dependências que precisa ser resolvido normalmente é chamado de *árvore de dependência*, *grafo de dependência* ou *grafo de objeto*.
+`MyDependency2` solicita um <xref:Microsoft.Extensions.Logging.ILogger`1> no construtor. Não é incomum usar a injeção de dependência de uma maneira encadeada. Por sua vez, cada dependência solicitada solicita suas próprias dependências. O contêiner resolve as dependências no grafo e retorna o serviço totalmente resolvido. O conjunto de dependências que precisa ser resolvido normalmente é chamado de *árvore de dependência*, *grafo de dependência* ou *grafo de objeto*.
 
-`ILogger<TCategoryName>`é um [serviço fornecido pelo Framework](#framework-provided-services).
+`ILogger<TCategoryName>` é um [serviço fornecido pelo Framework](#framework-provided-services).
 
 O contêiner resolve aproveitando `ILogger<TCategoryName>` os [tipos abertos (genéricos)](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types), eliminando a necessidade de registrar cada [tipo construído (genérico)](/dotnet/csharp/language-reference/language-specification/types#constructed-types).
 
@@ -234,7 +234,7 @@ Os métodos de extensão de registro de serviço oferecem sobrecargas que são �
 
 Para obter mais informações sobre o descarte de tipos, consulte a seção [Descarte de serviços](#disposal-of-services). Um cenário comum para várias implementações é a [simulação de tipos para teste](xref:test/integration-tests#inject-mock-services).
 
-`TryAdd{LIFETIME}`os métodos registram o serviço se já não houver uma implementação registrada.
+`TryAdd{LIFETIME}` os métodos registram o serviço se já não houver uma implementação registrada.
 
 No exemplo a seguir, a primeira linha registra `MyDependency` para `IMyDependency`. A segunda linha não tem nenhum efeito porque `IMyDependency` já tem uma implementação registrada:
 
@@ -268,7 +268,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 O registro de serviço geralmente é independente de ordem, exceto ao registrar várias implementações do mesmo tipo.
 
-`IServiceCollection`é uma coleção de <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor> . O código a seguir mostra como adicionar um serviço com um construtor:
+`IServiceCollection` é uma coleção de <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor> . O código a seguir mostra como adicionar um serviço com um construtor:
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Startup5.cs?name=snippet)]
 
@@ -608,6 +608,7 @@ O `Startup.ConfigureServices` método é responsável por definir os serviços q
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
 * <xref:blazor/fundamentals/dependency-injection>
+* [Padrões de conferência NDC para desenvolvimento de aplicativo de DI](https://www.youtube.com/watch?v=x-C-CNBVTaY)
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [Quatro maneiras de descartar IDisposables em ASP.NET Core](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/)
