@@ -5,7 +5,7 @@ description: Saiba como usar formatos e cenários de validação de campo no Bla
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2020
+ms.date: 08/18/2020
 no-loc:
 - cookie
 - Cookie
@@ -17,16 +17,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 3e719261315ed3a17833da7751d801d79a11ee6c
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5220a969dbc677d1df9594c0ddd8d1a13ca6e8f4
+ms.sourcegitcommit: 756c78f6dbfa77c5d718969cdce20639b8ca0a17
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014472"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88515590"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor formulários e validação
 
-Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
+Por [Daniel Roth](https://github.com/danroth27), [Rémi Bourgarel](https://remibou.github.io/)e [Luke Latham](https://github.com/guardrex)
 
 Há suporte para formulários e validação no Blazor uso de [anotações de dados](xref:mvc/models/validation).
 
@@ -60,7 +60,7 @@ Um formulário é definido usando o <xref:Microsoft.AspNetCore.Components.Forms.
 
     private void HandleValidSubmit()
     {
-        Console.WriteLine("OnValidSubmit");
+        ...
     }
 }
 ```
@@ -71,9 +71,9 @@ No exemplo anterior:
 * As <xref:Microsoft.AspNetCore.Components.Forms.InputText> ligações do componente `@bind-Value` :
   * A propriedade do modelo ( `exampleModel.Name` ) para a <xref:Microsoft.AspNetCore.Components.Forms.InputText> Propriedade do componente `Value` . Para obter mais informações sobre associação de propriedades, consulte <xref:blazor/components/data-binding#parent-to-child-binding-with-component-parameters> .
   * Um delegado de evento de alteração para a <xref:Microsoft.AspNetCore.Components.Forms.InputText> Propriedade do componente `ValueChanged` .
-* O <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente anexa o suporte à validação usando anotações de dados.
+* O <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> [componente do validador](#validator-components) anexa o suporte à validação usando anotações de dados.
 * O <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> componente resume as mensagens de validação.
-* `HandleValidSubmit`é disparado quando o formulário é enviado com êxito (aprovado na validação).
+* `HandleValidSubmit` é disparado quando o formulário é enviado com êxito (aprovado na validação).
 
 ## <a name="built-in-forms-components"></a>Componentes de formulários internos
 
@@ -189,23 +189,31 @@ O formulário a seguir valida a entrada do usuário usando a validação definid
 </EditForm>
 
 @code {
-    private Starship starship = new Starship();
+    private Starship starship = new Starship() { ProductionDate = DateTime.UtcNow };
 
     private void HandleValidSubmit()
     {
-        Console.WriteLine("OnValidSubmit");
+        ...
     }
 }
 ```
 
-O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> cria um <xref:Microsoft.AspNetCore.Components.Forms.EditContext> como um [valor em cascata](xref:blazor/components/cascading-values-and-parameters) que controla os metadados sobre o processo de edição, incluindo quais campos foram modificados e as mensagens de validação atuais. O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> também fornece eventos convenientes para envios válidos e inválidos ( <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> , <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit> ). Como alternativa, use <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> para disparar a validação e verificar os valores do campo com o código de validação personalizado.
+O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> cria um <xref:Microsoft.AspNetCore.Components.Forms.EditContext> como um [valor em cascata](xref:blazor/components/cascading-values-and-parameters) que controla os metadados sobre o processo de edição, incluindo quais campos foram modificados e as mensagens de validação atuais.
+
+Atribua **um** <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **ou** um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a um <xref:Microsoft.AspNetCore.Components.Forms.EditForm> . A atribuição de ambos não tem suporte e gera um **erro de tempo de execução**.
+
+O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> fornece eventos convenientes para envio de formulário válido e inválido:
+
+* <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit>
+* <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit>
+
+Use <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> para usar o código personalizado para disparar a validação e verificar valores de campo.
 
 No exemplo a seguir:
 
 * O `HandleSubmit` método é executado quando o **`Submit`** botão é selecionado.
-* O formulário é validado usando o formulário <xref:Microsoft.AspNetCore.Components.Forms.EditContext> .
-* O formulário é validado ainda mais, passando o <xref:Microsoft.AspNetCore.Components.Forms.EditContext> para o `ServerValidate` método que chama um ponto de extremidade da API Web no servidor (*não mostrado*).
-* O código adicional é executado dependendo do resultado da validação do cliente e do lado do servidor verificando `isValid` .
+* O formulário é validado chamando <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Validate%2A?displayProperty=nameWithType> .
+* O código adicional é executado dependendo do resultado da validação. Coloque a lógica de negócios no método atribuído a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> .
 
 ```razor
 <EditForm EditContext="@editContext" OnSubmit="HandleSubmit">
@@ -216,7 +224,7 @@ No exemplo a seguir:
 </EditForm>
 
 @code {
-    private Starship starship = new Starship();
+    private Starship starship = new Starship() { ProductionDate = DateTime.UtcNow };
     private EditContext editContext;
 
     protected override void OnInitialized()
@@ -226,8 +234,7 @@ No exemplo a seguir:
 
     private async Task HandleSubmit()
     {
-        var isValid = editContext.Validate() && 
-            await ServerValidate(editContext);
+        var isValid = editContext.Validate();
 
         if (isValid)
         {
@@ -238,15 +245,428 @@ No exemplo a seguir:
             ...
         }
     }
+}
+```
 
-    private async Task<bool> ServerValidate(EditContext editContext)
+> [!NOTE]
+> A API do Framework não existe para limpar as mensagens de validação diretamente de um <xref:Microsoft.AspNetCore.Components.Forms.EditContext> . Portanto, geralmente não recomendamos adicionar mensagens de validação a um novo <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> em um formulário. Para gerenciar mensagens de validação, use um [componente de validador](#validator-components) com seu [código de validação de lógica de negócios](#business-logic-validation), conforme descrito neste artigo.
+
+## <a name="validator-components"></a>Componentes do validador
+
+Os componentes do validador dão suporte à validação de formulário gerenciando um <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> para um formulário <xref:Microsoft.AspNetCore.Components.Forms.EditContext> .
+
+A Blazor estrutura fornece o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente para anexar suporte de validação a formulários baseados em [atributos de validação (anotações de dados)](xref:mvc/models/validation#validation-attributes). Crie componentes personalizados do validador para processar mensagens de validação para diferentes formulários na mesma página ou o mesmo formulário em etapas diferentes de processamento de formulário, por exemplo, validação do lado do cliente seguida pela validação do lado do servidor. O exemplo de componente do validador mostrado nesta seção, `CustomValidator` , é usado nas seguintes seções deste artigo:
+
+* [Validação da lógica de negócios](#business-logic-validation)
+* [Validação do servidor](#server-validation)
+
+> [!NOTE]
+> Os atributos personalizados de validação de anotação de dados podem ser usados em vez de componentes personalizados do validador em muitos casos. Os atributos personalizados aplicados ao modelo do formulário são ativados com o uso do <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. Quando usado com a validação do lado do servidor, todos os atributos personalizados aplicados ao modelo devem ser executáveis no servidor. Para obter mais informações, consulte <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+
+Criar um componente de validador de <xref:Microsoft.AspNetCore.Components.ComponentBase> :
+
+* O formulário <xref:Microsoft.AspNetCore.Components.Forms.EditContext> é um [parâmetro em cascata](xref:blazor/components/cascading-values-and-parameters) do componente.
+* Quando o componente do validador é inicializado, um novo <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> é criado para manter uma lista atual de erros de formulário.
+* O repositório de mensagens recebe erros quando o código do desenvolvedor no componente do formulário chama o `DisplayErrors` método. Os erros são passados para o `DisplayErrors` método em um [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2) . No dicionário, a chave é o nome do campo de formulário que tem um ou mais erros. O valor é a lista de erros.
+* As mensagens são limpas quando ocorre um dos seguintes:
+  * A validação é solicitada em <xref:Microsoft.AspNetCore.Components.Forms.EditContext> quando o <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> evento é gerado. Todos os erros são apagados.
+  * Um campo é alterado no formulário quando o <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> evento é gerado. Somente os erros do campo são apagados.
+  * O `ClearErrors` método é chamado pelo código do desenvolvedor. Todos os erros são apagados.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+
+namespace BlazorSample.Client
+{
+    public class CustomValidator : ComponentBase
     {
-        var serverChecksValid = ...
+        private ValidationMessageStore messageStore;
 
-        return serverChecksValid;
+        [CascadingParameter]
+        private EditContext CurrentEditContext { get; set; }
+
+        protected override void OnInitialized()
+        {
+            if (CurrentEditContext == null)
+            {
+                throw new InvalidOperationException(
+                    $"{nameof(CustomValidator)} requires a cascading " +
+                    $"parameter of type {nameof(EditContext)}. " +
+                    $"For example, you can use {nameof(CustomValidator)} " +
+                    $"inside an {nameof(EditForm)}.");
+            }
+
+            messageStore = new ValidationMessageStore(CurrentEditContext);
+
+            CurrentEditContext.OnValidationRequested += (s, e) => 
+                messageStore.Clear();
+            CurrentEditContext.OnFieldChanged += (s, e) => 
+                messageStore.Clear(e.FieldIdentifier);
+        }
+
+        public void DisplayErrors(Dictionary<string, List<string>> errors)
+        {
+            foreach (var err in errors)
+            {
+                messageStore.Add(CurrentEditContext.Field(err.Key), err.Value);
+            }
+
+            CurrentEditContext.NotifyValidationStateChanged();
+        }
+
+        public void ClearErrors()
+        {
+            messageStore.Clear();
+            CurrentEditContext.NotifyValidationStateChanged();
+        }
     }
 }
 ```
+
+## <a name="business-logic-validation"></a>Validação da lógica de negócios
+
+A validação da lógica de negócios pode ser realizada com um [componente de validador](#validator-components) que recebe erros de formulário em um dicionário.
+
+No exemplo a seguir:
+
+* O `CustomValidator` componente da seção [componentes do validador](#validator-components) deste artigo é usado.
+* A validação requer um valor para a descrição do envio ( `Description` ) se o usuário selecionar a `Defense` classificação de remessa ( `Classification` ).
+
+Quando as mensagens de validação são definidas no componente, elas são adicionadas ao validador <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> e mostradas no <xref:Microsoft.AspNetCore.Components.Forms.EditForm> :
+
+```csharp
+@page "/FormsValidation"
+
+<h1>Starfleet Starship Database</h1>
+
+<h2>New Ship Entry Form</h2>
+
+<EditForm Model="@starship" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <CustomValidator @ref="customValidator" />
+    <ValidationSummary />
+
+    ...
+
+</EditForm>
+
+@code {
+    private CustomValidator customValidator;
+    private Starship starship = new Starship() { ProductionDate = DateTime.UtcNow };
+
+    private void HandleValidSubmit()
+    {
+        customValidator.ClearErrors();
+
+        var errors = new Dictionary<string, List<string>>();
+
+        if (starship.Classification == "Defense" &&
+                string.IsNullOrEmpty(starship.Description))
+        {
+            errors.Add(nameof(starship.Description),
+                new List<string>() { "For a 'Defense' ship classification, " +
+                "'Description' is required." });
+        }
+
+        if (errors.Count() > 0)
+        {
+            customValidator.DisplayErrors(errors);
+        }
+        else
+        {
+            // Process the form
+        }
+    }
+}
+```
+
+> [!NOTE]
+> Como alternativa ao uso de [componentes de validação](#validator-components), os atributos de validação de anotação de dados podem ser usados. Os atributos personalizados aplicados ao modelo do formulário são ativados com o uso do <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. Quando usado com a validação do lado do servidor, os atributos devem ser executáveis no servidor. Para obter mais informações, consulte <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+
+## <a name="server-validation"></a>Validação do servidor
+
+A validação do servidor pode ser realizada com um [componente de validador](#validator-components)de servidor:
+
+* Processe a validação do lado do cliente no formulário com o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente.
+* Quando o formulário passar na validação do lado do cliente ( <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> é chamado), envie o <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> para uma API de servidor de back-end para processamento de formulário.
+* Validação do modelo de processo no servidor.
+* A API do servidor inclui a validação interna das anotações de dados da estrutura e a lógica de validação personalizada fornecida pelo desenvolvedor. Se a validação passar no servidor, processe o formulário e envie de volta um código de status de êxito (*200-OK*). Se a validação falhar, retorne um código de status de falha (*400-solicitação inadequada*) e os erros de validação de campo.
+* Desabilite o formulário em caso de êxito ou exiba os erros.
+
+O exemplo a seguir se baseia em:
+
+* Uma solução hospedada Blazor criada pelo [ Blazor modelo de projeto hospedado](xref:blazor/hosting-models#blazor-webassembly). O exemplo pode ser usado com qualquer uma das soluções hospedadas seguras Blazor descritas na [ Identity documentação e segurança](xref:blazor/security/webassembly/index#implementation-guidance).
+* O exemplo de formulário de *banco de dados Starfleet Starship* na seção [componentes de formulários internos](#built-in-forms-components) anteriores.
+* O Blazor componente da estrutura <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> .
+* O `CustomValidator` componente mostrado na seção [componentes do validador](#validator-components) .
+
+No exemplo a seguir, a API do servidor valida que um valor é fornecido para a descrição do navio ( `Description` ) se o usuário selecionar a `Defense` classificação de remessa ( `Classification` ).
+
+Coloque o `Starship` modelo no projeto da solução `Shared` para que os aplicativos cliente e servidor possam usar o modelo. Como o modelo requer anotações de dados, adicione uma referência de pacote para [`System.ComponentModel.Annotations`](https://www.nuget.org/packages/System.ComponentModel.Annotations) o `Shared` arquivo de projeto do projeto:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="System.ComponentModel.Annotations" Version="{VERSION}" />
+</ItemGroup>
+```
+
+Para determinar a versão mais recente de não visualização do pacote, consulte o **histórico de versão** do pacote em [NuGet.org](https://www.nuget.org/packages/System.ComponentModel.Annotations).
+
+No projeto de API do servidor, adicione um controlador para processar solicitações de validação Starship ( `Controllers/StarshipValidation.cs` ) e retorne as mensagens de validação com falha:
+
+```csharp
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using BlazorSample.Shared;
+
+namespace BlazorSample.Server.Controllers
+{
+    [Authorize]
+    [ApiController]
+    [Route("[controller]")]
+    public class StarshipValidationController : ControllerBase
+    {
+        private readonly ILogger<StarshipValidationController> logger;
+
+        public StarshipValidationController(
+            ILogger<StarshipValidationController> logger)
+        {
+            this.logger = logger;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(Starship starship)
+        {
+            try
+            {
+                if (starship.Classification == "Defense" && 
+                    string.IsNullOrEmpty(starship.Description))
+                {
+                    ModelState.AddModelError(nameof(starship.Description),
+                        "For a 'Defense' ship " +
+                        "classification, 'Description' is required.");
+                }
+                else
+                {
+                    // Process the form asynchronously
+                    // async ...
+
+                    return Ok(ModelState);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("Validation Error: {MESSAGE}", ex.Message);
+            }
+
+            return BadRequest(ModelState);
+        }
+    }
+}
+```
+
+Quando ocorre um erro de validação de associação de modelo no servidor, um [`ApiController`](xref:web-api/index) ( <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> ) normalmente retorna uma [resposta de solicitação inadequada padrão](xref:web-api/index#default-badrequest-response) com um <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> . A resposta contém mais dados do que apenas os erros de validação, conforme mostrado no exemplo a seguir quando todos os campos do formulário de banco de dados *Starfleet Starship* não são enviados e o formulário falha na validação:
+
+```json
+{
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "Identifier": ["The Identifier field is required."],
+    "Classification": ["The Classification field is required."],
+    "IsValidatedDesign": ["This form disallows unapproved ships."],
+    "MaximumAccommodation": ["Accommodation invalid (1-100000)."]
+  }
+}
+```
+
+Se a API do servidor retornar a resposta JSON padrão anterior, é possível para o cliente analisar a resposta para obter os filhos do `errors` nó. No entanto, é inconveniente analisar o arquivo. A análise do JSON requer código adicional após <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> a chamada para produzir um [`Dictionary<string, List<string>>`](xref:System.Collections.Generic.Dictionary`2) erro de processamento de erros de validação de formulários. O ideal é que a API do servidor retorne apenas os erros de validação:
+
+```json
+{
+  "Identifier": ["The Identifier field is required."],
+  "Classification": ["The Classification field is required."],
+  "IsValidatedDesign": ["This form disallows unapproved ships."],
+  "MaximumAccommodation": ["Accommodation invalid (1-100000)."]
+}
+```
+
+Para modificar a resposta da API do servidor para fazer com que ela retorne apenas os erros de validação, altere o delegado que é invocado em ações que são anotadas <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> no `Startup.ConfigureServices` . Para o ponto de extremidade da API ( `/StarshipValidation` ), retorne um <xref:Microsoft.AspNetCore.Mvc.BadRequestObjectResult> com o <xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary> . Para qualquer outro ponto de extremidade de API, preserve o comportamento padrão retornando o resultado do objeto com um novo <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> :
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+...
+
+services.AddControllersWithViews()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            if (context.HttpContext.Request.Path == "/StarshipValidation")
+            {
+                return new BadRequestObjectResult(context.ModelState);
+            }
+            else
+            {
+                return new BadRequestObjectResult(
+                    new ValidationProblemDetails(context.ModelState));
+            }
+        };
+    });
+```
+
+Para obter mais informações, consulte <xref:web-api/handle-errors#validation-failure-error-response>.
+
+No projeto do cliente, adicione o componente do validador mostrado na seção [componentes do validador](#validator-components) .
+
+No projeto cliente, o formulário de *banco de dados Starfleet Starship* é atualizado para mostrar erros de validação de servidor com a ajuda do `CustomValidator` componente. Quando a API do servidor retorna mensagens de validação, elas são adicionadas ao `CustomValidator` componente <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessageStore> . Os erros estão disponíveis no formato da <xref:Microsoft.AspNetCore.Components.Forms.EditContext> exibição do formulário <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> :
+
+```csharp
+@page "/FormValidation"
+@using System.Net
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.Extensions.Logging
+@using BlazorSample.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject ILogger<FormValidation> Logger
+
+<h1>Starfleet Starship Database</h1>
+
+<h2>New Ship Entry Form</h2>
+
+<EditForm Model="@starship" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <CustomValidator @ref="customValidator" />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            Identifier:
+            <InputText @bind-Value="starship.Identifier" disabled="@disabled" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Description (optional):
+            <InputTextArea @bind-Value="starship.Description" 
+                disabled="@disabled" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Primary Classification:
+            <InputSelect @bind-Value="starship.Classification" disabled="@disabled">
+                <option value="">Select classification ...</option>
+                <option value="Exploration">Exploration</option>
+                <option value="Diplomacy">Diplomacy</option>
+                <option value="Defense">Defense</option>
+            </InputSelect>
+        </label>
+    </p>
+    <p>
+        <label>
+            Maximum Accommodation:
+            <InputNumber @bind-Value="starship.MaximumAccommodation" 
+                disabled="@disabled" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Engineering Approval:
+            <InputCheckbox @bind-Value="starship.IsValidatedDesign" 
+                disabled="@disabled" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Production Date:
+            <InputDate @bind-Value="starship.ProductionDate" disabled="@disabled" />
+        </label>
+    </p>
+
+    <button type="submit" disabled="@disabled">Submit</button>
+
+    <p style="@messageStyles">
+        @message
+    </p>
+
+    <p>
+        <a href="http://www.startrek.com/">Star Trek</a>,
+        &copy;1966-2019 CBS Studios, Inc. and
+        <a href="https://www.paramount.com">Paramount Pictures</a>
+    </p>
+</EditForm>
+
+@code {
+    private bool disabled;
+    private string message;
+    private string messageStyles = "visibility:hidden";
+    private CustomValidator customValidator;
+    private Starship starship = new Starship() { ProductionDate = DateTime.UtcNow };
+
+    private async Task HandleValidSubmit(EditContext editContext)
+    {
+        customValidator.ClearErrors();
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync<Starship>(
+                "StarshipValidation", (Starship)editContext.Model);
+
+            var errors = await response.Content
+                .ReadFromJsonAsync<Dictionary<string, List<string>>>();
+
+            if (response.StatusCode == HttpStatusCode.BadRequest && 
+                errors.Count() > 0)
+            {
+                customValidator.DisplayErrors(errors);
+            }
+            else if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(
+                    $"Validation failed. Status Code: {response.StatusCode}");
+            }
+            else
+            {
+                disabled = true;
+                messageStyles = "color:green";
+                message = "The form has been processed.";
+            }
+        }
+        catch (AccessTokenNotAvailableException ex)
+        {
+            ex.Redirect();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError("Form processing error: {MESSAGE}", ex.Message);
+            disabled = true;
+            messageStyles = "color:red";
+            message = "There was an error processing the form.";
+        }
+    }
+}
+```
+
+> [!NOTE]
+> Como alternativa aos [componentes de validação](#validator-components), os atributos de validação de anotação de dados podem ser usados. Os atributos personalizados aplicados ao modelo do formulário são ativados com o uso do <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. Quando usado com a validação do lado do servidor, os atributos devem ser executáveis no servidor. Para obter mais informações, consulte <xref:mvc/models/validation#alternatives-to-built-in-attributes>.
+
+> [!NOTE]
+> A abordagem de validação no lado do servidor nesta seção é adequada para qualquer um dos Blazor WebAssembly exemplos de solução hospedada neste conjunto de documentação:
+>
+> * [AAD (Azure Active Directory)](xref:blazor/security/webassembly/hosted-with-azure-active-directory)
+> * [Azure Active Directory (AAD) B2C](xref:blazor/security/webassembly/hosted-with-azure-active-directory-b2c)
+> * [Identity Servidor](xref:blazor/security/webassembly/hosted-with-identity-server)
 
 ## <a name="inputtext-based-on-the-input-event"></a>InputText com base no evento de entrada
 
@@ -294,7 +714,7 @@ O `CustomInputText` componente pode ser usado em qualquer lugar que <xref:Micros
 
     private void HandleValidSubmit()
     {
-        Console.WriteLine("OnValidSubmit");
+        ...
     }
 
     public class ExampleModel
@@ -383,7 +803,7 @@ O seguinte <xref:Microsoft.AspNetCore.Components.Forms.EditForm> usa o `InputRad
 
     private void HandleValidSubmit()
     {
-        Console.WriteLine("valid");
+        ...
     }
 
     public class Model
@@ -422,7 +842,7 @@ A Blazor estrutura não lida automaticamente `null` com conversões de cadeia de
 
 O <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente anexa o suporte à validação usando anotações de dados para o em cascata <xref:Microsoft.AspNetCore.Components.Forms.EditContext> . Habilitar o suporte para validação usando anotações de dados requer esse gesto explícito. Para usar um sistema de validação diferente de anotações de dados, substitua-o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> por uma implementação personalizada. A implementação de ASP.NET Core está disponível para inspeção na fonte de referência: [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs) . Os links anteriores para a fonte de referência fornecem o código do `master` Branch do repositório, que representa o desenvolvimento atual da unidade do produto para a próxima versão do ASP.NET Core. Para selecionar a ramificação de uma versão diferente, use o seletor de ramificações do GitHub (por exemplo, `release/3.1` ).
 
-Blazorexecuta dois tipos de validação:
+Blazor executa dois tipos de validação:
 
 * A *validação de campo* é executada quando o usuário faz a Tabulação de um campo. Durante a validação de campo, o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente associa todos os resultados de validação relatados ao campo.
 * A *validação do modelo* é executada quando o usuário envia o formulário. Durante a validação do modelo, o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente tenta determinar o campo com base no nome do membro que o resultado da validação relata. Os resultados de validação que não estão associados a um membro individual são associados ao modelo em vez de um campo.
@@ -481,9 +901,12 @@ private class CustomValidator : ValidationAttribute
 > [!NOTE]
 > <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> é `null`. Não há suporte para injetar serviços para validação no `IsValid` método.
 
-### <a name="no-locblazor-data-annotations-validation-package"></a>Blazorpacote de validação de anotações de dados
+### <a name="no-locblazor-data-annotations-validation-package"></a>Blazor pacote de validação de anotações de dados
 
 O [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) é um pacote que preenche as lacunas da experiência de validação usando o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. O pacote está *experimental*no momento.
+
+> [!NOTE]
+> O [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) pacote tem uma versão mais recente do *release candidate* em [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Continue a usar o pacote do Release Candidate *experimental* no momento. O assembly do pacote pode ser movido para a estrutura ou o tempo de execução em uma versão futura. Assista ao [repositório GitHub de anúncios](https://github.com/aspnet/Announcements), no [repositório GitHub do dotnet/aspnetcore](https://github.com/dotnet/aspnetcore)ou nesta seção do tópico para obter mais atualizações.
 
 ### <a name="compareproperty-attribute"></a>Atributo [compareproperty]
 
@@ -491,7 +914,7 @@ O <xref:System.ComponentModel.DataAnnotations.CompareAttribute> não funciona be
 
 ### <a name="nested-models-collection-types-and-complex-types"></a>Modelos aninhados, tipos de coleção e tipos complexos
 
-Blazorfornece suporte para validar a entrada de formulário usando anotações de dados com o interno <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> . No entanto, o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> só valida as propriedades de nível superior do modelo associado ao formulário que não são propriedades de tipo de coleção ou complexas.
+Blazor fornece suporte para validar a entrada de formulário usando anotações de dados com o interno <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> . No entanto, o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> só valida as propriedades de nível superior do modelo associado ao formulário que não são propriedades de tipo de coleção ou complexas.
 
 Para validar o gráfico de objeto inteiro do modelo associado, incluindo propriedades de tipo de coleção e complexas, use o `ObjectGraphDataAnnotationsValidator` fornecido pelo pacote *experimental* [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) :
 
@@ -547,6 +970,9 @@ Para habilitar e desabilitar o botão enviar com base na validação do formulá
 * Valide o formulário no retorno de chamada do contexto <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> para habilitar e desabilitar o botão enviar.
 * Desvincule o manipulador de eventos no `Dispose` método. Para obter mais informações, consulte <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
+> [!NOTE]
+> Ao usar um <xref:Microsoft.AspNetCore.Components.Forms.EditContext> , não atribua também um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> ao <xref:Microsoft.AspNetCore.Components.Forms.EditForm> .
+
 ```razor
 @implements IDisposable
 
@@ -560,7 +986,7 @@ Para habilitar e desabilitar o botão enviar com base na validação do formulá
 </EditForm>
 
 @code {
-    private Starship starship = new Starship();
+    private Starship starship = new Starship() { ProductionDate = DateTime.UtcNow };
     private bool formInvalid = true;
     private EditContext editContext;
 
@@ -615,11 +1041,11 @@ Um efeito colateral da abordagem anterior é que um <xref:Microsoft.AspNetCore.C
 }
 ```
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 > InvalidOperationException: EditForm requer um parâmetro de modelo ou um parâmetro EditContext, mas não ambos.
 
-Confirme se o <xref:Microsoft.AspNetCore.Components.Forms.EditForm> tem um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> ou <xref:Microsoft.AspNetCore.Components.Forms.EditContext> .
+Confirme se o <xref:Microsoft.AspNetCore.Components.Forms.EditForm> tem um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> **ou** <xref:Microsoft.AspNetCore.Components.Forms.EditContext> . Não use ambos para a mesma forma.
 
 Ao atribuir um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> ao formulário, confirme se o tipo de modelo é instanciado, como mostra o exemplo a seguir:
 

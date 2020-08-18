@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 5aca81da34e5ed51b2dc4f404c1ba4d7377a422f
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 65e386298af26d36900f13a5eb11aab7c012c2b0
+ms.sourcegitcommit: 756c78f6dbfa77c5d718969cdce20639b8ca0a17
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016239"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88515603"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Chamar os serviços gRPC com o cliente .NET
 
@@ -73,7 +73,7 @@ Desempenho e uso do canal e do cliente:
 * Um canal e clientes criados a partir do canal podem ser usados com segurança por vários threads.
 * Clientes criados a partir do canal podem fazer várias chamadas simultâneas.
 
-`GrpcChannel.ForAddress`Não é a única opção para criar um cliente gRPC. Se estiver chamando serviços gRPC de um aplicativo ASP.NET Core, considere a [integração do gRPC Client Factory](xref:grpc/clientfactory). a integração do gRPC com `HttpClientFactory` oferece uma alternativa centralizada para a criação de clientes do gRPC.
+`GrpcChannel.ForAddress` Não é a única opção para criar um cliente gRPC. Se estiver chamando serviços gRPC de um aplicativo ASP.NET Core, considere a [integração do gRPC Client Factory](xref:grpc/clientfactory). a integração do gRPC com `HttpClientFactory` oferece uma alternativa centralizada para a criação de clientes do gRPC.
 
 > [!NOTE]
 > Não há suporte para a chamada de gRPC sobre HTTP/2 com `Grpc.Net.Client` atualmente no Xamarin. Estamos trabalhando para melhorar o suporte a HTTP/2 em uma versão futura do Xamarin. [Grpc. Core](https://www.nuget.org/packages/Grpc.Core) e [Grpc-Web](xref:grpc/browser) são alternativas viáveis que funcionam hoje.
@@ -103,12 +103,12 @@ Console.WriteLine("Greeting: " + response.Message);
 
 Cada método de serviço unário no arquivo * \* . proto* resultará em dois métodos .net no tipo de cliente concreto gRPC para chamar o método: um método assíncrono e um método de bloqueio. Por exemplo, `GreeterClient` há duas maneiras de chamar `SayHello` :
 
-* `GreeterClient.SayHelloAsync`-chama o `Greeter.SayHello` serviço de forma assíncrona. Pode ser esperado.
-* `GreeterClient.SayHello`-chama `Greeter.SayHello` serviço e bloqueia até a conclusão. Não use em código assíncrono.
+* `GreeterClient.SayHelloAsync` -chama o `Greeter.SayHello` serviço de forma assíncrona. Pode ser esperado.
+* `GreeterClient.SayHello` -chama `Greeter.SayHello` serviço e bloqueia até a conclusão. Não use em código assíncrono.
 
 ### <a name="server-streaming-call"></a>Chamada de streaming de servidor
 
-Uma chamada de transmissão de servidor inicia com o cliente enviando uma mensagem de solicitação. `ResponseStream.MoveNext()`lê mensagens transmitidas do serviço. A chamada de streaming de servidor é concluída quando `ResponseStream.MoveNext()` retorna `false` .
+Uma chamada de transmissão de servidor inicia com o cliente enviando uma mensagem de solicitação. `ResponseStream.MoveNext()` lê mensagens transmitidas do serviço. A chamada de streaming de servidor é concluída quando `ResponseStream.MoveNext()` retorna `false` .
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -136,7 +136,7 @@ await foreach (var response in call.ResponseStream.ReadAllAsync())
 
 ### <a name="client-streaming-call"></a>Chamada de streaming de cliente
 
-Uma chamada de streaming de cliente inicia *sem* que o cliente envie uma mensagem. O cliente pode optar por enviar mensagens com `RequestStream.WriteAsync` . Quando o cliente terminar de enviar mensagens, `RequestStream.CompleteAsync` deverá ser chamado para notificar o serviço. A chamada é concluída quando o serviço retorna uma mensagem de resposta.
+Uma chamada de streaming de cliente inicia *sem* que o cliente envie uma mensagem. O cliente pode optar por enviar mensagens com `RequestStream.WriteAsync` . Quando o cliente terminar de enviar mensagens, `RequestStream.CompleteAsync()` deverá ser chamado para notificar o serviço. A chamada é concluída quando o serviço retorna uma mensagem de resposta.
 
 ```csharp
 var client = new Counter.CounterClient(channel);
@@ -188,6 +188,14 @@ Console.WriteLine("Disconnecting");
 await call.RequestStream.CompleteAsync();
 await readTask;
 ```
+
+Para obter o melhor desempenho e para evitar erros desnecessários no cliente e no serviço, tente concluir as chamadas de streaming bidirecionais normalmente. Uma chamada bidirecional é concluída normalmente quando o servidor termina de ler o fluxo de solicitação e o cliente concluiu a leitura do fluxo de resposta. A chamada de exemplo anterior é um exemplo de uma chamada bidirecional que termina normalmente. Na chamada, o cliente:
+
+1. Inicia uma nova chamada de streaming bidirecional chamando `EchoClient.Echo` .
+2. Cria uma tarefa em segundo plano para ler mensagens do serviço usando `ResponseStream.ReadAllAsync()` .
+3. Envia mensagens ao servidor com `RequestStream.WriteAsync` .
+4. Notifica o servidor para o qual terminou de enviar mensagens `RequestStream.CompleteAsync()` .
+5. Aguarda até que a tarefa em segundo plano Leia todas as mensagens recebidas.
 
 Durante uma chamada de streaming bidirecional, o cliente e o serviço podem enviar mensagens entre si a qualquer momento. A melhor lógica de cliente para interagir com uma chamada bidirecional varia dependendo da lógica do serviço.
 
