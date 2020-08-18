@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 04200ced41113eb9a68cefc2f485f2d3798476c6
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e6feeb0009034d9ea92f09c44ed0ca882d80fe1b
+ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022336"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504756"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>ASP.NET Core SignalR cliente JavaScript
 
@@ -62,7 +62,7 @@ NPM instala o conteúdo do pacote na *pasta \\ @aspnet\signalr\dist\browser node
 
 ::: moniker-end
 
-Referencie o SignalR cliente JavaScript no `<script>` elemento. Por exemplo:
+Referencie o SignalR cliente JavaScript no `<script>` elemento. Por exemplo: 
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -70,7 +70,7 @@ Referencie o SignalR cliente JavaScript no `<script>` elemento. Por exemplo:
 
 ### <a name="use-a-content-delivery-network-cdn"></a>Usar uma CDN (rede de distribuição de conteúdo)
 
-Para usar a biblioteca de cliente sem o pré-requisito NPM, faça referência a uma cópia hospedada em CDN da biblioteca de cliente. Por exemplo:
+Para usar a biblioteca de cliente sem o pré-requisito NPM, faça referência a uma cópia hospedada em CDN da biblioteca de cliente. Por exemplo: 
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
@@ -122,7 +122,7 @@ Os clientes JavaScript chamam métodos públicos em hubs por meio do método [In
   [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
 > [!NOTE]
-> Se você estiver usando SignalR o serviço do Azure no *modo sem servidor*, não será possível chamar os métodos de Hub de um cliente. Para obter mais informações, consulte a [ SignalR documentação do serviço](/azure/azure-signalr/signalr-concept-serverless-development-config).
+> Somente há suporte para métodos de Hub de chamada de um cliente ao usar o serviço do Azure SignalR no modo *padrão* . Para obter mais informações, consulte perguntas frequentes [(repositório GitHub do Azure-signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
 
 O `invoke` método retorna uma [promessa](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)de JavaScript. O `Promise` é resolvido com o valor de retorno (se houver) quando o método no servidor retorna. Se o método no servidor gerar um erro, o `Promise` será rejeitado com a mensagem de erro. Use os `then` `catch` métodos e na `Promise` própria para lidar com esses casos (ou `await` sintaxe).
 
@@ -144,7 +144,7 @@ O código anterior em `connection.on` é executado quando o código do lado do s
 
 [!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
-SignalRdetermina qual método de cliente chamar correspondendo o nome do método e os argumentos definidos em `SendAsync` e `connection.on` .
+SignalR determina qual método de cliente chamar correspondendo o nome do método e os argumentos definidos em `SendAsync` e `connection.on` .
 
 > [!NOTE]
 > Como prática recomendada, chame o método [Start](/javascript/api/%40aspnet/signalr/hubconnection#start) no `HubConnection` After `on` . Isso garante que seus manipuladores sejam registrados antes que todas as mensagens sejam recebidas.
@@ -216,7 +216,7 @@ connection.onreconnected(connectionId => {
 });
 ```
 
-`withAutomaticReconnect()`não configurará o `HubConnection` para tentar falhas de início inicial, portanto, as falhas de início precisam ser manipuladas manualmente:
+`withAutomaticReconnect()` não configurará o `HubConnection` para tentar falhas de início inicial, portanto, as falhas de início precisam ser manipuladas manualmente:
 
 ```javascript
 async function start() {
@@ -267,9 +267,9 @@ O comportamento personalizado, em seguida, deriva novamente do comportamento pad
 
 Se você quiser ainda mais controle sobre o tempo e o número de tentativas de reconexão automática, o `withAutomaticReconnect` aceitará um objeto que implementa a `IRetryPolicy` interface, que tem um único método chamado `nextRetryDelayInMilliseconds` .
 
-`nextRetryDelayInMilliseconds`usa um único argumento com o tipo `RetryContext` . O `RetryContext` tem três propriedades: `previousRetryCount` , `elapsedMilliseconds` e `retryReason` que são a `number` , a `number` e uma `Error` respectivamente. Antes da primeira tentativa de reconexão, `previousRetryCount` e `elapsedMilliseconds` será zero, e o `retryReason` será o erro que causou a perda da conexão. Após cada tentativa de repetição com falha, o `previousRetryCount` será incrementado em um, `elapsedMilliseconds` será atualizado para refletir a quantidade de tempo gasto reconectando até agora em milissegundos, e o `retryReason` será o erro que causou a falha da última tentativa de reconexão.
+`nextRetryDelayInMilliseconds` usa um único argumento com o tipo `RetryContext` . O `RetryContext` tem três propriedades: `previousRetryCount` , `elapsedMilliseconds` e `retryReason` que são a `number` , a `number` e uma `Error` respectivamente. Antes da primeira tentativa de reconexão, `previousRetryCount` e `elapsedMilliseconds` será zero, e o `retryReason` será o erro que causou a perda da conexão. Após cada tentativa de repetição com falha, o `previousRetryCount` será incrementado em um, `elapsedMilliseconds` será atualizado para refletir a quantidade de tempo gasto reconectando até agora em milissegundos, e o `retryReason` será o erro que causou a falha da última tentativa de reconexão.
 
-`nextRetryDelayInMilliseconds`deve retornar um número que representa o número de milissegundos a aguardar antes da próxima tentativa de reconexão ou `null` se o `HubConnection` deve parar de reconectar.
+`nextRetryDelayInMilliseconds` deve retornar um número que representa o número de milissegundos a aguardar antes da próxima tentativa de reconexão ou `null` se o `HubConnection` deve parar de reconectar.
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()

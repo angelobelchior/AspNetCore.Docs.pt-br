@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: a03598f887d628c8a2b6720d99826d4aef4e52fa
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e27748e8267a931390f831119a3fd1d45e87745a
+ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019996"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504730"
 ---
 # <a name="aspnet-core-no-locsignalr-net-client"></a>ASP.NET Core SignalR cliente .net
 
@@ -34,7 +34,7 @@ O exemplo de código neste artigo é um aplicativo do WPF que usa o SignalR clie
 
 ## <a name="install-the-no-locsignalr-net-client-package"></a>Instalar o SignalR pacote do cliente .net
 
-O [Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)O pacote do cliente é necessário para que os clientes .net se conectem aos SignalR hubs.
+O [Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) O pacote do cliente é necessário para que os clientes .net se conectem aos SignalR hubs.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -110,7 +110,7 @@ connection.Reconnected += connectionId =>
 };
 ```
 
-`WithAutomaticReconnect()`não configurará o `HubConnection` para tentar falhas de início inicial, portanto, as falhas de início precisam ser manipuladas manualmente:
+`WithAutomaticReconnect()` não configurará o `HubConnection` para tentar falhas de início inicial, portanto, as falhas de início precisam ser manipuladas manualmente:
 
 ```csharp
 public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, CancellationToken token)
@@ -172,9 +172,9 @@ O comportamento personalizado, em seguida, deriva novamente do comportamento pad
 
 Se você quiser ainda mais controle sobre o tempo e o número de tentativas de reconexão automática, o `WithAutomaticReconnect` aceitará um objeto que implementa a `IRetryPolicy` interface, que tem um único método chamado `NextRetryDelay` .
 
-`NextRetryDelay`usa um único argumento com o tipo `RetryContext` . O `RetryContext` tem três propriedades: `PreviousRetryCount` , `ElapsedTime` e `RetryReason` , que são a `long` , a `TimeSpan` e uma `Exception` respectivamente. Antes da primeira tentativa de reconexão, `PreviousRetryCount` e `ElapsedTime` será zero, e `RetryReason` será a exceção que causou a perda da conexão. Após cada tentativa de repetição com falha, o `PreviousRetryCount` será incrementado em um, `ElapsedTime` será atualizado para refletir a quantidade de tempo gasto reconectando até o momento, e o `RetryReason` será a exceção que causou a falha da última tentativa de reconexão.
+`NextRetryDelay` usa um único argumento com o tipo `RetryContext` . O `RetryContext` tem três propriedades: `PreviousRetryCount` , `ElapsedTime` e `RetryReason` , que são a `long` , a `TimeSpan` e uma `Exception` respectivamente. Antes da primeira tentativa de reconexão, `PreviousRetryCount` e `ElapsedTime` será zero, e `RetryReason` será a exceção que causou a perda da conexão. Após cada tentativa de repetição com falha, o `PreviousRetryCount` será incrementado em um, `ElapsedTime` será atualizado para refletir a quantidade de tempo gasto reconectando até o momento, e o `RetryReason` será a exceção que causou a falha da última tentativa de reconexão.
 
-`NextRetryDelay`deve retornar um TimeSpan que representa o tempo de espera antes da próxima tentativa de reconexão ou `null` se o `HubConnection` deve parar de reconectar.
+`NextRetryDelay` deve retornar um TimeSpan que representa o tempo de espera antes da próxima tentativa de reconexão ou `null` se o `HubConnection` deve parar de reconectar.
 
 ```csharp
 public class RandomRetryPolicy : IRetryPolicy
@@ -237,7 +237,7 @@ Em um `Closed` manipulador que reinicia a conexão, considere aguardar um atraso
 
 ## <a name="call-hub-methods-from-client"></a>Métodos do hub de chamadas do cliente
 
-`InvokeAsync`chama métodos no Hub. Passe o nome do método de Hub e quaisquer argumentos definidos no método de Hub para `InvokeAsync` . SignalRé assíncrona, portanto, use `async` e `await` ao fazer as chamadas.
+`InvokeAsync` chama métodos no Hub. Passe o nome do método de Hub e quaisquer argumentos definidos no método de Hub para `InvokeAsync` . SignalR é assíncrona, portanto, use `async` e `await` ao fazer as chamadas.
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
 
@@ -246,7 +246,7 @@ O `InvokeAsync` método retorna um `Task` que é concluído quando o método de 
 O `SendAsync` método retorna um `Task` que é concluído quando a mensagem é enviada ao servidor. Nenhum valor de retorno é fornecido, pois isso `Task` não aguarda até que o método de servidor seja concluído. Todas as exceções geradas no cliente durante o envio da mensagem produzem uma falha `Task` . Use `await` e `try...catch` sintaxe para lidar com erros de envio.
 
 > [!NOTE]
-> Se você estiver usando SignalR o serviço do Azure no *modo sem servidor*, não será possível chamar os métodos de Hub de um cliente. Para obter mais informações, consulte a [ SignalR documentação do serviço](/azure/azure-signalr/signalr-concept-serverless-development-config).
+> Somente há suporte para métodos de Hub de chamada de um cliente ao usar o serviço do Azure SignalR no modo *padrão* . Para obter mais informações, consulte perguntas frequentes [(repositório GitHub do Azure-signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
 
 ## <a name="call-client-methods-from-hub"></a>Chamar métodos de cliente do Hub
 
