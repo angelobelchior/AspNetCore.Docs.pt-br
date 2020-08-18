@@ -426,6 +426,8 @@
           uid: blazor/webassembly-lazy-load-assemblies
         - name: Desempenho do WebAssembly
           uid: blazor/webassembly-performance-best-practices
+        - name: Teste
+          uid: blazor/test
         - name: Aplicativos Web progressivos
           uid: blazor/progressive-web-app
         - name: Hospedar e implantar
@@ -438,6 +440,8 @@
               uid: blazor/host-and-deploy/server
             - name: Configurar o vinculador
               uid: blazor/host-and-deploy/configure-linker
+        - name: Blazor Server e EF Core
+          uid: blazor/blazor-server-ef-core
         - name: Cenários avançados
           uid: blazor/advanced-scenarios
     - name: Desenvolvimento do lado do cliente

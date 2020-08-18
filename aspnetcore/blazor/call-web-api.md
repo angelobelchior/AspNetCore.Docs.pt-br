@@ -1,5 +1,5 @@
 ---
-title: Chamar uma API da Web de ASP.NET CoreBlazor WebAssembly
+title: Chamar uma API da Web de ASP.NET Core Blazor WebAssembly
 author: guardrex
 description: Saiba como chamar uma API da Web de um Blazor WebAssembly aplicativo usando auxiliares JSON, incluindo a criação de solicitações de CORS (compartilhamento de recursos entre origens).
 monikerRange: '>= aspnetcore-3.1'
@@ -17,21 +17,21 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: ef31d3d9b3914f3c86aa397ff214778fe295964b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f8c105624506d13f3ea8e963ceb49aeaf6d22a66
+ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012573"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504561"
 ---
-# <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Chamar uma API da Web de ASP.NET CoreBlazor
+# <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Chamar uma API da Web de ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)e [Juan de la Cruz](https://github.com/juandelacruz23)
 
 > [!NOTE]
-> Este tópico aplica-se a Blazor WebAssembly . [Blazor Server](xref:blazor/hosting-models#blazor-server)os aplicativos chamam APIs da Web usando <xref:System.Net.Http.HttpClient> instâncias, normalmente criadas usando <xref:System.Net.Http.IHttpClientFactory> . Para obter diretrizes que se aplicam ao Blazor Server , consulte <xref:fundamentals/http-requests> .
+> Este tópico aplica-se a Blazor WebAssembly . [Blazor Server](xref:blazor/hosting-models#blazor-server) os aplicativos chamam APIs da Web usando <xref:System.Net.Http.HttpClient> instâncias, normalmente criadas usando <xref:System.Net.Http.IHttpClientFactory> . Para obter diretrizes que se aplicam ao Blazor Server , consulte <xref:fundamentals/http-requests> .
 
-[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly)os aplicativos chamam APIs Web usando um serviço pré-configurado <xref:System.Net.Http.HttpClient> . Redação de solicitações, que podem incluir opções de [API de busca](https://developer.mozilla.org/docs/Web/API/Fetch_API) de JavaScript, usando Blazor auxiliares JSON ou com <xref:System.Net.Http.HttpRequestMessage> . O <xref:System.Net.Http.HttpClient> serviço em Blazor WebAssembly aplicativos se concentra em fazer solicitações de volta para o servidor de origem. As diretrizes neste tópico referem-se apenas a Blazor WebAssembly aplicativos.
+[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) os aplicativos chamam APIs Web usando um serviço pré-configurado <xref:System.Net.Http.HttpClient> . Redação de solicitações, que podem incluir opções de [API de busca](https://developer.mozilla.org/docs/Web/API/Fetch_API) de JavaScript, usando Blazor auxiliares JSON ou com <xref:System.Net.Http.HttpRequestMessage> . O <xref:System.Net.Http.HttpClient> serviço em Blazor WebAssembly aplicativos se concentra em fazer solicitações de volta para o servidor de origem. As diretrizes neste tópico referem-se apenas a Blazor WebAssembly aplicativos.
 
 [Exibir ou baixar o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample)): selecione o `BlazorWebAssemblySample` aplicativo.
 
@@ -42,7 +42,7 @@ Consulte os seguintes componentes no `BlazorWebAssemblySample` aplicativo de exe
 
 ## <a name="packages"></a>Pacotes
 
-Referencie o [`System.Net.Http.Json`](https://www.nuget.org/packages/System.Net.Http.Json/) pacote NuGet no arquivo de projeto.
+Referencie o [`System.Net.Http.Json`](https://www.nuget.org/packages/System.Net.Http.Json) pacote NuGet no arquivo de projeto.
 
 ## <a name="add-the-httpclient-service"></a>Adicionar o serviço HttpClient
 
@@ -62,7 +62,7 @@ Em um Blazor WebAssembly aplicativo, [`HttpClient`](xref:fundamentals/http-reque
 
 Um Blazor Server aplicativo não inclui um <xref:System.Net.Http.HttpClient> serviço por padrão. Forneça um <xref:System.Net.Http.HttpClient> para o aplicativo usando a [ `HttpClient` infraestrutura de fábrica](xref:fundamentals/http-requests).
 
-<xref:System.Net.Http.HttpClient>e auxiliares JSON também são usados para chamar pontos de extremidade de API Web de terceiros. <xref:System.Net.Http.HttpClient>é implementado usando a [API de busca](https://developer.mozilla.org/docs/Web/API/Fetch_API) de navegador e está sujeito a suas limitações, incluindo a imposição da mesma política de origem.
+<xref:System.Net.Http.HttpClient> e auxiliares JSON também são usados para chamar pontos de extremidade de API Web de terceiros. <xref:System.Net.Http.HttpClient> é implementado usando a [API de busca](https://developer.mozilla.org/docs/Web/API/Fetch_API) de navegador e está sujeito a suas limitações, incluindo a imposição da mesma política de origem.
 
 O endereço base do cliente é definido como o endereço do servidor de origem. Injetar uma <xref:System.Net.Http.HttpClient> instância usando a [`@inject`](xref:mvc/views/razor#inject) diretiva:
 
@@ -163,7 +163,7 @@ Os métodos auxiliares JSON enviam solicitações para um URI (uma API Web nos e
   var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
-<xref:System.Net.Http>inclui métodos de extensão adicionais para enviar solicitações HTTP e receber respostas HTTP. <xref:System.Net.Http.HttpClient.DeleteAsync%2A?displayProperty=nameWithType>é usado para enviar uma solicitação HTTP DELETE para uma API da Web.
+<xref:System.Net.Http> inclui métodos de extensão adicionais para enviar solicitações HTTP e receber respostas HTTP. <xref:System.Net.Http.HttpClient.DeleteAsync%2A?displayProperty=nameWithType> é usado para enviar uma solicitação HTTP DELETE para uma API da Web.
 
 No código a seguir, o `<button>` elemento delete chama o `DeleteItem` método. O `<input>` elemento associado fornece o `id` do item a ser excluído. Consulte o aplicativo de exemplo para obter um exemplo completo.
 
@@ -184,9 +184,9 @@ No código a seguir, o `<button>` elemento delete chama o `DeleteItem` método. 
 
 ## <a name="named-httpclient-with-ihttpclientfactory"></a>Chamado HttpClient com IHttpClientFactory
 
-<xref:System.Net.Http.IHttpClientFactory>Há suporte para serviços e para a configuração de um nome <xref:System.Net.Http.HttpClient> .
+<xref:System.Net.Http.IHttpClientFactory> Há suporte para serviços e para a configuração de um nome <xref:System.Net.Http.HttpClient> .
 
-Referencie o [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http/) pacote NuGet no arquivo de projeto.
+Referencie o [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) pacote NuGet no arquivo de projeto.
 
 `Program.Main` (`Program.cs`):
 
@@ -195,7 +195,7 @@ builder.Services.AddHttpClient("ServerAPI", client =>
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 ```
 
-`FetchData`componente ( `Pages/FetchData.razor` ):
+`FetchData` componente ( `Pages/FetchData.razor` ):
 
 ```razor
 @inject IHttpClientFactory ClientFactory
@@ -263,7 +263,7 @@ builder.Services.AddHttpClient<WeatherForecastClient>(client =>
 
 Os componentes injetam o tipo <xref:System.Net.Http.HttpClient> para chamar a API da Web.
 
-`FetchData`componente ( `Pages/FetchData.razor` ):
+`FetchData` componente ( `Pages/FetchData.razor` ):
 
 ```razor
 @inject WeatherForecastClient Client

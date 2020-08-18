@@ -1,5 +1,5 @@
 ---
-title: Hospedar e implantar ASP.NET CoreBlazor WebAssembly
+title: Hospedar e implantar ASP.NET Core Blazor WebAssembly
 author: guardrex
 description: Saiba como hospedar e implantar um Blazor aplicativo usando ASP.NET Core, CDN (redes de distribuição de conteúdo), servidores de arquivos e páginas do github.
 monikerRange: '>= aspnetcore-3.1'
@@ -17,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 06059e0f9ff6a3f4073d8d01d1ac541c30ad1ab1
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e66a470bf5bd23950bdb0ccf61c6743916ed9349
+ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014185"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504548"
 ---
-# <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET CoreBlazor WebAssembly
+# <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
 Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), [Daniel Roth](https://github.com/danroth27), [Ben Adams](https://twitter.com/ben_a_adams)e [Safia Abdalla](https://safia.rocks)
 
@@ -45,7 +45,7 @@ Quando um Blazor WebAssembly aplicativo é publicado, a saída é compactada est
 * [Brotli](https://tools.ietf.org/html/rfc7932) (nível mais alto)
 * [Gzip](https://tools.ietf.org/html/rfc1952)
 
-Blazoro se baseia no host para o fornecer os arquivos compactados apropriados. Ao usar um projeto ASP.NET Core hospedado, o projeto host é capaz de executar a negociação de conteúdo e fornecer os arquivos compactados estaticamente. Ao hospedar um Blazor WebAssembly aplicativo autônomo, um trabalho adicional pode ser necessário para garantir que arquivos compactados estaticamente sejam atendidos:
+Blazor o se baseia no host para o fornecer os arquivos compactados apropriados. Ao usar um projeto ASP.NET Core hospedado, o projeto host é capaz de executar a negociação de conteúdo e fornecer os arquivos compactados estaticamente. Ao hospedar um Blazor WebAssembly aplicativo autônomo, um trabalho adicional pode ser necessário para garantir que arquivos compactados estaticamente sejam atendidos:
 
 * Para `web.config` a configuração de compactação do IIS, consulte a seção [IIS: Brotli e a compactação Gzip](#brotli-and-gzip-compression) . 
 * Ao hospedar soluções de hospedagem estática que não dão suporte à negociação de conteúdo de arquivo compactado estaticamente, como páginas do GitHub, considere configurar o aplicativo para buscar e decodificar arquivos compactados Brotli:
@@ -87,6 +87,12 @@ Para desabilitar a compactação, adicione a `BlazorEnableCompression` Proprieda
 </PropertyGroup>
 ```
 
+A `BlazorEnableCompression` propriedade pode ser passada para o [`dotnet publish`](/dotnet/core/tools/dotnet-publish) comando com a seguinte sintaxe em um shell de comando:
+
+```dotnetcli
+dotnet publish -p:BlazorEnableCompression=false
+```
+
 ## <a name="rewrite-urls-for-correct-routing"></a>Reescrever as URLs para obter o roteamento correto
 
 O roteamento de solicitações para componentes de página em um Blazor WebAssembly aplicativo não é tão simples quanto o roteamento de solicitações em um Blazor Server aplicativo hospedado. Considere um Blazor WebAssembly aplicativo com dois componentes:
@@ -98,7 +104,7 @@ Quando o documento padrão do aplicativo é solicitado usando a barra de endere�
 
 1. O navegador faz uma solicitação.
 1. A página padrão é retornada, o que geralmente é `index.html` .
-1. `index.html`Inicializa o aplicativo.
+1. `index.html` Inicializa o aplicativo.
 1. Blazoro roteador do é carregado e o Razor `Main` componente é renderizado.
 
 Na página principal, selecionar o link para o `About` componente funciona no cliente, pois o Blazor roteador interrompe o navegador de fazer uma solicitação na Internet para `www.contoso.com` `About` e serve o componente renderizado em `About` si. Todas as solicitações de pontos de extremidade internos *no Blazor WebAssembly aplicativo* funcionam da mesma maneira: as solicitações não disparam solicitações baseadas em navegador para recursos hospedados no servidor na Internet. O roteador trata das solicitações internamente.
@@ -410,7 +416,7 @@ Os ativos de implantação autônomo são publicados na `/bin/Release/{TARGET FR
 
 ### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
 
-Blazor WebAssemblyos aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
+Blazor WebAssembly os aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
 
 Blazor WebAssemblyAtualmente, não há suporte para a implantação de um aplicativo autônomo no serviço Azure app para Linux. Uma imagem do servidor Linux para hospedar o aplicativo não está disponível no momento. O trabalho está em andamento para habilitar esse cenário.
 
@@ -504,7 +510,7 @@ A hospedagem de arquivos estáticos de [armazenamento do Azure](/azure/storage/)
 Quando o serviço de blob está habilitado para hospedagem de site estático em uma conta de armazenamento:
 
 * Defina o **Nome do documento de índice** como `index.html`.
-* Defina o **Caminho do documento de erro** como `index.html`. Razoros componentes e outros pontos de extremidade que não são de arquivo não residem em caminhos físicos no conteúdo estático armazenado pelo serviço BLOB. Quando uma solicitação para um desses recursos é recebida e o Blazor roteador deve lidar, o erro *404-não encontrado* gerado pelo serviço blob roteia a solicitação para o caminho do **documento de erro**. O `index.html` blob é retornado e o Blazor roteador carrega e processa o caminho.
+* Defina o **Caminho do documento de erro** como `index.html`. Razor os componentes e outros pontos de extremidade que não são de arquivo não residem em caminhos físicos no conteúdo estático armazenado pelo serviço BLOB. Quando uma solicitação para um desses recursos é recebida e o Blazor roteador deve lidar, o erro *404-não encontrado* gerado pelo serviço blob roteia a solicitação para o caminho do **documento de erro**. O `index.html` blob é retornado e o Blazor roteador carrega e processa o caminho.
 
 Se os arquivos não forem carregados no tempo de execução devido a tipos MIME inadequados nos cabeçalhos dos arquivos `Content-Type` , execute uma das seguintes ações:
 
@@ -703,7 +709,7 @@ O argumento `--urls` define os endereços IP ou os endereços de host com portas
 
 ## <a name="configure-the-linker"></a>Configurar o vinculador
 
-Blazorexecuta a vinculação de IL (linguagem intermediária) em cada Build de versão para remover o IL desnecessário dos assemblies de saída. Para obter mais informações, consulte <xref:blazor/host-and-deploy/configure-linker>.
+Blazor executa a vinculação de IL (linguagem intermediária) em cada Build de versão para remover o IL desnecessário dos assemblies de saída. Para obter mais informações, consulte <xref:blazor/host-and-deploy/configure-linker>.
 
 ## <a name="custom-boot-resource-loading"></a>Carregamento de recurso de inicialização personalizada
 
@@ -713,16 +719,16 @@ Um Blazor WebAssembly aplicativo pode ser inicializado com a `loadBootResource` 
 * Carregue assemblies compactados usando uma solicitação HTTP e descompacte-os no cliente para hosts que não dão suporte à busca de conteúdo compactado do servidor.
 * Recursos de alias para um nome diferente redirecionando cada `fetch` solicitação para um novo nome.
 
-`loadBootResource`os parâmetros aparecem na tabela a seguir.
+`loadBootResource` os parâmetros aparecem na tabela a seguir.
 
 | Parâmetro    | Descrição |
 | ------------ | ----------- |
-| `type`       | Tipo do recurso. Tipos permissiváveis: `assembly` ,, `pdb` , `dotnetjs` `dotnetwasm` ,`timezonedata` |
+| `type`       | Tipo do recurso. Tipos permissiváveis: `assembly` ,, `pdb` , `dotnetjs` `dotnetwasm` , `timezonedata` |
 | `name`       | O nome do recurso. |
 | `defaultUri` | O URI relativo ou absoluto do recurso. |
 | `integrity`  | A cadeia de caracteres de integridade que representa o conteúdo esperado na resposta. |
 
-`loadBootResource`retorna qualquer um dos seguintes para substituir o processo de carregamento:
+`loadBootResource` retorna qualquer um dos seguintes para substituir o processo de carregamento:
 
 * Cadeia de caracteres de URI. No exemplo a seguir ( `wwwroot/index.html` ), os seguintes arquivos são atendidos de uma CDN em `https://my-awesome-cdn.com/` :
 
