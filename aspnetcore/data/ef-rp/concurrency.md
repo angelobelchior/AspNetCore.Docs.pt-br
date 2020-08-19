@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: bb29001e30578e0992e578c2f98cda82c5dcf185
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e03711d970c83c2b7d6cc76039cb0d556a751018
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018657"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628905"
 ---
 # <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Parte 8, Razor páginas com EF Core em ASP.NET Core-Concurrency
 
@@ -293,7 +294,7 @@ Atualize *Pages/Departments/Edit.cshtml* com o seguinte código:
 O código anterior:
 
 * Atualiza a diretiva `page` de `@page` para `@page "{id:int}"`.
-* Adiciona uma versão de linha oculta. `RowVersion`deve ser adicionado para que o postback associe o valor.
+* Adiciona uma versão de linha oculta. `RowVersion` deve ser adicionado para que o postback associe o valor.
 * Exibe o último byte de `RowVersion` para fins de depuração.
 * Substitui `ViewData` pelo `InstructorNameSL` fortemente tipado.
 
@@ -317,7 +318,7 @@ Altere outro campo na segunda guia do navegador.
 
 ![Página 2 Editar Departamento após a alteração](concurrency/_static/edit-after-change-230.png)
 
-Clique em **Salvar**. Você verá mensagens de erro em todos os campos que não correspondem aos valores do banco de dados:
+Clique em **Save** (Salvar). Você verá mensagens de erro em todos os campos que não correspondem aos valores do banco de dados:
 
 ![Mensagem de erro da página Editar Departamento](concurrency/_static/edit-error30.png)
 
@@ -349,7 +350,7 @@ O código anterior faz as seguintes alterações:
 * Adiciona uma mensagem de erro.
 * Substitua FirstMidName por FullName no campo **Administrador**.
 * Altere `RowVersion` para exibir o último byte.
-* Adiciona uma versão de linha oculta. `RowVersion`deve ser adicionado para que o postback associe o valor.
+* Adiciona uma versão de linha oculta. `RowVersion` deve ser adicionado para que o postback associe o valor.
 
 ### <a name="test-concurrency-conflicts"></a>Testar os conflitos de simultaneidade
 
@@ -528,7 +529,7 @@ Siga as instruções em [Gere um modelo de aluno por scaffold](xref:data/ef-rp/i
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Execute o seguinte comando:
+ Execute o comando a seguir:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
@@ -613,7 +614,7 @@ Altere outro campo na segunda guia do navegador.
 
 ![Página 2 Editar Departamento após a alteração](concurrency/_static/edit-after-change-2.png)
 
-Clique em **Salvar**. Você verá mensagens de erro em todos os campos que não correspondem aos valores do BD:
+Clique em **Save** (Salvar). Você verá mensagens de erro em todos os campos que não correspondem aos valores do BD:
 
 ![Mensagem de erro da página Editar Departamento](concurrency/_static/edit-error.png)
 

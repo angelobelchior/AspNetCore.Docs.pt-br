@@ -1,11 +1,12 @@
 ---
-title: Introdução ao ASP.NET CoreSignalR
+title: Introdução ao ASP.NET Core SignalR
 author: bradygaster
 description: Neste tutorial, você cria um aplicativo de chat que usa ASP.NET Core SignalR .
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/21/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 51b9eae0d4746001696e0795467eaf4c0ab2c990
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e98cfc5e95233ce4d1001ab1225fc15e5fd23733
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022024"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634493"
 ---
-# <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Tutorial: introdução ao ASP.NET CoreSignalR
+# <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Tutorial: introdução ao ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -185,7 +186,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
   A classe `ChatHub` herda da classe SignalR `Hub`. A classe `Hub` gerencia conexões, grupos e sistemas de mensagens.
 
-  O método `SendMessage` pode ser chamado por um cliente conectado para enviar uma mensagem a todos os clientes. O código cliente do JavaScript que chama o método é mostrado posteriormente no tutorial. SignalRo código é assíncrono para fornecer a escalabilidade máxima.
+  O método `SendMessage` pode ser chamado por um cliente conectado para enviar uma mensagem a todos os clientes. O código cliente do JavaScript que chama o método é mostrado posteriormente no tutorial. SignalR o código é assíncrono para fornecer a escalabilidade máxima.
 
 ## <a name="configure-no-locsignalr"></a>configurar SignalR
 
@@ -418,7 +419,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
   A classe `ChatHub` herda da classe SignalR `Hub`. A classe `Hub` gerencia conexões, grupos e sistemas de mensagens.  
 
-  O método `SendMessage` pode ser chamado por um cliente conectado para enviar uma mensagem a todos os clientes. O código cliente do JavaScript que chama o método é mostrado posteriormente no tutorial. SignalRo código é assíncrono para fornecer a escalabilidade máxima.    
+  O método `SendMessage` pode ser chamado por um cliente conectado para enviar uma mensagem a todos os clientes. O código cliente do JavaScript que chama o método é mostrado posteriormente no tutorial. SignalR o código é assíncrono para fornecer a escalabilidade máxima.    
 
 ## <a name="configure-no-locsignalr"></a>configurar SignalR  
 

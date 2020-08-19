@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 10/07/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/change-tokens
-ms.openlocfilehash: f52b210b33cd319e36570a1f731bb02a86189a96
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 891cce975c5852b0192fd7ff22b21060d1dac8ac
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017474"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634911"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Detectar alterações com tokens de alteração no ASP.NET Core
 
@@ -180,7 +181,7 @@ Se o conteúdo armazenado em cache não é encontrado com a chave de cache, as s
 1. Um token de alteração é obtido do provedor de arquivo com [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*). O retorno de chamada do token é disparado quando o arquivo é modificado.
 1. O conteúdo do arquivo é armazenado em cache com um período de [expiração deslizante](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration). O token de alteração é anexado com [MemoryCacheEntryExtensions.AddExpirationToken](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*) para remover a entrada do cache se o arquivo é alterado enquanto ele é armazenado em cache.
 
-No exemplo a seguir, os arquivos são armazenados na raiz do [conteúdo](xref:fundamentals/index#content-root)do aplicativo. `IWebHostEnvironment.ContentRootFileProvider`é usado para obter um <xref:Microsoft.Extensions.FileProviders.IFileProvider> apontador para o aplicativo `IWebHostEnvironment.ContentRootPath` . O `filePath` é obtido com [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
+No exemplo a seguir, os arquivos são armazenados na raiz do [conteúdo](xref:fundamentals/index#content-root)do aplicativo. `IWebHostEnvironment.ContentRootFileProvider` é usado para obter um <xref:Microsoft.Extensions.FileProviders.IFileProvider> apontador para o aplicativo `IWebHostEnvironment.ContentRootPath` . O `filePath` é obtido com [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Services/FileService.cs?name=snippet1)]
 

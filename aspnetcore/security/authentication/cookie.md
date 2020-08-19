@@ -1,11 +1,12 @@
 ---
-title: Usar cookie autenticação sem ASP.NET CoreIdentity
+title: Usar cookie autenticação sem ASP.NET Core Identity
 author: rick-anderson
-description: Saiba como usar a cookie autenticação sem ASP.NET Core Identity .
+description: Saiba como usar a cookie autenticação sem o ASP.NET Core Identity .
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,20 +17,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 325bc3dcd48517d93d5f6f2d56e92651c780d759
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 2e9eb58837d74343d8de6903372146570b43f330
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021881"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627137"
 ---
-# <a name="use-no-loccookie-authentication-without-aspnet-core-no-locidentity"></a>Usar cookie autenticação sem ASP.NET CoreIdentity
+# <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Usar cookie autenticação sem ASP.NET Core Identity
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-IdentityO ASP.NET Core é um provedor completo de autenticação completa para criar e manter logons. No entanto, um cookie provedor de autenticação baseado em um sem ASP.NET Core Identity pode ser usado. Para obter mais informações, consulte <xref:security/authentication/identity>.
+ASP.NET Core Identity é um provedor de autenticação completa e completo para criar e manter logons. No entanto, um cookie provedor de autenticação com base sem ASP.NET Core Identity pode ser usado. Para obter mais informações, consulte <xref:security/authentication/identity>.
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([como baixar](xref:index#how-to-download-a-sample))
 
@@ -37,13 +38,13 @@ Para fins de demonstração no aplicativo de exemplo, a conta de usuário para o
 
 ## <a name="configuration"></a>Configuração
 
-Se o aplicativo não usar o [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), crie uma referência de pacote no arquivo de projeto para o [Microsoft. AspNetCore. Authentication. Cookie ](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)pacote de s.
+Se o aplicativo não usar o [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), crie uma referência de pacote no arquivo de projeto para o [Microsoft. AspNetCore. Authentication. Cookie ](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) pacote de s.
 
 No `Startup.ConfigureServices` método, crie os serviços de middleware de autenticação com os <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> métodos e:
 
 [!code-csharp[](cookie/samples/3.x/CookieSample/Startup.cs?name=snippet1)]
 
-<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme>passado para `AddAuthentication` define o esquema de autenticação padrão para o aplicativo. `AuthenticationScheme`é útil quando há várias instâncias de cookie autenticação e você deseja [autorizar com um esquema específico](xref:security/authorization/limitingidentitybyscheme). A definição de `AuthenticationScheme` para [ Cookie AuthenticationDefaults. AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) fornece um valor de " Cookie s" para o esquema. Você pode fornecer qualquer valor de cadeia de caracteres que diferencie o esquema.
+<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme> passado para `AddAuthentication` define o esquema de autenticação padrão para o aplicativo. `AuthenticationScheme` é útil quando há várias instâncias de cookie autenticação e você deseja [autorizar com um esquema específico](xref:security/authorization/limitingidentitybyscheme). A definição de `AuthenticationScheme` para [ Cookie AuthenticationDefaults. AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) fornece um valor de " Cookie s" para o esquema. Você pode fornecer qualquer valor de cadeia de caracteres que diferencie o esquema.
 
 O esquema de autenticação do aplicativo é diferente do esquema de cookie autenticação do aplicativo. Quando um cookie esquema de autenticação não é fornecido para o <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , ele usa `CookieAuthenticationDefaults.AuthenticationScheme` (" Cookie s").
 
@@ -65,7 +66,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>CookieMiddleware de política
+## <a name="no-loccookie-policy-middleware"></a>Cookie Middleware de política
 
 O [ Cookie middleware de política](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) habilita os cookie recursos de política. A adição do middleware ao pipeline de processamento do aplicativo é a diferenciação de ordem &mdash; que afeta apenas os componentes de downstream registrados no pipeline.
 
@@ -92,7 +93,7 @@ A Cookie configuração de middleware de política para `MinimumSameSitePolicy` 
 | SameSiteMode. LAX      | SameSiteMode. None<br>SameSiteMode. LAX<br>SameSiteMode. Strict | SameSiteMode. LAX<br>SameSiteMode. LAX<br>SameSiteMode. Strict |
 | SameSiteMode. Strict   | SameSiteMode. None<br>SameSiteMode. LAX<br>SameSiteMode. Strict | SameSiteMode. Strict<br>SameSiteMode. Strict<br>SameSiteMode. Strict |
 
-## <a name="create-an-authentication-no-loccookie"></a>Criar uma autenticaçãocookie
+## <a name="create-an-authentication-no-loccookie"></a>Criar uma autenticação cookie
 
 Para criar cookie informações de usuário de retenção, construa um <xref:System.Security.Claims.ClaimsPrincipal> . As informações do usuário são serializadas e armazenadas no cookie . 
 
@@ -102,9 +103,9 @@ Crie um <xref:System.Security.Claims.ClaimsIdentity> com qualquer <xref:System.S
 
 [!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
-`SignInAsync`Cria um criptografado cookie e o adiciona à resposta atual. Se `AuthenticationScheme` não for especificado, o esquema padrão será usado.
+`SignInAsync` Cria um criptografado cookie e o adiciona à resposta atual. Se `AuthenticationScheme` não for especificado, o esquema padrão será usado.
 
-<xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.RedirectUri>é usado apenas em alguns caminhos específicos por padrão, por exemplo, o caminho de logon e os caminhos de logout. Para obter mais informações, consulte a [ Cookie origem do AuthenticationHandler](https://github.com/dotnet/aspnetcore/blob/f2e6e6ff334176540ef0b3291122e359c2106d1a/src/Security/Authentication/Cookies/src/CookieAuthenticationHandler.cs#L334).
+<xref:Microsoft.AspNetCore.Authentication.AuthenticationProperties.RedirectUri> é usado apenas em alguns caminhos específicos por padrão, por exemplo, o caminho de logon e os caminhos de logout. Para obter mais informações, consulte a [ Cookie origem do AuthenticationHandler](https://github.com/dotnet/aspnetcore/blob/f2e6e6ff334176540ef0b3291122e359c2106d1a/src/Security/Authentication/Cookies/src/CookieAuthenticationHandler.cs#L334).
 
 O sistema de [proteção de dados](xref:security/data-protection/using-data-protection) de ASP.NET Core é usado para criptografia. Para um aplicativo hospedado em vários computadores, balanceamento de carga entre aplicativos ou usando um web farm, [Configure a proteção de dados](xref:security/data-protection/configuration/overview) para usar o mesmo token de chave e identificador de aplicativo.
 
@@ -250,7 +251,7 @@ await HttpContext.SignInAsync(
 
 ::: moniker range="< aspnetcore-3.0"
 
-IdentityO ASP.NET Core é um provedor completo de autenticação completa para criar e manter logons. No entanto, um cookie provedor de autenticação com base em autenticação sem ASP.NET Core Identity pode ser usado. Para obter mais informações, consulte <xref:security/authentication/identity>.
+ASP.NET Core Identity é um provedor de autenticação completa e completo para criar e manter logons. No entanto, um cookie provedor de autenticação com base em autenticação sem ASP.NET Core Identity pode ser usado. Para obter mais informações, consulte <xref:security/authentication/identity>.
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([como baixar](xref:index#how-to-download-a-sample))
 
@@ -258,13 +259,13 @@ Para fins de demonstração no aplicativo de exemplo, a conta de usuário para o
 
 ## <a name="configuration"></a>Configuração
 
-Se o aplicativo não usar o [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), crie uma referência de pacote no arquivo de projeto para o [Microsoft. AspNetCore. Authentication. Cookie ](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)pacote de s.
+Se o aplicativo não usar o [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), crie uma referência de pacote no arquivo de projeto para o [Microsoft. AspNetCore. Authentication. Cookie ](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) pacote de s.
 
 No `Startup.ConfigureServices` método, crie o serviço de middleware de autenticação com os <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> métodos e:
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet1)]
 
-<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme>passado para `AddAuthentication` define o esquema de autenticação padrão para o aplicativo. `AuthenticationScheme`é útil quando há várias instâncias de cookie autenticação e você deseja [autorizar com um esquema específico](xref:security/authorization/limitingidentitybyscheme). A definição de `AuthenticationScheme` para [ Cookie AuthenticationDefaults. AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) fornece um valor de " Cookie s" para o esquema. Você pode fornecer qualquer valor de cadeia de caracteres que diferencie o esquema.
+<xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme> passado para `AddAuthentication` define o esquema de autenticação padrão para o aplicativo. `AuthenticationScheme` é útil quando há várias instâncias de cookie autenticação e você deseja [autorizar com um esquema específico](xref:security/authorization/limitingidentitybyscheme). A definição de `AuthenticationScheme` para [ Cookie AuthenticationDefaults. AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) fornece um valor de " Cookie s" para o esquema. Você pode fornecer qualquer valor de cadeia de caracteres que diferencie o esquema.
 
 O esquema de autenticação do aplicativo é diferente do esquema de cookie autenticação do aplicativo. Quando um cookie esquema de autenticação não é fornecido para o <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , ele usa `CookieAuthenticationDefaults.AuthenticationScheme` (" Cookie s").
 
@@ -286,7 +287,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-## <a name="no-loccookie-policy-middleware"></a>CookieMiddleware de política
+## <a name="no-loccookie-policy-middleware"></a>Cookie Middleware de política
 
 O [ Cookie middleware de política](xref:Microsoft.AspNetCore.CookiePolicy.CookiePolicyMiddleware) habilita os cookie recursos de política. A adição do middleware ao pipeline de processamento do aplicativo é a diferenciação de ordem &mdash; que afeta apenas os componentes de downstream registrados no pipeline.
 
@@ -313,7 +314,7 @@ A Cookie configuração de middleware de política para `MinimumSameSitePolicy` 
 | SameSiteMode. LAX      | SameSiteMode. None<br>SameSiteMode. LAX<br>SameSiteMode. Strict | SameSiteMode. LAX<br>SameSiteMode. LAX<br>SameSiteMode. Strict |
 | SameSiteMode. Strict   | SameSiteMode. None<br>SameSiteMode. LAX<br>SameSiteMode. Strict | SameSiteMode. Strict<br>SameSiteMode. Strict<br>SameSiteMode. Strict |
 
-## <a name="create-an-authentication-no-loccookie"></a>Criar uma autenticaçãocookie
+## <a name="create-an-authentication-no-loccookie"></a>Criar uma autenticação cookie
 
 Para criar cookie informações de usuário de retenção, construa um <xref:System.Security.Claims.ClaimsPrincipal> . As informações do usuário são serializadas e armazenadas no cookie . 
 
@@ -321,7 +322,7 @@ Crie um <xref:System.Security.Claims.ClaimsIdentity> com qualquer <xref:System.S
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
 
-`SignInAsync`Cria um criptografado cookie e o adiciona à resposta atual. Se `AuthenticationScheme` não for especificado, o esquema padrão será usado.
+`SignInAsync` Cria um criptografado cookie e o adiciona à resposta atual. Se `AuthenticationScheme` não for especificado, o esquema padrão será usado.
 
 O sistema de [proteção de dados](xref:security/data-protection/using-data-protection) de ASP.NET Core é usado para criptografia. Para um aplicativo hospedado em vários computadores, balanceamento de carga entre aplicativos ou usando um web farm, [Configure a proteção de dados](xref:security/data-protection/configuration/overview) para usar o mesmo token de chave e identificador de aplicativo.
 

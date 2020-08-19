@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: 1ee30a84e0869f6b9ee937648eb87bd41e8702e3
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8cb2bd5f19a4cc21671a0b077d4ef0fda2e30455
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014705"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628580"
 ---
 # <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a>ASP.NET Core Blazor valores e parâmetros em cascata
 
@@ -47,9 +48,9 @@ public class ThemeInfo
 
 Um componente ancestral pode fornecer um valor em cascata usando o componente de valor em cascata. O <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componente encapsula uma subárvore da hierarquia do componente e fornece um único valor para todos os componentes dentro dessa subárvore.
 
-Por exemplo, o aplicativo de exemplo especifica informações de tema ( `ThemeInfo` ) em um dos layouts do aplicativo como um parâmetro em cascata para todos os componentes que compõem o corpo do layout da `@Body` propriedade. `ButtonClass`é atribuído um valor de `btn-success` no componente layout. Qualquer componente descendente pode consumir essa propriedade por meio do `ThemeInfo` objeto em cascata.
+Por exemplo, o aplicativo de exemplo especifica informações de tema ( `ThemeInfo` ) em um dos layouts do aplicativo como um parâmetro em cascata para todos os componentes que compõem o corpo do layout da `@Body` propriedade. `ButtonClass` é atribuído um valor de `btn-success` no componente layout. Qualquer componente descendente pode consumir essa propriedade por meio do `ThemeInfo` objeto em cascata.
 
-`CascadingValuesParametersLayout`componente
+`CascadingValuesParametersLayout` componente
 
 ```razor
 @inherits LayoutComponentBase
@@ -79,7 +80,7 @@ Para fazer uso de valores em cascata, os componentes declaram parâmetros em cas
 
 No aplicativo de exemplo, o `CascadingValuesParametersTheme` componente associa o `ThemeInfo` valor em cascata a um parâmetro em cascata. O parâmetro é usado para definir a classe CSS para um dos botões exibidos pelo componente.
 
-`CascadingValuesParametersTheme`componente
+`CascadingValuesParametersTheme` componente
 
 ```razor
 @page "/cascadingvaluesparameterstheme"
@@ -190,12 +191,12 @@ O `CascadingValuesParametersTabSet` componente usa o `TabSet` componente, que co
 
 Os `Tab` componentes filho não são passados explicitamente como parâmetros para `TabSet` . Em vez disso, os `Tab` componentes filho fazem parte do conteúdo filho do `TabSet` . No entanto, o `TabSet` ainda precisa saber sobre cada `Tab` componente para que ele possa renderizar os cabeçalhos e a guia ativa. Para habilitar essa coordenação sem a necessidade de código adicional, o `TabSet` componente *pode fornecer a si mesmo como um valor em cascata* que é então coletado pelos componentes descendentes `Tab` .
 
-`TabSet`componente
+`TabSet` componente
 
 [!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
 Os componentes descendentes `Tab` capturam o que contém `TabSet` como um parâmetro em cascata, de modo que os `Tab` componentes se adicionam à `TabSet` coordenada e na qual a guia está ativa.
 
-`Tab`componente
+`Tab` componente
 
 [!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 06/30/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/browser
-ms.openlocfilehash: f995fdaee1009ff51359df720c39d664aea6e3b1
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8d1f761731ab3840d009eba1ff5316808bafec40
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016265"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634404"
 ---
 # <a name="use-grpc-in-browser-apps"></a>Usar o gRPC em aplicativos de navegador
 
@@ -120,12 +121,12 @@ O código anterior:
 * Configura um canal para usar gRPC-Web.
 * Cria um cliente e faz uma chamada usando o canal.
 
-`GrpcWebHandler`tem as seguintes opções de configuração:
+`GrpcWebHandler` tem as seguintes opções de configuração:
 
 * **InnerHandler**: o subjacente <xref:System.Net.Http.HttpMessageHandler> que faz a solicitação HTTP gRPC, por exemplo, `HttpClientHandler` .
 * **GrpcWebMode**: um tipo de enumeração que especifica se a solicitação HTTP gRPC `Content-Type` é `application/grpc-web` ou `application/grpc-web-text` .
-    * `GrpcWebMode.GrpcWeb`configura o conteúdo a ser enviado sem codificação. Valor padrão.
-    * `GrpcWebMode.GrpcWebText`configura o conteúdo para ser codificado em base64. Necessário para chamadas de streaming de servidor em navegadores.
+    * `GrpcWebMode.GrpcWeb` configura o conteúdo a ser enviado sem codificação. Valor padrão.
+    * `GrpcWebMode.GrpcWebText` configura o conteúdo para ser codificado em base64. Necessário para chamadas de streaming de servidor em navegadores.
 * **HttpVersion**: protocolo http `Version` usado para definir [HttpRequestMessage. Version](xref:System.Net.Http.HttpRequestMessage.Version) na solicitação HTTP gRPC subjacente. gRPC-Web não requer uma versão específica e não substitui o padrão, a menos que especificado.
 
 > [!IMPORTANT]

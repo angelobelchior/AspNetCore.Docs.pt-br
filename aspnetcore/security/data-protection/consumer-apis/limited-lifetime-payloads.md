@@ -5,6 +5,7 @@ description: Saiba como limitar o tempo de vida de uma carga protegida usando as
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
-ms.openlocfilehash: c7bc86cd42a725f21cf66187c033376a8c5a9e65
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f76aca460c293b5f814ba10ee6c8ac68b3d147bb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014822"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634417"
 ---
 # <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>Limitar o tempo de vida de cargas protegidas no ASP.NET Core
 
@@ -32,7 +33,7 @@ Para tornar isso mais fácil para o público do desenvolvedor, o pacote [Microso
 
 A `ITimeLimitedDataProtector` interface é a interface principal para proteger e desproteger cargas de tempo limitado/com expiração demorada. Para criar uma instância de um `ITimeLimitedDataProtector` , primeiro você precisará de uma instância de um [IDataProtector](xref:security/data-protection/consumer-apis/overview) regular construído com uma finalidade específica. Depois que a `IDataProtector` instância estiver disponível, chame o `IDataProtector.ToTimeLimitedDataProtector` método de extensão para obter um protetor com recursos internos de expiração.
 
-`ITimeLimitedDataProtector`expõe os seguintes métodos de extensão e superfície de API:
+`ITimeLimitedDataProtector` expõe os seguintes métodos de extensão e superfície de API:
 
 * Createprotector (finalidade da cadeia de caracteres): ITimeLimitedDataProtector-essa API é semelhante à existente `IDataProtectionProvider.CreateProtector` no, que pode ser usada para criar [cadeias de finalidade](xref:security/data-protection/consumer-apis/purpose-strings) de um protetor de tempo limitado de raiz.
 

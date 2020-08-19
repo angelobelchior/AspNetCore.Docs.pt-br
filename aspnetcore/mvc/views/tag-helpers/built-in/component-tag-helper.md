@@ -6,6 +6,7 @@ description: Saiba como usar o auxiliar de marca de componente ASP.NET Core para
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 09291b537e35d00df6f8006aaccdf4db12acfaea
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 1a0422da6bd48049cac73debe7d335da91e311be
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018683"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633910"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>Auxiliar de marca de componente no ASP.NET Core
 
@@ -155,9 +156,9 @@ public class MyClass
     param-MyObject="@myObject" />
 ```
 
-O exemplo anterior pressupõe que o `MyComponent` componente está na pasta *compartilhada* do aplicativo. O espaço reservado `{APP ASSEMBLY}` é o nome do assembly do aplicativo (por exemplo, `@using BlazorSample` e `@using BlazorSample.Shared` ). `MyClass`está no namespace do aplicativo.
+O exemplo anterior pressupõe que o `MyComponent` componente está na pasta *compartilhada* do aplicativo. O espaço reservado `{APP ASSEMBLY}` é o nome do assembly do aplicativo (por exemplo, `@using BlazorSample` e `@using BlazorSample.Shared` ). `MyClass` está no namespace do aplicativo.
 
-<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>configura se o componente:
+<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode> configura se o componente:
 
 * É renderizado na página.
 * É renderizado como HTML estático na página ou se inclui as informações necessárias para inicializar um Blazor aplicativo por meio do agente do usuário.

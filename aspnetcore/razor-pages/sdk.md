@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 03/26/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/sdk
-ms.openlocfilehash: b960460a50558a11bc47f9a1844931aa32e3d696
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d11600af88d499d63adf9eae90d6deb929f9d92a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021413"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632909"
 ---
 # <a name="aspnet-core-no-locrazor-sdk"></a>SDK do ASP.NET Core Razor
 
@@ -101,8 +102,8 @@ Para usar o Razor SDK para criar bibliotecas de classes que contenham Razor exib
 
 As propriedades a seguir controlam o Razor comportamento do SDK como parte de uma compilação de projeto:
 
-* `RazorCompileOnBuild`: Quando `true` , compila e emite o Razor assembly como parte da criação do projeto. Assume o padrão de `true`.
-* `RazorCompileOnPublish`: Quando `true` , compila e emite o Razor assembly como parte da publicação do projeto. Assume o padrão de `true`.
+* `RazorCompileOnBuild`: Quando `true` , compila e emite o Razor assembly como parte da criação do projeto. O padrão é `true`.
+* `RazorCompileOnPublish`: Quando `true` , compila e emite o Razor assembly como parte da publicação do projeto. O padrão é `true`.
 
 As propriedades e os itens na tabela a seguir são usados para configurar entradas e saídas para o Razor SDK.
 
@@ -132,10 +133,10 @@ As propriedades e os itens na tabela a seguir são usados para configurar entrad
 | `EnableDefaultRazorGenerateItems` | Quando `true`, inclui arquivos *.cshtml* de itens de `Content` em itens de `RazorGenerate`. |
 | `GenerateRazorTargetAssemblyInfo` | Quando `true` , o gera um arquivo *. cs* contendo atributos especificados por `RazorAssemblyAttribute` e inclui o arquivo na saída de compilação. |
 | `EnableDefaultRazorTargetAssemblyInfoAttributes` | Quando `true`, adiciona um conjunto padrão de atributos de assembly em `RazorAssemblyAttribute`. |
-| `CopyRazorGenerateFilesToPublishDirectory` | Quando `true` , o copia os `RazorGenerate` arquivos de itens (*. cshtml*) para o diretório de publicação. Normalmente, Razor os arquivos não são necessários para um aplicativo publicado se participarem da compilação em tempo de compilação ou em tempo de publicação. Assume o padrão de `false`. |
-| `PreserveCompilationReferences` | Quando `true`, copia os itens do assembly de referência no diretório de publicação. Normalmente, os assemblies de referência não são necessários para um aplicativo publicado se a Razor compilação ocorrer em tempo de compilação ou em tempo de publicação. Defina como `true` se seu aplicativo publicado exigir compilação em tempo de execução. Por exemplo, defina o valor como `true` se o aplicativo modifica arquivos *. cshtml* em tempo de execução ou usa exibições inseridas. Assume o padrão de `false`. |
-| `IncludeRazorContentInPack` | Quando `true` , todos os Razor itens de conteúdo (arquivos *. cshtml* ) são marcados para inclusão no pacote NuGet gerado. Assume o padrão de `false`. |
-| `EmbedRazorGenerateSources` | Quando `true` , Razor o adiciona itens de geração (*. cshtml*) como arquivos incorporados ao Razor assembly gerado. Assume o padrão de `false`. |
+| `CopyRazorGenerateFilesToPublishDirectory` | Quando `true` , o copia os `RazorGenerate` arquivos de itens (*. cshtml*) para o diretório de publicação. Normalmente, Razor os arquivos não são necessários para um aplicativo publicado se participarem da compilação em tempo de compilação ou em tempo de publicação. O padrão é `false`. |
+| `PreserveCompilationReferences` | Quando `true`, copia os itens do assembly de referência no diretório de publicação. Normalmente, os assemblies de referência não são necessários para um aplicativo publicado se a Razor compilação ocorrer em tempo de compilação ou em tempo de publicação. Defina como `true` se seu aplicativo publicado exigir compilação em tempo de execução. Por exemplo, defina o valor como `true` se o aplicativo modifica arquivos *. cshtml* em tempo de execução ou usa exibições inseridas. O padrão é `false`. |
+| `IncludeRazorContentInPack` | Quando `true` , todos os Razor itens de conteúdo (arquivos *. cshtml* ) são marcados para inclusão no pacote NuGet gerado. O padrão é `false`. |
+| `EmbedRazorGenerateSources` | Quando `true` , Razor o adiciona itens de geração (*. cshtml*) como arquivos incorporados ao Razor assembly gerado. O padrão é `false`. |
 | `UseRazorBuildServer` | Quando `true`, usa um processo de servidor de build persistente para descarregar o trabalho de geração de código. Seu valor padrão é `UseSharedCompilation`. |
 | `GenerateMvcApplicationPartsAssemblyAttributes` | Quando `true` , o SDK gera atributos adicionais usados pelo MVC em tempo de execução para executar a descoberta de parte do aplicativo. |
 | `DefaultWebContentItemExcludes` | Um padrão de mascaramento para elementos de item que devem ser excluídos do `Content` grupo de itens em projetos direcionados à Web ou ao Razor SDK |
@@ -156,10 +157,10 @@ As propriedades e os itens na tabela a seguir são usados para configurar entrad
 | `EnableDefaultRazorGenerateItems` | Quando `true`, inclui arquivos *.cshtml* de itens de `Content` em itens de `RazorGenerate`. |
 | `GenerateRazorTargetAssemblyInfo` | Quando `true` , o gera um arquivo *. cs* contendo atributos especificados por `RazorAssemblyAttribute` e inclui o arquivo na saída de compilação. |
 | `EnableDefaultRazorTargetAssemblyInfoAttributes` | Quando `true`, adiciona um conjunto padrão de atributos de assembly em `RazorAssemblyAttribute`. |
-| `CopyRazorGenerateFilesToPublishDirectory` | Quando `true` , o copia os `RazorGenerate` arquivos de itens (*. cshtml*) para o diretório de publicação. Normalmente, Razor os arquivos não são necessários para um aplicativo publicado se participarem da compilação em tempo de compilação ou em tempo de publicação. Assume o padrão de `false`. |
-| `CopyRefAssembliesToPublishDirectory` | Quando `true`, copia os itens do assembly de referência no diretório de publicação. Normalmente, os assemblies de referência não são necessários para um aplicativo publicado se a Razor compilação ocorrer em tempo de compilação ou em tempo de publicação. Defina como `true` se seu aplicativo publicado exigir compilação em tempo de execução. Por exemplo, defina o valor como `true` se o aplicativo modifica arquivos *. cshtml* em tempo de execução ou usa exibições inseridas. Assume o padrão de `false`. |
-| `IncludeRazorContentInPack` | Quando `true` , todos os Razor itens de conteúdo (arquivos *. cshtml* ) são marcados para inclusão no pacote NuGet gerado. Assume o padrão de `false`. |
-| `EmbedRazorGenerateSources` | Quando `true` , Razor o adiciona itens de geração (*. cshtml*) como arquivos incorporados ao Razor assembly gerado. Assume o padrão de `false`. |
+| `CopyRazorGenerateFilesToPublishDirectory` | Quando `true` , o copia os `RazorGenerate` arquivos de itens (*. cshtml*) para o diretório de publicação. Normalmente, Razor os arquivos não são necessários para um aplicativo publicado se participarem da compilação em tempo de compilação ou em tempo de publicação. O padrão é `false`. |
+| `CopyRefAssembliesToPublishDirectory` | Quando `true`, copia os itens do assembly de referência no diretório de publicação. Normalmente, os assemblies de referência não são necessários para um aplicativo publicado se a Razor compilação ocorrer em tempo de compilação ou em tempo de publicação. Defina como `true` se seu aplicativo publicado exigir compilação em tempo de execução. Por exemplo, defina o valor como `true` se o aplicativo modifica arquivos *. cshtml* em tempo de execução ou usa exibições inseridas. O padrão é `false`. |
+| `IncludeRazorContentInPack` | Quando `true` , todos os Razor itens de conteúdo (arquivos *. cshtml* ) são marcados para inclusão no pacote NuGet gerado. O padrão é `false`. |
+| `EmbedRazorGenerateSources` | Quando `true` , Razor o adiciona itens de geração (*. cshtml*) como arquivos incorporados ao Razor assembly gerado. O padrão é `false`. |
 | `UseRazorBuildServer` | Quando `true`, usa um processo de servidor de build persistente para descarregar o trabalho de geração de código. Seu valor padrão é `UseSharedCompilation`. |
 | `GenerateMvcApplicationPartsAssemblyAttributes` | Quando `true` , o SDK gera atributos adicionais usados pelo MVC em tempo de execução para executar a descoberta de parte do aplicativo. |
 | `DefaultWebContentItemExcludes` | Um padrão de mascaramento para elementos de item que devem ser excluídos do `Content` grupo de itens em projetos direcionados à Web ou ao Razor SDK |
@@ -185,7 +186,7 @@ O Razor SDK define dois destinos principais:
 
 * Para um aplicativo Web, verifique se seu aplicativo está direcionando o `Microsoft.NET.Sdk.Web` SDK.
 
-## <a name="no-locrazor-language-version"></a>Razorversão do idioma
+## <a name="no-locrazor-language-version"></a>Razor versão do idioma
 
 Ao direcionar o `Microsoft.NET.Sdk.Web` SDK, a Razor versão de idioma é inferida da versão da estrutura de destino do aplicativo. Para projetos direcionados ao `Microsoft.NET.Sdk.Razor` SDK ou, no caso raro, que o aplicativo exija uma Razor versão de idioma diferente do valor inferido, uma versão pode ser configurada definindo a `<RazorLangVersion>` propriedade no arquivo de projeto do aplicativo:
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 68373c39461be896a52627e21577fdda89cbb661
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f25cb38a3390600664980933caaf1003b533b2b6
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627566"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>O que há de novo no ASP.NET Core 3,1
 
@@ -29,9 +30,9 @@ Este artigo destaca as alterações mais significativas no ASP.NET Core 3,1 com 
 
 ## <a name="partial-class-support-for-no-locrazor-components"></a>Suporte de classe parcial para Razor componentes
 
-RazorAgora, os componentes são gerados como classes parciais. O código para um Razor componente pode ser escrito usando um arquivo code-behind definido como uma classe parcial, em vez de definir todo o código para o componente em um único arquivo. Para obter mais informações, consulte [suporte de classe parcial](xref:blazor/components/index#partial-class-support).
+Razor Agora, os componentes são gerados como classes parciais. O código para um Razor componente pode ser escrito usando um arquivo code-behind definido como uma classe parcial, em vez de definir todo o código para o componente em um único arquivo. Para obter mais informações, consulte [suporte de classe parcial](xref:blazor/components/index#partial-class-support).
 
-## <a name="no-locblazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a>BlazorAuxiliar de marca de componente e passar parâmetros para componentes de nível superior
+## <a name="no-locblazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a>Blazor Auxiliar de marca de componente e passar parâmetros para componentes de nível superior
 
 No Blazor com ASP.NET Core 3,0, os componentes eram renderizados em páginas e exibições usando um auxiliar HTML ( `Html.RenderComponentAsync` ). No ASP.NET Core 3,1, processe um componente de uma página ou exibição com o novo auxiliar de marca de componente:
 
@@ -41,7 +42,7 @@ No Blazor com ASP.NET Core 3,0, os componentes eram renderizados em páginas e e
 
 O auxiliar HTML permanece com suporte no ASP.NET Core 3,1, mas o auxiliar de marca de componente é recomendado.
 
-Blazor Serveros aplicativos agora podem passar parâmetros para componentes de nível superior durante a renderização inicial. Anteriormente, era possível apenas passar parâmetros para um componente de nível superior com [RenderMode. static](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static). Com essa versão, os [processmode. Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server) e [RenderingMode. ServerPrerendered](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) têm suporte. Todos os valores de parâmetro especificados são serializados como JSON e incluídos na resposta inicial.
+Blazor Server os aplicativos agora podem passar parâmetros para componentes de nível superior durante a renderização inicial. Anteriormente, era possível apenas passar parâmetros para um componente de nível superior com [RenderMode. static](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static). Com essa versão, os [processmode. Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server) e [RenderingMode. ServerPrerendered](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) têm suporte. Todos os valores de parâmetro especificados são serializados como JSON e incluídos na resposta inicial.
 
 Por exemplo, PreRender um `Counter` componente com um valor de incremento ( `IncrementAmount` ):
 

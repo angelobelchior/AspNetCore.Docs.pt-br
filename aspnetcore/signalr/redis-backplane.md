@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: d80bce204b467d436a3580933718147bc3fbe75c
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: bc28eb3096e88455347f68ca381c9a280d5a153e
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022479"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633650"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-no-locsignalr-scale-out"></a>Configurar um Redis backplane para ASP.NET Core SignalR escalar horizontalmente
 
@@ -73,8 +74,8 @@ Este artigo explica SignalR aspectos específicos da configuração de um servid
 
 * No SignalR aplicativo, instale um dos seguintes pacotes NuGet:
 
-  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis`-Depende de StackExchange. Redis 2. X.X. Este é o pacote recomendado para o ASP.NET Core 2,2 e posterior.
-  * `Microsoft.AspNetCore.SignalR.Redis`-Depende de StackExchange. Redis 1. X.X. Este pacote não está incluído no ASP.NET Core 3,0 e posterior.
+  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` -Depende de StackExchange. Redis 2. X.X. Este é o pacote recomendado para o ASP.NET Core 2,2 e posterior.
+  * `Microsoft.AspNetCore.SignalR.Redis` -Depende de StackExchange. Redis 1. X.X. Este pacote não está incluído no ASP.NET Core 3,0 e posterior.
 
 * No `Startup.ConfigureServices` método, chame <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisDependencyInjectionExtensions.AddStackExchangeRedis*> :
 
@@ -155,9 +156,9 @@ Quando um servidor Redis fica inativo, o SignalR gera exceções que indicam que
 * *Falha ao invocar o método de Hub ' MethodName '*
 * *Falha na conexão com o Redis*
 
-SignalRnão armazena em buffer as mensagens para enviá-las quando o servidor volta a ficar em funcionamento. Todas as mensagens enviadas enquanto o servidor Redis está inoperante são perdidas.
+SignalR não armazena em buffer as mensagens para enviá-las quando o servidor volta a ficar em funcionamento. Todas as mensagens enviadas enquanto o servidor Redis está inoperante são perdidas.
 
-SignalRreconecta-se automaticamente quando o servidor Redis está disponível novamente.
+SignalR reconecta-se automaticamente quando o servidor Redis está disponível novamente.
 
 ### <a name="custom-behavior-for-connection-failures"></a>Comportamento personalizado para falhas de conexão
 

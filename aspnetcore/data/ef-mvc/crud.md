@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 2c71ea0eaccf4daeb8937dd5839481a506864fbe
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c17461f8d1d43335230a967a4b62943c055c06b9
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012846"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629204"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: implementar a funcionalidade CRUD – ASP.NET MVC com EF Core
 
@@ -130,7 +131,7 @@ Você removeu `ID` do atributo `Bind` porque a ID é o valor de chave primária 
 
 Além do atributo `Bind`, o bloco try-catch é a única alteração que você fez no código gerado por scaffolding. Se uma exceção que é derivada de `DbUpdateException` é capturada enquanto as alterações estão sendo salvas, uma mensagem de erro genérica é exibida. Às vezes, as exceções `DbUpdateException` são causadas por algo externo ao aplicativo, em vez de por um erro de programação e, portanto, o usuário é aconselhado a tentar novamente. Embora não implementado nesta amostra, um aplicativo de qualidade de produção registrará a exceção em log. Para obter mais informações, consulte a seção **Log para informações** em [Monitoramento e telemetria (criando aplicativos de nuvem do mundo real com o Azure)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
 
-O atributo `ValidateAntiForgeryToken` ajuda a impedir ataques CSRF (solicitação intersite forjada). O token é injetado automaticamente na exibição pelo [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) e é incluído quando o formulário é enviado pelo usuário. O token é validado pelo atributo `ValidateAntiForgeryToken`. Para obter mais informações sobre o CSRF, consulte [Falsificação antissolicitação](../../security/anti-request-forgery.md).
+O atributo `ValidateAntiForgeryToken` ajuda a impedir ataques CSRF (solicitação intersite forjada). O token é injetado automaticamente na exibição pelo [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) e é incluído quando o formulário é enviado pelo usuário. O token é validado pelo atributo `ValidateAntiForgeryToken`. Para obter mais informações, consulte <xref:security/anti-request-forgery>.
 
 <a id="overpost"></a>
 
