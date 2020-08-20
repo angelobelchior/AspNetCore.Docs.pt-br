@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: 09df67657c9b6e4e59d6a1379bf801c289028819
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c409eaaf07109d363581ee7d61dc76521d6818d0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020932"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630660"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gerenciamento de memória e coleta de lixo (GC) no ASP.NET Core
 
@@ -305,9 +306,9 @@ O uso incorreto <xref:System.Net.Http.HttpClient> pode resultar em um vazamento 
 
 Os desenvolvedores .NET experientes sabem chamar os <xref:System.IDisposable.Dispose*> objetos que implementam o <xref:System.IDisposable> . Não descartar objetos que implementam `IDisposable` normalmente resulta em perda de memória ou recursos do sistema vazados.
 
-`HttpClient`implementa `IDisposable` , mas **não** deve ser descartado em cada invocação. Em vez disso, `HttpClient` deve ser reutilizado.
+`HttpClient` implementa `IDisposable` , mas **não** deve ser descartado em cada invocação. Em vez disso, `HttpClient` deve ser reutilizado.
 
-O ponto de extremidade a seguir cria e descarta uma nova `HttpClient` instância em cada solicitação:
+O ponto de extremidade a seguir cria e descarta uma nova  `HttpClient` instância em cada solicitação:
 
 ```csharp
 [HttpGet("httpclient1")]
@@ -402,7 +403,7 @@ Para configurar a alienação do objeto:
 * Encapsular a matriz em pool em um objeto descartável.
 * Registre o objeto em pool com [HttpContext. Response. RegisterForDispose](xref:Microsoft.AspNetCore.Http.HttpResponse.RegisterForDispose*).
 
-`RegisterForDispose`cuidará da chamada `Dispose` no objeto de destino para que ele seja liberado apenas quando a solicitação HTTP for concluída.
+`RegisterForDispose` cuidará da chamada `Dispose` no objeto de destino para que ele seja liberado apenas quando a solicitação HTTP for concluída.
 
 ```csharp
 private static ArrayPool<byte> _arrayPool = ArrayPool<byte>.Create();

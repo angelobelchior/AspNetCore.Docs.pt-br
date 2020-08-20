@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 071f2269081e63ad1355547bccb449180c59c997
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 12825c13e1c9de984251b5554833f7194edff8c3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016499"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629932"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -66,7 +67,7 @@ O gerador de código para ser executado. Os geradores a seguir estão disponíve
 | ---------- | -------------------------------------------------------------------- |
 | área       | [Faz scaffold de uma área](xref:mvc/controllers/areas)                      |
 | controlador | [Faz scaffold de um controlador](xref:tutorials/first-mvc-app/adding-model)  |
-| identidade   | [Aplica ScaffoldIdentity](xref:security/authentication/scaffold-identity) |
+| identidade   | [Aplica Scaffold Identity](xref:security/authentication/scaffold-identity) |
 | razorpage  | [Páginas do aplica Scaffold Razor](xref:tutorials/razor-pages/model)            |
 | exibição       | [Faz scaffolds de um modo de exibição](xref:mvc/views/overview)                          |
 
@@ -131,7 +132,7 @@ O comando anterior gera as seguintes pastas:
 
 ### <a name="controller-options"></a>Opções de controlador
 
-A tabela a seguir lista as opções para o `aspnet-codegenerator` `controller` e o `razorpage` :
+A tabela a seguir lista as opções para o  `aspnet-codegenerator` `controller` e o `razorpage` :
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
@@ -157,7 +158,7 @@ Confira [Fazer scaffold do modelo de filme](xref:tutorials/first-mvc-app/adding-
 
 <a name="rp"></a>
 
-RazorAs páginas podem ser com Scaffold individualmente especificando o nome da nova página e o modelo a ser usado. Os modelos com suporte são:
+Razor As páginas podem ser com Scaffold individualmente especificando o nome da nova página e o modelo a ser usado. Os modelos com suporte são:
 
 * `Empty`
 * `Create`
@@ -180,7 +181,7 @@ Normalmente, o modelo e o nome de arquivo gerado não são especificados e os se
 * `Details`
 * `List`
 
-A tabela a seguir lista as opções para o `aspnet-codegenerator` `razorpage` e o `controller` :
+A tabela a seguir lista as opções para o  `aspnet-codegenerator` `razorpage` e o `controller` :
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 

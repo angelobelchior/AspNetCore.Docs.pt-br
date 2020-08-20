@@ -1,5 +1,5 @@
 ---
-title: Registro em log e diagnóstico no ASP.NET CoreSignalR
+title: Registro em log e diagnóstico no ASP.NET Core SignalR
 author: anurse
 description: Saiba como coletar diagnósticos do seu SignalR aplicativo ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: devx-track-csharp, signalr
 ms.date: 06/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 922b2ca0aa7933e1010db7ca319631766ffbf753
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 649398a3868117b2e7f3358aa25544c99cc625b3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130529"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631336"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro em log e diagnóstico no ASP.NET CoreSignalR
+# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro em log e diagnóstico no ASP.NET Core SignalR
 
 Por [Andrew Stanton-enfermaria](https://twitter.com/anurse)
 
@@ -37,7 +38,7 @@ Este artigo fornece orientação para a coleta de diagnósticos do seu SignalR a
 
 Como SignalR o faz parte do ASP.NET Core, ele usa o sistema de registro em log de ASP.NET Core. Na configuração padrão, o SignalR registra informações muito poucas, mas isso pode ser configurado. Consulte a documentação em [log de ASP.NET Core](xref:fundamentals/logging/index#configuration) para obter detalhes sobre como configurar o log de ASP.NET Core.
 
-SignalRusa duas categorias de agente:
+SignalR usa duas categorias de agente:
 
 * `Microsoft.AspNetCore.SignalR`: Para logs relacionados a protocolos de Hub, ativação de hubs, invocação de métodos e outras atividades relacionadas ao Hub.
 * `Microsoft.AspNetCore.Http.Connections`: Para logs relacionados a transportes, como WebSockets, sondagem longa, eventos enviados pelo servidor e infraestrutura de nível baixo SignalR .
@@ -65,13 +66,13 @@ A maneira como você acessa os logs do lado do servidor depende do ambiente no q
 
 ### <a name="as-a-console-app-outside-iis"></a>Como um aplicativo de console fora do IIS
 
-Se você estiver executando o em um aplicativo de console, o [agente de log do console](xref:fundamentals/logging/index#console) deverá ser habilitado por padrão. SignalRos logs serão exibidos no console do.
+Se você estiver executando o em um aplicativo de console, o [agente de log do console](xref:fundamentals/logging/index#console) deverá ser habilitado por padrão. SignalR os logs serão exibidos no console do.
 
 ### <a name="within-iis-express-from-visual-studio"></a>Dentro de IIS Express do Visual Studio
 
 O Visual Studio exibe a saída de log na janela **saída** . Selecione a opção de menu suspenso do **ASP.NET Core Web Server** .
 
-### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
 
 Habilite a opção de **log do aplicativo (Filesystem)** na seção **logs de diagnóstico** do portal do serviço Azure app e configure o **nível** como `Verbose` . Os logs devem estar disponíveis no serviço de **streaming de log** e nos logs no sistema de arquivos do serviço de aplicativo. Para obter mais informações, consulte [Azure log streaming](xref:fundamentals/logging/index#azure-log-streaming).
 
@@ -131,7 +132,7 @@ Você também pode configurar logs para ir para a janela de **saída** no Visual
 
 ### <a name="other-logging-providers"></a>Outros provedores de log
 
-SignalRdá suporte a outros provedores de log, como Serilog, Seq, NLog ou qualquer outro sistema de registro em log que se integre ao `Microsoft.Extensions.Logging` . Se o sistema de registro em log fornecer um `ILoggerProvider` , você poderá registrá-lo com `AddProvider` :
+SignalR dá suporte a outros provedores de log, como Serilog, Seq, NLog ou qualquer outro sistema de registro em log que se integre ao `Microsoft.Extensions.Logging` . Se o sistema de registro em log fornecer um `ILoggerProvider` , você poderá registrá-lo com `AddProvider` :
 
 [!code-csharp[](diagnostics/net-client-custom-log.cs?highlight=6)]
 
@@ -220,9 +221,9 @@ Você pode anexar arquivos de diagnóstico a problemas do GitHub renomeando-os p
 
 Métricas é uma representação de medidas de dados em intervalos de tempo. Por exemplo, solicitações por segundo. Os dados de métricas permitem a observação do estado de um aplicativo em um alto nível. As métricas do .NET gRPC são emitidas usando <xref:System.Diagnostics.Tracing.EventCounter> .
 
-### <a name="no-locsignalr-server-metrics"></a>SignalRmétricas do servidor
+### <a name="no-locsignalr-server-metrics"></a>SignalR métricas do servidor
 
-SignalRas métricas do servidor são relatadas na <xref:Microsoft.AspNetCore.Http.Connections> origem do evento.
+SignalR as métricas do servidor são relatadas na <xref:Microsoft.AspNetCore.Http.Connections> origem do evento.
 
 | Nome                    | Descrição                 |
 |-------------------------|-----------------------------|

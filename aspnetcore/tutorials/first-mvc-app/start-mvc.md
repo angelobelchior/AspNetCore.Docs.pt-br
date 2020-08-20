@@ -5,6 +5,7 @@ description: Saiba como começar a usar o ASP.NET Core MVC.
 ms.author: riande
 ms.date: 10/16/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 3df00af8e6bca0dbf2d7871f383dd67b465aa5da
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 9d70b292a93a5d19cc25b2fc592ec88ce8262434
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021166"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629984"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introdução ao ASP.NET Core MVC
 
@@ -86,7 +87,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -239,7 +240,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie

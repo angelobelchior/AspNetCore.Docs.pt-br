@@ -1,5 +1,5 @@
 ---
-title: Usar hubs no ASP.NET CoreSignalR
+title: Usar hubs no ASP.NET Core SignalR
 author: bradygaster
 description: Saiba como usar hubs no ASP.NET Core SignalR .
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: bd7432fc29d0cda003abed1f0e522bdddf2e4efc
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 71ca0896bc645b7625f60c3a9e8fe321079d524a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022206"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631271"
 ---
 # <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>Usar hubs no SignalR para ASP.NET Core
 
@@ -32,7 +33,7 @@ Por [Rachel appel](https://twitter.com/rachelappel) e [Kevin Griffin](https://tw
 
 ## <a name="what-is-a-no-locsignalr-hub"></a>O que é um SignalR Hub
 
-A SignalR API de hubs permite chamar métodos em clientes conectados do servidor. No código do servidor, você define os métodos que são chamados pelo cliente. No código do cliente, você define os métodos que são chamados do servidor. SignalRCuida de tudo nos bastidores que possibilitam a comunicação de cliente para servidor e servidor para cliente em tempo real possível.
+A SignalR API de hubs permite chamar métodos em clientes conectados do servidor. No código do servidor, você define os métodos que são chamados pelo cliente. No código do cliente, você define os métodos que são chamados do servidor. SignalR Cuida de tudo nos bastidores que possibilitam a comunicação de cliente para servidor e servidor para cliente em tempo real possível.
 
 ## <a name="configure-no-locsignalr-hubs"></a>Configurar SignalR hubs
 
@@ -76,7 +77,7 @@ public class ChatHub : Hub
 }
 ```
 
-Você pode especificar um tipo de retorno e parâmetros, incluindo tipos complexos e matrizes, como faria em qualquer método C#. SignalRmanipula a serialização e a desserialização de objetos e matrizes complexos em seus parâmetros e valores de retorno.
+Você pode especificar um tipo de retorno e parâmetros, incluindo tipos complexos e matrizes, como faria em qualquer método C#. SignalR manipula a serialização e a desserialização de objetos e matrizes complexos em seus parâmetros e valores de retorno.
 
 > [!NOTE]
 > Os hubs são transitórios:
@@ -97,7 +98,7 @@ A `Hub` classe tem uma `Context` propriedade que contém as seguintes propriedad
 | `Features` | Obtém a coleção de recursos disponíveis na conexão. Por enquanto, essa coleção não é necessária na maioria dos cenários, portanto, ela ainda não está documentada em detalhes. |
 | `ConnectionAborted` | Obtém um `CancellationToken` que notifica quando a conexão é anulada. |
 
-`Hub.Context`também contém os seguintes métodos:
+`Hub.Context` também contém os seguintes métodos:
 
 | Método | Descrição |
 | ------ | ----------- |
@@ -114,7 +115,7 @@ A `Hub` classe tem uma `Clients` propriedade que contém as seguintes propriedad
 | `Caller` | Chama um método no cliente que invocou o método de Hub |
 | `Others` | Chama um método em todos os clientes conectados, exceto o cliente que invocou o método |
 
-`Hub.Clients`também contém os seguintes métodos:
+`Hub.Clients` também contém os seguintes métodos:
 
 | Método | Descrição |
 | ------ | ----------- |
@@ -134,9 +135,9 @@ Cada propriedade ou método nas tabelas anteriores retorna um objeto com um `Sen
 
 Para fazer chamadas para clientes específicos, use as propriedades do `Clients` objeto. No exemplo a seguir, há três métodos de Hub:
 
-* `SendMessage`envia uma mensagem para todos os clientes conectados, usando `Clients.All` .
-* `SendMessageToCaller`envia uma mensagem de volta ao chamador, usando `Clients.Caller` .
-* `SendMessageToGroups`envia uma mensagem para todos os clientes no `SignalR Users` grupo.
+* `SendMessage` envia uma mensagem para todos os clientes conectados, usando `Clients.All` .
+* `SendMessageToCaller` envia uma mensagem de volta ao chamador, usando `Clients.Caller` .
+* `SendMessageToGroups` envia uma mensagem para todos os clientes no `SignalR Users` grupo.
 
 [!code-csharp[Send messages](hubs/sample/hubs/chathub.cs?name=HubMethods)]
 
@@ -196,17 +197,17 @@ Se o Hub lançar uma exceção, as conexões não serão fechadas. Por padrão, 
 Microsoft.AspNetCore.SignalR.HubException: An unexpected error occurred invoking 'MethodName' on the server.
 ```
 
-Exceções inesperadas geralmente contêm informações confidenciais, como o nome de um servidor de banco de dados em uma exceção disparada quando a conexão de banco de dados falha. SignalRo não expõe essas mensagens de erro detalhadas por padrão como uma medida de segurança. Consulte o [artigo considerações sobre segurança](xref:signalr/security#exceptions) para obter mais informações sobre por que os detalhes da exceção são suprimidos.
+Exceções inesperadas geralmente contêm informações confidenciais, como o nome de um servidor de banco de dados em uma exceção disparada quando a conexão de banco de dados falha. SignalR o não expõe essas mensagens de erro detalhadas por padrão como uma medida de segurança. Consulte o [artigo considerações sobre segurança](xref:signalr/security#exceptions) para obter mais informações sobre por que os detalhes da exceção são suprimidos.
 
 Se você tiver uma condição *excepcional que deseja* propagar para o cliente, poderá usar a `HubException` classe. Se você lançar um `HubException` do seu método Hub, SignalR **will** o enviará a mensagem inteira para o cliente, sem modificações.
 
 [!code-csharp[ThrowHubException](hubs/sample/hubs/chathub.cs?name=ThrowHubException&highlight=3)]
 
 > [!NOTE]
-> SignalRenvia apenas a `Message` propriedade da exceção ao cliente. O rastreamento de pilha e outras propriedades na exceção não estão disponíveis para o cliente.
+> SignalR envia apenas a `Message` propriedade da exceção ao cliente. O rastreamento de pilha e outras propriedades na exceção não estão disponíveis para o cliente.
 
 ## <a name="related-resources"></a>Recursos relacionados
 
-* [Introdução à ASP.NET CoreSignalR](xref:signalr/introduction)
+* [Introdução à ASP.NET Core SignalR](xref:signalr/introduction)
 * [Cliente JavaScript](xref:signalr/javascript-client)
 * [Publicar no Azure](xref:signalr/publish-to-azure-web-app)

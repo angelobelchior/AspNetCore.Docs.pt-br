@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: b3531f786b3101fcbea4b25d3950d1bce9a289dc
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 3fab57df84e6902a8041940939c067da41f1674c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018046"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629724"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>Parte 5, Razor páginas com EF Core no modelo de dados ASP.NET Core
 
@@ -620,7 +621,7 @@ Para forçar o EF Core a criar um novo banco de dados, remova e atualize o banco
 
 * Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *ContosoUniversity.csproj*.
 
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
   ```dotnetcli
   dotnet ef database drop --force

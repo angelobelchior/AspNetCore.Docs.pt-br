@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/1/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 4404a5513d9dc989e50c904f3e7863de59991939
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 09535f41d15b90fa5e50eb1f22f6aecef0530f0c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022323"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629555"
 ---
 # <a name="scaffold-no-locidentity-in-aspnet-core-projects"></a>Scaffold Identity em projetos de ASP.NET Core
 
@@ -30,7 +31,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core fornece [ASP.NET Core Identity ](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class). Os aplicativos que incluem Identity o podem aplicar o scaffolder para adicionar seletivamente o código-fonte contido na Identity Razor biblioteca de classes (RCL). Talvez você queira gerar o código-fonte para que você possa modificar o código e alterar o comportamento. Por exemplo, você pode instruir o scaffolder a gerar o código usado no registro. O código gerado tem precedência sobre o mesmo código no Identity RCL. Para obter controle total da interface do usuário e não usar o RCL padrão, consulte a seção [criar Identity origem da interface do usuário completa](#full).
+O ASP.NET Core fornece [ASP.NET Core Identity](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class). Os aplicativos que incluem Identity o podem aplicar o scaffolder para adicionar seletivamente o código-fonte contido na Identity Razor biblioteca de classes (RCL). Talvez você queira gerar o código-fonte para que você possa modificar o código e alterar o comportamento. Por exemplo, você pode instruir o scaffolder a gerar o código usado no registro. O código gerado tem precedência sobre o mesmo código no Identity RCL. Para obter controle total da interface do usuário e não usar o RCL padrão, consulte a seção [criar Identity origem da interface do usuário completa](#full).
 
 Os aplicativos que **não** incluem autenticação podem aplicar o scaffolder para adicionar o Identity pacote RCL. Você tem a opção de selecionar o Identity código a ser gerado.
 
@@ -197,7 +198,7 @@ Identityé configurado em *áreas/ Identity / Identity HostingStartup.cs*. Para 
 Tokens podem ser passados para componentes:
 
 * Quando os tokens de autenticação são provisionados e salvos na autenticação cookie , eles podem ser passados para os componentes do.
-* Razoros componentes não podem usar `HttpContext` diretamente, portanto, não há como obter um [token de XSRF (falsificação de solicitação)](xref:security/anti-request-forgery) para postar no Identity ponto de extremidade de logout em `/Identity/Account/Logout` . Um token XSRF pode ser passado para componentes.
+* Razor os componentes não podem usar `HttpContext` diretamente, portanto, não há como obter um [token de XSRF (falsificação de solicitação)](xref:security/anti-request-forgery) para postar no Identity ponto de extremidade de logout em `/Identity/Account/Logout` . Um token XSRF pode ser passado para componentes.
 
 Para obter mais informações, consulte <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app>.
 
@@ -490,7 +491,7 @@ Para evitar a publicação de ativos estáticos na Identity raiz da Web, consult
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core 2,1 e posterior fornece [ASP.NET Core Identity ](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class). Os aplicativos que incluem Identity o podem aplicar o scaffolder para adicionar seletivamente o código-fonte contido na Identity Razor biblioteca de classes (RCL). Talvez você queira gerar o código-fonte para que você possa modificar o código e alterar o comportamento. Por exemplo, você pode instruir o scaffolder a gerar o código usado no registro. O código gerado tem precedência sobre o mesmo código no Identity RCL. Para obter controle total da interface do usuário e não usar o RCL padrão, consulte a seção [criar origem da interface do usuário de identidade completa](#full).
+ASP.NET Core 2,1 e posterior fornece [ASP.NET Core Identity](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class). Os aplicativos que incluem Identity o podem aplicar o scaffolder para adicionar seletivamente o código-fonte contido na Identity Razor biblioteca de classes (RCL). Talvez você queira gerar o código-fonte para que você possa modificar o código e alterar o comportamento. Por exemplo, você pode instruir o scaffolder a gerar o código usado no registro. O código gerado tem precedência sobre o mesmo código no Identity RCL. Para obter controle total da interface do usuário e não usar o RCL padrão, consulte a seção [criar origem da interface do usuário de identidade completa](#full).
 
 Os aplicativos que **não** incluem autenticação podem aplicar o scaffolder para adicionar o Identity pacote RCL. Você tem a opção de selecionar o Identity código a ser gerado.
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: d40b37a4ca8acf57b662124597a8ebc3b90bffd2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c1891b8093c5a4c1599cd3c4ed4e5e60e2fd13e8
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018157"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628996"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Auxiliares de marca de autor no ASP.NET Core
 
@@ -234,7 +235,7 @@ Também use o `[HtmlTargetElement]` para alterar o nome do elemento de destino. 
    >
    > [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?range=18-18)]
    >
-   > RazorSabe que o `info` atributo é uma classe, não uma cadeia de caracteres, e você deseja escrever código C#. Qualquer atributo do auxiliar de marca que não seja uma cadeia de caracteres deve ser escrito sem o caractere `@`.
+   > Razor Sabe que o `info` atributo é uma classe, não uma cadeia de caracteres, e você deseja escrever código C#. Qualquer atributo do auxiliar de marca que não seja uma cadeia de caracteres deve ser escrito sem o caractere `@`.
 
 1. Execute o aplicativo e navegue para a exibição About sobre para ver as informações do site.
 

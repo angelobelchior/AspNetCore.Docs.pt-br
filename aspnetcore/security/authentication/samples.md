@@ -5,6 +5,7 @@ description: Fornece links para os exemplos de autenticação no repositório AS
 ms.author: riande
 ms.date: 01/31/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/samples
-ms.openlocfilehash: 71e614eb3d91e8425ec430d775b8a0163dc7258f
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 290c956b2035e47e5b34dba15fbec665461dd94a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017786"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630738"
 ---
 # <a name="authentication-samples-for-aspnet-core"></a>Exemplos de autenticação para ASP.NET Core
 
@@ -31,7 +32,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 O [repositório de ASP.NET Core](https://github.com/dotnet/AspNetCore) contém os seguintes exemplos de autenticação na pasta *AspNetCore/src/Security/Samples* :
 
 * [Transformação de declarações](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/ClaimsTransformation)
-* [CookieAuthentication](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/Cookies)
+* [Cookie Authentication](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/Cookies)
 * [Provedor de política personalizada-IAuthorizationPolicyProvider](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/CustomPolicyProvider)
 * [Opções e esquemas de autenticação dinâmica](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/DynamicSchemes)
 * [Declarações externas](https://github.com/dotnet/AspNetCore/tree/release/3.1/src/Security/samples/Identity.ExternalClaims)
@@ -52,7 +53,7 @@ O [repositório de ASP.NET Core](https://github.com/dotnet/AspNetCore) contém o
 O [repositório de ASP.NET Core](https://github.com/dotnet/AspNetCore) contém os seguintes exemplos de autenticação na pasta *AspNetCore/src/Security/Samples* :
 
 * [Transformação de declarações](https://github.com/dotnet/AspNetCore/tree/release/2.1/src/Security/samples/ClaimsTransformation)
-* [CookieAuthentication](https://github.com/dotnet/AspNetCore/tree/release/2.1/src/Security/samples/Cookies)
+* [Cookie Authentication](https://github.com/dotnet/AspNetCore/tree/release/2.1/src/Security/samples/Cookies)
 * [Provedor de política personalizada-IAuthorizationPolicyProvider](https://github.com/dotnet/AspNetCore/tree/2.1.3/src/Security/samples/CustomPolicyProvider)
 * [Opções e esquemas de autenticação dinâmica](https://github.com/dotnet/AspNetCore/tree/release/2.1/src/Security/samples/DynamicSchemes)
 * [Declarações externas](https://github.com/dotnet/AspNetCore/tree/release/2.1/src/Security/samples/Identity.ExternalClaims)

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 826d7cf96d95ee7eb98b0f05a233401a1e3bff33
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7a370042520adfe5b06784b76acf41a81eb2c72d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020828"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630621"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Exibições parciais no ASP.NET Core
 
@@ -147,7 +148,7 @@ Quando houver uma extensão de arquivo, o Auxiliar de Marca fará referência a 
 
 O exemplo a seguir faz referência a uma exibição parcial da raiz do aplicativo. Caminhos que começam com um til-barra (`~/`) ou uma barra (`/`) referem-se à raiz do aplicativo:
 
-**RazorPages**
+**Razor Pages**
 
 ```cshtml
 <partial name="~/Pages/Folder/_PartialName.cshtml" />
@@ -189,7 +190,7 @@ O exemplo a seguir faz referência a uma exibição parcial da raiz do aplicativ
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**RazorPages**
+**Razor Pages**
 
 ```cshtml
 @await Html.PartialAsync("~/Pages/Folder/_PartialName.cshtml")
@@ -240,7 +241,7 @@ Quando uma exibição parcial é referenciada pelo nome sem uma extensão de arq
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**RazorPages**
+**Razor Pages**
 
 1. Pasta da página em execução no momento
 1. Grafo do diretório acima da pasta da página
@@ -296,7 +297,7 @@ Você pode passar um modelo para uma exibição parcial. O modelo pode ser um ob
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**RazorPages**
+**Razor Pages**
 
 A marcação a seguir no aplicativo de exemplo é da página *Pages/ArticlesRP/ReadRP.cshtml*. A página contém duas exibições parciais. A segunda exibição parcial passa um modelo e `ViewData` para a exibição parcial. A sobrecarga do construtor `ViewDataDictionary` é usada para passar um novo dicionário `ViewData`, retendo ainda o dicionário `ViewData` existente.
 

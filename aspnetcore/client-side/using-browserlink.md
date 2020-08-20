@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 01/09/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: 737abc8b9abea45654a86a4dc20584948ece9fc5
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ab4ca78fa50768ff66536608a7cf03e73aecf73a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013171"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628814"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Link do navegador no ASP.NET Core
 
@@ -33,7 +34,7 @@ O link do navegador é um recurso do Visual Studio. Ele cria um canal de comunic
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Adicione o pacote [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ao seu projeto. Para ASP.NET Core Razor páginas ou projetos MVC, habilite também a compilação em tempo de execução de Razor arquivos (*. cshtml*), conforme descrito em <xref:mvc/views/view-compilation> . Razoras alterações de sintaxe são aplicadas somente quando a compilação em tempo de execução tiver sido habilitada.
+Adicione o pacote [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ao seu projeto. Para ASP.NET Core Razor páginas ou projetos MVC, habilite também a compilação em tempo de execução de Razor arquivos (*. cshtml*), conforme descrito em <xref:mvc/views/view-compilation> . Razor as alterações de sintaxe são aplicadas somente quando a compilação em tempo de execução tiver sido habilitada.
 
 ::: moniker-end
 

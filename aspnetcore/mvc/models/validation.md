@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: c0edf56c966cb90c1c308f300a8944d392fdc0e7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e911512c1dce892c670659f04959be89cea067bb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020971"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630101"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>Validação de modelo no ASP.NET Core MVC e Razor páginas
 
@@ -51,7 +52,7 @@ A validação é automática, mas talvez seja necessário repeti-la manualmente.
 
 ## <a name="validation-attributes"></a>Atributos de validação
 
-Os atributos de validação permitem que você especifique regras de validação para propriedades do modelo. O exemplo a seguir do aplicativo de exemplo mostra uma classe de modelo que é anotada com atributos de validação. O atributo `[ClassicMovie]` é um atributo de validação personalizado e os outros são atributos internos. Não mostrado é `[ClassicMovieWithClientValidator]` . `[ClassicMovieWithClientValidator]`mostra uma maneira alternativa de implementar um atributo personalizado.
+Os atributos de validação permitem que você especifique regras de validação para propriedades do modelo. O exemplo a seguir do aplicativo de exemplo mostra uma classe de modelo que é anotada com atributos de validação. O atributo `[ClassicMovie]` é um atributo de validação personalizado e os outros são atributos internos. Não mostrado é `[ClassicMovieWithClientValidator]` . `[ClassicMovieWithClientValidator]` mostra uma maneira alternativa de implementar um atributo personalizado.
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Models/Movie.cs?name=snippet_Class)]
 
@@ -148,7 +149,7 @@ A propriedade `AdditionalFields` do atributo `[Remote]` permite validar combina�
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Name&highlight=1,5)]
 
-`AdditionalFields`pode ser definido explicitamente para as cadeias de caracteres "FirstName" e "LastName", mas o uso do operador [nameof](/dotnet/csharp/language-reference/keywords/nameof) simplifica a refatoração posterior. O método de ação para essa validação deve aceitar ambos os `firstName` `lastName` argumentos e:
+`AdditionalFields` pode ser definido explicitamente para as cadeias de caracteres "FirstName" e "LastName", mas o uso do operador [nameof](/dotnet/csharp/language-reference/keywords/nameof) simplifica a refatoração posterior. O método de ação para essa validação deve aceitar ambos os `firstName` `lastName` argumentos e:
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -386,7 +387,7 @@ Outras opções para desabilitar a validação do lado do cliente:
 * Comente a referência para `_ValidationScriptsPartial` em todos os arquivos *. cshtml* .
 * Remova o conteúdo do arquivo *Pages\Shared \_ ValidationScriptsPartial. cshtml* .
 
-A abordagem anterior não impedirá a validação do lado do cliente de ASP.NET Core Identity Razor biblioteca de classes. Para obter mais informações, consulte <xref:security/authentication/scaffold-identity>.
+A abordagem anterior não impedirá a validação do lado do cliente da ASP.NET Core Identity Razor biblioteca de classes. Para obter mais informações, consulte <xref:security/authentication/scaffold-identity>.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
@@ -514,7 +515,7 @@ A propriedade `AdditionalFields` do atributo `[Remote]` permite validar combina�
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserNameProperties)]
 
-`AdditionalFields`pode ser definido explicitamente para as cadeias de caracteres `"FirstName"` e `"LastName"` , mas o uso do operador [nameof](/dotnet/csharp/language-reference/keywords/nameof) simplifica a refatoração posterior. O método de ação para essa validação deve aceitar os argumentos de primeiro nome e de sobrenome:
+`AdditionalFields` pode ser definido explicitamente para as cadeias de caracteres `"FirstName"` e `"LastName"` , mas o uso do operador [nameof](/dotnet/csharp/language-reference/keywords/nameof) simplifica a refatoração posterior. O método de ação para essa validação deve aceitar os argumentos de primeiro nome e de sobrenome:
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 

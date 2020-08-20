@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/30/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 42c4f94869586bfcd4e8b27e4bdf4ef226094072
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 769b3bda591252c51bec3ffd72a43eaa5929349e
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022492"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630829"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
@@ -63,7 +64,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    ```
 
    > [!IMPORTANT]
-   > Razoros nomes de arquivo de componente exigem uma primeira letra em maiúscula, portanto, confirme se o `Todo` nome do arquivo de componente começa com uma letra maiúscula `T` .
+   > Razor os nomes de arquivo de componente exigem uma primeira letra em maiúscula, portanto, confirme se o `Todo` nome do arquivo de componente começa com uma letra maiúscula `T` .
 
 1. No, `Pages/Todo.razor` forneça a marcação inicial para o componente:
 

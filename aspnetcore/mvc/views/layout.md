@@ -5,6 +5,7 @@ description: Saiba como usar layouts comuns, compartilhar diretivas e executar u
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 4d5032f02db28341d7781dd57d58d776636fd16d
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 308e567e0480f83972ab7a55c7b957af83a164fd
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020438"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630686"
 ---
 # <a name="layout-in-aspnet-core"></a>Layout no ASP.NET Core
 
@@ -34,7 +35,7 @@ Páginas e exibições com frequência compartilham elementos visuais e program�
 
 Este documento discute layouts para as duas abordagens diferentes para ASP.NET Core MVC: Razor páginas e controladores com exibições. Para este tópico, as diferenças são mínimas:
 
-* RazorAs páginas estão na pasta *páginas* .
+* Razor As páginas estão na pasta *páginas* .
 * Controladores com exibições usam uma pasta *Views* pasta exibições.
 
 ## <a name="what-is-a-layout"></a>O que é um layout
@@ -47,7 +48,7 @@ Estruturas HTML comuns, como scripts e folhas de estilo, também são usadas fre
 
 Por convenção, o layout padrão de um aplicativo ASP.NET Core é chamado *_Layout.cshtml*. Os arquivos de layout para novos projetos do ASP.NET Core criados com os modelos são:
 
-* RazorPáginas: *páginas/compartilhadas/_Layout. cshtml*
+* Razor Páginas: *páginas/compartilhadas/_Layout. cshtml*
 
   ![Pasta das páginas no Gerenciador de Soluções](layout/_static/rp-web-project-views.png)
 
@@ -63,7 +64,7 @@ O código a seguir mostra o arquivo de layout para um modelo de projeto criado c
 
 ## <a name="specifying-a-layout"></a>Especificando um layout
 
-Razoras exibições têm uma `Layout` propriedade. As exibições individuais especificam um layout com a configuração dessa propriedade:
+Razor as exibições têm uma `Layout` propriedade. As exibições individuais especificam um layout com a configuração dessa propriedade:
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 

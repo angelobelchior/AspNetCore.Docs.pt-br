@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/03/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/action-return-types
-ms.openlocfilehash: 3058fabb0c08ac62956c18f3c294692d35122e12
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8e33a2628986146d1d72e1d4772e3d9e42de119c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022154"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629386"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Tipos de retorno de ação do controlador em ASP.NET Core API Web
 
@@ -159,7 +160,7 @@ Se o [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) a
 ASP.NET Core 2,1 introduziu o tipo de retorno [ActionResult \<T> ](xref:Microsoft.AspNetCore.Mvc.ActionResult`1) para ações do controlador da API Web. Ele permite que você retorne um tipo derivado de <xref:Microsoft.AspNetCore.Mvc.ActionResult> ou retorne um [tipo específico](#specific-type). `ActionResult<T>` oferece os seguintes benefícios em relação ao [tipo IActionResult](#iactionresult-type):
 
 * A [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) Propriedade do atributo `Type` pode ser excluída. Por exemplo, `[ProducesResponseType(200, Type = typeof(Product))]` é simplificado para `[ProducesResponseType(200)]`. O tipo de retorno esperado da ação é inferido do `T` em `ActionResult<T>`.
-* [Operadores de conversão implícita](/dotnet/csharp/language-reference/keywords/implicit) são compatíveis com a conversão de `T` e `ActionResult` em `ActionResult<T>`. `T`Converte para <xref:Microsoft.AspNetCore.Mvc.ObjectResult> , que significa `return new ObjectResult(T);` é simplificado para `return T;` .
+* [Operadores de conversão implícita](/dotnet/csharp/language-reference/keywords/implicit) são compatíveis com a conversão de `T` e `ActionResult` em `ActionResult<T>`. `T` Converte para <xref:Microsoft.AspNetCore.Mvc.ObjectResult> , que significa `return new ObjectResult(T);` é simplificado para `return T;` .
 
 C# não dá suporte a operadores de conversão implícita em interfaces. Consequentemente, a conversão da interface para um tipo concreto é necessário para usar `ActionResult<T>`. Por exemplo, o uso de `IEnumerable` no exemplo a seguir não funciona:
 

@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/target-aspnetcore
-ms.openlocfilehash: a6c20c61f7f33706e620fcbc239b2cc4bace15f0
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 571e6c66f60bbc09b902ff9064d2fb1c18c433dc
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016486"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630049"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Usar ASP.NET Core APIs em uma biblioteca de classes
 
@@ -52,7 +53,7 @@ A referência a ASP.NET Core dessa maneira só tem suporte em projetos destinado
 
 ## <a name="include-no-locblazor-extensibility"></a>Incluir Blazor extensibilidade
 
-Blazordá suporte ao Webassembly (WASM) e [modelos de hospedagem](xref:blazor/hosting-models)de servidor. A menos que haja um motivo específico para não, uma biblioteca de [ Razor componentes](xref:blazor/components/index) deve dar suporte a ambos os modelos de hospedagem. Uma Razor biblioteca de componentes deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).
+Blazor dá suporte ao Webassembly (WASM) e [modelos de hospedagem](xref:blazor/hosting-models)de servidor. A menos que haja um motivo específico para não, uma biblioteca de [ Razor componentes](xref:blazor/components/index) deve dar suporte a ambos os modelos de hospedagem. Uma Razor biblioteca de componentes deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).
 
 ### <a name="support-both-hosting-models"></a>Suporte para ambos os modelos de hospedagem
 
@@ -79,7 +80,7 @@ Use o modelo de projeto de ** Razor biblioteca de classes** .
 O projeto gerado a partir do modelo faz o seguinte:
 
 * Destinos .NET Standard 2,0.
-* Define a propriedade `RazorLangVersion` como `3.0`. `3.0`é o valor padrão para o .NET Core 3. x.
+* Define a propriedade `RazorLangVersion` como `3.0`. `3.0` é o valor padrão para o .NET Core 3. x.
 * Adiciona as seguintes referências de pacote:
   * [Microsoft. AspNetCore. Components](https://www.nuget.org/packages/Microsoft.AspNetCore.Components)
   * [Microsoft. AspNetCore. Components. Web](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Web)
@@ -105,13 +106,13 @@ Para obter mais informações sobre bibliotecas que contêm Razor componentes, c
 
 Esta seção descreve as recomendações para bibliotecas que incluem:
 
-* [Razorexibições ou Razor páginas](#razor-views-or-razor-pages)
+* [Razor exibições ou Razor páginas](#razor-views-or-razor-pages)
 * [Auxiliares de Marcas](#tag-helpers)
 * [Componentes da exibição](#view-components)
 
 Esta seção não aborda vários destinos para dar suporte a várias versões do MVC. Para obter orientação sobre como dar suporte a várias versões de ASP.NET Core, consulte [suporte para várias versões de ASP.NET Core](#support-multiple-aspnet-core-versions).
 
-### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Razorexibições ou Razor páginas
+### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Razor exibições ou Razor páginas
 
 Um projeto que inclui [ Razor exibições](xref:mvc/views/overview) ou [ Razor páginas](xref:razor-pages/index) deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).
 

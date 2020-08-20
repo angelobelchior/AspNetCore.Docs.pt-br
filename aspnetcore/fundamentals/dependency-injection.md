@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/21/2020
 no-loc:
+- ASP.NET Core Identity
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: b0ba7c7598df13413c00934a30e03681129de98a
-ms.sourcegitcommit: 503b348e9046fcd969de85898394a1ea8274ec38
+ms.openlocfilehash: ececea3c7cc2f0cdf39bbfd29feec061f9bc6764
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227573"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628788"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -224,7 +225,7 @@ Em aplicativos que processam solicitações, os serviços singleton são descart
 Os métodos de extensão de registro de serviço oferecem sobrecargas que são úteis em cenários específicos.
 <!-- Review: Auto disposal at end of app lifetime is not what you think of auto disposal  -->
 
-| Método | Automático<br>object<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();` | Sim | Sim | Não |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep(99));` | Sim | Sim | Sim |
@@ -818,7 +819,7 @@ Em aplicativos que processam solicitações, os serviços singleton são descart
 
 Os métodos de extensão de registro de serviço oferecem sobrecargas que são úteis em cenários específicos.
 
-| Método | Automático<br>object<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();` | Sim | Sim | Não |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Sim | Sim | Sim |

@@ -1,11 +1,12 @@
 ---
-title: Provedores de armazenamento personalizados para ASP.NET CoreIdentity
+title: Provedores de armazenamento personalizados para ASP.NET Core Identity
 author: ardalis
-description: Saiba como configurar provedores de armazenamento personalizados para ASP.NET Core Identity .
+description: Saiba como configurar provedores de armazenamento personalizados para o ASP.NET Core Identity .
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,24 +17,24 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 27f6130742e25e07d4b908973e1ebf26288fdbfd
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a8414efeece1afd55d0f30d232ef360d0a21714c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021530"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630127"
 ---
-# <a name="custom-storage-providers-for-aspnet-core-no-locidentity"></a>Provedores de armazenamento personalizados para ASP.NET CoreIdentity
+# <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>Provedores de armazenamento personalizados para ASP.NET Core Identity
 
 Por [Steve Smith](https://ardalis.com/)
 
-ASP.NET Core Identity é um sistema extensível que permite criar um provedor de armazenamento personalizado e conectá-lo ao seu aplicativo. Este tópico descreve como criar um provedor de armazenamento personalizado para ASP.NET Core Identity . Ele aborda os conceitos importantes para criar seu próprio provedor de armazenamento, mas não é um passo a passo.
+ASP.NET Core Identity é um sistema extensível que permite criar um provedor de armazenamento personalizado e conectá-lo ao seu aplicativo. Este tópico descreve como criar um provedor de armazenamento personalizado para o ASP.NET Core Identity . Ele aborda os conceitos importantes para criar seu próprio provedor de armazenamento, mas não é um passo a passo.
 
 [Exiba ou baixe o exemplo do GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample).
 
 ## <a name="introduction"></a>Introdução
 
-Por padrão, o sistema de ASP.NET Core Identity armazena informações de usuário em um banco de dados SQL Server usando Entity Framework Core. Para muitos aplicativos, essa abordagem funciona bem. No entanto, você pode preferir usar um mecanismo de persistência ou esquema de dados diferente. Por exemplo:
+Por padrão, o ASP.NET Core Identity sistema armazena informações do usuário em um banco de dados SQL Server usando Entity Framework Core. Para muitos aplicativos, essa abordagem funciona bem. No entanto, você pode preferir usar um mecanismo de persistência ou esquema de dados diferente. Por exemplo:
 
 * Você usa o [armazenamento de tabelas do Azure](/azure/storage/) ou outro armazenamento de dados.
 * Suas tabelas de banco de dados têm uma estrutura diferente. 
@@ -49,9 +50,9 @@ Ao usar o CLI do .NET Core, adicione `-au Individual` :
 dotnet new mvc -au Individual
 ```
 
-## <a name="the-aspnet-core-no-locidentity-architecture"></a>A arquitetura de ASP.NET Core Identity
+## <a name="the-no-locaspnet-core-identity-architecture"></a>A ASP.NET Core Identity arquitetura
 
-ASP.NET Core Identity consiste em classes chamadas de gerentes e lojas. *Os gerentes* são classes de alto nível que o desenvolvedor de aplicativo usa para executar operações, como a criação de um Identity usuário. As *lojas* são classes de nível inferior que especificam como as entidades, como usuários e funções, são mantidas. Os armazenamentos seguem o padrão de repositório e estão intimamente acoplados ao mecanismo de persistência. Os gerentes são dissociados das lojas, o que significa que você pode substituir o mecanismo de persistência sem alterar o código do aplicativo (exceto para a configuração).
+ASP.NET Core Identity consiste em classes chamadas Managers e Stores. *Os gerentes* são classes de alto nível que o desenvolvedor de aplicativo usa para executar operações, como a criação de um Identity usuário. As *lojas* são classes de nível inferior que especificam como as entidades, como usuários e funções, são mantidas. Os armazenamentos seguem o padrão de repositório e estão intimamente acoplados ao mecanismo de persistência. Os gerentes são dissociados das lojas, o que significa que você pode substituir o mecanismo de persistência sem alterar o código do aplicativo (exceto para a configuração).
 
 O diagrama a seguir mostra como um aplicativo Web interage com os gerentes, enquanto os armazenamentos interagem com a camada de acesso a dados.
 
@@ -63,9 +64,9 @@ Ao criar uma nova instância do `UserManager` ou `RoleManager` você fornece o t
 
 [Reconfigure o aplicativo para usar o novo provedor de armazenamento](#reconfigure-app-to-use-a-new-storage-provider) mostra como instanciar `UserManager` e `RoleManager` com um repositório personalizado.
 
-## <a name="aspnet-core-no-locidentity-stores-data-types"></a>ASP.NET Core Identity armazena tipos de dados
+## <a name="no-locaspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity armazena tipos de dados
 
-[ASP.NET Core Identity ](https://github.com/aspnet/identity) os tipos de dados são detalhados nas seções a seguir:
+[ASP.NET Core Identity](https://github.com/aspnet/identity) os tipos de dados são detalhados nas seções a seguir:
 
 ### <a name="users"></a>Usuários
 
@@ -85,7 +86,7 @@ Grupos de autorização para seu site. Inclui a ID da função e o nome da funç
 
 ## <a name="the-data-access-layer"></a>A camada de acesso a dados
 
-Este tópico pressupõe que você esteja familiarizado com o mecanismo de persistência que você pretende usar e como criar entidades para esse mecanismo. Este tópico não fornece detalhes sobre como criar repositórios ou classes de acesso a dados; Ele fornece algumas sugestões sobre decisões de design ao trabalhar com ASP.NET Core Identity .
+Este tópico pressupõe que você esteja familiarizado com o mecanismo de persistência que você pretende usar e como criar entidades para esse mecanismo. Este tópico não fornece detalhes sobre como criar repositórios ou classes de acesso a dados; Ele fornece algumas sugestões sobre decisões de design ao trabalhar com o ASP.NET Core Identity .
 
 Você tem muita liberdade ao criar a camada de acesso a dados para um provedor de armazenamento personalizado. Você só precisa criar mecanismos de persistência para os recursos que pretende usar em seu aplicativo. Por exemplo, se você não estiver usando funções em seu aplicativo, não precisará criar armazenamento para funções ou associações de função de usuário. Sua tecnologia e sua infraestrutura existente podem exigir uma estrutura muito diferente da implementação padrão do ASP.NET Core Identity . Na camada de acesso a dados, você fornece a lógica para trabalhar com a estrutura da sua implementação de armazenamento.
 
@@ -247,5 +248,5 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="references"></a>Referências
 
-* [Provedores de armazenamento personalizados para ASP.NET 4. xIdentity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.NET Core Identity ](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): esse repositório inclui links para provedores de loja mantidos pela Comunidade.
+* [Provedores de armazenamento personalizados para ASP.NET 4. x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
+* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): Esse repositório inclui links para provedores de loja mantidos pela Comunidade.

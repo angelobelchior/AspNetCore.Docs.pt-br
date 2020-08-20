@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/22/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: a74d31107d30ce04448e30f1c53e5ac475127870
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: fcd6a679c5401ec58cc219f56b5dce1cfee07372
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015680"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629685"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Verificações de integridade no ASP.NET Core
 
@@ -183,7 +184,7 @@ private class TestHealthCheckWithArgs : IHealthCheck
 }
 ```
 
-`TestHealthCheckWithArgs`é registrado chamando `AddTypeActivatedCheck` com o inteiro e a cadeia de caracteres passada para a implementação:
+`TestHealthCheckWithArgs` é registrado chamando `AddTypeActivatedCheck` com o inteiro e a cadeia de caracteres passada para a implementação:
 
 ```csharp
 services.AddHealthChecks()
@@ -294,7 +295,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="suppress-cache-headers"></a>Suprimir os cabeçalhos de cache
 
-<xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses>controla se o middleware de verificações de integridade adiciona cabeçalhos HTTP a uma resposta de investigação para evitar o cache de resposta. Se o valor é `false` (padrão), o middleware define ou substitui os cabeçalhos `Cache-Control`, `Expires` e `Pragma` para prevenir o cache de resposta. Se o valor é `true`, o middleware não modifica os cabeçalhos de cache da resposta.
+<xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses> controla se o middleware de verificações de integridade adiciona cabeçalhos HTTP a uma resposta de investigação para evitar o cache de resposta. Se o valor é `false` (padrão), o middleware define ou substitui os cabeçalhos `Cache-Control`, `Expires` e `Pragma` para prevenir o cache de resposta. Se o valor é `true`, o middleware não modifica os cabeçalhos de cache da resposta.
 
 Em `Startup.Configure`:
 
@@ -465,8 +466,8 @@ A verificação de integridade é registrada em <xref:Microsoft.Extensions.Depen
 
 Um ponto de extremidade de verificação de integridade é criado chamando `MapHealthChecks` em `Startup.Configure` . No aplicativo de exemplo, os pontos de extremidade de verificação de integridade são criados em:
 
-* `/health/ready`para a verificação de preparação. A verificação de preparação filtra as verificações de integridade para a verificação de integridade com a marca `ready`.
-* `/health/live`para a verificação de tempo de vida. A verificação de vida filtra o `StartupHostedServiceHealthCheck` retornando `false` no [HealthCheckOptions. Predicate](xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.Predicate) (para obter mais informações, consulte [Filtrar verificações de integridade](#filter-health-checks))
+* `/health/ready` para a verificação de preparação. A verificação de preparação filtra as verificações de integridade para a verificação de integridade com a marca `ready`.
+* `/health/live` para a verificação de tempo de vida. A verificação de vida filtra o `StartupHostedServiceHealthCheck` retornando `false` no [HealthCheckOptions. Predicate](xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.Predicate) (para obter mais informações, consulte [Filtrar verificações de integridade](#filter-health-checks))
 
 No código de exemplo a seguir:
 
@@ -659,8 +660,8 @@ Para distribuir uma verificação de integridade como uma biblioteca:
 
    Na lógica de verificações de integridade de `CheckHealthAsync` :
 
-   * `data1`e `data2` são usados no método para executar a lógica de verificação de integridade da investigação.
-   * `AccessViolationException`é manipulado.
+   * `data1` e `data2` são usados no método para executar a lógica de verificação de integridade da investigação.
+   * `AccessViolationException` é manipulado.
 
    Quando ocorre um erro <xref:System.AccessViolationException> , o <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckRegistration.FailureStatus> é retornado com o <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> para permitir que os usuários configurem o status de falha de verificações de integridade.
 
@@ -1003,7 +1004,7 @@ app.UseHealthChecks("/health", new HealthCheckOptions()
 
 ### <a name="suppress-cache-headers"></a>Suprimir os cabeçalhos de cache
 
-<xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses>controla se o middleware de verificações de integridade adiciona cabeçalhos HTTP a uma resposta de investigação para evitar o cache de resposta. Se o valor é `false` (padrão), o middleware define ou substitui os cabeçalhos `Cache-Control`, `Expires` e `Pragma` para prevenir o cache de resposta. Se o valor é `true`, o middleware não modifica os cabeçalhos de cache da resposta.
+<xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses> controla se o middleware de verificações de integridade adiciona cabeçalhos HTTP a uma resposta de investigação para evitar o cache de resposta. Se o valor é `false` (padrão), o middleware define ou substitui os cabeçalhos `Cache-Control`, `Expires` e `Pragma` para prevenir o cache de resposta. Se o valor é `true`, o middleware não modifica os cabeçalhos de cache da resposta.
 
 Em `Startup.Configure`:
 
@@ -1227,7 +1228,7 @@ spec:
 
 O aplicativo de exemplo demonstra uma verificação de integridade da memória com um gravador de resposta personalizada.
 
-`MemoryHealthCheck`relata um status não íntegro se o aplicativo usar mais do que um determinado limite de memória (1 GB no aplicativo de exemplo). O <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclui informações de GC (Coletor de Lixo) para o aplicativo (*MemoryHealthCheck.cs*):
+`MemoryHealthCheck` relata um status não íntegro se o aplicativo usar mais do que um determinado limite de memória (1 GB no aplicativo de exemplo). O <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclui informações de GC (Coletor de Lixo) para o aplicativo (*MemoryHealthCheck.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
@@ -1337,8 +1338,8 @@ Para distribuir uma verificação de integridade como uma biblioteca:
 
    Na lógica de verificações de integridade de `CheckHealthAsync` :
 
-   * `data1`e `data2` são usados no método para executar a lógica de verificação de integridade da investigação.
-   * `AccessViolationException`é manipulado.
+   * `data1` e `data2` são usados no método para executar a lógica de verificação de integridade da investigação.
+   * `AccessViolationException` é manipulado.
 
    Quando ocorre um erro <xref:System.AccessViolationException> , o <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckRegistration.FailureStatus> é retornado com o <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> para permitir que os usuários configurem o status de falha de verificações de integridade.
 

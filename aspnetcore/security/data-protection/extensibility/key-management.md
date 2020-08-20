@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 5f55b56bd35a583e1f078a5a281788b68412e4f7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 797df457a5584233043210e9ba2657b7fd7f3893
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021686"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630998"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Extensibilidade de gerenciamento de chaves no ASP.NET Core
 
@@ -31,7 +32,7 @@ ms.locfileid: "88021686"
 > [!WARNING]
 > Os tipos que implementam qualquer uma das interfaces a seguir devem ser thread-safe para vários chamadores.
 
-## <a name="key"></a>Key
+## <a name="key"></a>Chave
 
 A `IKey` interface é a representação básica de uma chave em cryptosystem. A chave de termo é usada aqui no sentido abstrato, não no sentido literal de "material de chave de criptografia". Uma chave tem as seguintes propriedades:
 
@@ -73,7 +74,7 @@ A `IKeyManager` interface representa um objeto responsável por armazenamento de
 
 O `XmlKeyManager` tipo é a implementação concreta da caixa de `IKeyManager` . Ele fornece várias instalações úteis, incluindo a caução de chave e a criptografia de chaves em repouso. As chaves neste sistema são representadas como elementos XML (especificamente, [XElement](/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
-`XmlKeyManager`depende de vários outros componentes no decorrer do cumprimento de suas tarefas:
+`XmlKeyManager` depende de vários outros componentes no decorrer do cumprimento de suas tarefas:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -81,9 +82,9 @@ O `XmlKeyManager` tipo é a implementação concreta da caixa de `IKeyManager` .
 
 * `IXmlRepository`, que controla onde as chaves são mantidas no armazenamento.
 
-* `IXmlEncryptor`[opcional], que permite criptografar chaves em repouso.
+* `IXmlEncryptor` [opcional], que permite criptografar chaves em repouso.
 
-* `IKeyEscrowSink`[opcional], que fornece serviços de caução de chave.
+* `IKeyEscrowSink` [opcional], que fornece serviços de caução de chave.
 
 ::: moniker-end
 
@@ -91,9 +92,9 @@ O `XmlKeyManager` tipo é a implementação concreta da caixa de `IKeyManager` .
 
 * `IXmlRepository`, que controla onde as chaves são mantidas no armazenamento.
 
-* `IXmlEncryptor`[opcional], que permite criptografar chaves em repouso.
+* `IXmlEncryptor` [opcional], que permite criptografar chaves em repouso.
 
-* `IKeyEscrowSink`[opcional], que fornece serviços de caução de chave.
+* `IKeyEscrowSink` [opcional], que fornece serviços de caução de chave.
 
 ::: moniker-end
 
@@ -125,7 +126,7 @@ Na implementação do `CreateNewKey` , o `IAuthenticatedEncryptorConfiguration` 
 
 *Recuperação de chave/GetAllKeys*
 
-Na implementação de `GetAllKeys` , os documentos XML que representam chaves e revogações são lidos do subjacente `IXmlRepository` . Se esses documentos forem criptografados, o sistema irá descriptografá-los automaticamente. `XmlKeyManager`cria as `IAuthenticatedEncryptorDescriptorDeserializer` instâncias apropriadas para desserializar os documentos de volta em `IAuthenticatedEncryptorDescriptor` instâncias, que são encapsuladas em `IKey` instâncias individuais. Essa coleção de `IKey` instâncias é retornada ao chamador.
+Na implementação de `GetAllKeys` , os documentos XML que representam chaves e revogações são lidos do subjacente `IXmlRepository` . Se esses documentos forem criptografados, o sistema irá descriptografá-los automaticamente. `XmlKeyManager` cria as `IAuthenticatedEncryptorDescriptorDeserializer` instâncias apropriadas para desserializar os documentos de volta em `IAuthenticatedEncryptorDescriptor` instâncias, que são encapsuladas em `IKey` instâncias individuais. Essa coleção de `IKey` instâncias é retornada ao chamador.
 
 Mais informações sobre os elementos XML específicos podem ser encontradas no [documento de formato de armazenamento de chaves](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format).
 

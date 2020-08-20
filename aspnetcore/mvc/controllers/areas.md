@@ -5,6 +5,7 @@ description: Saiba por que as áreas são um recurso do ASP.NET MVC usado para o
 ms.author: riande
 ms.date: 03/21/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: af765eebfa8bfd147bd3b721508b5794d15d64a7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 033b57f5406d0344347b2f787fa2b2fbb2da8604
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018436"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630244"
 ---
 # <a name="areas-in-aspnet-core"></a>Áreas no ASP.NET Core
 
@@ -70,7 +71,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
         * HomeController.cs
         * ManageController.cs
       * Exibições
-        * Início
+        * Página Inicial
           * Index.cshtml
         * Gerenciar
           * Index.cshtml
@@ -79,7 +80,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
       * Controladores
         * HomeController.cs
       * Exibições
-        * Início
+        * Página Inicial
           * Index.cshtml
 
 Enquanto o layout anterior é típico ao usar áreas, somente os arquivos de exibição são necessários para usar essa estrutura de pastas. Pesquisas de descoberta de exibição para um arquivo de exibição de área correspondente, na seguinte ordem:
@@ -101,7 +102,7 @@ Os controladores de área são designados com o atributo [ &lbrack; Area &rbrack
 
 ### <a name="add-area-route"></a>Adicionar rota de área
 
-As rotas de área normalmente usam [Roteamento convencional](xref:mvc/controllers/routing#cr) em vez de [Roteamento de atributos](xref:mvc/controllers/routing#ar). O roteamento convencional é dependente da ordem. De modo geral, rotas com áreas devem ser colocadas mais no início na tabela de rotas, uma vez que são mais específicas que rotas sem uma área.
+As rotas de área normalmente usam  [Roteamento convencional](xref:mvc/controllers/routing#cr) em vez de [Roteamento de atributos](xref:mvc/controllers/routing#ar). O roteamento convencional é dependente da ordem. De modo geral, rotas com áreas devem ser colocadas mais no início na tabela de rotas, uma vez que são mais específicas que rotas sem uma área.
 
 `{area:...}` pode ser usado como um token em modelos de rota, se o espaço de URL é uniforme entre todas as áreas:
 
@@ -272,7 +273,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
         * HomeController.cs
         * ManageController.cs
       * Exibições
-        * Início
+        * Página Inicial
           * Index.cshtml
         * Gerenciar
           * Index.cshtml
@@ -281,7 +282,7 @@ Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. 
       * Controladores
         * HomeController.cs
       * Exibições
-        * Início
+        * Página Inicial
           * Index.cshtml
 
 Enquanto o layout anterior é típico ao usar áreas, somente os arquivos de exibição são necessários para usar essa estrutura de pastas. Pesquisas de descoberta de exibição para um arquivo de exibição de área correspondente, na seguinte ordem:

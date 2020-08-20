@@ -5,6 +5,7 @@ description: Saiba mais sobre os principais provedores de armazenamento no ASP.N
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: d54e8078180ce978b550963a03c0d4fdc6e9b12e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: fb21f7d4d784451096db5c420f2ffd4532c2b490
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021452"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631323"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Provedores de armazenamento de chaves no ASP.NET Core
 
@@ -183,7 +184,7 @@ dotnet ef database update --context MyKeysContext
 
 ---
 
-`MyKeysContext`é o `DbContext` definido no exemplo de código anterior. Se você estiver usando um `DbContext` com um nome diferente, substitua seu `DbContext` nome por `MyKeysContext` .
+`MyKeysContext` é o `DbContext` definido no exemplo de código anterior. Se você estiver usando um `DbContext` com um nome diferente, substitua seu `DbContext` nome por `MyKeysContext` .
 
 A `DataProtectionKeys` classe/entidade adota a estrutura mostrada na tabela a seguir.
 

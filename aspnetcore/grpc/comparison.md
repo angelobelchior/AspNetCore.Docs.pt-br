@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: cdddb14e62f42bc9c0ec0bbe2a8595fe1cb27ceb
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d20740950f7ac56a3a3b2951b474151aaf9c6f5a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016200"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631219"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparar serviços gRPC com APIs HTTP
 
@@ -121,7 +122,7 @@ Recursos como [reflexão de servidor](https://github.com/grpc/grpc/blob/master/d
 Outras estruturas são recomendadas em relação ao gRPC nos seguintes cenários:
 
 * **APIs acessíveis ao navegador**: o gRPC não tem suporte total no navegador. o gRPC-Web pode oferecer suporte a navegador, mas tem limitações e introduz um proxy de servidor.
-* **Transmitir comunicação em tempo real**: o gRPC dá suporte à comunicação em tempo real via streaming, mas o conceito de difusão de uma mensagem para conexões registradas não existe. Por exemplo, em um cenário de sala de chat em que novas mensagens de chat devem ser enviadas a todos os clientes na sala de chat, cada chamada de gRPC é necessária para transmitir individualmente novas mensagens de chat para o cliente. [SignalR](xref:signalr/introduction)é uma estrutura útil para esse cenário. SignalRtem o conceito de conexões persistentes e suporte interno para mensagens de difusão.
+* **Transmitir comunicação em tempo real**: o gRPC dá suporte à comunicação em tempo real via streaming, mas o conceito de difusão de uma mensagem para conexões registradas não existe. Por exemplo, em um cenário de sala de chat em que novas mensagens de chat devem ser enviadas a todos os clientes na sala de chat, cada chamada de gRPC é necessária para transmitir individualmente novas mensagens de chat para o cliente. [SignalR](xref:signalr/introduction) é uma estrutura útil para esse cenário. SignalR tem o conceito de conexões persistentes e suporte interno para mensagens de difusão.
 * **Comunicação entre processos**: um processo deve hospedar um servidor http/2 para aceitar chamadas gRPC de entrada. Para o Windows, os [pipes](/dotnet/standard/io/pipe-operations) de comunicação entre processos são um método rápido e leve de comunicação.
 
 ## <a name="additional-resources"></a>Recursos adicionais

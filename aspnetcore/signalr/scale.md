@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 2d128d54dc9b1189124563e45d72d74b19704ab1
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: fc257015a9ee972da90b0f206a60b07bd6cc1f97
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022518"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631102"
 ---
 # <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHospedagem e dimensionamento de ASP.NET Core
 
@@ -32,7 +33,7 @@ Este artigo explica as considerações de hospedagem e dimensionamento para apli
 
 ## <a name="sticky-sessions"></a>Sessões adesivas
 
-SignalRrequer que todas as solicitações HTTP para uma conexão específica sejam manipuladas pelo mesmo processo de servidor. Quando SignalR o está em execução em um farm de servidores (vários servidores), "sessões adesivas" devem ser usadas. "Sessões adesivas" também são chamadas de afinidade de sessão por alguns balanceadores de carga. Azure App serviço usa [Application Request Routing](https://docs.microsoft.com/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (ARR) para rotear solicitações. Habilitar a configuração "afinidade de ARR" em seu serviço de Azure App permitirá "sessões adesivas". As únicas circunstâncias nas quais as sessões adesivas não são necessárias são:
+SignalR requer que todas as solicitações HTTP para uma conexão específica sejam manipuladas pelo mesmo processo de servidor. Quando SignalR o está em execução em um farm de servidores (vários servidores), "sessões adesivas" devem ser usadas. "Sessões adesivas" também são chamadas de afinidade de sessão por alguns balanceadores de carga. Azure App serviço usa [Application Request Routing](https://docs.microsoft.com/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (ARR) para rotear solicitações. Habilitar a configuração "afinidade de ARR" em seu serviço de Azure App permitirá "sessões adesivas". As únicas circunstâncias nas quais as sessões adesivas não são necessárias são:
 
 1. Ao hospedar em um único servidor, em um único processo.
 1. Ao usar o serviço do Azure SignalR .
@@ -44,7 +45,7 @@ Para obter orientação sobre como configurar o serviço de Azure App para o Sig
 
 ## <a name="tcp-connection-resources"></a>Recursos de conexão TCP
 
-O número de conexões TCP simultâneas às quais um servidor Web pode dar suporte é limitado. Os clientes HTTP padrão usam conexões *efêmeras* . Essas conexões podem ser fechadas quando o cliente fica ocioso e reaberto mais tarde. Por outro lado, uma SignalR conexão é *persistente*. SignalRas conexões permanecem abertas mesmo quando o cliente fica ocioso. Em um aplicativo de alto tráfego que atende a vários clientes, essas conexões persistentes podem fazer com que os servidores atinjam seu número máximo de conexões.
+O número de conexões TCP simultâneas às quais um servidor Web pode dar suporte é limitado. Os clientes HTTP padrão usam conexões *efêmeras* . Essas conexões podem ser fechadas quando o cliente fica ocioso e reaberto mais tarde. Por outro lado, uma SignalR conexão é *persistente*. SignalR as conexões permanecem abertas mesmo quando o cliente fica ocioso. Em um aplicativo de alto tráfego que atende a vários clientes, essas conexões persistentes podem fazer com que os servidores atinjam seu número máximo de conexões.
 
 As conexões persistentes também consomem memória adicional para acompanhar cada conexão.
 

@@ -5,6 +5,7 @@ description: Saiba como as exibições tratam da apresentação de dados do apli
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/overview
-ms.openlocfilehash: 8630df0ad8ea556c6edf0ab251b3c86493f751e2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6afd69414f2dc0158f724c6e6f7b3a3e51c1e92c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020867"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630673"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Exibições no ASP.NET Core MVC
 
@@ -28,7 +29,7 @@ Por [Steve Smith](https://ardalis.com/)
 
 Este documento explica as exibições usadas em aplicativos do ASP.NET Core MVC. Para obter informações sobre Razor páginas, consulte [introdução às Razor páginas](xref:razor-pages/index).
 
-No padrão MVC (Model-View-Controller), a *exibição* trata da apresentação de dados do aplicativo e da interação com o usuário. Uma exibição é um modelo HTML com [ Razor marcação](xref:mvc/views/razor)inserida. Razormarcação é o código que interage com marcação HTML para produzir uma página da Web que é enviada ao cliente.
+No padrão MVC (Model-View-Controller), a *exibição* trata da apresentação de dados do aplicativo e da interação com o usuário. Uma exibição é um modelo HTML com [ Razor marcação](xref:mvc/views/razor)inserida. Razor marcação é o código que interage com marcação HTML para produzir uma página da Web que é enviada ao cliente.
 
 No ASP.NET Core MVC, as exibições são arquivos *. cshtml* que usam a [linguagem de programação C#](/dotnet/csharp/) na Razor marcação. Geralmente, arquivos de exibição são agrupados em pastas nomeadas para cada um dos [controladores](xref:mvc/controllers/actions) do aplicativo. As pastas são armazenadas em uma pasta chamada *Views* na raiz do aplicativo:
 
@@ -369,7 +370,7 @@ Usar `ViewData` e `ViewBag` ao mesmo tempo funciona, assim como misturar e combi
 
 **Resumo das diferenças entre ViewData e ViewBag**
 
- `ViewBag`Não está disponível nas Razor páginas.
+ `ViewBag` Não está disponível nas Razor páginas.
 
 * `ViewData`
   * Deriva de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), portanto, tem propriedades de dicionário que podem ser úteis, como `ContainsKey` ,, `Add` `Remove` e `Clear` .

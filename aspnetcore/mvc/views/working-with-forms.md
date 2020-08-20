@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 3f5b0287a4f9c6c6c05a47297e3e602b80bf6015
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c337e727a4683b0b3c67307af93ef8efa246e2ad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021478"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631011"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Auxiliares de marca em formulários no ASP.NET Core
 
@@ -580,7 +581,7 @@ O HTML a seguir é gerado:
 
 ### <a name="option-group"></a>Grupo de opções
 
-O [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) elemento HTML é gerado quando o modelo de exibição contém um ou mais `SelectListGroup` objetos.
+O  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) elemento HTML é gerado quando o modelo de exibição contém um ou mais `SelectListGroup` objetos.
 
 O `CountryViewModelGroup` agrupa os elementos `SelectListItem` nos grupos "América do Norte" e "Europa":
 
