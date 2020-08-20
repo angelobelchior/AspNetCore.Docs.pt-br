@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: 235010c95cdd0c7ce1368b4abd91e75d81ae094b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ed0925259bf3d4fee6c903ff55cdf1dae2355af7
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021894"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631895"
 ---
 # <a name="test-aspnet-core-middleware"></a>Testar ASP.NET Core middleware
 
@@ -123,7 +124,7 @@ public async Task TestMiddleware_ExpectedResponse()
 }
 ```
 
-<xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A>permite a configuração direta de um <xref:Microsoft.AspNetCore.Http.HttpContext> objeto em vez de usar as <xref:System.Net.Http.HttpClient> abstrações. Use <xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A> para manipular estruturas somente disponíveis no servidor, como [HttpContext. Items](xref:Microsoft.AspNetCore.Http.HttpContext.Items) ou [HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features).
+<xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A> permite a configuração direta de um <xref:Microsoft.AspNetCore.Http.HttpContext> objeto em vez de usar as <xref:System.Net.Http.HttpClient> abstrações. Use <xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A> para manipular estruturas somente disponíveis no servidor, como [HttpContext. Items](xref:Microsoft.AspNetCore.Http.HttpContext.Items) ou [HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features).
 
 Assim como no exemplo anterior testado para uma resposta *404-não encontrada* , verifique o oposto de cada `Assert` instrução no teste anterior. A verificação confirma que o teste falha corretamente quando o middleware está funcionando normalmente. Depois de confirmar que o teste falso positivo funciona, defina as instruções finais `Assert` para as condições e os valores esperados do teste. Execute-o novamente para confirmar que o teste foi aprovado.
 

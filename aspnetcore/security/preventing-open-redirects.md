@@ -5,6 +5,7 @@ description: Mostra como evitar ataques de redirecionamento abertos em um aplica
 ms.author: riande
 ms.date: 07/07/2017
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 3a58c25bbd54803ce0b8c42a2667222d6e14c050
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5226e301960a56145b94b6128d0034c40b86bffd
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021010"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633455"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Impedir ataques de redirecionamento abertos no ASP.NET Core
 
@@ -64,7 +65,7 @@ public IActionResult SomeAction(string redirectUrl)
 }
 ```
 
-`LocalRedirect`gerará uma exceção se uma URL não local for especificada. Caso contrário, ele se comporta exatamente como o `Redirect` método.
+`LocalRedirect` gerará uma exceção se uma URL não local for especificada. Caso contrário, ele se comporta exatamente como o `Redirect` método.
 
 ### <a name="islocalurl"></a>IsLocalUrl
 

@@ -5,6 +5,7 @@ description: Este documento serve como um sumário para diversos tópicos sobre 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/compatibility/index
-ms.openlocfilehash: f6bcbdced248ca33b3df4ae40c946e68e6471cb0
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8df81a16b2693a0699272e297dc6ca5c12ab59f8
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021790"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633715"
 ---
 # <a name="compatibility-in-aspnet-core"></a>Compatibilidade no ASP.NET Core
 
 * [Substituição do ASP.NET \<machineKey> no ASP.NET Core](xref:security/data-protection/compatibility/replacing-machinekey)
-* `Microsoft.AspNetCore.DataProtection`3,1 não é compatível com os aplicativos de funções do Azure. Para obter mais informações, consulte [este problema do GitHub](https://github.com/Azure/azure-functions-host/issues/5447)
+* `Microsoft.AspNetCore.DataProtection` 3,1 não é compatível com os aplicativos de funções do Azure. Para obter mais informações, consulte [este problema do GitHub](https://github.com/Azure/azure-functions-host/issues/5447)

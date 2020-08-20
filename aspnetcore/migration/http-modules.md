@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/07/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 92672b2d05ee6bbdfcf0255ae14529a5c28c41b7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8be09171991964540cd41a1324fb87503591151f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014978"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632168"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrar módulos e manipuladores HTTP para ASP.NET Core middleware
 
@@ -169,7 +170,7 @@ Uma solução é ramificar o pipeline para solicitações com uma determinada ex
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=27-34)]
 
-`MapWhen`usa estes parâmetros:
+`MapWhen` usa estes parâmetros:
 
 1. Um lambda que usa `HttpContext` e retorna `true` se a solicitação deve descer o Branch. Isso significa que você pode ramificar solicitações não apenas com base em sua extensão, mas também em cabeçalhos de solicitação, parâmetros de cadeia de caracteres de consulta, etc.
 
@@ -257,7 +258,7 @@ Vimos anteriormente que o `Invoke` método em seu middleware usa um parâmetro d
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext`mudou significativamente em ASP.NET Core. Esta seção mostra como converter as propriedades usadas com mais frequência de [System. Web. HttpContext](/dotnet/api/system.web.httpcontext) para o novo `Microsoft.AspNetCore.Http.HttpContext` .
+`HttpContext` mudou significativamente em ASP.NET Core. Esta seção mostra como converter as propriedades usadas com mais frequência de [System. Web. HttpContext](/dotnet/api/system.web.httpcontext) para o novo `Microsoft.AspNetCore.Http.HttpContext` .
 
 ### <a name="httpcontext"></a>HttpContext
 

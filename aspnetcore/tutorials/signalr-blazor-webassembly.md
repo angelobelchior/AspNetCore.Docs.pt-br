@@ -1,5 +1,5 @@
 ---
-title: Usar ASP.NET Core SignalR comBlazor WebAssembly
+title: Usar ASP.NET Core SignalR com Blazor WebAssembly
 author: guardrex
 description: Crie um aplicativo de chat que usa ASP.NET Core SignalR com Blazor WebAssembly .
 monikerRange: '>= aspnetcore-3.1'
@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 3d7ae49142849c589a1a20c33d30e87747ad1935
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 4d33e99ceb8273487144447eae324469df67c9ff
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021621"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633377"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Usar ASP.NET Core SignalR comBlazor WebAssembly
+# <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Usar ASP.NET Core SignalR com Blazor WebAssembly
 
 Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
 
@@ -290,4 +291,4 @@ Para saber mais sobre a criação de Blazor aplicativos, consulte a Blazor docum
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * <xref:signalr/introduction>
-* [SignalRnegociação entre origens para autenticação](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* [SignalR negociação entre origens para autenticação](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)

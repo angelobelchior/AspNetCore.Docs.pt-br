@@ -5,6 +5,7 @@ description: Parte 6, adicionar um modelo a um aplicativo ASP.NET Core MVC
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: b5b54adb1d86e4ab982647dc8207839cc9afdac9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 07b67cd7c267c39b99277114b73642b5caa3e312
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021062"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632831"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Parte 6, métodos e exibições do controlador no ASP.NET Core
 
@@ -110,7 +111,7 @@ O atributo `ValidateAntiForgeryToken` é usado para [prevenir a falsificação d
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
-O [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms) gera um token antifalsificação oculto que deve corresponder ao token antifalsificação gerado `[ValidateAntiForgeryToken]` no método `Edit` do controlador Movies. Para obter mais informações, consulte [Falsificação de antissolicitação](xref:security/anti-request-forgery).
+O [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms) gera um token antifalsificação oculto que deve corresponder ao token antifalsificação gerado `[ValidateAntiForgeryToken]` no método `Edit` do controlador Movies. Para obter mais informações, consulte <xref:security/anti-request-forgery>.
 
 O método `HttpGet Edit` usa o parâmetro `ID` de filme, pesquisa o filme usando o método `FindAsync` do Entity Framework e retorna o filme selecionado para a exibição de Edição. Se um filme não for encontrado, `NotFound` (HTTP 404) será retornado.
 
@@ -161,7 +162,7 @@ Todos os métodos `HttpGet` no controlador de filme seguem um padrão semelhante
 * [Globalização e localização](xref:fundamentals/localization)
 * [Introdução aos auxiliares de marcação](xref:mvc/views/tag-helpers/intro)
 * [Auxiliares de marca de autor](xref:mvc/views/tag-helpers/authoring)
-* [Falsificação de solicitação](xref:security/anti-request-forgery)
+* <xref:security/anti-request-forgery>
 * Proteger o controlador contra o [excesso de postagem](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Auxiliar de marca de formulário](xref:mvc/views/working-with-forms)

@@ -5,6 +5,7 @@ description: Aprenda detalhes de implementação de cabeçalhos de contexto de p
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 572f930dbf78aaef1ed47d1a154b5ba56633b4f1
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 2f07db4b7d8bca9f64aee5d60e88fc92dc8965eb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018813"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633702"
 ---
 # <a name="context-headers-in-aspnet-core"></a>Cabeçalhos de contexto em ASP.NET Core
 
@@ -95,15 +96,15 @@ DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
 
 Esse cabeçalho de contexto é a impressão digital do par de algoritmos de criptografia autenticado (AES-192-CBC criptografia + validação de HMACSHA256). Os componentes, conforme descrito [acima](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers-cbc-components) , são:
 
-* o marcador`(00 00)`
+* o marcador `(00 00)`
 
-* o comprimento da chave de codificação do bloco`(00 00 00 18)`
+* o comprimento da chave de codificação do bloco `(00 00 00 18)`
 
-* o tamanho do bloco de codificação de bloco`(00 00 00 10)`
+* o tamanho do bloco de codificação de bloco `(00 00 00 10)`
 
-* o comprimento da chave HMAC`(00 00 00 20)`
+* o comprimento da chave HMAC `(00 00 00 20)`
 
-* o tamanho do HMAC Digest`(00 00 00 20)`
+* o tamanho do HMAC Digest `(00 00 00 20)`
 
 * a saída bloquear PRP de codificação `(F4 74 - DB 6F)` e
 
@@ -140,15 +141,15 @@ Isso produz o cabeçalho de contexto completo, que é uma impressão digital do 
 
 Os componentes são divididos da seguinte maneira:
 
-* o marcador`(00 00)`
+* o marcador `(00 00)`
 
-* o comprimento da chave de codificação do bloco`(00 00 00 18)`
+* o comprimento da chave de codificação do bloco `(00 00 00 18)`
 
-* o tamanho do bloco de codificação de bloco`(00 00 00 08)`
+* o tamanho do bloco de codificação de bloco `(00 00 00 08)`
 
-* o comprimento da chave HMAC`(00 00 00 14)`
+* o comprimento da chave HMAC `(00 00 00 14)`
 
-* o tamanho do HMAC Digest`(00 00 00 14)`
+* o tamanho do HMAC Digest `(00 00 00 14)`
 
 * a saída bloquear PRP de codificação `(AB B1 - E1 0E)` e
 
@@ -170,7 +171,7 @@ O cabeçalho de contexto consiste nos seguintes componentes:
 
 * [128 bits] A marca de `Enc_GCM (K_E, nonce, "")` , que é a saída do algoritmo de codificação de bloco simétrico, dada uma entrada de cadeia de caracteres vazia e em que o nonce é um vetor de todos-zero de 96 bits.
 
-`K_E`é derivado usando o mesmo mecanismo do cenário de autenticação CBC Encryption + HMAC. No entanto, como não há nada `K_H` em jogar aqui, essencialmente temos `| K_H | = 0` , e o algoritmo é recolhido para o formulário abaixo.
+`K_E` é derivado usando o mesmo mecanismo do cenário de autenticação CBC Encryption + HMAC. No entanto, como não há nada `K_H` em jogar aqui, essencialmente temos `| K_H | = 0` , e o algoritmo é recolhido para o formulário abaixo.
 
 `K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
@@ -194,13 +195,13 @@ BE 45
 
 Os componentes são divididos da seguinte maneira:
 
-* o marcador`(00 01)`
+* o marcador `(00 01)`
 
-* o comprimento da chave de codificação do bloco`(00 00 00 20)`
+* o comprimento da chave de codificação do bloco `(00 00 00 20)`
 
-* o tamanho de nonce`(00 00 00 0C)`
+* o tamanho de nonce `(00 00 00 0C)`
 
-* o tamanho do bloco de codificação de bloco`(00 00 00 10)`
+* o tamanho do bloco de codificação de bloco `(00 00 00 10)`
 
 * o tamanho da marca de autenticação `(00 00 00 10)` e
 

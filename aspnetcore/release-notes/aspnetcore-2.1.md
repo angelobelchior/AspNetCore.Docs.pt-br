@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 3fb524748b9e2aa2c12b64f67a7960c4f0f911b0
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d10fd89a3eac34e855ba92673033edc541aa6393
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021153"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632402"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Novidades do ASP.NET Core 2.1
 
@@ -29,7 +30,7 @@ Este artigo destaca as alterações mais significativas no ASP.NET Core 2.1, com
 
 ## SignalR
 
-SignalRfoi reescrito para ASP.NET Core 2,1. SignalRO ASP.NET Core inclui vários aprimoramentos:
+SignalR foi reescrito para ASP.NET Core 2,1. SignalRO ASP.NET Core inclui vários aprimoramentos:
 
 * Um modelo de expansão simplificado.
 * Um novo cliente JavaScript sem dependência jQuery.
@@ -40,7 +41,7 @@ SignalRfoi reescrito para ASP.NET Core 2,1. SignalRO ASP.NET Core inclui vários
 
 Para obter mais informações, [consulte SignalR ASP.NET Core ](xref:signalr/introduction).
 
-## <a name="no-locrazor-class-libraries"></a>Razorbibliotecas de classes
+## <a name="no-locrazor-class-libraries"></a>Razor bibliotecas de classes
 
 ASP.NET Core 2,1 facilita a compilação e a inclusão Razor da interface do usuário baseada em uma biblioteca e sua compartilhamento em vários projetos. O novo Razor SDK permite a criação de Razor arquivos em um projeto de biblioteca de classes que pode ser empacotado em um pacote NuGet. Exibições e páginas em bibliotecas são descobertas automaticamente e podem ser substituídas pelo aplicativo. Integrando Razor a compilação à compilação:
 
@@ -49,9 +50,9 @@ ASP.NET Core 2,1 facilita a compilação e a inclusão Razor da interface do usu
 
 Para obter mais informações, consulte [criar interface do usuário reutilizável usando o Razor projeto de biblioteca de classes](xref:razor-pages/ui-class).
 
-## <a name="no-locidentity-ui-library--scaffolding"></a>IdentityBiblioteca de interface do usuário & scaffolding
+## <a name="no-locidentity-ui-library--scaffolding"></a>Identity Biblioteca de interface do usuário & scaffolding
 
-ASP.NET Core 2,1 fornece [ASP.NET Core Identity ](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class). Os aplicativos que incluem Identity o podem aplicar o novo Identity scaffolder para adicionar seletivamente o código-fonte contido na Identity Razor biblioteca de classes (RCL). Talvez você queira gerar o código-fonte para que você possa modificar o código e alterar o comportamento. Por exemplo, você pode instruir o scaffolder a gerar o código usado no registro. O código gerado tem precedência sobre o mesmo código no Identity RCL.
+ASP.NET Core 2,1 fornece [ASP.NET Core Identity](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class). Os aplicativos que incluem Identity o podem aplicar o novo Identity scaffolder para adicionar seletivamente o código-fonte contido na Identity Razor biblioteca de classes (RCL). Talvez você queira gerar o código-fonte para que você possa modificar o código e alterar o comportamento. Por exemplo, você pode instruir o scaffolder a gerar o código usado no registro. O código gerado tem precedência sobre o mesmo código no Identity RCL.
 
 Os aplicativos que **não** incluem autenticação podem aplicar o Identity scaffolder para adicionar o Identity pacote RCL. Você tem a opção de selecionar o Identity código a ser gerado.
 
@@ -161,7 +162,7 @@ Para obter mais informações, consulte:
 * <xref:spa/react>
 * <xref:spa/react-with-redux>
 
-## <a name="no-locrazor-pages-search-for-no-locrazor-assets"></a>RazorPesquisa de páginas por Razor ativos
+## <a name="no-locrazor-pages-search-for-no-locrazor-assets"></a>Razor Pesquisa de páginas por Razor ativos
 
 Em 2,1, Razor as páginas pesquisam Razor ativos (como layouts e parciais) nos seguintes diretórios na ordem listada:
 
@@ -169,9 +170,9 @@ Em 2,1, Razor as páginas pesquisam Razor ativos (como layouts e parciais) nos s
 1. */Pages/Shared/*
 1. */Views/Shared/*
 
-## <a name="no-locrazor-pages-in-an-area"></a>RazorPáginas em uma área
+## <a name="no-locrazor-pages-in-an-area"></a>Razor Páginas em uma área
 
-RazorAs páginas agora dão suporte a [áreas](xref:mvc/controllers/areas). Para ver um exemplo de áreas, crie um novo Razor aplicativo Web de páginas com contas de usuário individuais. Um Razor aplicativo Web de páginas com contas de usuário individuais inclui */areas/ Identity /pages*.
+Razor As páginas agora dão suporte a [áreas](xref:mvc/controllers/areas). Para ver um exemplo de áreas, crie um novo Razor aplicativo Web de páginas com contas de usuário individuais. Um Razor aplicativo Web de páginas com contas de usuário individuais inclui */areas/ Identity /pages*.
 
 ## <a name="mvc-compatibility-version"></a>Versão de compatibilidade do MVC
 

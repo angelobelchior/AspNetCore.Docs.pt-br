@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c05129c0f239fb28c83ab1c561dd910305eeb54b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 95035ec372ab6adb5bafb40f2b939c549ac6f839
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017630"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633806"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gerenciamento de sessão e estado no ASP.NET Core
 
@@ -128,7 +129,7 @@ Para substituir os padrões de sessão, use <xref:Microsoft.AspNetCore.Builder.S
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie . <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>o padrão é `false` . |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie . <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name> o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path> o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> o padrão é `false` . |
 | <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | O `IdleTimeout` indica por quanto tempo a sessão pode ficar ociosa antes de seu conteúdo ser abandonado. Cada acesso à sessão redefine o tempo limite. Essa configuração se aplica somente ao conteúdo da sessão, não ao cookie . O padrão é de 20 minutos. |
 | <xref:Microsoft.AspNetCore.Builder.SessionOptions.IOTimeout> | O tempo máximo permitido para carregar uma sessão do repositório ou para confirmá-la de volta para o repositório. Essa configuração pode se aplicar somente a operações assíncronas. Esse tempo limite pode ser desabilitado usando <xref:System.Threading.Timeout.InfiniteTimeSpan> . O padrão é 1 minuto. |
 
@@ -239,7 +240,7 @@ Para habilitar o provedor TempData baseado em sessão, use o <xref:Microsoft.Ext
 
 É possível passar uma quantidade limitada de dados de uma solicitação para outra adicionando-a à cadeia de caracteres de consulta da nova solicitação. Isso é útil para capturar o estado de uma maneira persistente que permita que links com estado inserido sejam compartilhados por email ou por redes sociais. Uma vez que cadeias de consulta de URL são públicas, nunca use cadeias de consulta para dados confidenciais.
 
-Além do compartilhamento indesejado, a inclusão de dados em cadeias de caracteres de consulta pode expor o aplicativo a ataques [CSRF (solicitação intersite forjada)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) . Qualquer estado de sessão preservado deve proteger contra ataques CSRF. Para obter mais informações, confira [Impedir ataques de XSRF/CSRF (solicitação intersite forjada)](xref:security/anti-request-forgery).
+Além do compartilhamento indesejado, a inclusão de dados em cadeias de caracteres de consulta pode expor o aplicativo a ataques [CSRF (solicitação intersite forjada)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) . Qualquer estado de sessão preservado deve proteger contra ataques CSRF. Para obter mais informações, consulte <xref:security/anti-request-forgery>.
 
 ## <a name="hidden-fields"></a>Campos ocultos
 
@@ -284,11 +285,11 @@ Se o middleware de sessão não persistir em uma sessão:
 
 O middleware de sessão pode falhar ao persistir uma sessão se o armazenamento de backup não estiver disponível. Por exemplo, um usuário armazena um carrinho de compras na sessão. O usuário adiciona um item ao carrinho, mas a confirmação falha. O aplicativo não sabe sobre a falha, assim, relata ao usuário que o item foi adicionado ao seu carrinho, o que não é verdade.
 
-A abordagem recomendada para verificar se há erros é chamar `await feature.Session.CommitAsync` quando o aplicativo é concluído gravando na sessão. <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> gerará uma exceção se o repositório de backup não estiver disponível. Se `CommitAsync` falhar, o aplicativo poderá processar a exceção. <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*>gera sob as mesmas condições quando o armazenamento de dados está indisponível.
+A abordagem recomendada para verificar se há erros é chamar `await feature.Session.CommitAsync` quando o aplicativo é concluído gravando na sessão. <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> gerará uma exceção se o repositório de backup não estiver disponível. Se `CommitAsync` falhar, o aplicativo poderá processar a exceção. <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*> gera sob as mesmas condições quando o armazenamento de dados está indisponível.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalRe estado da sessão
+## <a name="no-locsignalr-and-session-state"></a>SignalR e estado da sessão
 
-SignalRos aplicativos não devem usar o estado de sessão para armazenar informações. SignalRos aplicativos podem armazenar por estado de conexão no `Context.Items` no Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
+SignalR os aplicativos não devem usar o estado de sessão para armazenar informações. SignalR os aplicativos podem armazenar por estado de conexão no `Context.Items` no Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
@@ -370,7 +371,7 @@ O código a seguir mostra como configurar o provedor de sessão na memória com 
 
 A ordem do middleware é importante. No exemplo anterior, uma exceção `InvalidOperationException` ocorre quando `UseSession` é invocado após `UseMvc`. Para obter mais informações, veja [Ordenação de Middleware](xref:fundamentals/middleware/index#order).
 
-<xref:Microsoft.AspNetCore.Http.HttpContext.Session?displayProperty=nameWithType>está disponível após a configuração do estado de sessão.
+<xref:Microsoft.AspNetCore.Http.HttpContext.Session?displayProperty=nameWithType> está disponível após a configuração do estado de sessão.
 
 `HttpContext.Session` não pode ser acessado antes que `UseSession` tenha sido chamado.
 
@@ -388,7 +389,7 @@ Para substituir os padrões de sessão, use <xref:Microsoft.AspNetCore.Builder.S
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie . <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>o padrão é `false` . |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | Determina as configurações usadas para criar o cookie . <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name> o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> ( `.AspNetCore.Session` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path> o padrão é <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> ( `/` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> o padrão é <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> ( `1` ). <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> o padrão é `true` . <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> o padrão é `false` . |
 | <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | O `IdleTimeout` indica por quanto tempo a sessão pode ficar ociosa antes de seu conteúdo ser abandonado. Cada acesso à sessão redefine o tempo limite. Essa configuração se aplica somente ao conteúdo da sessão, não ao cookie . O padrão é de 20 minutos. |
 | <xref:Microsoft.AspNetCore.Builder.SessionOptions.IOTimeout> | O tempo máximo permitido para carregar uma sessão do repositório ou para confirmá-la de volta para o repositório. Essa configuração pode se aplicar somente a operações assíncronas. Esse tempo limite pode ser desabilitado usando <xref:System.Threading.Timeout.InfiniteTimeSpan> . O padrão é 1 minuto. |
 
@@ -444,7 +445,7 @@ O exemplo a seguir mostra como definir e obter um objeto serializável com os m�
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core expõe as Razor páginas [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) ou Controller <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> . Essa propriedade armazena dados até que eles sejam lidos em outra solicitação. Os métodos [Keep (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) e [Peek (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) podem ser usados para examinar os dados sem exclusão no final da solicitação. [Keep ()](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) marca todos os itens no dicionário para retenção. `TempData`é particularmente útil para o redirecionamento quando os dados são necessários para mais do que uma única solicitação. `TempData`é implementado por `TempData` provedores usando o cookie estado de sessão ou s.
+ASP.NET Core expõe as Razor páginas [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) ou Controller <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> . Essa propriedade armazena dados até que eles sejam lidos em outra solicitação. Os métodos [Keep (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) e [Peek (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) podem ser usados para examinar os dados sem exclusão no final da solicitação. [Keep ()](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) marca todos os itens no dicionário para retenção. `TempData` é particularmente útil para o redirecionamento quando os dados são necessários para mais do que uma única solicitação. `TempData` é implementado por `TempData` provedores usando o cookie estado de sessão ou s.
 
 ## <a name="tempdata-samples"></a>Amostras de TempData
 
@@ -502,7 +503,7 @@ A ordem do middleware é importante. No exemplo anterior, uma exceção `Invalid
 
 É possível passar uma quantidade limitada de dados de uma solicitação para outra adicionando-a à cadeia de caracteres de consulta da nova solicitação. Isso é útil para capturar o estado de uma maneira persistente que permita que links com estado inserido sejam compartilhados por email ou por redes sociais. Uma vez que cadeias de consulta de URL são públicas, nunca use cadeias de consulta para dados confidenciais.
 
-Além da possibilidade de ocorrência de compartilhamento não intencional, incluir dados em cadeias de consulta pode criar oportunidades para ataques de [CSRF (solicitação intersite forjada)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), que podem enganar os usuários para que eles visitem sites mal-intencionados enquanto estão autenticados. Invasores então podem roubar dados do usuário do aplicativo ou executar ações mal-intencionadas em nome do usuário. Qualquer estado de sessão ou aplicativo preservado deve se proteger contra ataques CSRF. Para obter mais informações, confira [Impedir ataques de XSRF/CSRF (solicitação intersite forjada)](xref:security/anti-request-forgery).
+Além da possibilidade de ocorrência de compartilhamento não intencional, incluir dados em cadeias de consulta pode criar oportunidades para ataques de [CSRF (solicitação intersite forjada)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), que podem enganar os usuários para que eles visitem sites mal-intencionados enquanto estão autenticados. Invasores então podem roubar dados do usuário do aplicativo ou executar ações mal-intencionadas em nome do usuário. Qualquer estado de sessão ou aplicativo preservado deve se proteger contra ataques CSRF. Para obter mais informações, consulte <xref:security/anti-request-forgery>.
 
 ## <a name="hidden-fields"></a>Campos ocultos
 
@@ -597,9 +598,9 @@ Use a [Injeção de dependência](xref:fundamentals/dependency-injection) para d
 
   A abordagem recomendada para verificar se há erros é chamar `await feature.Session.CommitAsync();` do código de aplicativo quando o aplicativo tiver terminado de gravar na sessão. `CommitAsync` gerará uma exceção se o repositório de backup não estiver disponível. Se `CommitAsync` falhar, o aplicativo poderá processar a exceção. `LoadAsync` gera sob as mesmas condições em que o armazenamento de dados não está disponível.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalRe estado da sessão
+## <a name="no-locsignalr-and-session-state"></a>SignalR e estado da sessão
 
-SignalRos aplicativos não devem usar o estado de sessão para armazenar informações. SignalRos aplicativos podem armazenar por estado de conexão no `Context.Items` no Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
+SignalR os aplicativos não devem usar o estado de sessão para armazenar informações. SignalR os aplicativos podem armazenar por estado de conexão no `Context.Items` no Hub. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

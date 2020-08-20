@@ -5,6 +5,7 @@ description: Saiba como iniciar a migração de um projeto MVC do ASP.NET para A
 ms.author: wpickett
 ms.date: 06/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: 17f2a2532c58c3796835328260231d63f8fb2e40
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: cd1a7ff57d911f96f0adfe4b548fa80ec844886d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015043"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632233"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrar do ASP.NET MVC para o ASP.NET Core MVC
 
@@ -230,7 +231,7 @@ Crie um novo aplicativo Web *vazio* ASP.NET Core com o mesmo nome do projeto ant
 
 * Ao direcionar o .NET Core, o [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) é referenciado por padrão. Este pacote contém pacotes comumente usados por aplicativos MVC. Se estiver direcionando .NET Framework, as referências de pacote deverão ser listadas individualmente no arquivo de projeto.
 
-`Microsoft.AspNetCore.Mvc`é o ASP.NET Core MVC Framework. `Microsoft.AspNetCore.StaticFiles`é o manipulador de arquivo estático. ASP.NET Core aplicativos explicitamente optam pelo middleware, como para o fornecimento de arquivos estáticos. Para obter mais informações, veja [Arquivos estáticos](xref:fundamentals/static-files).
+`Microsoft.AspNetCore.Mvc` é o ASP.NET Core MVC Framework. `Microsoft.AspNetCore.StaticFiles` é o manipulador de arquivo estático. ASP.NET Core aplicativos explicitamente optam pelo middleware, como para o fornecimento de arquivos estáticos. Para obter mais informações, veja [Arquivos estáticos](xref:fundamentals/static-files).
 
 * Abra o arquivo *Startup.cs* e altere o código para corresponder ao seguinte:
 
@@ -290,7 +291,7 @@ A funcionalidade a seguir requer a migração do projeto ASP.NET MVC de exemplo 
 
 ## <a name="controllers-and-views"></a>Controladores e exibições
 
-* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult`implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
+* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
 
 * Copie os arquivos de exibição *about. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor do projeto ASP.NET MVC para o projeto ASP.NET Core.
 
@@ -416,7 +417,7 @@ Crie um novo aplicativo Web *vazio* ASP.NET Core com o mesmo nome do projeto ant
 
 * Ao direcionar o .NET Core, o [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) é referenciado por padrão. Este pacote contém pacotes comumente usados por aplicativos MVC. Se estiver direcionando .NET Framework, as referências de pacote deverão ser listadas individualmente no arquivo de projeto.
 
-`Microsoft.AspNetCore.Mvc`é o ASP.NET Core MVC Framework. `Microsoft.AspNetCore.StaticFiles`é o manipulador de arquivo estático. ASP.NET Core aplicativos explicitamente optam pelo middleware, como para o fornecimento de arquivos estáticos. Para obter mais informações, veja [Arquivos estáticos](xref:fundamentals/static-files).
+`Microsoft.AspNetCore.Mvc` é o ASP.NET Core MVC Framework. `Microsoft.AspNetCore.StaticFiles` é o manipulador de arquivo estático. ASP.NET Core aplicativos explicitamente optam pelo middleware, como para o fornecimento de arquivos estáticos. Para obter mais informações, veja [Arquivos estáticos](xref:fundamentals/static-files).
 
 * Abra o arquivo *Startup.cs* e altere o código para corresponder ao seguinte:
 
@@ -476,7 +477,7 @@ A funcionalidade a seguir requer a migração do projeto ASP.NET MVC de exemplo 
 
 ## <a name="controllers-and-views"></a>Controladores e exibições
 
-* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult`implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
+* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
 
 * Copie os arquivos de exibição *about. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor do projeto ASP.NET MVC para o projeto ASP.NET Core.
 

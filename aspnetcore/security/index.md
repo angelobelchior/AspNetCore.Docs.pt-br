@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,16 +17,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/index
-ms.openlocfilehash: ead5863f0656e182d395fc1e0deaf63ff66034cb
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0378fd06b5cae5b8911e8a2f41937b28d5444538
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021361"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632857"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Visão geral sobre a segurança do ASP.NET Core
 
-O ASP.NET Core permite que desenvolvedores configurem e gerenciem facilmente a segurança de seus aplicativos. O ASP.NET Core contém recursos para gerenciamento de autenticação, autorização, proteção de dados, imposição de HTTPS, segredos de aplicativo, proteção contra falsificação de solicitação e gerenciamento de CORS. Esses recursos de segurança permitem que você crie aplicativos de ASP.NET Core robustos e seguros ao mesmo tempo.
+O ASP.NET Core permite que desenvolvedores configurem e gerenciem facilmente a segurança de seus aplicativos. O ASP.NET Core contém recursos para gerenciar a autenticação, autorização, proteção de dados, imposição de HTTPS, segredos de aplicativo, prevenção de XSRF/CSRF e gerenciamento de CORS. Esses recursos de segurança permitem que você crie aplicativos de ASP.NET Core robustos e seguros ao mesmo tempo.
 
 ## <a name="aspnet-core-security-features"></a>Recursos de segurança do ASP.NET Core
 
@@ -41,9 +42,9 @@ Outra forma de pensar na autenticação é considerá-la como uma maneira de ent
 
 O ASP.NET Core e o EF contêm recursos que ajudam a proteger seus aplicativos e impedir violações de segurança. A seguinte lista de links leva à documentação com detalhe de técnicas para evitar as vulnerabilidades de segurança mais comuns em aplicativos Web:
 
-* [Ataques de script entre sites](xref:security/cross-site-scripting)
+* [Ataques XSS (script entre sites)](xref:security/cross-site-scripting)
 * [Ataques de injeção de SQL](/ef/core/querying/raw-sql)
-* [CSRF (solicitação intersite forjada)](xref:security/anti-request-forgery)
+* [Ataques de solicitação entre sites forjado (XSRF/CSRF)](xref:security/anti-request-forgery)
 * [Ataques de redirecionamento aberto](xref:security/preventing-open-redirects)
 
 Há mais vulnerabilidades sobre as quais você deve estar atento. Para obter mais informações, consulte os outros artigos na seção **segurança Identity e** do Sumário.

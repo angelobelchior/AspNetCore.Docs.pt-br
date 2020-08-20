@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 07/10/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 1fced12700fcd5910c1484ebb9190c7652b2646e
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 380e18d1826159fa0780909aba58fe8334ede8bb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130698"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631934"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publicar um aplicativo ASP.NET Core no Azure com o Visual Studio
 
@@ -174,7 +175,7 @@ Na página **Configurações** da caixa de diálogo **Publicar**:
 * Expanda **bancos de dados** e marque **usar esta cadeia de conexão em tempo de execução**.
 * Expanda **Entity Framework migrações** e marque **aplicar esta migração ao publicar**.
 
-* Clique em **Salvar**. O Visual Studio retorna para a caixa de diálogo **Publicar**. 
+* Selecione **Salvar**. O Visual Studio retorna para a caixa de diálogo **Publicar**. 
 
 ![Caixa de diálogo Publicar: painel Configurações](publish-to-azure-webapp-using-vs/_static/pp_settings.png)
 
@@ -196,7 +197,7 @@ Clique em **Publicar**. O Visual Studio publica seu aplicativo no Azure. Quando 
 
 ![Verifique se a tarefa está concluída](publish-to-azure-webapp-using-vs/_static/final.png)
 
-### <a name="clean-up"></a>Limpar
+### <a name="clean-up"></a>Limpeza
 
 Quando você concluir o teste do aplicativo, acesse o [portal do Azure](https://portal.azure.com/) e exclua o aplicativo.
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 12/06/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 0def05f73fd5264b1fb01e0a2ae4fd8d70588d9c
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 1f3fca62b39125d9f23042c5929de829ab243865
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130555"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633169"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Implantação contínua no Azure com o Visual Studio e o GIT com o ASP.NET Core
 
@@ -116,7 +117,7 @@ O GIT é um sistema de controle de versão distribuída que pode ser usado para 
 
    * Selecione **configurações**  >  **credenciais de implantação**. A folha **Definir credenciais de implantação** é exibida.
    * Digite um nome de usuário e senha. Salve a senha para uso posterior ao configurar o GIT.
-   * Clique em **Salvar**.
+   * Selecione **Salvar**.
 
 1. Na folha **Aplicativo Web**, selecione **Configurações** > **Propriedades**. A URL do repositório GIT remoto no qual você implantará será mostrada em **URL do GIT**.
 

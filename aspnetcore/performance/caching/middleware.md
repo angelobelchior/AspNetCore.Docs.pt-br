@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 7e1463671323cddd2b95c03de994d497449d7884
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 43b0ef1dcbf6d0137b14be9e58eb056f06ae093d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019086"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633442"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de cache de resposta em ASP.NET Core
 
@@ -47,7 +48,7 @@ Configure o aplicativo para usar o middleware com o <xref:Microsoft.AspNetCore.B
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17)]
 
 > [!WARNING]
-> <xref:Owin.CorsExtensions.UseCors%2A>deve ser chamado antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar o [middleware CORS](xref:security/cors).
+> <xref:Owin.CorsExtensions.UseCors%2A> deve ser chamado antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar o [middleware CORS](xref:security/cors).
 
 O aplicativo de exemplo adiciona cabeçalhos ao cache de controle em solicitações subsequentes:
 
@@ -112,7 +113,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | Cabeçalho | Detalhes |
 | ------ | ------- |
 | `Authorization` | A resposta não será armazenada em cache se o cabeçalho existir. |
-| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>públicos</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>público</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Um `Pragma: no-cache` cabeçalho na solicitação produz o mesmo efeito que `Cache-Control: no-cache` . Esse cabeçalho é substituído pelas diretivas relevantes no `Cache-Control` cabeçalho, se presente. Considerado para compatibilidade com versões anteriores com HTTP/1.0. |
 | `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookie s impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [ cookie provedor TempData baseado](xref:fundamentals/app-state#tempdata)em Caching).  |
 | `Vary` | O `Vary` cabeçalho é usado para variar a resposta armazenada em cache por outro cabeçalho. Por exemplo, armazene respostas em cache por meio da codificação, incluindo o `Vary: Accept-Encoding` cabeçalho, que armazena em cache as respostas para solicitações com cabeçalhos `Accept-Encoding: gzip` e `Accept-Encoding: text/plain` separadamente. Uma resposta com um valor de cabeçalho de `*` nunca é armazenada. |
@@ -149,10 +150,10 @@ Ao testar e solucionar problemas de comportamento de cache, um navegador pode de
 * O método de solicitação deve ser GET ou HEAD.
 * No `Startup.Configure` , o middleware de cache de resposta deve ser colocado antes do middleware que requer Caching. Para obter mais informações, consulte <xref:fundamentals/middleware/index>.
 * O `Authorization` cabeçalho não deve estar presente.
-* `Cache-Control`os parâmetros de cabeçalho devem ser válidos e a resposta deve ser marcada `public` e não marcada `private` .
+* `Cache-Control` os parâmetros de cabeçalho devem ser válidos e a resposta deve ser marcada `public` e não marcada `private` .
 * O `Pragma: no-cache` cabeçalho não deve estar presente se o `Cache-Control` cabeçalho não estiver presente, pois o `Cache-Control` cabeçalho substitui o `Pragma` cabeçalho quando estiver presente.
 * O `Set-Cookie` cabeçalho não deve estar presente.
-* `Vary`os parâmetros de cabeçalho devem ser válidos e não iguais a `*` .
+* `Vary` os parâmetros de cabeçalho devem ser válidos e não iguais a `*` .
 * O `Content-Length` valor do cabeçalho (se definido) deve corresponder ao tamanho do corpo da resposta.
 * O <xref:Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature> não é usado.
 * A resposta não deve estar obsoleta conforme especificado pelo `Expires` cabeçalho e pelas `max-age` diretivas de `s-maxage` cache e.
@@ -256,7 +257,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | Cabeçalho | Detalhes |
 | ------ | ------- |
 | `Authorization` | A resposta não será armazenada em cache se o cabeçalho existir. |
-| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>públicos</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>público</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Um `Pragma: no-cache` cabeçalho na solicitação produz o mesmo efeito que `Cache-Control: no-cache` . Esse cabeçalho é substituído pelas diretivas relevantes no `Cache-Control` cabeçalho, se presente. Considerado para compatibilidade com versões anteriores com HTTP/1.0. |
 | `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookie s impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [ cookie provedor TempData baseado](xref:fundamentals/app-state#tempdata)em Caching).  |
 | `Vary` | O `Vary` cabeçalho é usado para variar a resposta armazenada em cache por outro cabeçalho. Por exemplo, armazene respostas em cache por meio da codificação, incluindo o `Vary: Accept-Encoding` cabeçalho, que armazena em cache as respostas para solicitações com cabeçalhos `Accept-Encoding: gzip` e `Accept-Encoding: text/plain` separadamente. Uma resposta com um valor de cabeçalho de `*` nunca é armazenada. |
@@ -293,10 +294,10 @@ Ao testar e solucionar problemas de comportamento de cache, um navegador pode de
 * O método de solicitação deve ser GET ou HEAD.
 * No `Startup.Configure` , o middleware de cache de resposta deve ser colocado antes do middleware que requer Caching. Para obter mais informações, consulte <xref:fundamentals/middleware/index>.
 * O `Authorization` cabeçalho não deve estar presente.
-* `Cache-Control`os parâmetros de cabeçalho devem ser válidos e a resposta deve ser marcada `public` e não marcada `private` .
+* `Cache-Control` os parâmetros de cabeçalho devem ser válidos e a resposta deve ser marcada `public` e não marcada `private` .
 * O `Pragma: no-cache` cabeçalho não deve estar presente se o `Cache-Control` cabeçalho não estiver presente, pois o `Cache-Control` cabeçalho substitui o `Pragma` cabeçalho quando estiver presente.
 * O `Set-Cookie` cabeçalho não deve estar presente.
-* `Vary`os parâmetros de cabeçalho devem ser válidos e não iguais a `*` .
+* `Vary` os parâmetros de cabeçalho devem ser válidos e não iguais a `*` .
 * O `Content-Length` valor do cabeçalho (se definido) deve corresponder ao tamanho do corpo da resposta.
 * O <xref:Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature> não é usado.
 * A resposta não deve estar obsoleta conforme especificado pelo `Expires` cabeçalho e pelas `max-age` diretivas de `s-maxage` cache e.

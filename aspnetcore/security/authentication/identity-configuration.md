@@ -1,11 +1,12 @@
 ---
-title: Configurar ASP.NET CoreIdentity
+title: configurar ASP.NET Core Identity
 author: AdrienTorris
-description: Entenda ASP.NET Core Identity valores padrão e saiba como configurar Identity Propriedades para usar valores personalizados.
+description: Entenda ASP.NET Core Identity os valores padrão e saiba como configurar Identity Propriedades para usar valores personalizados.
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,22 +17,22 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: b7f6eaba1a0e819a077e3d63b4f997e75b8cd317
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ae4a2eb9d95339651c3810a9f8489d703d73a3fe
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020594"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632675"
 ---
-# <a name="configure-aspnet-core-no-locidentity"></a>Configurar ASP.NET CoreIdentity
+# <a name="configure-no-locaspnet-core-identity"></a>configurar ASP.NET Core Identity
 
 ASP.NET Core Identity usa valores padrão para configurações como política de senha, bloqueio e cookie configuração. Essas configurações podem ser substituídas na `Startup` classe.
 
-## <a name="no-locidentity-options"></a>IdentityOpções
+## <a name="no-locidentity-options"></a>Identity Opções
 
-A classe [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa as opções que podem ser usadas para configurar o Identity sistema. `IdentityOptions`deve ser definido **após** a chamada `AddIdentity` ou `AddDefaultIdentity` .
+A classe [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa as opções que podem ser usadas para configurar o Identity sistema. `IdentityOptions` deve ser definido **após** a chamada `AddIdentity` ou `AddDefaultIdentity` .
 
-### <a name="claims-no-locidentity"></a>DeclaraçõesIdentity
+### <a name="claims-no-locidentity"></a>Declarações Identity
 
 [ Identity Options. Claims Identity ](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica [as Identity Opções de declarações](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) com as propriedades mostradas na tabela a seguir.
 
@@ -72,7 +73,7 @@ Por padrão, Identity o requer que as senhas contenham um caractere maiúsculo, 
 
 As senhas são configuradas com:
 
-* <xref:Microsoft.AspNetCore.Identity.PasswordOptions>em `Startup.ConfigureServices` .
+* <xref:Microsoft.AspNetCore.Identity.PasswordOptions> em `Startup.ConfigureServices` .
 * [ `[StringLength]` atributos](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) de `Password` Propriedades se o Identity for [com Scaffold no aplicativo](xref:security/authentication/scaffold-identity). `InputModel``Password`as propriedades são encontradas nos seguintes arquivos:
   * `Areas/Identity/Pages/Account/Register.cshtml.cs`
   * `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
@@ -137,11 +138,11 @@ Para obter mais informações, consulte [ Cookie authenticationoptions](/dotnet/
 
 ## <a name="password-hasher-options"></a>Opções de hash de senha
 
-<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions>Obtém e define opções para o hash de senha.
+<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions> Obtém e define opções para o hash de senha.
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | O modo de compatibilidade usado ao aplicar o hash de novas senhas. Assume o padrão de <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. O primeiro byte de uma senha com hash, chamado de *marcador de formato*, especifica a versão do algoritmo de hash usado para fazer o hash da senha. Ao verificar uma senha em relação a um hash, o <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método seleciona o algoritmo correto com base no primeiro byte. Um cliente é capaz de autenticar, independentemente de qual versão do algoritmo foi usada para fazer o hash da senha. Definir o modo de compatibilidade afeta o hash de *novas senhas*. |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | O modo de compatibilidade usado ao aplicar o hash de novas senhas. O padrão é <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. O primeiro byte de uma senha com hash, chamado de *marcador de formato*, especifica a versão do algoritmo de hash usado para fazer o hash da senha. Ao verificar uma senha em relação a um hash, o <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método seleciona o algoritmo correto com base no primeiro byte. Um cliente é capaz de autenticar, independentemente de qual versão do algoritmo foi usada para fazer o hash da senha. Definir o modo de compatibilidade afeta o hash de *novas senhas*. |
 | <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | O número de iterações usadas ao aplicar o hash de senhas usando PBKDF2. Esse valor é usado somente quando o <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> é definido como <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> . O valor deve ser um inteiro positivo e o padrão é `10000` . |
 
 No exemplo a seguir, o <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> é definido como `12000` em `Startup.ConfigureServices` :

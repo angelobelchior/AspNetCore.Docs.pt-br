@@ -5,6 +5,7 @@ description: Saiba mais sobre Razor a sintaxe de marcação para inserir código
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 4b418c53535965eae6b41f3297b0c6336fb993d5
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b62fcb685b1c6d0c504c685c600d0316b32d7f57
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632493"
 ---
-# <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razorreferência de sintaxe para ASP.NET Core
+# <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referência de sintaxe para ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)e [Dan Vicarel](https://github.com/Rabadash8820)
 
-Razoré uma sintaxe de marcação para inserir código baseado em servidor em páginas da Web. A Razor sintaxe consiste em Razor marcação, C# e HTML. Os arquivos que contêm Razor geralmente têm uma extensão de arquivo *. cshtml* . Razortambém é encontrado em arquivos de [ Razor componentes](xref:blazor/components/index) (*. Razor*).
+Razor é uma sintaxe de marcação para inserir código baseado em servidor em páginas da Web. A Razor sintaxe consiste em Razor marcação, C# e HTML. Os arquivos que contêm Razor geralmente têm uma extensão de arquivo *. cshtml* . Razortambém é encontrado em arquivos de [ Razor componentes](xref:blazor/components/index) (*. Razor*).
 
 ## <a name="rendering-html"></a>Renderização de HTML
 
@@ -34,7 +35,7 @@ O Razor idioma padrão é HTML. O processamento de HTML da Razor marcação não
 
 ## <a name="no-locrazor-syntax"></a>Sintaxe de Razor
 
-Razordá suporte a C# e usa o `@` símbolo para fazer a transição de HTML para C#. Razoravalia as expressões C# e as renderiza na saída HTML.
+Razor dá suporte a C# e usa o `@` símbolo para fazer a transição de HTML para C#. Razor avalia as expressões C# e as renderiza na saída HTML.
 
 Quando um `@` símbolo é seguido por uma [ Razor palavra-chave reservada](#razor-reserved-keywords), ele faz a transição para uma Razor marcação específica. Caso contrário, ele faz a transição para C# simples.
 
@@ -157,9 +158,9 @@ O código renderiza o HTML a seguir:
 <span>Hello World</span>
 ```
 
-## <a name="no-locrazor-code-blocks"></a>Razorblocos de código
+## <a name="no-locrazor-code-blocks"></a>Razor blocos de código
 
-Razoros blocos de código começam com `@` e são incluídos por `{}` . Diferente das expressões, o código C# dentro de blocos de código não é renderizado. Blocos de código e expressões em uma exibição compartilham o mesmo escopo e são definidos em ordem:
+Razor os blocos de código começam com `@` e são incluídos por `{}` . Diferente das expressões, o código C# dentro de blocos de código não é renderizado. Blocos de código e expressões em uma exibição compartilham o mesmo escopo e são definidos em ordem:
 
 ```cshtml
 @{
@@ -257,7 +258,7 @@ Sem o `@:` no código, um Razor erro de tempo de execução é gerado.
 
 Estruturas de controle são uma extensão dos blocos de código. Todos os aspectos dos blocos de código (transição para marcação, C# embutido) também se aplicam às seguintes estruturas:
 
-### <a name="conditionals-if-else-if-else-and-switch"></a>Condicionais`@if, else if, else, and @switch`
+### <a name="conditionals-if-else-if-else-and-switch"></a>Condicionais `@if, else if, else, and @switch`
 
 `@if` controla quando o código é executado:
 
@@ -302,7 +303,7 @@ A marcação a seguir mostra como usar uma instrução switch:
 }
 ```
 
-### <a name="looping-for-foreach-while-and-do-while"></a>Loop`@for, @foreach, @while, and @do while`
+### <a name="looping-for-foreach-while-and-do-while"></a>Loop `@for, @foreach, @while, and @do while`
 
 O HTML no modelo pode ser renderizado com instruções de controle em loop. Para renderizar uma lista de pessoas:
 
@@ -390,7 +391,7 @@ O tratamento de exceções é semelhante ao de C#:
 
 ### `@lock`
 
-Razoro tem a capacidade de proteger seções críticas com instruções Lock:
+Razor o tem a capacidade de proteger seções críticas com instruções Lock:
 
 ```cshtml
 @lock (SomeLock)
@@ -401,7 +402,7 @@ Razoro tem a capacidade de proteger seções críticas com instruções Lock:
 
 ### <a name="comments"></a>Comentários
 
-Razordá suporte a comentários em C# e HTML:
+Razor dá suporte a comentários em C# e HTML:
 
 ```cshtml
 @{
@@ -417,7 +418,7 @@ O código renderiza o HTML a seguir:
 <!-- HTML comment -->
 ```
 
-RazorOs comentários são removidos pelo servidor antes que a página da Web seja renderizada. Razorusa `@*  *@` para delimitar comentários. O código a seguir é comentado, de modo que o servidor não renderiza nenhuma marcação:
+Razor Os comentários são removidos pelo servidor antes que a página da Web seja renderizada. Razor usa `@*  *@` para delimitar comentários. O código a seguir é comentado, de modo que o servidor não renderiza nenhuma marcação:
 
 ```cshtml
 @*
@@ -431,7 +432,7 @@ RazorOs comentários são removidos pelo servidor antes que a página da Web sej
 
 ## <a name="directives"></a>Diretivas
 
-Razoras diretivas são representadas por expressões implícitas com palavras-chave reservadas após o `@` símbolo. Uma diretiva geralmente altera o modo como uma exibição é analisada ou habilita uma funcionalidade diferente.
+Razor as diretivas são representadas por expressões implícitas com palavras-chave reservadas após o `@` símbolo. Uma diretiva geralmente altera o modo como uma exibição é analisada ou habilita uma funcionalidade diferente.
 
 Entender como o Razor gera código para uma exibição torna mais fácil entender como as diretivas funcionam.
 
@@ -637,7 +638,7 @@ A classe gerada herda de `RazorPage<dynamic>`:
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```
 
-Razorexpõe uma `Model` propriedade para acessar o modelo passado para a exibição:
+Razor expõe uma `Model` propriedade para acessar o modelo passado para a exibição:
 
 ```cshtml
 <div>The Login Email: @Model.Email</div>
@@ -719,7 +720,7 @@ Em [ Razor componentes](xref:blazor/components/index), `@using` o também contro
 
 ## <a name="directive-attributes"></a>Atributos de diretiva
 
-Razoros atributos de diretiva são representados por expressões implícitas com palavras-chave reservadas após o `@` símbolo. Um atributo de diretiva normalmente altera a maneira como um elemento é analisado ou habilita uma funcionalidade diferente.
+Razor os atributos de diretiva são representados por expressões implícitas com palavras-chave reservadas após o `@` símbolo. Um atributo de diretiva normalmente altera a maneira como um elemento é analisado ou habilita uma funcionalidade diferente.
 
 ### `@attributes`
 
@@ -737,7 +738,7 @@ A vinculação de dados nos componentes é realizada com o atributo `@bind`. Par
 
 *Esse cenário se aplica somente a Razor componentes (. Razor).*
 
-Razorfornece recursos de manipulação de eventos para componentes do. Para obter mais informações, consulte <xref:blazor/components/event-handling>.
+Razor fornece recursos de manipulação de eventos para componentes do. Para obter mais informações, consulte <xref:blazor/components/event-handling>.
 
 ::: moniker-end
 
@@ -781,7 +782,7 @@ A `@typeparam` diretiva declara um parâmetro de tipo genérico para a classe de
 
 ## <a name="templated-no-locrazor-delegates"></a>Delegados de modelo Razor
 
-Razoros modelos permitem que você defina um trecho de código de interface do usuário com o seguinte formato:
+Razor os modelos permitem que você defina um trecho de código de interface do usuário com o seguinte formato:
 
 ```cshtml
 @<tag>...</tag>
@@ -890,19 +891,19 @@ Há três diretivas que relacionadas aos [Auxiliares de marca](xref:mvc/views/ta
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Remove os Auxiliares de marca adicionados anteriormente de uma exibição. |
 | [`@tagHelperPrefix`](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Especifica um prefixo de marca para habilitar o suporte do Auxiliar de marca e tornar explícito o uso do Auxiliar de marca. |
 
-## <a name="no-locrazor-reserved-keywords"></a>RazorPalavras-chave reservadas
+## <a name="no-locrazor-reserved-keywords"></a>Razor Palavras-chave reservadas
 
-### <a name="no-locrazor-keywords"></a>RazorPalavras-chave
+### <a name="no-locrazor-keywords"></a>Razor Palavras-chave
 
-* `page`(Requer o ASP.NET Core 2,1 ou posterior)
+* `page` (Requer o ASP.NET Core 2,1 ou posterior)
 * `namespace`
 * `functions`
 * `inherits`
 * `model`
 * `section`
-* `helper`(Não tem suporte no momento por ASP.NET Core)
+* `helper` (Não tem suporte no momento por ASP.NET Core)
 
-Razoras palavras-chave têm escape `@(Razor Keyword)` (por exemplo, `@(functions)` ).
+Razor as palavras-chave têm escape `@(Razor Keyword)` (por exemplo, `@(functions)` ).
 
 ### <a name="c-no-locrazor-keywords"></a>RazorPalavras-chave do C#
 
@@ -923,7 +924,7 @@ Razoras palavras-chave têm escape `@(Razor Keyword)` (por exemplo, `@(functions
 
 As Razor palavras-chave do C# devem ter um escape duplo com `@(@C# Razor Keyword)` (por exemplo, `@(@case)` ). O primeiro `@` escapa o Razor analisador. O segundo `@` faz o escape do analisador C#.
 
-### <a name="reserved-keywords-not-used-by-no-locrazor"></a>Palavras-chave reservadas não usadas porRazor
+### <a name="reserved-keywords-not-used-by-no-locrazor"></a>Palavras-chave reservadas não usadas por Razor
 
 * `class`
 
@@ -1001,7 +1002,7 @@ O Razor mecanismo de exibição executa pesquisas que diferenciam maiúsculas de
 Os desenvolvedores são incentivados a fazer a correspondência entre as maiúsculas e minúsculas dos nomes dos arquivos e de diretórios com o uso de maiúsculas e minúsculas em:
 
 * Nomes de área, controlador e ação.
-* RazorPages.
+* Razor Pages.
 
 Fazer essa correspondência garante que as implantações encontrem suas exibições, independentemente do sistema de arquivos subjacente.
 

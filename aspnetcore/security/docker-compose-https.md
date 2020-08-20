@@ -7,6 +7,7 @@ ms.author: ravipal
 ms.custom: mvc
 ms.date: 03/28/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: c3b627cdc74f1b40611d84bc3419e678e2dfbba4
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 75a205c1eb21394ed36c00359f0dc4ca7e6d09e0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022453"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631635"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hospedando ASP.NET Core imagens com Docker Compose via HTTPS
 
@@ -41,7 +42,7 @@ O [SDK do .NET Core 2,2](https://dotnet.microsoft.com/download) ou posterior é 
 
 ## <a name="certificates"></a>Certificados
 
-Um certificado de uma [autoridade de certificação](https://wikipedia.org/wiki/Certificate_authority) é necessário para [Hospedagem de produção](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) para um domínio. [Let's Encrypt](https://letsencrypt.org/)é uma autoridade de certificação que oferece certificados gratuitos.
+Um certificado de uma [autoridade de certificação](https://wikipedia.org/wiki/Certificate_authority) é necessário para [Hospedagem de produção](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) para um domínio. [Let's Encrypt](https://letsencrypt.org/) é uma autoridade de certificação que oferece certificados gratuitos.
 
 Este documento usa [certificados de desenvolvimento autoassinados](https://wikipedia.org/wiki/Self-signed_certificate) para hospedar imagens predefinidas `localhost` . As instruções são semelhantes ao uso de certificados de produção.
 
@@ -107,7 +108,7 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password her
 dotnet dev-certs https --trust
 ```
 
-`dotnet dev-certs https --trust`Só tem suporte no macOS e no Windows. Você precisa confiar em certificados no Linux na forma com que a sua distribuição dá suporte. É provável que você precise confiar no certificado em seu navegador.
+`dotnet dev-certs https --trust` Só tem suporte no macOS e no Windows. Você precisa confiar em certificados no Linux na forma com que a sua distribuição dá suporte. É provável que você precise confiar no certificado em seu navegador.
 
 Nos comandos anteriores, substitua `{ password here }` por uma senha.
 

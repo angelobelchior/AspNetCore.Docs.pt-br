@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 10741cfc701bf261484b9e6c73a2347e2dd7083d
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a53ba22c301b04aafa1eeb53d91f82f90dab0bad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019827"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631544"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>O que há de novo no ASP.NET Core 3,0
 
@@ -29,13 +30,13 @@ Este artigo destaca as alterações mais significativas no ASP.NET Core 3,0 com 
 
 ## Blazor
 
-Blazoré uma nova estrutura no ASP.NET Core para a criação de interface do usuário da Web interativa do lado do cliente com o .NET:
+Blazor é uma nova estrutura no ASP.NET Core para a criação de interface do usuário da Web interativa do lado do cliente com o .NET:
 
 * Crie interfaces do usuário interativas avançadas usando C# em vez de JavaScript.
 * Compartilhe a lógica de aplicativo do lado do cliente e do servidor gravada no .NET.
 * Renderize a interface do usuário, como HTML e CSS para suporte amplo de navegadores, incluindo navegadores móveis.
 
-Blazorcenários com suporte do Framework:
+Blazor cenários com suporte do Framework:
 
 * Componentes de interface do usuário reutilizáveis ( Razor componentes)
 * Roteamento do lado do cliente
@@ -49,17 +50,17 @@ Para obter mais informações, consulte <xref:blazor/index>.
 
 ### Blazor Server
 
-Blazordissocia a lógica de renderização do componente de como as atualizações da interface do usuário são aplicadas. Blazor Serverfornece suporte para hospedar Razor componentes no servidor em um aplicativo ASP.NET Core. As atualizações da interface do usuário são manipuladas em uma SignalR conexão. Blazor Servertem suporte no ASP.NET Core 3,0.
+Blazor dissocia a lógica de renderização do componente de como as atualizações da interface do usuário são aplicadas. Blazor Server fornece suporte para hospedar Razor componentes no servidor em um aplicativo ASP.NET Core. As atualizações da interface do usuário são manipuladas em uma SignalR conexão. Blazor Server tem suporte no ASP.NET Core 3,0.
 
-### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssemblyApresentação
+### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssembly Apresentação
 
-Blazoros aplicativos também podem ser executados diretamente no navegador usando um tempo de execução .NET baseado em Webassembly. Blazor WebAssemblyestá em visualização e *não* tem suporte no ASP.NET Core 3,0. Blazor WebAssemblyterá suporte em uma versão futura do ASP.NET Core.
+Blazor os aplicativos também podem ser executados diretamente no navegador usando um tempo de execução .NET baseado em Webassembly. Blazor WebAssembly está em visualização e *não* tem suporte no ASP.NET Core 3,0. Blazor WebAssembly terá suporte em uma versão futura do ASP.NET Core.
 
 ### <a name="no-locrazor-components"></a>Componentes Razor
 
-Blazoros aplicativos são criados a partir de componentes. Os componentes são partes independentes da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Os componentes são classes normais do .NET que definem a lógica de renderização da interface do usuário e manipuladores de eventos do lado do cliente. Você pode criar aplicativos Web interativos sofisticados sem JavaScript.
+Blazor os aplicativos são criados a partir de componentes. Os componentes são partes independentes da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Os componentes são classes normais do .NET que definem a lógica de renderização da interface do usuário e manipuladores de eventos do lado do cliente. Você pode criar aplicativos Web interativos sofisticados sem JavaScript.
 
-Os componentes no Blazor normalmente são criados usando Razor a sintaxe, uma mistura natural de HTML e C#. Razoros componentes são semelhantes às Razor páginas e às exibições do MVC que ambos usam Razor . Ao contrário de páginas e exibições, que se baseiam em um modelo de solicitação-resposta, os componentes são usados especificamente para manipular a composição da interface do usuário.
+Os componentes no Blazor normalmente são criados usando Razor a sintaxe, uma mistura natural de HTML e C#. Razor os componentes são semelhantes às Razor páginas e às exibições do MVC que ambos usam Razor . Ao contrário de páginas e exibições, que se baseiam em um modelo de solicitação-resposta, os componentes são usados especificamente para manipular a composição da interface do usuário.
 
 ## <a name="grpc"></a>gRPC
 
@@ -88,7 +89,7 @@ Para obter mais informações, consulte <xref:grpc/index>.
 
 ## SignalR
 
-Consulte [Atualizar SignalR código](xref:migration/22-to-30#signalr) para obter instruções de migração. SignalRAgora usa `System.Text.Json` para serializar/desserializar mensagens JSON. Consulte [mudar para Newtonsoft.Jsem](xref:migration/22-to-30#switch-to-newtonsoftjson) para obter instruções para restaurar o `Newtonsoft.Json` serializador baseado em.
+Consulte [Atualizar SignalR código](xref:migration/22-to-30#signalr) para obter instruções de migração. SignalR Agora usa `System.Text.Json` para serializar/desserializar mensagens JSON. Consulte [mudar para Newtonsoft.Jsem](xref:migration/22-to-30#switch-to-newtonsoftjson) para obter instruções para restaurar o `Newtonsoft.Json` serializador baseado em.
 
 Nos clientes JavaScript e .NET para SignalR , o suporte foi adicionado para reconexão automática. Por padrão, o cliente tenta se reconectar imediatamente e tentar novamente após 2, 10 e 30 segundos, se necessário. Se o cliente reconectar-se com êxito, ele receberá uma nova ID de conexão. A reconexão automática é opcional:
 
@@ -142,7 +143,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-SignalRo 3,0 e posterior fornece um recurso personalizado para manipuladores de autorização quando um método de Hub requer autorização. O recurso é uma instância do `HubInvocationContext` . O `HubInvocationContext` inclui:
+SignalR o 3,0 e posterior fornece um recurso personalizado para manipuladores de autorização quando um método de Hub requer autorização. O recurso é uma instância do `HubInvocationContext` . O `HubInvocationContext` inclui:
 
 * `HubCallerContext`
 * Nome do método de Hub que está sendo invocado.
@@ -232,7 +233,7 @@ services
     });
 ```
 
-SignalRhubs usam [Roteamento de ponto de extremidade](xref:fundamentals/routing). SignalRa conexão de Hub foi feita explicitamente anteriormente:
+SignalR hubs usam [Roteamento de ponto de extremidade](xref:fundamentals/routing). SignalR a conexão de Hub foi feita explicitamente anteriormente:
 
 ```csharp
 app.UseSignalR(routes =>
@@ -255,7 +256,7 @@ app.UseRouting(routes =>
 });
 ```
 
-SignalR3,0 hubs podem ser roteados por meio de roteamento de ponto de extremidade. Com o roteamento de ponto de extremidade, normalmente todo o roteamento pode ser configurado em `UseRouting` :
+SignalR 3,0 hubs podem ser roteados por meio de roteamento de ponto de extremidade. Com o roteamento de ponto de extremidade, normalmente todo o roteamento pode ser configurado em `UseRouting` :
 
 ```csharp
 app.UseRouting(routes =>
@@ -331,7 +332,7 @@ A lista a seguir contém novas Razor diretivas:
 
 ## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityO Server4 dá suporte à autenticação e autorização para APIs Web e SPAs
 
-O ASP.NET Core 3,0 oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização da API Web. ASP.NET Core Identity para autenticação e armazenamento de usuários é combinado com o [ Identity Server4](https://identityserver.io/) para implementar o OpenID Connect.
+O ASP.NET Core 3,0 oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização da API Web. ASP.NET Core Identitypara autenticação e armazenamento de usuários é combinado com o [ Identity Server4](https://identityserver.io/) para implementar o OpenID Connect.
 
 IdentityServer4 é uma estrutura de OpenID Connect e OAuth 2,0 para ASP.NET Core 3,0. Ele habilita os seguintes recursos de segurança:
 
@@ -487,7 +488,7 @@ Para obter mais informações, consulte os seguintes artigos:
 
 ## <a name="pipes-on-httpcontext"></a>Pipes em HttpContext
 
-Agora é possível ler o corpo da solicitação e gravar o corpo da resposta usando a <xref:System.IO.Pipelines> API. O <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader`a propriedade fornece um <xref:System.IO.Pipelines.PipeReader> que pode ser usado para ler o corpo da solicitação. O <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter`a propriedade fornece um <xref:System.IO.Pipelines.PipeWriter> que pode ser usado para gravar o corpo da resposta. `HttpRequest.BodyReader`é um análogo do `HttpRequest.Body` fluxo. `HttpResponse.BodyWriter`é um análogo do `HttpResponse.Body` fluxo.
+Agora é possível ler o corpo da solicitação e gravar o corpo da resposta usando a <xref:System.IO.Pipelines> API. O <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` a propriedade fornece um <xref:System.IO.Pipelines.PipeReader> que pode ser usado para ler o corpo da solicitação. O <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` a propriedade fornece um <xref:System.IO.Pipelines.PipeWriter> que pode ser usado para gravar o corpo da resposta. `HttpRequest.BodyReader` é um análogo do `HttpRequest.Body` fluxo. `HttpResponse.BodyWriter` é um análogo do `HttpResponse.Body` fluxo.
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -507,11 +508,11 @@ Para obter mais informações, consulte:
 
 ## <a name="forwarded-headers-middleware-improvements"></a>Melhorias de middleware de cabeçalhos encaminhados
 
-Em versões anteriores do ASP.NET Core, chamando <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*> e <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> eram problemáticas quando implantamos em um Linux do Azure ou atrás de qualquer proxy reverso que não seja o IIS. A correção para versões anteriores está documentada em [encaminhar o esquema para proxies inversos do Linux e não IIS](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies).
+Em versões anteriores do ASP.NET Core, chamando <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*> e  <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> eram problemáticas quando implantamos em um Linux do Azure ou atrás de qualquer proxy reverso que não seja o IIS. A correção para versões anteriores está documentada em [encaminhar o esquema para proxies inversos do Linux e não IIS](xref:host-and-deploy/proxy-load-balancer#forward-the-scheme-for-linux-and-non-iis-reverse-proxies).
 
-Esse cenário é corrigido no ASP.NET Core 3,0. O host habilita o [middleware de cabeçalhos encaminhados](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) quando a `ASPNETCORE_FORWARDEDHEADERS_ENABLED` variável de ambiente é definida como `true` . `ASPNETCORE_FORWARDEDHEADERS_ENABLED`é definido como `true` em nossas imagens de contêiner.
+Esse cenário é corrigido no ASP.NET Core 3,0. O host habilita o [middleware de cabeçalhos encaminhados](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) quando a `ASPNETCORE_FORWARDEDHEADERS_ENABLED` variável de ambiente é definida como `true` . `ASPNETCORE_FORWARDEDHEADERS_ENABLED` é definido como `true` em nossas imagens de contêiner.
 
-## <a name="performance-improvements"></a>Aprimoramentos de desempenho
+## <a name="performance-improvements"></a>Melhorias de desempenho
 
 O ASP.NET Core 3,0 inclui muitas melhorias que reduzem o uso de memória e melhoram a taxa de transferência:
 

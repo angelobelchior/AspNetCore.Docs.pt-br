@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/1/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 06c4f215c1c8d970cdfe41e395f39d4215b693f7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: cf450385db3c7327de233357d4c13d556ee44bad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016850"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633663"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -35,7 +36,7 @@ O roteamento é responsável por corresponder as solicitações HTTP de entrada 
 Os aplicativos podem configurar o roteamento usando:
 
 - Controladores
-- RazorPages
+- Razor Pages
 - SignalR
 - Serviços gRPCs
 - [Middleware](xref:fundamentals/middleware/index) habilitado para ponto de extremidade, como [verificações de integridade](xref:host-and-deploy/health-checks).
@@ -65,14 +66,14 @@ O código a seguir mostra um exemplo básico de roteamento:
 
 O roteamento usa um par de middleware, registrado por <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*> e <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> :
 
-* `UseRouting`Adiciona correspondência de rota ao pipeline de middleware. Esse middleware analisa o conjunto de pontos de extremidade definidos no aplicativo e seleciona a [melhor correspondência](#urlm) com base na solicitação.
-* `UseEndpoints`Adiciona a execução de ponto de extremidade ao pipeline de middleware. Ele executa o delegado associado ao ponto de extremidade selecionado.
+* `UseRouting` Adiciona correspondência de rota ao pipeline de middleware. Esse middleware analisa o conjunto de pontos de extremidade definidos no aplicativo e seleciona a [melhor correspondência](#urlm) com base na solicitação.
+* `UseEndpoints` Adiciona a execução de ponto de extremidade ao pipeline de middleware. Ele executa o delegado associado ao ponto de extremidade selecionado.
 
 O exemplo anterior inclui uma única *rota para* o ponto de extremidade de código usando o método [MapGet](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*) :
 
 * Quando uma `GET` solicitação HTTP é enviada para a URL raiz `/` :
   * O delegado de solicitação mostrado é executado.
-  * `Hello World!`é gravado na resposta HTTP. Por padrão, a URL raiz `/` é `https://localhost:5001/` .
+  * `Hello World!` é gravado na resposta HTTP. Por padrão, a URL raiz `/` é `https://localhost:5001/` .
 * Se o método de solicitação não for `GET` ou a URL raiz não for `/` , nenhuma correspondência de rota será retornada e um http 404 será retornado.
 
 ### <a name="endpoint"></a>Ponto de extremidade
@@ -88,7 +89,7 @@ Os pontos de extremidade que podem ser correspondidos e executados pelo aplicati
 Métodos adicionais podem ser usados para conectar ASP.NET Core recursos do Framework ao sistema de roteamento:
 - [Mapear Razor páginas para Razor páginas](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*)
 - [MapControllers para controladores](xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*)
-- [MapHub \<THub> paraSignalR](xref:Microsoft.AspNetCore.SignalR.HubRouteBuilder.MapHub*) 
+- [MapHub \<THub> para SignalR](xref:Microsoft.AspNetCore.SignalR.HubRouteBuilder.MapHub*) 
 - [MapGrpcService \<TService> para gRPC](xref:grpc/aspnetcore)
 
 O exemplo a seguir mostra o roteamento com um modelo de rota mais sofisticado:
@@ -97,8 +98,8 @@ O exemplo a seguir mostra o roteamento com um modelo de rota mais sofisticado:
 
 A cadeia de caracteres `/hello/{name:alpha}` é um **modelo de rota**. Ele é usado para configurar como o ponto de extremidade é correspondido. Nesse caso, o modelo corresponde a:
 
-* Uma URL como`/hello/Ryan`
-* Qualquer caminho de URL que comece com `/hello/` seguido por uma sequência de caracteres alfabéticos.  `:alpha`aplica uma restrição de rota que corresponde apenas a caracteres alfabéticos. As [restrições de rota](#route-constraint-reference) são explicadas posteriormente neste documento.
+* Uma URL como `/hello/Ryan`
+* Qualquer caminho de URL que comece com `/hello/` seguido por uma sequência de caracteres alfabéticos.  `:alpha` aplica uma restrição de rota que corresponde apenas a caracteres alfabéticos. As [restrições de rota](#route-constraint-reference) são explicadas posteriormente neste documento.
 
 O segundo segmento do caminho da URL, `{name:alpha}` :
 
@@ -153,7 +154,7 @@ O código a seguir mostra como recuperar e inspecionar o ponto de extremidade qu
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/EndpointInspectorStartup.cs?name=snippet)]
 
-O ponto de extremidade, se selecionado, pode ser recuperado do `HttpContext` . Suas propriedades podem ser inspecionadas. Os objetos de ponto de extremidade são imutáveis e não podem ser modificados após a criação. O tipo de ponto de extremidade mais comum é um <xref:Microsoft.AspNetCore.Routing.RouteEndpoint> . `RouteEndpoint`inclui informações que permitem que ele seja selecionado pelo sistema de roteamento.
+O ponto de extremidade, se selecionado, pode ser recuperado do `HttpContext` . Suas propriedades podem ser inspecionadas. Os objetos de ponto de extremidade são imutáveis e não podem ser modificados após a criação. O tipo de ponto de extremidade mais comum é um <xref:Microsoft.AspNetCore.Routing.RouteEndpoint> . `RouteEndpoint` inclui informações que permitem que ele seja selecionado pelo sistema de roteamento.
 
 No código anterior, [aplicativo. Use](xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*) configura um [middleware](xref:fundamentals/middleware/index)embutido.
 
@@ -263,7 +264,7 @@ Middleware de terminal existente que se integra ao [MAP](xref:fundamentals/middl
 * Escreva um método de extensão em <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder> .
 * Crie um pipeline de middleware aninhado usando <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.CreateApplicationBuilder*> .
 * Anexe o middleware ao novo pipeline. Nesse caso, <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>.
-* <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.Build*>o pipeline de middleware em um <xref:Microsoft.AspNetCore.Http.RequestDelegate> .
+* <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.Build*> o pipeline de middleware em um <xref:Microsoft.AspNetCore.Http.RequestDelegate> .
 * Chame `Map` e forneça o novo pipeline de middleware.
 * Retornar o objeto Builder fornecido pelo `Map` método de extensão.
 
@@ -319,7 +320,7 @@ Todos os pontos de extremidade correspondentes são processados em cada fase at�
 A precedência de rota é calculada com base em um modelo de rota **mais específico** que tem uma prioridade mais alta. Por exemplo, considere os modelos `/hello` e `/{message}` :
 
 * Ambos correspondem ao caminho da URL `/hello` .
-* `/hello`é mais específico e, portanto, prioridade mais alta.
+* `/hello`  é mais específico e, portanto, prioridade mais alta.
 
 Em geral, a precedência de rota faz um bom trabalho de escolher a melhor correspondência para os tipos de esquemas de URL usados na prática. Use <xref:Microsoft.AspNetCore.Routing.RouteEndpoint.Order> somente quando necessário para evitar uma ambiguidade.
 
@@ -332,7 +333,7 @@ Devido aos tipos de extensibilidade fornecidos pelo roteamento, não é possíve
 
 > [!WARNING]
 >
-> A ordem das operações dentro <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> não influencia o comportamento do roteamento, com uma exceção. <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*>e <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*> atribuir automaticamente um valor de pedido a seus pontos de extremidade com base na ordem em que são invocados. Isso simula o comportamento a longo prazo de controladores sem o sistema de roteamento fornecendo as mesmas garantias que as implementações de roteamento mais antigas.
+> A ordem das operações dentro <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> não influencia o comportamento do roteamento, com uma exceção. <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> e <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*> atribuir automaticamente um valor de pedido a seus pontos de extremidade com base na ordem em que são invocados. Isso simula o comportamento a longo prazo de controladores sem o sistema de roteamento fornecendo as mesmas garantias que as implementações de roteamento mais antigas.
 >
 > Na implementação herdada do roteamento, é possível implementar a extensibilidade de roteamento que tem uma dependência na ordem em que as rotas são processadas. Roteamento de ponto de extremidade no ASP.NET Core 3,0 e posterior:
 > 
@@ -371,7 +372,7 @@ Geração de URL:
 * É o processo pelo qual o roteamento pode criar um caminho de URL com base em um conjunto de valores de rota.
 * Permite uma separação lógica entre os pontos de extremidade e as URLs que os acessam.
 
-O roteamento de ponto de extremidade inclui a <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API. `LinkGenerator`é um serviço singleton disponível de [di](xref:fundamentals/dependency-injection). A `LinkGenerator` API pode ser usada fora do contexto de uma solicitação em execução. [MVC. IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper) e cenários que dependem <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> , como [auxiliares de marca](xref:mvc/views/tag-helpers/intro), auxiliares de HTML e resultados de [ação](xref:mvc/controllers/actions), usam a `LinkGenerator` API internamente para fornecer recursos de geração de link.
+O roteamento de ponto de extremidade inclui a <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API. `LinkGenerator` é um serviço singleton disponível de [di](xref:fundamentals/dependency-injection). A `LinkGenerator` API pode ser usada fora do contexto de uma solicitação em execução. [MVC. IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper) e cenários que dependem <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> , como [auxiliares de marca](xref:mvc/views/tag-helpers/intro), auxiliares de HTML e resultados de [ação](xref:mvc/controllers/actions), usam a `LinkGenerator` API internamente para fornecer recursos de geração de link.
 
 O gerador de link é respaldado pelo conceito de um **endereço** e **esquemas de endereço**. Um esquema de endereço é uma maneira de determinar os pontos de extremidade que devem ser considerados para a geração de link. Por exemplo, os valores de rota e de nome da rota muitos usuários estão familiarizados com os controladores e Razor as páginas são implementados como um esquema de endereço.
 
@@ -456,7 +457,7 @@ A tabela a seguir demonstra os modelos de rota de exemplo e seu comportamento:
 | `{Page=Home}`                            | `/`                     | Faz a correspondência e define `Page` como `Home`.                                         |
 | `{Page=Home}`                            | `/Contact`              | Faz a correspondência e define `Page` como `Contact`.                                      |
 | `{controller}/{action}/{id?}`            | `/Products/List`        | É mapeado para o controlador `Products` e a ação `List`.                       |
-| `{controller}/{action}/{id?}`            | `/Products/Details/123` | Mapeia para o `Products` controlador e a `Details` ação com `id` definido como 123. |
+| `{controller}/{action}/{id?}`            | `/Products/Details/123` | Mapeia para o `Products` controlador e a  `Details` ação com `id` definido como 123. |
 | `{controller=Home}/{action=Index}/{id?}` | `/`                     | Mapeia para o `Home` controlador e o `Index` método. `id` é ignorado.        |
 | `{controller=Home}/{action=Index}/{id?}` | `/Products`         | Mapeia para o `Products` controlador e o `Index` método. `id` é ignorado.        |
 
@@ -651,13 +652,13 @@ Com o modelo de rota anterior, a ação `SubscriptionManagementController.GetAll
 ASP.NET Core fornece convenções de API para usar transformadores de parâmetro com rotas geradas:
 
 * A <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention?displayProperty=fullName> Convenção MVC aplica um transformador de parâmetro especificado a todas as rotas de atributo no aplicativo. O transformador de parâmetro transforma os tokens de rota do atributo conforme elas são substituídas. Para obter mais informações, confira [Usar um transformador de parâmetro para personalizar a substituição de token](xref:mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
-* RazorAs páginas usam a <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention> Convenção de API. Essa Convenção aplica um transformador de parâmetro especificado a todas as Razor páginas descobertas automaticamente. O transformador de parâmetro transforma os segmentos do nome de arquivo e pasta das Razor rotas de páginas. Para obter mais informações, confira [Usar um transformador de parâmetros para personalizar rotas de página](xref:razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
+* Razor As páginas usam a <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention> Convenção de API. Essa Convenção aplica um transformador de parâmetro especificado a todas as Razor páginas descobertas automaticamente. O transformador de parâmetro transforma os segmentos do nome de arquivo e pasta das Razor rotas de páginas. Para obter mais informações, confira [Usar um transformador de parâmetros para personalizar rotas de página](xref:razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
 
 <a name="ugr"></a>
 
 ## <a name="url-generation-reference"></a>Referência de geração de URL
 
-Esta seção contém uma referência para o algoritmo implementado pela geração de URL. Na prática, os exemplos mais complexos de geração de URL usam controladores ou Razor páginas. Consulte [Roteamento em controladores](xref:mvc/controllers/routing) para obter informações adicionais.
+Esta seção contém uma referência para o algoritmo implementado pela geração de URL. Na prática, os exemplos mais complexos de geração de URL usam controladores ou Razor páginas. Consulte  [Roteamento em controladores](xref:mvc/controllers/routing) para obter informações adicionais.
 
 O processo de geração de URL começa com uma chamada para [LinkGenerator. GetPathByAddress](xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*) ou um método semelhante. O método é fornecido com um endereço, um conjunto de valores de rota e, opcionalmente, informações sobre a solicitação atual do `HttpContext` .
 
@@ -667,7 +668,7 @@ Uma vez do conjunto de candidatos é encontrado pelo esquema de endereço, os po
 
 ### <a name="troubleshooting-url-generation-with-logging"></a>Solução de problemas de geração de URL com registro em log
 
-A primeira etapa na solução de problemas de geração de URL é definir o nível de log de `Microsoft.AspNetCore.Routing` como `TRACE` . `LinkGenerator`registra muitos detalhes sobre seu processamento, o que pode ser útil para solucionar problemas.
+A primeira etapa na solução de problemas de geração de URL é definir o nível de log de `Microsoft.AspNetCore.Routing` como `TRACE` . `LinkGenerator` registra muitos detalhes sobre seu processamento, o que pode ser útil para solucionar problemas.
 
 Consulte [referência de geração de URL](#ugr) para obter detalhes sobre a geração de URL.
 
@@ -712,7 +713,7 @@ O código a seguir não fornece valores de ambiente e valores explícitos: `{ co
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/WidgetController.cs?name=snippet2)]
 
-O método anterior retorna`/Home/Subscribe/17`
+O método anterior retorna `/Home/Subscribe/17`
 
 O código a seguir no `WidgetController` retorna `/Widget/Subscribe/17` :
 
@@ -724,8 +725,8 @@ O código a seguir fornece o controlador de valores de ambiente na solicitação
 
 No código anterior:
 
-* `/Gadget/Edit/17`é retornado.
-* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Url>Obtém o <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> .
+* `/Gadget/Edit/17` é retornado.
+* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Url> Obtém o <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> .
 * <xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Action*>   
 gera uma URL com um caminho absoluto para um método de ação. A URL contém o `action` nome e os `route` valores especificados.
 
@@ -733,7 +734,7 @@ O código a seguir fornece valores de ambiente da solicitação atual e dos valo
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Pages/Index.cshtml.cs?name=snippet)]
 
-O código anterior define `url` como `/Edit/17` quando a página de edição Razor contém a seguinte diretiva de página:
+O código anterior define `url` como  `/Edit/17` quando a página de edição Razor contém a seguinte diretiva de página:
 
  `@page "{id:int}"`
 
@@ -741,10 +742,10 @@ Se a página de edição não contiver o `"{id:int}"` modelo de rota, `url` ser�
 
 O comportamento do MVC <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> adiciona uma camada de complexidade além das regras descritas aqui:
 
-* `IUrlHelper`sempre fornece os valores de rota da solicitação atual como valores de ambiente.
+* `IUrlHelper` sempre fornece os valores de rota da solicitação atual como valores de ambiente.
 * [IUrlHelper. Action](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Action*) sempre copia os `action` valores atuais e de `controller` rota como valores explícitos, a menos que sejam substituídos pelo desenvolvedor.
 * [IUrlHelper. Page](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Page*) sempre copia o `page` valor de rota atual como um valor explícito, a menos que seja substituído. <!--by the user-->
-* `IUrlHelper.Page`sempre substitui o `handler` valor de rota atual por `null` como valores explícitos, a menos que seja substituído.
+* `IUrlHelper.Page` sempre substitui o `handler` valor de rota atual por `null` como valores explícitos, a menos que seja substituído.
 
 Os usuários geralmente são surpresos com os detalhes comportamentais dos valores de ambiente, porque o MVC não parece seguir suas próprias regras. Para razões históricas e de compatibilidade, certos valores de rota, como,, `action` `controller` `page` e `handler` têm seu próprio comportamento de caso especial.
 
@@ -770,7 +771,7 @@ Chamadas para `LinkGenerator` ou `IUrlHelper` que retornam `null` geralmente sã
 
 A invalidação de valor de rota funciona na suposição de que o esquema de URL do aplicativo é hierárquico, com uma hierarquia formada da esquerda para a direita. Considere o modelo de rota do controlador básico `{controller}/{action}/{id?}` para obter uma noção intuitiva de como isso funciona na prática. Uma **alteração** em um valor **invalida** todos os valores de rota que aparecem à direita. Isso reflete a suposição sobre a hierarquia. Se o aplicativo tiver um valor de ambiente para `id` , e a operação especificar um valor diferente para `controller` :
 
-* `id`Não será reutilizado porque `{controller}` está à esquerda de `{id?}` .
+* `id` Não será reutilizado porque `{controller}` está à esquerda de `{id?}` .
 
 Alguns exemplos que demonstram esse princípio:
 
@@ -844,7 +845,7 @@ Os links a seguir fornecem informações sobre como configurar metadados de pont
 
 ## <a name="host-matching-in-routes-with-requirehost"></a>Correspondência de host em rotas com RequireHost
 
-<xref:Microsoft.AspNetCore.Builder.RoutingEndpointConventionBuilderExtensions.RequireHost*>aplica uma restrição à rota que requer o host especificado. O `RequireHost` parâmetro ou [[host]](xref:Microsoft.AspNetCore.Routing.HostAttribute) pode ser:
+<xref:Microsoft.AspNetCore.Builder.RoutingEndpointConventionBuilderExtensions.RequireHost*> aplica uma restrição à rota que requer o host especificado. O `RequireHost` parâmetro ou [[host]](xref:Microsoft.AspNetCore.Routing.HostAttribute) pode ser:
 
 * Host: `www.domain.com` , corresponde `www.domain.com` a qualquer porta.
 * Host com curinga: `*.domain.com` , corresponde `www.domain.com` , `subdomain.domain.com` ou `www.subdomain.domain.com` em qualquer porta.
@@ -945,7 +946,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-**Considere** escrever o seu próprio <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> . `EndpointDataSource`é o primitivo de baixo nível para declarar e atualizar uma coleção de pontos de extremidade. `EndpointDataSource`é uma API avançada usada por controladores e Razor páginas.
+**Considere** escrever o seu próprio <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> . `EndpointDataSource` é o primitivo de baixo nível para declarar e atualizar uma coleção de pontos de extremidade. `EndpointDataSource` é uma API avançada usada por controladores e Razor páginas.
 
 Os testes de roteamento têm um [exemplo básico](https://github.com/aspnet/AspNetCore/blob/master/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17) de uma fonte de dados não atualizada.
 
@@ -1042,7 +1043,7 @@ Os desenvolvedores normalmente adicionam rotas rencisas adicionais a áreas de t
 
 As APIs da Web devem usar o roteamento de atributo para modelar a funcionalidade do aplicativo como um conjunto de recursos em que as operações são representadas por verbos HTTP. Isso significa que muitas operações, por exemplo, GET e POST, no mesmo recurso lógico usam a mesma URL. O roteamento de atributo fornece um nível de controle necessário para projetar cuidadosamente o layout de ponto de extremidade público de uma API.
 
-RazorOs aplicativos de páginas usam roteamento convencional padrão para atender aos recursos nomeados na pasta *páginas* de um aplicativo. Há convenções adicionais disponíveis que permitem personalizar o Razor comportamento de roteamento de páginas. Para obter mais informações, consulte <xref:razor-pages/index> e <xref:razor-pages/razor-pages-conventions>.
+Razor Os aplicativos de páginas usam roteamento convencional padrão para atender aos recursos nomeados na pasta *páginas* de um aplicativo. Há convenções adicionais disponíveis que permitem personalizar o Razor comportamento de roteamento de páginas. Para obter mais informações, consulte <xref:razor-pages/index> e <xref:razor-pages/razor-pages-conventions>.
 
 O suporte à geração de URL permite que o aplicativo seja desenvolvido sem hard-coding das URLs para vincular o aplicativo. Esse suporte permite começar com uma configuração de roteamento básica e modificar as rotas, depois que o layout de recurso do aplicativo é determinado.
 
@@ -1090,7 +1091,7 @@ Quando o delegado do ponto de extremidade é executado, as propriedades de [Rout
 
 Geração de URL é o processo pelo qual o roteamento pode criar um caminho de URL de acordo com um conjunto de valores de rota. Isso permite uma separação lógica entre os pontos de extremidade e as URLs que os acessam.
 
-O roteamento de ponto de extremidade inclui a API de Gerador de Link (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>). <xref:Microsoft.AspNetCore.Routing.LinkGenerator>é um serviço singleton que pode ser recuperado de [di](xref:fundamentals/dependency-injection). A API pode ser usada fora do contexto de uma solicitação em execução. <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> do MVC e cenários que dependem de <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, como [Auxiliares de Marcação](xref:mvc/views/tag-helpers/intro), Auxiliares de HTML e [Resultados da Ação](xref:mvc/controllers/actions), usam o gerador de link para fornecer funcionalidades de geração de link.
+O roteamento de ponto de extremidade inclui a API de Gerador de Link (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>). <xref:Microsoft.AspNetCore.Routing.LinkGenerator> é um serviço singleton que pode ser recuperado de [di](xref:fundamentals/dependency-injection). A API pode ser usada fora do contexto de uma solicitação em execução. <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> do MVC e cenários que dependem de <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, como [Auxiliares de Marcação](xref:mvc/views/tag-helpers/intro), Auxiliares de HTML e [Resultados da Ação](xref:mvc/controllers/actions), usam o gerador de link para fornecer funcionalidades de geração de link.
 
 O gerador de link é respaldado pelo conceito de um *endereço* e *esquemas de endereço*. Um esquema de endereço é uma maneira de determinar os pontos de extremidade que devem ser considerados para a geração de link. Por exemplo, os valores de rota e de nome da rota muitos usuários estão familiarizados com o MVC/ Razor páginas são implementados como um esquema de endereço.
 
@@ -1557,7 +1558,7 @@ Com a rota anterior, a ação `SubscriptionManagementController.GetAll` é combi
 ASP.NET Core fornece convenções de API para usar transformadores de parâmetro com as rotas geradas:
 
 * ASP.NET Core MVC tem a convenção de API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Essa convenção aplica um transformador de parâmetro especificado a todas as rotas de atributo no aplicativo. O transformador de parâmetro transforma os tokens de rota do atributo conforme elas são substituídas. Para obter mais informações, confira [Usar um transformador de parâmetro para personalizar a substituição de token](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
-* RazorAs páginas têm a `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` Convenção de API. Essa Convenção aplica um transformador de parâmetro especificado a todas as Razor páginas descobertas automaticamente. O transformador de parâmetro transforma os segmentos do nome de arquivo e pasta das Razor rotas de páginas. Para obter mais informações, confira [Usar um transformador de parâmetros para personalizar rotas de página](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
+* Razor As páginas têm a `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` Convenção de API. Essa Convenção aplica um transformador de parâmetro especificado a todas as Razor páginas descobertas automaticamente. O transformador de parâmetro transforma os segmentos do nome de arquivo e pasta das Razor rotas de páginas. Para obter mais informações, confira [Usar um transformador de parâmetros para personalizar rotas de página](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
 
 ## <a name="url-generation-reference"></a>Referência de geração de URL
 
@@ -1624,7 +1625,7 @@ Os desenvolvedores geralmente adicionam outras rotas concisas às áreas de alto
 
 As APIs da Web devem usar o roteamento de atributo para modelar a funcionalidade do aplicativo como um conjunto de recursos em que as operações são representadas por verbos HTTP. Isso significa que muitas operações (por exemplo, GET, POST) no mesmo recurso lógico usarão a mesma URL. O roteamento de atributo fornece um nível de controle necessário para projetar cuidadosamente o layout de ponto de extremidade público de uma API.
 
-RazorOs aplicativos de páginas usam roteamento convencional padrão para atender aos recursos nomeados na pasta *páginas* de um aplicativo. Há convenções adicionais disponíveis que permitem personalizar o Razor comportamento de roteamento de páginas. Para obter mais informações, consulte <xref:razor-pages/index> e <xref:razor-pages/razor-pages-conventions>.
+Razor Os aplicativos de páginas usam roteamento convencional padrão para atender aos recursos nomeados na pasta *páginas* de um aplicativo. Há convenções adicionais disponíveis que permitem personalizar o Razor comportamento de roteamento de páginas. Para obter mais informações, consulte <xref:razor-pages/index> e <xref:razor-pages/razor-pages-conventions>.
 
 O suporte à geração de URL permite que o aplicativo seja desenvolvido sem hard-coding das URLs para vincular o aplicativo. Esse suporte permite começar com uma configuração de roteamento básica e modificar as rotas, depois que o layout de recurso do aplicativo é determinado.
 

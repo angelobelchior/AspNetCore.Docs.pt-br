@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/samesite/mvc21
-ms.openlocfilehash: 4285432d48ba11b5069d109c5667192a99fe115e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0a719ae48199f7854ded534446045eb304d4d9f0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021777"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632350"
 ---
 # <a name="aspnet-core-21-mvc-samesite-no-loccookie-sample"></a>Exemplo ASP.NET Core 2,1 MVC SameSite cookie
 
@@ -56,7 +57,7 @@ Response.Cookies.Append(CookieName, "cookieValue", cookieOptions);
 
 ## <a name="setting-no-loccookie-authentication-and-session-state-no-loccookies"></a>Definindo Cookie autenticação e estado da sessão cookie s
 
-Cookieautenticação, estado de sessão e [vários outros componentes](https://docs.microsoft.com/aspnet/core/security/samesite?view=aspnetcore-2.1) definem suas opções de sameSite por meio Cookie de opções, por exemplo
+Cookie autenticação, estado de sessão e [vários outros componentes](https://docs.microsoft.com/aspnet/core/security/samesite?view=aspnetcore-2.1) definem suas opções de sameSite por meio Cookie de opções, por exemplo
 
 ```c#
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -153,7 +154,7 @@ A função auxiliar `CheckSameSite(HttpContext, CookieOptions)` :
 * É chamado quando cookie s são acrescentadas à solicitação ou excluídas da solicitação.
 * Verifica se a `SameSite` propriedade está definida como `None` .
 * Se `SameSite` é definido como `None` e o agente do usuário atual é conhecido por não oferecer suporte ao valor de atributo None. A verificação é feita usando a classe [SameSiteSupport](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/samesite/sample/snippets/SameSiteSupport.cs) :
-  * Define `SameSite` como não emitir o valor definindo a propriedade como`(SameSiteMode)(-1)`
+  * Define `SameSite` como não emitir o valor definindo a propriedade como `(SameSiteMode)(-1)`
 
 ## <a name="targeting-net-framework"></a>Direcionamento .NET Framework
 

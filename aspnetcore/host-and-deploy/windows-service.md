@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 7740774cad33418489fc1d94240574167f84fae6
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 11362f677da3e55df4267cf3d6ca8097c24c218f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015355"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633936"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Hospedar o ASP.NET Core em um serviço Windows
 
@@ -50,7 +51,7 @@ O modelo de Serviço de Trabalho do ASP.NET Core fornece um ponto inicial para e
 
 O aplicativo requer uma referência de pacote para [Microsoft. Extensions. host. WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices).
 
-`IHostBuilder.UseWindowsService`é chamado ao criar o host. Se o aplicativo estiver sendo executado como um Serviço Windows, o método:
+`IHostBuilder.UseWindowsService` é chamado ao criar o host. Se o aplicativo estiver sendo executado como um Serviço Windows, o método:
 
 * Define o tempo de vida do host como `WindowsServiceLifetime`.
 * Define a [raiz do conteúdo](xref:fundamentals/index#content-root) como [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory). Para saber mais, consulte a seção [Diretório atual e a raiz do conteúdo](#current-directory-and-content-root).
@@ -264,7 +265,7 @@ Não tente usar <xref:System.IO.Directory.GetCurrentDirectory*> para obter um ca
 
 Especifique um caminho absoluto com <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> quando usar um <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> para a pasta que contém os arquivos.
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xref:test/troubleshoot> .
 
@@ -598,7 +599,7 @@ CreateWebHostBuilder(args)
 
 Especifique um caminho absoluto com <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> quando usar um <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> para a pasta que contém os arquivos.
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xref:test/troubleshoot> .
 
@@ -935,7 +936,7 @@ CreateWebHostBuilder(args)
 
 Especifique um caminho absoluto com <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> quando usar um <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> para a pasta que contém os arquivos.
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xref:test/troubleshoot> .
 

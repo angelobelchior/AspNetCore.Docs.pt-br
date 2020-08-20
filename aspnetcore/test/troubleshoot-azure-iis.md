@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 7b82947c40d8e3fb46042ee5a3a32af9126623c9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 117c777dc9ae1b8c6448f097132454b714a1b5dc
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020022"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632155"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Solucionar problemas ASP.NET Core no serviço Azure App e no IIS
 
@@ -311,7 +312,7 @@ O log de stdout do Módulo do ASP.NET Core geralmente registra mensagens de erro
 1. No portal do Azure, navegue até o aplicativo Web.
 1. Na folha **serviço de aplicativo** , insira **kudu** na caixa de pesquisa.
 1. Selecione **ferramentas avançadas** > **ir**para.
-1. Selecione **console de depuração > cmd**.
+1. Selecione  **console de depuração > cmd**.
 1. Navegue até *site/wwwroot*
 1. Selecione o ícone de lápis para editar o arquivo de *web.config* .
 1. No `<aspNetCore />` elemento, defina `stdoutLogEnabled="true"` e selecione **salvar**.

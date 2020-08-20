@@ -6,6 +6,7 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 6ec531a04a220f75f5793cb2c7b5232908dbd883
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ec36ff6d646e0554550a4372389aed89aa267b1f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019151"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633975"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Model binding no ASP.NET Core
 
@@ -108,11 +109,11 @@ Para cada parâmetro ou propriedade de destino, as fontes são verificadas na or
 
 Se a origem padrão não estiver correta, use um dos seguintes atributos para especificar a origem:
 
-* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)-Obtém valores da cadeia de caracteres de consulta. 
-* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)-Obtém valores de dados de rota.
-* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)-Obtém valores dos campos de formulário postados.
-* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)-Obtém valores do corpo da solicitação.
-* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute)-Obtém valores de cabeçalhos HTTP.
+* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) -Obtém valores da cadeia de caracteres de consulta. 
+* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) -Obtém valores de dados de rota.
+* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) -Obtém valores dos campos de formulário postados.
+* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) -Obtém valores do corpo da solicitação.
+* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) -Obtém valores de cabeçalhos HTTP.
 
 Esses atributos:
 
@@ -208,12 +209,12 @@ Os tipos simples em que o associador de modelos pode converter cadeias de caract
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
-* [Clique](xref:System.ComponentModel.DoubleConverter)
-* [Enumeração](xref:System.ComponentModel.EnumConverter)
+* [Double](xref:System.ComponentModel.DoubleConverter)
+* [Enumera](xref:System.ComponentModel.EnumConverter)
 * [Volume](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
-* [Período](xref:System.ComponentModel.TimeSpanConverter)
+* [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
 * [Versão](xref:System.ComponentModel.VersionConverter)
@@ -273,30 +274,16 @@ O model binding começa examinando as fontes para a chave `Instructor.ID`. Se el
 
 Vários atributos internos estão disponíveis para controlar o model binding de tipos complexos:
 
+* `[Bind]`
 * `[BindRequired]`
 * `[BindNever]`
-* `[Bind]`
 
-> [!NOTE]
-> Esses atributos afetam o model binding quando os dados de formulário postados são a origem dos valores. Eles não afetam os formatadores de entrada, que processam corpos de solicitação XML e JSON postados. O formatadores de entrada são explicados [posteriormente neste artigo](#input-formatters).
->
-> Veja também a discussão sobre o atributo `[Required]` em [Validação do modelo](xref:mvc/models/validation#required-attribute).
-
-### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
-
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Este é um exemplo:
-
-[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
-
-### <a name="bindnever-attribute"></a>Atributo [BindNever]
-
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Este é um exemplo:
-
-[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
+> [!WARNING]
+> Esses atributos afetam o model binding quando os dados de formulário postados são a origem dos valores. Eles ***não*** afetam os formatadores de entrada, que processam os corpos de solicitação JSON e XML lançados. O formatadores de entrada são explicados [posteriormente neste artigo](#input-formatters).
 
 ### <a name="bind-attribute"></a>Atributo [Bind]
 
-Pode ser aplicado a uma classe ou a um parâmetro de método. Especifica quais propriedades de um modelo devem ser incluídas no model binding.
+Pode ser aplicado a uma classe ou a um parâmetro de método. Especifica quais propriedades de um modelo devem ser incluídas no model binding. `[Bind]` Não ***afeta os*** formatadores de entrada.
 
 No exemplo a seguir, somente as propriedades especificadas do modelo `Instructor` são associadas quando qualquer método de ação ou o manipulador é chamado:
 
@@ -313,6 +300,20 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 ```
 
 O atributo `[Bind]` pode ser usado para proteção contra o excesso de postagem cenários de *criar*. Ele não funciona bem em cenários de edição, pois as propriedades excluídas são definidas como nulas ou um valor padrão, em vez de serem deixadas inalteradas. Para defesa contra o excesso de postagem, são recomendados modelos de exibição, em vez do atributo `[Bind]`. Para obter mais informações, veja [Observação de segurança sobre o excesso de postagem](xref:data/ef-mvc/crud#security-note-about-overposting).
+
+### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
+
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Este é um exemplo:
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
+
+Veja também a discussão sobre o atributo `[Required]` em [Validação do modelo](xref:mvc/models/validation#required-attribute).
+
+### <a name="bindnever-attribute"></a>Atributo [BindNever]
+
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Este é um exemplo:
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
 ## <a name="collections"></a>Coleções
 
@@ -494,7 +495,7 @@ O model binding pode ser invocado manualmente usando o método <xref:Microsoft.A
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
-<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>usa provedores de valor para obter dados do corpo do formulário, Cadeia de caracteres de consulta e dados de rota. `TryUpdateModelAsync`normalmente é: 
+<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>  usa provedores de valor para obter dados do corpo do formulário, Cadeia de caracteres de consulta e dados de rota. `TryUpdateModelAsync` normalmente é: 
 
 * Usado com Razor páginas e aplicativos MVC usando controladores e exibições para evitar o excesso de postagens.
 * Não usado com uma API da Web, a menos que consumido de dados de formulário, cadeias de caracteres de consulta e dados de rota. Os pontos de extremidade da API Web que consomem JSON usam [formatadores de entrada](#input-formatters) para desserializar o corpo da solicitação em um objeto.
@@ -594,11 +595,11 @@ Para cada parâmetro ou propriedade de destino, as fontes são verificadas na or
 
 Se a origem padrão não estiver correta, use um dos seguintes atributos para especificar a origem:
 
-* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)-Obtém valores da cadeia de caracteres de consulta. 
-* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)-Obtém valores de dados de rota.
-* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)-Obtém valores dos campos de formulário postados.
-* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)-Obtém valores do corpo da solicitação.
-* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute)-Obtém valores de cabeçalhos HTTP.
+* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) -Obtém valores da cadeia de caracteres de consulta. 
+* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) -Obtém valores de dados de rota.
+* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) -Obtém valores dos campos de formulário postados.
+* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) -Obtém valores do corpo da solicitação.
+* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) -Obtém valores de cabeçalhos HTTP.
 
 Esses atributos:
 
@@ -694,12 +695,12 @@ Os tipos simples em que o associador de modelos pode converter cadeias de caract
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
-* [Clique](xref:System.ComponentModel.DoubleConverter)
-* [Enumeração](xref:System.ComponentModel.EnumConverter)
+* [Double](xref:System.ComponentModel.DoubleConverter)
+* [Enumera](xref:System.ComponentModel.EnumConverter)
 * [Volume](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
-* [Período](xref:System.ComponentModel.TimeSpanConverter)
+* [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
 * [Versão](xref:System.ComponentModel.VersionConverter)

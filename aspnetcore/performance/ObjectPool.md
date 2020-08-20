@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/ObjectPool
-ms.openlocfilehash: 1f57bc4662296333b3d2c659c057230548541b91
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6997dbfdd5c654e4a8b15a026fd3ec61d024f02d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020399"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632363"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>Reutilização de objeto com objectpool no ASP.NET Core
 
 Por [Steve Gordon](https://twitter.com/stevejgordon), [Ryan Nowak](https://github.com/rynowak)e [Günther Foidl](https://github.com/gfoidl)
 
-<xref:Microsoft.Extensions.ObjectPool>faz parte da infraestrutura de ASP.NET Core que dá suporte à manutenção de um grupo de objetos na memória para reutilização em vez de permitir que os objetos sejam coletados como lixo.
+<xref:Microsoft.Extensions.ObjectPool> faz parte da infraestrutura de ASP.NET Core que dá suporte à manutenção de um grupo de objetos na memória para reutilização em vez de permitir que os objetos sejam coletados como lixo.
 
 Talvez você queira usar o pool de objetos se os objetos que estão sendo gerenciados forem:
 
@@ -35,7 +36,7 @@ Talvez você queira usar o pool de objetos se os objetos que estão sendo gerenc
 - Representam alguns recursos limitados.
 - Usado de forma previsível e frequente.
 
-Por exemplo, o ASP.NET Core Framework usa o pool de objetos em alguns lugares para reutilizar <xref:System.Text.StringBuilder> instâncias. `StringBuilder`Aloca e gerencia seus próprios buffers para armazenar dados de caractere. O ASP.NET Core usa regularmente `StringBuilder` para implementar recursos e reusá-los proporciona um benefício de desempenho.
+Por exemplo, o ASP.NET Core Framework usa o pool de objetos em alguns lugares para reutilizar <xref:System.Text.StringBuilder> instâncias. `StringBuilder` Aloca e gerencia seus próprios buffers para armazenar dados de caractere. O ASP.NET Core usa regularmente `StringBuilder` para implementar recursos e reusá-los proporciona um benefício de desempenho.
 
 O pool de objetos nem sempre melhora o desempenho:
 
@@ -45,18 +46,18 @@ O pool de objetos nem sempre melhora o desempenho:
 Use o pool de objetos somente depois de coletar dados de desempenho usando cenários realistas para seu aplicativo ou biblioteca.
 
 ::: moniker range="< aspnetcore-3.0"
-**Aviso: o `ObjectPool` não implementa `IDisposable` . Não é recomendável usá-lo com tipos que precisam de descarte.** `ObjectPool`no ASP.NET Core 3,0 e posterior dá suporte ao `IDisposable` .
+**Aviso: o `ObjectPool` não implementa `IDisposable` . Não é recomendável usá-lo com tipos que precisam de descarte.** `ObjectPool` no ASP.NET Core 3,0 e posterior dá suporte ao `IDisposable` .
 ::: moniker-end
 
 **Observação: o objectpool não coloca um limite no número de objetos que ele alocará, ele coloca um limite no número de objetos que será mantido.**
 
 ## <a name="concepts"></a>Conceitos
 
-<xref:Microsoft.Extensions.ObjectPool.ObjectPool`1>-a abstração básica do pool de objetos. Usado para obter e retornar objetos.
+<xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> -a abstração básica do pool de objetos. Usado para obter e retornar objetos.
 
-<xref:Microsoft.Extensions.ObjectPool.PooledObjectPolicy%601>-Implemente isso para personalizar como um objeto é criado e como ele é *redefinido* quando retornado ao pool. Isso pode ser passado para um pool de objetos que você constrói diretamente... OR
+<xref:Microsoft.Extensions.ObjectPool.PooledObjectPolicy%601> -Implemente isso para personalizar como um objeto é criado e como ele é *redefinido* quando retornado ao pool. Isso pode ser passado para um pool de objetos que você constrói diretamente... OR
 
-<xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider.Create*>atua como um alocador para a criação de pools de objetos.
+<xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider.Create*> atua como um alocador para a criação de pools de objetos.
 <!-- REview, there is no ObjectPoolProvider<T> -->
 
 O objectpool pode ser usado em um aplicativo de várias maneiras:
@@ -78,7 +79,7 @@ Quando <xref:Microsoft.Extensions.ObjectPool.DefaultObjectPoolProvider> é usado
 Observação: depois que o pool é Descartado:
 
 * A chamada `Get` gera um `ObjectDisposedException` .
-* `return`descarta o item determinado.
+* `return` descarta o item determinado.
 
 ::: moniker-end
 
@@ -92,7 +93,7 @@ O seguinte código:
 
 [!code-csharp[](ObjectPool/ObjectPoolSample/Startup.cs?name=snippet)]
 
-O código a seguir implementa`BirthdayMiddleware`
+O código a seguir implementa `BirthdayMiddleware`
 
 [!code-csharp[](ObjectPool/ObjectPoolSample/BirthdayMiddleware.cs?name=snippet)]
 

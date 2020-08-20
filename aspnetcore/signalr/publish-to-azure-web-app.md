@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: 3163a2743c544d0a07d92eb7547e77c3b200ac83
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b9d32e2f3c37f652be15c5857d14ac48f66695ad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022531"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631921"
 ---
 # <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>Publicar um SignalR aplicativo de ASP.NET Core no serviço Azure app
 
@@ -49,7 +50,7 @@ Este artigo aborda a publicação usando as ferramentas do Visual Studio. Visual
    | ------------------ | ----------- |
    | **Nome**           | Nome exclusivo do aplicativo. |
    | **Assinatura**   | Assinatura do Azure que o aplicativo usa. |
-   | **Grupo de Recursos** | Grupo de recursos relacionados aos quais o aplicativo pertence. |
+   | **Grupo de recursos** | Grupo de recursos relacionados aos quais o aplicativo pertence. |
    | **Plano de hospedagem**   | Plano de preços para o aplicativo Web. |
 
 1. Selecione o ** SignalR serviço do Azure** na lista suspensa **dependências**  >  **Adicionar** :
