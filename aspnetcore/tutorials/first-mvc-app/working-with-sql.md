@@ -5,6 +5,7 @@ description: Parte 5, adicionar um modelo a um aplicativo ASP.NET Core MVC
 ms.author: riande
 ms.date: 8/16/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 88af3e724032f8324155a0a1e6c30c8558f97f72
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 23ecee4e3482b3ee82ae597671a8c45515eb4589
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021257"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634924"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>Parte 5, trabalhar com um banco de dados em um aplicativo MVC ASP.NET Core
 

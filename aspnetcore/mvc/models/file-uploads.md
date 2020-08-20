@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/03/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: a11e6325143b9db57d6fbd1cd67478dc1dd6122d
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 93ffa3a5313e63a1e9b98fb5bf9788944254213f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021244"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635210"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carregar arquivos no ASP.NET Core
 
@@ -34,7 +35,7 @@ O ASP.NET Core dá suporte ao carregamento de um ou mais arquivos usando a assoc
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Considerações sobre segurança
+## <a name="security-considerations"></a>Considerações de segurança
 
 Tome cuidado ao fornecer aos usuários a capacidade de carregar arquivos em um servidor. Os invasores podem tentar:
 
@@ -111,7 +112,7 @@ Os recursos (disco, memória) usados por carregamentos de arquivos dependem do n
 O armazenamento em buffer de arquivos pequenos é abordado nas seguintes seções deste tópico:
 
 * [Armazenamento físico](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Backup de banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -238,7 +239,7 @@ Os arquivos individuais carregados no servidor podem ser acessados por meio de [
 >
 > Os exemplos fornecidos até o momento não levam em consideração as considerações de segurança. Informações adicionais são fornecidas pelas seções e pelo aplicativo de [exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)a seguir:
 >
-> * [Considerações sobre segurança](#security-considerations)
+> * [Considerações de segurança](#security-considerations)
 > * [Validação](#validation)
 
 Ao carregar arquivos usando a associação de modelo e <xref:Microsoft.AspNetCore.Http.IFormFile> o método de ação pode aceitar:
@@ -348,7 +349,7 @@ public class BufferedSingleFileUploadDb
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Http.IFormFile>pode ser usado diretamente como um parâmetro de método de ação ou como uma propriedade de modelo associada. O exemplo anterior usa uma propriedade de modelo associada.
+> <xref:Microsoft.AspNetCore.Http.IFormFile> pode ser usado diretamente como um parâmetro de método de ação ou como uma propriedade de modelo associada. O exemplo anterior usa uma propriedade de modelo associada.
 
 O `FileUpload` é usado no Razor formulário páginas:
 
@@ -409,7 +410,7 @@ O exemplo anterior é semelhante a um cenário demonstrado no aplicativo de exem
 >
 > Os exemplos fornecidos não levam em consideração as considerações de segurança. Informações adicionais são fornecidas pelas seções e pelo aplicativo de [exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)a seguir:
 >
-> * [Considerações sobre segurança](#security-considerations)
+> * [Considerações de segurança](#security-considerations)
 > * [Validação](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Carregar arquivos grandes com streaming
@@ -434,7 +435,7 @@ O `StreamingController.UploadDatabase` método completo para streaming para um b
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper`(*Utilities/MultipartRequestHelper. cs*):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -512,7 +513,7 @@ Para obter assinaturas de arquivo adicionais, consulte o [banco de dados assinat
 
 Nunca use um nome de arquivo fornecido pelo cliente para salvar um arquivo no armazenamento físico. Crie um nome de arquivo seguro para o arquivo usando [Path. GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) ou [Path. GetTempFileName](xref:System.IO.Path.GetTempFileName*) para criar um caminho completo (incluindo o nome do arquivo) para armazenamento temporário.
 
-Razoro HTML automaticamente codifica valores de propriedade para exibição. O código a seguir é seguro para usar:
+Razor o HTML automaticamente codifica valores de propriedade para exibição. O código a seguir é seguro para usar:
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -605,7 +606,7 @@ Use um nome correspondente para o parâmetro do método C# ( `battlePlans` ):
 
 ### <a name="multipart-body-length-limit"></a>Limite de comprimento de corpo com várias partes
 
-<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>define o limite para o comprimento de cada corpo com diversas partes. As seções de formulário que excedem esse limite lançam um <xref:System.IO.InvalidDataException> quando analisado. O padrão é 134.217.728 (128 MB). Personalize o limite usando a <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> configuração em `Startup.ConfigureServices` :
+<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> define o limite para o comprimento de cada corpo com diversas partes. As seções de formulário que excedem esse limite lançam um <xref:System.IO.InvalidDataException> quando analisado. O padrão é 134.217.728 (128 MB). Personalize o limite usando a <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> configuração em `Startup.ConfigureServices` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -618,7 +619,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute>é usado para definir o <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para uma única página ou ação.
+<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> é usado para definir o <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para uma única página ou ação.
 
 Em um Razor aplicativo de páginas, aplique o filtro com uma [Convenção](xref:razor-pages/razor-pages-conventions) em `Startup.ConfigureServices` :
 
@@ -665,7 +666,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute>é usado para definir o [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) para uma única página ou ação.
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> é usado para definir o [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) para uma única página ou ação.
 
 Em um Razor aplicativo de páginas, aplique o filtro com uma [Convenção](xref:razor-pages/razor-pages-conventions) em `Startup.ConfigureServices` :
 
@@ -726,7 +727,7 @@ Essa configuração só se aplica ao IIS. Esse comportamento não ocorre por pad
 
 As limitações no módulo ASP.NET Core ou na presença do módulo filtragem de solicitações do IIS podem limitar os carregamentos a dois ou 4 GB. Para obter mais informações, consulte [não é possível carregar o arquivo com mais de 2GB de tamanho (dotNet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Abaixo, são listados alguns problemas comuns encontrados ao trabalhar com o upload de arquivos e suas possíveis soluções.
 
@@ -761,7 +762,7 @@ O ASP.NET Core dá suporte ao carregamento de um ou mais arquivos usando a assoc
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Considerações sobre segurança
+## <a name="security-considerations"></a>Considerações de segurança
 
 Tome cuidado ao fornecer aos usuários a capacidade de carregar arquivos em um servidor. Os invasores podem tentar:
 
@@ -838,7 +839,7 @@ Os recursos (disco, memória) usados por carregamentos de arquivos dependem do n
 O armazenamento em buffer de arquivos pequenos é abordado nas seguintes seções deste tópico:
 
 * [Armazenamento físico](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Backup de banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -965,7 +966,7 @@ Os arquivos individuais carregados no servidor podem ser acessados por meio de [
 >
 > Os exemplos fornecidos até o momento não levam em consideração as considerações de segurança. Informações adicionais são fornecidas pelas seções e pelo aplicativo de [exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)a seguir:
 >
-> * [Considerações sobre segurança](#security-considerations)
+> * [Considerações de segurança](#security-considerations)
 > * [Validação](#validation)
 
 Ao carregar arquivos usando a associação de modelo e <xref:Microsoft.AspNetCore.Http.IFormFile> o método de ação pode aceitar:
@@ -1075,7 +1076,7 @@ public class BufferedSingleFileUploadDb
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Http.IFormFile>pode ser usado diretamente como um parâmetro de método de ação ou como uma propriedade de modelo associada. O exemplo anterior usa uma propriedade de modelo associada.
+> <xref:Microsoft.AspNetCore.Http.IFormFile> pode ser usado diretamente como um parâmetro de método de ação ou como uma propriedade de modelo associada. O exemplo anterior usa uma propriedade de modelo associada.
 
 O `FileUpload` é usado no Razor formulário páginas:
 
@@ -1136,7 +1137,7 @@ O exemplo anterior é semelhante a um cenário demonstrado no aplicativo de exem
 >
 > Os exemplos fornecidos não levam em consideração as considerações de segurança. Informações adicionais são fornecidas pelas seções e pelo aplicativo de [exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/)a seguir:
 >
-> * [Considerações sobre segurança](#security-considerations)
+> * [Considerações de segurança](#security-considerations)
 > * [Validação](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Carregar arquivos grandes com streaming
@@ -1161,7 +1162,7 @@ O `StreamingController.UploadDatabase` método completo para streaming para um b
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper`(*Utilities/MultipartRequestHelper. cs*):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*):
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1239,7 +1240,7 @@ Para obter assinaturas de arquivo adicionais, consulte o [banco de dados assinat
 
 Nunca use um nome de arquivo fornecido pelo cliente para salvar um arquivo no armazenamento físico. Crie um nome de arquivo seguro para o arquivo usando [Path. GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) ou [Path. GetTempFileName](xref:System.IO.Path.GetTempFileName*) para criar um caminho completo (incluindo o nome do arquivo) para armazenamento temporário.
 
-Razoro HTML automaticamente codifica valores de propriedade para exibição. O código a seguir é seguro para usar:
+Razor o HTML automaticamente codifica valores de propriedade para exibição. O código a seguir é seguro para usar:
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -1332,7 +1333,7 @@ Use um nome correspondente para o parâmetro do método C# ( `battlePlans` ):
 
 ### <a name="multipart-body-length-limit"></a>Limite de comprimento de corpo com várias partes
 
-<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit>define o limite para o comprimento de cada corpo com diversas partes. As seções de formulário que excedem esse limite lançam um <xref:System.IO.InvalidDataException> quando analisado. O padrão é 134.217.728 (128 MB). Personalize o limite usando a <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> configuração em `Startup.ConfigureServices` :
+<xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> define o limite para o comprimento de cada corpo com diversas partes. As seções de formulário que excedem esse limite lançam um <xref:System.IO.InvalidDataException> quando analisado. O padrão é 134.217.728 (128 MB). Personalize o limite usando a <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> configuração em `Startup.ConfigureServices` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -1345,7 +1346,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute>é usado para definir o <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para uma única página ou ação.
+<xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> é usado para definir o <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para uma única página ou ação.
 
 Em um Razor aplicativo de páginas, aplique o filtro com uma [Convenção](xref:razor-pages/razor-pages-conventions) em `Startup.ConfigureServices` :
 
@@ -1391,7 +1392,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute>é usado para definir o [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) para uma única página ou ação.
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> é usado para definir o [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) para uma única página ou ação.
 
 Em um Razor aplicativo de páginas, aplique o filtro com uma [Convenção](xref:razor-pages/razor-pages-conventions) em `Startup.ConfigureServices` :
 
@@ -1448,7 +1449,7 @@ Essa configuração só se aplica ao IIS. Esse comportamento não ocorre por pad
 
 As limitações no módulo ASP.NET Core ou na presença do módulo filtragem de solicitações do IIS podem limitar os carregamentos a dois ou 4 GB. Para obter mais informações, consulte [não é possível carregar o arquivo com mais de 2GB de tamanho (dotNet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Abaixo, são listados alguns problemas comuns encontrados ao trabalhar com o upload de arquivos e suas possíveis soluções.
 

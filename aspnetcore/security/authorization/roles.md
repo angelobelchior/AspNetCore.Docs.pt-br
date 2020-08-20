@@ -5,6 +5,7 @@ description: Saiba como restringir o acesso ao controlador de ASP.NET Core e à 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/roles
-ms.openlocfilehash: 44e5f9a2a429c9f4a510d2f3e564ddd6bbe77205
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7673bb006c344e6f9baaa3cd99c4bdb4a6fc2862
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021114"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635171"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Autorização baseada em função no ASP.NET Core
 
@@ -175,7 +176,7 @@ options.AddPolicy("ElevatedRights", policy =>
 
 Este exemplo autoriza os usuários que pertencem às `Administrator` `PowerUser` `BackupAdministrator` funções ou.
 
-### <a name="add-role-services-to-no-locidentity"></a>Adicionar serviços de função aIdentity
+### <a name="add-role-services-to-no-locidentity"></a>Adicionar serviços de função a Identity
 
 Acrescente [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para adicionar serviços de função:
 

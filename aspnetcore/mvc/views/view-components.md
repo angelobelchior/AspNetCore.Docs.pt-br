@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 0c952502d58744bbbe06c92f51bd51bd547fb8ae
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 32ae699c4ef501096a9c4ab7bca6673139910f02
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020945"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635080"
 ---
 # <a name="view-components-in-aspnet-core"></a>Componentes de exibição no ASP.NET Core
 
@@ -52,7 +53,7 @@ Os componentes de exibição destinam-se a qualquer momento em que há uma lógi
 
 Um componente de exibição consiste em duas partes: a classe (normalmente derivada de [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) e o resultado que ele retorna (normalmente, uma exibição). Assim como os controladores, um componente de exibição pode ser um POCO, mas a maioria dos desenvolvedores desejará aproveitar os métodos e as propriedades disponíveis com a derivação de `ViewComponent`.
 
-Ao considerar se os componentes de exibição atendem às especificações de um aplicativo, considere usar Razor componentes em vez disso. RazorOs componentes também combinam marcação com código C# para produzir unidades de interface do usuário reutilizáveis. RazorOs componentes são projetados para a produtividade do desenvolvedor ao fornecer a lógica e a composição da interface do usuário do lado do cliente. Para obter mais informações, consulte <xref:blazor/components/index>.
+Ao considerar se os componentes de exibição atendem às especificações de um aplicativo, considere usar Razor componentes em vez disso. Razor Os componentes também combinam marcação com código C# para produzir unidades de interface do usuário reutilizáveis. Razor Os componentes são projetados para a produtividade do desenvolvedor ao fornecer a lógica e a composição da interface do usuário do lado do cliente. Para obter mais informações, consulte <xref:blazor/components/index>.
 
 ## <a name="creating-a-view-component"></a>Criando um componente de exibição
 

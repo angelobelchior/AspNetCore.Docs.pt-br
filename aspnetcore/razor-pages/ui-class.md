@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 042ef8dcc7135e0c60baec972d405380d85a6a10
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 95399246df954549cb76139a66d6998fd05a051a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019216"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634820"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Criar interface do usuário reutilizável usando o Razor projeto de biblioteca de classes no ASP.NET Core
 
@@ -188,7 +189,7 @@ Quando o aplicativo de consumo for executado:
 
 Quando o RCL é criado, é produzido um manifesto que descreve os locais estáticos de ativos da Web. O aplicativo de consumo lê o manifesto em tempo de execução para consumir os ativos de projetos e pacotes referenciados. Quando um novo ativo é adicionado a um RCL, o RCL deve ser recriado para atualizar seu manifesto antes que um aplicativo de consumo possa acessar o novo ativo.
 
-### <a name="publish"></a>Publicar
+### <a name="publish"></a>Publicação
 
 Quando o aplicativo é publicado, os ativos complementares de todos os projetos e pacotes referenciados são copiados para a pasta *wwwroot* do aplicativo publicado em `_content/{LIBRARY NAME}/` .
 
@@ -269,7 +270,7 @@ Siga as instruções em [Testar WebApp1](#test-webapp1)
 
 ## <a name="create-an-rcl"></a>Criar um RCL
 
-Nesta seção, um RCL é criado. Razoros arquivos são adicionados ao RCL.
+Nesta seção, um RCL é criado. Razor os arquivos são adicionados ao RCL.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

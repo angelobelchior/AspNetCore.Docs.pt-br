@@ -5,6 +5,7 @@ description: Visão geral de Microsoft. NET. Sdk. Web.
 ms.author: riande
 ms.date: 01/25/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/web-sdk
-ms.openlocfilehash: a717d9dc0e326e62ec920d2a838e8b18be3db013
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 163bc2679deda449f97cb4e50da1093e6b1edda4
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020685"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634807"
 ---
 # <a name="aspnet-core-web-sdk"></a>SDK do ASP.NET Core Web
 
 ### <a name="overview"></a>Visão geral
 
-`Microsoft.NET.Sdk.Web`é um [SDK de projeto do MSBuild](https://docs.microsoft.com/visualstudio/msbuild/how-to-use-project-sdk) para compilar ASP.NET Core aplicativos. É possível criar um aplicativo ASP.NET Core sem esse SDK, no entanto, o SDK da Web é:
+`Microsoft.NET.Sdk.Web` é um [SDK de projeto do MSBuild](https://docs.microsoft.com/visualstudio/msbuild/how-to-use-project-sdk) para compilar ASP.NET Core aplicativos. É possível criar um aplicativo ASP.NET Core sem esse SDK, no entanto, o SDK da Web é:
 
 * Adaptado em direção à oferta de uma experiência de primeira classe.
 * O destino recomendado para a maioria dos usuários.

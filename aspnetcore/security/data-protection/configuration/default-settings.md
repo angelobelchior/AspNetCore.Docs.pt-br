@@ -5,6 +5,7 @@ description: Saiba mais sobre o gerenciamento de chaves de proteção de dados e
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: b39187d93247dc83c34bbbe6ec6accfd77108794
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b4578737a0ea36463b3c44254aad85a484c46090
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021374"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634469"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Gerenciamento e tempo de vida de chaves da proteção de dados no ASP.NET Core
 

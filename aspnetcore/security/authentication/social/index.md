@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: 7dacbb00b40d2741fcbfc78ec7cdf2a67482a8da
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: da025cb8dced8ac8a6ecf559d4de7795c9797f71
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020464"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634274"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Autenticação de Facebook, Google e de provedor externo no ASP.NET Core
 
@@ -69,7 +70,7 @@ Para obter exemplos de como os logons sociais podem impulsionar o tráfego e as 
 
   * O `dotnet new` comando cria um novo Razor projeto de páginas na pasta *WebApp1* .
   * `-au Individual` cria o código para autenticação individual.
-  * `-uld`usa o LocalDB, uma versão leve do SQL Server Express para Windows. Omita `-uld` para usar o SQLite.
+  * `-uld` usa o LocalDB, uma versão leve do SQL Server Express para Windows. Omita `-uld` para usar o SQLite.
   * O comando `code` abre a pasta *WebApp1* em uma nova instância do Visual Studio Code.
 
 ---

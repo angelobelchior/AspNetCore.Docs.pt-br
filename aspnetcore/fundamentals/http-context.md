@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/5/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 2b8ac1d6c6cdeee14b74c5b14206bff51982c711
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0eade76f8cf0bdd81cc290218f36fe9276233104
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017240"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635275"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Acessar o HttpContext no ASP.NET Core
 
@@ -144,7 +145,7 @@ public class UserRepository : IUserRepository
 
 ## <a name="httpcontext-access-from-a-background-thread"></a>Acesso a HttpContext de um thread em segundo plano
 
-`HttpContext`Não é thread-safe. Ler ou gravar propriedades de `HttpContext` fora do processamento de uma solicitação pode resultar em um <xref:System.NullReferenceException>.
+`HttpContext` Não é thread-safe. Ler ou gravar propriedades de `HttpContext` fora do processamento de uma solicitação pode resultar em um <xref:System.NullReferenceException>.
 
 > [!NOTE]
 > Se seu aplicativo gerar erros esporádicos `NullReferenceException` , examine partes do código que iniciam o processamento em segundo plano ou que continuam o processamento após a conclusão de uma solicitação. Procure erros, como a definição de um método de controlador como `async void` .
@@ -175,6 +176,6 @@ public class EmailController : Controller
 }
 ```
 
-## <a name="no-locblazor-and-shared-state"></a>Blazore estado compartilhado
+## <a name="no-locblazor-and-shared-state"></a>Blazor e estado compartilhado
 
 [!INCLUDE[](~/includes/blazor-security/blazor-shared-state.md)]

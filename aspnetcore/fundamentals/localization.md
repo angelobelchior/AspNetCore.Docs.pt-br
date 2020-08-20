@@ -5,6 +5,7 @@ description: Saiba como o ASP.NET Core fornece serviços e middleware para local
 ms.author: riande
 ms.date: 11/30/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 9fd68d3b412c2cef6125c657653f605689ca6e70
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 254cae2b66773d7bb71aa6313fd08b6f739b7682
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017214"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634638"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalização e localização no ASP.NET Core
 
@@ -44,7 +45,7 @@ A localização de aplicativos envolve o seguinte:
 
 ## <a name="make-the-apps-content-localizable"></a>Tornar o conteúdo do aplicativo localizável
 
-<xref:Microsoft.Extensions.Localization.IStringLocalizer>e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> foram arquitetados para melhorar a produtividade ao desenvolver aplicativos localizados. `IStringLocalizer`usa o <xref:System.Resources.ResourceManager> e o <xref:System.Resources.ResourceReader> para fornecer recursos específicos de cultura em tempo de execução. A interface tem um indexador e um `IEnumerable` para retornar cadeias de caracteres localizadas. `IStringLocalizer`Não requer o armazenamento das cadeias de caracteres de idioma padrão em um arquivo de recurso. Você pode desenvolver um aplicativo direcionado à localização e não precisa criar arquivos de recurso no início do desenvolvimento. O código abaixo mostra como encapsular a cadeia de caracteres "About Title" para localização.
+<xref:Microsoft.Extensions.Localization.IStringLocalizer> e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> foram arquitetados para melhorar a produtividade ao desenvolver aplicativos localizados. `IStringLocalizer` usa o <xref:System.Resources.ResourceManager> e o <xref:System.Resources.ResourceReader> para fornecer recursos específicos de cultura em tempo de execução. A interface tem um indexador e um `IEnumerable` para retornar cadeias de caracteres localizadas. `IStringLocalizer` Não requer o armazenamento das cadeias de caracteres de idioma padrão em um arquivo de recurso. Você pode desenvolver um aplicativo direcionado à localização e não precisa criar arquivos de recurso no início do desenvolvimento. O código abaixo mostra como encapsular a cadeia de caracteres "About Title" para localização.
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/AboutController.cs)]
 
@@ -77,7 +78,7 @@ O serviço `IViewLocalizer` fornece cadeias de caracteres localizadas para uma [
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Home/About.cshtml)]
 
-A implementação padrão de `IViewLocalizer` encontra o arquivo de recurso com base no nome de arquivo da exibição. Não há nenhuma opção para usar um arquivo de recurso compartilhado global. `ViewLocalizer`implementa o localizador usando `IHtmlLocalizer` , portanto, Razor não codifica a cadeia de caracteres localizada em HTML. Parametrize cadeias de recurso e o `IViewLocalizer` codificará em HTML os parâmetros, mas não a cadeia de caracteres de recurso. Considere a seguinte Razor marcação:
+A implementação padrão de `IViewLocalizer` encontra o arquivo de recurso com base no nome de arquivo da exibição. Não há nenhuma opção para usar um arquivo de recurso compartilhado global. `ViewLocalizer` implementa o localizador usando `IHtmlLocalizer` , portanto, Razor não codifica a cadeia de caracteres localizada em HTML. Parametrize cadeias de recurso e o `IViewLocalizer` codificará em HTML os parâmetros, mas não a cadeia de caracteres de recurso. Considere a seguinte Razor marcação:
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -165,7 +166,7 @@ No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` co
 | Resources/Controllers.HomeController.fr.resx | Ponto  |
 | Resources/Controllers/HomeController.fr.resx  | Caminho |
 
-Os arquivos de recurso usando `@inject IViewLocalizer` em Razor exibições seguem um padrão semelhante. O arquivo de recurso de uma exibição pode ser nomeado usando a nomenclatura de ponto ou de caminho. Razorexiba os arquivos de recurso que imitam o caminho do arquivo de exibição associado. Supondo que definimos o `ResourcesPath` como "Resources", o arquivo de recurso em francês associado à exibição *Views/Home/About.cshtml* pode ser um dos seguintes:
+Os arquivos de recurso usando `@inject IViewLocalizer` em Razor exibições seguem um padrão semelhante. O arquivo de recurso de uma exibição pode ser nomeado usando a nomenclatura de ponto ou de caminho. Razor exiba os arquivos de recurso que imitam o caminho do arquivo de exibição associado. Supondo que definimos o `ResourcesPath` como "Resources", o arquivo de recurso em francês associado à exibição *Views/Home/About.cshtml* pode ser um dos seguintes:
 
 * Resources/Views/Home/About.fr.resx
 
@@ -225,11 +226,11 @@ A localização é configurada no método `Startup.ConfigureServices`:
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization`Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
+* `AddLocalization` Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
 
-* `AddViewLocalization`Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
+* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
 
-* `AddDataAnnotationsLocalization`Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
+* `AddDataAnnotationsLocalization` Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
 
 ### <a name="localization-middleware"></a>Middleware de localização
 
@@ -398,7 +399,7 @@ A localização de aplicativos envolve o seguinte:
 
 ## <a name="make-the-apps-content-localizable"></a>Tornar o conteúdo do aplicativo localizável
 
-<xref:Microsoft.Extensions.Localization.IStringLocalizer>e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> foram arquitetados para melhorar a produtividade ao desenvolver aplicativos localizados. `IStringLocalizer`usa o <xref:System.Resources.ResourceManager> e o <xref:System.Resources.ResourceReader> para fornecer recursos específicos de cultura em tempo de execução. A interface tem um indexador e um `IEnumerable` para retornar cadeias de caracteres localizadas. `IStringLocalizer`Não requer o armazenamento das cadeias de caracteres de idioma padrão em um arquivo de recurso. Você pode desenvolver um aplicativo direcionado à localização e não precisa criar arquivos de recurso no início do desenvolvimento. O código abaixo mostra como encapsular a cadeia de caracteres "About Title" para localização.
+<xref:Microsoft.Extensions.Localization.IStringLocalizer> e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> foram arquitetados para melhorar a produtividade ao desenvolver aplicativos localizados. `IStringLocalizer` usa o <xref:System.Resources.ResourceManager> e o <xref:System.Resources.ResourceReader> para fornecer recursos específicos de cultura em tempo de execução. A interface tem um indexador e um `IEnumerable` para retornar cadeias de caracteres localizadas. `IStringLocalizer` Não requer o armazenamento das cadeias de caracteres de idioma padrão em um arquivo de recurso. Você pode desenvolver um aplicativo direcionado à localização e não precisa criar arquivos de recurso no início do desenvolvimento. O código abaixo mostra como encapsular a cadeia de caracteres "About Title" para localização.
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/AboutController.cs)]
 
@@ -431,7 +432,7 @@ O serviço `IViewLocalizer` fornece cadeias de caracteres localizadas para uma [
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Home/About.cshtml)]
 
-A implementação padrão de `IViewLocalizer` encontra o arquivo de recurso com base no nome de arquivo da exibição. Não há nenhuma opção para usar um arquivo de recurso compartilhado global. `ViewLocalizer`implementa o localizador usando `IHtmlLocalizer` , portanto, Razor não codifica a cadeia de caracteres localizada em HTML. Parametrize cadeias de recurso e o `IViewLocalizer` codificará em HTML os parâmetros, mas não a cadeia de caracteres de recurso. Considere a seguinte Razor marcação:
+A implementação padrão de `IViewLocalizer` encontra o arquivo de recurso com base no nome de arquivo da exibição. Não há nenhuma opção para usar um arquivo de recurso compartilhado global. `ViewLocalizer` implementa o localizador usando `IHtmlLocalizer` , portanto, Razor não codifica a cadeia de caracteres localizada em HTML. Parametrize cadeias de recurso e o `IViewLocalizer` codificará em HTML os parâmetros, mas não a cadeia de caracteres de recurso. Considere a seguinte Razor marcação:
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -519,7 +520,7 @@ No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` co
 | Resources/Controllers.HomeController.fr.resx | Ponto  |
 | Resources/Controllers/HomeController.fr.resx  | Caminho |
 
-Os arquivos de recurso usando `@inject IViewLocalizer` em Razor exibições seguem um padrão semelhante. O arquivo de recurso de uma exibição pode ser nomeado usando a nomenclatura de ponto ou de caminho. Razorexiba os arquivos de recurso que imitam o caminho do arquivo de exibição associado. Supondo que definimos o `ResourcesPath` como "Resources", o arquivo de recurso em francês associado à exibição *Views/Home/About.cshtml* pode ser um dos seguintes:
+Os arquivos de recurso usando `@inject IViewLocalizer` em Razor exibições seguem um padrão semelhante. O arquivo de recurso de uma exibição pode ser nomeado usando a nomenclatura de ponto ou de caminho. Razor exiba os arquivos de recurso que imitam o caminho do arquivo de exibição associado. Supondo que definimos o `ResourcesPath` como "Resources", o arquivo de recurso em francês associado à exibição *Views/Home/About.cshtml* pode ser um dos seguintes:
 
 * Resources/Views/Home/About.fr.resx
 
@@ -579,11 +580,11 @@ A localização é configurada no método `Startup.ConfigureServices`:
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization`Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
+* `AddLocalization` Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
 
-* `AddViewLocalization`Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
+* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
 
-* `AddDataAnnotationsLocalization`Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
+* `AddDataAnnotationsLocalization` Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
 
 ### <a name="localization-middleware"></a>Middleware de localização
 
@@ -753,7 +754,7 @@ A localização de aplicativos envolve o seguinte:
 
 ## <a name="make-the-apps-content-localizable"></a>Tornar o conteúdo do aplicativo localizável
 
-<xref:Microsoft.Extensions.Localization.IStringLocalizer>e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> foram arquitetados para melhorar a produtividade ao desenvolver aplicativos localizados. `IStringLocalizer`usa o <xref:System.Resources.ResourceManager> e o <xref:System.Resources.ResourceReader> para fornecer recursos específicos de cultura em tempo de execução. A interface tem um indexador e um `IEnumerable` para retornar cadeias de caracteres localizadas. `IStringLocalizer`Não requer o armazenamento das cadeias de caracteres de idioma padrão em um arquivo de recurso. Você pode desenvolver um aplicativo direcionado à localização e não precisa criar arquivos de recurso no início do desenvolvimento. O código abaixo mostra como encapsular a cadeia de caracteres "About Title" para localização.
+<xref:Microsoft.Extensions.Localization.IStringLocalizer> e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> foram arquitetados para melhorar a produtividade ao desenvolver aplicativos localizados. `IStringLocalizer` usa o <xref:System.Resources.ResourceManager> e o <xref:System.Resources.ResourceReader> para fornecer recursos específicos de cultura em tempo de execução. A interface tem um indexador e um `IEnumerable` para retornar cadeias de caracteres localizadas. `IStringLocalizer` Não requer o armazenamento das cadeias de caracteres de idioma padrão em um arquivo de recurso. Você pode desenvolver um aplicativo direcionado à localização e não precisa criar arquivos de recurso no início do desenvolvimento. O código abaixo mostra como encapsular a cadeia de caracteres "About Title" para localização.
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/AboutController.cs)]
 
@@ -786,7 +787,7 @@ O serviço `IViewLocalizer` fornece cadeias de caracteres localizadas para uma [
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Home/About.cshtml)]
 
-A implementação padrão de `IViewLocalizer` encontra o arquivo de recurso com base no nome de arquivo da exibição. Não há nenhuma opção para usar um arquivo de recurso compartilhado global. `ViewLocalizer`implementa o localizador usando `IHtmlLocalizer` , portanto, Razor não codifica a cadeia de caracteres localizada em HTML. Parametrize cadeias de recurso e o `IViewLocalizer` codificará em HTML os parâmetros, mas não a cadeia de caracteres de recurso. Considere a seguinte Razor marcação:
+A implementação padrão de `IViewLocalizer` encontra o arquivo de recurso com base no nome de arquivo da exibição. Não há nenhuma opção para usar um arquivo de recurso compartilhado global. `ViewLocalizer` implementa o localizador usando `IHtmlLocalizer` , portanto, Razor não codifica a cadeia de caracteres localizada em HTML. Parametrize cadeias de recurso e o `IViewLocalizer` codificará em HTML os parâmetros, mas não a cadeia de caracteres de recurso. Considere a seguinte Razor marcação:
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -874,7 +875,7 @@ No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` co
 | Resources/Controllers.HomeController.fr.resx | Ponto  |
 | Resources/Controllers/HomeController.fr.resx  | Caminho |
 
-Os arquivos de recurso usando `@inject IViewLocalizer` em Razor exibições seguem um padrão semelhante. O arquivo de recurso de uma exibição pode ser nomeado usando a nomenclatura de ponto ou de caminho. Razorexiba os arquivos de recurso que imitam o caminho do arquivo de exibição associado. Supondo que definimos o `ResourcesPath` como "Resources", o arquivo de recurso em francês associado à exibição *Views/Home/About.cshtml* pode ser um dos seguintes:
+Os arquivos de recurso usando `@inject IViewLocalizer` em Razor exibições seguem um padrão semelhante. O arquivo de recurso de uma exibição pode ser nomeado usando a nomenclatura de ponto ou de caminho. Razor exiba os arquivos de recurso que imitam o caminho do arquivo de exibição associado. Supondo que definimos o `ResourcesPath` como "Resources", o arquivo de recurso em francês associado à exibição *Views/Home/About.cshtml* pode ser um dos seguintes:
 
 * Resources/Views/Home/About.fr.resx
 
@@ -934,11 +935,11 @@ A localização é configurada no método `Startup.ConfigureServices`:
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization`Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
+* `AddLocalization` Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
 
-* `AddViewLocalization`Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
+* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
 
-* `AddDataAnnotationsLocalization`Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
+* `AddDataAnnotationsLocalization` Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
 
 ### <a name="localization-middleware"></a>Middleware de localização
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: c526fc779d778cd0f99bcdaae283b6a5a0fe09ab
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7ddc1b0f80625fbc39ac49f305f745b005cbce46
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015602"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634664"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Módulos do IIS com o ASP.NET Core
 
@@ -34,7 +35,7 @@ A tabela indica os módulos IIS nativos que funcionam com aplicativos ASP.NET Co
 
 | Módulo | Funcional com os aplicativos do ASP.NET Core | Opção do ASP.NET Core |
 | --- | :---: | --- |
-| **Autenticação anônima**<br>`AnonymousAuthenticationModule`                                  | Sim | |
+| **Autenticação Anônima**<br>`AnonymousAuthenticationModule`                                  | Sim | |
 | **Autenticação básica**<br>`BasicAuthenticationModule`                                          | Sim | |
 | **Autenticação de mapeamento de certificação de cliente**<br>`CertificateMappingAuthenticationModule`      | Sim | |
 | **CGI**<br>`CgiModule`                                                                           | Não  | |
@@ -56,7 +57,7 @@ A tabela indica os módulos IIS nativos que funcionam com aplicativos ASP.NET Co
 | **Filtros ISAPI**<br>`IsapiFilterModule`                                                         | Sim | [Middleware](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | Sim | [Middleware](xref:fundamentals/middleware/index) |
 | **Suporte de protocolo**<br>`ProtocolSupportModule`                                                  | Sim | |
-| **Filtragem de Solicitações**<br>`RequestFilteringModule`                                                | Sim | [Middleware de regravação de URL`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **Filtragem de Solicitações**<br>`RequestFilteringModule`                                                | Sim | [Middleware de regravação de URL `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **Monitor de Solicitações**<br>`RequestMonitorModule`                                                    | Sim | |
 | **Regravação de URL**&#8224;<br>`RewriteModule`                                                      | Sim | [Middleware de regravação de URL](xref:fundamentals/url-rewriting) |
 | **Inclusões no lado do servidor**<br>`ServerSideIncludeModule`                                            | Não  | |
@@ -64,7 +65,7 @@ A tabela indica os módulos IIS nativos que funcionam com aplicativos ASP.NET Co
 | **Conteúdo Estático**<br>`StaticFileModule`                                                         | Não  | [Middleware de arquivos estáticos](xref:fundamentals/static-files) |
 | **Cache de token**<br>`TokenCacheModule`                                                          | Sim | |
 | **Cache de URI**<br>`UriCacheModule`                                                              | Sim | |
-| **Autorização de URL**<br>`UrlAuthorizationModule`                                                | Sim | [ASP.NET CoreIdentity](xref:security/authentication/identity) |
+| **Autorização de URL**<br>`UrlAuthorizationModule`                                                | Sim | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | **Autenticação do Windows**<br>`WindowsAuthenticationModule`                                      | Sim | |
 
 &#8224;Os tipos de correspondência `isFile` e `isDirectory` do módulo de regravação da URL não funcionam com aplicativos do ASP.NET Core, devido a alterações na [estrutura de diretórios](xref:host-and-deploy/directory-structure).
@@ -78,7 +79,7 @@ Os módulos gerenciados *não* funcionam com aplicativos do ASP.NET Core hospeda
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
 | FileAuthorization       | |
-| FormsAuthentication     | [CookieMiddleware de autenticação](xref:security/authentication/cookie) |
+| FormsAuthentication     | [Cookie Middleware de autenticação](xref:security/authentication/cookie) |
 | OutputCache             | [Middleware de cache de resposta](xref:performance/caching/middleware) |
 | Perfil                 | |
 | RoleManager             | |
@@ -86,7 +87,7 @@ Os módulos gerenciados *não* funcionam com aplicativos do ASP.NET Core hospeda
 | Session                 | [Middleware de sessão](xref:fundamentals/app-state) |
 | UrlAuthorization        | |
 | UrlMappingsModule       | [Middleware de regravação de URL](xref:fundamentals/url-rewriting) |
-| UrlRoutingModule-4.0    | [ASP.NET CoreIdentity](xref:security/authentication/identity) |
+| UrlRoutingModule-4.0    | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | WindowsAuthentication   | |
 
 ## <a name="iis-manager-application-changes"></a>Alterações de aplicativo do Gerenciador do IIS
@@ -178,4 +179,4 @@ O módulo de cache HTTP (`HttpCacheModule`) implementa o cache de saída do IIS 
 * [Introdução às arquiteturas do IIS: módulos no IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Visão geral de módulos do IIS](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Personalização de funções e módulos do IIS 7.0](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS\<system.webServer>](/iis/configuration/system.webServer/)
+* [IIS \<system.webServer>](/iis/configuration/system.webServer/)

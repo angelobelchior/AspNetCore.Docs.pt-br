@@ -1,10 +1,11 @@
 ---
 title: Identity personalização de modelo no ASP.NET Core
 author: ajcvickers
-description: Este artigo descreve como personalizar o modelo de dados de Entity Framework Core subjacente para ASP.NET Core Identity .
+description: Este artigo descreve como personalizar o modelo de dados de Entity Framework Core subjacente para o ASP.NET Core Identity .
 ms.author: avickers
 ms.date: 07/01/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 7c325bbc96ad4a8c5e4686073266d730eb924c10
-ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
+ms.openlocfilehash: 71f532aa00c2afeeb0d6b93c01cb6a1fbd0a686c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504665"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634300"
 ---
 # <a name="no-locidentity-model-customization-in-aspnet-core"></a>Identity personalização de modelo no ASP.NET Core
 
 Por [Arthur Vicker](https://github.com/ajcvickers)
 
-ASP.NET Core Identity fornece uma estrutura para gerenciar e armazenar contas de usuário em aplicativos ASP.NET Core. Identity é adicionado ao seu projeto quando **contas de usuário individuais** é selecionada como o mecanismo de autenticação. Por padrão, Identity o usa um modelo de dados principal do Entity Framework (EF). Este artigo descreve como personalizar o Identity modelo.
+ASP.NET Core Identity fornece uma estrutura para gerenciar e armazenar contas de usuário em ASP.NET Core aplicativos. Identity é adicionado ao seu projeto quando **contas de usuário individuais** é selecionada como o mecanismo de autenticação. Por padrão, Identity o usa um modelo de dados principal do Entity Framework (EF). Este artigo descreve como personalizar o Identity modelo.
 
 ## <a name="no-locidentity-and-ef-core-migrations"></a>Identity e EF Core migrações
 
@@ -219,7 +220,7 @@ Identity define os tipos de CLR ( [Common Language Runtime](/dotnet/standard/glo
 
 Em vez de usar esses tipos diretamente, os tipos podem ser usados como classes base para os próprios tipos do aplicativo. As `DbContext` classes definidas por Identity são genéricas, de modo que diferentes tipos CLR podem ser usados para um ou mais tipos de entidade no modelo. Esses tipos genéricos também permitem que o `User` tipo de dados de chave primária (CP) seja alterado.
 
-Ao usar Identity com suporte para funções, uma <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext> classe deve ser usada. Por exemplo: 
+Ao usar Identity com suporte para funções, uma <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext> classe deve ser usada. Por exemplo:
 
 ```csharp
 // Uses all the built-in Identity types
@@ -434,7 +435,7 @@ Siga estas etapas para alterar o tipo de CP:
 
     ::: moniker-end
 
-4. Se uma `ApplicationUser` classe personalizada estiver sendo usada, atualize a classe da qual herdar `IdentityUser` . Por exemplo: 
+4. Se uma `ApplicationUser` classe personalizada estiver sendo usada, atualize a classe da qual herdar `IdentityUser` . Por exemplo:
 
     ::: moniker range="<= aspnetcore-1.1"
 
@@ -502,7 +503,7 @@ Siga estas etapas para alterar o tipo de CP:
 
     ::: moniker-end
 
-5. Se uma `ApplicationRole` classe personalizada estiver sendo usada, atualize a classe da qual herdar `IdentityRole<TKey>` . Por exemplo: 
+5. Se uma `ApplicationRole` classe personalizada estiver sendo usada, atualize a classe da qual herdar `IdentityRole<TKey>` . Por exemplo:
 
     [!code-csharp[](customize-identity-model/samples/2.1/RazorPagesSampleApp/Data/ApplicationRole.cs?name=snippet_ApplicationRole&highlight=4)]
 
@@ -951,7 +952,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### <a name="map-to-a-different-schema"></a>Mapear para um esquema diferente
 
-Os esquemas podem se comportar de forma diferente nos provedores de banco de dados Por SQL Server, o padrão é criar todas as tabelas no esquema *dbo* . As tabelas podem ser criadas em um esquema diferente. Por exemplo: 
+Os esquemas podem se comportar de forma diferente nos provedores de banco de dados Por SQL Server, o padrão é criar todas as tabelas no esquema *dbo* . As tabelas podem ser criadas em um esquema diferente. Por exemplo:
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 5ad99a261356540782b9e4d601e1a38724d50a97
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 04841eb4f6adfec76020d3fe61601037c3fc0733
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017370"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635340"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tarefas em segundo plano com serviços hospedados no ASP.NET Core
 
@@ -60,7 +61,7 @@ Para aplicativos Web que usam o `Microsoft.NET.Sdk.Web` SDK, o pacote [Microsoft
 
 A <xref:Microsoft.Extensions.Hosting.IHostedService> interface define dois métodos para objetos que são gerenciados pelo host:
 
-* [StartAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*): `StartAsync` contém a lógica para iniciar a tarefa em segundo plano. `StartAsync`é chamado *antes*de:
+* [StartAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*): `StartAsync` contém a lógica para iniciar a tarefa em segundo plano. `StartAsync` é chamado *antes*de:
 
   * O pipeline de processamento de solicitação do aplicativo está configurado ( `Startup.Configure` ).
   * O servidor é iniciado e [IApplicationLifetime. ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*) é disparado.
@@ -112,7 +113,7 @@ O serviço hospedado é ativado uma única vez na inicialização do aplicativo 
 
 ## <a name="backgroundservice-base-class"></a>Classe base BackgroundService
 
-<xref:Microsoft.Extensions.Hosting.BackgroundService>é uma classe base para implementar uma longa execução <xref:Microsoft.Extensions.Hosting.IHostedService> .
+<xref:Microsoft.Extensions.Hosting.BackgroundService> é uma classe base para implementar uma longa execução <xref:Microsoft.Extensions.Hosting.IHostedService> .
 
 [ExecuteAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*) é chamado para executar o serviço em segundo plano. A implementação retorna um <xref:System.Threading.Tasks.Task> que representa o tempo de vida inteiro do serviço em segundo plano. Nenhum serviço adicional é iniciado até que [ExecuteAsync se torne assíncrono](https://github.com/dotnet/extensions/issues/2149), por exemplo, chamando `await` . Evite executar tempo demorado, bloqueando o trabalho de inicialização no `ExecuteAsync` . Os blocos de host em [StopAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*) aguardando `ExecuteAsync` para serem concluídos.
 
@@ -141,7 +142,7 @@ O serviço da tarefa em segundo plano com escopo contém a lógica da tarefa em 
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ScopedProcessingService.cs?name=snippet1)]
 
-O serviço hospedado cria um escopo para resolver o serviço de tarefa em segundo plano com escopo para chamar seu `DoWork` método. `DoWork`Retorna um `Task` , que é esperado em `ExecuteAsync` :
+O serviço hospedado cria um escopo para resolver o serviço de tarefa em segundo plano com escopo para chamar seu `DoWork` método. `DoWork` Retorna um `Task` , que é esperado em `ExecuteAsync` :
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=19,22-35)]
 
@@ -166,7 +167,7 @@ No exemplo a seguir `QueueHostedService` :
 Um `MonitorLoop` serviço lida com tarefas de enfileiramento para o serviço hospedado sempre que a `w` chave é selecionada em um dispositivo de entrada:
 
 * O `IBackgroundTaskQueue` é injetado no `MonitorLoop` serviço.
-* `IBackgroundTaskQueue.QueueBackgroundWorkItem`é chamado para enfileirar um item de trabalho.
+* `IBackgroundTaskQueue.QueueBackgroundWorkItem` é chamado para enfileirar um item de trabalho.
 * O item de trabalho simula uma tarefa em segundo plano de execução longa:
   * Três atrasos de 5 segundos são executados ( `Task.Delay` ).
   * Uma `try-catch` instrução intercepta <xref:System.OperationCanceledException> se a tarefa é cancelada.
@@ -177,7 +178,7 @@ Os serviços são registrados em `IHostBuilder.ConfigureServices` (*Program.cs*)
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 
-`MonitorLoop`é iniciado em `Program.Main` :
+`MonitorLoop` é iniciado em `Program.Main` :
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet4)]
 
@@ -270,7 +271,7 @@ Na classe de modelo de página de índice:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Pages/Index.cshtml.cs?name=snippet1)]
 
-Quando o botão **Adicionar Tarefa** é selecionado na página de índice, o método `OnPostAddTask` é executado. `QueueBackgroundWorkItem`é chamado para enfileirar um item de trabalho:
+Quando o botão **Adicionar Tarefa** é selecionado na página de índice, o método `OnPostAddTask` é executado. `QueueBackgroundWorkItem` é chamado para enfileirar um item de trabalho:
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample/Pages/Index.cshtml.cs?name=snippet2)]
 

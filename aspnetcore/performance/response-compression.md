@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 1dd931d0ee654b888814df8a0d0675d32b5c3a20
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b8947e3c3c4f634fbd838c22ff60799257143480
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020958"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634989"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compactação de resposta no ASP.NET Core
 
@@ -52,7 +53,7 @@ Normalmente, qualquer resposta não compactada nativamente pode se beneficiar da
 
 Quando um cliente pode processar conteúdo compactado, o cliente deve informar o servidor de seus recursos enviando o `Accept-Encoding` cabeçalho com a solicitação. Quando um servidor envia conteúdo compactado, ele deve incluir informações no `Content-Encoding` cabeçalho sobre como a resposta compactada é codificada. As designações de codificação de conteúdo com suporte no middleware são mostradas na tabela a seguir.
 
-| `Accept-Encoding`valores de cabeçalho | Suporte do middleware | Descrição |
+| `Accept-Encoding` valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sim (padrão)        | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
@@ -111,7 +112,7 @@ public class Startup
 
 Observações:
 
-* `app.UseResponseCompression`deve ser chamado antes de qualquer middleware que compacta as respostas. Para obter mais informações, consulte <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` deve ser chamado antes de qualquer middleware que compacta as respostas. Para obter mais informações, consulte <xref:fundamentals/middleware/index#middleware-order>.
 * Use uma ferramenta como o [Fiddler](https://www.telerik.com/fiddler), o [Firebug](https://getfirebug.com/)ou o [postmaster](https://www.getpostman.com/) para definir o `Accept-Encoding` cabeçalho da solicitação e estudar os cabeçalhos, o tamanho e o corpo da resposta.
 
 Envie uma solicitação para o aplicativo de exemplo sem o `Accept-Encoding` cabeçalho e observe que a resposta é descompactada. Os `Content-Encoding` `Vary` cabeçalhos e não estão presentes na resposta.
@@ -298,7 +299,7 @@ Normalmente, qualquer resposta não compactada nativamente pode se beneficiar da
 
 Quando um cliente pode processar conteúdo compactado, o cliente deve informar o servidor de seus recursos enviando o `Accept-Encoding` cabeçalho com a solicitação. Quando um servidor envia conteúdo compactado, ele deve incluir informações no `Content-Encoding` cabeçalho sobre como a resposta compactada é codificada. As designações de codificação de conteúdo com suporte no middleware são mostradas na tabela a seguir.
 
-| `Accept-Encoding`valores de cabeçalho | Suporte do middleware | Descrição |
+| `Accept-Encoding` valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sim (padrão)        | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
@@ -357,7 +358,7 @@ public class Startup
 
 Observações:
 
-* `app.UseResponseCompression`deve ser chamado antes de qualquer middleware que compacta as respostas. Para obter mais informações, consulte <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` deve ser chamado antes de qualquer middleware que compacta as respostas. Para obter mais informações, consulte <xref:fundamentals/middleware/index#middleware-order>.
 * Use uma ferramenta como o [Fiddler](https://www.telerik.com/fiddler), o [Firebug](https://getfirebug.com/)ou o [postmaster](https://www.getpostman.com/) para definir o `Accept-Encoding` cabeçalho da solicitação e estudar os cabeçalhos, o tamanho e o corpo da resposta.
 
 Envie uma solicitação para o aplicativo de exemplo sem o `Accept-Encoding` cabeçalho e observe que a resposta é descompactada. Os `Content-Encoding` `Vary` cabeçalhos e não estão presentes na resposta.
@@ -543,7 +544,7 @@ Normalmente, qualquer resposta não compactada nativamente pode se beneficiar da
 
 Quando um cliente pode processar conteúdo compactado, o cliente deve informar o servidor de seus recursos enviando o `Accept-Encoding` cabeçalho com a solicitação. Quando um servidor envia conteúdo compactado, ele deve incluir informações no `Content-Encoding` cabeçalho sobre como a resposta compactada é codificada. As designações de codificação de conteúdo com suporte no middleware são mostradas na tabela a seguir.
 
-| `Accept-Encoding`valores de cabeçalho | Suporte do middleware | Descrição |
+| `Accept-Encoding` valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Não                   | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
@@ -602,7 +603,7 @@ public class Startup
 
 Observações:
 
-* `app.UseResponseCompression`deve ser chamado antes de qualquer middleware que compacta as respostas. Para obter mais informações, consulte <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` deve ser chamado antes de qualquer middleware que compacta as respostas. Para obter mais informações, consulte <xref:fundamentals/middleware/index#middleware-order>.
 * Use uma ferramenta como o [Fiddler](https://www.telerik.com/fiddler), o [Firebug](https://getfirebug.com/)ou o [postmaster](https://www.getpostman.com/) para definir o `Accept-Encoding` cabeçalho da solicitação e estudar os cabeçalhos, o tamanho e o corpo da resposta.
 
 Envie uma solicitação para o aplicativo de exemplo sem o `Accept-Encoding` cabeçalho e observe que a resposta é descompactada. Os `Content-Encoding` `Vary` cabeçalhos e não estão presentes na resposta.

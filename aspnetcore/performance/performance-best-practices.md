@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 0d99c5881b1ca786287d8643c82cab6a3f98f988
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 94ae9e52ed99c3fe8e7044f474cdf5b702dc5adf
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019853"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634456"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Práticas recomendadas de desempenho de ASP.NET Core
 
@@ -110,7 +111,7 @@ Recomendações:
 
 ## <a name="keep-common-code-paths-fast"></a>Mantenha os caminhos de código comuns rápidos
 
-Você quer que todo o seu código seja rápido. Os caminhos de código chamados com frequência são os mais importantes para otimizar. Elas incluem:
+Você quer que todo o seu código seja rápido. Os caminhos de código chamados com frequência são os mais importantes para otimizar. Estão incluídos:
 
 * Componentes de middleware no pipeline de processamento de solicitação do aplicativo, especialmente o middleware é executado no início do pipeline. Esses componentes têm um grande impacto no desempenho.
 * Código que é executado para cada solicitação ou várias vezes por solicitação. Por exemplo, log personalizado, manipuladores de autorização ou inicialização de serviços transitórios.
@@ -195,12 +196,12 @@ O código anterior desserializa de forma assíncrona o corpo da solicitação em
 ## <a name="prefer-readformasync-over-requestform"></a>Preferir ReadFormAsync sobre solicitação. Form
 
 Use `HttpContext.Request.ReadFormAsync` em vez de `HttpContext.Request.Form`.
-`HttpContext.Request.Form`pode ser lido com segurança apenas com as seguintes condições:
+`HttpContext.Request.Form` pode ser lido com segurança apenas com as seguintes condições:
 
 * O formulário foi lido por uma chamada para `ReadFormAsync` , e
-* O valor de formulário armazenado em cache está sendo lido usando`HttpContext.Request.Form`
+* O valor de formulário armazenado em cache está sendo lido usando `HttpContext.Request.Form`
 
-Não **faça isso:** O exemplo a seguir usa `HttpContext.Request.Form` .  `HttpContext.Request.Form`usa a [sincronização sobre Async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#warning-sync-over-async
+Não **faça isso:** O exemplo a seguir usa `HttpContext.Request.Form` .  `HttpContext.Request.Form` usa a [sincronização sobre Async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#warning-sync-over-async
 ) e pode levar à privação do pool de threads.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/MySecondController.cs?name=snippet1)]
@@ -229,7 +230,7 @@ Naively armazenando um corpo de solicitação ou resposta grande em um único `b
 
 ## <a name="working-with-a-synchronous-data-processing-api"></a>Trabalhando com uma API de processamento de dados síncrono
 
-Ao usar um serializador/desserializador que dá suporte apenas a leituras e gravações síncronas (por exemplo, [JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm)):
+Ao usar um serializador/desserializador que dá suporte apenas a leituras e gravações síncronas (por exemplo,  [JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm)):
 
 * Armazenar em buffer os dados na memória de forma assíncrona antes de passá-los para o serializador/desserializador.
 
@@ -273,7 +274,7 @@ Não **faça isso:** O exemplo a seguir faz três solicitações paralelas e reg
 
 ## <a name="do-not-use-the-httpcontext-after-the-request-is-complete"></a>Não use o HttpContext após a conclusão da solicitação
 
-`HttpContext`Só é válido contanto que haja uma solicitação HTTP ativa no pipeline de ASP.NET Core. Todo o pipeline de ASP.NET Core é uma cadeia assíncrona de delegados que executa cada solicitação. Quando o `Task` retornado dessa cadeia for concluído, o `HttpContext` será reciclado.
+`HttpContext` Só é válido contanto que haja uma solicitação HTTP ativa no pipeline de ASP.NET Core. Todo o pipeline de ASP.NET Core é uma cadeia assíncrona de delegados que executa cada solicitação. Quando o `Task` retornado dessa cadeia for concluído, o `HttpContext` será reciclado.
 
 Não **faça isso:** O exemplo a seguir usa `async void` que faz a solicitação HTTP ser concluída quando o primeiro `await` é atingido:
 
@@ -313,7 +314,7 @@ Não **faça isso:** O exemplo a seguir mostra que um fechamento está capturand
 
 **Faça o seguinte:** O exemplo a seguir:
 
-* Injeta um <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> para criar um escopo no item de trabalho em segundo plano. `IServiceScopeFactory`é um singleton.
+* Injeta um <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> para criar um escopo no item de trabalho em segundo plano. `IServiceScopeFactory` é um singleton.
 * Cria um novo escopo de injeção de dependência no thread em segundo plano.
 * Não faz referência a nada do controlador.
 * Não captura o `ContosoDbContext` da solicitação de entrada.

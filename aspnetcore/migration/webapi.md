@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/webapi
-ms.openlocfilehash: 4888de6ad55037be540cb62b6e4f02878e2b57ab
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e3e46f8050ba87c3108885341675c9d2a2cb7847
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014809"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635158"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Migrar de ASP.NET Web API para ASP.NET Core
 
@@ -205,7 +206,7 @@ No ASP.NET Core MVC, o roteamento de atributo é incluído por padrão quando <x
 
 ## <a name="migrate-models-and-controllers"></a>Migrar modelos e controladores
 
-O código a seguir mostra a `ProductsController` atualização para ASP.NET Core:[!code-csharp[](webapi/sample/2.x/ProductsApp/Controllers/ProductsController.cs)]
+O código a seguir mostra a `ProductsController` atualização para ASP.NET Core: [!code-csharp[](webapi/sample/2.x/ProductsApp/Controllers/ProductsController.cs)]
 
 Atualize o `ProductsController` para ASP.NET Core:
 
@@ -272,7 +273,7 @@ Os recursos de compatibilidade incluídos no `Microsoft.AspNetCore.Mvc.WebApiCom
 * Estende a associação de modelo para que as ações do controlador possam ter parâmetros do tipo `HttpRequestMessage` .
 * Adiciona os formatadores de mensagem, permitindo que as ações retornem os resultados do tipo `HttpResponseMessage` .
 * Adiciona métodos de resposta adicionais que as ações da API Web 2 podem ter usado para atender às respostas:
-  * `HttpResponseMessage`geradores
+  * `HttpResponseMessage` geradores
     * `CreateResponse<T>`
     * `CreateErrorResponse`
   * Métodos de resultado da ação:

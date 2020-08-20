@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/policies
-ms.openlocfilehash: 03d6e7fdc4ab4b5e4925508952bfd6c835d90486
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 82ed4cc2ce47d3bd85ca9c2ba2bbeb075eaefcef
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021270"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635327"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorização baseada em políticas no ASP.NET Core
 
@@ -43,7 +44,7 @@ O serviço primário que determina se a autorização é bem-sucedida é <xref:M
 
 O código anterior realça os dois métodos do [IAuthorizationService](https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs).
 
-<xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement>é um serviço de marcador sem métodos e o mecanismo para controlar se a autorização é bem-sucedida.
+<xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement> é um serviço de marcador sem métodos e o mecanismo para controlar se a autorização é bem-sucedida.
 
 Cada uma <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> é responsável por verificar se os requisitos são atendidos:
 <!--The following code is a copy/paste from 
@@ -280,7 +281,7 @@ O serviço primário que determina se a autorização é bem-sucedida é <xref:M
 
 O código anterior realça os dois métodos do [IAuthorizationService](https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs).
 
-<xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement>é um serviço de marcador sem métodos e o mecanismo para controlar se a autorização é bem-sucedida.
+<xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement> é um serviço de marcador sem métodos e o mecanismo para controlar se a autorização é bem-sucedida.
 
 Cada uma <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> é responsável por verificar se os requisitos são atendidos:
 <!--The following code is a copy/paste from 

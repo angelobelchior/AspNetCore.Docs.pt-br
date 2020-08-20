@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 06135d57ca6d0bceb9c53af61cc9aaca2ec46f30
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 67831237ab1f95c6535cf586681150a230b491d0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017279"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635262"
 ---
 # <a name="aspnet-core-web-host"></a>Host da Web do ASP.NET Core
 
@@ -167,8 +168,8 @@ A propriedade [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extens
 **Chave**: applicationName  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: o nome do assembly que contém o ponto de entrada do aplicativo.  
-**Definir usando**:`UseSetting`  
-**Variável de ambiente**:`ASPNETCORE_APPLICATIONNAME`
+**Definir usando**: `UseSetting`  
+**Variável de ambiente**: `ASPNETCORE_APPLICATIONNAME`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -182,8 +183,8 @@ Esta configuração controla a captura de erros de inicialização.
 **Chave**: captureStartupErrors  
 **Tipo**: *bool* (`true` ou `1`)  
 **Padrão**: o padrão é `false`, a menos que o aplicativo seja executado com o Kestrel por trás do IIS, em que o padrão é `true`.  
-**Definir usando**:`CaptureStartupErrors`  
-**Variável de ambiente**:`ASPNETCORE_CAPTURESTARTUPERRORS`
+**Definir usando**: `CaptureStartupErrors`  
+**Variável de ambiente**: `ASPNETCORE_CAPTURESTARTUPERRORS`
 
 Quando `false`, erros durante a inicialização resultam no encerramento do host. Quando `true`, o host captura exceções durante a inicialização e tenta iniciar o servidor.
 
@@ -199,8 +200,8 @@ Essa configuração determina onde ASP.NET Core começa a Pesquisar arquivos de 
 **Chave**: contentRoot  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: o padrão é a pasta em que o assembly do aplicativo reside.  
-**Definir usando**:`UseContentRoot`  
-**Variável de ambiente**:`ASPNETCORE_CONTENTROOT`
+**Definir usando**: `UseContentRoot`  
+**Variável de ambiente**: `ASPNETCORE_CONTENTROOT`
 
 A raiz de conteúdo também é usada como o caminho base para a [raiz da Web](xref:fundamentals/index#web-root). Se o caminho raiz do conteúdo não existir, o host não será iniciado.
 
@@ -221,8 +222,8 @@ Determina se erros detalhados devem ser capturados.
 **Chave**: detailedErrors  
 **Tipo**: *bool* (`true` ou `1`)  
 **Padrão**: false  
-**Definir usando**:`UseSetting`  
-**Variável de ambiente**:`ASPNETCORE_DETAILEDERRORS`
+**Definir usando**: `UseSetting`  
+**Variável de ambiente**: `ASPNETCORE_DETAILEDERRORS`
 
 Quando habilitado (ou quando o <a href="#environment">Ambiente</a> é definido como `Development`), o aplicativo captura exceções detalhadas.
 
@@ -238,8 +239,8 @@ Define o ambiente do aplicativo.
 **Chave**: ambiente  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: Production  
-**Definir usando**:`UseEnvironment`  
-**Variável de ambiente**:`ASPNETCORE_ENVIRONMENT`
+**Definir usando**: `UseEnvironment`  
+**Variável de ambiente**: `ASPNETCORE_ENVIRONMENT`
 
 O ambiente pode ser definido como qualquer valor. Os valores definidos pela estrutura incluem `Development`, `Staging` e `Production`. Os valores não diferenciam maiúsculas de minúsculas. Por padrão, o *Ambiente* é lido da variável de ambiente `ASPNETCORE_ENVIRONMENT`. Ao usar o [Visual Studio](https://visualstudio.microsoft.com), variáveis de ambiente podem ser definidas no arquivo *launchSettings.json*. Para obter mais informações, consulte <xref:fundamentals/environments>.
 
@@ -255,8 +256,8 @@ Define os assemblies de inicialização de hospedagem do aplicativo.
 **Chave**: hostingStartupAssemblies  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: cadeia de caracteres vazia  
-**Definir usando**:`UseSetting`  
-**Variável de ambiente**:`ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
+**Definir usando**: `UseSetting`  
+**Variável de ambiente**: `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
 Uma cadeia de caracteres delimitada por ponto e vírgula de assemblies de inicialização de hospedagem para carregamento na inicialização.
 
@@ -288,8 +289,8 @@ Uma cadeia de caracteres delimitada por ponto e vírgula de assemblies de inicia
 **Chave**: hostingStartupExcludeAssemblies  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: cadeia de caracteres vazia  
-**Definir usando**:`UseSetting`  
-**Variável de ambiente**:`ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
+**Definir usando**: `UseSetting`  
+**Variável de ambiente**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -303,8 +304,8 @@ Indica se o host deve escutar as URLs configuradas com o `WebHostBuilder` em vez
 **Chave**: preferHostingUrls  
 **Tipo**: *bool* (`true` ou `1`)  
 **Padrão**: true  
-**Definir usando**:`PreferHostingUrls`  
-**Variável de ambiente**:`ASPNETCORE_PREFERHOSTINGURLS`
+**Definir usando**: `PreferHostingUrls`  
+**Variável de ambiente**: `ASPNETCORE_PREFERHOSTINGURLS`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -318,8 +319,8 @@ Impede o carregamento automático de assemblies de inicialização de hospedagem
 **Chave**: preventHostingStartup  
 **Tipo**: *bool* (`true` ou `1`)  
 **Padrão**: false  
-**Definir usando**:`UseSetting`  
-**Variável de ambiente**:`ASPNETCORE_PREVENTHOSTINGSTARTUP`
+**Definir usando**: `UseSetting`  
+**Variável de ambiente**: `ASPNETCORE_PREVENTHOSTINGSTARTUP`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -332,9 +333,9 @@ Indica os endereços IP ou endereços de host com portas e protocolos que o serv
 
 **Chave**: urls  
 **Tipo**: *cadeia de caracteres*  
-**Padrão**:http://localhost:5000  
-**Definir usando**:`UseUrls`  
-**Variável de ambiente**:`ASPNETCORE_URLS`
+**Padrão**: http://localhost:5000  
+**Definir usando**: `UseUrls`  
+**Variável de ambiente**: `ASPNETCORE_URLS`
 
 Defina como uma lista separada por ponto e vírgula (;) de prefixos de URL aos quais o servidor deve responder. Por exemplo, `http://localhost:123`. Use "\*" para indicar que o servidor deve escutar solicitações em qualquer endereço IP ou nome do host usando a porta e o protocolo especificados (por exemplo, `http://*:5000`). O protocolo (`http://` ou `https://`) deve ser incluído com cada URL. Os formatos compatíveis variam dependendo dos servidores.
 
@@ -352,8 +353,8 @@ Especifica o tempo de espera para o desligamento do host da Web.
 **Chave**: shutdownTimeoutSeconds  
 **Tipo**: *int*  
 **Padrão**: 5  
-**Definir usando**:`UseShutdownTimeout`  
-**Variável de ambiente**:`ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
+**Definir usando**: `UseShutdownTimeout`  
+**Variável de ambiente**: `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
 Embora a chave aceite um *int* com `UseSetting` (por exemplo, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), o método de extensão [UseShutdownTimeout](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useshutdowntimeout) usa um [TimeSpan](/dotnet/api/system.timespan).
 
@@ -376,8 +377,8 @@ Determina o assembly para pesquisar pela classe `Startup`.
 **Chave**: startupAssembly  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: o assembly do aplicativo  
-**Definir usando**:`UseStartup`  
-**Variável de ambiente**:`ASPNETCORE_STARTUPASSEMBLY`
+**Definir usando**: `UseStartup`  
+**Variável de ambiente**: `ASPNETCORE_STARTUPASSEMBLY`
 
 O assembly por nome (`string`) ou por tipo (`TStartup`) pode ser referenciado. Se vários métodos `UseStartup` forem chamados, o último terá precedência.
 
@@ -398,8 +399,8 @@ Define o caminho relativo para os ativos estáticos do aplicativo.
 **Chave**: webroot  
 **Tipo**: *cadeia de caracteres*  
 **Padrão**: o padrão é `wwwroot` . O caminho para *{Content root}/wwwroot* deve existir. Se o caminho não existir, um provedor de arquivo não operacional será usado.  
-**Definir usando**:`UseWebRoot`  
-**Variável de ambiente**:`ASPNETCORE_WEBROOT`
+**Definir usando**: `UseWebRoot`  
+**Variável de ambiente**: `ASPNETCORE_WEBROOT`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -827,7 +828,7 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 
 ## <a name="ihostapplicationlifetime-interface"></a>Interface IHostApplicationLifetime
 
-`IHostApplicationLifetime`permite atividades de pós-inicialização e desligamento. Três propriedades na interface são tokens de cancelamento usados para registrar métodos `Action` que definem eventos de inicialização e desligamento.
+`IHostApplicationLifetime` permite atividades de pós-inicialização e desligamento. Três propriedades na interface são tokens de cancelamento usados para registrar métodos `Action` que definem eventos de inicialização e desligamento.
 
 | Token de cancelamento    | Acionado quando&#8230; |
 | --------------------- | --------------------- |

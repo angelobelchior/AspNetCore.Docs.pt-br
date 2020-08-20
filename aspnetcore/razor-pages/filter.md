@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: b8942020e98d0f985e5445bb1816c540bcb7829b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b6d6585c0cbd52715c4192d4ab3bee756dbb41b3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021400"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635041"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtro para Razor páginas no ASP.NET Core
 
@@ -29,9 +30,9 @@ ms.locfileid: "88021400"
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-RazorOs filtros de página [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) e [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) permitem que as Razor páginas executem o código antes e depois que um Razor manipulador de página é executado. RazorOs filtros de página são semelhantes aos [filtros de ação ASP.NET Core MVC](xref:mvc/controllers/filters#action-filters), exceto que não podem ser aplicados a métodos de manipuladores de páginas individuais.
+Razor Os filtros de página [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) e [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) permitem que as Razor páginas executem o código antes e depois que um Razor manipulador de página é executado. Razor Os filtros de página são semelhantes aos [filtros de ação ASP.NET Core MVC](xref:mvc/controllers/filters#action-filters), exceto que não podem ser aplicados a métodos de manipuladores de páginas individuais.
 
-RazorFiltros de página:
+Razor Filtros de página:
 
 * Executam o código depois que um método do manipulador é selecionado, mas antes que o model binding ocorra.
 * Executam o código antes que o método do manipulador seja executado, após a conclusão do model binding.
@@ -44,7 +45,7 @@ Embora os construtores de página e o middleware habilitem a execução do códi
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/3.1sample) ([como baixar](xref:index#how-to-download-a-sample))
 
-RazorOs filtros de página fornecem os seguintes métodos, que podem ser aplicados globalmente ou no nível de página:
+Razor Os filtros de página fornecem os seguintes métodos, que podem ser aplicados globalmente ou no nível de página:
 
 * Métodos síncronos:
 
@@ -121,9 +122,9 @@ O atributo [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizea
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-RazorOs filtros de página [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) e [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) permitem que as Razor páginas executem o código antes e depois que um Razor manipulador de página é executado. RazorOs filtros de página são semelhantes aos [filtros de ação ASP.NET Core MVC](xref:mvc/controllers/filters#action-filters), exceto que não podem ser aplicados a métodos de manipuladores de páginas individuais.
+Razor Os filtros de página [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) e [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) permitem que as Razor páginas executem o código antes e depois que um Razor manipulador de página é executado. Razor Os filtros de página são semelhantes aos [filtros de ação ASP.NET Core MVC](xref:mvc/controllers/filters#action-filters), exceto que não podem ser aplicados a métodos de manipuladores de páginas individuais.
 
-RazorFiltros de página:
+Razor Filtros de página:
 
 * Executam o código depois que um método do manipulador é selecionado, mas antes que o model binding ocorra.
 * Executam o código antes que o método do manipulador seja executado, após a conclusão do model binding.
@@ -135,7 +136,7 @@ O código pode ser executado antes que um método de manipulador seja executado 
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/sample/PageFilter) ([como baixar](xref:index#how-to-download-a-sample))
 
-RazorOs filtros de página fornecem os seguintes métodos, que podem ser aplicados globalmente ou no nível de página:
+Razor Os filtros de página fornecem os seguintes métodos, que podem ser aplicados globalmente ou no nível de página:
 
 * Métodos síncronos:
 

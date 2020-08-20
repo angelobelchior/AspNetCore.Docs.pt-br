@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/14/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: 724b1f065e83302137d920fe4e0e2b381be505b7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 2d231440847270b3b2fe47fbe29359f494900292
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022128"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635197"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Provedores de política de autorização personalizados usando IAuthorizationPolicyProvider no ASP.NET Core 
 
@@ -39,7 +40,7 @@ Exemplos de cenários em que um [IAuthorizationPolicyProvider](/dotnet/api/micro
 
 ## <a name="customize-policy-retrieval"></a>Personalizar a recuperação de política
 
-ASP.NET Core aplicativos usam uma implementação da `IAuthorizationPolicyProvider` interface para recuperar políticas de autorização. Por padrão, [DefaultAuthorizationPolicyProvider](/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) é registrado e usado. `DefaultAuthorizationPolicyProvider`Retorna as políticas do `AuthorizationOptions` fornecido em uma `IServiceCollection.AddAuthorization` chamada.
+ASP.NET Core aplicativos usam uma implementação da `IAuthorizationPolicyProvider` interface para recuperar políticas de autorização. Por padrão, [DefaultAuthorizationPolicyProvider](/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) é registrado e usado. `DefaultAuthorizationPolicyProvider` Retorna as políticas do `AuthorizationOptions` fornecido em uma `IServiceCollection.AddAuthorization` chamada.
 
 Personalize esse comportamento registrando uma implementação diferente `IAuthorizationPolicyProvider` no contêiner de injeção de [dependência](xref:fundamentals/dependency-injection) do aplicativo. 
 
@@ -101,7 +102,7 @@ O personalizado `MinimumAgeAuthorizeAttribute` facilita a solicitação de polí
 Ao usar `MinimumAgeAuthorizationAttribute` o, os nomes de política de autorização seguirão o padrão `"MinimumAge" + Age` , de modo que o personalizado `IAuthorizationPolicyProvider` deve gerar políticas de autorização:
 
 * Analisando a idade do nome da política.
-* Usando `AuthorizationPolicyBuilder` para criar um novo`AuthorizationPolicy`
+* Usando `AuthorizationPolicyBuilder` para criar um novo `AuthorizationPolicy`
 * Neste e nos exemplos a seguir, será considerado que o usuário é autenticado por meio de um cookie . O `AuthorizationPolicyBuilder` deve ser construído com pelo menos um nome de esquema de autorização ou sempre com sucesso. Caso contrário, não há informações sobre como fornecer um desafio ao usuário e uma exceção será lançada.
 * Adição de requisitos à política com base na idade com `AuthorizationPolicyBuilder.AddRequirements` . Em outros cenários, você pode usar `RequireClaim` , `RequireRole` ou `RequireUserName` em vez disso.
 

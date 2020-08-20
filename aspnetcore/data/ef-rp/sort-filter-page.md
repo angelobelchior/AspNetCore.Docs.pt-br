@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 5bfea63cc1ff85adbe5ce572858b78a8e86b2280
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5e073845acbecdf0db4c30c4725f12033cfc42ac
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017721"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634677"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Parte 3, Razor páginas com EF Core em ASP.NET Core-classificar, filtrar, paginação
 
@@ -55,7 +56,7 @@ O parâmetro `sortOrder` é "Name" ou "Data". O parâmetro `sortOrder` é opcion
 
 Quando a página Índice é solicitada do link **Alunos**, não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. A ordem ascendente por sobrenome é o padrão (caso fall-through) na instrução `switch`. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
 
-`NameSort`e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
+`NameSort` e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
@@ -304,7 +305,7 @@ O parâmetro `sortOrder` é "Name" ou "Data". O parâmetro `sortOrder` é opcion
 
 Quando a página Índice é solicitada do link **Alunos**, não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. A ordem ascendente por sobrenome é o padrão (caso fall-through) na instrução `switch`. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
 
-`NameSort`e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
+`NameSort` e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
@@ -449,9 +450,9 @@ Todos os parâmetros são nulos quando:
 
 Quando um link de paginação recebe um clique, a variável de índice de páginas contém o número da página a ser exibido.
 
-`CurrentSort`fornece a Razor página com a ordem de classificação atual. A ordem de classificação atual precisa ser incluída nos links de paginação para que a ordem de classificação seja mantida durante a paginação.
+`CurrentSort` fornece a Razor página com a ordem de classificação atual. A ordem de classificação atual precisa ser incluída nos links de paginação para que a ordem de classificação seja mantida durante a paginação.
 
-`CurrentFilter`fornece a Razor página com a cadeia de caracteres de filtro atual. O valor `CurrentFilter`:
+`CurrentFilter` fornece a Razor página com a cadeia de caracteres de filtro atual. O valor `CurrentFilter`:
 
 * Deve ser incluído nos links de paginação para que as configurações de filtro sejam mantidas durante a paginação.
 * Deve ser restaurado para a caixa de texto quando a página é exibida novamente.

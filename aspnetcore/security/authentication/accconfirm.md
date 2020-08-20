@@ -5,6 +5,7 @@ description: Saiba como criar um aplicativo ASP.NET Core com confirmação de em
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 7016c2c1997d961f4b3d3cf513fc1769bd65247b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 57607390e7d5e58df9f27437faecd57504ad64df
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021608"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635366"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmação de conta e de recuperação de senha no ASP.NET Core
 
@@ -52,7 +53,7 @@ dotnet run
 
 Execute o aplicativo, selecione o link **registrar** e registre um usuário. Depois de registrado, você será redirecionado para a `/Identity/Account/RegisterConfirmation` página para, que contém um link para simular a confirmação de email:
 
-* Selecione o `Click here to confirm your account` link.
+* Selecione o link `Click here to confirm your account`.
 * Selecione o link de **logon** e entre com as mesmas credenciais.
 * Selecione o `Hello YourEmail@provider.com!` link, que o redireciona para a `/Identity/Account/Manage/PersonalData` página.
 * Selecione a guia **dados pessoais** à esquerda e, em seguida, selecione **excluir**.
@@ -237,7 +238,7 @@ Habilitar a confirmação de conta em um site com usuários bloqueia todos os us
 
 [SDK do .NET Core 2,2 ou posterior](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Criar um aplicativo Web e ScaffoldIdentity
+## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Criar um aplicativo Web e Scaffold Identity
 
 Execute os comandos a seguir para criar um aplicativo Web com autenticação.
 
@@ -273,11 +274,11 @@ Você pode querer usar esse email novamente na próxima etapa quando o aplicativ
 
 Em geral, você deseja impedir que novos usuários enviem dados para seu site antes de terem um email confirmado.
 
-Atualize `Startup.ConfigureServices` para exigir um email confirmado:
+Atualize `Startup.ConfigureServices`  para exigir um email confirmado:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
-`config.SignIn.RequireConfirmedEmail = true;`impede que os usuários registrados façam logon até que seu email seja confirmado.
+`config.SignIn.RequireConfirmedEmail = true;` impede que os usuários registrados façam logon até que seu email seja confirmado.
 
 ### <a name="configure-email-provider"></a>Configurar provedor de email
 

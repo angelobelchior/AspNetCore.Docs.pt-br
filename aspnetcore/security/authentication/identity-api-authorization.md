@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/08/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,16 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 21bd1db322a984b5644b817e82a293b6c0b2d91e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 913f8f1e43586ce71353c080e72be3b80f4c0573
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019323"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634261"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Autenticação e autorização para SPAs
 
-O ASP.NET Core 3,0 ou posterior oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização de API. ASP.NET Core Identity para autenticar e armazenar usuários é combinado com o [ Identity servidor](https://identityserver.io/) para implementar o OpenID Connect.
+O ASP.NET Core 3,0 ou posterior oferece autenticação em aplicativos de página única (SPAs) usando o suporte para autorização de API. ASP.NET Core Identitypara autenticar e armazenar usuários, é combinado com o [ Identity servidor](https://identityserver.io/) para implementar o OpenID Connect.
 
 Um parâmetro de autenticação foi adicionado aos modelos de projeto **angular** e **reajam** que é semelhante ao parâmetro de autenticação nos modelos de projeto de **aplicativo Web (Model-View-Controller)** (MVC) e **aplicativo Web** ( Razor páginas). Os valores de parâmetro permitidos são **None** e **individual**. O modelo de projeto **React.js e Redux** não dá suporte ao parâmetro de autenticação neste momento.
 
@@ -59,7 +60,7 @@ Os exemplos de código a seguir contam com o [Microsoft. AspNetCore. ApiAuthoriz
 A `Startup` classe tem as seguintes adições:
 
 * Dentro do `Startup.ConfigureServices` método:
-  * Identitycom a interface do usuário padrão:
+  * Identity com a interface do usuário padrão:
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -285,7 +286,7 @@ Para implantar o aplicativo na produção, os seguintes recursos precisam ser pr
 
 Esta seção descreve a implantação do aplicativo no serviço Azure App usando um certificado armazenado no repositório de certificados. Para modificar o aplicativo para carregar um certificado do repositório de certificados, um plano de serviço de camada Standard ou melhor é necessário quando você configura o aplicativo no portal do Azure em uma etapa posterior.
 
-Naappsettings.jsdo aplicativo *no* arquivo, modifique a `IdentityServer` seção para incluir os detalhes da chave:
+Naappsettings.jsdo aplicativo * no* arquivo, modifique a `IdentityServer` seção para incluir os detalhes da chave:
 
 ```json
 "IdentityServer": {
