@@ -5,8 +5,9 @@ description: Saiba como criar e usar Razor componentes, incluindo como associar 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/14/2020
+ms.date: 08/19/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: a145cfd551650445f9ff35259cbedf71ebb686f0
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6ee767ee76b622e15a1dc5a7fe2f3e05f03dabd0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014588"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628489"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -30,7 +31,7 @@ Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-Blazoros aplicativos são criados usando *componentes*. Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário. Os componentes são flexíveis e leves. Eles podem ser aninhados, reutilizados e compartilhados entre projetos.
+Blazor os aplicativos são criados usando *componentes*. Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário. Os componentes são flexíveis e leves. Eles podem ser aninhados, reutilizados e compartilhados entre projetos.
 
 ## <a name="component-classes"></a>Classes de componente
 
@@ -38,7 +39,7 @@ Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de c
 
 ### <a name="no-locrazor-syntax"></a>Sintaxe de Razor
 
-Razoros componentes em Blazor aplicativos usam extensivamente a Razor sintaxe. Se você não estiver familiarizado com a Razor linguagem de marcação, recomendamos a leitura <xref:mvc/views/razor> antes de continuar.
+Razor os componentes em Blazor aplicativos usam extensivamente a Razor sintaxe. Se você não estiver familiarizado com a Razor linguagem de marcação, recomendamos a leitura <xref:mvc/views/razor> antes de continuar.
 
 Ao acessar o conteúdo em Razor sintaxe, preste atenção especial às seguintes seções:
 
@@ -67,8 +68,8 @@ Os membros da classe de componente são definidos em um [`@code`][1] bloco. No [
 
 Os membros do componente podem ser usados como parte da lógica de renderização do componente usando expressões C# que começam com `@` . Por exemplo, um campo C# é renderizado pela prefixação `@` para o nome do campo. O exemplo a seguir avalia e renderiza:
 
-* `headingFontStyle`para o valor da propriedade de CSS para `font-style` .
-* `headingText`para o conteúdo do `<h1>` elemento.
+* `headingFontStyle` para o valor da propriedade de CSS para `font-style` .
+* `headingText` para o conteúdo do `<h1>` elemento.
 
 ```razor
 <h1 style="font-style:@headingFontStyle">@headingText</h1>
@@ -79,7 +80,7 @@ Os membros do componente podem ser usados como parte da lógica de renderizaçã
 }
 ```
 
-Depois que o componente é processado inicialmente, o componente regenera sua árvore de renderização em resposta a eventos. Blazorem seguida, compara a nova árvore de renderização com a anterior e aplica quaisquer modificações ao Modelo de Objeto do Documento do navegador (DOM).
+Depois que o componente é processado inicialmente, o componente regenera sua árvore de renderização em resposta a eventos. Blazor em seguida, compara a nova árvore de renderização com a anterior e aplica quaisquer modificações ao Modelo de Objeto do Documento do navegador (DOM).
 
 Os componentes são classes C# comuns e podem ser colocados em qualquer lugar dentro de um projeto. Os componentes que produzem páginas da Web geralmente residem na `Pages` pasta. Os componentes que não são de página são frequentemente colocados na `Shared` pasta ou em uma pasta personalizada adicionada ao projeto.
 
@@ -104,7 +105,7 @@ Os componentes também podem ser referenciados usando seus nomes totalmente qual
 
 O namespace de um componente criado com o Razor é baseado em (em ordem de prioridade):
 
-* [`@namespace`][8]designação na Razor marcação File ( `.razor` ) ( `@namespace BlazorSample.MyNamespace` ).
+* [`@namespace`][8] designação na Razor marcação File ( `.razor` ) ( `@namespace BlazorSample.MyNamespace` ).
 * O projeto `RootNamespace` no arquivo de projeto ( `<RootNamespace>BlazorSample</RootNamespace>` ).
 * O nome do projeto, extraído do nome de arquivo do arquivo de projeto ( `.csproj` ) e o caminho da raiz do projeto para o componente. Por exemplo, a estrutura resolve `{PROJECT ROOT}/Pages/Index.razor` ( `BlazorSample.csproj` ) para o namespace `BlazorSample.Pages` . Os componentes seguem regras de associação de nome C#. Para o `Index` componente neste exemplo, os componentes no escopo são todos os componentes:
   * Na mesma pasta, `Pages` .
@@ -119,9 +120,9 @@ O namespace de um componente criado com o Razor é baseado em (em ordem de prior
 
 ### <a name="partial-class-support"></a>Suporte de classe parcial
 
-Razoros componentes são gerados como classes parciais. Razoros componentes são criados usando uma das seguintes abordagens:
+Razor os componentes são gerados como classes parciais. Razor os componentes são criados usando uma das seguintes abordagens:
 
-* O código C# é definido em um [`@code`][1] bloco com marcação e Razor código HTML em um único arquivo. Blazoros modelos definem seus Razor componentes usando essa abordagem.
+* O código C# é definido em um [`@code`][1] bloco com marcação e Razor código HTML em um único arquivo. Blazor os modelos definem seus Razor componentes usando essa abordagem.
 * O código C# é colocado em um arquivo code-behind definido como uma classe parcial.
 
 O exemplo a seguir mostra o `Counter` componente padrão com um [`@code`][1] bloco em um aplicativo gerado a partir de um Blazor modelo. A marcação HTML, o Razor código e o código C# estão no mesmo arquivo:
@@ -190,7 +191,7 @@ using Microsoft.AspNetCore.Components.Web;
 ```
 
 > [!IMPORTANT]
-> [`@using`][2]as diretivas no `_Imports.razor` arquivo são aplicadas somente a Razor arquivos ( `.razor` ), não a arquivos C# ( `.cs` ).
+> [`@using`][2] as diretivas no `_Imports.razor` arquivo são aplicadas somente a Razor arquivos ( `.razor` ), não a arquivos C# ( `.cs` ).
 
 ### <a name="specify-a-base-class"></a>Especificar uma classe base
 
@@ -265,7 +266,7 @@ No exemplo a seguir do aplicativo de exemplo, o `ParentComponent` define o valor
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> Não crie componentes que gravam em seus próprios *parâmetros de componente*, use um campo particular em vez disso. Para obter mais informações, consulte a seção [não criar componentes que gravam em suas próprias propriedades de parâmetro](#dont-create-components-that-write-to-their-own-parameter-properties) .
+> Não crie componentes que gravam em seus próprios *parâmetros de componente* quando o conteúdo do componente for renderizado com um <xref:Microsoft.AspNetCore.Components.RenderFragment> , use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos por `RenderFragment` ](#overwritten-parameters-with-renderfragment) .
 
 ## <a name="child-content"></a>Conteúdo filho
 
@@ -317,28 +318,20 @@ No exemplo a seguir, o primeiro `<input>` elemento ( `id="useIndividualParams"` 
 
 ```razor
 <input id="useIndividualParams"
-       maxlength="@Maxlength"
-       placeholder="@Placeholder"
-       required="@Required"
-       size="@Size" />
+       maxlength="@maxlength"
+       placeholder="@placeholder"
+       required="@required"
+       size="@size" />
 
 <input id="useAttributesDict"
        @attributes="InputAttributes" />
 
 @code {
-    [Parameter]
-    public string Maxlength { get; set; } = "10";
+    public string maxlength = "10";
+    public string placeholder = "Input placeholder text";
+    public string required = "required";
+    public string size = "50";
 
-    [Parameter]
-    public string Placeholder { get; set; } = "Input placeholder text";
-
-    [Parameter]
-    public string Required { get; set; } = "required";
-
-    [Parameter]
-    public string Size { get; set; } = "50";
-
-    [Parameter]
     public Dictionary<string, object> InputAttributes { get; set; } =
         new Dictionary<string, object>()
         {
@@ -350,7 +343,7 @@ No exemplo a seguir, o primeiro `<input>` elemento ( `id="useIndividualParams"` 
 }
 ```
 
-O tipo do parâmetro deve implementar `IEnumerable<KeyValuePair<string, object>>` com chaves de cadeia de caracteres. Usar `IReadOnlyDictionary<string, object>` também é uma opção nesse cenário.
+O tipo do parâmetro deve implementar `IEnumerable<KeyValuePair<string, object>>` ou `IReadOnlyDictionary<string, object>` com chaves de cadeia de caracteres.
 
 Os elementos renderizados `<input>` usando ambas as abordagens são idênticos:
 
@@ -377,7 +370,7 @@ Para aceitar atributos arbitrários, defina um parâmetro de componente usando o
 }
 ```
 
-A <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> Propriedade on [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) permite que o parâmetro corresponda a todos os atributos que não correspondem a nenhum outro parâmetro. Um componente só pode definir um único parâmetro com <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> . O tipo de propriedade usado com <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> deve ser atribuível de `Dictionary<string, object>` com chaves de cadeia de caracteres. `IEnumerable<KeyValuePair<string, object>>`ou `IReadOnlyDictionary<string, object>` também são opções neste cenário.
+A <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> Propriedade on [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) permite que o parâmetro corresponda a todos os atributos que não correspondem a nenhum outro parâmetro. Um componente só pode definir um único parâmetro com <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> . O tipo de propriedade usado com <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> deve ser atribuível de `Dictionary<string, object>` com chaves de cadeia de caracteres. `IEnumerable<KeyValuePair<string, object>>` ou `IReadOnlyDictionary<string, object>` também são opções neste cenário.
 
 A posição de [`@attributes`][3] relativo à posição dos atributos do elemento é importante. Quando [`@attributes`][3] são splatted no elemento, os atributos são processados da direita para a esquerda (último a primeiro). Considere o exemplo a seguir de um componente que consome um `Child` componente:
 
@@ -433,10 +426,10 @@ As referências de componente fornecem uma maneira de fazer referência a uma in
 * Defina um campo com o mesmo tipo do componente filho.
 
 ```razor
-<MyLoginDialog @ref="loginDialog" ... />
+<CustomLoginDialog @ref="loginDialog" ... />
 
 @code {
-    private MyLoginDialog loginDialog;
+    private CustomLoginDialog loginDialog;
 
     private void OnSomething()
     {
@@ -474,7 +467,7 @@ Embora a captura de referências de componente use uma sintaxe semelhante à [ca
 
 ## <a name="synchronization-context"></a>Contexto de sincronização
 
-Blazorusa um contexto de sincronização ( <xref:System.Threading.SynchronizationContext> ) para impor um único thread lógico de execução. Os métodos de [ciclo de vida](xref:blazor/components/lifecycle) de um componente e quaisquer retornos de chamada de evento que são gerados pelo Blazor são executados no contexto de sincronização.
+Blazor usa um contexto de sincronização ( <xref:System.Threading.SynchronizationContext> ) para impor um único thread lógico de execução. Os métodos de [ciclo de vida](xref:blazor/components/lifecycle) de um componente e quaisquer retornos de chamada de evento que são gerados pelo Blazor são executados no contexto de sincronização.
 
 Blazor Servero contexto de sincronização do tenta emular um ambiente de thread único para que ele corresponda ao modelo Webassembly no navegador, que é um thread único. Em qualquer momento determinado, o trabalho é executado em exatamente um thread, dando a impressão de um único thread lógico. Duas operações não são executadas simultaneamente.
 
@@ -556,7 +549,7 @@ Use o `NotifierService` para atualizar um componente:
 }
 ```
 
-No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify` fora do contexto de Blazor sincronização do. `InvokeAsync`é usado para alternar para o contexto correto e enfileirar uma renderização.
+No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify` fora do contexto de Blazor sincronização do. `InvokeAsync` é usado para alternar para o contexto correto e enfileirar uma renderização.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Use \@ a chave para controlar a preservação de elementos e componentes
 
@@ -578,7 +571,7 @@ Considere o exemplo a seguir:
 
 O conteúdo da `People` coleção pode ser alterado com entradas inseridas, excluídas ou reordenadas. Quando o componente é rerenderizado, o `<DetailsEditor>` componente pode ser alterado para receber `Details` valores de parâmetro diferentes. Isso pode causar um reprocessamento mais complexo do que o esperado. Em alguns casos, a rerenderização pode levar a diferenças de comportamento visíveis, como o foco de elemento perdido.
 
-O processo de mapeamento pode ser controlado com o [`@key`][5] atributo de diretiva. [`@key`][5]faz com que o algoritmo diff garanta a preservação de elementos ou componentes com base no valor da chave:
+O processo de mapeamento pode ser controlado com o [`@key`][5] atributo de diretiva. [`@key`][5] faz com que o algoritmo diff garanta a preservação de elementos ou componentes com base no valor da chave:
 
 ```csharp
 @foreach (var person in People)
@@ -632,12 +625,12 @@ Geralmente, faz sentido fornecer um dos seguintes tipos de valor para [`@key`][5
 
 Verifique se os valores usados para [`@key`][5] não conflitam. Se valores conflitantes forem detectados no mesmo elemento pai, Blazor o lançará uma exceção porque ele não pode mapear de forma determinística elementos ou componentes antigos para novos elementos ou componentes. Use apenas valores distintos, como instâncias de objeto ou valores de chave primária.
 
-## <a name="dont-create-components-that-write-to-their-own-parameter-properties"></a>Não crie componentes que gravam em suas próprias propriedades de parâmetro
+## <a name="overwritten-parameters-with-renderfragment"></a>Parâmetros substituídos por `RenderFragment`
 
 Os parâmetros são substituídos nas seguintes condições:
 
 * O conteúdo de um componente filho é renderizado com um <xref:Microsoft.AspNetCore.Components.RenderFragment> .
-* <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>é chamado no componente pai.
+* <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> é chamado no componente pai.
 
 Os parâmetros são redefinidos porque o componente pai é rerenderizado quando <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> é chamado e novos valores de parâmetro são fornecidos ao componente filho.
 
@@ -647,17 +640,13 @@ Considere o seguinte `Expander` componente que:
 * Alterna a exibição de conteúdo filho com um parâmetro de componente.
 
 ```razor
-<div @onclick="@Toggle" class="card text-white bg-success mb-3">
+<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
-        <div class="panel-heading">
-            <h2>Toggle (<code>Expanded</code> = @Expanded)</h2>
-        </div>
+        <h2 class="card-title">Toggle (<code>Expanded</code> = @Expanded)</h2>
 
         @if (Expanded)
         {
-            <div class="card-text">
-                @ChildContent
-            </div>
+            <p class="card-text">@ChildContent</p>
         }
     </div>
 </div>
@@ -703,17 +692,13 @@ O seguinte componente revisado `Expander` :
 * Usa o campo particular para manter seu estado de alternância interno.
 
 ```razor
-<div @onclick="@Toggle" class="card text-white bg-success mb-3">
+<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
-        <div class="panel-heading">
-            <h2>Toggle (<code>expanded</code> = @expanded)</h2>
-        </div>
+        <h2 class="card-title">Toggle (<code>expanded</code> = @expanded)</h2>
 
         @if (expanded)
         {
-            <div class="card-text">
-                @ChildContent
-            </div>
+            <p class="card-text">@ChildContent</p>
         }
     </div>
 </div>
@@ -798,9 +783,9 @@ O exemplo a seguir mostra como usar o `MarkupString` tipo para adicionar um bloc
 }
 ```
 
-## <a name="no-locrazor-templates"></a>Razormodelo
+## <a name="no-locrazor-templates"></a>Razor modelo
 
-Os fragmentos de renderização podem ser definidos usando a Razor sintaxe do modelo. Razoros modelos são uma maneira de definir um trecho de interface do usuário e assumir o seguinte formato:
+Os fragmentos de renderização podem ser definidos usando a Razor sintaxe do modelo. Razor os modelos são uma maneira de definir um trecho de interface do usuário e assumir o seguinte formato:
 
 ```razor
 @<{HTML tag}>...</{HTML tag}>
@@ -842,13 +827,13 @@ Use um caminho relativo de base ( `/` ) para se referir à raiz da Web para um a
 <img alt="Company logo" src="/images/logo.png" />
 ```
 
-Razoros componentes **não** dão suporte a notação de barra de til ( `~/` ).
+Razor os componentes **não** dão suporte a notação de barra de til ( `~/` ).
 
 Para obter informações sobre como definir o caminho base de um aplicativo, consulte <xref:blazor/host-and-deploy/index#app-base-path> .
 
 ## <a name="tag-helpers-arent-supported-in-components"></a>Não há suporte para auxiliares de marcas nos componentes
 
-[`Tag Helpers`](xref:mvc/views/tag-helpers/intro)Não tem suporte em Razor componentes ( `.razor` arquivos). Para fornecer a funcionalidade do tipo auxiliar de marca no Blazor , crie um componente com a mesma funcionalidade que o auxiliar de marca e use o componente em vez disso.
+[`Tag Helpers`](xref:mvc/views/tag-helpers/intro) Não tem suporte em Razor componentes ( `.razor` arquivos). Para fornecer a funcionalidade do tipo auxiliar de marca no Blazor , crie um componente com a mesma funcionalidade que o auxiliar de marca e use o componente em vez disso.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Imagens SVG (gráficos vetoriais escaláveis)
 

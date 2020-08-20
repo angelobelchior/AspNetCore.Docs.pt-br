@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/09/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 33a82885dee5e13a97c76e6ecef96731a0336fad
-ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
+ms.openlocfilehash: ef5e9e1becb511ef383b22fc96441b0f61537354
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504678"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626214"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
 
@@ -81,7 +82,7 @@ A `Startup` classe tem as seguintes adições.
 
 * Em `Startup.ConfigureServices`:
 
-  * ASP.NET Core Identity :
+  * ASP.NET Core Identity:
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -153,7 +154,7 @@ Para obter controle total do esquema de banco de dados, herde de uma das Identit
 
 No `OidcConfigurationController` ( `Controllers/OidcConfigurationController.cs` ), o ponto de extremidade do cliente é provisionado para atender aos parâmetros OIDC.
 
-### <a name="app-settings"></a>Configurações de aplicativo
+### <a name="app-settings"></a>Configurações do aplicativo
 
 No arquivo de configurações do aplicativo ( `appsettings.json` ) na raiz do projeto, a `IdentityServer` seção descreve a lista de clientes configurados. No exemplo a seguir, há um único cliente. O nome do cliente corresponde ao nome do aplicativo e é mapeado por convenção para o `ClientId` parâmetro OAuth. O perfil indica o tipo de aplicativo que está sendo configurado. O perfil é usado internamente para direcionar as convenções que simplificam o processo de configuração para o servidor. <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 

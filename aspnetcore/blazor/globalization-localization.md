@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,25 +18,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 59b6e4cb2f466594d8a105a239e175e9c7b37ad8
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: deb68b50f408532af22d20ba9b06a9ee3eccb335
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014237"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628216"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor globalização e localização
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
-Razoros componentes podem se tornar acessíveis para os usuários em várias culturas e linguagens. Os seguintes cenários de globalização e localização do .NET estão disponíveis:
+Razor os componentes podem se tornar acessíveis para os usuários em várias culturas e linguagens. Os seguintes cenários de globalização e localização do .NET estão disponíveis:
 
 * . Sistema de recursos da rede
 * Formatação de número e data específicos da cultura
 
 No momento, há suporte para um conjunto limitado de cenários de localização de ASP.NET Core:
 
-* <xref:Microsoft.Extensions.Localization.IStringLocalizer>e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *têm suporte* em Blazor aplicativos.
+* <xref:Microsoft.Extensions.Localization.IStringLocalizer> e <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *têm suporte* em Blazor aplicativos.
 * <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> , e a localização de anotações de dados são ASP.NET Core cenários MVC e **não têm suporte** em Blazor aplicativos.
 
 Para obter mais informações, consulte <xref:fundamentals/localization>.
@@ -46,7 +47,7 @@ Blazor[`@bind`](xref:mvc/views/razor#bind)a funcionalidade do executa formatos e
 
 A cultura atual pode ser acessada a partir da <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName> propriedade.
 
-<xref:System.Globalization.CultureInfo.InvariantCulture?displayProperty=nameWithType>é usado para os seguintes tipos de campo ( `<input type="{TYPE}" />` ):
+<xref:System.Globalization.CultureInfo.InvariantCulture?displayProperty=nameWithType> é usado para os seguintes tipos de campo ( `<input type="{TYPE}" />` ):
 
 * `date`
 * `number`
@@ -63,13 +64,13 @@ Os seguintes tipos de campo têm requisitos de formatação específicos e não 
 * `month`
 * `week`
 
-[`@bind`](xref:mvc/views/razor#bind)dá suporte ao `@bind:culture` parâmetro para fornecer um <xref:System.Globalization.CultureInfo?displayProperty=fullName> para análise e formatação de um valor. Não é recomendável especificar uma cultura ao usar os `date` `number` tipos de campo e. `date`e `number` têm Blazor suporte interno que fornece a cultura necessária.
+[`@bind`](xref:mvc/views/razor#bind) dá suporte ao `@bind:culture` parâmetro para fornecer um <xref:System.Globalization.CultureInfo?displayProperty=fullName> para análise e formatação de um valor. Não é recomendável especificar uma cultura ao usar os `date` `number` tipos de campo e. `date` e `number` têm Blazor suporte interno que fornece a cultura necessária.
 
 ## <a name="localization"></a>Localização
 
 ### Blazor WebAssembly
 
-Blazor WebAssemblyos aplicativos definem a cultura usando a [preferência de idioma](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)do usuário.
+Blazor WebAssembly os aplicativos definem a cultura usando a [preferência de idioma](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)do usuário.
 
 Para configurar explicitamente a cultura, defina <xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture?displayProperty=nameWithType> e <xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture?displayProperty=nameWithType> em `Program.Main` .
 
@@ -79,7 +80,7 @@ Embora a cultura que Blazor seleciona por padrão possa ser suficiente para a ma
 
 ### Blazor Server
 
-Blazor Serveros aplicativos são localizados usando o [middleware de localização](xref:fundamentals/localization#localization-middleware). O middleware seleciona a cultura apropriada para os usuários que solicitam recursos do aplicativo.
+Blazor Server os aplicativos são localizados usando o [middleware de localização](xref:fundamentals/localization#localization-middleware). O middleware seleciona a cultura apropriada para os usuários que solicitam recursos do aplicativo.
 
 A cultura pode ser definida usando uma das seguintes abordagens:
 

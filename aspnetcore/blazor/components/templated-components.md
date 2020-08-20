@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: 408fc433dd6c81ac84f2198465b3191441ad0fc4
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 293154658e9d39166213c0a465bed1166ba39b54
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014510"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628346"
 ---
 # <a name="aspnet-core-no-locblazor-templated-components"></a>ASP.NET Core Blazor componentes modelados
 
@@ -35,9 +36,9 @@ Componentes modelo são componentes que aceitam um ou mais modelos de interface 
 
 ## <a name="template-parameters"></a>Parâmetros de modelo
 
-Um componente modelo é definido especificando um ou mais parâmetros de componente do tipo <xref:Microsoft.AspNetCore.Components.RenderFragment> ou <xref:Microsoft.AspNetCore.Components.RenderFragment%601> . Um fragmento de renderização representa um segmento de interface do usuário a ser renderizado. <xref:Microsoft.AspNetCore.Components.RenderFragment%601>usa um parâmetro de tipo que pode ser especificado quando o fragmento de renderização é invocado.
+Um componente modelo é definido especificando um ou mais parâmetros de componente do tipo <xref:Microsoft.AspNetCore.Components.RenderFragment> ou <xref:Microsoft.AspNetCore.Components.RenderFragment%601> . Um fragmento de renderização representa um segmento de interface do usuário a ser renderizado. <xref:Microsoft.AspNetCore.Components.RenderFragment%601> usa um parâmetro de tipo que pode ser especificado quando o fragmento de renderização é invocado.
 
-`TableTemplate`componente
+`TableTemplate` componente
 
 [!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 

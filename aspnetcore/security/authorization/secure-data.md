@@ -1,11 +1,12 @@
 ---
 title: Criar um aplicativo ASP.NET Core com dados de usuário protegidos por autorização
 author: rick-anderson
-description: Saiba como criar um aplicativo Web ASP.NET Core com dados de usuário protegidos por autorização. Inclui HTTPS, autenticação, segurança ASP.NET Core Identity .
+description: Saiba como criar um aplicativo Web ASP.NET Core com dados de usuário protegidos por autorização. Inclui HTTPS, autenticação, segurança, ASP.NET Core Identity .
 ms.author: riande
 ms.date: 7/18/2020
 ms.custom: mvc, seodec18
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: 44777369693f9eb29d78c3ba638db2e692f430ae
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5f86e514ee6339888171d83ab3117e9b3fcf107e
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021179"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627813"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Criar um aplicativo Web ASP.NET Core com dados de usuário protegidos por autorização
 
@@ -103,7 +104,7 @@ Use a [Identity](xref:security/authentication/identity) ID de usuário ASP.net p
 
 [!code-csharp[](secure-data/samples/final3/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-`OwnerID`é a ID do usuário da `AspNetUser` tabela no banco de [Identity](xref:security/authentication/identity) dados. O `Status` campo determina se um contato é visível por usuários gerais.
+`OwnerID` é a ID do usuário da `AspNetUser` tabela no banco de [Identity](xref:security/authentication/identity) dados. O `Status` campo determina se um contato é visível por usuários gerais.
 
 Crie uma nova migração e atualize o banco de dados:
 
@@ -112,7 +113,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Adicionar serviços de função aIdentity
+### <a name="add-role-services-to-no-locidentity"></a>Adicionar serviços de função a Identity
 
 Acrescente [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para adicionar serviços de função:
 
@@ -134,7 +135,7 @@ A política de autenticação de fallback:
 
 Definir a política de autenticação de fallback para exigir que os usuários sejam autenticados protege Razor páginas e controladores adicionados recentemente. Ter a autenticação exigida por padrão é mais seguro do que depender de novos controladores e Razor páginas para incluir o `[Authorize]` atributo.
 
-A <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions> classe também contém <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.DefaultPolicy?displayProperty=nameWithType> . O `DefaultPolicy` é a política usada com o `[Authorize]` atributo quando nenhuma política é especificada. `[Authorize]`Não contém uma política nomeada, ao contrário de `[Authorize(PolicyName="MyPolicy")]` .
+A <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions> classe também contém <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.DefaultPolicy?displayProperty=nameWithType> . O `DefaultPolicy` é a política usada com o `[Authorize]` atributo quando nenhuma política é especificada. `[Authorize]` Não contém uma política nomeada, ao contrário de `[Authorize(PolicyName="MyPolicy")]` .
 
 Para obter mais informações sobre políticas, consulte <xref:security/authorization/policies> .
 
@@ -181,11 +182,11 @@ Crie uma `ContactIsOwnerAuthorizationHandler` classe na pasta *Authorization* . 
 O `ContactIsOwnerAuthorizationHandler` contexto de chamadas [. Com sucesso](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) se o usuário autenticado atual for o proprietário do contato. Manipuladores de autorização geralmente:
 
 * Retornar `context.Succeed` quando os requisitos forem atendidos.
-* Retornar `Task.CompletedTask` quando os requisitos não forem atendidos. `Task.CompletedTask`Não é êxito ou falha &mdash; permite que outros manipuladores de autorização sejam executados.
+* Retornar `Task.CompletedTask` quando os requisitos não forem atendidos. `Task.CompletedTask` Não é êxito ou falha &mdash; permite que outros manipuladores de autorização sejam executados.
 
 Se você precisar falhar explicitamente, o contexto de retorno será retornado [. Falha](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
-O aplicativo permite aos proprietários de contato editar/Excluir/criar seus próprios dados. `ContactIsOwnerAuthorizationHandler`Não precisa verificar a operação passada no parâmetro de requisito.
+O aplicativo permite aos proprietários de contato editar/Excluir/criar seus próprios dados. `ContactIsOwnerAuthorizationHandler` Não precisa verificar a operação passada no parâmetro de requisito.
 
 ### <a name="create-a-manager-authorization-handler"></a>Criar um manipulador de autorização de gerente
 
@@ -205,7 +206,7 @@ Os serviços que usam Entity Framework Core devem ser registrados para [injeçã
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet_defaultPolicy&highlight=23-99)]
 
-`ContactAdministratorsAuthorizationHandler`e `ContactManagerAuthorizationHandler` são adicionados como singletons. Eles são singletons porque não usam o EF e todas as informações necessárias estão no `Context` parâmetro do `HandleRequirementAsync` método.
+`ContactAdministratorsAuthorizationHandler` e `ContactManagerAuthorizationHandler` são adicionados como singletons. Eles são singletons porque não usam o EF e todas as informações necessárias estão no `Context` parâmetro do `HandleRequirementAsync` método.
 
 ## <a name="support-authorization"></a>Autorização de suporte
 
@@ -343,7 +344,7 @@ Crie um contato no navegador do administrador. Copie a URL para excluir e editar
 * Criar um Razor aplicativo de páginas chamado "ContactManager"
   * Crie o aplicativo com **contas de usuário individuais**.
   * Nomeie-o como "ContactManager" para que o namespace corresponda ao namespace usado no exemplo.
-  * `-uld`Especifica o LocalDB em vez do SQLite
+  * `-uld` Especifica o LocalDB em vez do SQLite
 
   ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld
@@ -457,7 +458,7 @@ Use a [Identity](xref:security/authentication/identity) ID de usuário ASP.net p
 
 [!code-csharp[](secure-data/samples/final2.1/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-`OwnerID`é a ID do usuário da `AspNetUser` tabela no banco de [Identity](xref:security/authentication/identity) dados. O `Status` campo determina se um contato é visível por usuários gerais.
+`OwnerID` é a ID do usuário da `AspNetUser` tabela no banco de [Identity](xref:security/authentication/identity) dados. O `Status` campo determina se um contato é visível por usuários gerais.
 
 Crie uma nova migração e atualize o banco de dados:
 
@@ -466,7 +467,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Adicionar serviços de função aIdentity
+### <a name="add-role-services-to-no-locidentity"></a>Adicionar serviços de função a Identity
 
 Acrescente [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para adicionar serviços de função:
 
@@ -517,11 +518,11 @@ Crie uma pasta de *autorização* e crie uma `ContactIsOwnerAuthorizationHandler
 O `ContactIsOwnerAuthorizationHandler` contexto de chamadas [. Com sucesso](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) se o usuário autenticado atual for o proprietário do contato. Manipuladores de autorização geralmente:
 
 * Retornar `context.Succeed` quando os requisitos forem atendidos.
-* Retornar `Task.CompletedTask` quando os requisitos não forem atendidos. `Task.CompletedTask`Não é êxito ou falha &mdash; permite que outros manipuladores de autorização sejam executados.
+* Retornar `Task.CompletedTask` quando os requisitos não forem atendidos. `Task.CompletedTask` Não é êxito ou falha &mdash; permite que outros manipuladores de autorização sejam executados.
 
 Se você precisar falhar explicitamente, o contexto de retorno será retornado [. Falha](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
-O aplicativo permite aos proprietários de contato editar/Excluir/criar seus próprios dados. `ContactIsOwnerAuthorizationHandler`Não precisa verificar a operação passada no parâmetro de requisito.
+O aplicativo permite aos proprietários de contato editar/Excluir/criar seus próprios dados. `ContactIsOwnerAuthorizationHandler` Não precisa verificar a operação passada no parâmetro de requisito.
 
 ### <a name="create-a-manager-authorization-handler"></a>Criar um manipulador de autorização de gerente
 
@@ -541,7 +542,7 @@ Os serviços que usam Entity Framework Core devem ser registrados para [injeçã
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet_defaultPolicy&highlight=27-99)]
 
-`ContactAdministratorsAuthorizationHandler`e `ContactManagerAuthorizationHandler` são adicionados como singletons. Eles são singletons porque não usam o EF e todas as informações necessárias estão no `Context` parâmetro do `HandleRequirementAsync` método.
+`ContactAdministratorsAuthorizationHandler` e `ContactManagerAuthorizationHandler` são adicionados como singletons. Eles são singletons porque não usam o EF e todas as informações necessárias estão no `Context` parâmetro do `HandleRequirementAsync` método.
 
 ## <a name="support-authorization"></a>Autorização de suporte
 
@@ -670,7 +671,7 @@ Crie um contato no navegador do administrador. Copie a URL para excluir e editar
 * Criar um Razor aplicativo de páginas chamado "ContactManager"
   * Crie o aplicativo com **contas de usuário individuais**.
   * Nomeie-o como "ContactManager" para que o namespace corresponda ao namespace usado no exemplo.
-  * `-uld`Especifica o LocalDB em vez do SQLite
+  * `-uld` Especifica o LocalDB em vez do SQLite
 
   ```dotnetcli
   dotnet new webapp -o ContactManager -au Individual -uld

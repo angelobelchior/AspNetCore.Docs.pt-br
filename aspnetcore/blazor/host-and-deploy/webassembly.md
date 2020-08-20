@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/03/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: e66a470bf5bd23950bdb0ccf61c6743916ed9349
-ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
+ms.openlocfilehash: 9e3933d8800c00eb135c041bb1c65fbf01d4ef83
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504548"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628034"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -414,7 +415,7 @@ Uma *implantação autônoma* serve o Blazor WebAssembly aplicativo como um conj
 
 Os ativos de implantação autônomo são publicados na `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` pasta.
 
-### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
 
 Blazor WebAssembly os aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
 
@@ -620,7 +621,7 @@ Para implantar um Blazor WebAssembly aplicativo no CentOS 7 ou posterior:
 
 1. Reinicie o serviço apache.
 
-Para obter mais informações, consulte [`mod_mime`](https://httpd.apache.org/docs/2.4/mod/mod_mime.html) e [`mod_deflate`](https://httpd.apache.org/docs/current/mod/mod_deflate.html) .
+Para obter mais informações, confira [`mod_mime`](https://httpd.apache.org/docs/2.4/mod/mod_mime.html) e [`mod_deflate`](https://httpd.apache.org/docs/current/mod/mod_deflate.html).
 
 ### <a name="github-pages"></a>GitHub Pages
 

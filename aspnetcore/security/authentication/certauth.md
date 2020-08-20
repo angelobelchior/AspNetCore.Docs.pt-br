@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 07/16/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,16 +17,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 7a23f2b17cc8fb3a4989b9fddd5c128add13db5b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 54780e2d67c70d945fd875c41c8d6483aa358bbf
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021946"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627189"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar a autenticação de certificado no ASP.NET Core
 
-`Microsoft.AspNetCore.Authentication.Certificate`contém uma implementação semelhante à [autenticação de certificado](https://tools.ietf.org/html/rfc5246#section-7.4.4) para ASP.NET Core. A autenticação de certificado ocorre no nível de TLS, muito antes que ele chegue a ASP.NET Core. Mais precisamente, esse é um manipulador de autenticação que valida o certificado e, em seguida, fornece um evento no qual você pode resolver esse certificado para um `ClaimsPrincipal` . 
+`Microsoft.AspNetCore.Authentication.Certificate` contém uma implementação semelhante à [autenticação de certificado](https://tools.ietf.org/html/rfc5246#section-7.4.4) para ASP.NET Core. A autenticação de certificado ocorre no nível de TLS, muito antes que ele chegue a ASP.NET Core. Mais precisamente, esse é um manipulador de autenticação que valida o certificado e, em seguida, fornece um evento no qual você pode resolver esse certificado para um `ClaimsPrincipal` . 
 
 [Configure seu servidor](#configure-your-server-to-require-certificates) para autenticação de certificado, seja ele IIS, Kestrel, aplicativos Web do Azure ou qualquer outra coisa que você esteja usando.
 
@@ -325,7 +326,7 @@ private static byte[] StringToByteArray(string hex)
 }
 ```
 
-O `Startup.Configure` método, em seguida, adiciona o middleware. `UseCertificateForwarding`é chamado antes das chamadas para `UseAuthentication` e `UseAuthorization` :
+O `Startup.Configure` método, em seguida, adiciona o middleware. `UseCertificateForwarding` é chamado antes das chamadas para `UseAuthentication` e `UseAuthorization` :
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -654,4 +655,4 @@ A seguinte abordagem dá suporte a certificados de cliente opcionais:
 
 Deixe perguntas, comentários e outros comentários sobre certificados de cliente opcionais neste problema de [discussão do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/18720) .
 
-&dagger;Indicação de Nome de Servidor (SNI) é uma extensão de TLS para incluir um domínio virtual como parte da negociação SSL. Isso efetivamente significa que o nome de domínio virtual, ou um nome de host, pode ser usado para identificar o ponto de extremidade de rede.
+&dagger; Indicação de Nome de Servidor (SNI) é uma extensão de TLS para incluir um domínio virtual como parte da negociação SSL. Isso efetivamente significa que o nome de domínio virtual, ou um nome de host, pode ser usado para identificar o ponto de extremidade de rede.

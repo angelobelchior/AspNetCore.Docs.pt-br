@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 15e5c838e6dae824a189f170b28730a63f8c3ea7
-ms.sourcegitcommit: 4df445e7d49a99f81625430f728c28e5d6bf2107
+ms.openlocfilehash: ce0dfdf1ce88b55790d33918a2d20bc19a09b288
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88253636"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626890"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -351,7 +352,7 @@ Este tutorial usa o Postman para testar a API Web.
 
 * Crie uma solicitação.
 * Defina o método HTTP como `POST`.
-* Defina o URI como `https://localhost:<port>/api/TodoItem` . Por exemplo, `https://localhost:5001/api/TodoItem`.
+* Defina o URI como `https://localhost:<port>/api/TodoItems` . Por exemplo, `https://localhost:5001/api/TodoItems`.
 * Selecione a guia **Corpo**.
 * Selecione o botão de opção **bruto**.
 * Defina o tipo como **JSON (aplicativo/json)**.

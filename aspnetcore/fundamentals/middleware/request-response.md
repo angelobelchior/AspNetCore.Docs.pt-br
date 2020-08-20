@@ -7,6 +7,7 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 5/29/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: da863ac5ecf649adffe8a3d13838be2ac1f748c2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ce7357ccbb52736bfb44cd8e041c68a0992bf319
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016954"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627774"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Operações de solicitação e de resposta no ASP.NET Core
 
@@ -98,7 +99,7 @@ As `Body` `BodyReader` Propriedades,, e `BodyWriter` estão disponíveis para o 
 
 ## <a name="startasync"></a>StartAsync
 
-`HttpResponse.StartAsync`é usado para indicar que os cabeçalhos são não modificáveis e para executar `OnStarting` retornos de chamada. Ao usar o Kestrel como um servidor, chamar `StartAsync` antes de usar as `PipeReader` garantias de que a memória retornada pelo `GetMemory` pertence ao Kestrel interno <xref:System.IO.Pipelines.Pipe> , e não a um buffer externo.
+`HttpResponse.StartAsync` é usado para indicar que os cabeçalhos são não modificáveis e para executar `OnStarting` retornos de chamada. Ao usar o Kestrel como um servidor, chamar `StartAsync` antes de usar as `PipeReader` garantias de que a memória retornada pelo `GetMemory` pertence ao Kestrel interno <xref:System.IO.Pipelines.Pipe> , e não a um buffer externo.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

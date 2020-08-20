@@ -1,5 +1,5 @@
 ---
-title: Gerenciar usuários e grupos noSignalR
+title: Gerenciar usuários e grupos no SignalR
 author: bradygaster
 description: Visão geral de ASP.NET Core SignalR Gerenciamento de usuário e grupo.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 05/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,22 +18,22 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/groups
-ms.openlocfilehash: 3a1182b793c7d05a11f0b5f16f4d406a9063f023
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0dfdf3a5eccd7462b675554e02fe4d2e166e8b92
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021023"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627553"
 ---
-# <a name="manage-users-and-groups-in-no-locsignalr"></a>Gerenciar usuários e grupos noSignalR
+# <a name="manage-users-and-groups-in-no-locsignalr"></a>Gerenciar usuários e grupos no SignalR
 
 Por [Brennan Conroy](https://github.com/BrennanConroy)
 
-SignalRpermite que as mensagens sejam enviadas a todas as conexões associadas a um usuário específico, bem como a grupos nomeados de conexões.
+SignalR permite que as mensagens sejam enviadas a todas as conexões associadas a um usuário específico, bem como a grupos nomeados de conexões.
 
 [Exibir ou baixar o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [(como baixar)](xref:index#how-to-download-a-sample)
 
-## <a name="users-in-no-locsignalr"></a>Usuários noSignalR
+## <a name="users-in-no-locsignalr"></a>Usuários no SignalR
 
 Um único usuário no SignalR pode ter várias conexões com um aplicativo. Por exemplo, um usuário pode estar conectado à área de trabalho e ao seu telefone. Cada dispositivo tem uma SignalR conexão separada, mas todos eles estão associados ao mesmo usuário. Se uma mensagem for enviada ao usuário, todas as conexões associadas a esse usuário receberão a mensagem. O identificador de usuário para uma conexão pode ser acessado pela `Context.UserIdentifier` propriedade no Hub.
 
@@ -45,7 +46,7 @@ Envie uma mensagem para um usuário específico passando o identificador de usu�
 
 [!code-csharp[Configure service](groups/sample/Hubs/ChatHub.cs?range=29-32)]
 
-## <a name="groups-in-no-locsignalr"></a>Grupos emSignalR
+## <a name="groups-in-no-locsignalr"></a>Grupos em SignalR
 
 Um grupo é uma coleção de conexões associadas a um nome. As mensagens podem ser enviadas a todas as conexões em um grupo. Os grupos são a maneira recomendada de enviar para uma conexão ou várias conexões, pois os grupos são gerenciados pelo aplicativo. Uma conexão pode ser membro de vários grupos. Os grupos são ideais para algo como um aplicativo de chat, onde cada sala pode ser representada como um grupo. As conexões são adicionadas ou removidas dos grupos por meio dos `AddToGroupAsync` `RemoveFromGroupAsync` métodos e.
 

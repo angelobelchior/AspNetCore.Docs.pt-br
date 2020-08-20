@@ -1,5 +1,5 @@
 ---
-title: Configurar o vinculador para ASP.NET CoreBlazor
+title: Configurar o vinculador para ASP.NET Core Blazor
 author: guardrex
 description: Saiba como controlar o vinculador de linguagem intermediária (IL) ao criar um Blazor aplicativo.
 monikerRange: '>= aspnetcore-3.1'
@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: e76d25dbbf5c7a166e5f58a5ad1f9b5a2ecacf79
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 27a7edf0de1acc107d324afe07db63624615e550
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014240"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628125"
 ---
-# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Configurar o vinculador para ASP.NET CoreBlazor
+# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Configurar o vinculador para ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex)
 
-Blazor WebAssemblyexecuta a vinculação de [Il (linguagem intermediária)](/dotnet/standard/managed-code#intermediate-language--execution) durante uma compilação para cortar o Il desnecessário dos assemblies de saída do aplicativo. O vinculador está desabilitado ao compilar na configuração de depuração. Os aplicativos devem compilar na configuração de versão para habilitar o vinculador. É recomendável criar em versão ao implantar seus Blazor WebAssembly aplicativos. 
+Blazor WebAssembly executa a vinculação de [Il (linguagem intermediária)](/dotnet/standard/managed-code#intermediate-language--execution) durante uma compilação para cortar o Il desnecessário dos assemblies de saída do aplicativo. O vinculador está desabilitado ao compilar na configuração de depuração. Os aplicativos devem compilar na configuração de versão para habilitar o vinculador. É recomendável criar em versão ao implantar seus Blazor WebAssembly aplicativos. 
 
 A vinculação de um aplicativo otimiza o tamanho, mas pode ter efeitos prejudiciais. Os aplicativos que usam reflexão ou recursos dinâmicos relacionados podem interromper quando cortados porque o vinculador não conhece esse comportamento dinâmico e não pode determinar em geral quais tipos são necessários para reflexão em tempo de execução. Para cortar esses aplicativos, o vinculador deve ser informado sobre quaisquer tipos exigidos pela reflexão no código e em pacotes ou estruturas das quais o aplicativo depende. 
 

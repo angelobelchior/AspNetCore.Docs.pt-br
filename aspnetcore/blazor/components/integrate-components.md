@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/25/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: 7abf15b240c0acdae159784a8863b2988758c916
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e2045d7d169e81c85f4c7dbd97357455ecd70ea3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014549"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628476"
 ---
 # <a name="integrate-aspnet-core-no-locrazor-components-into-no-locrazor-pages-and-mvc-apps"></a>Integre Razor componentes de ASP.NET Core em Razor páginas e aplicativos MVC
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
-Razoros componentes podem ser integrados em Razor páginas e aplicativos MVC. Quando a página ou a exibição é renderizada, os componentes podem ser renderizados ao mesmo tempo.
+Razor os componentes podem ser integrados em Razor páginas e aplicativos MVC. Quando a página ou a exibição é renderizada, os componentes podem ser renderizados ao mesmo tempo.
 
 Depois de [preparar o aplicativo](#prepare-the-app), use as diretrizes nas seções a seguir, dependendo dos requisitos do aplicativo:
 
@@ -127,7 +128,7 @@ Para dar suporte a componentes roteáveis Razor em Razor páginas aplicativos:
 
    Os componentes usam o `_Layout.cshtml` arquivo compartilhado para seu layout.
 
-   <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>configura se o `App` componente:
+   <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode> configura se o `App` componente:
 
    * É renderizado na página.
    * É renderizado como HTML estático na página ou se inclui as informações necessárias para inicializar um Blazor aplicativo por meio do agente do usuário.
@@ -201,7 +202,7 @@ Para dar suporte a componentes roteáveis Razor em aplicativos MVC:
 
    Os componentes usam o `_Layout.cshtml` arquivo compartilhado para seu layout.
    
-   <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>configura se o `App` componente:
+   <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode> configura se o `App` componente:
 
    * É renderizado na página.
    * É renderizado como HTML estático na página ou se inclui as informações necessárias para inicializar um Blazor aplicativo por meio do agente do usuário.

@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/23/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: a29ee483a68211d779b167fe167deea917c26f70
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 84123464e8f01f8a3caa65035b3174cc04aea7cf
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013405"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625850"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Empacotar e reduzirr ativos estáticos no ASP.NET Core
 
@@ -95,7 +96,7 @@ O *bundleconfig.jsno* arquivo define as opções para cada pacote. No exemplo an
 
 As opções de configuração incluem:
 
-* `outputFileName`: O nome do arquivo de pacote para saída. Pode conter um caminho relativo do *bundleconfig.jsno* arquivo. **Necessário**
+* `outputFileName`: O nome do arquivo de pacote para saída. Pode conter um caminho relativo do *bundleconfig.jsno* arquivo. **exigido**
 * `inputFiles`: Uma matriz de arquivos para agrupar. Esses são caminhos relativos ao arquivo de configuração. **opcional**, * um valor vazio resulta em um arquivo de saída vazio. Há suporte para padrões de [mascaramento](https://www.tldp.org/LDP/abs/html/globbingref.html) .
 * `minify`: As opções de minificação para o tipo de saída. **opcional**, *padrão- `minify: { enabled: true }` *
   * As opções de configuração estão disponíveis por tipo de arquivo de saída.

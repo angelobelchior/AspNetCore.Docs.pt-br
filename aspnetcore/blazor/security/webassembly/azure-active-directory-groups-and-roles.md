@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 07/28/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: bd0a7c5a905ae4888ea6ad326be5b16cbfaa10fc
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 50d019897310f9edd560069137ab73b39d780be8
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130399"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626227"
 ---
 # <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Grupos do Azure AD, funções administrativas e funções definidas pelo usuário
 
@@ -54,14 +55,14 @@ Para permitir chamadas de API do Graph, dê ao aplicativo cliente ou autônomo d
 * `Directory.ReadWrite.All`
 * `Directory.AccessAsUser.All`
 
-`Directory.Read.All`é a permissão com privilégios mínimos e é a permissão usada para o exemplo descrito neste artigo.
+`Directory.Read.All` é a permissão com privilégios mínimos e é a permissão usada para o exemplo descrito neste artigo.
 
 ## <a name="user-defined-groups-and-built-in-administrative-roles"></a>Grupos definidos pelo usuário e funções administrativas internas
 
 Para configurar o aplicativo no portal do Azure para fornecer uma `groups` declaração de associação, consulte os seguintes artigos do Azure. Atribua usuários a grupos do AAD definidos pelo usuário e funções administrativas internas.
 
 * [As funções que usam grupos de segurança do Azure AD](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
-* [`groupMembershipClaims`Attribute](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
+* [`groupMembershipClaims` Attribute](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
 
 Os exemplos a seguir pressupõem que um usuário é atribuído à função de *administrador de cobrança* interna do AAD.
 

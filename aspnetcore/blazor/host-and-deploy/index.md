@@ -1,5 +1,5 @@
 ---
-title: Hospedar e implantar ASP.NET CoreBlazor
+title: Hospedar e implantar ASP.NET Core Blazor
 author: guardrex
 description: Descubra como hospedar e implantar Blazor aplicativos.
 monikerRange: '>= aspnetcore-3.1'
@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/15/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: 8a5172db22a17138f7462d140fd97316586e5282
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7bde61b0ff1d122b449ccc9d7ea9629fc8fb6108
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014198"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628086"
 ---
-# <a name="host-and-deploy-aspnet-core-no-locblazor"></a>Hospedar e implantar ASP.NET CoreBlazor
+# <a name="host-and-deploy-aspnet-core-no-locblazor"></a>Hospedar e implantar ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) e [Daniel Roth](https://github.com/danroth27)
 
@@ -36,7 +37,7 @@ Os aplicativos são publicados para implantação na configuração de versão.
 
 1. Selecione **Compilar**  >  **publicar {Application}** na barra de navegação.
 1. Selecione o botão *destino de publicação*. Para publicar localmente, selecione **Pasta**.
-1. Aceite o local padrão no campo **Escolher uma pasta** ou especifique um local diferente. Selecione o **`Publish`** botão.
+1. Aceite o local padrão no campo **Escolher uma pasta** ou especifique um local diferente. Selecione o botão **`Publish`**.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -83,7 +84,7 @@ Para fornecer a configuração para o Blazor caminho base do aplicativo `https:/
 <base href="/CoolApp/">
 ```
 
-Blazor Serveros aplicativos também definem o caminho base do servidor chamando <xref:Microsoft.AspNetCore.Builder.UsePathBaseExtensions.UsePathBase*> no pipeline de solicitação do aplicativo de `Startup.Configure` :
+Blazor Server os aplicativos também definem o caminho base do servidor chamando <xref:Microsoft.AspNetCore.Builder.UsePathBaseExtensions.UsePathBase*> no pipeline de solicitação do aplicativo de `Startup.Configure` :
 
 ```csharp
 app.UsePathBase("/CoolApp");

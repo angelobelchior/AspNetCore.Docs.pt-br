@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 2c91fa13c6fcb92c5985cae21c175c0a2a2a313e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 379a8f52dab36d331bc42c1fee8d64b3971e9e91
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013262"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625655"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Use os serviços JavaScript para criar aplicativos de página única no ASP.NET Core
 
@@ -288,7 +289,7 @@ Usando o aplicativo angular como um exemplo, dois casos de teste Jasmine já sã
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Abra o prompt de comando no diretório *ClientApp* Execute o seguinte comando:
+Abra o prompt de comando no diretório *ClientApp* Execute o comando a seguir:
 
 ```console
 npm test

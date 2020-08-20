@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,20 +18,20 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 4dc9040b9410304eb33e5df7c47db2f9a42152d3
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ba9fe3c0149679fa5760c0c9214cd426f1804c31
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013990"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626448"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Proteger ASP.NET Core Blazor Server aplicativos
 
 Por [Luke Latham](https://github.com/guardrex)
 
-Blazor Serveros aplicativos são configurados para segurança da mesma maneira que ASP.NET Core aplicativos. Para obter mais informações, consulte os artigos em <xref:security/index> . Os tópicos desta visão geral se aplicam especificamente ao Blazor Server . 
+Blazor Server os aplicativos são configurados para segurança da mesma maneira que ASP.NET Core aplicativos. Para obter mais informações, consulte os artigos em <xref:security/index> . Os tópicos desta visão geral se aplicam especificamente ao Blazor Server . 
 
-## <a name="no-locblazor-server-project-template"></a>Blazor Servermodelo de projeto
+## <a name="no-locblazor-server-project-template"></a>Blazor Server modelo de projeto
 
 O Blazor Server modelo de projeto pode ser configurado para autenticação quando o projeto é criado.
 
@@ -62,7 +63,7 @@ Os valores de autenticação permitidos (`{AUTHENTICATION}`) são mostrados na t
 | Mecanismo de autenticação | Descrição |
 | ------------------------ | ----------- |
 | `None` (padrão)         | Sem autenticação |
-| `Individual`             | Usuários armazenados no aplicativo com ASP.NET CoreIdentity |
+| `Individual`             | Usuários armazenados no aplicativo com ASP.NET Core Identity |
 | `IndividualB2C`          | Usuários armazenados no [Azure ad B2C](xref:security/authentication/azure-ad-b2c) |
 | `SingleOrg`              | Autenticação organizacional para um único locatário |
 | `MultiOrg`               | Autenticação organizacional para vários locatários |
@@ -96,7 +97,7 @@ Os valores de autenticação permitidos (`{AUTHENTICATION}`) são mostrados na t
 | Mecanismo de autenticação | Descrição |
 | ------------------------ | ----------- |
 | `None` (padrão)         | Sem autenticação |
-| `Individual`             | Usuários armazenados no aplicativo com ASP.NET CoreIdentity |
+| `Individual`             | Usuários armazenados no aplicativo com ASP.NET Core Identity |
 | `IndividualB2C`          | Usuários armazenados no [Azure ad B2C](xref:security/authentication/azure-ad-b2c) |
 | `SingleOrg`              | Autenticação organizacional para um único locatário |
 | `MultiOrg`               | Autenticação organizacional para vários locatários |
@@ -111,7 +112,7 @@ Para obter mais informações, consulte o [`dotnet new`](/dotnet/core/tools/dotn
 
 ---
 
-## <a name="scaffold-no-locidentity"></a>ScaffoldIdentity
+## <a name="scaffold-no-locidentity"></a>Scaffold Identity
 
 Scaffold Identity em um Blazor Server projeto:
 

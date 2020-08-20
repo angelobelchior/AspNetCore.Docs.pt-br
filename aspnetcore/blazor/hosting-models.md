@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/11/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 14fa13bafa984c0ca7b9fd8cde538042cc0ec2cc
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 53293ae9780129530ce5a41639e19284f47aa245
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130438"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628073"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>BlazorModelos de hospedagem ASP.NET Core
 
 Por [Daniel Roth](https://github.com/danroth27)
 
-Blazoro é uma estrutura da Web criada para executar o lado do cliente no navegador em um tempo de execução .NET baseado em [Webassembly](https://webassembly.org/)( *Blazor WebAssembly* ) ou no lado do servidor em ASP.NET Core ( *Blazor Server* ). Independentemente do modelo de hospedagem, os modelos de aplicativo e componente *são os mesmos*.
+Blazor o é uma estrutura da Web criada para executar o lado do cliente no navegador em um tempo de execução .NET baseado em [Webassembly](https://webassembly.org/)( *Blazor WebAssembly* ) ou no lado do servidor em ASP.NET Core ( *Blazor Server* ). Independentemente do modelo de hospedagem, os modelos de aplicativo e componente *são os mesmos*.
 
 ## Blazor WebAssembly
 
@@ -102,7 +103,7 @@ Quando uma Razor página ou exibição é renderizada, cada linha de Razor códi
 * A página inteira é reprocessada para o texto HTML novamente.
 * A página é enviada ao cliente.
 
-Um Blazor aplicativo é composto por elementos reutilizáveis da interface do usuário chamada de *componentes*. Um componente contém código C#, marcação e outros componentes. Quando um componente é renderizado, Blazor o produz um grafo dos componentes incluídos de forma semelhante a um XML ou modelo de objeto do documento de HTML (dom). Esse grafo inclui o estado do componente mantido em Propriedades e campos. Blazoravalia o grafo do componente para produzir uma representação binária da marcação. O formato binário pode ser:
+Um Blazor aplicativo é composto por elementos reutilizáveis da interface do usuário chamada de *componentes*. Um componente contém código C#, marcação e outros componentes. Quando um componente é renderizado, Blazor o produz um grafo dos componentes incluídos de forma semelhante a um XML ou modelo de objeto do documento de HTML (dom). Esse grafo inclui o estado do componente mantido em Propriedades e campos. Blazor avalia o grafo do componente para produzir uma representação binária da marcação. O formato binário pode ser:
 
 * Transformado em texto HTML (durante o pré-processamento &dagger; ).
 * Usado para atualizar a marcação com eficiência durante a renderização regular.
@@ -124,9 +125,9 @@ Um Blazor Server aplicativo é criado com base em [ASP.NET Core SignalR ](xref:s
 
 Cada tela do navegador (guia do navegador ou iframe) que está conectada a um Blazor Server aplicativo usa uma SignalR conexão. Essa é ainda outra distinção importante em comparação com os aplicativos típicos renderizados pelo servidor. Em um aplicativo renderizado pelo servidor, a abertura do mesmo aplicativo em várias telas do navegador geralmente não se traduz em demandas de recursos adicionais no servidor. Em um Blazor Server aplicativo, cada tela do navegador requer um circuito separado e instâncias separadas do estado do componente a serem gerenciadas pelo servidor.
 
-Blazorconsidera o fechamento de uma guia do navegador ou a navegação para uma URL externa um encerramento *normal* . No caso de um encerramento normal, o circuito e os recursos associados são lançados imediatamente. Um cliente também pode se desconectar não normalmente, por exemplo, devido a uma interrupção de rede. Blazor Serverarmazena circuitos desconectados para um intervalo configurável para permitir que o cliente se reconecte.
+Blazor considera o fechamento de uma guia do navegador ou a navegação para uma URL externa um encerramento *normal* . No caso de um encerramento normal, o circuito e os recursos associados são lançados imediatamente. Um cliente também pode se desconectar não normalmente, por exemplo, devido a uma interrupção de rede. Blazor Server armazena circuitos desconectados para um intervalo configurável para permitir que o cliente se reconecte.
 
-Blazor Serverpermite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Para obter mais informações, consulte <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>.
+Blazor Server permite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Para obter mais informações, consulte <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>.
 
 ### <a name="ui-latency"></a>Latência da interface do usuário
 
@@ -136,16 +137,16 @@ Para um aplicativo de linha de negócios limitado a uma rede corporativa privada
 
 O uso de memória também pode contribuir para a latência do aplicativo. O aumento do uso da memória resulta em uma coleta de lixo frequente ou na paginação da memória no disco, e conseqüentemente aumenta a latência da interface do usuário.
 
-Blazor Serveros aplicativos devem ser otimizados para minimizar a latência da interface do usuário ao reduzir a latência de rede e o uso de memória. Para obter uma abordagem para medir a latência de rede, consulte <xref:blazor/host-and-deploy/server#measure-network-latency> . Para obter mais informações sobre o SignalR e o Blazor , consulte:
+Blazor Server os aplicativos devem ser otimizados para minimizar a latência da interface do usuário ao reduzir a latência de rede e o uso de memória. Para obter uma abordagem para medir a latência de rede, consulte <xref:blazor/host-and-deploy/server#measure-network-latency> . Para obter mais informações sobre o SignalR e o Blazor , consulte:
 
 * <xref:blazor/host-and-deploy/server>
 * <xref:blazor/security/server/threat-mitigation>
 
 ### <a name="connection-to-the-server"></a>Conexão com o servidor
 
-Blazor Serveros aplicativos exigem uma SignalR conexão ativa com o servidor. Se a conexão for perdida, o aplicativo tentará se reconectar ao servidor. Desde que o estado do cliente ainda esteja na memória, a sessão do cliente será retomada sem perder o estado.
+Blazor Server os aplicativos exigem uma SignalR conexão ativa com o servidor. Se a conexão for perdida, o aplicativo tentará se reconectar ao servidor. Desde que o estado do cliente ainda esteja na memória, a sessão do cliente será retomada sem perder o estado.
 
-Um Blazor Server aplicativo é renderizado em resposta à primeira solicitação do cliente, que configura o estado da interface do usuário no servidor. Quando o cliente tenta criar uma SignalR conexão, o cliente deve se reconectar ao mesmo servidor. Blazor Serveros aplicativos que usam mais de um servidor back-end devem implementar *sessões adesivas* para SignalR conexões.
+Um Blazor Server aplicativo é renderizado em resposta à primeira solicitação do cliente, que configura o estado da interface do usuário no servidor. Quando o cliente tenta criar uma SignalR conexão, o cliente deve se reconectar ao mesmo servidor. Blazor Server os aplicativos que usam mais de um servidor back-end devem implementar *sessões adesivas* para SignalR conexões.
 
 É recomendável usar [o SignalR serviço do Azure](/azure/azure-signalr) para Blazor Server aplicativos. O serviço permite escalar verticalmente um Blazor Server aplicativo para um grande número de conexões simultâneas SignalR . As sessões adesivas são habilitadas para o serviço do Azure SignalR definindo a opção do serviço `ServerStickyMode` ou o valor de configuração como `Required` . Para obter mais informações, consulte <xref:blazor/host-and-deploy/server#signalr-configuration>.
 

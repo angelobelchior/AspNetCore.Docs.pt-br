@@ -5,6 +5,7 @@ description: Saiba mais sobre scripts entre sites (XSS) e técnicas para abordar
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 24fab313c3af30cfd4143ba29a33ba25bfcdf9a9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ec8b321be08447ca634a1e28799f790f723f17d1
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021803"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625616"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir XSS (script entre sites) no ASP.NET Core
 
@@ -42,7 +43,7 @@ Em um nível básico, o XSS funciona ao enganar seu aplicativo para inserir uma 
 
 5. Antes de colocar dados não confiáveis em uma cadeia de caracteres de consulta de URL, verifique se ela é codificada em URL.
 
-## <a name="html-encoding-using-no-locrazor"></a>Codificação HTML usandoRazor
+## <a name="html-encoding-using-no-locrazor"></a>Codificação HTML usando Razor
 
 O Razor mecanismo usado no MVC codifica automaticamente todas as saídas originadas de variáveis, a menos que você trabalhe muito difícil para impedi-lo de fazer isso. Ele usa regras de codificação de atributo HTML sempre que você usa a *@* diretiva. Como a codificação de atributo HTML é um superconjunto de codificação HTML isso significa que você não precisa se preocupar com a possibilidade de usar codificação HTML ou codificação de atributo HTML. Você deve garantir que use apenas @ em um contexto HTML, não ao tentar inserir uma entrada não confiável diretamente no JavaScript. Os auxiliares de marca também codificam a entrada usada nos parâmetros de marca.
 
@@ -65,7 +66,7 @@ Essa exibição gera o conteúdo da variável *untrustedInput* . Essa variável 
 >[!WARNING]
 > ASP.NET Core MVC fornece uma `HtmlString` classe que não é codificada automaticamente na saída. Isso nunca deve ser usado em combinação com a entrada não confiável, pois isso vai expor uma vulnerabilidade de XSS.
 
-## <a name="javascript-encoding-using-no-locrazor"></a>Codificação JavaScript usandoRazor
+## <a name="javascript-encoding-using-no-locrazor"></a>Codificação JavaScript usando Razor
 
 Pode haver ocasiões em que você deseja inserir um valor em JavaScript para processar em sua exibição. Há duas maneiras de fazer isso. A maneira mais segura de inserir valores é inserir o valor em um atributo de dados de uma marca e recuperá-lo em seu JavaScript. Por exemplo:
 
@@ -176,7 +177,7 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>Parâmetros de URL de codificação
 
-Se você quiser criar uma cadeia de caracteres de consulta de URL com entrada não confiável como um valor, use o `UrlEncoder` para codificar o valor. Por exemplo:
+Se você quiser criar uma cadeia de caracteres de consulta de URL com entrada não confiável como um valor, use o `UrlEncoder` para codificar o valor. Por exemplo,
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";

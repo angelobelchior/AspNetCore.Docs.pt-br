@@ -1,5 +1,5 @@
 ---
-title: Assemblies de carga lenta no ASP.NET CoreBlazor WebAssembly
+title: Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 author: guardrex
 description: Descubra como carregar com lentas os assemblies em ASP.NET Core Blazor WebAssembly aplicativos.
 monikerRange: '>= aspnetcore-5.0'
@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/16/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 0ce03badccad4e06aa3c316580ab82be38a806c6
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 31e6c9638d3262d3cb0a5e0fbcf34d24e2d1e91c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013366"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625798"
 ---
-# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET CoreBlazor WebAssembly
+# <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
 Por [Safia Abdalla](https://safia.rocks) e [Luke Latham](https://github.com/guardrex)
 
-Blazor WebAssemblyo desempenho de inicialização do aplicativo pode ser melhorado ao adiar o carregamento de alguns assemblies de aplicativo até que eles sejam necessários, o que é chamado de *carregamento lento*. Por exemplo, os assemblies que são usados somente para processar um único componente podem ser configurados para carregar somente se o usuário navegar para esse componente. Após o carregamento, os assemblies são armazenados em cache no lado do cliente e estão disponíveis para todas as navegações futuras.
+Blazor WebAssembly o desempenho de inicialização do aplicativo pode ser melhorado ao adiar o carregamento de alguns assemblies de aplicativo até que eles sejam necessários, o que é chamado de *carregamento lento*. Por exemplo, os assemblies que são usados somente para processar um único componente podem ser configurados para carregar somente se o usuário navegar para esse componente. Após o carregamento, os assemblies são armazenados em cache no lado do cliente e estão disponíveis para todas as navegações futuras.
 
 Blazoro recurso de carregamento lento do permite que você marque os assemblies de aplicativo para carregamento lento, que carrega os assemblies durante o tempo de execução quando o usuário navega para uma rota específica. O recurso consiste em alterações no arquivo do projeto e alterações no roteador do aplicativo.
 
@@ -77,19 +78,19 @@ No componente do aplicativo `Router` ( `App.razor` ):
 
 Se o `OnNavigateAsync` retorno de chamada lançar uma exceção sem tratamento, a [ Blazor interface do usuário de erro](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) será invocada.
 
-### <a name="assembly-load-logic-in-onnavigateasync"></a>Lógica de carga de assembly em`OnNavigateAsync`
+### <a name="assembly-load-logic-in-onnavigateasync"></a>Lógica de carga de assembly em `OnNavigateAsync`
 
-`OnNavigateAsync`tem um `NavigationContext` parâmetro que fornece informações sobre o evento de navegação assíncrona atual, incluindo o caminho de destino ( `Path` ) e o token de cancelamento ( `CancellationToken` ):
+`OnNavigateAsync` tem um `NavigationContext` parâmetro que fornece informações sobre o evento de navegação assíncrona atual, incluindo o caminho de destino ( `Path` ) e o token de cancelamento ( `CancellationToken` ):
 
 * A `Path` propriedade é o caminho de destino do usuário em relação ao caminho base do aplicativo, como `/robot` .
-* O `CancellationToken` pode ser usado para observar o cancelamento da tarefa assíncrona. `OnNavigateAsync`Cancela automaticamente a tarefa de navegação em execução no momento quando o usuário navega para uma página diferente.
+* O `CancellationToken` pode ser usado para observar o cancelamento da tarefa assíncrona. `OnNavigateAsync` Cancela automaticamente a tarefa de navegação em execução no momento quando o usuário navega para uma página diferente.
 
 No `OnNavigateAsync` , implemente a lógica para determinar os assemblies a serem carregados. As opções incluem:
 
 * Verificações condicionais dentro do `OnNavigateAsync` método.
 * Uma tabela de pesquisa que mapeia rotas para nomes de assembly, injetada no componente ou implementada dentro do [`@code`](xref:mvc/views/razor#code) bloco.
 
-`LazyAssemblyLoader`é um serviço singleton fornecido pela estrutura para carregar assemblies. Injetar `LazyAssemblyLoader` no `Router` componente:
+`LazyAssemblyLoader` é um serviço singleton fornecido pela estrutura para carregar assemblies. Injetar `LazyAssemblyLoader` no `Router` componente:
 
 ```razor
 ...
@@ -130,7 +131,7 @@ Durante o carregamento de assemblies, que pode levar vários segundos, o `Router
 ...
 ```
 
-### <a name="handle-cancellations-in-onnavigateasync"></a>Manipular cancelamentos em`OnNavigateAsync`
+### <a name="handle-cancellations-in-onnavigateasync"></a>Manipular cancelamentos em `OnNavigateAsync`
 
 O `NavigationContext` objeto passado para o `OnNavigateAsync` retorno de chamada contém um `CancellationToken` que é definido quando um novo evento de navegação ocorre. O `OnNavigateAsync` retorno de chamada deve gerar quando esse token de cancelamento é definido para evitar continuar a executar o `OnNavigateAsync` retorno de chamada em uma navegação desatualizada.
 
@@ -219,7 +220,7 @@ O componente completo a seguir `Router` demonstra como carregar o `GrantImaharaR
 }
 ```
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 * Se ocorrer uma renderização inesperada (por exemplo, um componente de uma navegação anterior é renderizado), confirme se o código será gerado se o token de cancelamento for definido.
 * Se os assemblies ainda estiverem carregados no início do aplicativo, verifique se o assembly está marcado como carregado como lento no arquivo de projeto.

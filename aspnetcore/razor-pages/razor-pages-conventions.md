@@ -1,5 +1,5 @@
 ---
-title: RazorDirecionamento de páginas e convenções de aplicativo no ASP.NET Core
+title: Razor Direcionamento de páginas e convenções de aplicativo no ASP.NET Core
 author: rick-anderson
 description: Descubra como as convenções do provedor de modelo de aplicativo e rota ajudam você a controlar o roteamento, a descoberta e o processamento de página.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 5fbb72d2195ca9fc1494f15ba0045cbb2707f72c
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: fc639178fc29438e16ad0989e61bd8dd32cf7590
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019476"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625486"
 ---
-# <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>RazorDirecionamento de páginas e convenções de aplicativo no ASP.NET Core
+# <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>Razor Direcionamento de páginas e convenções de aplicativo no ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -44,7 +45,7 @@ Há palavras reservadas que não podem ser usadas como segmentos de rota ou nome
 | [Convenções de ação da rota de página](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Adicione um modelo de rota às páginas em uma pasta e a uma única página. |
 | [Convenções de ação do modelo de página](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (classe de filtro, expressão lambda ou alocador de filtro)</li></ul> | Adicione um cabeçalho às páginas em uma pasta, adicione um cabeçalho a uma única página e configure um [alocador de filtro](xref:mvc/controllers/filters#ifilterfactory) para adicionar um cabeçalho às páginas de um aplicativo. |
 
-RazorAs convenções de páginas são configuradas usando uma <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages%2A> sobrecarga que é configurada <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions> no `Startup.ConfigureServices` . Os exemplos de convenção a seguir estão descritos mais adiante neste tópico:
+Razor As convenções de páginas são configuradas usando uma <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages%2A> sobrecarga que é configurada <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions> no `Startup.ConfigureServices` . Os exemplos de convenção a seguir estão descritos mais adiante neste tópico:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -86,7 +87,7 @@ O processamento de rota é estabelecido por convenção:
 
 Se possível, evite dependendo de uma ordem de processamento de rota estabelecida. Em geral, o roteamento seleciona a rota correta com correspondência de URL. Se você precisar definir `Order` Propriedades de rota para rotear solicitações corretamente, o esquema de roteamento do aplicativo provavelmente será confuso para clientes e frágil para manter. Busque para simplificar o esquema de roteamento do aplicativo. O aplicativo de exemplo requer uma ordem de processamento de rota explícita para demonstrar vários cenários de roteamento usando um único aplicativo. No entanto, você deve tentar evitar a prática de definir a rota `Order` em aplicativos de produção.
 
-RazorO roteamento de páginas e o roteamento do controlador MVC compartilham uma implementação. As informações sobre a ordem de rota nos tópicos do MVC estão disponíveis em [Roteamento para ações do controlador: ordenando rotas de atributo](xref:mvc/controllers/routing#ordering-attribute-routes).
+Razor O roteamento de páginas e o roteamento do controlador MVC compartilham uma implementação. As informações sobre a ordem de rota nos tópicos do MVC estão disponíveis em [Roteamento para ações do controlador: ordenando rotas de atributo](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Convenções de modelo
 
@@ -108,7 +109,7 @@ A propriedade <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteMod
 
 Sempre que possível, não defina o `Order` , que resulta em `Order = 0` . Confie no roteamento para selecionar a rota correta.
 
-RazorAs páginas opções, como adicionar <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> , são adicionadas quando Razor as páginas são adicionadas à coleção de serviços no `Startup.ConfigureServices` . Para obter um exemplo, confira o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor As páginas opções, como adicionar <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> , são adicionadas quando Razor as páginas são adicionadas à coleção de serviços no `Startup.ConfigureServices` . Para obter um exemplo, confira o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -186,7 +187,7 @@ As rotas de página geradas por ASP.NET Core podem ser personalizadas usando um 
 
 A `PageRouteTransformerConvention` Convenção de modelo de rota de página aplica um transformador de parâmetro aos segmentos de nome de arquivo e pasta de rotas de página geradas automaticamente em um aplicativo. Por exemplo, o Razor arquivo de páginas em */pages/SubscriptionManagement/ViewAll.cshtml* teria sua rota reescrita de `/SubscriptionManagement/ViewAll` para `/subscription-management/view-all` .
 
-`PageRouteTransformerConvention`transforma apenas os segmentos gerados automaticamente de uma rota de página proveniente da Razor pasta Pages e do nome do arquivo. Ele não transforma segmentos de rota adicionados com a `@page` diretiva. A Convenção também não transforma as rotas adicionadas pelo <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> .
+`PageRouteTransformerConvention` transforma apenas os segmentos gerados automaticamente de uma rota de página proveniente da Razor pasta Pages e do nome do arquivo. Ele não transforma segmentos de rota adicionados com a `@page` diretiva. A Convenção também não transforma as rotas adicionadas pelo <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> .
 
 O `PageRouteTransformerConvention` é registrado como uma opção em `Startup.ConfigureServices` :
 
@@ -266,7 +267,7 @@ Solicite a página About da amostra em `localhost:5000/About` e inspecione os ca
 
 **Configurar um filtro**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>configura o filtro especificado a ser aplicado. É possível implementar uma classe de filtro, mas o aplicativo de exemplo mostra como implementar um filtro em uma expressão lambda, que é implementado em segundo plano como um alocador que retorna um filtro:
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> configura o filtro especificado a ser aplicado. É possível implementar uma classe de filtro, mas o aplicativo de exemplo mostra como implementar um filtro em uma expressão lambda, que é implementado em segundo plano como um alocador que retorna um filtro:
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet8)]
 
@@ -280,7 +281,7 @@ Solicite a página Page2 da amostra em `localhost:5000/OtherPages/Page2` e inspe
 
 **Configurar um alocador de filtro**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>configura a fábrica especificada para aplicar [filtros](xref:mvc/controllers/filters) a todas as Razor páginas.
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> configura a fábrica especificada para aplicar [filtros](xref:mvc/controllers/filters) a todas as Razor páginas.
 
 O aplicativo de exemplo fornece um exemplo de como usar um [alocador de filtro](xref:mvc/controllers/filters#ifilterfactory) adicionando um cabeçalho, `FilterFactoryHeader`, com dois valores para as páginas do aplicativo:
 
@@ -325,7 +326,7 @@ Há palavras reservadas que não podem ser usadas como segmentos de rota ou nome
 | [Convenções de ação da rota de página](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Adicione um modelo de rota às páginas em uma pasta e a uma única página. |
 | [Convenções de ação do modelo de página](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (classe de filtro, expressão lambda ou alocador de filtro)</li></ul> | Adicione um cabeçalho às páginas em uma pasta, adicione um cabeçalho a uma única página e configure um [alocador de filtro](xref:mvc/controllers/filters#ifilterfactory) para adicionar um cabeçalho às páginas de um aplicativo. |
 
-RazorAs convenções de páginas são adicionadas e configuradas usando o <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> método de extensão para <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> na coleção de serviços na `Startup` classe. Os exemplos de convenção a seguir estão descritos mais adiante neste tópico:
+Razor As convenções de páginas são adicionadas e configuradas usando o <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> método de extensão para <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> na coleção de serviços na `Startup` classe. Os exemplos de convenção a seguir estão descritos mais adiante neste tópico:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -368,7 +369,7 @@ O processamento de rota é estabelecido por convenção:
 
 Se possível, evite dependendo de uma ordem de processamento de rota estabelecida. Em geral, o roteamento seleciona a rota correta com correspondência de URL. Se você precisar definir `Order` Propriedades de rota para rotear solicitações corretamente, o esquema de roteamento do aplicativo provavelmente será confuso para clientes e frágil para manter. Busque para simplificar o esquema de roteamento do aplicativo. O aplicativo de exemplo requer uma ordem de processamento de rota explícita para demonstrar vários cenários de roteamento usando um único aplicativo. No entanto, você deve tentar evitar a prática de definir a rota `Order` em aplicativos de produção.
 
-RazorO roteamento de páginas e o roteamento do controlador MVC compartilham uma implementação. As informações sobre a ordem de rota nos tópicos do MVC estão disponíveis em [Roteamento para ações do controlador: ordenando rotas de atributo](xref:mvc/controllers/routing#ordering-attribute-routes).
+Razor O roteamento de páginas e o roteamento do controlador MVC compartilham uma implementação. As informações sobre a ordem de rota nos tópicos do MVC estão disponíveis em [Roteamento para ações do controlador: ordenando rotas de atributo](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Convenções de modelo
 
@@ -390,7 +391,7 @@ A propriedade <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteMod
 
 Sempre que possível, não defina o `Order` , que resulta em `Order = 0` . Confie no roteamento para selecionar a rota correta.
 
-RazorAs opções de páginas, como adicionar <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> , são adicionadas quando o MVC é adicionado à coleção de serviços no `Startup.ConfigureServices` . Para obter um exemplo, confira o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor As opções de páginas, como adicionar <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> , são adicionadas quando o MVC é adicionado à coleção de serviços no `Startup.ConfigureServices` . Para obter um exemplo, confira o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -468,7 +469,7 @@ As rotas de página geradas por ASP.NET Core podem ser personalizadas usando um 
 
 A `PageRouteTransformerConvention` Convenção de modelo de rota de página aplica um transformador de parâmetro aos segmentos de nome de arquivo e pasta de rotas de página geradas automaticamente em um aplicativo. Por exemplo, o Razor arquivo de páginas em */pages/SubscriptionManagement/ViewAll.cshtml* teria sua rota reescrita de `/SubscriptionManagement/ViewAll` para `/subscription-management/view-all` .
 
-`PageRouteTransformerConvention`transforma apenas os segmentos gerados automaticamente de uma rota de página proveniente da Razor pasta Pages e do nome do arquivo. Ele não transforma segmentos de rota adicionados com a `@page` diretiva. A Convenção também não transforma as rotas adicionadas pelo <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> .
+`PageRouteTransformerConvention` transforma apenas os segmentos gerados automaticamente de uma rota de página proveniente da Razor pasta Pages e do nome do arquivo. Ele não transforma segmentos de rota adicionados com a `@page` diretiva. A Convenção também não transforma as rotas adicionadas pelo <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> .
 
 O `PageRouteTransformerConvention` é registrado como uma opção em `Startup.ConfigureServices` :
 
@@ -556,7 +557,7 @@ Solicite a página About da amostra em `localhost:5000/About` e inspecione os ca
 
 **Configurar um filtro**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>configura o filtro especificado a ser aplicado. É possível implementar uma classe de filtro, mas o aplicativo de exemplo mostra como implementar um filtro em uma expressão lambda, que é implementado em segundo plano como um alocador que retorna um filtro:
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> configura o filtro especificado a ser aplicado. É possível implementar uma classe de filtro, mas o aplicativo de exemplo mostra como implementar um filtro em uma expressão lambda, que é implementado em segundo plano como um alocador que retorna um filtro:
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet8)]
 
@@ -570,7 +571,7 @@ Solicite a página Page2 da amostra em `localhost:5000/OtherPages/Page2` e inspe
 
 **Configurar um alocador de filtro**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>configura a fábrica especificada para aplicar [filtros](xref:mvc/controllers/filters) a todas as Razor páginas.
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> configura a fábrica especificada para aplicar [filtros](xref:mvc/controllers/filters) a todas as Razor páginas.
 
 O aplicativo de exemplo fornece um exemplo de como usar um [alocador de filtro](xref:mvc/controllers/filters#ifilterfactory) adicionando um cabeçalho, `FilterFactoryHeader`, com dois valores para as páginas do aplicativo:
 
@@ -615,7 +616,7 @@ Há palavras reservadas que não podem ser usadas como segmentos de rota ou nome
 | [Convenções de ação da rota de página](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | Adicione um modelo de rota às páginas em uma pasta e a uma única página. |
 | [Convenções de ação do modelo de página](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (classe de filtro, expressão lambda ou alocador de filtro)</li></ul> | Adicione um cabeçalho às páginas em uma pasta, adicione um cabeçalho a uma única página e configure um [alocador de filtro](xref:mvc/controllers/filters#ifilterfactory) para adicionar um cabeçalho às páginas de um aplicativo. |
 
-RazorAs convenções de páginas são adicionadas e configuradas usando o <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> método de extensão para <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> na coleção de serviços na `Startup` classe. Os exemplos de convenção a seguir estão descritos mais adiante neste tópico:
+Razor As convenções de páginas são adicionadas e configuradas usando o <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> método de extensão para <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> na coleção de serviços na `Startup` classe. Os exemplos de convenção a seguir estão descritos mais adiante neste tópico:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -658,7 +659,7 @@ O processamento de rota é estabelecido por convenção:
 
 Se possível, evite dependendo de uma ordem de processamento de rota estabelecida. Em geral, o roteamento seleciona a rota correta com correspondência de URL. Se você precisar definir `Order` Propriedades de rota para rotear solicitações corretamente, o esquema de roteamento do aplicativo provavelmente será confuso para clientes e frágil para manter. Busque para simplificar o esquema de roteamento do aplicativo. O aplicativo de exemplo requer uma ordem de processamento de rota explícita para demonstrar vários cenários de roteamento usando um único aplicativo. No entanto, você deve tentar evitar a prática de definir a rota `Order` em aplicativos de produção.
 
-RazorO roteamento de páginas e o roteamento do controlador MVC compartilham uma implementação. As informações sobre a ordem de rota nos tópicos do MVC estão disponíveis em [Roteamento para ações do controlador: ordenando rotas de atributo](xref:mvc/controllers/routing#ordering-attribute-routes).
+Razor O roteamento de páginas e o roteamento do controlador MVC compartilham uma implementação. As informações sobre a ordem de rota nos tópicos do MVC estão disponíveis em [Roteamento para ações do controlador: ordenando rotas de atributo](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Convenções de modelo
 
@@ -680,7 +681,7 @@ A propriedade <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteMod
 
 Sempre que possível, não defina o `Order` , que resulta em `Order = 0` . Confie no roteamento para selecionar a rota correta.
 
-RazorAs opções de páginas, como adicionar <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> , são adicionadas quando o MVC é adicionado à coleção de serviços no `Startup.ConfigureServices` . Para obter um exemplo, confira o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor As opções de páginas, como adicionar <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> , são adicionadas quando o MVC é adicionado à coleção de serviços no `Startup.ConfigureServices` . Para obter um exemplo, confira o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -812,7 +813,7 @@ Solicite a página About da amostra em `localhost:5000/About` e inspecione os ca
 
 **Configurar um filtro**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>configura o filtro especificado a ser aplicado. É possível implementar uma classe de filtro, mas o aplicativo de exemplo mostra como implementar um filtro em uma expressão lambda, que é implementado em segundo plano como um alocador que retorna um filtro:
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> configura o filtro especificado a ser aplicado. É possível implementar uma classe de filtro, mas o aplicativo de exemplo mostra como implementar um filtro em uma expressão lambda, que é implementado em segundo plano como um alocador que retorna um filtro:
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet8)]
 
@@ -826,7 +827,7 @@ Solicite a página Page2 da amostra em `localhost:5000/OtherPages/Page2` e inspe
 
 **Configurar um alocador de filtro**
 
-<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*>configura a fábrica especificada para aplicar [filtros](xref:mvc/controllers/filters) a todas as Razor páginas.
+<xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.ConfigureFilter*> configura a fábrica especificada para aplicar [filtros](xref:mvc/controllers/filters) a todas as Razor páginas.
 
 O aplicativo de exemplo fornece um exemplo de como usar um [alocador de filtro](xref:mvc/controllers/filters#ifilterfactory) adicionando um cabeçalho, `FilterFactoryHeader`, com dois valores para as páginas do aplicativo:
 

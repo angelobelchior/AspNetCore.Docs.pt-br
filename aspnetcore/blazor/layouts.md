@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/23/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 68fc4c9bd516948eeb2c46c67fdb5bde7cfeefca
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f41b41194f597505d775c95f1e65960c2f827e3b
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014146"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628008"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>BlazorLayouts de ASP.NET Core
 
@@ -47,7 +48,7 @@ Em um aplicativo baseado em um dos Blazor modelos de projeto, o `MainLayout` com
 
 [!code-razor[](./common/samples/3.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
 
-## <a name="default-layout"></a>Layout padrão
+## <a name="default-layout"></a>Definir layout
 
 Especifique o layout do aplicativo padrão no <xref:Microsoft.AspNetCore.Components.Routing.Router> componente no arquivo do aplicativo `App.razor` . O componente a seguir <xref:Microsoft.AspNetCore.Components.Routing.Router> , que é fornecido pelos Blazor modelos padrão, define o layout padrão para o `MainLayout` componente:
 
@@ -73,7 +74,7 @@ Especificar o layout diretamente em um componente substitui um *Layout padrão* 
 
 ## <a name="centralized-layout-selection"></a>Seleção de layout centralizado
 
-Cada pasta de um aplicativo pode, opcionalmente, conter um arquivo de modelo chamado `_Imports.razor` . O compilador inclui as diretivas especificadas no arquivo Imports em todos os Razor modelos na mesma pasta e recursivamente em todas as suas subpastas. Portanto, um `_Imports.razor` arquivo que contém `@layout MyCoolLayout` garante que todos os componentes em uma pasta usem o `MyCoolLayout` . Não há necessidade de adicionar repetidamente `@layout MyCoolLayout` a todos os `.razor` arquivos dentro da pasta e subpastas. `@using`as diretivas também são aplicadas aos componentes da mesma maneira.
+Cada pasta de um aplicativo pode, opcionalmente, conter um arquivo de modelo chamado `_Imports.razor` . O compilador inclui as diretivas especificadas no arquivo Imports em todos os Razor modelos na mesma pasta e recursivamente em todas as suas subpastas. Portanto, um `_Imports.razor` arquivo que contém `@layout MyCoolLayout` garante que todos os componentes em uma pasta usem o `MyCoolLayout` . Não há necessidade de adicionar repetidamente `@layout MyCoolLayout` a todos os `.razor` arquivos dentro da pasta e subpastas. `@using` as diretivas também são aplicadas aos componentes da mesma maneira.
 
 As seguintes `_Imports.razor` importações de arquivo:
 
@@ -98,11 +99,11 @@ O exemplo a seguir mostra como usar layouts aninhados. O `EpisodesComponent.razo
 
 [!code-razor[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
 
-O `MasterListLayout.razor` arquivo fornece o `MasterListLayout` . O layout faz referência a outro layout, `MasterLayout` , onde é renderizado. `EpisodesComponent`é renderizado onde `@Body` aparece:
+O `MasterListLayout.razor` arquivo fornece o `MasterListLayout` . O layout faz referência a outro layout, `MasterLayout` , onde é renderizado. `EpisodesComponent` é renderizado onde `@Body` aparece:
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
 
-Por fim, `MasterLayout` no `MasterLayout.razor` contém os elementos de layout de nível superior, como o cabeçalho, o menu principal e o rodapé. `MasterListLayout`com o `EpisodesComponent` é renderizado onde `@Body` aparece:
+Por fim, `MasterLayout` no `MasterLayout.razor` contém os elementos de layout de nível superior, como o cabeçalho, o menu principal e o rodapé. `MasterListLayout` com o `EpisodesComponent` é renderizado onde `@Body` aparece:
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 

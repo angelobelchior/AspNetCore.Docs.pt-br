@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,20 +18,20 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 4bd73acd821a8791d7f6cc93545edc2e39a6f2c7
-ms.sourcegitcommit: 68d03d1aee8906b53bda66f8f1e0747efc3007e6
+ms.openlocfilehash: ce1786f644d1c0a70487f44ec3051de8189c5381
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88051778"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625317"
 ---
 # <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core Blazor cenários avançados
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
-## <a name="no-locblazor-server-circuit-handler"></a>Blazor Servermanipulador de circuito
+## <a name="no-locblazor-server-circuit-handler"></a>Blazor Server manipulador de circuito
 
-Blazor Serverpermite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Um manipulador de circuito é implementado derivando de `CircuitHandler` e registrando a classe no contêiner de serviço do aplicativo. O exemplo a seguir de um manipulador de circuito rastreia SignalR conexões abertas:
+Blazor Server permite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Um manipulador de circuito é implementado derivando de `CircuitHandler` e registrando a classe no contêiner de serviço do aplicativo. O exemplo a seguir de um manipulador de circuito rastreia SignalR conexões abertas:
 
 ```csharp
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ Quando um circuito termina porque um usuário se desconectou e a estrutura está
 
 ## <a name="manual-rendertreebuilder-logic"></a>Lógica RenderTreeBuilder manual
 
-<xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder>fornece métodos para manipular componentes e elementos, incluindo a criação manual de componentes em código C#.
+<xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> fornece métodos para manipular componentes e elementos, incluindo a criação manual de componentes em código C#.
 
 > [!NOTE]
 > O uso do <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> para criar componentes é um cenário avançado. Um componente malformado (por exemplo, uma marca de marcação não fechada) pode resultar em um comportamento indefinido.
@@ -99,7 +100,7 @@ Considere o seguinte `PetDetails` componente, que pode ser compilado manualmente
 
 No exemplo a seguir, o loop no `CreateComponent` método gera três `PetDetails` componentes. Em <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> métodos com um número de sequência, os números de sequência são números de linha de código-fonte. O Blazor algoritmo de diferença depende dos números de sequência correspondentes a linhas distintas de código, não a invocações de chamada distintas. Ao criar um componente com <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> métodos, codifique os argumentos para números de sequência. **O uso de um cálculo ou contador para gerar o número de sequência pode levar a um desempenho insatisfatório.** Para obter mais informações, consulte os [números de sequência relacionados à seção números de linha de código e não ordem de execução](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) .
 
-`BuiltContent`componente
+`BuiltContent` componente
 
 ```razor
 @page "/BuiltContent"
@@ -137,7 +138,7 @@ No exemplo a seguir, o loop no `CreateComponent` método gera três `PetDetails`
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Números de sequência se relacionam a números de linha de código e não a ordem de execução
 
-Razoros arquivos de componente ( `.razor` ) são sempre compilados. A compilação é uma vantagem potencial sobre a interpretação do código, pois a etapa de compilação pode ser usada para injetar informações que melhoram o desempenho do aplicativo em tempo de execução.
+Razor os arquivos de componente ( `.razor` ) são sempre compilados. A compilação é uma vantagem potencial sobre a interpretação do código, pois a etapa de compilação pode ser usada para injetar informações que melhoram o desempenho do aplicativo em tempo de execução.
 
 Um exemplo importante desses aprimoramentos envolve *números de sequência*. Os números de sequência indicam ao tempo de execução que as saídas vieram de quais linhas de código distintas e ordenadas. O tempo de execução usa essas informações para gerar comparações de árvore eficientes em tempo linear, o que é muito mais rápido do que normalmente é possível para um algoritmo de comparação de árvore geral.
 
@@ -202,7 +203,7 @@ Agora, a primeira saída é:
 | 0        | Nó de texto | Primeiro  |
 | 1        | Nó de texto | Segundo |
 
-Esse resultado é idêntico ao caso anterior, portanto, não existem problemas negativos. `someFlag`está `false` no segundo processamento e a saída é:
+Esse resultado é idêntico ao caso anterior, portanto, não existem problemas negativos. `someFlag` está `false` no segundo processamento e a saída é:
 
 | Sequência | Type      | Dados   |
 | :------: | --------- | ------ |
@@ -223,7 +224,7 @@ Esse é um exemplo trivial. Em casos mais realistas com estruturas complexas e p
 * A estrutura não pode criar seus próprios números de sequência automaticamente em tempo de execução porque as informações necessárias não existem, a menos que sejam capturadas no momento da compilação.
 * Não grave blocos longos de lógica implementada manualmente <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> . Prefira `.razor` arquivos e permita que o compilador lide com os números de sequência. Se não for possível evitar lógica manual <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> , divida blocos longos de código em partes menores encapsuladas em <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.OpenRegion%2A> / <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.CloseRegion%2A> chamadas. Cada região tem seu próprio espaço separado de números de sequência, para que você possa reiniciar de zero (ou qualquer outro número arbitrário) dentro de cada região.
 * Se os números de sequência forem codificados, o algoritmo diff só exigirá que os números de sequência aumentem de valor. O valor inicial e as lacunas são irrelevantes. Uma opção legítima é usar o número de linha de código como o número de sequência, ou começar de zero e aumentar por um ou centenas (ou qualquer intervalo preferencial). 
-* Blazorusa números de sequência, enquanto outras estruturas de interface do usuário de diferenciação de árvore não as usam. A comparação é muito mais rápida quando números de sequência são usados e Blazor tem a vantagem de uma etapa de compilação que lida com números de sequência automaticamente para desenvolvedores que criam `.razor` arquivos.
+* Blazor usa números de sequência, enquanto outras estruturas de interface do usuário de diferenciação de árvore não as usam. A comparação é muito mais rápida quando números de sequência são usados e Blazor tem a vantagem de uma etapa de compilação que lida com números de sequência automaticamente para desenvolvedores que criam `.razor` arquivos.
 
 ## <a name="perform-large-data-transfers-in-no-locblazor-server-apps"></a>Executar grandes transferências de dados em Blazor Server aplicativos
 
