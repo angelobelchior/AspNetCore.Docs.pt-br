@@ -5,6 +5,7 @@ description: Parte 5, adicionar um modelo a um aplicativo ASP.NET Core MVC
 ms.author: riande
 ms.date: 8/16/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,66 +16,66 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 88af3e724032f8324155a0a1e6c30c8558f97f72
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 23ecee4e3482b3ee82ae597671a8c45515eb4589
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021257"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634924"
 ---
-# <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a><span data-ttu-id="fb21f-103">Parte 5, trabalhar com um banco de dados em um aplicativo MVC ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="fb21f-103">Part 5, work with a database in an ASP.NET Core MVC app</span></span>
+# <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a><span data-ttu-id="6480f-103">Parte 5, trabalhar com um banco de dados em um aplicativo MVC ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="6480f-103">Part 5, work with a database in an ASP.NET Core MVC app</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="fb21f-104">De [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="fb21f-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="6480f-104">De [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="6480f-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="fb21f-105">O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados.</span><span class="sxs-lookup"><span data-stu-id="fb21f-105">The `MvcMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="fb21f-106">O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="fb21f-106">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in the *Startup.cs* file:</span></span>
+<span data-ttu-id="6480f-105">O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados.</span><span class="sxs-lookup"><span data-stu-id="6480f-105">The `MvcMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="6480f-106">O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="6480f-106">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in the *Startup.cs* file:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="fb21f-107">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb21f-107">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="6480f-107">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6480f-107">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-<span data-ttu-id="fb21f-108">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="fb21f-108">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="fb21f-109">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="fb21f-109">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
+<span data-ttu-id="6480f-108">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="6480f-108">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="6480f-109">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="6480f-109">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
 [!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="fb21f-110">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="fb21f-110">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="6480f-110">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="6480f-110">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=5-6)]
 
-<span data-ttu-id="fb21f-111">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="fb21f-111">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="fb21f-112">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="fb21f-112">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
+<span data-ttu-id="6480f-111">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="6480f-111">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="6480f-112">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="6480f-112">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 
 ---
 
-<span data-ttu-id="fb21f-113">Quando o aplicativo é implantado em um servidor de teste ou de produção, uma variável de ambiente pode ser usada para definir a cadeia de conexão como um SQL Server de produção.</span><span class="sxs-lookup"><span data-stu-id="fb21f-113">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a production SQL Server.</span></span> <span data-ttu-id="fb21f-114">Consulte [Configuração](xref:fundamentals/configuration/index) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="fb21f-114">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
+<span data-ttu-id="6480f-113">Quando o aplicativo é implantado em um servidor de teste ou de produção, uma variável de ambiente pode ser usada para definir a cadeia de conexão como um SQL Server de produção.</span><span class="sxs-lookup"><span data-stu-id="6480f-113">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a production SQL Server.</span></span> <span data-ttu-id="6480f-114">Consulte [Configuração](xref:fundamentals/configuration/index) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="6480f-114">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="fb21f-115">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb21f-115">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="6480f-115">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6480f-115">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="fb21f-116">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="fb21f-116">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="6480f-116">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="6480f-116">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="fb21f-117">O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas.</span><span class="sxs-lookup"><span data-stu-id="fb21f-117">LocalDB is a lightweight version of the SQL Server Express Database Engine that's targeted for program development.</span></span> <span data-ttu-id="fb21f-118">O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa.</span><span class="sxs-lookup"><span data-stu-id="fb21f-118">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="fb21f-119">Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.</span><span class="sxs-lookup"><span data-stu-id="fb21f-119">By default, LocalDB database creates *.mdf* files in the *C:/Users/{user}* directory.</span></span>
+<span data-ttu-id="6480f-117">O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas.</span><span class="sxs-lookup"><span data-stu-id="6480f-117">LocalDB is a lightweight version of the SQL Server Express Database Engine that's targeted for program development.</span></span> <span data-ttu-id="6480f-118">O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa.</span><span class="sxs-lookup"><span data-stu-id="6480f-118">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="6480f-119">Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.</span><span class="sxs-lookup"><span data-stu-id="6480f-119">By default, LocalDB database creates *.mdf* files in the *C:/Users/{user}* directory.</span></span>
 
-* <span data-ttu-id="fb21f-120">No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).</span><span class="sxs-lookup"><span data-stu-id="fb21f-120">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="6480f-120">No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).</span><span class="sxs-lookup"><span data-stu-id="6480f-120">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
   ![Menu de exibição](working-with-sql/_static/ssox.png)
 
-* <span data-ttu-id="fb21f-122">Clique com o botão direito do mouse na tabela `Movie`**> Designer de Exibição**</span><span class="sxs-lookup"><span data-stu-id="fb21f-122">Right click on the `Movie` table **> View Designer**</span></span>
+* <span data-ttu-id="6480f-122">Clique com o botão direito do mouse na tabela `Movie`**> Designer de Exibição**</span><span class="sxs-lookup"><span data-stu-id="6480f-122">Right click on the `Movie` table **> View Designer**</span></span>
 
   ![Menu contextual aberto na tabela Movie](working-with-sql/_static/design.png)
 
   ![Tabela Movie aberta no Designer](working-with-sql/_static/dv.png)
 
-<span data-ttu-id="fb21f-125">Observe o ícone de chave ao lado de `ID`.</span><span class="sxs-lookup"><span data-stu-id="fb21f-125">Note the key icon next to `ID`.</span></span> <span data-ttu-id="fb21f-126">Por padrão, o EF tornará uma propriedade chamada `ID` a chave primária.</span><span class="sxs-lookup"><span data-stu-id="fb21f-126">By default, EF will make a property named `ID` the primary key.</span></span>
+<span data-ttu-id="6480f-125">Observe o ícone de chave ao lado de `ID`.</span><span class="sxs-lookup"><span data-stu-id="6480f-125">Note the key icon next to `ID`.</span></span> <span data-ttu-id="6480f-126">Por padrão, o EF tornará uma propriedade chamada `ID` a chave primária.</span><span class="sxs-lookup"><span data-stu-id="6480f-126">By default, EF will make a property named `ID` the primary key.</span></span>
 
-* <span data-ttu-id="fb21f-127">Clique com o botão direito do mouse na tabela `Movie`**> Dados de Exibição**</span><span class="sxs-lookup"><span data-stu-id="fb21f-127">Right click on the `Movie` table **> View Data**</span></span>
+* <span data-ttu-id="6480f-127">Clique com o botão direito do mouse na tabela `Movie`**> Dados de Exibição**</span><span class="sxs-lookup"><span data-stu-id="6480f-127">Right click on the `Movie` table **> View Data**</span></span>
 
   ![Menu contextual aberto na tabela Movie](working-with-sql/_static/ssox2.png)
 
   ![Tabela Movie aberta mostrando os dados da tabela](working-with-sql/_static/vd22.png)
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="fb21f-130">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="fb21f-130">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="6480f-130">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="6480f-130">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
@@ -82,13 +83,13 @@ ms.locfileid: "88021257"
 ---
 <!-- End of VS tabs -->
 
-## <a name="seed-the-database"></a><span data-ttu-id="fb21f-131">Propagar o banco de dados</span><span class="sxs-lookup"><span data-stu-id="fb21f-131">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="6480f-131">Propagar o banco de dados</span><span class="sxs-lookup"><span data-stu-id="6480f-131">Seed the database</span></span>
 
-<span data-ttu-id="fb21f-132">Crie uma nova classe chamada `SeedData` na pasta *Models*.</span><span class="sxs-lookup"><span data-stu-id="fb21f-132">Create a new class named `SeedData` in the *Models* folder.</span></span> <span data-ttu-id="fb21f-133">Substitua o código gerado pelo seguinte:</span><span class="sxs-lookup"><span data-stu-id="fb21f-133">Replace the generated code with the following:</span></span>
+<span data-ttu-id="6480f-132">Crie uma nova classe chamada `SeedData` na pasta *Models*.</span><span class="sxs-lookup"><span data-stu-id="6480f-132">Create a new class named `SeedData` in the *Models* folder.</span></span> <span data-ttu-id="6480f-133">Substitua o código gerado pelo seguinte:</span><span class="sxs-lookup"><span data-stu-id="6480f-133">Replace the generated code with the following:</span></span>
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="fb21f-134">Se houver um filme no BD, o inicializador de semeadura será retornado e nenhum filme será adicionado.</span><span class="sxs-lookup"><span data-stu-id="fb21f-134">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="6480f-134">Se houver um filme no BD, o inicializador de semeadura será retornado e nenhum filme será adicionado.</span><span class="sxs-lookup"><span data-stu-id="6480f-134">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -99,95 +100,95 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="fb21f-135">Adicionar o inicializador de semeadura</span><span class="sxs-lookup"><span data-stu-id="fb21f-135">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="6480f-135">Adicionar o inicializador de semeadura</span><span class="sxs-lookup"><span data-stu-id="6480f-135">Add the seed initializer</span></span>
 
-<span data-ttu-id="fb21f-136">Substitua o conteúdo de *Program.cs* pelo código a seguir:</span><span class="sxs-lookup"><span data-stu-id="fb21f-136">Replace the contents of *Program.cs* with the following code:</span></span>
+<span data-ttu-id="6480f-136">Substitua o conteúdo de *Program.cs* pelo código a seguir:</span><span class="sxs-lookup"><span data-stu-id="6480f-136">Replace the contents of *Program.cs* with the following code:</span></span>
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Program.cs)]
 
-<span data-ttu-id="fb21f-137">Testar o aplicativo</span><span class="sxs-lookup"><span data-stu-id="fb21f-137">Test the app</span></span>
+<span data-ttu-id="6480f-137">Testar o aplicativo</span><span class="sxs-lookup"><span data-stu-id="6480f-137">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="fb21f-138">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb21f-138">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="6480f-138">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6480f-138">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="fb21f-139">Exclua todos os registros no BD.</span><span class="sxs-lookup"><span data-stu-id="fb21f-139">Delete all the records in the DB.</span></span> <span data-ttu-id="fb21f-140">Faça isso com os links Excluir no navegador ou no SSOX.</span><span class="sxs-lookup"><span data-stu-id="fb21f-140">You can do this with the delete links in the browser or from SSOX.</span></span>
-* <span data-ttu-id="fb21f-141">Force o aplicativo a ser inicializado (chame os métodos na classe `Startup`) para que o método de semeadura seja executado.</span><span class="sxs-lookup"><span data-stu-id="fb21f-141">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="fb21f-142">Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado.</span><span class="sxs-lookup"><span data-stu-id="fb21f-142">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="fb21f-143">Faça isso com uma das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="fb21f-143">You can do this with any of the following approaches:</span></span>
+* <span data-ttu-id="6480f-139">Exclua todos os registros no BD.</span><span class="sxs-lookup"><span data-stu-id="6480f-139">Delete all the records in the DB.</span></span> <span data-ttu-id="6480f-140">Faça isso com os links Excluir no navegador ou no SSOX.</span><span class="sxs-lookup"><span data-stu-id="6480f-140">You can do this with the delete links in the browser or from SSOX.</span></span>
+* <span data-ttu-id="6480f-141">Force o aplicativo a ser inicializado (chame os métodos na classe `Startup`) para que o método de semeadura seja executado.</span><span class="sxs-lookup"><span data-stu-id="6480f-141">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="6480f-142">Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado.</span><span class="sxs-lookup"><span data-stu-id="6480f-142">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="6480f-143">Faça isso com uma das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="6480f-143">You can do this with any of the following approaches:</span></span>
 
-  * <span data-ttu-id="fb21f-144">Clique com botão direito do mouse no ícone de bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou **Parar Site**</span><span class="sxs-lookup"><span data-stu-id="fb21f-144">Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**</span></span>
+  * <span data-ttu-id="6480f-144">Clique com botão direito do mouse no ícone de bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou **Parar Site**</span><span class="sxs-lookup"><span data-stu-id="6480f-144">Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**</span></span>
 
     ![Ícone de bandeja do sistema do IIS Express](working-with-sql/_static/iisExIcon.png)
 
     ![Menu contextual](working-with-sql/_static/stopIIS.png)
 
-    * <span data-ttu-id="fb21f-147">Se você estiver executando o VS no modo sem depuração, pressione F5 para executar no modo de depuração</span><span class="sxs-lookup"><span data-stu-id="fb21f-147">If you were running VS in non-debug mode, press F5 to run in debug mode</span></span>
-    * <span data-ttu-id="fb21f-148">Se você estiver executando o VS no modo de depuração, pare o depurador e pressione F5</span><span class="sxs-lookup"><span data-stu-id="fb21f-148">If you were running VS in debug mode, stop the debugger and press F5</span></span>
+    * <span data-ttu-id="6480f-147">Se você estiver executando o VS no modo sem depuração, pressione F5 para executar no modo de depuração</span><span class="sxs-lookup"><span data-stu-id="6480f-147">If you were running VS in non-debug mode, press F5 to run in debug mode</span></span>
+    * <span data-ttu-id="6480f-148">Se você estiver executando o VS no modo de depuração, pare o depurador e pressione F5</span><span class="sxs-lookup"><span data-stu-id="6480f-148">If you were running VS in debug mode, stop the debugger and press F5</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="fb21f-149">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="fb21f-149">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="6480f-149">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="6480f-149">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="fb21f-150">Exclua todos os registros no BD (para que o método de semeadura seja executado).</span><span class="sxs-lookup"><span data-stu-id="fb21f-150">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="fb21f-151">Interrompa e inicie o aplicativo para propagar o banco de dados.</span><span class="sxs-lookup"><span data-stu-id="fb21f-151">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="6480f-150">Exclua todos os registros no BD (para que o método de semeadura seja executado).</span><span class="sxs-lookup"><span data-stu-id="6480f-150">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="6480f-151">Interrompa e inicie o aplicativo para propagar o banco de dados.</span><span class="sxs-lookup"><span data-stu-id="6480f-151">Stop and start the app to seed the database.</span></span>
 
 ---
 
-<span data-ttu-id="fb21f-152">O aplicativo mostra os dados propagados.</span><span class="sxs-lookup"><span data-stu-id="fb21f-152">The app shows the seeded data.</span></span>
+<span data-ttu-id="6480f-152">O aplicativo mostra os dados propagados.</span><span class="sxs-lookup"><span data-stu-id="6480f-152">The app shows the seeded data.</span></span>
 
 ![Aplicativo de filme MVC aberto no Microsoft Edge, mostrando os dados do filme](working-with-sql/_static/m55.png)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="fb21f-154">[Anterior](adding-model.md) 
->  [Avançar](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="fb21f-154">[Previous](adding-model.md)
+> <span data-ttu-id="6480f-154">[Anterior](adding-model.md) 
+>  [Avançar](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="6480f-154">[Previous](adding-model.md)
 [Next](controller-methods-views.md)</span></span>
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="fb21f-155">De [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="fb21f-155">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="6480f-155">De [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="6480f-155">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="fb21f-156">O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados.</span><span class="sxs-lookup"><span data-stu-id="fb21f-156">The `MvcMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="fb21f-157">O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="fb21f-157">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in the *Startup.cs* file:</span></span>
+<span data-ttu-id="6480f-156">O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados.</span><span class="sxs-lookup"><span data-stu-id="6480f-156">The `MvcMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="6480f-157">O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="6480f-157">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in the *Startup.cs* file:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="fb21f-158">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb21f-158">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="6480f-158">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6480f-158">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=13-99)]
 
-<span data-ttu-id="fb21f-159">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="fb21f-159">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="fb21f-160">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="fb21f-160">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
+<span data-ttu-id="6480f-159">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="6480f-159">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="6480f-160">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="6480f-160">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
 [!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="fb21f-161">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="fb21f-161">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="6480f-161">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="6480f-161">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
-<span data-ttu-id="fb21f-162">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="fb21f-162">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="fb21f-163">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="fb21f-163">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
+<span data-ttu-id="6480f-162">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="6480f-162">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="6480f-163">Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="6480f-163">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 
 ---
 
-<span data-ttu-id="fb21f-164">Quando você implanta o aplicativo em um servidor de teste ou de produção, você pode usar uma variável de ambiente ou outra abordagem para definir a cadeia de conexão como um SQL Server real.</span><span class="sxs-lookup"><span data-stu-id="fb21f-164">When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server.</span></span> <span data-ttu-id="fb21f-165">Consulte [Configuração](xref:fundamentals/configuration/index) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="fb21f-165">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
+<span data-ttu-id="6480f-164">Quando você implanta o aplicativo em um servidor de teste ou de produção, você pode usar uma variável de ambiente ou outra abordagem para definir a cadeia de conexão como um SQL Server real.</span><span class="sxs-lookup"><span data-stu-id="6480f-164">When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server.</span></span> <span data-ttu-id="6480f-165">Consulte [Configuração](xref:fundamentals/configuration/index) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="6480f-165">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="fb21f-166">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb21f-166">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="6480f-166">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6480f-166">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="fb21f-167">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="fb21f-167">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="6480f-167">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="6480f-167">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="fb21f-168">O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas.</span><span class="sxs-lookup"><span data-stu-id="fb21f-168">LocalDB is a lightweight version of the SQL Server Express Database Engine that's targeted for program development.</span></span> <span data-ttu-id="fb21f-169">O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa.</span><span class="sxs-lookup"><span data-stu-id="fb21f-169">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="fb21f-170">Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.</span><span class="sxs-lookup"><span data-stu-id="fb21f-170">By default, LocalDB database creates *.mdf* files in the *C:/Users/{user}* directory.</span></span>
+<span data-ttu-id="6480f-168">O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas.</span><span class="sxs-lookup"><span data-stu-id="6480f-168">LocalDB is a lightweight version of the SQL Server Express Database Engine that's targeted for program development.</span></span> <span data-ttu-id="6480f-169">O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa.</span><span class="sxs-lookup"><span data-stu-id="6480f-169">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="6480f-170">Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.</span><span class="sxs-lookup"><span data-stu-id="6480f-170">By default, LocalDB database creates *.mdf* files in the *C:/Users/{user}* directory.</span></span>
 
-* <span data-ttu-id="fb21f-171">No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).</span><span class="sxs-lookup"><span data-stu-id="fb21f-171">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="6480f-171">No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).</span><span class="sxs-lookup"><span data-stu-id="6480f-171">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
   ![Menu de exibição](working-with-sql/_static/ssox.png)
 
-* <span data-ttu-id="fb21f-173">Clique com o botão direito do mouse na tabela `Movie`**> Designer de Exibição**</span><span class="sxs-lookup"><span data-stu-id="fb21f-173">Right click on the `Movie` table **> View Designer**</span></span>
+* <span data-ttu-id="6480f-173">Clique com o botão direito do mouse na tabela `Movie`**> Designer de Exibição**</span><span class="sxs-lookup"><span data-stu-id="6480f-173">Right click on the `Movie` table **> View Designer**</span></span>
 
   ![Menu contextual aberto na tabela Movie](working-with-sql/_static/design.png)
 
   ![Tabela Movie aberta no Designer](working-with-sql/_static/dv.png)
 
-<span data-ttu-id="fb21f-176">Observe o ícone de chave ao lado de `ID`.</span><span class="sxs-lookup"><span data-stu-id="fb21f-176">Note the key icon next to `ID`.</span></span> <span data-ttu-id="fb21f-177">Por padrão, o EF tornará uma propriedade chamada `ID` a chave primária.</span><span class="sxs-lookup"><span data-stu-id="fb21f-177">By default, EF will make a property named `ID` the primary key.</span></span>
+<span data-ttu-id="6480f-176">Observe o ícone de chave ao lado de `ID`.</span><span class="sxs-lookup"><span data-stu-id="6480f-176">Note the key icon next to `ID`.</span></span> <span data-ttu-id="6480f-177">Por padrão, o EF tornará uma propriedade chamada `ID` a chave primária.</span><span class="sxs-lookup"><span data-stu-id="6480f-177">By default, EF will make a property named `ID` the primary key.</span></span>
 
-* <span data-ttu-id="fb21f-178">Clique com o botão direito do mouse na tabela `Movie`**> Dados de Exibição**</span><span class="sxs-lookup"><span data-stu-id="fb21f-178">Right click on the `Movie` table **> View Data**</span></span>
+* <span data-ttu-id="6480f-178">Clique com o botão direito do mouse na tabela `Movie`**> Dados de Exibição**</span><span class="sxs-lookup"><span data-stu-id="6480f-178">Right click on the `Movie` table **> View Data**</span></span>
 
   ![Menu contextual aberto na tabela Movie](working-with-sql/_static/ssox2.png)
 
   ![Tabela Movie aberta mostrando os dados da tabela](working-with-sql/_static/vd22.png)
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="fb21f-181">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="fb21f-181">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="6480f-181">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="6480f-181">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
@@ -195,13 +196,13 @@ if (context.Movie.Any())
 ---
 <!-- End of VS tabs -->
 
-## <a name="seed-the-database"></a><span data-ttu-id="fb21f-182">Propagar o banco de dados</span><span class="sxs-lookup"><span data-stu-id="fb21f-182">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="6480f-182">Propagar o banco de dados</span><span class="sxs-lookup"><span data-stu-id="6480f-182">Seed the database</span></span>
 
-<span data-ttu-id="fb21f-183">Crie uma nova classe chamada `SeedData` na pasta *Models*.</span><span class="sxs-lookup"><span data-stu-id="fb21f-183">Create a new class named `SeedData` in the *Models* folder.</span></span> <span data-ttu-id="fb21f-184">Substitua o código gerado pelo seguinte:</span><span class="sxs-lookup"><span data-stu-id="fb21f-184">Replace the generated code with the following:</span></span>
+<span data-ttu-id="6480f-183">Crie uma nova classe chamada `SeedData` na pasta *Models*.</span><span class="sxs-lookup"><span data-stu-id="6480f-183">Create a new class named `SeedData` in the *Models* folder.</span></span> <span data-ttu-id="6480f-184">Substitua o código gerado pelo seguinte:</span><span class="sxs-lookup"><span data-stu-id="6480f-184">Replace the generated code with the following:</span></span>
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="fb21f-185">Se houver um filme no BD, o inicializador de semeadura será retornado e nenhum filme será adicionado.</span><span class="sxs-lookup"><span data-stu-id="fb21f-185">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="6480f-185">Se houver um filme no BD, o inicializador de semeadura será retornado e nenhum filme será adicionado.</span><span class="sxs-lookup"><span data-stu-id="6480f-185">If there are any movies in the DB, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -212,41 +213,41 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="fb21f-186">Adicionar o inicializador de semeadura</span><span class="sxs-lookup"><span data-stu-id="fb21f-186">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="6480f-186">Adicionar o inicializador de semeadura</span><span class="sxs-lookup"><span data-stu-id="6480f-186">Add the seed initializer</span></span>
 
-<span data-ttu-id="fb21f-187">Substitua o conteúdo de *Program.cs* pelo código a seguir:</span><span class="sxs-lookup"><span data-stu-id="fb21f-187">Replace the contents of *Program.cs* with the following code:</span></span>
+<span data-ttu-id="6480f-187">Substitua o conteúdo de *Program.cs* pelo código a seguir:</span><span class="sxs-lookup"><span data-stu-id="6480f-187">Replace the contents of *Program.cs* with the following code:</span></span>
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Program.cs)]
 
-<span data-ttu-id="fb21f-188">Testar o aplicativo</span><span class="sxs-lookup"><span data-stu-id="fb21f-188">Test the app</span></span>
+<span data-ttu-id="6480f-188">Testar o aplicativo</span><span class="sxs-lookup"><span data-stu-id="6480f-188">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="fb21f-189">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb21f-189">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="6480f-189">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6480f-189">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="fb21f-190">Exclua todos os registros no BD.</span><span class="sxs-lookup"><span data-stu-id="fb21f-190">Delete all the records in the DB.</span></span> <span data-ttu-id="fb21f-191">Faça isso com os links Excluir no navegador ou no SSOX.</span><span class="sxs-lookup"><span data-stu-id="fb21f-191">You can do this with the delete links in the browser or from SSOX.</span></span>
-* <span data-ttu-id="fb21f-192">Force o aplicativo a ser inicializado (chame os métodos na classe `Startup`) para que o método de semeadura seja executado.</span><span class="sxs-lookup"><span data-stu-id="fb21f-192">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="fb21f-193">Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado.</span><span class="sxs-lookup"><span data-stu-id="fb21f-193">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="fb21f-194">Faça isso com uma das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="fb21f-194">You can do this with any of the following approaches:</span></span>
+* <span data-ttu-id="6480f-190">Exclua todos os registros no BD.</span><span class="sxs-lookup"><span data-stu-id="6480f-190">Delete all the records in the DB.</span></span> <span data-ttu-id="6480f-191">Faça isso com os links Excluir no navegador ou no SSOX.</span><span class="sxs-lookup"><span data-stu-id="6480f-191">You can do this with the delete links in the browser or from SSOX.</span></span>
+* <span data-ttu-id="6480f-192">Force o aplicativo a ser inicializado (chame os métodos na classe `Startup`) para que o método de semeadura seja executado.</span><span class="sxs-lookup"><span data-stu-id="6480f-192">Force the app to initialize (call the methods in the `Startup` class) so the seed method runs.</span></span> <span data-ttu-id="6480f-193">Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado.</span><span class="sxs-lookup"><span data-stu-id="6480f-193">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="6480f-194">Faça isso com uma das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="6480f-194">You can do this with any of the following approaches:</span></span>
 
-  * <span data-ttu-id="fb21f-195">Clique com botão direito do mouse no ícone de bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou **Parar Site**</span><span class="sxs-lookup"><span data-stu-id="fb21f-195">Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**</span></span>
+  * <span data-ttu-id="6480f-195">Clique com botão direito do mouse no ícone de bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou **Parar Site**</span><span class="sxs-lookup"><span data-stu-id="6480f-195">Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**</span></span>
 
     ![Ícone de bandeja do sistema do IIS Express](working-with-sql/_static/iisExIcon.png)
 
     ![Menu contextual](working-with-sql/_static/stopIIS.png)
 
-    * <span data-ttu-id="fb21f-198">Se você estiver executando o VS no modo sem depuração, pressione F5 para executar no modo de depuração</span><span class="sxs-lookup"><span data-stu-id="fb21f-198">If you were running VS in non-debug mode, press F5 to run in debug mode</span></span>
-    * <span data-ttu-id="fb21f-199">Se você estiver executando o VS no modo de depuração, pare o depurador e pressione F5</span><span class="sxs-lookup"><span data-stu-id="fb21f-199">If you were running VS in debug mode, stop the debugger and press F5</span></span>
+    * <span data-ttu-id="6480f-198">Se você estiver executando o VS no modo sem depuração, pressione F5 para executar no modo de depuração</span><span class="sxs-lookup"><span data-stu-id="6480f-198">If you were running VS in non-debug mode, press F5 to run in debug mode</span></span>
+    * <span data-ttu-id="6480f-199">Se você estiver executando o VS no modo de depuração, pare o depurador e pressione F5</span><span class="sxs-lookup"><span data-stu-id="6480f-199">If you were running VS in debug mode, stop the debugger and press F5</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="fb21f-200">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="fb21f-200">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="6480f-200">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="6480f-200">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="fb21f-201">Exclua todos os registros no BD (para que o método de semeadura seja executado).</span><span class="sxs-lookup"><span data-stu-id="fb21f-201">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="fb21f-202">Interrompa e inicie o aplicativo para propagar o banco de dados.</span><span class="sxs-lookup"><span data-stu-id="fb21f-202">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="6480f-201">Exclua todos os registros no BD (para que o método de semeadura seja executado).</span><span class="sxs-lookup"><span data-stu-id="6480f-201">Delete all the records in the DB (So the seed method will run).</span></span> <span data-ttu-id="6480f-202">Interrompa e inicie o aplicativo para propagar o banco de dados.</span><span class="sxs-lookup"><span data-stu-id="6480f-202">Stop and start the app to seed the database.</span></span>
 
 ---
 
-<span data-ttu-id="fb21f-203">O aplicativo mostra os dados propagados.</span><span class="sxs-lookup"><span data-stu-id="fb21f-203">The app shows the seeded data.</span></span>
+<span data-ttu-id="6480f-203">O aplicativo mostra os dados propagados.</span><span class="sxs-lookup"><span data-stu-id="6480f-203">The app shows the seeded data.</span></span>
 
 ![Aplicativo de filme MVC aberto no Microsoft Edge, mostrando os dados do filme](working-with-sql/_static/m55_mac.png)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="fb21f-205">[Anterior](adding-model.md) 
->  [Avançar](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="fb21f-205">[Previous](adding-model.md)
+> <span data-ttu-id="6480f-205">[Anterior](adding-model.md) 
+>  [Avançar](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="6480f-205">[Previous](adding-model.md)
 [Next](controller-methods-views.md)</span></span>
 
 ::: moniker-end
