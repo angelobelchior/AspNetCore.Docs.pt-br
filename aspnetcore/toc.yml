@@ -1152,7 +1152,7 @@
       uid: security/docker-compose-https
     - name: Compatível com o RGPD (Regulamento Geral sobre a Proteção de Dados) da UE
       uid: security/gdpr
-    - name: Falsificação antissolicitação
+    - name: Evitar ataques XSRF/CSRF (solicitações intersite forjadas)
       uid: security/anti-request-forgery
     - name: Prevenir ataques de redirecionamento abertos
       uid: security/preventing-open-redirects
