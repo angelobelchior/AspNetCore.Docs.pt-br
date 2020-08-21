@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 7f5d2835d93631ac73b3da0c3dc26d87ef64c57d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f1a5af60f8dce83d9622ed9d2c6bcb4b8fc22b73
+ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634755"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88712487"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migrar do ASP.NET para o ASP.NET Core
 
@@ -203,6 +203,12 @@ Estrutura de diretório:
     ├── ...
     └── web.config
 ```
+
+## <a name="bind-and-input-formatters"></a>[Associar] e formatadores de entrada
+
+[As versões anteriores do ASP.net](/aspnet/mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view) usaram o `[Bind]` atributo para proteger contra ataques de sobreposição. Os [formatadores de entrada](xref:mvc/models/model-binding#input-formatters) funcionam de maneira diferente em ASP.NET Core. O `[Bind]` atributo não é mais projetado para evitar sobrepostos quando usado com formatadores de entrada para analisar JSON ou XML. Esses atributos afetam a associação de modelo quando a fonte de dados são dados de formulário postados com o `x-www-form-urlencoded` tipo de conteúdo.
+
+Para aplicativos que postam informações JSON a controladores e usam formatadores de entrada JSON para analisar os dados, é recomendável substituir o `[Bind]` atributo por um modelo de exibição que corresponda às propriedades definidas pelo `[Bind]` atributo.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: a1bac04944d9671df3f804a9724c9f0fd6f1fb27
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: edacded5df4d5f4819b3657bc7eff99e6d96d394
+ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633624"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88712539"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Autenticação de nuvem com Azure Active Directory B2C no ASP.NET Core
 
@@ -60,7 +60,7 @@ Use os seguintes valores:
 
 | Configuração                       | Valor                     | Observações                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Nome**                      | *&lt;nome do aplicativo&gt;*        | Insira um **nome** para o aplicativo que descreve seu aplicativo para os consumidores.                                                                                                                                 |
+| **Name**                      | *&lt;nome do aplicativo&gt;*        | Insira um **nome** para o aplicativo que descreve seu aplicativo para os consumidores.                                                                                                                                 |
 | **Incluir aplicativo Web/API Web** | Sim                       |                                                                                                                                                                                                    |
 | **Permitir fluxo implícito**       | Sim                       |                                                                                                                                                                                                    |
 | **URL de Resposta**                 | `https://localhost:44300/signin-oidc` | As URLs de Resposta são pontos de extremidade para onde o Azure AD B2C retornará os tokens que o aplicativo solicitar. O Visual Studio fornece a URL de resposta a ser usada. Por enquanto, insira `https://localhost:44300/signin-oidc` para preencher o formulário. |
@@ -153,7 +153,7 @@ O navegador redireciona para o locatário do Azure AD B2C. Entre com uma conta e
 
 Depois de entrar com êxito, o navegador redireciona para o aplicativo Web.
 
-![Sucesso](./azure-ad-b2c/_static/success.png)
+![Êxito](./azure-ad-b2c/_static/success.png)
 
 ## <a name="next-steps"></a>Próximas etapas
 
@@ -172,5 +172,5 @@ Agora que o aplicativo ASP.NET Core está configurado para usar Azure AD B2C par
 * [Habilite a autenticação multifator](/azure/active-directory-b2c/active-directory-b2c-reference-mfa).
 * Configure provedores de identidade adicionais, como [Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app), [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app), [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app), [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app), [Twitter](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)e outros.
 * [Use o API do Graph do Azure ad](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) para recuperar informações adicionais do usuário, como associação de grupo, do locatário Azure ad B2C.
-* [Proteger uma API Web do ASP.NET Core usando Azure ad B2C](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/).
+* [Como proteger uma API Web criada com ASP.NET Core usando o Azure ad B2C](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/4-WebApp-your-API/4-2-B2C).
 * [Tutorial: conceder acesso a uma API Web do ASP.NET usando Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-web-api-dotnet).

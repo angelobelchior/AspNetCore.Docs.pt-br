@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: a25cbaf9a4e7dc5f1bd3706d01f409208a39aaa3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0d27206412a098f4ea749ec10189bf24d2322de1
+ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626721"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88712474"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Caching distribuído no ASP.NET Core
 
@@ -116,16 +116,13 @@ O aplicativo de exemplo implementa <xref:Microsoft.Extensions.Caching.SqlServer.
 
 ### <a name="distributed-redis-cache"></a>Cache Redis distribuído
 
-O [Redis](https://redis.io/) é um armazenamento de dados na memória de software livre, que geralmente é usado como um cache distribuído. Você pode usar o Redis localmente e pode configurar um [cache Redis do Azure](https://azure.microsoft.com/services/cache/) para um aplicativo de ASP.NET Core hospedado pelo Azure.
+O [Redis](https://redis.io/) é um armazenamento de dados na memória de software livre, que geralmente é usado como um cache distribuído.  Você pode configurar um [cache Redis do Azure](https://azure.microsoft.com/services/cache/) para um aplicativo de ASP.NET Core hospedado pelo Azure e usar um cache Redis do Azure para o desenvolvimento local.
 
-Um aplicativo configura a implementação do cache usando uma <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> instância ( <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*> ) em um ambiente de não desenvolvimento no `Startup.ConfigureServices` :
+Um aplicativo configura a implementação do cache usando uma <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> instância ( <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*> ).
 
-[!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddStackExchangeRedisCache)]
+Para obter mais informações, consulte [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview).
 
-Para instalar o Redis em seu computador local:
-
-1. Instale o [pacote Redis de Chocolatey](https://chocolatey.org/packages/redis-64/).
-1. Execute `redis-server` em um prompt de comando.
+Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/19542) para uma discussão sobre abordagens alternativas para um cache Redis local.
 
 ### <a name="distributed-ncache-cache"></a>Cache do NCache distribuído
 
@@ -175,7 +172,7 @@ Ao decidir qual implementação do <xref:Microsoft.Extensions.Caching.Distribute
 
 * Infraestrutura existente
 * Requisitos de desempenho
-* Cost
+* Custo
 * Experiência da equipe
 
 As soluções de cache geralmente dependem do armazenamento na memória para fornecer uma recuperação rápida dos dados armazenados em cache, mas a memória é um recurso limitado e dispendiosa de expandir. Armazene somente dados usados em um cache.
@@ -345,7 +342,7 @@ Ao decidir qual implementação do <xref:Microsoft.Extensions.Caching.Distribute
 
 * Infraestrutura existente
 * Requisitos de desempenho
-* Cost
+* Custo
 * Experiência da equipe
 
 As soluções de cache geralmente dependem do armazenamento na memória para fornecer uma recuperação rápida dos dados armazenados em cache, mas a memória é um recurso limitado e dispendiosa de expandir. Armazene somente dados usados em um cache.
@@ -521,7 +518,7 @@ Ao decidir qual implementação do <xref:Microsoft.Extensions.Caching.Distribute
 
 * Infraestrutura existente
 * Requisitos de desempenho
-* Cost
+* Custo
 * Experiência da equipe
 
 As soluções de cache geralmente dependem do armazenamento na memória para fornecer uma recuperação rápida dos dados armazenados em cache, mas a memória é um recurso limitado e dispendiosa de expandir. Armazene somente dados usados em um cache.
@@ -544,4 +541,3 @@ Quando SQL Server é usado como um armazenamento de backup de cache distribuído
 * <xref:host-and-deploy/web-farm>
 
 ::: moniker-end
- 
