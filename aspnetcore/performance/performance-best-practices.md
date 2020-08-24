@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 94ae9e52ed99c3fe8e7044f474cdf5b702dc5adf
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 587872b269d897d7c86eb77c110a4b6432218ed3
+ms.sourcegitcommit: dd0e87abf2bb50ee992d9185bb256ed79d48f545
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634456"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88746553"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Práticas recomendadas de desempenho de ASP.NET Core
 
@@ -57,6 +57,12 @@ Um problema de desempenho comum no ASP.NET Core aplicativos é bloquear chamadas
 * Torne as ações de controlador/ Razor página assíncronas. A pilha de chamadas inteira é assíncrona para se beneficiar de padrões [Async/Await](/dotnet/csharp/programming-guide/concepts/async/) .
 
 Um criador de perfil, como [Perfview](https://github.com/Microsoft/perfview), pode ser usado para localizar threads frequentemente adicionados ao [pool de threads](/windows/desktop/procthread/thread-pools). O `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` evento indica um thread adicionado ao pool de threads. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
+
+## <a name="return-ienumerablet-or-iasyncenumerablet"></a>Retornar IEnumerable \<T> ou IAsyncEnumerable\<T>
+
+Retornar `IEnumerable<T>` de uma ação resulta em uma iteração de coleção síncrona pelo serializador. O resultado é o bloqueio de chamadas e um potencial para a privação do pool de threads. Para evitar a enumeração síncrona, use `ToListAsync` antes de retornar o Enumerable.
+
+A partir do ASP.NET Core 3,0, `IAsyncEnumerable<T>` pode ser usado como uma alternativa a `IEnumerable<T>` essas enumerações de forma assíncrona. Para obter mais informações, consulte [tipos de retorno de ação do controlador](xref:web-api/action-return-types#return-ienumerablet-or-iasyncenumerablet).
 
 ## <a name="minimize-large-object-allocations"></a>Minimizar alocações de objeto grande
 
@@ -111,7 +117,7 @@ Recomendações:
 
 ## <a name="keep-common-code-paths-fast"></a>Mantenha os caminhos de código comuns rápidos
 
-Você quer que todo o seu código seja rápido. Os caminhos de código chamados com frequência são os mais importantes para otimizar. Estão incluídos:
+Você quer que todo o seu código seja rápido. Os caminhos de código chamados com frequência são os mais importantes para otimizar. Elas incluem:
 
 * Componentes de middleware no pipeline de processamento de solicitação do aplicativo, especialmente o middleware é executado no início do pipeline. Esses componentes têm um grande impacto no desempenho.
 * Código que é executado para cada solicitação ou várias vezes por solicitação. Por exemplo, log personalizado, manipuladores de autorização ou inicialização de serviços transitórios.
@@ -357,3 +363,11 @@ Verificar se a resposta não foi iniciada permite registrar um retorno de chamad
 ## <a name="do-not-call-next-if-you-have-already-started-writing-to-the-response-body"></a>Não chame Next () se você já tiver iniciado a gravação no corpo da resposta
 
 Os componentes só esperam ser chamados se for possível que eles manipulem e manipulem a resposta.
+
+## <a name="use-in-process-hosting-with-iis"></a>Usar a hospedagem em processo com o IIS
+
+Usando uma hospedagem em processo, um aplicativo ASP.NET Core é executado no mesmo processo que seu processo de trabalho do IIS. A hospedagem em processo fornece desempenho aprimorado sobre a hospedagem fora do processo porque as solicitações não são feitas por proxy no adaptador de loopback. O adaptador de loopback é uma interface de rede que retorna o tráfego de rede de saída para o mesmo computador. O IIS manipula o gerenciamento de processos com o [WAS (Serviço de Ativação de Processos do Windows)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+
+Os projetos assumem como padrão o modelo de hospedagem em processo no ASP.NET Core 3,0 e posterior.
+
+Para obter mais informações, consulte [Host ASP.NET Core no Windows com IIS](xref:host-and-deploy/iis/index)
