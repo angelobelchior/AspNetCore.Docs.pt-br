@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 6ee767ee76b622e15a1dc5a7fe2f3e05f03dabd0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 26e8239634c3edb99c7606ab2e250c69af4e746f
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628489"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865293"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -249,7 +249,7 @@ Os componentes podem receber parâmetros de rota do modelo de rota fornecido na 
 
 Não há suporte para parâmetros opcionais, portanto, duas [`@page`][9] diretivas são aplicadas no exemplo anterior. O primeiro permite a navegação para o componente sem um parâmetro. A segunda [`@page`][9] diretiva recebe o `{text}` parâmetro de rota e atribui o valor à `Text` propriedade.
 
-A sintaxe de parâmetro *catch-all* ( `*` / `**` ), que captura o caminho entre vários limites de pasta, **não** tem suporte nos Razor componentes ( `.razor` ).
+Para obter informações sobre como capturar todos os parâmetros de rota ( `{*pageRoute}` ), que capturam caminhos entre vários limites de pasta, consulte <xref:blazor/fundamentals/routing#catch-all-route-parameters> .
 
 ### <a name="component-parameters"></a>Parâmetros do componente
 
@@ -555,7 +555,7 @@ No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify`
 
 Ao renderizar uma lista de elementos ou componentes e os elementos ou componentes subsequentemente mudam, o Blazor algoritmo de diferenciação do deve decidir quais elementos ou componentes anteriores podem ser retidos e como os objetos de modelo devem ser mapeados para eles. Normalmente, esse processo é automático e pode ser ignorado, mas há casos em que você talvez queira controlar o processo.
 
-Considere o exemplo a seguir:
+Considere o seguinte exemplo:
 
 ```csharp
 @foreach (var person in People)

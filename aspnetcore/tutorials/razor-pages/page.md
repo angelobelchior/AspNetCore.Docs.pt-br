@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 9fc44d228a31b8ae6c78dc12988392806dd95823
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 03febbd71df19cd3524d26e229a8bd8798a874b5
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633429"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865119"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3, com Scaffold Razor páginas em ASP.NET Core
 
@@ -98,9 +98,8 @@ A `PageModel` classe base contém uma `ViewData` Propriedade Dictionary que pode
 
 A propriedade `"Title"` é usada no arquivo *Pages/Shared/_Layout.cshtml*. A marcação a seguir mostra as primeiras linhas do arquivo *Pages/_Layout.cshtml*.
 
-<!-- we need a snapshot copy of layout because we are
-changing in in the next step.
--->
+<!-- We need a snapshot copy of layout because we are changing in the next step. -->
+
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout.cshtml?highlight=6)]
 
 A linha `@*Markup removed for brevity.*@` é um Razor comentário. Ao contrário dos comentários HTML ( `<!-- -->` ), Razor os comentários não são enviados ao cliente.
@@ -284,9 +283,8 @@ A classe base `PageModel` tem uma propriedade de dicionário `ViewData` que pode
 
 A propriedade "Título" é usada no arquivo *Pages/_Layout.cshtml*. A marcação a seguir mostra as primeiras linhas do arquivo *Pages/_Layout.cshtml*.
 
-<!-- we need a snapshot copy of layout because we are
-changing in in the next step.
--->
+<!-- We need a snapshot copy of layout because we are changing in the next step. -->
+
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout.cshtml?highlight=6-99)]
 
 A linha `@*Markup removed for brevity.*@` é um Razor comentário que não aparece no arquivo de layout. Ao contrário dos comentários HTML ( `<!-- -->` ), Razor os comentários não são enviados ao cliente.

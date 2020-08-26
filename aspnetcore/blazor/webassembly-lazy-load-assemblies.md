@@ -5,7 +5,7 @@ description: Descubra como carregar com lentas os assemblies em ASP.NET Core Bla
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2020
+ms.date: 08/25/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 31e6c9638d3262d3cb0a5e0fbcf34d24e2d1e91c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 46f98080ad40f614f9cb1af2190f263d205c1016
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625798"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865155"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
@@ -47,6 +47,15 @@ Marque assemblies para carregamento lento no arquivo de projeto do aplicativo ( 
 ```
 
 Somente os assemblies que são usados pelo aplicativo podem ser carregados lentamente. O vinculador retira assemblies não utilizados da saída publicada.
+
+> [!NOTE]
+> No .NET 5 Release Candidate 1 (RC1) ou posterior, que será lançado em meados de setembro, o nome do assembly exigirá a `.dll` extensão:
+>
+> ```xml
+> <ItemGroup>
+>  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
+> </ItemGroup>
+> ```
 
 ## <a name="router-component"></a>componente `Router`
 
@@ -170,6 +179,15 @@ Se um usuário navegar para rotear a e, em seguida, imediatamente para a rota B,
 
 > [!NOTE]
 > Não lançar se o token de cancelamento no `NavigationContext` for cancelado pode resultar em um comportamento indesejado, como a renderização de um componente de uma navegação anterior.
+
+### <a name="onnavigateasync-events-and-renamed-assembly-files"></a>`OnNavigateAsync` eventos e arquivos de assembly renomeados
+
+O carregador de recursos depende dos nomes de assembly definidos no `blazor.boot.json` arquivo. Se os [assemblies forem renomeados](xref:blazor/host-and-deploy/webassembly#change-the-filename-extension-of-dll-files), os nomes de assembly usados em `OnNavigateAsync` métodos e os nomes de assembly no `blazor.boot.json` arquivo ficarão fora de sincronia.
+
+Para corrigir isso:
+
+* Verifique se o aplicativo está em execução no ambiente de produção ao determinar quais nomes de assembly usar.
+* Armazene os nomes de assembly renomeados em um arquivo separado e leia esse arquivo para determinar qual nome de assembly usar nos `LazyLoadAssemblyService` `OnNavigateAsync` métodos e.
 
 ### <a name="complete-example"></a>Exemplo completo
 

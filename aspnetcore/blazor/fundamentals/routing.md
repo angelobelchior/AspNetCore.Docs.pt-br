@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 0c878a05a50e5a6879278ee737ada167669ee0ff
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: eb9e3cbddd2eaca8fef9a6782c28bbce4c029f58
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626474"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865325"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
@@ -169,13 +169,43 @@ Em Blazor Server aplicativos, a rota padrão no `_Host.cshtml` é `/` ( `@page "
 
 O `"/{**path}"` modelo inclui:
 
-* Sintaxe *catch-all* de asterisco duplo ( `**` ) para capturar o caminho entre vários limites de pasta sem barras invertidas de codificação ( `/` ).
+* Sintaxe *catch-all* de asterisco duplo ( `**` ) para capturar o caminho entre vários limites de pasta sem decodificar barras ( `/` ).
 * `path` nome do parâmetro de rota.
 
-> [!NOTE]
-> *Catch-all* `*` / `**` **Não** há suporte para a sintaxe de parâmetro catch () em Razor Components ( `.razor` ).
-
 Para obter mais informações, consulte <xref:fundamentals/routing>.
+
+## <a name="catch-all-route-parameters"></a>Capturar todos os parâmetros de rota
+
+::: moniker range=">= aspnetcore-5.0"
+
+*Esta seção se aplica ao .NET 5 Release Candidate 1 (RC1) ou posterior, que será lançado em meados de setembro.*
+
+Catch-todos os parâmetros de rota, que capturam caminhos entre vários limites de pasta, têm suporte em componentes. O parâmetro de rota catch-all deve ser:
+
+* Chamado para corresponder ao nome do segmento de rota. A nomeação não diferencia maiúsculas de minúsculas.
+* Um tipo `string`. A estrutura não fornece a conversão automática.
+* No final da URL.
+
+```razor
+@page "/page/{*pageRoute}"
+
+@code {
+    [Parameter]
+    public string PageRoute { get; set; }
+}
+```
+
+Para a URL `/page/this/is/a/test` com um modelo de rota de `/page/{*pageRoute}` , o valor de `PageRoute` é definido como `this/is/a/test` .
+
+As barras e os segmentos do caminho capturado são decodificados. Para um modelo de rota do `/page/{*pageRoute}` , a URL `/page/this/is/a%2Ftest%2A` produz `this/is/a/test*` .
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Catch-todos os parâmetros de rota terão suporte no .NET 5 Release Candidate 1 (RC1) ou posterior, que será lançado em meados de setembro. *
+
+::: moniker-end
 
 ## <a name="navlink-component"></a>Componente NavLink
 

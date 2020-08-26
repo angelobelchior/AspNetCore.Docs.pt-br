@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 4bef68fffbdfaff023f71964a27ead56863e4192
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7e1151b04f39f637f889e690bccc97eb6f0c91ea
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630426"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865578"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Model binding personalizado no ASP.NET Core
 
@@ -127,7 +127,7 @@ Para usar um provedor de associador de modelos personalizado, adicione-o a `Conf
 
 [!code-csharp[](custom-model-binding/samples/3.x/CustomModelBindingSample/Startup.cs?name=snippet_ConfigureServices&highlight=5-8)]
 
-Ao avaliar associadores de modelos, a coleção de provedores é examinada na ordem. O primeiro provedor que retorna um associador é usado. A adição do provedor ao final da coleção pode resultar na chamada a um associador de modelos interno antes que o associador personalizado tenha uma oportunidade. Neste exemplo, o provedor personalizado é adicionado ao início da coleção para garantir que ele é usado para argumentos de ação `Author`.
+Ao avaliar associadores de modelos, a coleção de provedores é examinada na ordem. O primeiro provedor que retorna um fichário que corresponde ao modelo de entrada é usado. A adição do seu provedor ao final da coleção pode resultar na chamada de um associador de modelo interno antes que o seu associador personalizado tenha uma chance. Neste exemplo, o provedor personalizado é adicionado ao início da coleção para garantir que ele sempre seja usado para argumentos de `Author` ação.
 
 ### <a name="polymorphic-model-binding"></a>Associação de modelo polimórfico
 

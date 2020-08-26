@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 230b2a801a76e2d719fba8e2b97fddb0b32a9634
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4f184a1264614b16ce98ba5474aacd60f175bd8a
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627956"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865217"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Crie aplicativos Web progressivos com ASP.NET Core Blazor WebAssembly
 
@@ -72,7 +72,7 @@ Opcionalmente, o PWA pode ser configurado para um aplicativo criado a partir do 
 
 Ao visitar um aplicativo criado usando o modelo do PWA, os usuários têm a opção de instalar o aplicativo no menu Iniciar, no Dock ou na tela inicial do sistema operacional. A maneira como essa opção é apresentada depende do navegador do usuário. Ao usar navegadores baseados em desktop Chromium, como Edge ou Chrome, um botão **Adicionar** é exibido na barra de URL. Depois que o usuário selecionar o botão **Adicionar** , ele receberá uma caixa de diálogo de confirmação:
 
-![O diaglog de confirmação no Google Chrome apresenta um botão de instalação para o usuário para o aplicativo ' My::: no-Loc (mais alto):::P wa '.](progressive-web-app/_static/image2.png)
+![A caixa de diálogo de confirmação no Google Chrome apresenta um botão de instalação ao usuário para o aplicativo ' My::: no-Loc (mais alto):::P wa '.](progressive-web-app/_static/image2.png)
 
 No iOS, os visitantes podem instalar o PWA usando o botão **compartilhar** do Safari e sua opção **Adicionar à homescreen** . No Chrome para Android, os usuários devem selecionar o botão de **menu** no canto superior direito, seguido por **Adicionar à tela inicial**.
 

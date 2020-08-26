@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 42a7231b529dd9f8ecbce4f8116111e1c96c830d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 345d20494111b808dac9678637de060169730a53
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633091"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865350"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Auxiliares de Marca no ASP.NET Core
 
@@ -254,9 +254,9 @@ O editor do Visual Studio ajuda você a escrever **toda** a marcação na aborda
 
 ## <a name="tag-helpers-compared-to-web-server-controls"></a>Comparação entre Auxiliares de Marca e Controles de Servidor Web
 
-* Os Auxiliares de Marca não têm o elemento ao qual estão associados; simplesmente participam da renderização do elemento e do conteúdo. Os [controles de Servidor Web](https://msdn.microsoft.com/library/7698y1f0.aspx) do ASP.NET são declarados e invocados em uma página.
+* Os Auxiliares de Marca não têm o elemento ao qual estão associados; simplesmente participam da renderização do elemento e do conteúdo. ASP.NET <https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/7698y1f0(v=vs.85)> são declarados e invocados em uma página.
 
-* Os [controles de Servidor Web](https://msdn.microsoft.com/library/zsyt68f1.aspx) têm um ciclo de vida não trivial que pode dificultar o desenvolvimento e a depuração.
+* <https://docs.microsoft.com/previous-versions/zsyt68f1(v=vs.140)> ter um ciclo de vida não trivial que pode dificultar o desenvolvimento e a depuração.
 
 * Os controles de Servidor Web permitem que você adicione a funcionalidade aos elementos DOM (Modelo de Objeto do Documento) do cliente usando um controle de cliente. Os Auxiliares de Marca não tem nenhum DOM.
 

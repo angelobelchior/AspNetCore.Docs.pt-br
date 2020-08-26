@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: de9d1e5f6f595269595212fbab60d12dfd5a29e4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a9ec02381b156a6599042d8e504a476036246302
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633637"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865567"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-no-locidentity"></a>Migrar da autenticação de associação do ASP.NET para o ASP.NET Core 2,0 Identity
 
@@ -35,7 +35,7 @@ Este artigo demonstra a migração do esquema de banco de dados para aplicativos
 
 ## <a name="review-of-membership-schema"></a>Revisão do esquema de associação
 
-Antes do ASP.NET 2,0, os desenvolvedores eram transtarefados na criação de todo o processo de autenticação e autorização para seus aplicativos. Com o ASP.NET 2,0, a associação foi introduzida, fornecendo uma solução padronizada para lidar com a segurança em aplicativos ASP.NET. Agora, os desenvolvedores conseguiram inicializar um esquema em um banco de dados SQL Server com o comando [aspnet_regsql.exe](https://msdn.microsoft.com/library/ms229862.aspx) . Depois de executar esse comando, as tabelas a seguir foram criadas no banco de dados.
+Antes do ASP.NET 2,0, os desenvolvedores eram transtarefados na criação de todo o processo de autenticação e autorização para seus aplicativos. Com o ASP.NET 2,0, a associação foi introduzida, fornecendo uma solução padronizada para lidar com a segurança em aplicativos ASP.NET. Agora, os desenvolvedores conseguiram inicializar um esquema em um banco de dados SQL Server com o <https://docs.microsoft.com/previous-versions/ms229862(v=vs.140)> comando. Depois de executar esse comando, as tabelas a seguir foram criadas no banco de dados.
 
   ![Tabelas de associação](identity/_static/membership-tables.png)
 
@@ -78,7 +78,7 @@ Há diferenças sutis nas estruturas de tabela e nos campos para a associação 
 
 ### <a name="users"></a>Usuários
 
-|Identity<br>( `dbo.AspNetUsers` ) coluna  |Type     |Associação<br>( `dbo.aspnet_Users`  /  `dbo.aspnet_Membership` ) coluna|Type      |
+|Identity<br>( `dbo.AspNetUsers` ) coluna  |Tipo     |Associação<br>( `dbo.aspnet_Users`  /  `dbo.aspnet_Membership` ) coluna|Tipo      |
 |-------------------------------------------|-----------------------------------------------------------------------|
 | `Id`                            | `string`| `aspnet_Users.UserId`                                      | `string` |
 | `UserName`                      | `string`| `aspnet_Users.UserName`                                    | `string` |
@@ -93,7 +93,7 @@ Há diferenças sutis nas estruturas de tabela e nos campos para a associação 
 
 ### <a name="roles"></a>Funções
 
-|Identity<br>( `dbo.AspNetRoles` ) coluna|Type|Associação<br>( `dbo.aspnet_Roles` ) coluna|Type|
+|Identity<br>( `dbo.AspNetRoles` ) coluna|Tipo|Associação<br>( `dbo.aspnet_Roles` ) coluna|Tipo|
 |----------------------------------------|-----------------------------------|
 |`Id`                           |`string`|`RoleId`         | `string`        |
 |`Name`                         |`string`|`RoleName`       | `string`        |
@@ -101,7 +101,7 @@ Há diferenças sutis nas estruturas de tabela e nos campos para a associação 
 
 ### <a name="user-roles"></a>Funções de usuário
 
-|Identity<br>( `dbo.AspNetUserRoles` ) coluna|Type|Associação<br>( `dbo.aspnet_UsersInRoles` ) coluna|Type|
+|Identity<br>( `dbo.AspNetUserRoles` ) coluna|Tipo|Associação<br>( `dbo.aspnet_UsersInRoles` ) coluna|Tipo|
 |-------------------------|----------|--------------|---------------------------|
 |`RoleId`                 |`string`  |`RoleId`      |`string`                   |
 |`UserId`                 |`string`  |`UserId`      |`string`                   |

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: cd1a7ff57d911f96f0adfe4b548fa80ec844886d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d615f67fc5cb23499ee7e14b747390a7a1b5a693
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632233"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865129"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrar do ASP.NET MVC para o ASP.NET Core MVC
 
@@ -97,7 +97,7 @@ No projeto ASP.NET Core, uma nova classe de controlador vazia e uma classe de ex
 
 O projeto ASP.NET Core *WebApp1* já inclui um controlador de exemplo mínimo e uma exibição com o mesmo nome que o projeto MVC do ASP.net. Portanto, elas servirão como espaços reservados para o controlador MVC ASP.NET e exibições a serem migradas do projeto ASP.NET MVC *WebApp1* .
 
-1. Copie os métodos do ASP.NET MVC `HomeController` para substituir os novos métodos de ASP.NET Core `HomeController` . Não é necessário alterar o tipo de retorno dos métodos de ação. O tipo de retorno do método de ação do controlador do modelo interno do ASP.NET MVC é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult`.
+1. Copie os métodos do ASP.NET MVC `HomeController` para substituir os novos métodos de ASP.NET Core `HomeController` . Não é necessário alterar o tipo de retorno dos métodos de ação. O tipo de retorno do método de ação do controlador do modelo interno do ASP.NET MVC é <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ; em ASP.NET Core MVC, os métodos de ação retornam `IActionResult` em vez disso. `ActionResult` implementa `IActionResult`.
 1. No projeto ASP.NET Core, clique com o botão direito do mouse no diretório de *modos de exibição/início* , selecione **Adicionar** > **Item existente**.
 1. Na caixa de diálogo **Adicionar item existente** , navegue até o diretório *base e os modos de exibição* do projeto ASP.NET MVC *WebApp1* .
 1. Selecione os arquivos de exibição *about. cshtml*, *Contact. cshtml*e *index. cshtml* e, Razor em seguida, selecione **Adicionar**, substituindo os arquivos existentes.
@@ -291,7 +291,7 @@ A funcionalidade a seguir requer a migração do projeto ASP.NET MVC de exemplo 
 
 ## <a name="controllers-and-views"></a>Controladores e exibições
 
-* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
+* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ; em ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
 
 * Copie os arquivos de exibição *about. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor do projeto ASP.NET MVC para o projeto ASP.NET Core.
 
@@ -477,7 +477,7 @@ A funcionalidade a seguir requer a migração do projeto ASP.NET MVC de exemplo 
 
 ## <a name="controllers-and-views"></a>Controladores e exibições
 
-* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); no ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
+* Copie cada um dos métodos do ASP.NET MVC `HomeController` para o novo `HomeController` . No ASP.NET MVC, o tipo de retorno do método de ação do controlador interno do modelo é <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ; em ASP.NET Core MVC, os métodos de ação retornam `IActionResult` . `ActionResult` implementa `IActionResult` , portanto, não é necessário alterar o tipo de retorno dos métodos de ação.
 
 * Copie os arquivos de exibição *about. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor do projeto ASP.NET MVC para o projeto ASP.NET Core.
 

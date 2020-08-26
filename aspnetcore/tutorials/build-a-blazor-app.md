@@ -5,7 +5,7 @@ description: Crie um Blazor aplicativo passo a passo.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/30/2020
+ms.date: 08/22/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 769b3bda591252c51bec3ffd72a43eaa5929349e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7335b68ad06b9d2b8d7e056cfc1a6d8214119b21
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630829"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865424"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
@@ -51,7 +51,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    dotnet new blazorserver -o TodoList
    ```
 
-   O comando anterior cria uma pasta chamada `TodoList` para manter o aplicativo. Altere os diretórios para a `TodoList` pasta com o seguinte comando:
+   O comando anterior cria uma pasta chamada `TodoList` para manter o aplicativo. A `TodoList` pasta é a *pasta raiz* do projeto. Altere os diretórios para a `TodoList` pasta com o seguinte comando:
 
    ```dotnetcli
    cd TodoList
@@ -64,7 +64,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    ```
 
    > [!IMPORTANT]
-   > Razor os nomes de arquivo de componente exigem uma primeira letra em maiúscula, portanto, confirme se o `Todo` nome do arquivo de componente começa com uma letra maiúscula `T` .
+   > Razor os nomes de arquivo de componente exigem uma primeira letra em maiúscula. Abra a `Pages` pasta e confirme se o `Todo` nome do arquivo de componente começa com uma letra maiúscula `T` . O nome do arquivo deve ser `Todo.razor` .
 
 1. No, `Pages/Todo.razor` forneça a marcação inicial para o componente:
 
@@ -88,9 +88,9 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    </li>
    ```
 
-1. Recompile e execute o aplicativo. Visite a nova página de Tarefas Pendentes para confirmar se o link para o componente `Todo` está funcionando.
+1. Compile e execute o aplicativo executando o `dotnet run` comando no Shell de comando da `TodoList` pasta. Visite a nova página de Tarefas Pendentes para confirmar se o link para o componente `Todo` está funcionando.
 
-1. Adicione um `TodoItem.cs` arquivo à raiz do projeto para conter uma classe que representa um item de tarefas pendentes. Use o seguinte código C# para a classe `TodoItem`:
+1. Adicione um `TodoItem.cs` arquivo à raiz do projeto (a `TodoList` pasta) para manter uma classe que representa um item de tarefas pendentes. Use o seguinte código C# para a classe `TodoItem`:
 
    [!code-csharp[](build-a-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
 
@@ -105,7 +105,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
 
-1. Recompile e execute o aplicativo. Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está conectado ao botão.
+1. Pare o aplicativo em execução no Shell de comando. Muitos shells de comando aceitam o comando de teclado <kbd>Ctrl</kbd> + <kbd>c</kbd> para interromper um aplicativo. Recompile e execute o aplicativo com o `dotnet run` comando. Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está conectado ao botão.
 
 1. Adicione um método `AddTodo` ao componente `Todo` e registre-o para seleções de botão usando o atributo `@onclick`. O método C# `AddTodo` é chamado quando o botão é selecionado:
 
@@ -123,7 +123,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
 
-1. Recompile e execute o aplicativo. Adicione alguns itens de tarefas à lista de tarefas para testar o novo código.
+1. Pare o aplicativo em execução no Shell de comando. Recompile e execute o aplicativo com o `dotnet run` comando. Adicione alguns itens de tarefas à lista de tarefas para testar o novo código.
 
 1. O texto do título de cada item de tarefa pode ser editável, e uma caixa de seleção pode ajudar o usuário a manter o controle dos itens concluídos. Adicione uma entrada de caixa de seleção para cada item de tarefa pendente e associe seu valor à propriedade `IsDone`. Altere `@todo.Title` para um elemento `<input>` associado a `@todo.Title`:
 
@@ -139,7 +139,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/Todo.razor)]
 
-1. Recompile e execute o aplicativo. Adicione itens de tarefa pendente para testar o novo código.
+1. Pare o aplicativo em execução no Shell de comando. Recompile e execute o aplicativo com o `dotnet run` comando. Adicione itens de tarefa pendente para testar o novo código.
 
 ## <a name="next-steps"></a>Próximas etapas
 
