@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: ce0dfdf1ce88b55790d33918a2d20bc19a09b288
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 3d83141b8b638a369b08b0fadafccd96c0b48214
+ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626890"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88876783"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -32,7 +32,7 @@ Este tutorial ensina os conceitos básicos da criação de uma API Web com o ASP
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Neste tutorial, você aprenderá como:
+Neste tutorial, você aprende a:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -295,7 +295,7 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
 dotnet tool update -g Dotnet-aspnet-codegenerator
-dotnet-aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
 Os comandos anteriores:
@@ -519,7 +519,7 @@ Consulte [o tutorial: chamar uma API Web do ASP.NET Core com JavaScript](xref:tu
 
 ::: moniker range="< aspnetcore-3.0"
 
-Neste tutorial, você aprenderá como:
+Neste tutorial, você aprende a:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
