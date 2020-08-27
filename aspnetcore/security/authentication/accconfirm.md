@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 57607390e7d5e58df9f27437faecd57504ad64df
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d6ea37ceb83ffbaa94187e0c541c79428594e4b4
+ms.sourcegitcommit: 2039e60eb7b482da8298f82dcd5eda27cf747f32
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635366"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88906443"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmação de conta e de recuperação de senha no ASP.NET Core
 
@@ -160,7 +160,13 @@ Execute o aplicativo Web e teste a confirmação da conta e o fluxo de recupera�
 * Insira o email que você usou para registrar a conta.
 * Um email com um link para redefinir sua senha é enviado. Verifique seu email e clique no link para redefinir sua senha. Depois que a senha for redefinida com êxito, você poderá entrar com seu email e nova senha.
 
-## <a name="change-email-and-activity-timeout"></a>Alterar o tempo limite de email e atividade
+<a name="resend"></a>
+
+## <a name="resend-email-confirmation"></a>Reenviar confirmação de email
+
+No ASP.NET Core 5,0 e posterior, selecione o link **reenviar confirmação de email** na página de **logon** .
+
+### <a name="change-email-and-activity-timeout"></a>Alterar o tempo limite de email e atividade
 
 O tempo limite de inatividade padrão é de 14 dias. O código a seguir define o tempo limite de inatividade como 5 dias:
 
@@ -185,10 +191,6 @@ Adicione um [DataProtectorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetc
 Adicione o provedor personalizado ao contêiner de serviço:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/StartupEmail.cs?name=snippet1&highlight=10-16)]
-
-### <a name="resend-email-confirmation"></a>Reenviar confirmação de email
-
-Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore/issues/5410).
 
 <a name="debug"></a>
 
