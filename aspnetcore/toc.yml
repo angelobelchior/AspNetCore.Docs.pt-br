@@ -12,7 +12,7 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: Introdução
   uid: getting-started
-- name: Notas de Versão
+- name: Notas de versão
   items:
     - name: Novidades no 3.1
       uid: aspnetcore-3.1
@@ -335,6 +335,10 @@
                 - name: InputDate
                   href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputNumber
+                  href: blazor/forms-validation.md#built-in-forms-components
+                - name: InputRadio
+                  href: blazor/forms-validation.md#built-in-forms-components
+                - name: InputRadioGroup
                   href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputSelect
                   href: blazor/forms-validation.md#built-in-forms-components
@@ -715,6 +719,8 @@
       uid: grpc/diagnostics
     - name: Considerações sobre segurança
       uid: grpc/security
+    - name: Práticas recomendadas de desempenho
+      uid: grpc/performance
     - name: Controle de versão de serviços gRPC
       uid: grpc/versioning
     - name: Gerenciar referências de Protobuf com dotnet-grpc
