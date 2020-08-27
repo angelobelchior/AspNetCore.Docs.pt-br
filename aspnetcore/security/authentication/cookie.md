@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 04d2f0d289e2c9ec13aeb880df47240bec19d3ec
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 24ba49828db08fdd67723c81ac0c8d9981ab3404
+ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876757"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88945409"
 ---
 # <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Usar cookie autenticação sem ASP.NET Core Identity
 
@@ -117,7 +117,7 @@ Para desconectar o usuário atual e excluir seu cookie , chame <xref:Microsoft.A
 
 Se `CookieAuthenticationDefaults.AuthenticationScheme` (ou " Cookie s") não for usado como o esquema (por exemplo, "Contoso Cookie "), forneça o esquema usado ao configurar o provedor de autenticação. Caso contrário, o esquema padrão será usado.
 
-O servidor não tem controle do navegador de clientes. Se o usuário fechar o navegador ou a guia, o servidor não poderá desconectar o usuário. Para implementar a desconexão do usuário quando o navegador é fechado, você deve detectar isso com JavaScript. Pesquise "como detectar o evento de fechamento da guia de janela do navegador?".
+Quando o navegador fecha, ele exclui automaticamente os s baseados em sessão cookie (s não persistentes cookie ), mas nenhum cookie s é limpo quando uma guia individual é fechada. O servidor não é notificado sobre eventos de fechamento de guia ou navegador.
 
 ## <a name="react-to-back-end-changes"></a>Reagir a alterações de back-end
 

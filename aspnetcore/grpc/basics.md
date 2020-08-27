@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/basics
-ms.openlocfilehash: 61ac7b84ec6a5eeb344cbf6f9a6712366be7d3c9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: aacaf9cca131d3fba1c3ae96cf42d51d3fdc17b6
+ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627072"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88945422"
 ---
 # <a name="grpc-services-with-c"></a>serviços gRPCs com C\#
 
@@ -32,12 +32,12 @@ Este documento descreve os conceitos necessários para escrever aplicativos [gRP
 
 ## <a name="proto-file"></a>arquivo proto
 
-o gRPC usa uma abordagem de primeiro contrato para o desenvolvimento de API. Os buffers de protocolo (protobuf) são usados como o IDL (linguagem de design de interface) por padrão. O arquivo * \* . proto* contém:
+o gRPC usa uma abordagem de primeiro contrato para o desenvolvimento de API. Os buffers de protocolo (protobuf) são usados como a IDL (linguagem de definição de interface) por padrão. O arquivo * \* . proto* contém:
 
 * A definição do serviço gRPC.
 * As mensagens enviadas entre clientes e servidores.
 
-Para obter mais informações sobre a sintaxe de arquivos protobuf, consulte a [documentação oficial (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3).
+Para obter mais informações sobre a sintaxe de arquivos protobuf, consulte <xref:grpc/protobuf> .
 
 Por exemplo, considere o arquivo *Greet. proto* usado em [introdução ao serviço gRPC](xref:tutorials/grpc/grpc-start):
 
