@@ -1,5 +1,5 @@
 ---
-title: Práticas recomendadas de desempenho no gRPC para ASP.NET Core
+title: Práticas recomendadas de desempenho com o gRPC
 author: jamesnk
 description: Conheça as práticas recomendadas para a criação de serviços gRPC de alto desempenho.
 monikerRange: '>= aspnetcore-3.0'
@@ -17,24 +17,24 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: f9cefa89ec6e533920b33223b34333f6ebe38428
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 7d4d5732e6edb0d0a156fdcec5f59cc09a69d7de
+ms.sourcegitcommit: 111b4e451da2e275fb074cde5d8a84b26a81937d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876718"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89040873"
 ---
-# <a name="performance-best-practices-in-grpc-for-aspnet-core"></a>Práticas recomendadas de desempenho no gRPC para ASP.NET Core
+# <a name="performance-best-practices-with-grpc"></a>Práticas recomendadas de desempenho com o gRPC
 
 Por [James Newton – King](https://twitter.com/jamesnk)
 
 o gRPC foi projetado para serviços de alto desempenho. Este documento explica como obter o melhor desempenho possível do gRPC.
 
-## <a name="reuse-channel"></a>Reutilizar canal
+## <a name="reuse-grpc-channels"></a>Reutilizar canais gRPC
 
 Um canal gRPC deve ser reutilizado ao fazer chamadas gRPC. Reutilizar um canal permite que as chamadas sejam multiplexada por meio de uma conexão HTTP/2 existente.
 
-Se um novo canal for criado para cada chamada gRPC, o tempo necessário para concluir pode aumentar significativamente. Cada chamada exigirá várias viagens de ida e volta da rede entre o cliente e o servidor para criar uma conexão HTTP/2:
+Se um novo canal for criado para cada chamada gRPC, o tempo necessário para concluir pode aumentar significativamente. Cada chamada exigirá várias viagens de ida e volta da rede entre o cliente e o servidor para criar uma nova conexão HTTP/2:
 
 1. Abrindo um soquete
 2. Estabelecendo conexão TCP
@@ -86,7 +86,45 @@ Há algumas soluções alternativas para aplicativos .NET Core 3,1:
 > * Contenção de thread entre fluxos tentando gravar na conexão.
 > * A perda de pacotes de conexão faz com que todas as chamadas sejam bloqueadas na camada TCP.
 
+## <a name="load-balancing"></a>Balanceamento de carga
+
+Alguns balanceadores de carga não funcionam com eficiência com o gRPC. Os balanceadores de carga L4 (transporte) operam em um nível de conexão, distribuindo conexões TCP entre pontos de extremidade. Essa abordagem funciona bem para carregar chamadas de API de balanceamento feitas com HTTP/1.1. As chamadas simultâneas feitas com HTTP/1.1 são enviadas em diferentes conexões, permitindo que as chamadas tenham balanceamento de carga entre pontos de extremidade.
+
+Como os balanceadores de carga L4 operam em um nível de conexão, eles não funcionam bem com gRPC. gRPC usa HTTP/2, que multiplexa várias chamadas em uma única conexão TCP. Todas as chamadas de gRPC sobre essa conexão vão para um ponto de extremidade.
+
+Há duas opções para balancear a carga com eficiência gRPC:
+
+1. Balanceamento de carga no lado do cliente
+2. Balanceamento de carga de proxy L7 (aplicativo)
+
+> [!NOTE]
+> Somente chamadas gRPC podem ter balanceamento de carga entre pontos de extremidade. Quando uma chamada gRPC de streaming é estabelecida, todas as mensagens enviadas pelo fluxo vão para um ponto de extremidade.
+
+### <a name="client-side-load-balancing"></a>Balanceamento de carga no lado do cliente
+
+Com o balanceamento de carga do lado do cliente, o cliente conhece os pontos de extremidade. Para cada chamada de gRPC, ele seleciona um ponto de extremidade diferente para o qual enviar a chamada. O balanceamento de carga no lado do cliente é uma boa opção quando a latência é importante. Não há nenhum proxy entre o cliente e o serviço para que a chamada seja enviada diretamente ao serviço. A desvantagem do balanceamento de carga no lado do cliente é que cada cliente deve manter o controle dos pontos de extremidade disponíveis que ele deve usar.
+
+O balanceamento de carga de cliente à parte é uma técnica em que o estado de balanceamento de carga é armazenado em um local central. Os clientes consultam periodicamente o local central para obter informações a serem usadas ao tomar decisões de balanceamento de carga.
+
+`Grpc.Net.Client` Atualmente, não dá suporte ao balanceamento de carga do lado do cliente. O [Grpc. Core](https://www.nuget.org/packages/Grpc.Core) é uma boa opção se o balanceamento de carga do lado do cliente for necessário no .net.
+
+### <a name="proxy-load-balancing"></a>Balanceamento de carga de proxy
+
+Um proxy L7 (Application) funciona em um nível mais alto do que um proxy L4 (transporte). Os proxies L7 entendem HTTP/2 e são capazes de distribuir chamadas gRPC multiplexada para o proxy em uma conexão HTTP/2 entre vários pontos de extremidade. O uso de um proxy é mais simples do que o balanceamento de carga do lado do cliente, mas pode adicionar latência extra a chamadas gRPC.
+
+Há muitos proxies L7 disponíveis. Algumas opções são:
+
+1. Proxy [Envoy](https://www.envoyproxy.io/) – um proxy de software livre popular.
+2. [Linkerd](https://linkerd.io/) -malha de serviço para kubernetes.
+2. [YARP: um proxy reverso](https://microsoft.github.io/reverse-proxy/) -um proxy de código-fonte aberto de visualização escrito em .net.
+
 ::: moniker range=">= aspnetcore-5.0"
+
+## <a name="inter-process-communication"></a>Comunicação entre processos
+
+chamadas de gRPC entre um cliente e um serviço geralmente são enviadas por Soquetes TCP. O TCP é ótimo para a comunicação em uma rede, mas a [IPC (comunicação entre processos)](https://wikipedia.org/wiki/Inter-process_communication) é mais eficiente quando o cliente e o serviço estão no mesmo computador.
+
+Considere usar um transporte como soquetes de domínio do UNIX ou pipes nomeados para chamadas gRPC entre processos no mesmo computador. Para obter mais informações, consulte <xref:grpc/interprocess>.
 
 ## <a name="keep-alive-pings"></a>Pings de Keep Alive
 

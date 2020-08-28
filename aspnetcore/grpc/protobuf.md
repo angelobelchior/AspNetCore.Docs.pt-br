@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b8149b79c1e7b204e52cc8595d1193b623bb0008
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: f898907e5bae7c67cfca72c70dc8497f36de2622
+ms.sourcegitcommit: 111b4e451da2e275fb074cde5d8a84b26a81937d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945636"
+ms.locfileid: "89040847"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Criar mensagens Protobuf para aplicativos .NET
 
@@ -338,7 +338,7 @@ Os campos dentro do `oneof` conjunto devem ter números de campo exclusivos na d
 Ao usar `oneof` o, o código C# gerado inclui uma enumeração que especifica quais dos campos foram definidos. Você pode testar a enumeração para localizar qual campo está definido. Campos que não são definidos como Return `null` ou o valor padrão, em vez de lançar uma exceção.
 
 ```csharp
-var response = client.GetPersonAsync(new RequestMessage());
+var response = await client.GetPersonAsync(new RequestMessage());
 
 switch (response.ResultCase)
 {
