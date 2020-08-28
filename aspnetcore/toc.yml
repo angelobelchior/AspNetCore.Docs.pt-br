@@ -12,7 +12,7 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: Introdução
   uid: getting-started
-- name: Notas de versão
+- name: Notas de Versão
   items:
     - name: Novidades no 3.1
       uid: aspnetcore-3.1
@@ -94,6 +94,9 @@
         - name: Back-end para aplicativos móveis
           displayName: tutorial
           uid: mobile/native-mobile-backend
+        - name: Publicar no Gerenciamento de API do Azure
+          displayName: tutorial
+          uid: tutorials/publish-to-azure-api-management-using-vs
     - name: Aplicativos Web em tempo real
       items:
         - name: SignalR com JavaScript
@@ -702,7 +705,11 @@
         - name: Introdução a um serviço gRPC
           uid: tutorials/grpc/grpc-start
     - name: Serviços do gRPC com C#
-      uid: grpc/basics
+      items:
+        - name: Visão geral
+          uid: grpc/basics
+        - name: Criar serviços gRPC
+          uid: grpc/services
     - name: Serviços do gRPC com o ASP.NET Core
       uid: grpc/aspnetcore
     - name: Chamar os serviços do gRPC com o cliente .NET
@@ -711,6 +718,8 @@
       uid: grpc/clientfactory
     - name: Usar o gRPC em aplicativos de navegador
       uid: grpc/browser
+    - name: Comunicação entre processos com o gRPC
+      uid: grpc/interprocess
     - name: Configuração
       uid: grpc/configuration
     - name: Autenticação e autorização
@@ -719,6 +728,8 @@
       uid: grpc/diagnostics
     - name: Considerações sobre segurança
       uid: grpc/security
+    - name: Criar mensagens Protobuf
+      uid: grpc/protobuf
     - name: Práticas recomendadas de desempenho
       uid: grpc/performance
     - name: Controle de versão de serviços gRPC
