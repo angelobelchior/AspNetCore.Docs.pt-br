@@ -12,7 +12,7 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: Introdução
   uid: getting-started
-- name: Notas de Versão
+- name: Notas de versão
   items:
     - name: Novidades no 3.1
       uid: aspnetcore-3.1
@@ -710,6 +710,8 @@
           uid: grpc/basics
         - name: Criar serviços gRPC
           uid: grpc/services
+        - name: Criar mensagens Protobuf
+          uid: grpc/protobuf
     - name: Serviços do gRPC com o ASP.NET Core
       uid: grpc/aspnetcore
     - name: Chamar os serviços do gRPC com o cliente .NET
@@ -728,8 +730,6 @@
       uid: grpc/diagnostics
     - name: Considerações sobre segurança
       uid: grpc/security
-    - name: Criar mensagens Protobuf
-      uid: grpc/protobuf
     - name: Práticas recomendadas de desempenho
       uid: grpc/performance
     - name: Controle de versão de serviços gRPC
