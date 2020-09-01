@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 98c43eda002abc96fe3c2f031c429ccaa70cee3e
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 2d002e075f9d57654589b540e522307c363d9660
+ms.sourcegitcommit: 4cce99cbd44372fd4575e8da8c0f4345949f4d9a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102777"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89153539"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -214,7 +214,7 @@ A estrutura fornece métodos de extensão de registro de serviço que são útei
 
 <!-- Review: Auto disposal at end of app lifetime is not what you think of auto disposal  -->
 
-| Método                                                                                                                                                                              | Automático<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método                                                                                                                                                                              | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------:|:---------------------------:|:---------:|
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();`                                                                             | Sim                             | Sim                         | Não        |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep(99));` | Sim                             | Sim                         | Sim       |
@@ -517,7 +517,7 @@ O método de fábrica de um único serviço, como o segundo argumento para [adds
   [!code-csharp[](dependency-injection/samples/3.x/AntiPattern3/Startup.cs?name=snippet)]
 
 * Serviços inposados transitórios são capturados pelo contêiner para descarte. Isso pode transformar em um vazamento de memória se resolvido no contêiner de nível superior.
-* Habilite a validação de escopo para certificar-se de que o aplicativo não tem serviços com escopo que capturam singletons. Para obter mais informações, confira [Validação de escopo](#scope-validation).
+* Habilite a validação de escopo para certificar-se de que o aplicativo não tem singletons que capturam serviços com escopo. Para obter mais informações, confira [Validação de escopo](#scope-validation).
 
 Como todos os conjuntos de recomendações, talvez você encontre situações em que é necessário ignorar uma recomendação. As exceções são raras, principalmente os casos especiais dentro da própria estrutura.
 
@@ -768,7 +768,7 @@ Em aplicativos que processam solicitações, os serviços singleton são descart
 
 Os métodos de extensão de registro de serviço oferecem sobrecargas que são úteis em cenários específicos.
 
-| Método | Automático<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();` | Sim | Sim | Não |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Sim | Sim | Sim |
