@@ -5,7 +5,7 @@ description: Saiba como hospedar e implantar um Blazor Server aplicativo usando 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2020
+ms.date: 08/26/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: 72a22fc2dd50bbcda230bb1824bb4fe176bf2189
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: afbaad2f27359a4a1cac5c5fe1da16d3e80d038f
+ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628047"
+ms.lasthandoff: 08/29/2020
+ms.locfileid: "89102647"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Hospedar e implantar Blazor Server
 
@@ -65,7 +65,19 @@ Blazor funciona melhor ao usar o WebSocket como SignalR transporte devido à lat
 
 #### <a name="azure-no-locsignalr-service"></a>Serviço do Azure SignalR
 
-É recomendável usar [o SignalR serviço do Azure](/azure/azure-signalr) para Blazor Server aplicativos. O serviço permite escalar verticalmente um Blazor Server aplicativo para um grande número de conexões simultâneas SignalR . Além disso, o SignalR alcance global do serviço e os data centers de alto desempenho auxiliam significativamente na redução da latência devido à geografia. Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azure SignalR :
+É recomendável usar [o SignalR serviço do Azure](xref:signalr/scale#azure-signalr-service) para Blazor Server aplicativos. O serviço permite escalar verticalmente um Blazor Server aplicativo para um grande número de conexões simultâneas SignalR . Além disso, o SignalR alcance global do serviço e os data centers de alto desempenho auxiliam significativamente na redução da latência devido à geografia.
+
+> [!IMPORTANT]
+> Quando os [WebSockets](https://wikipedia.org/wiki/WebSocket) estão desabilitados, Azure app serviço simula uma conexão em tempo real usando a sondagem longa http. A sondagem longa HTTP é visivelmente mais lenta do que a execução com WebSockets habilitados, o que não usa a sondagem para simular uma conexão cliente-servidor.
+>
+> É recomendável usar Websockets para Blazor Server aplicativos implantados no serviço Azure app. O [ SignalR serviço do Azure](xref:signalr/scale#azure-signalr-service) usa o WebSocket por padrão. Se o aplicativo não usar o serviço do Azure SignalR , consulte <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service> .
+>
+> Para obter mais informações, consulte:
+>
+> * [O que é o serviço do Azure SignalR ?](/azure/azure-signalr/signalr-overview)
+> * [Guia de desempenho do SignalR serviço do Azure](/azure-signalr/signalr-concept-performance#performance-factors)
+
+Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azure SignalR :
 
 1. Habilite o serviço para dar suporte a *sessões adesivas*, em que os clientes são [redirecionados de volta para o mesmo servidor ao renderizar](xref:blazor/hosting-models#connection-to-the-server). Defina a `ServerStickyMode` opção ou o valor de configuração como `Required` . Normalmente, um aplicativo cria a configuração usando **uma** das seguintes abordagens:
 

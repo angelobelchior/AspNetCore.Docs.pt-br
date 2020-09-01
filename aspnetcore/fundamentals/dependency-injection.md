@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 0a51647463362d6cfac335688d42d4be013f8b9c
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 98c43eda002abc96fe3c2f031c429ccaa70cee3e
+ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712501"
+ms.lasthandoff: 08/29/2020
+ms.locfileid: "89102777"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -214,7 +214,7 @@ A estrutura fornece métodos de extensão de registro de serviço que são útei
 
 <!-- Review: Auto disposal at end of app lifetime is not what you think of auto disposal  -->
 
-| Método                                                                                                                                                                              | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método                                                                                                                                                                              | Automático<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------:|:---------------------------:|:---------:|
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();`                                                                             | Sim                             | Sim                         | Não        |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep(99));` | Sim                             | Sim                         | Sim       |
@@ -345,7 +345,6 @@ Quando o aplicativo é executado no [ambiente de desenvolvimento](xref:fundament
 
 * Os serviços com escopo não são resolvidos do provedor de serviços raiz.
 * Os serviços com escopo não são injetados em singletons.
-* Os serviços transitórios não são injetados em singletons ou em serviços com escopo.
 
 O provedor de serviços raiz é criado quando <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider%2A> é chamado. O tempo de vida do provedor de serviço raiz corresponde ao tempo de vida do aplicativo quando o provedor começa com o aplicativo e é Descartado quando o aplicativo é desligado.
 
@@ -769,7 +768,7 @@ Em aplicativos que processam solicitações, os serviços singleton são descart
 
 Os métodos de extensão de registro de serviço oferecem sobrecargas que são úteis em cenários específicos.
 
-| Método | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
+| Método | Automático<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();` | Sim | Sim | Não |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Sim | Sim | Sim |

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: c409eaaf07109d363581ee7d61dc76521d6818d0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9bb055670b73c9a1ae04083bc326200a42151708
+ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630660"
+ms.lasthandoff: 08/29/2020
+ms.locfileid: "89102790"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gerenciamento de memória e coleta de lixo (GC) no ASP.NET Core
 
@@ -235,7 +235,7 @@ O mesmo vazamento pode ocorrer no código do usuário, de uma das seguintes form
 
 ### <a name="large-objects-heap"></a>Heap de objetos grandes
 
-A alocação de memória frequente/ciclos livres pode fragmentar a memória, especialmente ao alocar grandes partes de memória. Os objetos são alocados em blocos contíguos de memória. Para atenuar a fragmentação, quando o GC libera memória, ele trys para desfragmentá-la. Esse processo é chamado de **compactação**. A compactação envolve a movimentação de objetos. Mover objetos grandes impõe uma penalidade de desempenho. Por esse motivo, o GC cria uma zona de memória especial para objetos _grandes_ , chamada de Loh ( [heap de objeto grande](/dotnet/standard/garbage-collection/large-object-heap) ). Os objetos maiores que 85.000 bytes (aproximadamente 83 KB) são:
+A alocação de memória frequente/ciclos livres pode fragmentar a memória, especialmente ao alocar grandes partes de memória. Os objetos são alocados em blocos contíguos de memória. Para atenuar a fragmentação, quando o GC libera memória, ele tenta desfragmentá-la. Esse processo é chamado de **compactação**. A compactação envolve a movimentação de objetos. Mover objetos grandes impõe uma penalidade de desempenho. Por esse motivo, o GC cria uma zona de memória especial para objetos _grandes_ , chamada de Loh ( [heap de objeto grande](/dotnet/standard/garbage-collection/large-object-heap) ). Os objetos maiores que 85.000 bytes (aproximadamente 83 KB) são:
 
 * Colocado no LOH.
 * Não compactado.
