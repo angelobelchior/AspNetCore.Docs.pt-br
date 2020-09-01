@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 3b41aedcbd0d2c22b20d8fa3a21b8af97d1fbb2c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d88cad10314872271250cd43212a64698f485381
+ms.sourcegitcommit: 8ed9a413bdc2d665ad11add8828898d726ccb106
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628554"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280394"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor Associação de dados
 
@@ -79,27 +79,7 @@ Associe uma propriedade ou um campo a outros eventos, incluindo também um `@bin
 
 Ao contrário de `onchange` , que é acionado quando o elemento perde o foco, `oninput` é acionado quando o valor da caixa de texto é alterado.
 
-Use `@bind-{ATTRIBUTE}` with `@bind-{ATTRIBUTE}:event` sintaxe para associar atributos de elemento diferentes de `value` . No exemplo a seguir:
-
-* O estilo do parágrafo é **vermelho** quando o componente carrega ( `style="color:red"` ).
-* O usuário altera o valor da caixa de texto para refletir um estilo de cor CSS diferente e altera o foco do elemento da página. Por exemplo, o usuário altera o valor da caixa de texto para `color:blue` e pressiona a tecla <kbd>Tab</kbd> no teclado.
-* Quando o foco do elemento é alterado:
-  * O valor de `paragraphStyle` é atribuído a partir do `<input>` valor do elemento.
-  * O estilo de parágrafo é atualizado para refletir o novo estilo no `paragraphStyle` . Se o estilo for atualizado para `color:blue` , a cor do texto será alterada para **azul**.
-
-```razor
-<p>
-    <input type="text" @bind="paragraphStyle" />
-</p>
-
-<p @bind-style="paragraphStyle" @bind-style:event="onchange">
-    Blazorify the app!
-</p>
-
-@code {
-    private string paragraphStyle = "color:red";
-}
-```
+<!-- Hold location for resolution of https://github.com/dotnet/AspNetCore.Docs/issues/19721 -->
 
 A associação de atributo diferencia maiúsculas de minúsculas:
 
