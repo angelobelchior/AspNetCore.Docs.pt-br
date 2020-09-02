@@ -4,7 +4,7 @@ author: scottaddie
 description: Saiba como otimizar recursos estáticos em um aplicativo Web ASP.NET Core aplicando técnicas de agrupamento e minificação.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/23/2020
+ms.date: 09/02/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 84123464e8f01f8a3caa65035b3174cc04aea7cf
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f696df0b421e5aab6f50cfaec3ca8edac894cea9
+ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625850"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89379387"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Empacotar e reduzirr ativos estáticos no ASP.NET Core
 
@@ -64,7 +64,7 @@ Original | Renomeado
 
 A tabela a seguir descreve as diferenças entre os ativos de carregamento individualmente e o uso de agrupamento e minificação:
 
-Ação | Com B/M | Sem B/M | Alterar
+Ação | Com B/M | Sem B/M | Alteração
 --- | :---: | :---: | :---:
 Solicitações de arquivo  | 7   | 18     | 157%
 KB transferidos | 156 | 264,68 | 70%
@@ -77,6 +77,9 @@ Os navegadores são bastante detalhados em relação aos cabeçalhos de solicita
 Os modelos de Razor projeto MVC e pages fornecem uma solução para Agrupamento e minificação que consistem em um arquivo de configuração JSON. Ferramentas de terceiros, como o executor de tarefas do [Grunt](xref:client-side/using-grunt) , realizam as mesmas tarefas com um pouco mais de complexidade. Uma ferramenta de terceiros é uma ótima opção quando seu fluxo de trabalho de desenvolvimento requer processamento além do agrupamento e minificação &mdash; , como a otimização de imagem e de retratação. Usando agrupamento e minificação de tempo de design, os arquivos reduzidos são criados antes da implantação do aplicativo. O agrupamento e o minificar antes da implantação proporcionam a vantagem da carga reduzida do servidor. No entanto, é importante reconhecer que o agrupamento de tempo de design e minificação aumenta a complexidade da compilação e só funciona com arquivos estáticos.
 
 ## <a name="configure-bundling-and-minification"></a>Configurar agrupamento e minificação
+
+> [!NOTE]
+> O pacote NuGet [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier) precisa ser adicionado ao seu projeto para que isso funcione.
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -96,7 +99,7 @@ O *bundleconfig.jsno* arquivo define as opções para cada pacote. No exemplo an
 
 As opções de configuração incluem:
 
-* `outputFileName`: O nome do arquivo de pacote para saída. Pode conter um caminho relativo do *bundleconfig.jsno* arquivo. **exigido**
+* `outputFileName`: O nome do arquivo de pacote para saída. Pode conter um caminho relativo do *bundleconfig.jsno* arquivo. **Necessário**
 * `inputFiles`: Uma matriz de arquivos para agrupar. Esses são caminhos relativos ao arquivo de configuração. **opcional**, * um valor vazio resulta em um arquivo de saída vazio. Há suporte para padrões de [mascaramento](https://www.tldp.org/LDP/abs/html/globbingref.html) .
 * `minify`: As opções de minificação para o tipo de saída. **opcional**, *padrão- `minify: { enabled: true }` *
   * As opções de configuração estão disponíveis por tipo de arquivo de saída.
