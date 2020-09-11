@@ -5,7 +5,7 @@ description: Descubra como carregar com lentas os assemblies em ASP.NET Core Bla
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/25/2020
+ms.date: 09/09/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 46f98080ad40f614f9cb1af2190f263d205c1016
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: f9b6766c2f46274e06cab18fd35b5e417e9bfa97
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865155"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009603"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
@@ -114,8 +114,11 @@ O `LazyAssemblyLoader` fornece o `LoadAssembliesAsync` método que:
 * Usa a interoperabilidade JS para buscar assemblies por meio de uma chamada de rede.
 * Carrega assemblies no tempo de execução em execução no Webassembly no navegador.
 
-> [!NOTE]
-> A implementação de carregamento lento da estrutura dá suporte à renderização no servidor. Durante o pré-processamento, todos os assemblies, incluindo os marcados para carregamento lento, são considerados carregados.
+A implementação de carregamento lento da estrutura dá suporte ao carregamento lento com o pré-processamento em uma solução hospedada Blazor . Durante o pré-processamento, todos os assemblies, incluindo os marcados para carregamento lento, são considerados carregados. Registrar manualmente `LazyAssemblyLoader` no método do projeto do *servidor* `Startup.ConfigureServices` ( `Startup.cs` ):
+
+```csharp
+services.AddSingleton<LazyAssemblyLoader>();
+```
 
 ### <a name="user-interaction-with-navigating-content"></a>Interação do usuário com `<Navigating>` conteúdo
 

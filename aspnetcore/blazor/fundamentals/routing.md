@@ -5,7 +5,7 @@ description: Saiba como rotear solicitações em aplicativos e sobre o component
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/14/2020
+ms.date: 09/02/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: eb9e3cbddd2eaca8fef9a6782c28bbce4c029f58
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: fe67ebfefb463ab698e5ff1bb7d9b527a28a596e
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865325"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009577"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
@@ -161,16 +161,35 @@ As restrições de rota mostradas na tabela a seguir estão disponíveis. Para a
 
 ### <a name="routing-with-urls-that-contain-dots"></a>Roteamento com URLs que contêm pontos
 
-Em Blazor Server aplicativos, a rota padrão no `_Host.cshtml` é `/` ( `@page "/"` ). Uma URL de solicitação que contém um ponto ( `.` ) não é correspondida pela rota padrão porque a URL parece solicitar um arquivo. Um Blazor aplicativo retorna uma resposta *404-não encontrada* para um arquivo estático que não existe. Para usar rotas que contenham um ponto, configure `_Host.cshtml` com o seguinte modelo de rota:
+Para hospedado Blazor WebAssembly e Blazor Server aplicativos, o modelo de rota padrão do lado do servidor pressupõe que se o último segmento de uma URL de solicitação contiver um ponto ( `.` ) de que um arquivo é solicitado (por exemplo, `https://localhost.com:5001/example/some.thing` ). Sem configuração adicional, um aplicativo retornará uma resposta *404-não encontrada* se isso tiver sido destinado a rotear para um componente. Para usar uma rota com um ou mais parâmetros que contenham um ponto, o aplicativo deve configurar a rota com um modelo personalizado.
 
-```cshtml
-@page "/{**path}"
+Considere o seguinte `Example` componente que pode receber um parâmetro de rota do último segmento da URL:
+
+```razor
+@page "/example"
+@page "/example/{param}"
+
+<p>
+    Param: @Param
+</p>
+
+@code {
+    [Parameter]
+    public string Param { get; set; }
+}
 ```
 
-O `"/{**path}"` modelo inclui:
+Para permitir que o aplicativo de *servidor* de uma solução hospedada Blazor WebAssembly encaminhe a solicitação com um ponto no `param` parâmetro, adicione um modelo de rota de arquivo de fallback com o parâmetro opcional em `Startup.Configure` ( `Startup.cs` ):
 
-* Sintaxe *catch-all* de asterisco duplo ( `**` ) para capturar o caminho entre vários limites de pasta sem decodificar barras ( `/` ).
-* `path` nome do parâmetro de rota.
+```csharp
+endpoints.MapFallbackToFile("/example/{param?}", "index.html");
+```
+
+Para configurar um Blazor Server aplicativo para rotear a solicitação com um ponto no `param` parâmetro, adicione um modelo de rota de página de fallback com o parâmetro opcional em `Startup.Configure` ( `Startup.cs` ):
+
+```csharp
+endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
+```
 
 Para obter mais informações, consulte <xref:fundamentals/routing>.
 

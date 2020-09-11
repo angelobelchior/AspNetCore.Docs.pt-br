@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 83ddb49f60058ecc744163faa2f5c454abc7b42d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 08cd6396cca78488827dfa7c2cca62a35c500dbd
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630303"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009694"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Roteamento para ações do controlador no ASP.NET Core
 
@@ -152,7 +152,7 @@ A maioria dos aplicativos deve escolher um esquema de roteamento básico e descr
 
 * Dá suporte a um esquema de roteamento básico e descritivo.
 * É um ponto de partida útil para aplicativos baseados em interface do usuário.
-* É o único modelo de rota necessário para muitos aplicativos da interface do usuário da Web. Para aplicativos de interface do usuário da Web maiores, outra rota usando [áreas](#areas) , se for sempre tudo o que for necessário.
+* É o único modelo de rota necessário para muitos aplicativos da interface do usuário da Web. Para aplicativos de interface do usuário da Web maiores, uma outra rota usando [áreas](#areas) costuma ser tudo o que é necessário.
 
 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> e <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute%2A> :
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 6f092f3f9a18883c31b217b59d0b0abe802aff01
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 870509a3cbbcbea9b1c4804185c49a831af22630
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628294"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009629"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
 
@@ -128,20 +128,62 @@ Blazor Server os aplicativos são configurados por padrão para PreRender a inte
 
 Não há suporte para a renderização de componentes de servidor de uma página HTML estática.
 
-## <a name="configure-the-no-locsignalr-client-for-no-locblazor-server-apps"></a>Configurar o SignalR cliente para Blazor Server aplicativos
+## <a name="initialize-the-no-locblazor-circuit"></a>Inicializar o Blazor circuito
 
 *Esta seção aplica-se a Blazor Server .*
 
-Configure o SignalR cliente usado por Blazor Server aplicativos no `Pages/_Host.cshtml` arquivo. Coloque um script que chame `Blazor.start` após o `_framework/blazor.server.js` script e dentro da `</body>` marca.
-
-### <a name="logging"></a>Registrando em log
-
-Para configurar o SignalR log do cliente:
+Configure o início manual do Blazor Server [ SignalR circuito](xref:blazor/hosting-models#circuits) de um aplicativo no `Pages/_Host.cshtml` arquivo:
 
 * Adicione um `autostart="false"` atributo à `<script>` marca para o `blazor.server.js` script.
-* Passe um objeto de configuração ( `configureSignalR` ) que chama `configureLogging` com o nível de log no Client Builder.
+* Coloque um script que chame `Blazor.start` após a `blazor.server.js` marca do script e dentro da marca de fechamento `</body>` .
+
+Quando `autostart` o é desabilitado, qualquer aspecto do aplicativo que não dependa do circuito funciona normalmente. Por exemplo, o roteamento do lado do cliente está operacional. No entanto, qualquer aspecto que dependa do circuito não estará operacional até que `Blazor.start` seja chamado. O comportamento do aplicativo é imprevisível sem um circuito estabelecido. Por exemplo, os métodos de componente não são executados enquanto o circuito é desconectado.
+
+### <a name="initialize-no-locblazor-when-the-document-is-ready"></a>Inicializar Blazor quando o documento estiver pronto
+
+Para inicializar o Blazor aplicativo quando o documento estiver pronto:
 
 ```cshtml
+<body>
+
+    ...
+
+    <script autostart="false" src="_framework/blazor.server.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        Blazor.start();
+      });
+    </script>
+</body>
+```
+
+### <a name="chain-to-the-promise-that-results-from-a-manual-start"></a>Cadeia para o `Promise` que resulta de um início manual
+
+Para executar tarefas adicionais, como a inicialização de interoperabilidade do JS, use `then` para encadear para o `Promise` que resulta de um Blazor início do aplicativo manual:
+
+```cshtml
+<body>
+
+    ...
+
+    <script autostart="false" src="_framework/blazor.server.js"></script>
+    <script>
+      Blazor.start().then(function () {
+        ...
+      });
+    </script>
+</body>
+```
+
+### <a name="configure-the-no-locsignalr-client"></a>Configurar o SignalR cliente
+
+#### <a name="logging"></a>Registro em log
+
+Para configurar SignalR o log do cliente, passe um objeto de configuração ( `configureSignalR` ) que chame `configureLogging` com o nível de log no construtor do cliente:
+
+```cshtml
+<body>
+
     ...
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
@@ -164,12 +206,16 @@ Os eventos de conexão de circuito do manipulador de reconexão podem ser modifi
 * Para notificar o usuário se a conexão for descartada.
 * Para executar o registro em log (do cliente) quando um circuito é conectado.
 
-Para modificar os eventos de conexão:
+Para modificar os eventos de conexão, registre os retornos de chamada para as seguintes alterações de conexão:
 
-* Adicione um `autostart="false"` atributo à `<script>` marca para o `blazor.server.js` script.
-* Registre retornos de chamada para alterações de conexão para conexões descartadas ( `onConnectionDown` ) e conexões estabelecidas/restabelecidas ( `onConnectionUp` ). **Ambos** `onConnectionDown` e `onConnectionUp` deve ser especificado.
+* Conexões descartadas usam `onConnectionDown` .
+* Conexões estabelecidas/restabelecidas usam `onConnectionUp` .
+
+**Ambos** `onConnectionDown` e `onConnectionUp` deve ser especificado:
 
 ```cshtml
+<body>
+
     ...
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
@@ -186,12 +232,11 @@ Para modificar os eventos de conexão:
 
 ### <a name="adjust-the-reconnection-retry-count-and-interval"></a>Ajustar a contagem de repetição de reconexão e o intervalo
 
-Para ajustar a contagem de repetição de reconexão e o intervalo:
-
-* Adicione um `autostart="false"` atributo à `<script>` marca para o `blazor.server.js` script.
-* Defina o número de repetições ( `maxRetries` ) e o período em milissegundos permitidos para cada tentativa de repetição ( `retryIntervalMilliseconds` ).
+Para ajustar a contagem de repetição de reconexão e o intervalo, defina o número de repetições ( `maxRetries` ) e o período em milissegundos permitidos para cada tentativa de repetição ( `retryIntervalMilliseconds` ):
 
 ```cshtml
+<body>
+
     ...
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
@@ -206,14 +251,13 @@ Para ajustar a contagem de repetição de reconexão e o intervalo:
 </body>
 ```
 
-### <a name="hide-or-replace-the-reconnection-display"></a>Ocultar ou substituir a exibição de reconexão
+## <a name="hide-or-replace-the-reconnection-display"></a>Ocultar ou substituir a exibição de reconexão
 
-Para ocultar a exibição da reconexão:
-
-* Adicione um `autostart="false"` atributo à `<script>` marca para o `blazor.server.js` script.
-* Defina o manipulador de reconexão `_reconnectionDisplay` como um objeto vazio ( `{}` ou `new Object()` ).
+Para ocultar a exibição de reconexão, defina o manipulador de reconexão `_reconnectionDisplay` como um objeto vazio ( `{}` ou `new Object()` ):
 
 ```cshtml
+<body>
+
     ...
 
     <script autostart="false" src="_framework/blazor.server.js"></script>
@@ -221,6 +265,8 @@ Para ocultar a exibição da reconexão:
       window.addEventListener('beforeunload', function () {
         Blazor.defaultReconnectionHandler._reconnectionDisplay = {};
       });
+
+      Blazor.start();
     </script>
 </body>
 ```
@@ -233,6 +279,18 @@ Blazor.defaultReconnectionHandler._reconnectionDisplay =
 ```
 
 O espaço reservado `{ELEMENT ID}` é a ID do elemento HTML a ser exibido.
+
+::: moniker range=">= aspnetcore-5.0"
+
+Personalize o atraso antes da exibição da reconexão aparecer definindo a `transition-delay` propriedade no CSS do aplicativo ( `wwwroot/css/site.css` ) para o elemento modal. O exemplo a seguir define o atraso de transição de 500 MS (padrão) para 1.000 MS (1 segundo):
+
+```css
+#components-reconnect-modal {
+    transition: visibility 0s linear 1000ms;
+}
+```
+
+::: moniker-end
 
 ## <a name="influence-html-head-tag-elements"></a>Influenciar `<head>` elementos de marca HTML
 

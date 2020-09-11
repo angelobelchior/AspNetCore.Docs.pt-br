@@ -18,16 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: fc257015a9ee972da90b0f206a60b07bd6cc1f97
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bba965e14058663c3ed9c0f15afc6a8d78997aea
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631102"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009746"
 ---
 # <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHospedagem e dimensionamento de ASP.NET Core
 
-Por [Andrew Stanton-enfermaria](https://twitter.com/anurse), [Brady GASTER](https://twitter.com/bradygaster)e [Tom Dykstra](https://github.com/tdykstra),
+Por [Andrew Stanton-enfermaria](https://twitter.com/anurse), [Brady GASTER](https://twitter.com/bradygaster)e [Tom Dykstra](https://github.com/tdykstra)
 
 Este artigo explica as considerações de hospedagem e dimensionamento para aplicativos de alto tráfego que usam ASP.NET Core SignalR .
 
@@ -82,7 +82,7 @@ O resultado é que o serviço gerencia todas as conexões de cliente, enquanto c
 Essa abordagem de expansão tem várias vantagens em relação à alternativa do backplane Redis:
 
 * As sessões adesivas, também conhecidas como [afinidade de cliente](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity), não são necessárias, porque os clientes são redirecionados imediatamente para o serviço do Azure SignalR quando se conectam.
-* Um SignalR aplicativo pode escalar horizontalmente com base no número de mensagens enviadas, enquanto o serviço do Azure é SignalR dimensionado automaticamente para lidar com qualquer número de conexões. Por exemplo, pode haver milhares de clientes, mas se apenas algumas mensagens por segundo forem enviadas, o SignalR aplicativo não precisará escalar horizontalmente para vários servidores apenas para lidar com as próprias conexões.
+* Um SignalR aplicativo pode escalar horizontalmente com base no número de mensagens enviadas, enquanto o serviço do Azure é SignalR dimensionado para lidar com qualquer número de conexões. Por exemplo, pode haver milhares de clientes, mas se apenas algumas mensagens por segundo forem enviadas, o SignalR aplicativo não precisará escalar horizontalmente para vários servidores apenas para lidar com as próprias conexões.
 * Um SignalR aplicativo não usará significativamente mais recursos de conexão do que um aplicativo Web sem SignalR .
 
 Por esses motivos, recomendamos o serviço do Azure SignalR para todos os SignalR aplicativos ASP.NET Core hospedados no Azure, incluindo serviço de aplicativo, VMS e contêineres.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a8d2ceaffb670723d7662234f3dc964c864e6763
-ms.sourcegitcommit: 8ed9a413bdc2d665ad11add8828898d726ccb106
+ms.openlocfilehash: 0830214029d59d0820ed3c5806267c766314c74f
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280420"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009668"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>BlazorModelos de hospedagem ASP.NET Core
 
@@ -41,7 +41,7 @@ Para criar um Blazor aplicativo usando o modelo de hospedagem do lado do cliente
 
 Depois de selecionar o modelo de ** Blazor WebAssembly aplicativo** , você tem a opção de configurar o aplicativo para usar um ASP.NET Core back-end marcando a caixa de seleção **ASP.NET Core hospedado** ( [`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new) ). O aplicativo ASP.NET Core serve o Blazor aplicativo aos clientes. Um aplicativo com um back-end ASP.NET Core é chamado de * Blazor WebAssembly aplicativo hospedado*. O Blazor WebAssembly aplicativo pode interagir com o servidor pela rede usando chamadas de API Web ou [SignalR](xref:signalr/introduction) ( <xref:tutorials/signalr-blazor-webassembly> ).
 
-Os modelos incluem o `blazor.webassembly.js` script que manipula:
+O `blazor.webassembly.js` script é fornecido pela estrutura e pelos identificadores:
 
 * Baixar o tempo de execução do .NET, o aplicativo e as dependências do aplicativo.
 * Inicialização do tempo de execução para executar o aplicativo.
@@ -75,7 +75,7 @@ O aplicativo ASP.NET Core referencia a classe do aplicativo `Startup` a ser adic
 * Serviços do lado do servidor.
 * O aplicativo para o pipeline de tratamento de solicitação.
 
-O `blazor.server.js` script estabelece a conexão do cliente. É responsabilidade do aplicativo persistir e restaurar o estado do aplicativo, conforme necessário (por exemplo, no caso de uma conexão de rede perdida). O `blazor.server.js` script é servido por um recurso inserido na estrutura compartilhada ASP.NET Core.
+No cliente, o `blazor.server.js` script estabelece a SignalR conexão com o servidor. O script é servido para o aplicativo do lado do cliente de um recurso inserido na estrutura compartilhada ASP.NET Core. O aplicativo do lado do cliente é responsável por persistir e restaurar o estado do aplicativo, conforme necessário. 
 
 O Blazor Server modelo de hospedagem oferece vários benefícios:
 

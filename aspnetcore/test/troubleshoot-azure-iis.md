@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 117c777dc9ae1b8c6448f097132454b714a1b5dc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bc968489a35405c1be0a4ac2e52e6dff4c3af050
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632155"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009733"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Solucionar problemas ASP.NET Core no serviço Azure App e no IIS
 
@@ -167,7 +167,7 @@ Para corrigir esse erro, repare a instalação do [Pacote de Hospedagem do .NET 
 
 ### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 O ANCM não pôde ser iniciado dentro do limite de tempo de inicialização
 
-O ANCM não pôde ser iniciado dentro do limite de tempo de inicialização fornecido. Por padrão, o tempo limite é de 120 segundos.
+ANCM falhou ao iniciar dentro do limite de tempo de inicialização fornecido. Por padrão, o tempo limite é de 120 segundos.
 
 Esse erro pode ocorrer ao iniciar um grande número de aplicativos no mesmo computador. Verifique se há picos de uso de CPU/memória no servidor durante a inicialização. Talvez você precise balancear o processo de inicialização de vários aplicativos.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 26e8239634c3edb99c7606ab2e250c69af4e746f
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: be1584e72fc1504ac9f8ca10a6b084c95a579b5b
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865293"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009616"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -266,7 +266,7 @@ No exemplo a seguir do aplicativo de exemplo, o `ParentComponent` define o valor
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> Não crie componentes que gravam em seus próprios *parâmetros de componente* quando o conteúdo do componente for renderizado com um <xref:Microsoft.AspNetCore.Components.RenderFragment> , use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos por `RenderFragment` ](#overwritten-parameters-with-renderfragment) .
+> Não crie componentes que gravam em seus próprios *parâmetros de componente*, use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos](#overwritten-parameters) .
 
 ## <a name="child-content"></a>Conteúdo filho
 
@@ -625,14 +625,9 @@ Geralmente, faz sentido fornecer um dos seguintes tipos de valor para [`@key`][5
 
 Verifique se os valores usados para [`@key`][5] não conflitam. Se valores conflitantes forem detectados no mesmo elemento pai, Blazor o lançará uma exceção porque ele não pode mapear de forma determinística elementos ou componentes antigos para novos elementos ou componentes. Use apenas valores distintos, como instâncias de objeto ou valores de chave primária.
 
-## <a name="overwritten-parameters-with-renderfragment"></a>Parâmetros substituídos por `RenderFragment`
+## <a name="overwritten-parameters"></a>Parâmetros substituídos
 
-Os parâmetros são substituídos nas seguintes condições:
-
-* O conteúdo de um componente filho é renderizado com um <xref:Microsoft.AspNetCore.Components.RenderFragment> .
-* <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> é chamado no componente pai.
-
-Os parâmetros são redefinidos porque o componente pai é rerenderizado quando <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> é chamado e novos valores de parâmetro são fornecidos ao componente filho.
+Novos valores de parâmetro são fornecidos, normalmente substituindo os existentes, quando o componente pai é rerenderizado.
 
 Considere o seguinte `Expander` componente que:
 
