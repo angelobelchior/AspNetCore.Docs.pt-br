@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: a1b295b2ce42bc5ee06b8b9579ea2c70d480580a
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: e548465b3d79279802fbfacd66c69724d864d14d
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009655"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080323"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>ASP.NET Core Blazor Server com Entity Framework Core (EFCore)
 
@@ -36,7 +36,7 @@ Blazor Server é uma estrutura de aplicativo com estado. O aplicativo mantém um
 > [!NOTE]
 > Este artigo aborda EF Core em Blazor Server aplicativos. Blazor WebAssembly os aplicativos são executados em uma área restrita do Webassembly que impede a maioria das conexões de banco de dados direta. A execução do EF Core no Blazor WebAssembly está além do escopo deste artigo.
 
-## <a name="sample-app"></a>Aplicativo de exemplo
+<h2 id="sample-app-5x">Aplicativo de exemplo</h2>
 
 O aplicativo de exemplo foi criado como uma referência para Blazor Server aplicativos que usam EF Core. O aplicativo de exemplo inclui uma grade com operações de classificação e filtragem, exclusão, adição e atualização. O exemplo demonstra o uso de EF Core para lidar com a simultaneidade otimista.
 
@@ -51,7 +51,7 @@ Os componentes grade, adicionar e exibir usam o padrão "contexto por operação
 > [!NOTE]
 > Alguns dos exemplos de código neste tópico exigem namespaces e serviços que não são mostrados. Para inspecionar o código totalmente funcional, incluindo as necessárias [`@using`](xref:mvc/views/razor#using) e as [`@inject`](xref:mvc/views/razor#inject) diretivas para obter Razor exemplos, consulte o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/5.x/BlazorServerEFCoreSample).
 
-## <a name="database-access"></a>Acesso ao banco de dados
+<h2 id="database-access-5x">Acesso ao banco de dados</h2>
 
 EF Core se baseia em um <xref:Microsoft.EntityFrameworkCore.DbContext> como o meio de [Configurar o acesso ao banco de dados](/ef/core/miscellaneous/configuring-dbcontext) e agir como uma [*unidade de trabalho*](https://martinfowler.com/eaaCatalog/unitOfWork.html). EF Core fornece a <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> extensão para ASP.NET Core aplicativos que registram o contexto como um serviço com *escopo* por padrão. Em Blazor Server aplicativos, os registros de serviço com escopo podem ser problemáticos porque a instância é compartilhada entre os componentes dentro do circuito do usuário. <xref:Microsoft.EntityFrameworkCore.DbContext> Não é thread-safe e não é projetado para uso simultâneo. Os tempos de vida existentes são inadequados por esses motivos:
 
@@ -91,9 +91,9 @@ As recomendações a seguir foram projetadas para fornecer uma abordagem consist
 
   Coloque as operações após a `Loading = true;` linha no `try` bloco.
 
-* Para operações de vida mais longa que aproveitam o [controle de simultaneidade](/ef/core/saving/concurrency), [controle de alterações](/ef/core/querying/tracking) do EF Core, faça [o escopo do contexto para o tempo de vida do componente](#scope-to-the-component-lifetime).
+* Para operações de vida mais longa que aproveitam o [controle de simultaneidade](/ef/core/saving/concurrency), [controle de alterações](/ef/core/querying/tracking) do EF Core, faça [o escopo do contexto para o tempo de vida do componente](#scope-to-the-component-lifetime-5x).
 
-### <a name="new-dbcontext-instances"></a>Novas instâncias de DbContext
+<h3 id="new-dbcontext-instances-5x">Novas instâncias de DbContext</h3>
 
 A maneira mais rápida de criar uma nova <xref:Microsoft.EntityFrameworkCore.DbContext> instância é usando `new` o para criar uma nova instância. No entanto, há vários cenários que podem exigir a resolução de dependências adicionais. Por exemplo, você pode desejar usar [`DbContextOptions`](/ef/core/miscellaneous/configuring-dbcontext#configuring-dbcontextoptions) para configurar o contexto.
 
@@ -110,7 +110,7 @@ A fábrica é injetada em componentes e usada para criar novas instâncias. Por 
 > [!NOTE]
 > `Wrapper` é uma [referência de componente](xref:blazor/components/index#capture-references-to-components) para o `GridWrapper` componente. Consulte o `Index` componente ( `Pages/Index.razor` ) no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor).
 
-### <a name="scope-to-the-component-lifetime"></a>Escopo para o tempo de vida do componente
+<h3 id="scope-to-the-component-lifetime-5x">Escopo para o tempo de vida do componente</h3>
 
 Talvez você queira criar um <xref:Microsoft.EntityFrameworkCore.DbContext> que existe durante o tempo de vida de um componente. Isso permite que você o use como uma [unidade de trabalho](https://martinfowler.com/eaaCatalog/unitOfWork.html) e aproveite os recursos internos, como o controle de alterações e a resolução de simultaneidade.
 Você pode usar a fábrica para criar um contexto e rastreá-lo durante o tempo de vida do componente. Primeiro, implemente <xref:System.IDisposable> e insira a fábrica conforme mostrado em `Pages/EditContact.razor` :
@@ -137,7 +137,7 @@ Blazor Server é uma estrutura de aplicativo com estado. O aplicativo mantém um
 > [!NOTE]
 > Este artigo aborda EF Core em Blazor Server aplicativos. Blazor WebAssembly os aplicativos são executados em uma área restrita do Webassembly que impede a maioria das conexões de banco de dados direta. A execução do EF Core no Blazor WebAssembly está além do escopo deste artigo.
 
-## <a name="sample-app"></a>Aplicativo de exemplo
+<h2 id="sample-app-3x">Aplicativo de exemplo</h2>
 
 O aplicativo de exemplo foi criado como uma referência para Blazor Server aplicativos que usam EF Core. O aplicativo de exemplo inclui uma grade com operações de classificação e filtragem, exclusão, adição e atualização. O exemplo demonstra o uso de EF Core para lidar com a simultaneidade otimista.
 
@@ -152,15 +152,13 @@ Os componentes grade, adicionar e exibir usam o padrão "contexto por operação
 > [!NOTE]
 > Alguns dos exemplos de código neste tópico exigem namespaces e serviços que não são mostrados. Para inspecionar o código totalmente funcional, incluindo as necessárias [`@using`](xref:mvc/views/razor#using) e as [`@inject`](xref:mvc/views/razor#inject) diretivas para obter Razor exemplos, consulte o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample).
 
-## <a name="database-access"></a>Acesso ao banco de dados
+<h2 id="database-access-3x">Acesso ao banco de dados</h2>
 
 EF Core se baseia em um <xref:Microsoft.EntityFrameworkCore.DbContext> como o meio de [Configurar o acesso ao banco de dados](/ef/core/miscellaneous/configuring-dbcontext) e agir como uma [*unidade de trabalho*](https://martinfowler.com/eaaCatalog/unitOfWork.html). EF Core fornece a <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> extensão para ASP.NET Core aplicativos que registram o contexto como um serviço com *escopo* por padrão. Em Blazor Server aplicativos, isso pode ser problemático porque a instância é compartilhada entre componentes dentro do circuito do usuário. <xref:Microsoft.EntityFrameworkCore.DbContext> Não é thread-safe e não é projetado para uso simultâneo. Os tempos de vida existentes são inadequados por esses motivos:
 
 * **Singleton** compartilha o estado entre todos os usuários do aplicativo e leva a uso simultâneo inadequado.
 * Com **escopo** (o padrão) representa um problema semelhante entre os componentes do mesmo usuário.
 * Os resultados **transitórios** em uma nova instância por solicitação; Mas como os componentes podem ser de longa duração, isso resulta em um contexto de vida maior do que pode ser pretendido.
-
-## <a name="database-access"></a>Acesso ao banco de dados
 
 As recomendações a seguir foram projetadas para fornecer uma abordagem consistente ao uso de EF Core em Blazor Server aplicativos.
 
@@ -194,9 +192,9 @@ As recomendações a seguir foram projetadas para fornecer uma abordagem consist
 
   Coloque as operações após a `Loading = true;` linha no `try` bloco.
 
-* Para operações de vida mais longa que aproveitam o [controle de simultaneidade](/ef/core/saving/concurrency), [controle de alterações](/ef/core/querying/tracking) do EF Core, faça [o escopo do contexto para o tempo de vida do componente](#scope-to-the-component-lifetime).
+* Para operações de vida mais longa que aproveitam o [controle de simultaneidade](/ef/core/saving/concurrency), [controle de alterações](/ef/core/querying/tracking) do EF Core, faça [o escopo do contexto para o tempo de vida do componente](#scope-to-the-component-lifetime-3x).
 
-### <a name="create-new-dbcontext-instances"></a>Criar novas instâncias de DbContext
+<h3 id="new-dbcontext-instances-3x">Novas instâncias de DbContext</h3>
 
 A maneira mais rápida de criar uma nova <xref:Microsoft.EntityFrameworkCore.DbContext> instância é usando `new` o para criar uma nova instância. No entanto, há vários cenários que podem exigir a resolução de dependências adicionais. Por exemplo, você pode desejar usar [`DbContextOptions`](/ef/core/miscellaneous/configuring-dbcontext#configuring-dbcontextoptions) para configurar o contexto.
 
@@ -217,7 +215,7 @@ A fábrica é injetada em componentes e usada para criar novas instâncias. Por 
 > [!NOTE]
 > `Wrapper` é uma [referência de componente](xref:blazor/components/index#capture-references-to-components) para o `GridWrapper` componente. Consulte o `Index` componente ( `Pages/Index.razor` ) no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor).
 
-### <a name="scope-to-the-component-lifetime"></a>Escopo para o tempo de vida do componente
+<h3 id="scope-to-the-component-lifetime-3x">Escopo para o tempo de vida do componente</h3>
 
 Talvez você queira criar um <xref:Microsoft.EntityFrameworkCore.DbContext> que existe durante o tempo de vida de um componente. Isso permite que você o use como uma [unidade de trabalho](https://martinfowler.com/eaaCatalog/unitOfWork.html) e aproveite os recursos internos, como o controle de alterações e a resolução de simultaneidade.
 Você pode usar a fábrica para criar um contexto e rastreá-lo durante o tempo de vida do componente. Primeiro, implemente <xref:System.IDisposable> e insira a fábrica conforme mostrado em `Pages/EditContact.razor` :

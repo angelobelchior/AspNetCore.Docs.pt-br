@@ -16,13 +16,14 @@ no-loc:
 - Let's Encrypt
 - Razor
 - SignalR
+- Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 3d83141b8b638a369b08b0fadafccd96c0b48214
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: ebce9f2f4992d83c6b28edb5c771cdfc8a7a0b6a
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876783"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080375"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -32,7 +33,7 @@ Este tutorial ensina os conceitos básicos da criação de uma API Web com o ASP
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Neste tutorial, você aprende a:
+Neste tutorial, você aprenderá como:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -90,7 +91,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para a pasta que conterá a pasta do projeto.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -197,25 +198,25 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
+* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
-* Clique com o botão direito do mouse na pasta *Modelos* e selecione **Adicionar** > **Classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
 
 * Substitua o código do modelo pelo seguinte código:
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Adicione uma pasta denominada *Modelos*.
+* Adicione uma pasta chamada *Models* .
 
-* Adicione uma classe `TodoItem` à pasta *Models* com o seguinte código:
+* Adicione uma `TodoItem` classe à *Models* pasta com o seguinte código:
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
+* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na pasta *Modelos* e selecione **Adicionar** > **Novo Arquivo** > **Geral** > **Classe Vazia**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia**geral.
 
 * Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
 
@@ -227,7 +228,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 A propriedade `Id` funciona como a chave exclusiva em um banco de dados relacional.
 
-As classes de modelo podem ser colocadas em qualquer lugar no projeto, mas a pasta *Models* é usada por convenção.
+As classes de modelo podem ir em qualquer lugar no projeto, mas a *Models* pasta é usada pela Convenção.
 
 ## <a name="add-a-database-context"></a>Adicionar um contexto de banco de dados
 
@@ -247,11 +248,11 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 ## <a name="add-the-todocontext-database-context"></a>Adicione o contexto de banco de dados TodoContext
 
-* Clique com o botão direito do mouse na pasta *Modelos* e selecione **Adicionar** > **Classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Adicione uma classe denominada `TodoContext` à pasta *Modelos*.
+* Adicione uma `TodoContext` classe à *Models* pasta.
 
 ---
 
@@ -282,13 +283,13 @@ O código anterior:
 * Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar**.
 * Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework**:
 
-  * Selecione **TodoItem (TodoApi. Models)** na **classe Model**.
-  * Selecione **TodoContext (TodoApi. Models)** na **classe de contexto de dados**.
+  * Selecione **TodoItem (TodoApi. Models )** na **classe Model**.
+  * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados**.
   * Selecione **Adicionar**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Execute os seguintes comandos:
+Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -519,7 +520,7 @@ Consulte [o tutorial: chamar uma API Web do ASP.NET Core com JavaScript](xref:tu
 
 ::: moniker range="< aspnetcore-3.0"
 
-Neste tutorial, você aprende a:
+Neste tutorial, você aprenderá como:
 
 > [!div class="checklist"]
 > * Criar um projeto de API Web.
@@ -580,7 +581,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para a pasta que conterá a pasta do projeto.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -639,25 +640,25 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
+* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
-* Clique com o botão direito do mouse na pasta *Modelos* e selecione **Adicionar** > **Classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
 
 * Substitua o código do modelo pelo seguinte código:
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Adicione uma pasta denominada *Modelos*.
+* Adicione uma pasta chamada *Models* .
 
-* Adicione uma classe `TodoItem` à pasta *Models* com o seguinte código:
+* Adicione uma `TodoItem` classe à *Models* pasta com o seguinte código:
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
+* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na pasta *Modelos* e selecione **Adicionar** > **Novo Arquivo** > **Geral** > **Classe Vazia**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia**geral.
 
 * Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
 
@@ -669,7 +670,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 A propriedade `Id` funciona como a chave exclusiva em um banco de dados relacional.
 
-As classes de modelo podem ser colocadas em qualquer lugar no projeto, mas a pasta *Models* é usada por convenção.
+As classes de modelo podem ir em qualquer lugar no projeto, mas a *Models* pasta é usada pela Convenção.
 
 ## <a name="add-a-database-context"></a>Adicionar um contexto de banco de dados
 
@@ -677,11 +678,11 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Clique com o botão direito do mouse na pasta *Modelos* e selecione **Adicionar** > **Classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Adicione uma classe denominada `TodoContext` à pasta *Modelos*.
+* Adicione uma `TodoContext` classe à *Models* pasta.
 
 ---
 

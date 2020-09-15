@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: abebd5fde514975b1dcb642a3d378e33c3836fa9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ace2285e3265e7bb2ec50c8afce2eb9c296fd524
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628060"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080336"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>Introdução ao ASP.NET Core Blazor
 
@@ -131,9 +131,21 @@ Quando um Blazor WebAssembly aplicativo é compilado e executado em um navegador
 
 O tamanho do aplicativo publicado, seu *tamanho de payload*, é um fator de desempenho crítico para a utilidade do aplicativo. Um aplicativo grande leva um tempo relativamente longo para baixar para um navegador, o que afeta a experiência do usuário. Blazor WebAssembly otimiza o tamanho da carga para reduzir os tempos de download:
 
+::: moniker range=">= aspnetcore-5.0"
+
+* O código não utilizado é removido do aplicativo quando é publicado pela [corte de Il (linguagem intermediária)](xref:blazor/host-and-deploy/configure-trimmer).
+* As respostas HTTP são compactadas.
+* O runtime do .NET e os assemblies são armazenados em cache no navegador.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * O código não utilizado é retirado do aplicativo quando publicado pelo [Vinculador de linguagem intermediária (IL)](xref:blazor/host-and-deploy/configure-linker).
 * As respostas HTTP são compactadas.
 * O runtime do .NET e os assemblies são armazenados em cache no navegador.
+
+::: moniker-end
 
 ## Blazor Server
 
@@ -147,7 +159,7 @@ A conexão usada pelo Blazor Server para se comunicar com o navegador também é
 
 ## <a name="javascript-interop"></a>Interoperabilidade do JavaScript
 
-Para aplicativos que exigem bibliotecas JavaScript e acesso a APIs do navegador de terceiros, os componentes interoperam com o JavaScript. Os componentes são capazes de usar qualquer biblioteca ou API que o JavaScript possa usar. O código C# pode chamar o código JavaScript, e o código JavaScript pode chamar o código C#. Para obter mais informações, consulte os seguintes artigos:
+Para aplicativos que exigem bibliotecas JavaScript e acesso a APIs do navegador de terceiros, os componentes interoperam com o JavaScript. Os componentes são capazes de usar qualquer biblioteca ou API que o JavaScript possa usar. O código C# pode chamar o código JavaScript, e o código JavaScript pode chamar o código C#. Para obter mais informações, confira os seguintes artigos:
 
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
