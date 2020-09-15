@@ -2,7 +2,7 @@
 title: Configurar o vinculador para ASP.NET Core Blazor
 author: guardrex
 description: Saiba como controlar o vinculador de linguagem intermediária (IL) ao criar um Blazor aplicativo.
-monikerRange: '>= aspnetcore-3.1 <= aspnetcore-5.0'
+monikerRange: '>= aspnetcore-3.1 < aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: f6b0412540f33aac7b0b35c7fc64ab110e68a340
-ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
+ms.openlocfilehash: 34582fdeb4951a110b03880887b978add07687f4
+ms.sourcegitcommit: 0cfada7cbcd8e76aba0ae70eb6bbbf4437f287cc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90080284"
+ms.locfileid: "90081631"
 ---
 # <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Configurar o vinculador para ASP.NET Core Blazor
 

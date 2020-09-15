@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: ec8b321be08447ca634a1e28799f790f723f17d1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 03bdfe9260ef6433456ba53d0cab8c7bf9f86377
+ms.sourcegitcommit: 422e02bad384775bfe19a90910737340ad106c5b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625616"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90083460"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir XSS (script entre sites) no ASP.NET Core
 
@@ -72,84 +72,102 @@ Pode haver ocasiões em que você deseja inserir um valor em JavaScript para pro
 
 ```cshtml
 @{
-       var untrustedInput = "<\"123\">";
-   }
+    var untrustedInput = "<script>alert(1)</script>";
+}
 
-   <div
-       id="injectedData"
-       data-untrustedinput="@untrustedInput" />
+<div id="injectedData"
+     data-untrustedinput="@untrustedInput" />
 
-   <script>
-     var injectedData = document.getElementById("injectedData");
+<div id="scriptedWrite" />
+<div id="scriptedWrite-html5" />
 
-     // All clients
-     var clientSideUntrustedInputOldStyle =
-         injectedData.getAttribute("data-untrustedinput");
-
-     // HTML 5 clients only
-     var clientSideUntrustedInputHtml5 =
-         injectedData.dataset.untrustedinput;
-
-     document.write(clientSideUntrustedInputOldStyle);
-     document.write("<br />")
-     document.write(clientSideUntrustedInputHtml5);
-   </script>
-   ```
-
-Isso produzirá o seguinte HTML
-
-```html
-<div
-     id="injectedData"
-     data-untrustedinput="&lt;&quot;123&quot;&gt;" />
-
-   <script>
-     var injectedData = document.getElementById("injectedData");
-
-     var clientSideUntrustedInputOldStyle =
-         injectedData.getAttribute("data-untrustedinput");
-
-     var clientSideUntrustedInputHtml5 =
-         injectedData.dataset.untrustedinput;
-
-     document.write(clientSideUntrustedInputOldStyle);
-     document.write("<br />")
-     document.write(clientSideUntrustedInputHtml5);
-   </script>
-   ```
-
-Que, quando executado, processará o seguinte:
-
-```
-<"123">
-   <"123">
-```
-
-Você também pode chamar o codificador JavaScript diretamente:
-
-```cshtml
-@using System.Text.Encodings.Web;
-   @inject JavaScriptEncoder encoder;
-
-   @{
-       var untrustedInput = "<\"123\">";
-   }
-
-   <script>
-       document.write("@encoder.Encode(untrustedInput)");
-   </script>
-```
-
-Isso será renderizado no navegador da seguinte maneira:
-
-```html
 <script>
-    document.write("\u003C\u0022123\u0022\u003E");
+    var injectedData = document.getElementById("injectedData");
+
+    // All clients
+    var clientSideUntrustedInputOldStyle =
+        injectedData.getAttribute("data-untrustedinput");
+
+    // HTML 5 clients only
+    var clientSideUntrustedInputHtml5 =
+        injectedData.dataset.untrustedinput;
+
+    // Put the injected, untrusted data into the scriptedWrite div tag.
+    // Do NOT use document.write() on dynamically generated data as it
+    // can lead to XSS.
+
+    document.getElementById("scriptedWrite").innerText += clientSideUntrustedInputOldStyle;
+
+    // Or you can use createElement() to dynamically create document elements
+    // This time we're using textContent to ensure the data is properly encoded.
+    var x = document.createElement("div");
+    x.textContent = clientSideUntrustedInputHtml5;
+    document.body.appendChild(x);
+
+    // You can also use createTextNode on an element to ensure data is properly encoded.
+    var y = document.createElement("div");
+    y.appendChild(document.createTextNode(clientSideUntrustedInputHtml5));
+    document.body.appendChild(y);
+
 </script>
+   ```
+
+A marcação anterior gera o seguinte HTML:
+
+```html
+<div id="injectedData"
+     data-untrustedinput="&lt;script&gt;alert(1)&lt;/script&gt;" />
+
+<div id="scriptedWrite" />
+<div id="scriptedWrite-html5" />
+
+<script>
+    var injectedData = document.getElementById("injectedData");
+
+    // All clients
+    var clientSideUntrustedInputOldStyle =
+        injectedData.getAttribute("data-untrustedinput");
+
+    // HTML 5 clients only
+    var clientSideUntrustedInputHtml5 =
+        injectedData.dataset.untrustedinput;
+
+    // Put the injected, untrusted data into the scriptedWrite div tag.
+// Do NOT use document.write() on dynamically generated data as it can
+// lead to XSS.
+
+    document.getElementById("scriptedWrite").innerText += clientSideUntrustedInputOldStyle;
+
+    // Or you can use createElement() to dynamically create document elements
+    // This time we're using textContent to ensure the data is properly encoded.
+    var x = document.createElement("div");
+    x.textContent = clientSideUntrustedInputHtml5;
+    document.body.appendChild(x);
+
+    // You can also use createTextNode on an element to ensure data is properly encoded.
+    var y = document.createElement("div");
+    y.appendChild(document.createTextNode(clientSideUntrustedInputHtml5));
+    document.body.appendChild(y);
+
+</script>
+   ```
+
+O código anterior gera a seguinte saída:
+
+```
+<script>alert(1)</script>
+<script>alert(1)</script>
+<script>alert(1)</script>
 ```
 
 >[!WARNING]
-> Não concatene a entrada não confiável em JavaScript para criar elementos DOM. Você deve usar `createElement()` e atribuir valores de propriedade adequadamente, como `node.TextContent=` , ou usar `element.SetAttribute()` / `element[attribute]=` caso contrário, você se exporá a XSS baseado em dom.
+> Não concatene a entrada ***não*** confiável em JavaScript para criar elementos DOM ou usar `document.write()` em conteúdo gerado dinamicamente.
+>
+> Use uma das seguintes abordagens para impedir que o código seja exposto a XSS baseado em DOM:
+> * `createElement()` e atribua valores de propriedade com métodos ou Propriedades apropriadas, como `node.textContent=` ou node. InnerText = '.
+> * `document.CreateTextNode()` e acrescentá-lo no local do DOM apropriado.
+> * `element.SetAttribute()`
+> * `element[attribute]=`
 
 ## <a name="accessing-encoders-in-code"></a>Acessando codificadores no código
 
