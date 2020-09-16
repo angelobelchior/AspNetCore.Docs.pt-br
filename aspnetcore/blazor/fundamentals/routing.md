@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: fe67ebfefb463ab698e5ff1bb7d9b527a28a596e
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 09e7ca9c03103de116c566352496174e97fbc3ce
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009577"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90593002"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
@@ -147,14 +147,14 @@ As restrições de rota mostradas na tabela a seguir estão disponíveis. Para a
 
 | Constraint | Exemplo           | Correspondências de exemplo                                                                  | Constante<br>culture<br>correspondência |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Não                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Sim                              |
-| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Sim                              |
-| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Sim                              |
-| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Sim                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Não                               |
-| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Sim                              |
-| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Sim                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
 
 > [!WARNING]
 > As restrições de rota que verificam a URL e são convertidas em um tipo CLR (como `int` ou <xref:System.DateTime>) sempre usam a cultura invariável. Essas restrições consideram que a URL não é localizável.
@@ -197,7 +197,7 @@ Para obter mais informações, consulte <xref:fundamentals/routing>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-*Esta seção se aplica ao .NET 5 Release Candidate 1 (RC1) ou posterior, que será lançado em meados de setembro.*
+*Esta seção se aplica a ASP.NET Core no .NET 5 Release Candidate 1 (RC1) ou posterior.*
 
 Catch-todos os parâmetros de rota, que capturam caminhos entre vários limites de pasta, têm suporte em componentes. O parâmetro de rota catch-all deve ser:
 
@@ -222,7 +222,7 @@ As barras e os segmentos do caminho capturado são decodificados. Para um modelo
 
 ::: moniker range="< aspnetcore-5.0"
 
-Catch-todos os parâmetros de rota terão suporte no .NET 5 Release Candidate 1 (RC1) ou posterior, que será lançado em meados de setembro. *
+Catch-todos os parâmetros de rota têm suporte no ASP.NET Core no .NET 5 Release Candidate 1 (RC1) ou posterior. *
 
 ::: moniker-end
 

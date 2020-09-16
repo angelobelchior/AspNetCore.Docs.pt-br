@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 391a38e9af42b162fc74bac803e6aa3cf687e7d5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e1af8f1de61edd934505a44e75ea07e0f09a67b5
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626058"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90592950"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core seguro Blazor WebAssembly
 
@@ -98,6 +98,13 @@ Aplique o [ `[Authorize]` atributo](xref:blazor/security/index#authorize-attribu
 Os tokens de atualização não podem ser protegidos no lado do cliente em Blazor WebAssembly aplicativos. Portanto, os tokens de atualização não devem ser enviados para o aplicativo para uso direto.
 
 Os tokens de atualização podem ser mantidos e usados pelo aplicativo do lado do servidor em uma solução hospedada Blazor WebAssembly para acessar APIs de terceiros. Para obter mais informações, consulte <xref:blazor/security/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>.
+
+## <a name="establish-claims-for-users"></a>Estabelecer declarações para usuários
+
+Aplicativos geralmente exigem declarações para usuários com base em uma chamada à API da Web para um servidor. Por exemplo, as declarações são usadas frequentemente para [estabelecer a autorização](xref:blazor/security/index#authorization) em um aplicativo. Nesses cenários, o aplicativo solicita um token de acesso para acessar o serviço e usa o token para obter os dados do usuário para as declarações. Para obter exemplos, consulte os seguintes recursos:
+
+* [Cenários adicionais: personalizar o usuário](xref:blazor/security/webassembly/additional-scenarios#customize-the-user)
+* <xref:blazor/security/webassembly/aad-groups-roles>
 
 ## <a name="implementation-guidance"></a>Diretrizes de implementação
 

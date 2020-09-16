@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: f9b6766c2f46274e06cab18fd35b5e417e9bfa97
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: eb4aaa2f3d412cdf650ed2daf7c12166991d92a1
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009603"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90592898"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
@@ -42,20 +42,9 @@ Marque assemblies para carregamento lento no arquivo de projeto do aplicativo ( 
 
 ```xml
 <ItemGroup>
-  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls" />
+  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
 </ItemGroup>
 ```
-
-Somente os assemblies que são usados pelo aplicativo podem ser carregados lentamente. O vinculador retira assemblies não utilizados da saída publicada.
-
-> [!NOTE]
-> No .NET 5 Release Candidate 1 (RC1) ou posterior, que será lançado em meados de setembro, o nome do assembly exigirá a `.dll` extensão:
->
-> ```xml
-> <ItemGroup>
->  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
-> </ItemGroup>
-> ```
 
 ## <a name="router-component"></a>componente `Router`
 

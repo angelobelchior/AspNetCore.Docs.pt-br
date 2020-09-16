@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 28e4f372e301a673644bfa97763ebc930f2d0ad5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9406c2a34126f3e5cd1406a55c3585e7a28f3dd9
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634326"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90593041"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Chamar os serviços gRPC com o cliente .NET
 
@@ -260,7 +260,18 @@ catch (RpcException ex)
 }
 ```
 
+## <a name="configure-deadline"></a>Configurar prazo
+
+A configuração de um prazo de chamada gRPC é recomendada porque fornece um limite superior de quanto tempo uma chamada pode ser executada. Ele impede que os serviços de comportamento inadequado executem a execução contínua e esgotando os recursos do servidor. Os prazos são uma ferramenta útil para a criação de aplicativos confiáveis.
+
+Configure `CallOptions.Deadline` para definir um prazo para uma chamada gRPC:
+
+[!code-csharp[](~/grpc/deadlines-cancellation/deadline-client.cs?highlight=7,12)]
+
+Para obter mais informações, consulte <xref:grpc/deadlines-cancellation#deadlines>.
+
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * <xref:grpc/clientfactory>
+* <xref:grpc/deadlines-cancellation>
 * <xref:grpc/basics>
