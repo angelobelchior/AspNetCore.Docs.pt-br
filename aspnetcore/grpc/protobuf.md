@@ -17,22 +17,22 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: 60af1add9ae2f8b2b94bc19b65667d7af91fb122
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: ea46e04bc4aa6269efbf8917d5f32194402a66ef
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102660"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722690"
 ---
-# <a name="create-protobuf-messages-for-net-apps"></a><span data-ttu-id="8b37b-103">Criar mensagens Protobuf para aplicativos .NET</span><span class="sxs-lookup"><span data-stu-id="8b37b-103">Create Protobuf messages for .NET apps</span></span>
+# <a name="create-protobuf-messages-for-net-apps"></a><span data-ttu-id="e1ed9-103">Criar mensagens Protobuf para aplicativos .NET</span><span class="sxs-lookup"><span data-stu-id="e1ed9-103">Create Protobuf messages for .NET apps</span></span>
 
-<span data-ttu-id="8b37b-104">Por [James Newton – King](https://twitter.com/jamesnk) e [Mark Rendle](https://twitter.com/markrendle)</span><span class="sxs-lookup"><span data-stu-id="8b37b-104">By [James Newton-King](https://twitter.com/jamesnk) and [Mark Rendle](https://twitter.com/markrendle)</span></span>
+<span data-ttu-id="e1ed9-104">Por [James Newton – King](https://twitter.com/jamesnk) e [Mark Rendle](https://twitter.com/markrendle)</span><span class="sxs-lookup"><span data-stu-id="e1ed9-104">By [James Newton-King](https://twitter.com/jamesnk) and [Mark Rendle](https://twitter.com/markrendle)</span></span>
 
-<span data-ttu-id="8b37b-105">gRPC usa [Protobuf](https://developers.google.com/protocol-buffers) como sua IDL (linguagem de definição de interface).</span><span class="sxs-lookup"><span data-stu-id="8b37b-105">gRPC uses [Protobuf](https://developers.google.com/protocol-buffers) as its Interface Definition Language (IDL).</span></span> <span data-ttu-id="8b37b-106">Protobuf IDL é um formato de linguagem neutra para especificar as mensagens enviadas e recebidas pelos serviços do gRPC.</span><span class="sxs-lookup"><span data-stu-id="8b37b-106">Protobuf IDL is a language neutral format for specifying the messages sent and received by gRPC services.</span></span> <span data-ttu-id="8b37b-107">As mensagens Protobuf são definidas em `.proto` arquivos.</span><span class="sxs-lookup"><span data-stu-id="8b37b-107">Protobuf messages are defined in `.proto` files.</span></span> <span data-ttu-id="8b37b-108">Este documento explica como os conceitos do Protobuf são mapeados para o .NET.</span><span class="sxs-lookup"><span data-stu-id="8b37b-108">This document explains how Protobuf concepts map to .NET.</span></span>
+<span data-ttu-id="e1ed9-105">gRPC usa [Protobuf](https://developers.google.com/protocol-buffers) como sua IDL (linguagem de definição de interface).</span><span class="sxs-lookup"><span data-stu-id="e1ed9-105">gRPC uses [Protobuf](https://developers.google.com/protocol-buffers) as its Interface Definition Language (IDL).</span></span> <span data-ttu-id="e1ed9-106">Protobuf IDL é um formato de linguagem neutra para especificar as mensagens enviadas e recebidas pelos serviços do gRPC.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-106">Protobuf IDL is a language neutral format for specifying the messages sent and received by gRPC services.</span></span> <span data-ttu-id="e1ed9-107">As mensagens Protobuf são definidas em `.proto` arquivos.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-107">Protobuf messages are defined in `.proto` files.</span></span> <span data-ttu-id="e1ed9-108">Este documento explica como os conceitos do Protobuf são mapeados para o .NET.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-108">This document explains how Protobuf concepts map to .NET.</span></span>
 
-## <a name="protobuf-messages"></a><span data-ttu-id="8b37b-109">Mensagens de Protobuf</span><span class="sxs-lookup"><span data-stu-id="8b37b-109">Protobuf messages</span></span>
+## <a name="protobuf-messages"></a><span data-ttu-id="e1ed9-109">Mensagens de Protobuf</span><span class="sxs-lookup"><span data-stu-id="e1ed9-109">Protobuf messages</span></span>
 
-<span data-ttu-id="8b37b-110">As mensagens são o objeto principal de transferência de dados no Protobuf.</span><span class="sxs-lookup"><span data-stu-id="8b37b-110">Messages are the main data transfer object in Protobuf.</span></span> <span data-ttu-id="8b37b-111">Elas são conceitualmente semelhantes às classes do .NET.</span><span class="sxs-lookup"><span data-stu-id="8b37b-111">They are conceptually similar to .NET classes.</span></span>
+<span data-ttu-id="e1ed9-110">As mensagens são o objeto principal de transferência de dados no Protobuf.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-110">Messages are the main data transfer object in Protobuf.</span></span> <span data-ttu-id="e1ed9-111">Elas são conceitualmente semelhantes às classes do .NET.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-111">They are conceptually similar to .NET classes.</span></span>
 
 ```protobuf
 syntax = "proto3";
@@ -46,11 +46,11 @@ message Person {
 }  
 ```
 
-<span data-ttu-id="8b37b-112">A definição de mensagem anterior especifica três campos como pares de nome-valor.</span><span class="sxs-lookup"><span data-stu-id="8b37b-112">The preceding message definition specifies three fields as name-value pairs.</span></span> <span data-ttu-id="8b37b-113">Como as propriedades em tipos .NET, cada campo tem um nome e um tipo.</span><span class="sxs-lookup"><span data-stu-id="8b37b-113">Like properties on .NET types, each field has a name and a type.</span></span> <span data-ttu-id="8b37b-114">O tipo de campo pode ser um [tipo de valor escalar Protobuf](#scalar-value-types), por exemplo `int32` , ou outra mensagem.</span><span class="sxs-lookup"><span data-stu-id="8b37b-114">The field type can be a [Protobuf scalar value type](#scalar-value-types), e.g. `int32`, or another message.</span></span>
+<span data-ttu-id="e1ed9-112">A definição de mensagem anterior especifica três campos como pares de nome-valor.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-112">The preceding message definition specifies three fields as name-value pairs.</span></span> <span data-ttu-id="e1ed9-113">Como as propriedades em tipos .NET, cada campo tem um nome e um tipo.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-113">Like properties on .NET types, each field has a name and a type.</span></span> <span data-ttu-id="e1ed9-114">O tipo de campo pode ser um [tipo de valor escalar Protobuf](#scalar-value-types), por exemplo `int32` , ou outra mensagem.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-114">The field type can be a [Protobuf scalar value type](#scalar-value-types), e.g. `int32`, or another message.</span></span>
 
-<span data-ttu-id="8b37b-115">Além de um nome, cada campo na definição de mensagem tem um número exclusivo.</span><span class="sxs-lookup"><span data-stu-id="8b37b-115">In addition to a name, each field in the message definition has a unique number.</span></span> <span data-ttu-id="8b37b-116">Os números de campo são usados para identificar campos quando a mensagem é serializada para Protobuf.</span><span class="sxs-lookup"><span data-stu-id="8b37b-116">Field numbers are used to identify fields when the message is serialized to Protobuf.</span></span> <span data-ttu-id="8b37b-117">A serialização de um pequeno número é mais rápida do que a serialização do nome inteiro do campo.</span><span class="sxs-lookup"><span data-stu-id="8b37b-117">Serializing a small number is faster than serializing the entire field name.</span></span> <span data-ttu-id="8b37b-118">Como os números de campo identificam um campo, é importante tomar cuidado ao alterá-los.</span><span class="sxs-lookup"><span data-stu-id="8b37b-118">Because field numbers identify a field it is important to take care when changing them.</span></span> <span data-ttu-id="8b37b-119">Para obter mais informações sobre como alterar mensagens Protobuf, consulte <xref:grpc/versioning> .</span><span class="sxs-lookup"><span data-stu-id="8b37b-119">For more information about changing Protobuf messages see <xref:grpc/versioning>.</span></span>
+<span data-ttu-id="e1ed9-115">Além de um nome, cada campo na definição de mensagem tem um número exclusivo.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-115">In addition to a name, each field in the message definition has a unique number.</span></span> <span data-ttu-id="e1ed9-116">Os números de campo são usados para identificar campos quando a mensagem é serializada para Protobuf.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-116">Field numbers are used to identify fields when the message is serialized to Protobuf.</span></span> <span data-ttu-id="e1ed9-117">A serialização de um pequeno número é mais rápida do que a serialização do nome inteiro do campo.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-117">Serializing a small number is faster than serializing the entire field name.</span></span> <span data-ttu-id="e1ed9-118">Como os números de campo identificam um campo, é importante tomar cuidado ao alterá-los.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-118">Because field numbers identify a field it is important to take care when changing them.</span></span> <span data-ttu-id="e1ed9-119">Para obter mais informações sobre como alterar mensagens Protobuf, consulte <xref:grpc/versioning> .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-119">For more information about changing Protobuf messages see <xref:grpc/versioning>.</span></span>
 
-<span data-ttu-id="8b37b-120">Quando um aplicativo é criado, as ferramentas Protobuf geram tipos .NET de `.proto` arquivos.</span><span class="sxs-lookup"><span data-stu-id="8b37b-120">When an app is built the Protobuf tooling generates .NET types from `.proto` files.</span></span> <span data-ttu-id="8b37b-121">A `Person` mensagem gera uma classe .net:</span><span class="sxs-lookup"><span data-stu-id="8b37b-121">The `Person` message generates a .NET class:</span></span>
+<span data-ttu-id="e1ed9-120">Quando um aplicativo é criado, as ferramentas Protobuf geram tipos .NET de `.proto` arquivos.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-120">When an app is built the Protobuf tooling generates .NET types from `.proto` files.</span></span> <span data-ttu-id="e1ed9-121">A `Person` mensagem gera uma classe .net:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-121">The `Person` message generates a .NET class:</span></span>
 
 ```csharp
 public class Person
@@ -61,13 +61,13 @@ public class Person
 }
 ```
 
-<span data-ttu-id="8b37b-122">Para obter mais informações sobre mensagens Protobuf, consulte o [Guia de idiomas do Protobuf](https://developers.google.com/protocol-buffers/docs/proto3#simple).</span><span class="sxs-lookup"><span data-stu-id="8b37b-122">For more information about Protobuf messages see the [Protobuf language guide](https://developers.google.com/protocol-buffers/docs/proto3#simple).</span></span>
+<span data-ttu-id="e1ed9-122">Para obter mais informações sobre mensagens Protobuf, consulte o [Guia de idiomas do Protobuf](https://developers.google.com/protocol-buffers/docs/proto3#simple).</span><span class="sxs-lookup"><span data-stu-id="e1ed9-122">For more information about Protobuf messages see the [Protobuf language guide](https://developers.google.com/protocol-buffers/docs/proto3#simple).</span></span>
 
-## <a name="scalar-value-types"></a><span data-ttu-id="8b37b-123">Tipos de valor escalar</span><span class="sxs-lookup"><span data-stu-id="8b37b-123">Scalar Value Types</span></span>
+## <a name="scalar-value-types"></a><span data-ttu-id="e1ed9-123">Tipos de valor escalar</span><span class="sxs-lookup"><span data-stu-id="e1ed9-123">Scalar Value Types</span></span>
 
-<span data-ttu-id="8b37b-124">Protobuf dá suporte a um intervalo de tipos de valor escalar nativos.</span><span class="sxs-lookup"><span data-stu-id="8b37b-124">Protobuf supports a range of native scalar value types.</span></span> <span data-ttu-id="8b37b-125">A tabela a seguir lista todos eles com seu tipo C# equivalente:</span><span class="sxs-lookup"><span data-stu-id="8b37b-125">The following table lists them all with their equivalent C# type:</span></span>
+<span data-ttu-id="e1ed9-124">Protobuf dá suporte a um intervalo de tipos de valor escalar nativos.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-124">Protobuf supports a range of native scalar value types.</span></span> <span data-ttu-id="e1ed9-125">A tabela a seguir lista todos eles com seu tipo C# equivalente:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-125">The following table lists them all with their equivalent C# type:</span></span>
 
-| <span data-ttu-id="8b37b-126">Tipo de Protobuf</span><span class="sxs-lookup"><span data-stu-id="8b37b-126">Protobuf type</span></span> | <span data-ttu-id="8b37b-127">Tipo de C#</span><span class="sxs-lookup"><span data-stu-id="8b37b-127">C# type</span></span>      |
+| <span data-ttu-id="e1ed9-126">Tipo de Protobuf</span><span class="sxs-lookup"><span data-stu-id="e1ed9-126">Protobuf type</span></span> | <span data-ttu-id="e1ed9-127">Tipo de C#</span><span class="sxs-lookup"><span data-stu-id="e1ed9-127">C# type</span></span>      |
 | ------------- | ------------ |
 | `double`      | `double`     |
 | `float`       | `float`      |
@@ -85,13 +85,17 @@ public class Person
 | `string`      | `string`     |
 | `bytes`       | `ByteString` |
 
-### <a name="dates-and-times"></a><span data-ttu-id="8b37b-128">Datas e horas</span><span class="sxs-lookup"><span data-stu-id="8b37b-128">Dates and times</span></span>
+<span data-ttu-id="e1ed9-128">Os valores escalares sempre têm um valor padrão e não podem ser definidos como `null` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-128">Scalar values always have a default value and can't be set to `null`.</span></span> <span data-ttu-id="e1ed9-129">Essa restrição inclui `string` e `ByteString` quais são classes C#.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-129">This constraint includes `string` and `ByteString` which are C# classes.</span></span> <span data-ttu-id="e1ed9-130">`string` o padrão é um valor de cadeia de caracteres vazia e `ByteString` o padrão é um valor de bytes vazio.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-130">`string` defaults to an empty string value and `ByteString` defaults to an empty bytes value.</span></span> <span data-ttu-id="e1ed9-131">A tentativa de defini-las para `null` gera um erro.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-131">Attempting to set them to `null` throws an error.</span></span>
 
-<span data-ttu-id="8b37b-129">Os tipos escalares nativos não fornecem valores de data e hora, equivalentes a. NET <xref:System.DateTimeOffset> , <xref:System.DateTime> , e <xref:System.TimeSpan> .</span><span class="sxs-lookup"><span data-stu-id="8b37b-129">The native scalar types don't provide for date and time values, equivalent to .NET's <xref:System.DateTimeOffset>, <xref:System.DateTime>, and <xref:System.TimeSpan>.</span></span> <span data-ttu-id="8b37b-130">Esses tipos podem ser especificados usando algumas das extensões de *tipos bem conhecidas* do Protobuf.</span><span class="sxs-lookup"><span data-stu-id="8b37b-130">These types can be specified by using some of Protobuf's *Well-Known Types* extensions.</span></span> <span data-ttu-id="8b37b-131">Essas extensões fornecem geração de código e suporte a tempo de execução para tipos de campo complexos em plataformas com suporte.</span><span class="sxs-lookup"><span data-stu-id="8b37b-131">These extensions provide code generation and runtime support for complex field types across the supported platforms.</span></span>
+<span data-ttu-id="e1ed9-132">[Tipos de wrapper anuláveis](#nullable-types) podem ser usados para dar suporte a valores nulos.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-132">[Nullable wrapper types](#nullable-types) can be used to support null values.</span></span>
 
-<span data-ttu-id="8b37b-132">A tabela a seguir mostra os tipos de data e hora:</span><span class="sxs-lookup"><span data-stu-id="8b37b-132">The following table shows the date and time types:</span></span>
+### <a name="dates-and-times"></a><span data-ttu-id="e1ed9-133">Datas e horas</span><span class="sxs-lookup"><span data-stu-id="e1ed9-133">Dates and times</span></span>
 
-| <span data-ttu-id="8b37b-133">Tipo .NET</span><span class="sxs-lookup"><span data-stu-id="8b37b-133">.NET type</span></span>        | <span data-ttu-id="8b37b-134">Protobuf tipo bem conhecido</span><span class="sxs-lookup"><span data-stu-id="8b37b-134">Protobuf Well-Known Type</span></span>    |
+<span data-ttu-id="e1ed9-134">Os tipos escalares nativos não fornecem valores de data e hora, equivalentes a. NET <xref:System.DateTimeOffset> , <xref:System.DateTime> , e <xref:System.TimeSpan> .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-134">The native scalar types don't provide for date and time values, equivalent to .NET's <xref:System.DateTimeOffset>, <xref:System.DateTime>, and <xref:System.TimeSpan>.</span></span> <span data-ttu-id="e1ed9-135">Esses tipos podem ser especificados usando algumas das extensões de *tipos bem conhecidas* do Protobuf.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-135">These types can be specified by using some of Protobuf's *Well-Known Types* extensions.</span></span> <span data-ttu-id="e1ed9-136">Essas extensões fornecem geração de código e suporte a tempo de execução para tipos de campo complexos em plataformas com suporte.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-136">These extensions provide code generation and runtime support for complex field types across the supported platforms.</span></span>
+
+<span data-ttu-id="e1ed9-137">A tabela a seguir mostra os tipos de data e hora:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-137">The following table shows the date and time types:</span></span>
+
+| <span data-ttu-id="e1ed9-138">Tipo .NET</span><span class="sxs-lookup"><span data-stu-id="e1ed9-138">.NET type</span></span>        | <span data-ttu-id="e1ed9-139">Protobuf tipo bem conhecido</span><span class="sxs-lookup"><span data-stu-id="e1ed9-139">Protobuf Well-Known Type</span></span>    |
 | ---------------- | --------------------------- |
 | `DateTimeOffset` | `google.protobuf.Timestamp` |
 | `DateTime`       | `google.protobuf.Timestamp` |
@@ -110,7 +114,7 @@ message Meeting {
 }  
 ```
 
-<span data-ttu-id="8b37b-135">As propriedades geradas na classe C# não são os tipos de data e hora do .NET.</span><span class="sxs-lookup"><span data-stu-id="8b37b-135">The generated properties in the C# class aren't the .NET date and time types.</span></span> <span data-ttu-id="8b37b-136">As propriedades usam as `Timestamp` `Duration` classes e no `Google.Protobuf.WellKnownTypes` namespace.</span><span class="sxs-lookup"><span data-stu-id="8b37b-136">The properties use the `Timestamp` and `Duration` classes in the `Google.Protobuf.WellKnownTypes` namespace.</span></span> <span data-ttu-id="8b37b-137">Essas classes fornecem métodos para converter de e para `DateTimeOffset` , `DateTime` e `TimeSpan` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-137">These classes provide methods for converting to and from `DateTimeOffset`, `DateTime`, and `TimeSpan`.</span></span>
+<span data-ttu-id="e1ed9-140">As propriedades geradas na classe C# não são os tipos de data e hora do .NET.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-140">The generated properties in the C# class aren't the .NET date and time types.</span></span> <span data-ttu-id="e1ed9-141">As propriedades usam as `Timestamp` `Duration` classes e no `Google.Protobuf.WellKnownTypes` namespace.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-141">The properties use the `Timestamp` and `Duration` classes in the `Google.Protobuf.WellKnownTypes` namespace.</span></span> <span data-ttu-id="e1ed9-142">Essas classes fornecem métodos para converter de e para `DateTimeOffset` , `DateTime` e `TimeSpan` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-142">These classes provide methods for converting to and from `DateTimeOffset`, `DateTime`, and `TimeSpan`.</span></span>
 
 ```csharp
 // Create Timestamp and Duration from .NET DateTimeOffset and TimeSpan.
@@ -126,13 +130,13 @@ var duration = meeting.Duration?.ToTimeSpan();
 ```
 
 > [!NOTE]
-> <span data-ttu-id="8b37b-138">O `Timestamp` tipo funciona com horas UTC.</span><span class="sxs-lookup"><span data-stu-id="8b37b-138">The `Timestamp` type works with UTC times.</span></span> <span data-ttu-id="8b37b-139">`DateTimeOffset` os valores sempre têm um deslocamento de zero e a `DateTime.Kind` propriedade é sempre `DateTimeKind.Utc` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-139">`DateTimeOffset` values always have an offset of zero, and the `DateTime.Kind` property is always `DateTimeKind.Utc`.</span></span>
+> <span data-ttu-id="e1ed9-143">O `Timestamp` tipo funciona com horas UTC.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-143">The `Timestamp` type works with UTC times.</span></span> <span data-ttu-id="e1ed9-144">`DateTimeOffset` os valores sempre têm um deslocamento de zero e a `DateTime.Kind` propriedade é sempre `DateTimeKind.Utc` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-144">`DateTimeOffset` values always have an offset of zero, and the `DateTime.Kind` property is always `DateTimeKind.Utc`.</span></span>
 
-### <a name="nullable-types"></a><span data-ttu-id="8b37b-140">Tipos anuláveis</span><span class="sxs-lookup"><span data-stu-id="8b37b-140">Nullable types</span></span>
+### <a name="nullable-types"></a><span data-ttu-id="e1ed9-145">Tipos anuláveis</span><span class="sxs-lookup"><span data-stu-id="e1ed9-145">Nullable types</span></span>
 
-<span data-ttu-id="8b37b-141">A geração de código Protobuf para C# usa os tipos nativos, como `int` para `int32` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-141">The Protobuf code generation for C# uses the native types, such as `int` for `int32`.</span></span> <span data-ttu-id="8b37b-142">Portanto, os valores são sempre incluídos e não podem ser `null` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-142">So the values are always included and can't be `null`.</span></span>
+<span data-ttu-id="e1ed9-146">A geração de código Protobuf para C# usa os tipos nativos, como `int` para `int32` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-146">The Protobuf code generation for C# uses the native types, such as `int` for `int32`.</span></span> <span data-ttu-id="e1ed9-147">Portanto, os valores são sempre incluídos e não podem ser `null` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-147">So the values are always included and can't be `null`.</span></span>
 
-<span data-ttu-id="8b37b-143">Para valores que exigem explícitas `null` , como o uso `int?` do em código c#, os tipos conhecidos de Protobuf incluem wrappers que são compilados para tipos de C# anuláveis.</span><span class="sxs-lookup"><span data-stu-id="8b37b-143">For values that require explicit `null`, such as using `int?` in C# code, Protobuf's Well-Known Types include wrappers that are compiled to nullable C# types.</span></span> <span data-ttu-id="8b37b-144">Para usá-los, importe `wrappers.proto` para o `.proto` arquivo, como o código a seguir:</span><span class="sxs-lookup"><span data-stu-id="8b37b-144">To use them, import `wrappers.proto` into your `.proto` file, like the following code:</span></span>
+<span data-ttu-id="e1ed9-148">Para valores que exigem explícitas `null` , como o uso `int?` do em código c#, os tipos conhecidos de Protobuf incluem wrappers que são compilados para tipos de C# anuláveis.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-148">For values that require explicit `null`, such as using `int?` in C# code, Protobuf's Well-Known Types include wrappers that are compiled to nullable C# types.</span></span> <span data-ttu-id="e1ed9-149">Para usá-los, importe `wrappers.proto` para o `.proto` arquivo, como o código a seguir:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-149">To use them, import `wrappers.proto` into your `.proto` file, like the following code:</span></span>
 
 ```protobuf  
 syntax = "proto3"
@@ -145,27 +149,50 @@ message Person {
 }
 ```
 
-<span data-ttu-id="8b37b-145">Protobuf usa tipos anuláveis .NET, por exemplo, `int?` para a propriedade Message gerada.</span><span class="sxs-lookup"><span data-stu-id="8b37b-145">Protobuf uses .NET nullable types, for example, `int?`, for the generated message property.</span></span>
+<span data-ttu-id="e1ed9-150">`wrappers.proto` os tipos não são expostos em Propriedades geradas.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-150">`wrappers.proto` types aren't exposed in generated properties.</span></span> <span data-ttu-id="e1ed9-151">O Protobuf os mapeia automaticamente para os tipos anuláveis do .NET apropriados em mensagens C#.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-151">Protobuf automatically maps them to appropriate .NET nullable types in C# messages.</span></span> <span data-ttu-id="e1ed9-152">Por exemplo, um `google.protobuf.Int32Value` campo gera uma `int?` propriedade.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-152">For example, a `google.protobuf.Int32Value` field generates an `int?` property.</span></span> <span data-ttu-id="e1ed9-153">Propriedades de tipo de referência como `string` e `ByteString` são inalteradas, exceto `null` que podem ser atribuídas a elas sem erro.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-153">Reference type properties like `string` and `ByteString` are unchanged except `null` can be assigned to them without error.</span></span>
 
-<span data-ttu-id="8b37b-146">A tabela a seguir mostra a lista completa de tipos de wrapper com seu tipo C# equivalente:</span><span class="sxs-lookup"><span data-stu-id="8b37b-146">The following table shows the complete list of wrapper types with their equivalent C# type:</span></span>
+<span data-ttu-id="e1ed9-154">A tabela a seguir mostra a lista completa de tipos de wrapper com seu tipo C# equivalente:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-154">The following table shows the complete list of wrapper types with their equivalent C# type:</span></span>
 
-| <span data-ttu-id="8b37b-147">Tipo de C#</span><span class="sxs-lookup"><span data-stu-id="8b37b-147">C# type</span></span>   | <span data-ttu-id="8b37b-148">Wrapper de tipo bem conhecido</span><span class="sxs-lookup"><span data-stu-id="8b37b-148">Well-Known Type wrapper</span></span>       |
-| --------- | ----------------------------- |
-| `bool?`   | `google.protobuf.BoolValue`   |
-| `double?` | `google.protobuf.DoubleValue` |
-| `float?`  | `google.protobuf.FloatValue`  |
-| `int?`    | `google.protobuf.Int32Value`  |
-| `long?`   | `google.protobuf.Int64Value`  |
-| `uint?`   | `google.protobuf.UInt32Value` |
-| `ulong?`  | `google.protobuf.UInt64Value` |
+| <span data-ttu-id="e1ed9-155">Tipo de C#</span><span class="sxs-lookup"><span data-stu-id="e1ed9-155">C# type</span></span>      | <span data-ttu-id="e1ed9-156">Wrapper de tipo bem conhecido</span><span class="sxs-lookup"><span data-stu-id="e1ed9-156">Well-Known Type wrapper</span></span>       |
+| ------------ | ----------------------------- |
+| `bool?`      | `google.protobuf.BoolValue`   |
+| `double?`    | `google.protobuf.DoubleValue` |
+| `float?`     | `google.protobuf.FloatValue`  |
+| `int?`       | `google.protobuf.Int32Value`  |
+| `long?`      | `google.protobuf.Int64Value`  |
+| `uint?`      | `google.protobuf.UInt32Value` |
+| `ulong?`     | `google.protobuf.UInt64Value` |
+| `string`     | `google.protobuf.StringValue` |
+| `ByteString` | `google.protobuf.BytesValue`  |
 
-### <a name="decimals"></a><span data-ttu-id="8b37b-149">Decimais</span><span class="sxs-lookup"><span data-stu-id="8b37b-149">Decimals</span></span>
+### <a name="bytes"></a><span data-ttu-id="e1ed9-157">Bytes</span><span class="sxs-lookup"><span data-stu-id="e1ed9-157">Bytes</span></span>
 
-<span data-ttu-id="8b37b-150">O Protobuf não dá suporte nativo ao `decimal` tipo .net, apenas `double` e `float` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-150">Protobuf doesn't natively support the .NET `decimal` type, just `double` and `float`.</span></span> <span data-ttu-id="8b37b-151">Há uma discussão em andamento no projeto Protobuf sobre a possibilidade de adicionar um tipo decimal padrão aos tipos conhecidos, com suporte de plataforma para linguagens e estruturas que dão suporte a ele.</span><span class="sxs-lookup"><span data-stu-id="8b37b-151">There's an ongoing discussion in the Protobuf project about the possibility of adding a standard decimal type to the Well-Known Types, with platform support for languages and frameworks that support it.</span></span> <span data-ttu-id="8b37b-152">Nada foi implementado ainda.</span><span class="sxs-lookup"><span data-stu-id="8b37b-152">Nothing has been implemented yet.</span></span>
+<span data-ttu-id="e1ed9-158">Há suporte para cargas binárias em Protobuf com o `bytes` tipo de valor escalar.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-158">Binary payloads are supported in Protobuf with the `bytes` scalar value type.</span></span> <span data-ttu-id="e1ed9-159">Uma propriedade gerada em C# usa `ByteString` como o tipo de propriedade.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-159">A generated property in C# uses `ByteString` as the property type.</span></span>
 
-<span data-ttu-id="8b37b-153">É possível criar uma definição de mensagem para representar o `decimal` tipo que funciona para a serialização segura entre clientes e servidores .net.</span><span class="sxs-lookup"><span data-stu-id="8b37b-153">It's possible to create a message definition to represent the `decimal` type that works for safe serialization between .NET clients and servers.</span></span> <span data-ttu-id="8b37b-154">Mas os desenvolvedores de outras plataformas teriam que entender o formato que está sendo usado e implementar sua própria manipulação.</span><span class="sxs-lookup"><span data-stu-id="8b37b-154">But developers on other platforms would have to understand the format being used and implement their own handling for it.</span></span>
+<span data-ttu-id="e1ed9-160">Use `ByteString.CopyFrom(byte[] data)` para criar uma nova instância de uma matriz de bytes:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-160">Use `ByteString.CopyFrom(byte[] data)` to create a new instance from a byte array:</span></span>
 
-#### <a name="creating-a-custom-decimal-type-for-protobuf"></a><span data-ttu-id="8b37b-155">Criando um tipo decimal personalizado para Protobuf</span><span class="sxs-lookup"><span data-stu-id="8b37b-155">Creating a custom decimal type for Protobuf</span></span>
+```csharp
+var data = await File.ReadAllBytesAsync(path);
+
+var payload = new PayloadResponse();
+payload.Data = ByteString.CopyFrom(data);
+```
+
+<span data-ttu-id="e1ed9-161">`ByteString` os dados são acessados diretamente usando o `ByteString.Span` ou o `ByteString.Memory` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-161">`ByteString` data is accessed directly using `ByteString.Span` or `ByteString.Memory`.</span></span> <span data-ttu-id="e1ed9-162">Ou chame `ByteString.ToByteArray()` para converter uma instância de volta em uma matriz de bytes:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-162">Or call `ByteString.ToByteArray()` to convert an instance back into a byte array:</span></span>
+
+```csharp
+var payload = await client.GetPayload(new PayloadRequest());
+
+await File.WriteAllBytesAsync(path, payload.Data.ToByteArray());
+```
+
+### <a name="decimals"></a><span data-ttu-id="e1ed9-163">Decimais</span><span class="sxs-lookup"><span data-stu-id="e1ed9-163">Decimals</span></span>
+
+<span data-ttu-id="e1ed9-164">O Protobuf não dá suporte nativo ao `decimal` tipo .net, apenas `double` e `float` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-164">Protobuf doesn't natively support the .NET `decimal` type, just `double` and `float`.</span></span> <span data-ttu-id="e1ed9-165">Há uma discussão em andamento no projeto Protobuf sobre a possibilidade de adicionar um tipo decimal padrão aos tipos conhecidos, com suporte de plataforma para linguagens e estruturas que dão suporte a ele.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-165">There's an ongoing discussion in the Protobuf project about the possibility of adding a standard decimal type to the Well-Known Types, with platform support for languages and frameworks that support it.</span></span> <span data-ttu-id="e1ed9-166">Nada foi implementado ainda.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-166">Nothing has been implemented yet.</span></span>
+
+<span data-ttu-id="e1ed9-167">É possível criar uma definição de mensagem para representar o `decimal` tipo que funciona para a serialização segura entre clientes e servidores .net.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-167">It's possible to create a message definition to represent the `decimal` type that works for safe serialization between .NET clients and servers.</span></span> <span data-ttu-id="e1ed9-168">Mas os desenvolvedores de outras plataformas teriam que entender o formato que está sendo usado e implementar sua própria manipulação.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-168">But developers on other platforms would have to understand the format being used and implement their own handling for it.</span></span>
+
+#### <a name="creating-a-custom-decimal-type-for-protobuf"></a><span data-ttu-id="e1ed9-169">Criando um tipo decimal personalizado para Protobuf</span><span class="sxs-lookup"><span data-stu-id="e1ed9-169">Creating a custom decimal type for Protobuf</span></span>
 
 ```protobuf
 package CustomTypes;
@@ -182,12 +209,12 @@ message DecimalValue {
 }
 ```
 
-<span data-ttu-id="8b37b-156">O `nanos` campo representa valores de `0.999_999_999` a `-0.999_999_999` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-156">The `nanos` field represents values from `0.999_999_999` to `-0.999_999_999`.</span></span> <span data-ttu-id="8b37b-157">Por exemplo, o `decimal` valor `1.5m` seria representado como `{ units = 1, nanos = 500_000_000 }` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-157">For example, the `decimal` value `1.5m` would be represented as `{ units = 1, nanos = 500_000_000 }`.</span></span> <span data-ttu-id="8b37b-158">É por isso que o `nanos` campo neste exemplo usa o `sfixed32` tipo, que codifica com mais eficiência do que `int32` para valores maiores.</span><span class="sxs-lookup"><span data-stu-id="8b37b-158">This is why the `nanos` field in this example uses the `sfixed32` type, which encodes more efficiently than `int32` for larger values.</span></span> <span data-ttu-id="8b37b-159">Se o `units` campo for negativo, o `nanos` campo também deverá ser negativo.</span><span class="sxs-lookup"><span data-stu-id="8b37b-159">If the `units` field is negative, the `nanos` field should also be negative.</span></span>
+<span data-ttu-id="e1ed9-170">O `nanos` campo representa valores de `0.999_999_999` a `-0.999_999_999` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-170">The `nanos` field represents values from `0.999_999_999` to `-0.999_999_999`.</span></span> <span data-ttu-id="e1ed9-171">Por exemplo, o `decimal` valor `1.5m` seria representado como `{ units = 1, nanos = 500_000_000 }` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-171">For example, the `decimal` value `1.5m` would be represented as `{ units = 1, nanos = 500_000_000 }`.</span></span> <span data-ttu-id="e1ed9-172">É por isso que o `nanos` campo neste exemplo usa o `sfixed32` tipo, que codifica com mais eficiência do que `int32` para valores maiores.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-172">This is why the `nanos` field in this example uses the `sfixed32` type, which encodes more efficiently than `int32` for larger values.</span></span> <span data-ttu-id="e1ed9-173">Se o `units` campo for negativo, o `nanos` campo também deverá ser negativo.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-173">If the `units` field is negative, the `nanos` field should also be negative.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8b37b-160">Há vários outros algoritmos para codificar `decimal` valores como cadeias de caracteres de byte, mas essa mensagem é mais fácil de entender do que qualquer um deles.</span><span class="sxs-lookup"><span data-stu-id="8b37b-160">There are multiple other algorithms for encoding `decimal` values as byte strings, but this message is easier to understand than any of them.</span></span> <span data-ttu-id="8b37b-161">Os valores não são afetados por big-endian ou little-endian em plataformas diferentes.</span><span class="sxs-lookup"><span data-stu-id="8b37b-161">The values are not affected by big-endian or little-endian on different platforms.</span></span>
+> <span data-ttu-id="e1ed9-174">Há vários outros algoritmos para codificar `decimal` valores como cadeias de caracteres de byte, mas essa mensagem é mais fácil de entender do que qualquer um deles.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-174">There are multiple other algorithms for encoding `decimal` values as byte strings, but this message is easier to understand than any of them.</span></span> <span data-ttu-id="e1ed9-175">Os valores não são afetados por big-endian ou little-endian em plataformas diferentes.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-175">The values are not affected by big-endian or little-endian on different platforms.</span></span>
 
-<span data-ttu-id="8b37b-162">A conversão entre esse tipo e o `decimal` tipo de BCL pode ser implementada em C# da seguinte maneira:</span><span class="sxs-lookup"><span data-stu-id="8b37b-162">Conversion between this type and the BCL `decimal` type might be implemented in C# like this:</span></span>
+<span data-ttu-id="e1ed9-176">A conversão entre esse tipo e o `decimal` tipo de BCL pode ser implementada em C# da seguinte maneira:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-176">Conversion between this type and the BCL `decimal` type might be implemented in C# like this:</span></span>
 
 ```csharp
 namespace CustomTypes
@@ -219,11 +246,11 @@ namespace CustomTypes
 }
 ```
 
-## <a name="collections"></a><span data-ttu-id="8b37b-163">Coleções</span><span class="sxs-lookup"><span data-stu-id="8b37b-163">Collections</span></span>
+## <a name="collections"></a><span data-ttu-id="e1ed9-177">Coleções</span><span class="sxs-lookup"><span data-stu-id="e1ed9-177">Collections</span></span>
 
-### <a name="lists"></a><span data-ttu-id="8b37b-164">Listas</span><span class="sxs-lookup"><span data-stu-id="8b37b-164">Lists</span></span>
+### <a name="lists"></a><span data-ttu-id="e1ed9-178">Listas</span><span class="sxs-lookup"><span data-stu-id="e1ed9-178">Lists</span></span>
 
-<span data-ttu-id="8b37b-165">As listas em Protobuf são especificadas usando a `repeated` palavra-chave prefix em um campo.</span><span class="sxs-lookup"><span data-stu-id="8b37b-165">Lists in Protobuf are specified by using the `repeated` prefix keyword on a field.</span></span> <span data-ttu-id="8b37b-166">O exemplo a seguir mostra como criar uma lista:</span><span class="sxs-lookup"><span data-stu-id="8b37b-166">The following example shows how to create a list:</span></span>
+<span data-ttu-id="e1ed9-179">As listas em Protobuf são especificadas usando a `repeated` palavra-chave prefix em um campo.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-179">Lists in Protobuf are specified by using the `repeated` prefix keyword on a field.</span></span> <span data-ttu-id="e1ed9-180">O exemplo a seguir mostra como criar uma lista:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-180">The following example shows how to create a list:</span></span>
 
 ```protobuf
 message Person {
@@ -232,7 +259,7 @@ message Person {
 }
 ```
 
-<span data-ttu-id="8b37b-167">No código gerado, `repeated` os campos são representados pelo `Google.Protobuf.Collections.RepeatedField<T>` tipo genérico.</span><span class="sxs-lookup"><span data-stu-id="8b37b-167">In the generated code, `repeated` fields are represented by the `Google.Protobuf.Collections.RepeatedField<T>` generic type.</span></span>
+<span data-ttu-id="e1ed9-181">No código gerado, `repeated` os campos são representados pelo `Google.Protobuf.Collections.RepeatedField<T>` tipo genérico.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-181">In the generated code, `repeated` fields are represented by the `Google.Protobuf.Collections.RepeatedField<T>` generic type.</span></span>
 
 ```csharp
 public class Person
@@ -242,7 +269,7 @@ public class Person
 }
 ```
 
-<span data-ttu-id="8b37b-168">`RepeatedField<T>` implementa <xref:System.Collections.Generic.IList%601>.</span><span class="sxs-lookup"><span data-stu-id="8b37b-168">`RepeatedField<T>` implements <xref:System.Collections.Generic.IList%601>.</span></span> <span data-ttu-id="8b37b-169">Portanto, você pode usar consultas LINQ ou convertê-la em uma matriz ou em uma lista.</span><span class="sxs-lookup"><span data-stu-id="8b37b-169">So you can use LINQ queries or convert it to an array or a list.</span></span> <span data-ttu-id="8b37b-170">`RepeatedField<T>` as propriedades não têm um setter público.</span><span class="sxs-lookup"><span data-stu-id="8b37b-170">`RepeatedField<T>` properties don't have a public setter.</span></span> <span data-ttu-id="8b37b-171">Os itens devem ser adicionados à coleção existente.</span><span class="sxs-lookup"><span data-stu-id="8b37b-171">Items should be added to the existing collection.</span></span>
+<span data-ttu-id="e1ed9-182">`RepeatedField<T>` implementa <xref:System.Collections.Generic.IList%601>.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-182">`RepeatedField<T>` implements <xref:System.Collections.Generic.IList%601>.</span></span> <span data-ttu-id="e1ed9-183">Portanto, você pode usar consultas LINQ ou convertê-la em uma matriz ou em uma lista.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-183">So you can use LINQ queries or convert it to an array or a list.</span></span> <span data-ttu-id="e1ed9-184">`RepeatedField<T>` as propriedades não têm um setter público.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-184">`RepeatedField<T>` properties don't have a public setter.</span></span> <span data-ttu-id="e1ed9-185">Os itens devem ser adicionados à coleção existente.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-185">Items should be added to the existing collection.</span></span>
 
 ```csharp
 var person = new Person();
@@ -255,9 +282,9 @@ var roles = new [] { "admin", "manager" };
 person.Roles.Add(roles);
 ```
 
-### <a name="dictionaries"></a><span data-ttu-id="8b37b-172">Dicionários</span><span class="sxs-lookup"><span data-stu-id="8b37b-172">Dictionaries</span></span>
+### <a name="dictionaries"></a><span data-ttu-id="e1ed9-186">Dicionários</span><span class="sxs-lookup"><span data-stu-id="e1ed9-186">Dictionaries</span></span>
 
-<span data-ttu-id="8b37b-173">O <xref:System.Collections.Generic.IDictionary%602> tipo .net é representado em Protobuf usando `map<key_type, value_type>` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-173">The .NET <xref:System.Collections.Generic.IDictionary%602> type is represented in Protobuf using `map<key_type, value_type>`.</span></span>
+<span data-ttu-id="e1ed9-187">O <xref:System.Collections.Generic.IDictionary%602> tipo .net é representado em Protobuf usando `map<key_type, value_type>` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-187">The .NET <xref:System.Collections.Generic.IDictionary%602> type is represented in Protobuf using `map<key_type, value_type>`.</span></span>
 
 ```protobuf
 message Person {
@@ -266,7 +293,7 @@ message Person {
 }
 ```
 
-<span data-ttu-id="8b37b-174">No código .NET gerado, `map` os campos são representados pelo `Google.Protobuf.Collections.MapField<TKey, TValue>` tipo genérico.</span><span class="sxs-lookup"><span data-stu-id="8b37b-174">In generated .NET code, `map` fields are represented by the `Google.Protobuf.Collections.MapField<TKey, TValue>` generic type.</span></span> <span data-ttu-id="8b37b-175">`MapField<TKey, TValue>` implementa <xref:System.Collections.Generic.IDictionary%602>.</span><span class="sxs-lookup"><span data-stu-id="8b37b-175">`MapField<TKey, TValue>` implements <xref:System.Collections.Generic.IDictionary%602>.</span></span> <span data-ttu-id="8b37b-176">Como `repeated` Propriedades, `map` as propriedades não têm um setter público.</span><span class="sxs-lookup"><span data-stu-id="8b37b-176">Like `repeated` properties, `map` properties don't have a public setter.</span></span> <span data-ttu-id="8b37b-177">Os itens devem ser adicionados à coleção existente.</span><span class="sxs-lookup"><span data-stu-id="8b37b-177">Items should be added to the existing collection.</span></span>
+<span data-ttu-id="e1ed9-188">No código .NET gerado, `map` os campos são representados pelo `Google.Protobuf.Collections.MapField<TKey, TValue>` tipo genérico.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-188">In generated .NET code, `map` fields are represented by the `Google.Protobuf.Collections.MapField<TKey, TValue>` generic type.</span></span> <span data-ttu-id="e1ed9-189">`MapField<TKey, TValue>` implementa <xref:System.Collections.Generic.IDictionary%602>.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-189">`MapField<TKey, TValue>` implements <xref:System.Collections.Generic.IDictionary%602>.</span></span> <span data-ttu-id="e1ed9-190">Como `repeated` Propriedades, `map` as propriedades não têm um setter público.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-190">Like `repeated` properties, `map` properties don't have a public setter.</span></span> <span data-ttu-id="e1ed9-191">Os itens devem ser adicionados à coleção existente.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-191">Items should be added to the existing collection.</span></span>
 
 ```csharp
 var person = new Person();
@@ -282,19 +309,19 @@ var attributes = new Dictionary<string, string>
 person.Attributes.Add(attributes);
 ```
 
-## <a name="unstructured-and-conditional-messages"></a><span data-ttu-id="8b37b-178">Mensagens não estruturadas e condicionais</span><span class="sxs-lookup"><span data-stu-id="8b37b-178">Unstructured and conditional messages</span></span>
+## <a name="unstructured-and-conditional-messages"></a><span data-ttu-id="e1ed9-192">Mensagens não estruturadas e condicionais</span><span class="sxs-lookup"><span data-stu-id="e1ed9-192">Unstructured and conditional messages</span></span>
 
-<span data-ttu-id="8b37b-179">Protobuf é um formato de mensagens do primeiro contrato.</span><span class="sxs-lookup"><span data-stu-id="8b37b-179">Protobuf is a contract-first messaging format.</span></span> <span data-ttu-id="8b37b-180">As mensagens de um aplicativo, incluindo seus campos e tipos, devem ser especificadas em `.proto` arquivos quando o aplicativo é compilado.</span><span class="sxs-lookup"><span data-stu-id="8b37b-180">An app's messages, including its fields and types, must be specified in `.proto` files when the app is built.</span></span> <span data-ttu-id="8b37b-181">O primeiro design de contrato do Protobuf é ótimo na imposição do conteúdo da mensagem, mas pode limitar os cenários em que um contrato estrito não é necessário:</span><span class="sxs-lookup"><span data-stu-id="8b37b-181">Protobuf's contract-first design is great at enforcing message content but can limit scenarios where a strict contract isn't required:</span></span>
+<span data-ttu-id="e1ed9-193">Protobuf é um formato de mensagens do primeiro contrato.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-193">Protobuf is a contract-first messaging format.</span></span> <span data-ttu-id="e1ed9-194">As mensagens de um aplicativo, incluindo seus campos e tipos, devem ser especificadas em `.proto` arquivos quando o aplicativo é compilado.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-194">An app's messages, including its fields and types, must be specified in `.proto` files when the app is built.</span></span> <span data-ttu-id="e1ed9-195">O primeiro design de contrato do Protobuf é ótimo na imposição do conteúdo da mensagem, mas pode limitar os cenários em que um contrato estrito não é necessário:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-195">Protobuf's contract-first design is great at enforcing message content but can limit scenarios where a strict contract isn't required:</span></span>
 
-* <span data-ttu-id="8b37b-182">Mensagens com cargas desconhecidas.</span><span class="sxs-lookup"><span data-stu-id="8b37b-182">Messages with unknown payloads.</span></span> <span data-ttu-id="8b37b-183">Por exemplo, uma mensagem com um campo que pode conter qualquer mensagem.</span><span class="sxs-lookup"><span data-stu-id="8b37b-183">For example, a message with a field that could contain any message.</span></span>
-* <span data-ttu-id="8b37b-184">Mensagens condicionais.</span><span class="sxs-lookup"><span data-stu-id="8b37b-184">Conditional messages.</span></span> <span data-ttu-id="8b37b-185">Por exemplo, uma mensagem retornada de um serviço gRPC pode ser um resultado de êxito ou um resultado de erro.</span><span class="sxs-lookup"><span data-stu-id="8b37b-185">For example, a message returned from a gRPC service might be a success result or an error result.</span></span>
-* <span data-ttu-id="8b37b-186">Valores dinâmicos.</span><span class="sxs-lookup"><span data-stu-id="8b37b-186">Dynamic values.</span></span> <span data-ttu-id="8b37b-187">Por exemplo, uma mensagem com um campo que contém uma coleção não estruturada de valores, semelhante ao JSON.</span><span class="sxs-lookup"><span data-stu-id="8b37b-187">For example, a message with a field that contains an unstructured collection of values, similar to JSON.</span></span>
+* <span data-ttu-id="e1ed9-196">Mensagens com cargas desconhecidas.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-196">Messages with unknown payloads.</span></span> <span data-ttu-id="e1ed9-197">Por exemplo, uma mensagem com um campo que pode conter qualquer mensagem.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-197">For example, a message with a field that could contain any message.</span></span>
+* <span data-ttu-id="e1ed9-198">Mensagens condicionais.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-198">Conditional messages.</span></span> <span data-ttu-id="e1ed9-199">Por exemplo, uma mensagem retornada de um serviço gRPC pode ser um resultado de êxito ou um resultado de erro.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-199">For example, a message returned from a gRPC service might be a success result or an error result.</span></span>
+* <span data-ttu-id="e1ed9-200">Valores dinâmicos.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-200">Dynamic values.</span></span> <span data-ttu-id="e1ed9-201">Por exemplo, uma mensagem com um campo que contém uma coleção não estruturada de valores, semelhante ao JSON.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-201">For example, a message with a field that contains an unstructured collection of values, similar to JSON.</span></span>
 
-<span data-ttu-id="8b37b-188">O Protobuf oferece recursos e tipos de linguagem para dar suporte a esses cenários.</span><span class="sxs-lookup"><span data-stu-id="8b37b-188">Protobuf offers language features and types to support these scenarios.</span></span>
+<span data-ttu-id="e1ed9-202">O Protobuf oferece recursos e tipos de linguagem para dar suporte a esses cenários.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-202">Protobuf offers language features and types to support these scenarios.</span></span>
 
-### <a name="any"></a><span data-ttu-id="8b37b-189">Qualquer</span><span class="sxs-lookup"><span data-stu-id="8b37b-189">Any</span></span>
+### <a name="any"></a><span data-ttu-id="e1ed9-203">Qualquer</span><span class="sxs-lookup"><span data-stu-id="e1ed9-203">Any</span></span>
 
-<span data-ttu-id="8b37b-190">O `Any` tipo permite que você use mensagens como tipos inseridos sem ter sua `.proto` definição.</span><span class="sxs-lookup"><span data-stu-id="8b37b-190">The `Any` type lets you use messages as embedded types without having their `.proto` definition.</span></span> <span data-ttu-id="8b37b-191">Para usar o `Any` tipo, importe `any.proto` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-191">To use the `Any` type, import `any.proto`.</span></span>
+<span data-ttu-id="e1ed9-204">O `Any` tipo permite que você use mensagens como tipos inseridos sem ter sua `.proto` definição.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-204">The `Any` type lets you use messages as embedded types without having their `.proto` definition.</span></span> <span data-ttu-id="e1ed9-205">Para usar o `Any` tipo, importe `any.proto` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-205">To use the `Any` type, import `any.proto`.</span></span>
 
 ```protobuf
 import "google/protobuf/any.proto";
@@ -318,9 +345,9 @@ if (status.Detail.Is(Person.Descriptor))
 }
 ```
 
-### <a name="oneof"></a><span data-ttu-id="8b37b-192">Oneof</span><span class="sxs-lookup"><span data-stu-id="8b37b-192">Oneof</span></span>
+### <a name="oneof"></a><span data-ttu-id="e1ed9-206">Oneof</span><span class="sxs-lookup"><span data-stu-id="e1ed9-206">Oneof</span></span>
 
-<span data-ttu-id="8b37b-193">`oneof` os campos são um recurso de idioma.</span><span class="sxs-lookup"><span data-stu-id="8b37b-193">`oneof` fields are a language feature.</span></span> <span data-ttu-id="8b37b-194">O compilador manipula a `oneof` palavra-chave quando gera a classe da mensagem.</span><span class="sxs-lookup"><span data-stu-id="8b37b-194">The compiler handles the `oneof` keyword when it generates the message class.</span></span> <span data-ttu-id="8b37b-195">Usando `oneof` para especificar uma mensagem de resposta que poderia retornar `Person` ou `Error` pode ter esta aparência:</span><span class="sxs-lookup"><span data-stu-id="8b37b-195">Using `oneof` to specify a response message that could either return a `Person` or `Error` might look like this:</span></span>
+<span data-ttu-id="e1ed9-207">`oneof` os campos são um recurso de idioma.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-207">`oneof` fields are a language feature.</span></span> <span data-ttu-id="e1ed9-208">O compilador manipula a `oneof` palavra-chave quando gera a classe da mensagem.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-208">The compiler handles the `oneof` keyword when it generates the message class.</span></span> <span data-ttu-id="e1ed9-209">Usando `oneof` para especificar uma mensagem de resposta que poderia retornar `Person` ou `Error` pode ter esta aparência:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-209">Using `oneof` to specify a response message that could either return a `Person` or `Error` might look like this:</span></span>
 
 ```protobuf
 message Person {
@@ -339,9 +366,9 @@ message ResponseMessage {
 }
 ```
 
-<span data-ttu-id="8b37b-196">Os campos dentro do `oneof` conjunto devem ter números de campo exclusivos na declaração de mensagem geral.</span><span class="sxs-lookup"><span data-stu-id="8b37b-196">Fields within the `oneof` set must have unique field numbers in the overall message declaration.</span></span>
+<span data-ttu-id="e1ed9-210">Os campos dentro do `oneof` conjunto devem ter números de campo exclusivos na declaração de mensagem geral.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-210">Fields within the `oneof` set must have unique field numbers in the overall message declaration.</span></span>
 
-<span data-ttu-id="8b37b-197">Ao usar `oneof` o, o código C# gerado inclui uma enumeração que especifica quais dos campos foram definidos.</span><span class="sxs-lookup"><span data-stu-id="8b37b-197">When using `oneof`, the generated C# code includes an enum that specifies which of the fields has been set.</span></span> <span data-ttu-id="8b37b-198">Você pode testar a enumeração para localizar qual campo está definido.</span><span class="sxs-lookup"><span data-stu-id="8b37b-198">You can test the enum to find which field is set.</span></span> <span data-ttu-id="8b37b-199">Campos que não são definidos como Return `null` ou o valor padrão, em vez de lançar uma exceção.</span><span class="sxs-lookup"><span data-stu-id="8b37b-199">Fields that aren't set return `null` or the default value, rather than throwing an exception.</span></span>
+<span data-ttu-id="e1ed9-211">Ao usar `oneof` o, o código C# gerado inclui uma enumeração que especifica quais dos campos foram definidos.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-211">When using `oneof`, the generated C# code includes an enum that specifies which of the fields has been set.</span></span> <span data-ttu-id="e1ed9-212">Você pode testar a enumeração para localizar qual campo está definido.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-212">You can test the enum to find which field is set.</span></span> <span data-ttu-id="e1ed9-213">Campos que não são definidos como Return `null` ou o valor padrão, em vez de lançar uma exceção.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-213">Fields that aren't set return `null` or the default value, rather than throwing an exception.</span></span>
 
 ```csharp
 var response = await client.GetPersonAsync(new RequestMessage());
@@ -359,9 +386,9 @@ switch (response.ResultCase)
 }
 ```
 
-### <a name="value"></a><span data-ttu-id="8b37b-200">Valor</span><span class="sxs-lookup"><span data-stu-id="8b37b-200">Value</span></span>
+### <a name="value"></a><span data-ttu-id="e1ed9-214">Valor</span><span class="sxs-lookup"><span data-stu-id="e1ed9-214">Value</span></span>
 
-<span data-ttu-id="8b37b-201">O `Value` tipo representa um valor digitado dinamicamente.</span><span class="sxs-lookup"><span data-stu-id="8b37b-201">The `Value` type represents a dynamically typed value.</span></span> <span data-ttu-id="8b37b-202">Pode ser `null` , um número, uma cadeia de caracteres, um booliano, um dicionário de valores ( `Struct` ) ou uma lista de valores ( `ValueList` ).</span><span class="sxs-lookup"><span data-stu-id="8b37b-202">It can be either `null`, a number, a string, a boolean, a dictionary of values (`Struct`), or a list of values (`ValueList`).</span></span> <span data-ttu-id="8b37b-203">`Value` é um tipo conhecido Protobuf que usa o recurso abordado anteriormente `oneof` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-203">`Value` is a Protobuf Well-Known Type that uses the previously discussed `oneof` feature.</span></span> <span data-ttu-id="8b37b-204">Para usar o `Value` tipo, importe `struct.proto` .</span><span class="sxs-lookup"><span data-stu-id="8b37b-204">To use the `Value` type, import `struct.proto`.</span></span>
+<span data-ttu-id="e1ed9-215">O `Value` tipo representa um valor digitado dinamicamente.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-215">The `Value` type represents a dynamically typed value.</span></span> <span data-ttu-id="e1ed9-216">Pode ser `null` , um número, uma cadeia de caracteres, um booliano, um dicionário de valores ( `Struct` ) ou uma lista de valores ( `ValueList` ).</span><span class="sxs-lookup"><span data-stu-id="e1ed9-216">It can be either `null`, a number, a string, a boolean, a dictionary of values (`Struct`), or a list of values (`ValueList`).</span></span> <span data-ttu-id="e1ed9-217">`Value` é um tipo conhecido Protobuf que usa o recurso abordado anteriormente `oneof` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-217">`Value` is a Protobuf Well-Known Type that uses the previously discussed `oneof` feature.</span></span> <span data-ttu-id="e1ed9-218">Para usar o `Value` tipo, importe `struct.proto` .</span><span class="sxs-lookup"><span data-stu-id="e1ed9-218">To use the `Value` type, import `struct.proto`.</span></span>
 
 ```protobuf
 import "google/protobuf/struct.proto";
@@ -399,9 +426,9 @@ switch (status.Data.KindCase)
 }
 ```
 
-<span data-ttu-id="8b37b-205">Usar `Value` diretamente pode ser detalhado.</span><span class="sxs-lookup"><span data-stu-id="8b37b-205">Using `Value` directly can be verbose.</span></span> <span data-ttu-id="8b37b-206">Uma maneira alternativa de usar o `Value` é com o suporte interno do Protobuf para mapear mensagens para JSON.</span><span class="sxs-lookup"><span data-stu-id="8b37b-206">An alternative way to use `Value` is with Protobuf's built-in support for mapping messages to JSON.</span></span> <span data-ttu-id="8b37b-207">`JsonFormatter` `JsonWriter` Os tipos e Protobuf podem ser usados com qualquer mensagem Protobuf.</span><span class="sxs-lookup"><span data-stu-id="8b37b-207">Protobuf's `JsonFormatter` and `JsonWriter` types can be used with any Protobuf message.</span></span> <span data-ttu-id="8b37b-208">`Value` é particularmente adequado para ser convertido de e para JSON.</span><span class="sxs-lookup"><span data-stu-id="8b37b-208">`Value` is particularly well suited to being converted to and from JSON.</span></span>
+<span data-ttu-id="e1ed9-219">Usar `Value` diretamente pode ser detalhado.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-219">Using `Value` directly can be verbose.</span></span> <span data-ttu-id="e1ed9-220">Uma maneira alternativa de usar o `Value` é com o suporte interno do Protobuf para mapear mensagens para JSON.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-220">An alternative way to use `Value` is with Protobuf's built-in support for mapping messages to JSON.</span></span> <span data-ttu-id="e1ed9-221">`JsonFormatter` `JsonWriter` Os tipos e Protobuf podem ser usados com qualquer mensagem Protobuf.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-221">Protobuf's `JsonFormatter` and `JsonWriter` types can be used with any Protobuf message.</span></span> <span data-ttu-id="e1ed9-222">`Value` é particularmente adequado para ser convertido de e para JSON.</span><span class="sxs-lookup"><span data-stu-id="e1ed9-222">`Value` is particularly well suited to being converted to and from JSON.</span></span>
 
-<span data-ttu-id="8b37b-209">Esse é o equivalente JSON do código anterior:</span><span class="sxs-lookup"><span data-stu-id="8b37b-209">This is the JSON equivalent of the previous code:</span></span>
+<span data-ttu-id="e1ed9-223">Esse é o equivalente JSON do código anterior:</span><span class="sxs-lookup"><span data-stu-id="e1ed9-223">This is the JSON equivalent of the previous code:</span></span>
 
 ```csharp
 // Create dynamic values from JSON.
@@ -417,7 +444,7 @@ var json = JsonFormatter.Default.Format(status.Metadata);
 var document = JsonDocument.Parse(json);
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="8b37b-210">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="8b37b-210">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e1ed9-224">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="e1ed9-224">Additional resources</span></span>
 
-* [<span data-ttu-id="8b37b-211">Guia de linguagem Protobuf</span><span class="sxs-lookup"><span data-stu-id="8b37b-211">Protobuf language guide</span></span>](https://developers.google.com/protocol-buffers/docs/proto3#simple)
+* [<span data-ttu-id="e1ed9-225">Guia de linguagem Protobuf</span><span class="sxs-lookup"><span data-stu-id="e1ed9-225">Protobuf language guide</span></span>](https://developers.google.com/protocol-buffers/docs/proto3#simple)
 * <xref:grpc/versioning>
