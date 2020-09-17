@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: dfb807d5e8d8b949feb0ea87f7f6bcecd04817e8
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 791cc14feac30ad8a571d155624ab821dfd77981
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627319"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722852"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Imagens do Docker para o ASP.NET Core
 
@@ -169,7 +169,7 @@ Em alguns cenários, talvez você queira implantar um aplicativo em um contêine
   * Compile o aplicativo no modo de versão (o padrão é o modo de depuração).
   * Crie os arquivos na pasta *published*.
 
-* Executar o aplicativo.
+* Execute o aplicativo.
 
   * Windows:
 
@@ -264,8 +264,8 @@ Conforme observado no Dockerfile anterior, os `*.csproj` arquivos são copiados 
 * [Comando de build do Docker](https://docs.docker.com/engine/reference/commandline/build)
 * [Comando de execução do Docker](https://docs.docker.com/engine/reference/commandline/run)
 * [Exemplo do Docker do ASP.NET Core](https://github.com/dotnet/dotnet-docker) (aquele usado neste tutorial).
-* [Configurar o ASP.NET Core para trabalhar com servidores proxy e balanceadores de carga](/aspnet/core/host-and-deploy/proxy-load-balancer)
-* [Trabalhar com ferramentas de Docker do Visual Studio](https://docs.microsoft.com/aspnet/core/publishing/visual-studio-tools-for-docker)
+* [Configurar o ASP.NET Core para trabalhar com servidores proxy e balanceadores de carga](../proxy-load-balancer.md)
+* [Trabalhar com ferramentas de Docker do Visual Studio](./visual-studio-tools-for-docker.md)
 * [Depuração com o Visual Studio Code](https://code.visualstudio.com/docs/nodejs/debugging-recipes#_debug-nodejs-in-docker-containers)
 * [GC usando o Docker e contêineres pequenos](xref:performance/memory#sc)
 

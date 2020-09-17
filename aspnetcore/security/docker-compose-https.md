@@ -18,17 +18,17 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: 75a205c1eb21394ed36c00359f0dc4ca7e6d09e0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 71ead7dcce32dab090a9b0b3573aa855d00fa7f1
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631635"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722755"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hospedando ASP.NET Core imagens com Docker Compose via HTTPS
 
 
-O ASP.NET Core usa [https por padrão](/aspnet/core/security/enforcing-ssl). O [https](https://en.wikipedia.org/wiki/HTTPS) depende de [certificados](https://en.wikipedia.org/wiki/Public_key_certificate) para confiança, identidade e criptografia.
+O ASP.NET Core usa [https por padrão](./enforcing-ssl.md). O [https](https://en.wikipedia.org/wiki/HTTPS) depende de [certificados](https://en.wikipedia.org/wiki/Public_key_certificate) para confiança, identidade e criptografia.
 
 Este documento explica como executar imagens de contêiner predefinidas com HTTPS.
 

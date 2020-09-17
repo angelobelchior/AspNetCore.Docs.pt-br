@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: d5be01c67f455a2706a654574ef9f5e273551e70
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 478e9e58f265a8c372dd048f9ba8593424050e01
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865444"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722664"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalização e localização no ASP.NET Core
 
@@ -66,7 +66,7 @@ O código acima demonstra cada um dos dois métodos Create de alocador.
 
 Você pode particionar as cadeias de caracteres localizadas por controlador, área ou ter apenas um contêiner. No aplicativo de exemplo, uma classe fictícia chamada `SharedResource` é usada para recursos compartilhados.
 
-[!code-csharp[](localization/sample/3.x/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/3.x/Localization/SharedResource.cs)]
 
 Alguns desenvolvedores usam a classe `Startup` para conter cadeias de caracteres globais ou compartilhadas. Na amostra abaixo, os localizadores `InfoController` e `SharedResource` são usados:
 
@@ -420,7 +420,7 @@ O código acima demonstra cada um dos dois métodos Create de alocador.
 
 Você pode particionar as cadeias de caracteres localizadas por controlador, área ou ter apenas um contêiner. No aplicativo de exemplo, uma classe fictícia chamada `SharedResource` é usada para recursos compartilhados.
 
-[!code-csharp[](localization/sample/3.x/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/3.x/Localization/SharedResource.cs)]
 
 Alguns desenvolvedores usam a classe `Startup` para conter cadeias de caracteres globais ou compartilhadas. Na amostra abaixo, os localizadores `InfoController` e `SharedResource` são usados:
 
@@ -775,7 +775,7 @@ O código acima demonstra cada um dos dois métodos Create de alocador.
 
 Você pode particionar as cadeias de caracteres localizadas por controlador, área ou ter apenas um contêiner. No aplicativo de exemplo, uma classe fictícia chamada `SharedResource` é usada para recursos compartilhados.
 
-[!code-csharp[](localization/sample/3.x/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/3.x/Localization/SharedResource.cs)]
 
 Alguns desenvolvedores usam a classe `Startup` para conter cadeias de caracteres globais ou compartilhadas. Na amostra abaixo, os localizadores `InfoController` e `SharedResource` são usados:
 

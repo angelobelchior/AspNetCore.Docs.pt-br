@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: e03711d970c83c2b7d6cc76039cb0d556a751018
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0f0f1a9c70a2d6725cbb68ac62850cf6aa332d36
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628905"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90721834"
 ---
 # <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Parte 8, Razor páginas com EF Core em ASP.NET Core-Concurrency
 
@@ -318,7 +318,7 @@ Altere outro campo na segunda guia do navegador.
 
 ![Página 2 Editar Departamento após a alteração](concurrency/_static/edit-after-change-230.png)
 
-Clique em **Save** (Salvar). Você verá mensagens de erro em todos os campos que não correspondem aos valores do banco de dados:
+Clique em **Salvar**. Você verá mensagens de erro em todos os campos que não correspondem aos valores do banco de dados:
 
 ![Mensagem de erro da página Editar Departamento](concurrency/_static/edit-error30.png)
 
@@ -443,14 +443,14 @@ A simultaneidade otimista inclui as seguintes opções:
 
 Quando uma propriedade é configurada como um [token de simultaneidade](/ef/core/modeling/concurrency):
 
-* O EF Core verifica se a propriedade não foi modificada depois que foi buscada. A verificação ocorre quando [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) ou [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) é chamado.
-* Se a propriedade tiver sido alterada depois que ela foi buscada, uma [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) será gerada. 
+* O EF Core verifica se a propriedade não foi modificada depois que foi buscada. A verificação ocorre quando [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) ou [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) é chamado.
+* Se a propriedade tiver sido alterada depois que ela foi buscada, uma [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception) será gerada. 
 
 O BD e o modelo de dados precisam ser configurados para dar suporte à geração de `DbUpdateConcurrencyException`.
 
 ### <a name="detecting-concurrency-conflicts-on-a-property"></a>Detectando conflitos de simultaneidade em uma propriedade
 
-Os conflitos de simultaneidade podem ser detectados no nível do propriedade com o atributo [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0). O atributo pode ser aplicado a várias propriedades no modelo. Para obter mais informações, consulte [Data Annotations-ConcurrencyCheck](/ef/core/modeling/concurrency#data-annotations).
+Os conflitos de simultaneidade podem ser detectados no nível do propriedade com o atributo [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute). O atributo pode ser aplicado a várias propriedades no modelo. Para obter mais informações, consulte [Data Annotations-ConcurrencyCheck](/ef/core/modeling/concurrency#data-annotations).
 
 O atributo `[ConcurrencyCheck]` não é usado neste tutorial.
 
@@ -561,7 +561,7 @@ Atualize *Pages\Departments\Edit.cshtml.cs* com o seguinte código:
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-Para detectar um problema de simultaneidade, o [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) é atualizado com o valor `rowVersion` da entidade que foi buscada. O EF Core gera um comando SQL UPDATE com uma cláusula WHERE que contém o valor `RowVersion` original. Se nenhuma linha for afetada pelo comando UPDATE (nenhuma linha tem o valor `RowVersion` original), uma exceção `DbUpdateConcurrencyException` será gerada.
+Para detectar um problema de simultaneidade, o [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) é atualizado com o valor `rowVersion` da entidade que foi buscada. O EF Core gera um comando SQL UPDATE com uma cláusula WHERE que contém o valor `RowVersion` original. Se nenhuma linha for afetada pelo comando UPDATE (nenhuma linha tem o valor `RowVersion` original), uma exceção `DbUpdateConcurrencyException` será gerada.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-999)]
 
@@ -614,7 +614,7 @@ Altere outro campo na segunda guia do navegador.
 
 ![Página 2 Editar Departamento após a alteração](concurrency/_static/edit-after-change-2.png)
 
-Clique em **Save** (Salvar). Você verá mensagens de erro em todos os campos que não correspondem aos valores do BD:
+Clique em **Salvar**. Você verá mensagens de erro em todos os campos que não correspondem aos valores do BD:
 
 ![Mensagem de erro da página Editar Departamento](concurrency/_static/edit-error.png)
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: b6d6585c0cbd52715c4192d4ab3bee756dbb41b3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 436d640130b378e2c770322186020c6e252872ef
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635041"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722508"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtro para Razor páginas no ASP.NET Core
 
@@ -39,7 +39,7 @@ Razor Filtros de página:
 * Executam o código após a execução do método do manipulador.
 * Podem ser implementados em uma única página ou globalmente.
 * Não podem ser aplicados a métodos do manipulador de uma página específica.
-* Pode haver dependências de Construtor preenchidas pela [injeção de dependência](xref:fundamentals/dependency-injection) (di). Para obter mais informações, [consulte](/aspnet/core/mvc/controllers/filters#servicefilterattribute) [TypeFilterAttribute](/aspnet/core/mvc/controllers/filters#typefilterattribute)e.
+* Pode haver dependências de Construtor preenchidas pela [injeção de dependência](xref:fundamentals/dependency-injection) (di). Para obter mais informações, [consulte](../mvc/controllers/filters.md#servicefilterattribute) [TypeFilterAttribute](../mvc/controllers/filters.md#typefilterattribute)e.
 
 Embora os construtores de página e o middleware habilitem a execução do código personalizado antes que um método de manipulador seja executado, somente Razor os filtros de página habilitam o acesso à <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> página. O middleware tem acesso ao `HttpContext` , mas não ao "contexto da página". Os filtros têm um <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> parâmetro derivado, que fornece acesso ao `HttpContext` . Aqui está um exemplo para um filtro de página: [implemente um atributo Filter](#ifa) que adiciona um cabeçalho à resposta, algo que não pode ser feito com construtores ou middleware. O acesso ao contexto da página, que inclui acesso às instâncias da página e do modelo, só está disponível durante a execução de filtros, manipuladores ou o corpo de uma Razor página.
 

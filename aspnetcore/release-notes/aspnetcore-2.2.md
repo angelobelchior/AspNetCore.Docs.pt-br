@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 1a8599e6d06724ec289ddd4bee94f89d3c78ef91
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 085a26d508af5bdce506ab923a3256046b3894ab
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632376"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722482"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Novidades do ASP.NET Core 2.2
 
@@ -94,7 +94,7 @@ Para obter mais informações, confira [Hospedagem em processo para IIS](xref:ho
 
 ASP.NET Core 2,2 apresenta um cliente Java para o SignalR . Este cliente dá suporte à conexão com um ASP.NET Core SignalR Server a partir do código Java, incluindo aplicativos Android.
 
-Para obter mais informações, consulte [ASP.NET Core SignalR cliente Java](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2).
+Para obter mais informações, consulte [ASP.NET Core SignalR cliente Java](../signalr/java-client.md?view=aspnetcore-2.2).
 
 ## <a name="cors-improvements"></a>Melhorias do CORS
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 43b0ef1dcbf6d0137b14be9e58eb056f06ae093d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7fe9629e1c60a6156c69e546736049653a4229b7
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633442"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722638"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de cache de resposta em ASP.NET Core
 
@@ -59,7 +59,7 @@ O aplicativo de exemplo adiciona cabeçalhos ao cache de controle em solicitaç�
 
 Os cabeçalhos anteriores não são gravados na resposta e são substituídos quando um controlador, uma ação ou uma Razor página:
 
-* Tem um atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Isso se aplica mesmo se uma propriedade não estiver definida. Por exemplo, omitir a propriedade [VaryByHeader](/aspnet/core/performance/caching/response#vary) fará com que o cabeçalho correspondente seja removido da resposta.
+* Tem um atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Isso se aplica mesmo se uma propriedade não estiver definida. Por exemplo, omitir a propriedade [VaryByHeader](./response.md#vary) fará com que o cabeçalho correspondente seja removido da resposta.
 
 O middleware de cache de resposta só armazena em cache as respostas do servidor que resultam em um código de status 200 (OK). Quaisquer outras respostas, incluindo [páginas de erro](xref:fundamentals/error-handling), são ignoradas pelo middleware.
 
@@ -203,7 +203,7 @@ O aplicativo de exemplo adiciona cabeçalhos ao cache de controle em solicitaç�
 
 Os cabeçalhos anteriores não são gravados na resposta e são substituídos quando um controlador, uma ação ou uma Razor página:
 
-* Tem um atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Isso se aplica mesmo se uma propriedade não estiver definida. Por exemplo, omitir a propriedade [VaryByHeader](/aspnet/core/performance/caching/response#vary) fará com que o cabeçalho correspondente seja removido da resposta.
+* Tem um atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Isso se aplica mesmo se uma propriedade não estiver definida. Por exemplo, omitir a propriedade [VaryByHeader](./response.md#vary) fará com que o cabeçalho correspondente seja removido da resposta.
 
 O middleware de cache de resposta só armazena em cache as respostas do servidor que resultam em um código de status 200 (OK). Quaisquer outras respostas, incluindo [páginas de erro](xref:fundamentals/error-handling), são ignoradas pelo middleware.
 

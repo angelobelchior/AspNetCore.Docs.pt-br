@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: bba965e14058663c3ed9c0f15afc6a8d78997aea
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 2bfe05748e6740043be7f1ccc6dbe22ad4b0ca44
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009746"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722560"
 ---
 # <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHospedagem e dimensionamento de ASP.NET Core
 
@@ -33,7 +33,7 @@ Este artigo explica as considerações de hospedagem e dimensionamento para apli
 
 ## <a name="sticky-sessions"></a>Sessões adesivas
 
-SignalR requer que todas as solicitações HTTP para uma conexão específica sejam manipuladas pelo mesmo processo de servidor. Quando SignalR o está em execução em um farm de servidores (vários servidores), "sessões adesivas" devem ser usadas. "Sessões adesivas" também são chamadas de afinidade de sessão por alguns balanceadores de carga. Azure App serviço usa [Application Request Routing](https://docs.microsoft.com/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (ARR) para rotear solicitações. Habilitar a configuração "afinidade de ARR" em seu serviço de Azure App permitirá "sessões adesivas". As únicas circunstâncias nas quais as sessões adesivas não são necessárias são:
+SignalR requer que todas as solicitações HTTP para uma conexão específica sejam manipuladas pelo mesmo processo de servidor. Quando SignalR o está em execução em um farm de servidores (vários servidores), "sessões adesivas" devem ser usadas. "Sessões adesivas" também são chamadas de afinidade de sessão por alguns balanceadores de carga. Azure App serviço usa [Application Request Routing](/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (ARR) para rotear solicitações. Habilitar a configuração "afinidade de ARR" em seu serviço de Azure App permitirá "sessões adesivas". As únicas circunstâncias nas quais as sessões adesivas não são necessárias são:
 
 1. Ao hospedar em um único servidor, em um único processo.
 1. Ao usar o serviço do Azure SignalR .

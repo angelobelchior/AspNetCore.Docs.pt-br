@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: a8336a6c13c502f5a0fad150785cd9d484064618
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 965fbb3d8007cb64aaf51d82d87ed7a3a5298e9b
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633000"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90721782"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferenças entre ASP.NET SignalR e ASP.NET Core SignalR
 
@@ -156,7 +156,7 @@ A capacidade de passar um estado arbitrário entre clientes e o Hub (geralmente 
 
 ### <a name="persistentconnection-removal"></a>Remoção de PersistentConnection
 
-No ASP.NET Core SignalR , a classe [PersistentConnection](https://docs.microsoft.com/previous-versions/aspnet/jj919047(v%3dvs.118)) foi removida.
+No ASP.NET Core SignalR , a classe [PersistentConnection](/previous-versions/aspnet/jj919047(v=vs.118)) foi removida.
 
 ### <a name="globalhost"></a>GlobalHost
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: ed40800f3e363cc3fd6f57492d76a42095e5b97b
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: c6b77f20792c32a697fff8d1d78ef3c2536c5f8f
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712552"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722891"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuração no ASP.NET Core
 
@@ -732,7 +732,7 @@ Antes do aplicativo ser configurado e iniciado, um *host* é configurado e inici
 
 ## <a name="default-host-configuration"></a>Configuração de host padrão
 
-Para obter detalhes sobre a configuração padrão ao usar o [host da Web](xref:fundamentals/host/web-host), confira a [versão do ASP.NET Core 2.2 deste tópico](/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.2).
+Para obter detalhes sobre a configuração padrão ao usar o [host da Web](xref:fundamentals/host/web-host), confira a [versão do ASP.NET Core 2.2 deste tópico](?view=aspnetcore-2.2).
 
 * A configuração do host é fornecida de:
   * Variáveis de ambiente prefixadas com `DOTNET_` (por exemplo, `DOTNET_ENVIRONMENT` ) usando o [provedor de configuração de variáveis de ambiente](#environment-variables). O prefixo (`DOTNET_`) é removido durante o carregamento dos pares chave-valor de configuração.
@@ -949,7 +949,7 @@ Na inicialização, as fontes de configuração são lidas na ordem especificada
 Uma sequência comum de provedores de configuração é:
 
 1. Arquivos (*appsettings.jsem*, *appSettings. { Ambiente}. JSON*, em que `{Environment}` é o ambiente de hospedagem atual do aplicativo)
-1. [Azure Key Vault](xref:security/key-vault-configuration)
+1. [Cofre da Chave do Azure](xref:security/key-vault-configuration)
 1. [Segredos do usuário (Gerenciador de Segredo)](xref:security/app-secrets) (apenas no ambiente de desenvolvimento)
 1. Variáveis de ambiente
 1. Argumentos de linha de comando

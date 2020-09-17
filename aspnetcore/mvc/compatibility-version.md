@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/compatibility-version
-ms.openlocfilehash: fb24ca0b3a67ceca03a2666d5a4eb8782e05ba17
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b7d14aa0371fcc01d568cf1e7b9908c4a8d984df
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630348"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722826"
 ---
 # <a name="compatibility-version-for-aspnet-core-mvc"></a>Versão de compatibilidade do ASP.NET Core MVC
 
@@ -37,7 +37,7 @@ O <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.Set
 * `CompatibilityVersion` os `Version_2_0` valores `Version_2_2` são marcados `[Obsolete(...)]` .
 * Veja [alterações de API de interrupção em antifalsificação, CORS, diagnóstico, MVC e roteamento](https://github.com/aspnet/Announcements/issues/387). Essa lista inclui alterações significativas para as opções de compatibilidade.
 
-Para ver como `SetCompatibilityVersion` o funciona com os aplicativos ASP.NET Core 2. x, selecione a [versão ASP.NET Core 2,2 deste artigo](https://docs.microsoft.com/aspnet/core/mvc/compatibility-version?view=aspnetcore-2.2).
+Para ver como `SetCompatibilityVersion` o funciona com os aplicativos ASP.NET Core 2. x, selecione a [versão ASP.NET Core 2,2 deste artigo](?view=aspnetcore-2.2).
 
 ::: moniker-end
 

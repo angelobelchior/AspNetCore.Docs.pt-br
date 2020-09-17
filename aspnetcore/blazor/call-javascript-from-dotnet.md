@@ -5,7 +5,7 @@ description: Saiba como invocar funções JavaScript a partir de métodos .NET e
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/07/2020
+ms.date: 09/17/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: e7f23a4b44a0adb1d0b97c88e1d17f96aa2d28bd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a62462e3a0a2366a8662573ada5d2e7589c14c0d
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625382"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722469"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
 
@@ -109,6 +109,13 @@ Não coloque uma `<script>` marca em um arquivo de componente porque a `<script>
 Os métodos .NET interoperam com as funções JavaScript no `exampleJsInterop.js` arquivo chamando <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> .
 
 A <xref:Microsoft.JSInterop.IJSRuntime> abstração é assíncrona para permitir Blazor Server cenários. Se o aplicativo for um Blazor WebAssembly aplicativo e você quiser invocar uma função JavaScript de forma síncrona, downcast <xref:Microsoft.JSInterop.IJSInProcessRuntime> e chame <xref:Microsoft.JSInterop.IJSInProcessRuntime.Invoke%2A> em seu lugar. Recomendamos que a maioria das bibliotecas de interoperabilidade do JS use as APIs assíncronas para garantir que as bibliotecas estejam disponíveis em todos os cenários.
+
+::: moniker range=">= aspnetcore-5.0"
+
+> [!NOTE]
+> Para habilitar o isolamento de JavaScript em [módulos JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)padrão, consulte a seção [ Blazor isolamento de JavaScript e referências de objeto](#blazor-javascript-isolation-and-object-references) .
+
+::: moniker-end
 
 O aplicativo de exemplo inclui um componente para demonstrar a interoperabilidade do JS. O componente:
 
@@ -485,6 +492,43 @@ Para obter mais informações, consulte os seguintes problemas:
 
 * [Não há suporte para referências circulares, use duas (dotNet/aspnetcore #20525)](https://github.com/dotnet/aspnetcore/issues/20525)
 * [Proposta: Adicionar mecanismo para lidar com referências circulares ao serializar (dotNet/tempo de execução #30820)](https://github.com/dotnet/runtime/issues/30820)
+
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Blazor Isolamento de JavaScript e referências de objeto
+
+Blazor habilita o isolamento de JavaScript em [módulos JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)padrão. O isolamento de JavaScript oferece os seguintes benefícios:
+
+* O JavaScript importado não polui mais o namespace global.
+* Os consumidores de uma biblioteca e componentes não são necessários para importar o JavaScript relacionado.
+
+Por exemplo, o módulo JavaScript a seguir exporta uma função JavaScript para mostrar um prompt do navegador:
+
+```javascript
+export function showPrompt(message) {
+  return prompt(message, 'Type anything here');
+}
+```
+
+Adicione o módulo JavaScript anterior a uma biblioteca do .NET como um ativo da Web estático ( `wwwroot/exampleJsInterop.js` ) e, em seguida, importe o módulo para o código .NET usando o <xref:Microsoft.JSInterop.IJSRuntime> serviço. O serviço é injetado como `jsRuntime` (não mostrado) para o exemplo a seguir:
+
+```csharp
+var module = await jsRuntime.InvokeAsync<JSObjectReference>(
+    "import", "./_content/MyComponents/exampleJsInterop.js");
+```
+
+O `import` identificador no exemplo anterior é um identificador especial usado especificamente para importar um módulo JavaScript. Especifique o módulo usando seu caminho de ativo da Web estático estável: `_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}` . O espaço reservado `{LIBRARY NAME}` é o nome da biblioteca. O espaço reservado `{PATH UNDER WWWROOT}` é o caminho para o script em `wwwroot` .
+
+<xref:Microsoft.JSInterop.IJSRuntime> importa o módulo como um `JSObjectReference` , que representa uma referência a um objeto JavaScript do código .net. Use o `JSObjectReference` para invocar funções JavaScript exportadas do módulo:
+
+```csharp
+public async ValueTask<string> Prompt(string message)
+{
+    return await module.InvokeAsync<string>("showPrompt", message);
+}
+```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

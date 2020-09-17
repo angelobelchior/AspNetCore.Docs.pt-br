@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 587872b269d897d7c86eb77c110a4b6432218ed3
-ms.sourcegitcommit: dd0e87abf2bb50ee992d9185bb256ed79d48f545
+ms.openlocfilehash: 01575ec87d2d346da7367523ca5e257d53de4983
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88746553"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722612"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Práticas recomendadas de desempenho de ASP.NET Core
 
@@ -42,7 +42,7 @@ Neste documento, um *caminho de código quente* é definido como um caminho de c
 
 ASP.NET Core aplicativos devem ser criados para processar várias solicitações simultaneamente. As APIs assíncronas permitem que um pequeno pool de threads lide com milhares de solicitações simultâneas, não aguardando chamadas de bloqueio. Em vez de aguardar a conclusão de uma tarefa síncrona de execução longa, o thread pode trabalhar em outra solicitação.
 
-Um problema de desempenho comum no ASP.NET Core aplicativos é bloquear chamadas que poderiam ser assíncronas. Muitas chamadas de bloqueio síncronos levam à [privação do pool de threads](https://blogs.msdn.microsoft.com/vancem/2018/10/16/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall/) e tempos de resposta degradados.
+Um problema de desempenho comum no ASP.NET Core aplicativos é bloquear chamadas que poderiam ser assíncronas. Muitas chamadas de bloqueio síncronos levam à [privação do pool de threads](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall) e tempos de resposta degradados.
 
 **Não:**
 

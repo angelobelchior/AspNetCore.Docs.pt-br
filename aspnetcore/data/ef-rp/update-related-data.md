@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 603c5e7c9f095c380461f8c6e4ead783ad35abe2
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 17b200f0ba90035c417c96689798263af16551de
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630855"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722813"
 ---
 # <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>Parte 7, Razor páginas com EF Core no ASP.NET Core dados relacionados à atualização
 
@@ -46,7 +46,7 @@ Crie um arquivo *Pages/Courses/DepartmentNamePageModel.cs* com o seguinte códig
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/DepartmentNamePageModel.cs)]
 
-O código anterior cria uma [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) para conter a lista de nomes de departamentos. Se `selectedDepartment` for especificado, esse departamento estará selecionado na `SelectList`.
+O código anterior cria uma [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist) para conter a lista de nomes de departamentos. Se `selectedDepartment` for especificado, esse departamento estará selecionado na `SelectList`.
 
 As classes de modelo da página Criar e Editar serão derivadas de `DepartmentNamePageModel`.
 
@@ -111,7 +111,7 @@ A página contém um campo oculto (`<input type="hidden">`) para o número do cu
 
 ## <a name="update-the-course-details-and-delete-pages"></a>Atualizar as páginas Excluir e Detalhes do Curso
 
-[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) pode melhorar o desempenho quando o acompanhamento não é necessário.
+[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) pode melhorar o desempenho quando o acompanhamento não é necessário.
 
 ### <a name="update-the-course-page-models"></a>Atualizar os modelos de página do Curso
 
@@ -263,7 +263,7 @@ As páginas Cursos/Criar e Cursos/Editar precisam de uma lista de nomes de depar
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
-O código anterior cria uma [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) para conter a lista de nomes de departamentos. Se `selectedDepartment` for especificado, esse departamento estará selecionado na `SelectList`.
+O código anterior cria uma [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist) para conter a lista de nomes de departamentos. Se `selectedDepartment` for especificado, esse departamento estará selecionado na `SelectList`.
 
 As classes de modelo da página Criar e Editar serão derivadas de `DepartmentNamePageModel`.
 
@@ -328,7 +328,7 @@ Teste o código atualizado. Crie, edite e exclua um curso.
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>Adicionar AsNoTracking aos modelos de página Detalhes e Excluir
 
-[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) pode melhorar o desempenho quando o acompanhamento não é necessário. Adicione `AsNoTracking` ao modelo de página Excluir e Detalhes. O seguinte código mostra o modelo de página Excluir atualizado:
+[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) pode melhorar o desempenho quando o acompanhamento não é necessário. Adicione `AsNoTracking` ao modelo de página Excluir e Detalhes. O seguinte código mostra o modelo de página Excluir atualizado:
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 

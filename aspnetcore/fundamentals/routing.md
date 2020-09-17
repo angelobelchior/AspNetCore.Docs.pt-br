@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: cf450385db3c7327de233357d4c13d556ee44bad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1b8ccb510927fbc8a40f7424ae1ca4a131799095
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633663"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722878"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -50,7 +50,7 @@ Este documento aborda os detalhes de baixo nível do roteamento de ASP.NET Core.
 O sistema de roteamento de ponto de extremidade descrito neste documento se aplica ao ASP.NET Core 3,0 e posterior. Para obter informações sobre o sistema de roteamento anterior baseado em <xref:Microsoft.AspNetCore.Routing.IRouter> , selecione a versão ASP.NET Core 2,1 usando uma das seguintes abordagens:
 
 * O seletor de versão para uma versão anterior.
-* Selecione [ASP.NET Core roteamento de 2,1](https://docs.microsoft.com/aspnet/core/fundamentals/routing?view=aspnetcore-2.1).
+* Selecione [ASP.NET Core roteamento de 2,1](?view=aspnetcore-2.1).
 
 [Exibir ou baixar código de exemplo](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x) ([como baixar](xref:index#how-to-download-a-sample))
 
@@ -568,12 +568,12 @@ Para escapar os caracteres delimitadores de parâmetro de roteamento `{` ,,,, `}
 
 As expressões regulares usadas no roteamento geralmente começam com o `^` caractere e correspondem à posição inicial da cadeia de caracteres. As expressões geralmente terminam com o `$` caractere e correspondem ao final da cadeia de caracteres. Os `^` `$` caracteres e garantem que a expressão regular corresponda ao valor do parâmetro de rota inteiro. Sem os `^` `$` caracteres e, a expressão regular corresponde a qualquer subcadeia de caracteres dentro da cadeia de caracteres, o que geralmente é indesejável. A tabela a seguir fornece exemplos e explica por que eles correspondem ou falham na correspondência:
 
-| Expression   | String    | Correspondência | Comentário               |
+| Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
+| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
 | `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
 | `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
@@ -809,7 +809,7 @@ Em seguida, os **valores aceitos** podem ser usados para expandir o modelo de ro
 
 Valores explicitamente fornecidos que não correspondem a um segmento da rota são adicionados à cadeia de caracteres de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Result                  |
+| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |
@@ -1025,7 +1025,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-Para obter mais informações sobre o roteamento baseado em <xref:Microsoft.AspNetCore.Routing.IRouter>, confira a [versão do ASP.NET Core 2.1 deste tópico](/aspnet/core/fundamentals/routing?view=aspnetcore-2.1).
+Para obter mais informações sobre o roteamento baseado em <xref:Microsoft.AspNetCore.Routing.IRouter>, confira a [versão do ASP.NET Core 2.1 deste tópico](?view=aspnetcore-2.1).
 
 > [!IMPORTANT]
 > Este documento aborda o roteamento de nível inferior do ASP.NET Core. Para obter informações sobre o roteamento do ASP.NET Core MVC, confira <xref:mvc/controllers/routing>. Para obter informações sobre convenções de roteamento em Razor páginas, consulte <xref:razor-pages/razor-pages-conventions> .
@@ -1489,12 +1489,12 @@ Para escapar os caracteres delimitadores de parâmetro de roteamento `{` ,,,, `}
 
 As expressões regulares usadas no roteamento geralmente começam com o `^` caractere de cursor e correspondem à posição inicial da cadeia de caracteres. As expressões geralmente terminam com o caractere de sinal de dólar `$` e correspondem ao final da cadeia de caracteres. Os caracteres `^` e `$` garantem que a expressão regular corresponde a todo o valor do parâmetro de rota. Sem os caracteres `^` e `$`, a expressão regular corresponde a qualquer subcadeia de caracteres na cadeia de caracteres, o que geralmente não é o desejado. A tabela a seguir fornece exemplos e explica por que eles encontram ou não uma correspondência.
 
-| Expression   | String    | Correspondência | Comentário               |
+| Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
+| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
 | `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
 | `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
@@ -1557,8 +1557,8 @@ Com a rota anterior, a ação `SubscriptionManagementController.GetAll` é combi
 
 ASP.NET Core fornece convenções de API para usar transformadores de parâmetro com as rotas geradas:
 
-* ASP.NET Core MVC tem a convenção de API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Essa convenção aplica um transformador de parâmetro especificado a todas as rotas de atributo no aplicativo. O transformador de parâmetro transforma os tokens de rota do atributo conforme elas são substituídas. Para obter mais informações, confira [Usar um transformador de parâmetro para personalizar a substituição de token](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
-* Razor As páginas têm a `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` Convenção de API. Essa Convenção aplica um transformador de parâmetro especificado a todas as Razor páginas descobertas automaticamente. O transformador de parâmetro transforma os segmentos do nome de arquivo e pasta das Razor rotas de páginas. Para obter mais informações, confira [Usar um transformador de parâmetros para personalizar rotas de página](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
+* ASP.NET Core MVC tem a convenção de API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Essa convenção aplica um transformador de parâmetro especificado a todas as rotas de atributo no aplicativo. O transformador de parâmetro transforma os tokens de rota do atributo conforme elas são substituídas. Para obter mais informações, confira [Usar um transformador de parâmetro para personalizar a substituição de token](xref:mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
+* Razor As páginas têm a `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` Convenção de API. Essa Convenção aplica um transformador de parâmetro especificado a todas as Razor páginas descobertas automaticamente. O transformador de parâmetro transforma os segmentos do nome de arquivo e pasta das Razor rotas de páginas. Para obter mais informações, confira [Usar um transformador de parâmetros para personalizar rotas de página](xref:razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
 
 ## <a name="url-generation-reference"></a>Referência de geração de URL
 
@@ -1574,7 +1574,7 @@ Os valores de ambiente que não correspondem a um parâmetro são ignorados. Os 
 
 Valores fornecidos explicitamente, mas que não correspondem a um segmento da rota, são adicionados à cadeia de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Result                  |
+| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |
@@ -1933,12 +1933,12 @@ As expressões regulares usam delimitadores e tokens semelhantes aos usados pelo
 
 As expressões regulares usadas no roteamento geralmente começam com o caractere de acento circunflexo (`^`) e correspondem à posição inicial da cadeia de caracteres. As expressões geralmente terminam com o caractere de cifrão (`$`) e correspondem ao final da cadeia de caracteres. Os caracteres `^` e `$` garantem que a expressão regular corresponde a todo o valor do parâmetro de rota. Sem os caracteres `^` e `$`, a expressão regular corresponde a qualquer subcadeia de caracteres na cadeia de caracteres, o que geralmente não é o desejado. A tabela a seguir fornece exemplos e explica por que eles encontram ou não uma correspondência.
 
-| Expression   | String    | Correspondência | Comentário               |
+| Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
+| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
 | `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
 | `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
@@ -1980,7 +1980,7 @@ Os valores de ambiente que não correspondem a um parâmetro são ignorados. Os 
 
 Valores fornecidos explicitamente, mas que não correspondem a um segmento da rota, são adicionados à cadeia de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Result                  |
+| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |

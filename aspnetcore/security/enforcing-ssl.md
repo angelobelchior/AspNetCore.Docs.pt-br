@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 1cb2c2d18b717dc99c6ef4dac9954fef149c6deb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b5260084c2fdd296168e918f06d8b54faf1865d5
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631557"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722651"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Impor HTTPS em ASP.NET Core
 
@@ -109,7 +109,7 @@ Especifique a porta HTTPS usando qualquer uma das seguintes abordagens:
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Defina a `https_port` [configuração de host](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#https_port):
+* Defina a `https_port` [configuração de host](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#https_port):
 
   * Na configuração do host.
   * Definindo a `ASPNETCORE_HTTPS_PORT` variável de ambiente.
@@ -117,7 +117,7 @@ Especifique a porta HTTPS usando qualquer uma das seguintes abordagens:
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
-* Indique uma porta com o esquema seguro usando a [variável de ambiente ASPNETCORE_URLS](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#urls). A variável de ambiente configura o servidor. O middleware descobre indiretamente a porta HTTPS via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> . Essa abordagem não funciona em implantações de proxy reverso.
+* Indique uma porta com o esquema seguro usando a [variável de ambiente ASPNETCORE_URLS](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#urls). A variável de ambiente configura o servidor. O middleware descobre indiretamente a porta HTTPS via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> . Essa abordagem não funciona em implantações de proxy reverso.
 
 ::: moniker-end
 
@@ -288,7 +288,7 @@ O seguinte código:
 ::: moniker-end
 
 
-* Define o parâmetro PreLoad do `Strict-Transport-Security` cabeçalho. Pré-carregar não faz parte da [especificação RFC HSTS](https://tools.ietf.org/html/rfc6797), mas tem suporte de navegadores da Web para pré-carregar HSTS sites na nova instalação. Para obter mais informações, confira [https://hstspreload.org/](https://hstspreload.org/).
+* Define o parâmetro PreLoad do `Strict-Transport-Security` cabeçalho. Pré-carregar não faz parte da [especificação RFC HSTS](https://tools.ietf.org/html/rfc6797), mas tem suporte de navegadores da Web para pré-carregar HSTS sites na nova instalação. Para obter mais informações, consulte [https://hstspreload.org/](https://hstspreload.org/).
 * Habilita [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), que aplica a política HSTS aos subdomínios de host.
 * Define explicitamente o `max-age` parâmetro do `Strict-Transport-Security` cabeçalho como 60 dias. Se não estiver definido, o padrão será 30 dias. Para obter mais informações, consulte a [diretiva Max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Adiciona `example.com` à lista de hosts a serem excluídos.
@@ -324,7 +324,7 @@ Desmarque a caixa de seleção **Configurar para https** .
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli) 
 
-Use a opção `--no-https`. Por exemplo
+Use a opção `--no-https`. Por exemplo,
 
 ```dotnetcli
 dotnet new webapp --no-https
@@ -398,7 +398,7 @@ Esta seção fornece ajuda quando o ASP.NET Core certificado de desenvolvimento 
 
 ### <a name="all-platforms---certificate-not-trusted"></a>Todas as plataformas-certificado não confiável
 
-Execute os seguintes comandos:
+Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -419,7 +419,7 @@ Os comandos anteriores resolvem a maioria dos problemas de confiança do navegad
 
 * Verifique os certificados no repositório de certificados. Deve haver um `localhost` certificado com o `ASP.NET Core HTTPS development certificate` nome amigável em `Current User > Personal > Certificates` e `Current User > Trusted root certification authorities > Certificates`
 * Remova todos os certificados encontrados das autoridades de certificação raiz pessoais e confiáveis. **Não** remova o IIS Express certificado localhost.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -435,7 +435,7 @@ Feche todas as instâncias do navegador abertas. Abra uma nova janela do navegad
 * Verifique a presença de um certificado localhost.
 * Verifique se ele contém um `+` símbolo no ícone para indicar que ele é confiável para todos os usuários.
 * Remova o certificado do conjunto de chaves do sistema.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet dev-certs https --clean

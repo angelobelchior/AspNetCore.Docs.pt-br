@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: 60af1add9ae2f8b2b94bc19b65667d7af91fb122
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: ea46e04bc4aa6269efbf8917d5f32194402a66ef
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102660"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722690"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Criar mensagens Protobuf para aplicativos .NET
 
@@ -85,6 +85,10 @@ Protobuf dá suporte a um intervalo de tipos de valor escalar nativos. A tabela 
 | `string`      | `string`     |
 | `bytes`       | `ByteString` |
 
+Os valores escalares sempre têm um valor padrão e não podem ser definidos como `null` . Essa restrição inclui `string` e `ByteString` quais são classes C#. `string` o padrão é um valor de cadeia de caracteres vazia e `ByteString` o padrão é um valor de bytes vazio. A tentativa de defini-las para `null` gera um erro.
+
+[Tipos de wrapper anuláveis](#nullable-types) podem ser usados para dar suporte a valores nulos.
+
 ### <a name="dates-and-times"></a>Datas e horas
 
 Os tipos escalares nativos não fornecem valores de data e hora, equivalentes a. NET <xref:System.DateTimeOffset> , <xref:System.DateTime> , e <xref:System.TimeSpan> . Esses tipos podem ser especificados usando algumas das extensões de *tipos bem conhecidas* do Protobuf. Essas extensões fornecem geração de código e suporte a tempo de execução para tipos de campo complexos em plataformas com suporte.
@@ -145,19 +149,42 @@ message Person {
 }
 ```
 
-Protobuf usa tipos anuláveis .NET, por exemplo, `int?` para a propriedade Message gerada.
+`wrappers.proto` os tipos não são expostos em Propriedades geradas. O Protobuf os mapeia automaticamente para os tipos anuláveis do .NET apropriados em mensagens C#. Por exemplo, um `google.protobuf.Int32Value` campo gera uma `int?` propriedade. Propriedades de tipo de referência como `string` e `ByteString` são inalteradas, exceto `null` que podem ser atribuídas a elas sem erro.
 
 A tabela a seguir mostra a lista completa de tipos de wrapper com seu tipo C# equivalente:
 
-| Tipo de C#   | Wrapper de tipo bem conhecido       |
-| --------- | ----------------------------- |
-| `bool?`   | `google.protobuf.BoolValue`   |
-| `double?` | `google.protobuf.DoubleValue` |
-| `float?`  | `google.protobuf.FloatValue`  |
-| `int?`    | `google.protobuf.Int32Value`  |
-| `long?`   | `google.protobuf.Int64Value`  |
-| `uint?`   | `google.protobuf.UInt32Value` |
-| `ulong?`  | `google.protobuf.UInt64Value` |
+| Tipo de C#      | Wrapper de tipo bem conhecido       |
+| ------------ | ----------------------------- |
+| `bool?`      | `google.protobuf.BoolValue`   |
+| `double?`    | `google.protobuf.DoubleValue` |
+| `float?`     | `google.protobuf.FloatValue`  |
+| `int?`       | `google.protobuf.Int32Value`  |
+| `long?`      | `google.protobuf.Int64Value`  |
+| `uint?`      | `google.protobuf.UInt32Value` |
+| `ulong?`     | `google.protobuf.UInt64Value` |
+| `string`     | `google.protobuf.StringValue` |
+| `ByteString` | `google.protobuf.BytesValue`  |
+
+### <a name="bytes"></a>Bytes
+
+Há suporte para cargas binárias em Protobuf com o `bytes` tipo de valor escalar. Uma propriedade gerada em C# usa `ByteString` como o tipo de propriedade.
+
+Use `ByteString.CopyFrom(byte[] data)` para criar uma nova instância de uma matriz de bytes:
+
+```csharp
+var data = await File.ReadAllBytesAsync(path);
+
+var payload = new PayloadResponse();
+payload.Data = ByteString.CopyFrom(data);
+```
+
+`ByteString` os dados são acessados diretamente usando o `ByteString.Span` ou o `ByteString.Memory` . Ou chame `ByteString.ToByteArray()` para converter uma instância de volta em uma matriz de bytes:
+
+```csharp
+var payload = await client.GetPayload(new PayloadRequest());
+
+await File.WriteAllBytesAsync(path, payload.Data.ToByteArray());
+```
 
 ### <a name="decimals"></a>Decimais
 

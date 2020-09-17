@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 7ddc1b0f80625fbc39ac49f305f745b005cbce46
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6936071339786262fa8eeb669a59225a695d7488
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634664"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722800"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Módulos do IIS com o ASP.NET Core
 
@@ -35,38 +35,38 @@ A tabela indica os módulos IIS nativos que funcionam com aplicativos ASP.NET Co
 
 | Módulo | Funcional com os aplicativos do ASP.NET Core | Opção do ASP.NET Core |
 | --- | :---: | --- |
-| **Autenticação Anônima**<br>`AnonymousAuthenticationModule`                                  | Sim | |
-| **Autenticação básica**<br>`BasicAuthenticationModule`                                          | Sim | |
-| **Autenticação de mapeamento de certificação de cliente**<br>`CertificateMappingAuthenticationModule`      | Sim | |
+| **Autenticação Anônima**<br>`AnonymousAuthenticationModule`                                  | Yes | |
+| **Autenticação básica**<br>`BasicAuthenticationModule`                                          | Yes | |
+| **Autenticação de mapeamento de certificação de cliente**<br>`CertificateMappingAuthenticationModule`      | Yes | |
 | **CGI**<br>`CgiModule`                                                                           | Não  | |
-| **Validação da configuração**<br>`ConfigurationValidationModule`                                  | Sim | |
+| **Validação da configuração**<br>`ConfigurationValidationModule`                                  | Yes | |
 | **Erros HTTP**<br>`CustomErrorModule`                                                           | Não  | [Middleware de páginas de código de status](xref:fundamentals/error-handling#usestatuscodepages) |
-| **Log personalizado**<br>`CustomLoggingModule`                                                      | Sim | |
+| **Log personalizado**<br>`CustomLoggingModule`                                                      | Yes | |
 | **Documento padrão**<br>`DefaultDocumentModule`                                                  | Não  | [Middleware de arquivos padrão](xref:fundamentals/static-files#serve-a-default-document) |
-| **Autenticação Digest**<br>`DigestAuthenticationModule`                                        | Sim | |
+| **Autenticação Digest**<br>`DigestAuthenticationModule`                                        | Yes | |
 | **Pesquisa no Diretório**<br>`DirectoryListingModule`                                               | Não  | [Middleware de navegação no diretório](xref:fundamentals/static-files#enable-directory-browsing) |
-| **Compactação dinâmica**<br>`DynamicCompressionModule`                                            | Sim | [Middleware de compactação de resposta](xref:performance/response-compression) |
-| **Rastreamento de solicitação com falha**<br>`FailedRequestsTracingModule`                                     | Sim | [Log de ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
+| **Compactação dinâmica**<br>`DynamicCompressionModule`                                            | Yes | [Middleware de compactação de resposta](xref:performance/response-compression) |
+| **Rastreamento de solicitação com falha**<br>`FailedRequestsTracingModule`                                     | Yes | [Log de ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
 | **Cache de arquivo**<br>`FileCacheModule`                                                            | Não  | [Middleware de cache de resposta](xref:performance/caching/middleware) |
 | **Cache HTTP**<br>`HttpCacheModule`                                                            | Não  | [Middleware de cache de resposta](xref:performance/caching/middleware) |
-| **Log HTTP**<br>`HttpLoggingModule`                                                          | Sim | [Log de ASP.NET Core](xref:fundamentals/logging/index) |
-| **Redirecionamento de HTTP**<br>`HttpRedirectionModule`                                                  | Sim | [Middleware de regravação de URL](xref:fundamentals/url-rewriting) |
-| **Rastreamento HTTP**<br>`TracingModule`                                                              | Sim | |
-| **Autenticação de mapeamento de certificado de cliente IIS**<br>`IISCertificateMappingAuthenticationModule` | Sim | |
-| **Restrições de IP e domínio**<br>`IpRestrictionModule`                                          | Sim | |
-| **Filtros ISAPI**<br>`IsapiFilterModule`                                                         | Sim | [Middleware](xref:fundamentals/middleware/index) |
-| **ISAPI**<br>`IsapiModule`                                                                       | Sim | [Middleware](xref:fundamentals/middleware/index) |
-| **Suporte de protocolo**<br>`ProtocolSupportModule`                                                  | Sim | |
-| **Filtragem de Solicitações**<br>`RequestFilteringModule`                                                | Sim | [Middleware de regravação de URL `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
-| **Monitor de Solicitações**<br>`RequestMonitorModule`                                                    | Sim | |
-| **Regravação de URL**&#8224;<br>`RewriteModule`                                                      | Sim | [Middleware de regravação de URL](xref:fundamentals/url-rewriting) |
+| **Log HTTP**<br>`HttpLoggingModule`                                                          | Yes | [Log de ASP.NET Core](xref:fundamentals/logging/index) |
+| **Redirecionamento de HTTP**<br>`HttpRedirectionModule`                                                  | Yes | [Middleware de regravação de URL](xref:fundamentals/url-rewriting) |
+| **Rastreamento HTTP**<br>`TracingModule`                                                              | Yes | |
+| **Autenticação de mapeamento de certificado de cliente IIS**<br>`IISCertificateMappingAuthenticationModule` | Yes | |
+| **Restrições de IP e domínio**<br>`IpRestrictionModule`                                          | Yes | |
+| **Filtros ISAPI**<br>`IsapiFilterModule`                                                         | Yes | [Middleware](xref:fundamentals/middleware/index) |
+| **ISAPI**<br>`IsapiModule`                                                                       | Yes | [Middleware](xref:fundamentals/middleware/index) |
+| **Suporte de protocolo**<br>`ProtocolSupportModule`                                                  | Yes | |
+| **Filtragem de Solicitações**<br>`RequestFilteringModule`                                                | Yes | [Middleware de regravação de URL `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **Monitor de Solicitações**<br>`RequestMonitorModule`                                                    | Yes | |
+| **Regravação de URL**&#8224;<br>`RewriteModule`                                                      | Yes | [Middleware de regravação de URL](xref:fundamentals/url-rewriting) |
 | **Inclusões no lado do servidor**<br>`ServerSideIncludeModule`                                            | Não  | |
 | **Compactação estática**<br>`StaticCompressionModule`                                              | Não  | [Middleware de compactação de resposta](xref:performance/response-compression) |
 | **Conteúdo Estático**<br>`StaticFileModule`                                                         | Não  | [Middleware de arquivos estáticos](xref:fundamentals/static-files) |
-| **Cache de token**<br>`TokenCacheModule`                                                          | Sim | |
-| **Cache de URI**<br>`UriCacheModule`                                                              | Sim | |
-| **Autorização de URL**<br>`UrlAuthorizationModule`                                                | Sim | [ASP.NET Core Identity](xref:security/authentication/identity) |
-| **Autenticação do Windows**<br>`WindowsAuthenticationModule`                                      | Sim | |
+| **Cache de token**<br>`TokenCacheModule`                                                          | Yes | |
+| **Cache de URI**<br>`UriCacheModule`                                                              | Yes | |
+| **Autorização de URL**<br>`UrlAuthorizationModule`                                                | Yes | [ASP.NET Core Identity](xref:security/authentication/identity) |
+| **Autenticação do Windows**<br>`WindowsAuthenticationModule`                                      | Yes | |
 
 &#8224;Os tipos de correspondência `isFile` e `isDirectory` do módulo de regravação da URL não funcionam com aplicativos do ASP.NET Core, devido a alterações na [estrutura de diretórios](xref:host-and-deploy/directory-structure).
 
@@ -178,5 +178,5 @@ O módulo de cache HTTP (`HttpCacheModule`) implementa o cache de saída do IIS 
 
 * [Introdução às arquiteturas do IIS: módulos no IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Visão geral de módulos do IIS](/iis/get-started/introduction-to-iis/iis-modules-overview)
-* [Personalização de funções e módulos do IIS 7.0](https://technet.microsoft.com/library/cc627313.aspx)
+* [Personalização de funções e módulos do IIS 7.0](/previous-versions/tn-archive/cc627313(v=technet.10))
 * [IIS \<system.webServer>](/iis/configuration/system.webServer/)
