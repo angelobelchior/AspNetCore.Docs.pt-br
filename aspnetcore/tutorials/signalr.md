@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: e98cfc5e95233ce4d1001ab1225fc15e5fd23733
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b69d60e7d0e24f6d3c8032b391c98a6cd1589305
+ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634493"
+ms.lasthandoff: 09/18/2020
+ms.locfileid: "90770175"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Tutorial: introdução ao ASP.NET Core SignalR
 
@@ -45,15 +45,15 @@ No final, você terá um aplicativo de chat funcionando:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -67,7 +67,7 @@ No final, você terá um aplicativo de chat funcionando:
 
 * Na caixa de diálogo **configurar seu novo projeto** , nomeie o projeto como * SignalR chat*e, em seguida, selecione **criar**.
 
-* Na caixa de diálogo **criar um novo aplicativo web ASP.NET Core** , selecione **.net Core** e **ASP.NET Core 3,0**. 
+* Na caixa de diálogo **criar um novo aplicativo web ASP.NET Core** , selecione **.net Core** e **ASP.NET Core 3,1**. 
 
 * Selecione **aplicativo Web** para criar um projeto que usa Razor páginas e, em seguida, selecione **criar**.
 
@@ -77,7 +77,7 @@ No final, você terá um aplicativo de chat funcionando:
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal) para a pasta na qual a nova pasta de projeto será criada.
 
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
@@ -90,7 +90,7 @@ No final, você terá um aplicativo de chat funcionando:
 
 * Selecione **.NET Core > Aplicativo > Aplicativo Web** (não selecione **Aplicativo Web (Model-View-Controller)**) e, em seguida, selecione **Avançar**.
 
-* Verifique se a **Estrutura de Destino** está definida para **.NET Core 3.0** e, em seguida, selecione **Avançar**.
+* Verifique se a **estrutura de destino** está definida como **.NET Core 3,1**e, em seguida, selecione **Avançar**.
 
 * Nomeie o projeto como * SignalR chat*e, em seguida, selecione **criar**.
 
@@ -98,7 +98,7 @@ No final, você terá um aplicativo de chat funcionando:
 
 ## <a name="add-the-no-locsignalr-client-library"></a>Adicionar a SignalR biblioteca de cliente
 
-A SignalR biblioteca de servidores está incluída na estrutura compartilhada do ASP.NET Core 3,0. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg*. unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.
+A SignalR biblioteca de servidores está incluída na estrutura compartilhada do ASP.NET Core 3,1. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg*. unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -308,7 +308,7 @@ No final, você terá um aplicativo de chat de trabalho: ![ ::: no-Loc (signalr)
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal) para a pasta na qual a nova pasta de projeto será criada.  
 
-* Execute os seguintes comandos:   
+* Execute os comandos a seguir:   
 
    ```dotnetcli 
    dotnet new webapp -o SignalRChat   

@@ -2,17 +2,17 @@
 
 ## <a name="visual-studio-help"></a>Ajuda do Visual Studio
 
-* [Aprenda a depurar o código C# usando o Visual Studio](https://docs.microsoft.com/visualstudio/debugger/getting-started-with-the-debugger?view=vs-2017)
-* [Introdução ao IDE do Visual Studio](https://docs.microsoft.com/visualstudio/ide/visual-studio-ide?view=vs-2017)
+* [Aprenda a depurar o código C# usando o Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger?view=vs-2017)
+* [Introdução ao IDE do Visual Studio](/visualstudio/ide/visual-studio-ide?view=vs-2017)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ## <a name="visual-studio-code-help"></a>Ajuda do Visual Studio Code
 
-* [Começando](https://code.visualstudio.com/docs)
+* [Guia de Introdução](https://code.visualstudio.com/docs)
 * [Depuração](https://code.visualstudio.com/docs/editor/debugging)
 * [Terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal)
-* [Atalhos do teclado](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
+* [Atalhos de teclado](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
   * [Atalhos de teclado do macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
   * [Atalhos de teclado do Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
@@ -22,7 +22,7 @@
 
 ## <a name="visual-studio-for-mac-help"></a>Ajuda do Visual Studio para Mac
 
-* [Tour do Visual Studio para Mac](https://docs.microsoft.com/visualstudio/mac/ide-tour)
-* [Introdução do Visual Studio para Mac](https://docs.microsoft.com/visualstudio/mac/)
+* [Tour do Visual Studio para Mac](/visualstudio/mac/ide-tour)
+* [Introdução do Visual Studio para Mac](/visualstudio/mac/)
 
 ---
