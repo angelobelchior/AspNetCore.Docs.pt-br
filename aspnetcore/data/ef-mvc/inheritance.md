@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 9a17a2ddbdac6b4fc6ba90804a31915d3b96d707
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 34c4ea28103b9eb12601b383a46091084391f120
+ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629178"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90847592"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutorial: implementar a herança – ASP.NET MVC com o EF Core
 
@@ -62,6 +62,9 @@ Há várias maneiras pelas quais essa estrutura de herança pode ser representad
 Esse padrão de geração de uma estrutura de herança de entidade com base em uma tabela de banco de dados individual é chamado de herança TPH (tabela por hierarquia).
 
 Uma alternativa é fazer com que o banco de dados se pareça mais com a estrutura de herança. Por exemplo, você pode ter apenas os campos de nome na tabela Pessoa e as tabelas separadas Instrutor e Aluno com os campos de data.
+
+> [!WARNING]
+> A tabela por tipo (TPT) não tem suporte pelo EF Core 3. x, mas foi implementada no [EF Core 5,0](https://docs.microsoft.com/ef/core/what-is-new/ef-core-5.0/plan).
 
 ![Herança de tabela por tipo](inheritance/_static/tpt.png)
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 41b2ce35a6910df7587af7ebabe8a4984cda6ae5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dd00b9d7faf467857ec1e47f4cfb0296d84e5d3f
+ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634963"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90847696"
 ---
 # <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>Parte 6, Razor páginas com EF Core em dados relacionados à leitura de ASP.NET Core
 
@@ -63,7 +63,7 @@ Há várias maneiras pelas quais o EF Core pode carregar dados relacionados nas 
 
   ![Exemplo de carregamento explícito](read-related-data/_static/explicit-loading.png)
 
-* [Carregamento lento](/ef/core/querying/related-data#lazy-loading). [O carregamento lento foi adicionado ao EF Core na versão 2.1](/ef/core/querying/related-data#lazy-loading). Quando a entidade é lida pela primeira vez, os dados relacionados não são recuperados. Na primeira vez que uma propriedade de navegação é acessada, os dados necessários para essa propriedade de navegação são recuperados automaticamente. Uma consulta é enviada para o banco de dados sempre que uma propriedade de navegação é acessada pela primeira vez.
+* [Carregamento lento](/ef/core/querying/related-data#lazy-loading). Quando a entidade é lida pela primeira vez, os dados relacionados não são recuperados. Na primeira vez que uma propriedade de navegação é acessada, os dados necessários para essa propriedade de navegação são recuperados automaticamente. Uma consulta é enviada para o banco de dados sempre que uma propriedade de navegação é acessada pela primeira vez. O carregamento lento pode prejudicar o desempenho, por exemplo, quando os desenvolvedores usam padrões de N + 1, carregando um pai e enumerando por meio de filhos.
 
 ## <a name="create-course-pages"></a>Criar páginas do Curso
 
