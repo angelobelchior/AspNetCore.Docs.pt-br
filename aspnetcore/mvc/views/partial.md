@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 7a370042520adfe5b06784b76acf41a81eb2c72d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bb75d8b7d78c82c9c32605ac645b8895fdfb78e3
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630621"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393646"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Exibições parciais no ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) e [Scott Sauber](https://twitter.com/scottsauber)
 
-Uma exibição parcial é um [Razor](xref:mvc/views/razor) arquivo de marcação (*. cshtml*) que processa a saída HTML *dentro* de outra saída renderizada do arquivo de marcação.
+Uma exibição parcial é um [Razor](xref:mvc/views/razor) arquivo de marcação (*. cshtml*) sem uma [`@page`](xref:mvc/views/razor#page) diretiva que processa a saída HTML *dentro de* outra saída renderizada do arquivo de marcação.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -57,7 +57,7 @@ Não use uma exibição parcial em que a lógica de renderização complexa ou a
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Uma exibição parcial é um arquivo de marcação *. cshtml* mantido dentro da pasta de *exibições* (MVC) ou da pasta de *páginas* ( Razor páginas).
+Uma exibição parcial é um arquivo de marcação *. cshtml* sem uma [`@page`](xref:mvc/views/razor#page) diretiva mantida dentro da pasta *views* (MVC) ou da pasta *páginas* ( Razor páginas).
 
 No ASP.NET Core MVC, um <xref:Microsoft.AspNetCore.Mvc.ViewResult> do controlador é capaz de retornar uma exibição ou uma exibição parcial. Em Razor páginas, um <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> pode retornar uma exibição parcial representada como um <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> objeto. A referência e a renderização de exibições parciais são descritas na seção [Referenciar uma exibição parcial](#reference-a-partial-view).
 

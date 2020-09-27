@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 29748ebe24fea03415b5a01b21300433e3fbc0f0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5a172818f8910a637b731dc1b1315965f448b2ba
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634209"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393568"
 ---
 # <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>Usar Streaming no ASP.NET Core SignalR
 
@@ -74,7 +74,7 @@ O exemplo a seguir mostra as noções básicas de streaming de dados para o clie
 > [!NOTE]
 > Grave em `ChannelWriter<T>` um thread em segundo plano e retorne o assim `ChannelReader` que possível. Outras invocações de Hub são bloqueadas até que um `ChannelReader` seja retornado.
 >
-> Ajuste a lógica em um `try ... catch` . Conclua o `Channel` no `catch` e fora do `catch` para verificar se a invocação do método de Hub foi concluída corretamente.
+> Ajustar a lógica em uma [ `try ... catch` instrução](/dotnet/csharp/language-reference/keywords/try-catch). Conclua o `Channel` em um [ `finally` bloco](/dotnet/csharp/language-reference/keywords/try-catch-finally). Se você quiser fluir um erro, Capture-o dentro do `catch` bloco e grave-o no `finally` bloco.
 
 ::: moniker range=">= aspnetcore-3.0"
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: fc0e6398884bb5c3b806a587a8a361d7f279461f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 579491cfe60a26593ca038a1691f9b52f0fb1d06
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625551"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393867"
 ---
 # <a name="aspnet-core-no-locsignalr-configuration"></a>Configuração de ASP.NET Core SignalR
 
@@ -85,6 +85,7 @@ A tabela a seguir descreve as opções para configurar SignalR hubs:
 | `EnableDetailedErrors` | `false` | Se `true` , as mensagens de exceção detalhadas serão retornadas aos clientes quando uma exceção for lançada em um método de Hub. O padrão é `false` , pois essas mensagens de exceção podem conter informações confidenciais. |
 | `StreamBufferCapacity` | `10` | O número máximo de itens que podem ser armazenados em buffer para fluxos de carregamento do cliente. Se esse limite for atingido, o processamento de invocações será bloqueado até que o servidor processe itens de fluxo.|
 | `MaximumReceiveMessageSize` | 32 KB | Tamanho máximo de uma única mensagem de Hub de entrada. |
+| `MaximumParallelInvocationsPerClient` | 1 | O número máximo de métodos de Hub que cada cliente pode chamar em paralelo antes de enfileirar. |
 
 As opções podem ser configuradas para todos os hubs, fornecendo um delegado de opções para a `AddSignalR` chamada em `Startup.ConfigureServices` .
 

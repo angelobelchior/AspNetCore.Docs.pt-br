@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 08cd6396cca78488827dfa7c2cca62a35c500dbd
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: e451d511ab7791a05024d88635d8005132ad4edd
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009694"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393919"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Roteamento para ações do controlador no ASP.NET Core
 
@@ -353,7 +353,7 @@ Considere o seguinte controlador:
 No código anterior:
 
 * Cada ação contém o `[HttpGet]` atributo, que restringe a correspondência somente a solicitações HTTP Get.
-* A `GetProduct` ação inclui o `"{id}"` modelo, portanto, `id` é anexada ao `"api/[controller]"` modelo no controlador. O modelo de métodos é `"api/[controller]/"{id}""` . Portanto, essa ação só corresponde a solicitações GET de para o formulário `/api/test2/xyz` , `/api/test2/123` ,, `/api/test2/{any string}` etc.
+* A `GetProduct` ação inclui o `"{id}"` modelo, portanto, `id` é anexada ao `"api/[controller]"` modelo no controlador. O modelo de métodos é `"api/[controller]/"{id}""` . Portanto, essa ação só corresponde a solicitações GET para o formulário `/api/test2/xyz` , `/api/test2/123` ,, `/api/test2/{any string}` etc.
   [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet2)]
 * A `GetIntProduct` ação contém o `"int/{id:int}")` modelo. A `:int` parte do modelo restringe os `id` valores de rota para cadeias de caracteres que podem ser convertidas em um número inteiro. Uma solicitação GET para `/api/test2/int/abc` :
   * Não corresponde a esta ação.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 7681deb70610a8fbc27ccda7317b73921646794a
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: e12b0e6d1bf9eab751f6605b9a156f637f2b0c0f
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876770"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393828"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -109,11 +109,55 @@ Ao depurar um Blazor WebAssembly aplicativo, você também pode depurar o códig
 > [!NOTE]
 > Os pontos de interrupção **não** são atingidos durante a inicialização do aplicativo antes da execução do proxy de depuração. Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.
 
+Se o aplicativo estiver hospedado em um [caminho base de aplicativo](xref:blazor/host-and-deploy/index#app-base-path) diferente do que o `/` , atualize as seguintes propriedades no `Properties/launchSettings.json` para refletir o caminho base do aplicativo:
+
+* `applicationUrl`:
+
+  ```json
+  "iisSettings": {
+    ...
+    "iisExpress": {
+      "applicationUrl": "http://localhost:{INSECURE PORT}/{APP BASE PATH}/",
+      "sslPort": {SECURE PORT}
+    }
+  },
+  ```
+
+* `inspectUri` de cada perfil:
+
+  ```json
+  "profiles": {
+    ...
+    "{PROFILE 1, 2, ... N}": {
+      ...
+      "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/{APP BASE PATH}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+      ...
+    }
+  }
+  ```
+
+Os espaços reservados nas configurações anteriores:
+
+* `{INSECURE PORT}`: A porta não segura. Um valor aleatório é fornecido por padrão, mas uma porta personalizada é permitida.
+* `{APP BASE PATH}`: O caminho base do aplicativo.
+* `{SECURE PORT}`: A porta segura. Um valor aleatório é fornecido por padrão, mas uma porta personalizada é permitida.
+* `{PROFILE 1, 2, ... N}`: Iniciar perfis de configurações. Normalmente, um aplicativo especifica mais de um perfil por padrão (por exemplo, um perfil para IIS Express e um perfil de projeto, que é usado pelo servidor Kestrel).
+
+Nos exemplos a seguir, o aplicativo é hospedado em `/OAT` com um caminho base de aplicativo configurado em `wwwroot/index.html` como `<base href="/OAT/">` :
+
+```json
+"applicationUrl": "http://localhost:{INSECURE PORT}/OAT/",
+```
+
+```json
+"inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/OAT/_framework/debug/ws-proxy?browser={browserInspectUri}",
+```
+
+Para obter informações sobre como usar um caminho básico do aplicativo personalizado para Blazor WebAssembly aplicativos, consulte <xref:blazor/host-and-deploy/index#app-base-path> .
+
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-<a id="vscode"></a>
-
-## <a name="debug-standalone-no-locblazor-webassembly"></a>Depurar autônomo Blazor WebAssembly
+<h2 id="vscode">Depurar autônomo Blazor WebAssembly</h2>
 
 1. Abra o Blazor WebAssembly aplicativo autônomo no vs Code.
 
@@ -147,7 +191,7 @@ Ao depurar um Blazor WebAssembly aplicativo, você também pode depurar o códig
 
 1. Abra a Blazor WebAssembly pasta de solução do aplicativo hospedado no vs Code.
 
-1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim**.
+1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim** na barra superior.
 
    > Os ativos necessários para compilar e depurar estão ausentes em ' {nome do aplicativo} '. Deseja adicioná-los?
 
@@ -177,8 +221,8 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 | Opção    | Descrição |
 | --------- | ----------- |
 | `request` | Use `launch` para iniciar e anexar uma sessão de depuração a um Blazor WebAssembly aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução. |
-| `url`     | A URL a ser aberta no navegador durante a depuração. O padrão é `https://localhost:5001`. |
-| `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. O padrão é `chrome`. |
+| `url`     | A URL a ser aberta no navegador durante a depuração. Assume o padrão de `https://localhost:5001`. |
+| `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. Assume o padrão de `chrome`. |
 | `trace`   | Usado para gerar logs do depurador JS. Defina como `true` para gerar logs. |
 | `hosted`  | Deve ser definido como `true` se estiver iniciando e depurando um Blazor WebAssembly aplicativo hospedado. |
 | `webRoot` | Especifica o caminho absoluto do servidor Web. Deve ser definido se um aplicativo for servido de uma sub-roteiro. |
@@ -257,7 +301,7 @@ Ao depurar um Blazor WebAssembly aplicativo, você também pode depurar o códig
 > [!NOTE]
 > Os pontos de interrupção **não** são atingidos durante a inicialização do aplicativo antes da execução do proxy de depuração. Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.
 
-Para obter mais informações, consulte [Depurando com Visual Studio para Mac](/visualstudio/mac/debugging?view=vsmac-2019).
+Para obter mais informações, consulte [Depurando com Visual Studio para Mac](/visualstudio/mac/debugging).
 
 ---
 
