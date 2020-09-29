@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 5f4d9a105ad6d0ab53b23d8c1e9f645d69d25888
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 13eb57bbe671dcc70a1678222a98590f4edc6e6f
+ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630270"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91424250"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutorial: criar um cliente gRPC e um servidor no ASP.NET Core
 
@@ -75,7 +75,7 @@ Neste tutorial, você:
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
   ```dotnetcli
   dotnet new grpc -o GrpcGreeter
@@ -147,7 +147,7 @@ Arquivos de projeto *GrpcGreeter*:
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
   ```dotnetcli
   dotnet new console -o GrpcGreeterClient
@@ -176,7 +176,7 @@ Instalar os pacotes usando o PMC (Console do Gerenciador de Pacotes) ou Gerencia
 
 * No Visual Studio, selecione **ferramentas**  >  **Gerenciador de pacotes NuGet**  >  **console do Gerenciador de pacotes**
 * Na janela do **Console do Gerenciador de Pacotes**, execute `cd GrpcGreeterClient` para alterar os diretórios para a pasta que contém os arquivos *GrpcGreeterClient.csproj*.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
   ```powershell
   Install-Package Grpc.Net.Client
@@ -215,6 +215,12 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 * Crie uma pasta *Protos* no projeto do cliente gRPC.
 * Copie o arquivo *Protos\greet.proto* do serviço de Boas-vindas do gRPC para o projeto de cliente gRPC.
+* Atualize o namespace dentro do `greet.proto` arquivo para o namespace do projeto:
+
+  ```
+  option csharp_namespace = "GrpcGreeterClient";
+  ```
+
 * Edite o arquivo de projeto *GrpcGreeterClient.csproj*:
 
   # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)

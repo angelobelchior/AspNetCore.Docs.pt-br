@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: eb4aaa2f3d412cdf650ed2daf7c12166991d92a1
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 92287c7205e67d7f2000b53506ec18475517325b
+ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592898"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91424081"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
@@ -106,7 +106,7 @@ O `LazyAssemblyLoader` fornece o `LoadAssembliesAsync` método que:
 A implementação de carregamento lento da estrutura dá suporte ao carregamento lento com o pré-processamento em uma solução hospedada Blazor . Durante o pré-processamento, todos os assemblies, incluindo os marcados para carregamento lento, são considerados carregados. Registrar manualmente `LazyAssemblyLoader` no método do projeto do *servidor* `Startup.ConfigureServices` ( `Startup.cs` ):
 
 ```csharp
-services.AddSingleton<LazyAssemblyLoader>();
+services.AddScoped<LazyAssemblyLoader>();
 ```
 
 ### <a name="user-interaction-with-navigating-content"></a>Interação do usuário com `<Navigating>` conteúdo

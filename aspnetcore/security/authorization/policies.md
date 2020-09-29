@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/policies
-ms.openlocfilehash: 82ed4cc2ce47d3bd85ca9c2ba2bbeb075eaefcef
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: af282ec1f82b2ac31fd0b46b2406110e24e9211b
+ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635327"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91424237"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorização baseada em políticas no ASP.NET Core
 
@@ -193,7 +193,7 @@ Observe que o `Handle` método no [exemplo do manipulador](#security-authorizati
 
 * Para garantir a falha, mesmo que outros manipuladores de requisitos tenham êxito, chame `context.Fail` .
 
-Se um manipulador chamar `context.Succeed` ou `context.Fail` , todos os outros manipuladores ainda serão chamados. Isso permite que os requisitos produzam efeitos colaterais, como registro em log, que ocorre mesmo se outro manipulador tiver validado ou reprovado com êxito um requisito. Quando definido como `false` , a propriedade [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure) (disponível em ASP.NET Core 1,1 e posterior) circuitos curtos a execução de manipuladores quando `context.Fail` é chamada. `InvokeHandlersAfterFailure``true`o padrão é, nesse caso, todos os manipuladores são chamados.
+Se um manipulador chamar `context.Succeed` ou `context.Fail` , todos os outros manipuladores ainda serão chamados. Isso permite que os requisitos produzam efeitos colaterais, como registro em log, que ocorre mesmo se outro manipulador tiver validado ou reprovado com êxito um requisito. Quando definido como `false` , a propriedade [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure) de circuitos curtos é a execução de manipuladores quando `context.Fail` é chamada. `InvokeHandlersAfterFailure``true`o padrão é, nesse caso, todos os manipuladores são chamados.
 
 > [!NOTE]
 > Os manipuladores de autorização são chamados mesmo se a autenticação falhar.
@@ -427,7 +427,7 @@ Observe que o `Handle` método no [exemplo do manipulador](#security-authorizati
 
 * Para garantir a falha, mesmo que outros manipuladores de requisitos tenham êxito, chame `context.Fail` .
 
-Se um manipulador chamar `context.Succeed` ou `context.Fail` , todos os outros manipuladores ainda serão chamados. Isso permite que os requisitos produzam efeitos colaterais, como registro em log, que ocorre mesmo se outro manipulador tiver validado ou reprovado com êxito um requisito. Quando definido como `false` , a propriedade [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure) (disponível em ASP.NET Core 1,1 e posterior) circuitos curtos a execução de manipuladores quando `context.Fail` é chamada. `InvokeHandlersAfterFailure``true`o padrão é, nesse caso, todos os manipuladores são chamados.
+Se um manipulador chamar `context.Succeed` ou `context.Fail` , todos os outros manipuladores ainda serão chamados. Isso permite que os requisitos produzam efeitos colaterais, como registro em log, que ocorre mesmo se outro manipulador tiver validado ou reprovado com êxito um requisito. Quando definido como `false` , a propriedade [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure) de circuitos curtos é a execução de manipuladores quando `context.Fail` é chamada. `InvokeHandlersAfterFailure``true`o padrão é, nesse caso, todos os manipuladores são chamados.
 
 > [!NOTE]
 > Os manipuladores de autorização são chamados mesmo se a autenticação falhar.

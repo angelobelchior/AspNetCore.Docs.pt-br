@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 870509a3cbbcbea9b1c4804185c49a831af22630
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 236d95e54b772ea522911421084ec0d9022c45ff
+ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009629"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91424133"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
 
@@ -290,7 +290,15 @@ Personalize o atraso antes da exibição da reconexão aparecer definindo a `tra
 }
 ```
 
-::: moniker-end
+## <a name="disconnect-the-no-locblazor-circuit-from-the-client"></a>Desconectar o Blazor circuito do cliente
+
+Por padrão, um Blazor circuito é desconectado quando o [ `unload` evento da página](https://developer.mozilla.org/docs/Web/API/Window/unload_event) é disparado. Para desconectar o circuito para outros cenários no cliente, invoque `Blazor.disconnect` no manipulador de eventos apropriado. No exemplo a seguir, o circuito é desconectado quando a página está oculta ([ `pagehide` evento](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event)):
+
+```javascript
+window.addEventListener('pagehide', () => {
+  Blazor.disconnect();
+});
+```
 
 ## <a name="influence-html-head-tag-elements"></a>Influenciar `<head>` elementos de marca HTML
 
@@ -322,6 +330,8 @@ Quando um dos componentes do Framework é usado em um componente filho, a marca 
 
 * Pode ser modificado pelo estado do aplicativo. Uma marca HTML embutida em código não pode ser modificada pelo estado do aplicativo.
 * É removido do HTML `<head>` quando o componente pai não é mais renderizado.
+
+::: moniker-end
 
 ## <a name="static-files"></a>Arquivos estáticos
 
