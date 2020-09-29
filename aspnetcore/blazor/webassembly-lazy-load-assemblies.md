@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 92287c7205e67d7f2000b53506ec18475517325b
-ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
+ms.openlocfilehash: e874ec6f24d8b03fc6c7133013147498cbbc293a
+ms.sourcegitcommit: 4febe4efaf6e1a7be65d772b500c00fca0af216a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91424081"
+ms.locfileid: "91451170"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
@@ -38,7 +38,7 @@ Blazoro recurso de carregamento lento do permite que você marque os assemblies 
 
 ## <a name="project-file"></a>Arquivo de projeto
 
-Marque assemblies para carregamento lento no arquivo de projeto do aplicativo ( `.csproj` ) usando o `BlazorWebAssemblyLazyLoad` Item. Use o nome do assembly sem a `.dll` extensão. A Blazor estrutura impede que os assemblies especificados por esse grupo de itens sejam carregados na inicialização do aplicativo. O exemplo a seguir marca um assembly personalizado grande ( `GrantImaharaRobotControls.dll` ) para carregamento lento. Se um assembly marcado para carregamento lento tiver dependências, eles também deverão ser marcados para carregamento lento no arquivo de projeto.
+Marque assemblies para carregamento lento no arquivo de projeto do aplicativo ( `.csproj` ) usando o `BlazorWebAssemblyLazyLoad` Item. Use o nome do assembly com a `.dll` extensão. A Blazor estrutura impede que os assemblies especificados por esse grupo de itens sejam carregados na inicialização do aplicativo. O exemplo a seguir marca um assembly personalizado grande ( `GrantImaharaRobotControls.dll` ) para carregamento lento. Se um assembly marcado para carregamento lento tiver dependências, eles também deverão ser marcados para carregamento lento no arquivo de projeto.
 
 ```xml
 <ItemGroup>
