@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 1b8ccb510927fbc8a40f7424ae1ca4a131799095
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 46a9fc7776022a29bedf1c88e8230e1fd52d1607
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722878"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606766"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -570,10 +570,10 @@ As expressões regulares usadas no roteamento geralmente começam com o `^` cara
 
 | Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
+| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
 | `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
 | `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
@@ -1491,10 +1491,10 @@ As expressões regulares usadas no roteamento geralmente começam com o `^` cara
 
 | Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
+| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
 | `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
 | `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
@@ -1592,7 +1592,7 @@ A geração de link somente gera um link para essa rota quando os valores corres
 
 ## <a name="complex-segments"></a>Segmentos complexos
 
-Segmentos complexos (por exemplo, `[Route("/x{token}y")]`) são processados por meio da combinação de literais da direita para a esquerda, de uma maneira diferente de Greedy. Confira [este código](https://github.com/dotnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) para ver uma explicação detalhada de como os segmentos complexos são combinados. O [exemplo de código](https://github.com/dotnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) não é usado pelo ASP.NET Core, mas fornece uma explicação adequada sobre segmentos complexos.
+Segmentos complexos (por exemplo, `[Route("/x{token}y")]`) são processados por meio da combinação de literais da direita para a esquerda, de uma maneira diferente de Greedy. Confira [este código](https://github.com/dotnet/aspnetcore/blob/v2.2.13/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) para ver uma explicação detalhada de como os segmentos complexos são combinados. O [exemplo de código](https://github.com/dotnet/aspnetcore/blob/v2.2.13/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) não é usado pelo ASP.NET Core, mas fornece uma explicação adequada sobre segmentos complexos.
 <!-- While that code is no longer used by ASP.NET Core for complex segment matching, it provides a good match to the current algorithm. The [current code](https://github.com/dotnet/AspNetCore/blob/91514c9af7e0f4c44029b51f05a01c6fe4c96e4c/src/Http/Routing/src/Matching/DfaMatcherBuilder.cs#L227-L244) is too abstracted from matching to be useful for understanding complex segment matching.
 -->
 
@@ -1935,10 +1935,10 @@ As expressões regulares usadas no roteamento geralmente começam com o caracter
 
 | Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
+| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
 | `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
 | `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
@@ -1998,6 +1998,6 @@ A geração de link somente gera um link para essa rota quando os valores corres
 
 ## <a name="complex-segments"></a>Segmentos complexos
 
-Segmentos complexos (por exemplo, `[Route("/x{token}y")]`) são processados por meio da combinação de literais da direita para a esquerda, de uma maneira diferente de Greedy. Confira [este código](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) para ver uma explicação detalhada de como os segmentos complexos são combinados. O [exemplo de código](https://github.com/aspnet/AspNetCore/blob/release/2.2/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) não é usado pelo ASP.NET Core, mas fornece uma explicação adequada sobre segmentos complexos.
+Segmentos complexos (por exemplo, `[Route("/x{token}y")]`) são processados por meio da combinação de literais da direita para a esquerda, de uma maneira diferente de Greedy. Confira [este código](https://github.com/dotnet/aspnetcore/blob/v2.2.13/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) para ver uma explicação detalhada de como os segmentos complexos são combinados. O [exemplo de código](https://github.com/dotnet/aspnetcore/blob/v2.2.13/src/Http/Routing/src/Patterns/RoutePatternMatcher.cs#L293) não é usado pelo ASP.NET Core, mas fornece uma explicação adequada sobre segmentos complexos.
 
 ::: moniker-end

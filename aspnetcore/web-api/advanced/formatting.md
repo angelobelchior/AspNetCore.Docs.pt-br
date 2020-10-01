@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 618bb60ea382437b2787adb814f319b1f0cea4ca
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b89be93fc33d1eba5c2ad9508adf93fa54014ff8
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626526"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606791"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Formatar dados de resposta na API Web ASP.NET Core
 
@@ -163,6 +163,14 @@ public IActionResult Get()
 Antes do ASP.NET Core 3,0, os formatadores JSON usados por padrão implementaram usando o `Newtonsoft.Json` pacote. No ASP.NET Core 3.0 ou posterior, os formatadores JSON padrão baseiam-se no `System.Text.Json`. O suporte para `Newtonsoft.Json` formatadores e recursos baseados está disponível ao instalar o [`Microsoft.AspNetCore.Mvc.NewtonsoftJson`](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) pacote NuGet e configurá-lo no `Startup.ConfigureServices` .
 
 [!code-csharp[](./formatting/3.0sample/StartupNewtonsoftJson.cs?name=snippet)]
+
+No código anterior, a chamada para `AddNewtonsoftJson` configura os seguintes recursos de API Web, MVC e Razor páginas a serem usados `Newtonsoft.Json` :
+
+* Formatadores de entrada e saída que lêem e gravam JSON
+* <xref:Microsoft.AspNetCore.Mvc.JsonResult>
+* [JSON Patch](xref:web-api/jsonpatch)
+* <xref:Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper>
+* [TempData](xref:fundamentals/app-state#tempdata)
 
 Alguns recursos podem não funcionar bem com `System.Text.Json` formatadores baseados em e exigem uma referência aos `Newtonsoft.Json` formatadores baseados em. Continue usando os `Newtonsoft.Json` formatadores baseados em, se o aplicativo:
 

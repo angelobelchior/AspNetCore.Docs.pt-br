@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 478e9e58f265a8c372dd048f9ba8593424050e01
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: fcf69bdaaed5cf0283ae27440c28061857d2cbcb
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722664"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606771"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalização e localização no ASP.NET Core
 
@@ -959,7 +959,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <xref:System.Globalization.CultureInfo> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX

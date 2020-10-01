@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 43794fad36efe44cad6fbb2f1a1cae293a2ddad1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a74f056447839c4cf057948f26a9ece9b5799656
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625954"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606707"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>BlazorGerenciamento de estado ASP.NET Core
 
@@ -58,20 +58,21 @@ Um aplicativo só pode persistir o *estado do aplicativo*. As UIs não podem ser
 
 ## <a name="where-to-persist-state"></a>Onde persistir o estado
 
-Existem três locais comuns para o estado persistente:
+Existem localizações comuns para o estado persistente:
 
 * [Armazenamento no lado do servidor](#server-side-storage)
 * [URL](#url)
 * [Armazenamento de navegador](#browser-storage)
+* [Serviço de contêiner de estado na memória](#in-memory-state-container-service)
 
 ### <a name="server-side-storage"></a>Armazenamento no lado do servidor
 
 Para persistência de dados permanente que abrange vários usuários e dispositivos, o aplicativo pode usar armazenamento independente do lado do servidor acessado por meio de uma API da Web. As opções incluem:
 
-* Armazenamento de Blobs
+* Armazenamento de blobs
 * Armazenamento de chave-valor
 * Banco de dados relacional
-* Armazenamento de tabelas
+* Armazenamento de tabela
 
 Depois que os dados são salvos, o estado do usuário é mantido e está disponível em qualquer nova sessão do navegador.
 
@@ -119,6 +120,10 @@ Em geral, `sessionStorage` é mais seguro usar. `sessionStorage` evita o risco d
 > [!WARNING]
 > Os usuários podem exibir ou adulterar os dados armazenados no `localStorage` e no `sessionStorage` .
 
+## <a name="in-memory-state-container-service"></a>Serviço de contêiner de estado na memória
+
+[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
+
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Salvar o estado do aplicativo antes de uma operação de autenticação](xref:blazor/security/webassembly/additional-scenarios#save-app-state-before-an-authentication-operation)
@@ -162,20 +167,21 @@ Um aplicativo só pode persistir o *estado do aplicativo*. As UIs não podem ser
 
 ## <a name="where-to-persist-state"></a>Onde persistir o estado
 
-Existem três locais comuns para o estado persistente:
+Existem localizações comuns para o estado persistente:
 
 * [Armazenamento no lado do servidor](#server-side-storage)
 * [URL](#url)
 * [Armazenamento de navegador](#browser-storage)
+* [Serviço de contêiner de estado na memória](#in-memory-state-container-service)
 
 ### <a name="server-side-storage"></a>Armazenamento no lado do servidor
 
 Para persistência de dados permanente que abrange vários usuários e dispositivos, o aplicativo pode usar o armazenamento do lado do servidor. As opções incluem:
 
-* Armazenamento de Blobs
+* Armazenamento de blobs
 * Armazenamento de chave-valor
 * Banco de dados relacional
-* Armazenamento de tabelas
+* Armazenamento de tabela
 
 Depois que os dados são salvos, o estado do usuário é mantido e está disponível em qualquer circuito novo.
 
@@ -701,5 +707,9 @@ Em geral, o padrão de *componente pai do provedor de estado* é recomendado:
 Para persistir muitos objetos de estado diferentes e consumir diferentes subconjuntos de objetos em locais diferentes, é melhor evitar o estado de persistência globalmente.
 
 ::: moniker-end
+
+## <a name="in-memory-state-container-service"></a>Serviço de contêiner de estado na memória
+
+[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
 
 ::: zone-end

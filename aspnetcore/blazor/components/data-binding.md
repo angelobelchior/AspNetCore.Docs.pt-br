@@ -18,16 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 493aa7f9cfbf2b47ffcb7d6f8e40de7b62ecfce3
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 3f823ca9cf96b7ff439ade59f946db222b7f7e60
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393815"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606697"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor Associação de dados
 
-De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
+Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)e [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Razor os componentes fornecem recursos de vinculação de dados por meio de um atributo de elemento HTML chamado [`@bind`](xref:mvc/views/razor#bind) com um campo, propriedade ou Razor valor de expressão.
 
@@ -313,6 +313,104 @@ Password:
     }
 }
 ```
+
+## <a name="bind-across-more-than-two-components"></a>Associar entre mais de dois componentes
+
+Você pode associar qualquer número de componentes aninhados, mas deve respeitar o fluxo de dados unidirecional:
+
+* As notificações *de alteração fluem para cima na hierarquia*.
+* Novos valores *de parâmetro fluem para baixo na hierarquia*.
+
+Uma abordagem comum e recomendada é armazenar apenas os dados subjacentes no componente pai para evitar qualquer confusão sobre qual estado deve ser atualizado.
+
+Os seguintes componentes demonstram os conceitos anteriores:
+
+`ParentComponent.razor`:
+
+```razor
+<h1>Parent Component</h1>
+
+<p>Parent Property: <b>@parentValue</b></p>
+
+<p>
+    <button @onclick="ChangeValue">Change from Parent</button>
+</p>
+
+<ChildComponent @bind-Property="parentValue" />
+
+@code {
+    private string parentValue = "Initial value set in Parent";
+
+    private void ChangeValue()
+    {
+        parentValue = $"Set in Parent {DateTime.Now}";
+    }
+}
+```
+
+`ChildComponent.razor`:
+
+```razor
+<div class="border rounded m-1 p-1">
+    <h2>Child Component</h2>
+
+    <p>Child Property: <b>@Property</b></p>
+
+    <p>
+        <button @onclick="ChangeValue">Change from Child</button>
+    </p>
+
+    <GrandchildComponent @bind-Property="BoundValue" />
+</div>
+
+@code {
+    [Parameter]
+    public string Property { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PropertyChanged { get; set; }
+
+    private string BoundValue
+    {
+        get => Property;
+        set => PropertyChanged.InvokeAsync(value);
+    }
+
+    private Task ChangeValue()
+    {
+        return PropertyChanged.InvokeAsync($"Set in Child {DateTime.Now}");
+    }
+}
+```
+
+`GrandchildComponent.razor`:
+
+```razor
+<div class="border rounded m-1 p-1">
+    <h3>Grandchild Component</h3>
+
+    <p>Grandchild Property: <b>@Property</b></p>
+
+    <p>
+        <button @onclick="ChangeValue">Change from Grandchild</button>
+    </p>
+</div>
+
+@code {
+    [Parameter]
+    public string Property { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PropertyChanged { get; set; }
+
+    private Task ChangeValue()
+    {
+        return PropertyChanged.InvokeAsync($"Set in Grandchild {DateTime.Now}");
+    }
+}
+```
+
+Para obter uma abordagem alternativa adequada ao compartilhamento de dados na memória entre componentes que não estão necessariamente aninhados, consulte <xref:blazor/state-management#in-memory-state-container-service> .
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
