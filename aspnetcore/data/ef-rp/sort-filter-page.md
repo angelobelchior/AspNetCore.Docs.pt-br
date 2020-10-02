@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 5e073845acbecdf0db4c30c4725f12033cfc42ac
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e01704cb10c88f3e9442e74034f5e5d39787f300
+ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634677"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653887"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Parte 3, Razor páginas com EF Core em ASP.NET Core-classificar, filtrar, paginação
 
@@ -42,25 +42,26 @@ A ilustração a seguir mostra uma página concluída. Os títulos de coluna sã
 
 Substitua o código em *Pages/Students/Index.cshtml.cs* pelo código a seguir para adicionar classificação.
 
-[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_All&highlight=21-24,26,28-52)]
+[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_All)]
 
 O código anterior:
 
+* Requer adição `using System;` .
 * Adiciona propriedades para conter os parâmetros de classificação.
 * Altera o nome da propriedade `Student` para `Students`.
 * Substitui o código no método `OnGetAsync`.
 
-O método `OnGetAsync` recebe um parâmetro `sortOrder` da cadeia de caracteres de consulta na URL. A URL (incluindo a cadeia de caracteres de consulta) é gerada pelo [Auxiliar de Tag de Âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper).
+O método `OnGetAsync` recebe um parâmetro `sortOrder` da cadeia de caracteres de consulta na URL. A URL e a cadeia de caracteres de consulta são geradas pelo [auxiliar de marca de âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper).
 
-O parâmetro `sortOrder` é "Name" ou "Data". O parâmetro `sortOrder` é opcionalmente seguido de "_desc" para especificar a ordem descendente. A ordem de classificação padrão é crescente.
+O `sortOrder` parâmetro é `Name` ou `Date` . O `sortOrder` parâmetro é opcionalmente seguido de `_desc` para especificar ordem decrescente. A ordem de classificação padrão é crescente.
 
-Quando a página Índice é solicitada do link **Alunos**, não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. A ordem ascendente por sobrenome é o padrão (caso fall-through) na instrução `switch`. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
+Quando a página Índice é solicitada do link **Alunos**, não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. Ordem crescente por sobrenome é o `default` na `switch` instrução. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
 
 `NameSort` e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-O código usa o operador condicional C# [?:](/dotnet/csharp/language-reference/operators/conditional-operator). O operador `?:` é ternário (utiliza três operandos). A primeira linha especifica que, quando `sortOrder` é nulo ou vazio, `NameSort` é definido como "name_desc". Se `sortOrder`**não** é nulo nem vazio, `NameSort` é definido como uma cadeia de caracteres vazia.
+O código usa o [operador condicional C#?:](/dotnet/csharp/language-reference/operators/conditional-operator). O `?:` operador é um operador ternário, usa três operandos. A primeira linha especifica que quando `sortOrder` é nulo ou vazio, `NameSort` é definido como `name_desc` . Se `sortOrder`***não*** é nulo nem vazio, `NameSort` é definido como uma cadeia de caracteres vazia.
 
 Essas duas instruções permitem que a página defina os hiperlinks de título de coluna da seguinte maneira:
 
@@ -110,7 +111,7 @@ Para adicionar a filtragem à página Índice de Alunos:
 
 Substitua o código em *Students/Index.cshtml.cs* pelo código a seguir para adicionar filtragem:
 
-[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml.cs?name=snippet_All&highlight=28,33,37-41)]
+[!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml.cs?name=snippet_All&highlight=17,22,26-30)]
 
 O código anterior:
 
@@ -119,7 +120,7 @@ O código anterior:
 
 ### <a name="iqueryable-vs-ienumerable"></a>IQueryable versus IEnumerable
 
-O código chama o método `Where` em um objeto `IQueryable`, e o filtro é processado no servidor. Em alguns cenários, o aplicativo pode chamar o método `Where` como um método de extensão em uma coleção em memória. Por exemplo, suponha que `_context.Students` seja alterado do `DbSet` do EF Core para um método de repositório que retorna uma coleção `IEnumerable`. O resultado normalmente é o mesmo, mas em alguns casos pode ser diferente.
+O código chama o método <xref:System.Linq.Queryable.Where%2A> em um objeto `IQueryable`, e o filtro é processado no servidor. Em alguns cenários, o aplicativo pode chamar o método `Where` como um método de extensão em uma coleção em memória. Por exemplo, suponha que `_context.Students` seja alterado do `DbSet` do EF Core para um método de repositório que retorna uma coleção `IEnumerable`. O resultado normalmente é o mesmo, mas em alguns casos pode ser diferente.
 
 Por exemplo, a implementação do .NET Framework do `Contains` executa uma comparação diferencia maiúsculas de minúsculas por padrão. No SQL Server, a diferenciação de maiúsculas e minúsculas de `Contains` é determinada pela configuração de ordenação da instância do SQL Server. O SQL Server usa como padrão a não diferenciação de maiúsculas e minúsculas. O SQLite assume como padrão diferenciar maiúsculas de minúsculas. `ToUpper` pode ser chamado para fazer com que o teste diferencie maiúsculas de minúsculas de forma explícita:
 
@@ -139,7 +140,7 @@ Para obter mais informações, confira [Como usar consulta que não diferencia m
 
 ### <a name="update-the-no-locrazor-page"></a>Atualizar a Razor página
 
-Substitua o código em *Pages/Students/index.cshtml* para criar um botão de **Pesquisa** e um cromado classificado.
+Substitua o código em *pages/Students/index. cshtml* para adicionar um botão de **pesquisa** .
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index2.cshtml?highlight=14-23)]
 
@@ -153,8 +154,8 @@ Teste o aplicativo:
 
 Observe que a URL contém a cadeia de caracteres de pesquisa. Por exemplo:
 
-```
-https://localhost:<port>/Students?SearchString=an
+```browser-address-bar
+https://localhost:5001/Students?SearchString=an
 ```
 
 Se a página estiver marcada, o indicador conterá a URL para a página e a cadeia de caracteres de consulta `SearchString`. O `method="get"` na marcação `form` é o que fez com que a cadeia de caracteres de consulta fosse gerada.
@@ -181,15 +182,16 @@ O método `CreateAsync` é usado para criar o `PaginatedList<T>`. Um construtor 
 
 Substitua o código em *Students/index.cshtml.cs* para adicionar paginação.
 
-[!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=26,28-29,31,34-41,68-70)]
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Index.cshtml.cs?name=snippet_All&highlight=15-20,23-30,57-59)]
 
 O código anterior:
 
 * Altera o tipo da propriedade `Students` de `IList<Student>` para `PaginatedList<Student>`.
 * Adiciona o índice de página, o `sortOrder` atual e o `currentFilter` à assinatura do método `OnGetAsync`.
-* Salva a ordem de classificação na propriedade CurrentSort.
+* Salva a ordem de classificação na `CurrentSort` propriedade.
 * Redefine o índice de página como 1 quando há uma nova cadeia de caracteres de pesquisa.
 * Usa a classe `PaginatedList` para obter entidades de Aluno.
+* Define `pageSize` como 3. Um aplicativo real usaria a [configuração](xref:fundamentals/configuration/index) para definir o valor de tamanho da página.
 
 Todos os parâmetros que `OnGetAsync` recebe são nulos quando:
 
@@ -212,7 +214,7 @@ Se a cadeia de caracteres de pesquisa é alterada durante a paginação, a pági
 
   O método `PaginatedList.CreateAsync` converte a consulta de alunos em uma única página de alunos de um tipo de coleção compatível com paginação. Essa única página de alunos é passada para a Razor página.
 
-  Os dois pontos de interrogação em `pageIndex` na chamada `PaginatedList.CreateAsync` representam o [operador de união de nulo](/dotnet/csharp/language-reference/operators/null-conditional-operator). O operador de união de nulo define um valor padrão para um tipo que permite valor nulo. A expressão `(pageIndex ?? 1)` significará retornar o valor de `pageIndex` se ele tiver um valor. Se `pageIndex` não tiver um valor, 1 será retornado.
+  Os dois pontos de interrogação em `pageIndex` na chamada `PaginatedList.CreateAsync` representam o [operador de união de nulo](/dotnet/csharp/language-reference/operators/null-conditional-operator). O operador de união de nulo define um valor padrão para um tipo que permite valor nulo. A expressão `pageIndex ?? 1` retorna o valor de `pageIndex` se tiver um valor, caso contrário, retornará 1.
 
 ### <a name="add-paging-links-to-the-no-locrazor-page"></a>Adicionar links de paginação à Razor página
 
@@ -258,7 +260,7 @@ Crie um arquivo *Pages/About.cshtml* com o seguinte código:
 
 ### <a name="create-the-page-model"></a>Criar o modelo de página
 
-Crie um arquivo *Pages/About.cshtml.cs* com o seguinte código:
+Atualize o arquivo *Pages/About.cshtml.cs* com o seguinte código:
 
 [!code-csharp[Main](intro/samples/cu30/Pages/About.cshtml.cs)]
 
