@@ -918,18 +918,36 @@
         - name: Módulo do ASP.NET Core
           displayName: 'deploy, publish'
           uid: host-and-deploy/aspnet-core-module
+        - name: Hospedagem em processo
+          displayName: 'deploy, publish'
+          uid: host-and-deploy/iis/in-process-hosting
+        - name: Hospedagem fora do processo
+          displayName: 'deploy, publish'
+          uid: host-and-deploy/iis/out-of-process-hosting
+        - name: Pacote de hospedagem
+          displayName: 'deploy, publish'
+          uid: host-and-deploy/iis/hosting-bundle
+        - name: Arquivo web.config
+          displayName: 'deploy, publish'
+          uid: host-and-deploy/iis/web-config
         - name: Suporte ao IIS no Visual Studio
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/development-time-iis-support
         - name: Módulos do IIS
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/modules
+        - name: Log e diagnóstico
+          displayName: 'deploy, publish'
+          uid: host-and-deploy/iis/logging-and-diagnostics
         - name: Solução de problemas
           displayName: 'deploy, publish'
           uid: test/troubleshoot-azure-iis
         - name: Referência de erros
           displayName: 'deploy, publish'
           uid: host-and-deploy/azure-iis-errors-reference
+        - name: Avançado
+          displayName: 'deploy, publish'
+          uid: host-and-deploy/iis/advanced
         - name: Transformação do Web.config
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/transform-webconfig
