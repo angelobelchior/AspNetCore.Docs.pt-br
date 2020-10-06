@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 89ffdfe2b714941440d7560b0ff1331a5c5523f6
-ms.sourcegitcommit: c0a15ab8549cb729731a0fdf1d7da0b7feaa11ff
+ms.openlocfilehash: fb74fef2f87f150a9c7db9746a359fbf0a9900ad
+ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671737"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91754483"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
 
@@ -632,7 +632,7 @@ O exemplo anterior produz uma interface de usuário de mapa interativa, na qual 
 * Pode arrastar para rolar ou aplicar zoom.
 * Clique nos botões para saltar para locais predefinidos.
 
-<img src="https://user-images.githubusercontent.com/1101362/94939821-92ef6700-04ca-11eb-858e-fff6df0053ae.png" width="600" />
+![Mapa de Mapbox de Tóquio, Japão com botões para selecionar Bristol, Reino Unido e Tóquio, Japão](https://user-images.githubusercontent.com/1101362/94939821-92ef6700-04ca-11eb-858e-fff6df0053ae.png)
 
 Os pontos principais a serem compreendidos são:
 

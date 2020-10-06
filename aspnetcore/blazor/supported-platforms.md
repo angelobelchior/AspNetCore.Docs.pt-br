@@ -5,7 +5,7 @@ description: Saiba mais sobre as plataformas com suporte para ASP.NET Core Blazo
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 10/01/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,43 +18,63 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/supported-platforms
-ms.openlocfilehash: 692ab63bb48dbfa29021d59cdf035e9549d3039c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1ffe98636ed200adbf00e89c2c3499eb69792d3f
+ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625941"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91754535"
 ---
 # <a name="aspnet-core-no-locblazor-supported-platforms"></a>ASP.NET Core Blazor plataformas com suporte
 
 Por [Luke Latham](https://github.com/guardrex)
 
-## <a name="browser-requirements"></a>Requisitos de navegador
+::: moniker range=">= aspnetcore-5.0"
 
-### Blazor WebAssembly
+Blazor WebAssembly e Blazor Server têm suporte nos navegadores mostrados na tabela a seguir.
+
+| Navegador                          | Versão         |
+| -------------------------------- | --------------- |
+| Apple Safari, incluindo iOS      | Atualizados&dagger; |
+| Google Chrome, incluindo Android | Atualizados&dagger; |
+| Microsoft Edge                   | Atualizados&dagger; |
+| Mozilla Firefox                  | Atualizados&dagger; |  
+
+&dagger;*Atual* refere-se à versão mais recente do navegador.  
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+## Blazor WebAssembly
 
 | Navegador                          | Versão               |
-| -------------------------------- | :-------------------: |
-| Microsoft Edge                   | Current               |
-| Mozilla Firefox                  | Current               |
-| Google Chrome, incluindo Android | Current               |
-| Safari, incluindo iOS            | Current               |
-| Microsoft Internet Explorer      | Sem suporte&dagger; |
+| -------------------------------- | --------------------- |
+| Apple Safari, incluindo iOS      | Atualizados&dagger;       |
+| Google Chrome, incluindo Android | Atualizados&dagger;       |
+| Microsoft Edge                   | Atualizados&dagger;       |
+| Microsoft Internet Explorer      | Sem suporte&Dagger; |
+| Mozilla Firefox                  | Atualizados&dagger;       |  
 
-&dagger;O Microsoft Internet Explorer não dá suporte ao [Webassembly](https://webassembly.org).
+&dagger;*Atual* refere-se à versão mais recente do navegador.  
+&Dagger;O Microsoft Internet Explorer não dá suporte ao [Webassembly](https://webassembly.org).
 
-### Blazor Server
+## Blazor Server
 
-| Navegador                          | Versão    |
-| -------------------------------- | :--------: |
-| Microsoft Edge                   | Current    |
-| Mozilla Firefox                  | Current    |
-| Google Chrome, incluindo Android | Current    |
-| Safari, incluindo iOS            | Current    |
-| Microsoft Internet Explorer      | 11&dagger; |
+| Navegador                          | Versão         |
+| -------------------------------- | --------------- |
+| Apple Safari, incluindo iOS      | Atualizados&dagger; |
+| Google Chrome, incluindo Android | Atualizados&dagger; |
+| Microsoft Edge                   | Atualizados&dagger; |
+| Microsoft Internet Explorer      | 11&Dagger;      |
+| Mozilla Firefox                  | Atualizados&dagger; |
 
-&dagger;Os suportes retroativos adicionais são necessários (por exemplo, as promessas podem ser adicionadas por meio de um [`Polyfill.io`](https://polyfill.io/v3/) pacote).
+&dagger;*Atual* refere-se à versão mais recente do navegador.  
+&Dagger;Os suportes retroativos adicionais são necessários. Por exemplo, as promessas podem ser adicionadas por meio de um [`Polyfill.io`](https://polyfill.io/v3/) pacote.
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * <xref:blazor/hosting-models>
+* <xref:signalr/supported-platforms>

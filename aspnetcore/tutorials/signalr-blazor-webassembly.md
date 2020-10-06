@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: a8b1e7cd94836e89c438045df4bb8dd049da7f72
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: e4c77bd5bf5a26a11cdd23664ac24ae50986969b
+ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653978"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91754704"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Usar ASP.NET Core SignalR com Blazor WebAssembly
 
@@ -59,7 +59,7 @@ No final deste tutorial, você terá um aplicativo de chat em funcionamento.
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
 <!-- * [Visual Studio for Mac version 8.8 or later (in preview)](https://visualstudio.microsoft.com/vs/mac/) -->
-* [Visual Studio para Mac versão 8,8 ou posterior (em visualização)](https://docs.microsoft.com/visualstudio/releasenotes/vs2019-mac-preview-relnotes)
+* [Visual Studio para Mac versão 8,8 ou posterior (em visualização)](/visualstudio/releasenotes/vs2019-mac-preview-relnotes)
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli/)
