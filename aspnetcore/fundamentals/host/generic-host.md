@@ -1,7 +1,7 @@
 ---
-title: Host Genérico .NET
+title: Host genérico .NET no ASP.NET Core
 author: rick-anderson
-description: Saiba mais sobre o Host Genérico do .NET Core, que é responsável pelo gerenciamento de tempo de vida e pela inicialização do aplicativo.
+description: Use o host genérico do .NET Core em aplicativos ASP.NET Core.  O host genérico é responsável pela inicialização do aplicativo e pelo gerenciamento de tempo de vida.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
@@ -18,18 +18,20 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 59cfae9ff619f8de894686c4b773d66e5cbe10ad
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: d3de81ce7248372279b423da865513ee5db73c79
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754730"
+ms.locfileid: "91762315"
 ---
-# <a name="net-generic-host"></a>Host Genérico .NET
+# <a name="net-generic-host-in-aspnet-core"></a>Host genérico .NET no ASP.NET Core
 
 ::: moniker range=">= aspnetcore-5.0"
 
 Os modelos de ASP.NET Core criam um host genérico do .NET Core ( <xref:Microsoft.Extensions.Hosting.HostBuilder> ).
+
+Este tópico fornece informações sobre como usar o host genérico .NET no ASP.NET Core. Para obter informações sobre como usar o host genérico .NET em aplicativos de console, consulte [host genérico .net](/dotnet/core/extensions/generic-host).
 
 ## <a name="host-definition"></a>Definição de host
 
@@ -529,6 +531,8 @@ public class Program
 ::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
 Os modelos de ASP.NET Core criam um host genérico do .NET Core ( <xref:Microsoft.Extensions.Hosting.HostBuilder> ).
+
+Este tópico fornece informações sobre como usar o host genérico .NET no ASP.NET Core. Para obter informações sobre como usar o host genérico .NET em aplicativos de console, consulte [host genérico .net](/dotnet/core/extensions/generic-host).
 
 ## <a name="host-definition"></a>Definição de host
 

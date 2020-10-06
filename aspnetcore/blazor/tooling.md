@@ -5,7 +5,7 @@ description: Saiba mais sobre as ferramentas disponíveis para criar Blazor apli
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: d7e3743d12c235c20cc27f6a3263e2994a9e160a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d1626fe753782d524bf75c398c11235c3110633a
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625824"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762146"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Ferramentas para ASP.NET Core Blazor
 
@@ -52,13 +52,13 @@ Para obter mais informações sobre como confiar no certificado de desenvolvimen
 
 ::: zone pivot="linux"
 
-1. Instale a versão mais recente do [SDK do .NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1). Se você já instalou o SDK, poderá determinar a versão instalada executando o seguinte comando em um shell de comando:
+1. Instale a versão mais recente do [SDK do .NET Core](https://dotnet.microsoft.com/download). Se você já instalou o SDK, poderá determinar a versão instalada executando o seguinte comando em um shell de comando:
 
    ```dotnetcli
    dotnet --version
    ```
 
-1. Instale a versão mais recente do [Visual Studio Code](https://code.visualstudio.com/).
+1. Instale a versão mais recente do [Visual Studio Code](https://code.visualstudio.com).
 
 1. Instale a extensão mais recente [do C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
@@ -90,7 +90,7 @@ Não há uma maneira centralizada de confiar em um certificado no Linux. Normalm
 * Confiar em todos os certificados autoassinados para `localhost` .
 * Adicione o certificado à lista de certificados confiáveis no navegador.
 
-Para obter mais informações, consulte a orientação fornecida pela distribuição do seu navegador e do Linux.
+Para obter mais informações, consulte a orientação fornecida pelo fabricante do navegador e distribuição do Linux.
 
 ::: zone-end
 

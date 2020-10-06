@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 2d002e075f9d57654589b540e522307c363d9660
-ms.sourcegitcommit: 4cce99cbd44372fd4575e8da8c0f4345949f4d9a
+ms.openlocfilehash: 99e0109ea4c2526e9f91a8a4df23c4557e9be83a
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89153539"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762302"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -34,6 +34,8 @@ O ASP.NET Core é compatível com o padrão de design de software de DI (injeç�
 Para obter mais informações específicas sobre injeção de dependência em controladores de MVC, consulte <xref:mvc/controllers/dependency-injection>.
 
 Para obter mais informações sobre injeção de dependência de opções, consulte <xref:fundamentals/configuration/options> .
+
+Este tópico fornece informações sobre injeção de dependência no ASP.NET Core. Para obter informações sobre como usar a injeção de dependência em aplicativos de console, consulte [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection).
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([como baixar](xref:index#how-to-download-a-sample))
 

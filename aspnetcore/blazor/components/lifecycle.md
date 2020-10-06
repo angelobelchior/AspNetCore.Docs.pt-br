@@ -5,7 +5,7 @@ description: Saiba como usar Razor métodos de ciclo de vida do componente em AS
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2020
+ms.date: 10/06/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,18 +18,48 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 00573f87b65e53a7bfd9cc2aed1d2ed7772b9a4a
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: a43268acdb53bf811148fe795ef0434662ddb32f
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847605"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762185"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCiclo de vida ASP.NET Core
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
 A Blazor estrutura inclui métodos de ciclo de vida síncronos e assíncronos. Substitua métodos de ciclo de vida para executar operações adicionais em componentes durante a inicialização e a renderização do componente.
+
+Os diagramas a seguir ilustram o Blazor ciclo de vida. Os métodos de ciclo de vida são definidos com exemplos nas seções a seguir deste artigo.
+
+Eventos de ciclo de vida do componente:
+
+1. Se o componente estiver renderizando pela primeira vez em uma solicitação:
+   * Crie a instância do componente.
+   * Execute a injeção de propriedade. Executar [`SetParametersAsync`](#before-parameters-are-set) .
+   * Chame [`OnInitialized{Async}`](#component-initialization-methods) . Se um <xref:System.Threading.Tasks.Task> for retornado, o <xref:System.Threading.Tasks.Task> será esperado e, em seguida, o componente será renderizado. Se um <xref:System.Threading.Tasks.Task> não for retornado, processe o componente.
+1. Chame [`OnParametersSet{Async}`](#after-parameters-are-set) . Se um <xref:System.Threading.Tasks.Task> for retornado, o <xref:System.Threading.Tasks.Task> será esperado e, em seguida, o componente será renderizado. Se um <xref:System.Threading.Tasks.Task> não for retornado, processe o componente.
+
+![Eventos de ciclo de vida do componente de um::: no-Loc (Razor)::: componente em::: no-Loc (mais alto):::](lifecycle/_static/lifecycle1.png)
+
+Processamento de eventos de Modelo de Objeto do Documento (DOM):
+
+1. O manipulador de eventos é executado.
+1. Se um <xref:System.Threading.Tasks.Task> for retornado, o <xref:System.Threading.Tasks.Task> será esperado e, em seguida, o componente será renderizado. Se um <xref:System.Threading.Tasks.Task> não for retornado, o componente será renderizado.
+
+![Processamento de eventos de Modelo de Objeto do Documento (DOM)](lifecycle/_static/lifecycle2.png)
+
+O `Render` ciclo de vida:
+
+1. Se essa não for a primeira renderização do componente ou se [`ShouldRender`](#suppress-ui-refreshing) for avaliada como `false` , não execute outras operações no componente.
+1. Crie a comparação da árvore de renderização (diferença) e processe o componente.
+1. Aguardar o DOM para atualizar.
+1. Chame [`OnAfterRender{Async}`](#after-component-render) .
+
+![Ciclo de vida de renderização](lifecycle/_static/lifecycle3.png)
+
+Chamadas de desenvolvedor para [`StateHasChanged`](#state-changes) resultar em uma renderização.
 
 ## <a name="lifecycle-methods"></a>Métodos de ciclo de vida
 
@@ -191,7 +221,7 @@ No `FetchData` componente dos Blazor modelos, <xref:Microsoft.AspNetCore.Compone
 
 `Pages/FetchData.razor` no Blazor Server modelo:
 
-[!code-razor[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
+[!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
 
 ## <a name="handle-errors"></a>Tratar erros
 
@@ -286,11 +316,11 @@ Cancele a assinatura de manipuladores de eventos de eventos .NET. Os exemplos de
 
 * Campo privado e abordagem lambda
 
-  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-1.razor?highlight=23,28)]
+  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-1.razor?highlight=23,28)]
 
 * Abordagem do método privado
 
-  [!code-razor[](lifecycle/samples_snapshot/3.x/event-handler-disposal-2.razor?highlight=16,26)]
+  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
 
 ## <a name="cancelable-background-work"></a>Trabalho em segundo plano cancelável
 
