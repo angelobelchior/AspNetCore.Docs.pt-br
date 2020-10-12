@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/logging-and-diagnostics
-ms.openlocfilehash: 9af2311dd1f42cce3547c8215af22d2613453510
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 523eec53d7d21723dcf136c4e5ce299533a78cc6
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755236"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91901019"
 ---
 # <a name="log-creation-and-redirection"></a>Criação de log e redirecionamento
 
@@ -98,4 +98,4 @@ As configurações do manipulador também podem ser fornecidas por meio de vari�
 > [!WARNING]
 > **Não** deixe o log de depuração habilitado na implantação por mais tempo que o necessário para solucionar um problema. O tamanho do log não é limitado. Deixar o log de depuração habilitado pode esgotar o espaço em disco disponível e causar falha no servidor ou no serviço de aplicativo.
 
-Consulte [configuração com `web.config` ](xref:host-and-deploy/iis/web-config#configuration-with-webconfig) para obter um exemplo do `aspNetCore` elemento no `web.config` arquivo.
+Consulte [configuração do módulo ASP.NET Core com `web.config` ](xref:host-and-deploy/iis/web-config#configuration-of-aspnet-core-module-with-webconfig) para obter um exemplo do `aspNetCore` elemento no `web.config` arquivo.

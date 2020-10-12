@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: d4fd0d501ff14e37bb55b78bb6493ad43f9e5a87
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: b8dd272d673e84b45a39272531385ebfd1d06175
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805564"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900980"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -93,7 +93,7 @@ Para depurar um Blazor WebAssembly aplicativo no Visual Studio:
    > [!NOTE]
    > Não há suporte para **Iniciar sem depuração** (<kbd>Ctrl</kbd> + <kbd>F5</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
 
-1. No aplicativo *cliente* , defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
+1. No `*Client*` aplicativo, defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
 1. No navegador, navegue até a `Counter` página e selecione o botão **clique em mim** para atingir o ponto de interrupção.
 1. No Visual Studio, inspecione o valor do `currentCount` campo na janela **locais** .
 1. Pressione <kbd>F5</kbd> para continuar a execução.
@@ -180,7 +180,7 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
 
 1. O aplicativo autônomo é iniciado e um navegador de depuração é aberto.
 
-1. No aplicativo *cliente* , defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
+1. No `*Client*` aplicativo, defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
 
 1. No navegador, navegue até a `Counter` página e selecione o botão **clique em mim** para atingir o ponto de interrupção.
 
@@ -285,7 +285,7 @@ Para depurar um Blazor WebAssembly aplicativo no Visual Studio para Mac:
    > [!IMPORTANT]
    > O Google Chrome ou o Microsoft Edge deve ser o navegador selecionado para a sessão de depuração.
 
-1. No aplicativo *cliente* , defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
+1. No `*Client*` aplicativo, defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
 1. No navegador, navegue até a `Counter` página e selecione o botão **Click me** para atingir o ponto de interrupção:
 1. No Visual Studio, inspecione o valor do `currentCount` campo na janela **locais** .
 1. Pressione <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd> para continuar a execução.

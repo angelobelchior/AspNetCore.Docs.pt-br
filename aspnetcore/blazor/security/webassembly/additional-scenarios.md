@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 2881b5d01f3b2e41659e3166a4e77b64a450f017
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 50d455b37c51fdd6d3b52b10b3e819eb45526de4
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592911"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900954"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly cenários de segurança adicionais
 
@@ -177,7 +177,7 @@ Para um Blazor aplicativo baseado no Blazor WebAssembly modelo de projeto hosped
 
 ### <a name="graph-api-example"></a>Exemplo de API do Graph
 
-No exemplo a seguir, um nome <xref:System.Net.Http.HttpClient> para API do Graph é usado para obter o número de telefone celular de um usuário para processar uma chamada. Depois de adicionar a permissão Microsoft Graph API `User.Read` na área do AAD do portal do Azure, o escopo é configurado para o cliente nomeado no aplicativo autônomo ou aplicativo cliente de uma solução hospedada Blazor .
+No exemplo a seguir, um nome <xref:System.Net.Http.HttpClient> para API do Graph é usado para obter o número de telefone celular de um usuário para processar uma chamada. Depois de adicionar a permissão Microsoft Graph API `User.Read` na área do AAD do portal do Azure, o escopo é configurado para o cliente nomeado no aplicativo autônomo ou *`Client`* aplicativo de uma solução hospedada Blazor .
 
 > [!NOTE]
 > O exemplo nesta seção Obtém API do Graph dados para o usuário no código do *componente*. Para criar declarações de usuário do API do Graph, consulte os seguintes recursos:
@@ -1070,7 +1070,7 @@ Depois de seguir as diretrizes em um dos Blazor WebAssembly Tópicos do aplicati
 * Processa caminhos para os quais a autorização não é necessária.
 * Não PreRender caminhos para os quais a autorização é necessária.
 
-Na classe do aplicativo cliente `Program` ( `Program.cs` ), fatorar registros de serviço comuns em um método separado (por exemplo, `ConfigureCommonServices` ):
+Na *`Client`* classe do aplicativo `Program` ( `Program.cs` ), fatorar registros de serviço comuns em um método separado (por exemplo, `ConfigureCommonServices` ):
 
 ```csharp
 public class Program
@@ -1130,7 +1130,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-No aplicativo de servidor, crie uma `Pages` pasta se ela não existir. Crie uma `_Host.cshtml` página dentro da pasta do aplicativo do servidor `Pages` . Cole o conteúdo do arquivo do aplicativo cliente `wwwroot/index.html` no `Pages/_Host.cshtml` arquivo. Atualize o conteúdo do arquivo:
+No aplicativo de servidor, crie uma `Pages` pasta se ela não existir. Crie uma `_Host.cshtml` página dentro da pasta do aplicativo do servidor `Pages` . Cole o conteúdo do *`Client`* arquivo do aplicativo `wwwroot/index.html` no `Pages/_Host.cshtml` arquivo. Atualize o conteúdo do arquivo:
 
 * Adicione `@page "_Host"` ao topo do arquivo.
 * Substitua a `<app>Loading...</app>` marca pela seguinte:

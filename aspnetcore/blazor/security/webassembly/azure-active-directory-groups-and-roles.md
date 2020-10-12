@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 7a0c606d82dd625c179ec89e22b9313dfa5d18b4
-ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
+ms.openlocfilehash: ac666a4c7493140d4ae93047e18202c3d8314c7b
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91636771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900694"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory (AAD) grupos, funções de administrador e funções definidas pelo usuário
 
@@ -49,7 +49,7 @@ As diretrizes neste artigo se aplicam aos Blazor WebAssembly cenários de implan
 
 Uma chamada à [API Microsoft Graph](/graph/use-the-api) é necessária para qualquer usuário de aplicativo com mais de cinco associações de grupo de segurança e função de administrador do AAD.
 
-Para permitir chamadas de API do Graph, dê ao aplicativo cliente ou autônomo de uma Blazor solução hospedada qualquer uma das seguintes [permissões de API do Graph](/graph/permissions-reference) no portal do Azure:
+Para permitir chamadas de API do Graph, conceda ao *`Client`* aplicativo autônomo ou de uma solução hospedada Blazor qualquer um dos seguintes [API do Graph permissões](/graph/permissions-reference) no portal do Azure:
 
 * `Directory.Read.All`
 * `Directory.ReadWrite.All`
@@ -88,7 +88,7 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-No aplicativo autônomo ou no aplicativo cliente de uma solução hospedada Blazor , crie uma <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personalizada. Use o escopo correto (permissão) para chamadas API do Graph que obtenham informações de função e grupo.
+No aplicativo autônomo ou no *`Client`* aplicativo de uma solução hospedada Blazor , crie uma <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> classe personalizada. Use o escopo correto (permissão) para chamadas API do Graph que obtenham informações de função e grupo.
 
 `GraphAPIAuthorizationMessageHandler.cs`:
 
@@ -250,7 +250,7 @@ Não há necessidade de fornecer código para remover a declaração original `g
 >
 > A cobertura geral para essa abordagem é encontrada no <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> artigo.
 
-Registre a fábrica no `Program.Main` ( `Program.cs` ) do aplicativo autônomo ou aplicativo cliente de uma solução hospedada Blazor . Consentimento para o `Directory.Read.All` escopo de permissão como um escopo adicional para o aplicativo:
+Registre a fábrica no `Program.Main` ( `Program.cs` ) do aplicativo autônomo ou *`Client`* aplicativo de uma solução hospedada Blazor . Consentimento para o `Directory.Read.All` escopo de permissão como um escopo adicional para o aplicativo:
 
 ```csharp
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
@@ -372,7 +372,7 @@ Adicione referências de pacote ao aplicativo de *servidor* para os seguintes pa
 * Confirme se o registro do aplicativo do *servidor* recebe acesso à API para a permissão API do Graph para `Directory.Read.All` , que é o nível de acesso com privilégios mínimos para grupos de segurança. Confirme se o consentimento do administrador é aplicado à permissão depois de fazer a atribuição de permissão.
 * Atribua um novo segredo do cliente ao aplicativo do *servidor* . Observe o segredo para a configuração do aplicativo na seção [configurações do aplicativo](#app-settings) .
 
-### <a name="app-settings"></a>Configurações de aplicativo
+### <a name="app-settings"></a>Configurações do aplicativo
 
 No arquivo de configurações do aplicativo ( `appsettings.json` ou `appsettings.Production.json` ), crie uma `ClientSecret` entrada com o segredo do cliente do aplicativo do *servidor* do portal do Azure:
 
@@ -651,9 +651,9 @@ O exemplo a seguir pressupõe que um aplicativo está configurado com duas funç
 
 A única `roles` declaração enviada pelo AAD apresenta as funções definidas pelo usuário como `appRoles` `value` s em uma matriz JSON. O aplicativo deve converter a matriz JSON de funções em `role` declarações individuais.
 
-O `CustomUserFactory` mostrado na seção [grupos definidos pelo usuário e funções de administrador do AAD](#user-defined-groups-and-administrator-roles) é configurado para agir em uma `roles` declaração com um valor de matriz JSON. Adicione e registre o `CustomUserFactory` no aplicativo autônomo ou aplicativo cliente de uma solução hospedada Blazor , conforme mostrado na seção [grupos definidos pelo usuário e funções de administrador do AAD](#user-defined-groups-and-administrator-roles) . Não é necessário fornecer código para remover a `roles` declaração original porque ela é automaticamente removida pela estrutura.
+O `CustomUserFactory` mostrado na seção [grupos definidos pelo usuário e funções de administrador do AAD](#user-defined-groups-and-administrator-roles) é configurado para agir em uma `roles` declaração com um valor de matriz JSON. Adicione e registre o `CustomUserFactory` no aplicativo autônomo ou *`Client`* aplicativo de uma solução hospedada Blazor , conforme mostrado na seção [grupos definidos pelo usuário e funções de administrador do AAD](#user-defined-groups-and-administrator-roles) . Não é necessário fornecer código para remover a `roles` declaração original porque ela é automaticamente removida pela estrutura.
 
-No aplicativo `Program.Main` autônomo ou aplicativo cliente de uma solução hospedada Blazor , especifique a declaração denominada " `role` " como a declaração de função:
+No `Program.Main` aplicativo autônomo ou *`Client`* aplicativo de uma solução hospedada Blazor , especifique a declaração denominada " `role` " como a declaração de função:
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>

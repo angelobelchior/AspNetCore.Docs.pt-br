@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 91cc7ffc46f5f1f68efd7e481479b19938476cb0
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 6ae8c55fcfc85dc725a7dd20a7dbecba063a13e9
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762237"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900773"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
 
@@ -56,7 +56,7 @@ dotnet new blazorwasm -au Individual -ho -o {APP NAME}
 | ------------ | -------------- |
 | `{APP NAME}` | `BlazorSample` |
 
-O local de saída especificado com a `-o|--output` opção criará uma pasta de projeto se ela não existir e se tornará parte do nome do aplicativo.
+A localização de saída especificada com a opção `-o|--output` criará uma pasta de projeto se ela não existir e se tornará parte do nome do aplicativo.
 
 Para obter mais informações, consulte o [`dotnet new`](/dotnet/core/tools/dotnet-new) comando no guia do .NET Core.
 
@@ -72,7 +72,7 @@ Para criar um novo Blazor WebAssembly projeto com um mecanismo de autenticação
 
 ---
 
-## <a name="server-app-configuration"></a>Configuração de aplicativo do servidor
+## <a name="server-app-configuration"></a>*`Server`* configuração do aplicativo
 
 As seções a seguir descrevem as adições ao projeto quando o suporte à autenticação é incluído.
 
@@ -154,7 +154,7 @@ Para obter controle total do esquema de banco de dados, herde de uma das Identit
 
 No `OidcConfigurationController` ( `Controllers/OidcConfigurationController.cs` ), o ponto de extremidade do cliente é provisionado para atender aos parâmetros OIDC.
 
-### <a name="app-settings"></a>Configurações de aplicativo
+### <a name="app-settings"></a>Configurações do aplicativo
 
 No arquivo de configurações do aplicativo ( `appsettings.json` ) na raiz do projeto, a `IdentityServer` seção descreve a lista de clientes configurados. No exemplo a seguir, há um único cliente. O nome do cliente corresponde ao nome do aplicativo e é mapeado por convenção para o `ClientId` parâmetro OAuth. O perfil indica o tipo de aplicativo que está sendo configurado. O perfil é usado internamente para direcionar as convenções que simplificam o processo de configuração para o servidor. <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
@@ -170,7 +170,7 @@ No arquivo de configurações do aplicativo ( `appsettings.json` ) na raiz do pr
 
 O espaço reservado `{APP ASSEMBLY}` é o nome do assembly do aplicativo (por exemplo, `BlazorSample.Client` ).
 
-## <a name="client-app-configuration"></a>Configuração do aplicativo cliente
+## <a name="client-app-configuration"></a>*`Client`* configuração do aplicativo
 
 ### <a name="authentication-package"></a>Pacote de autenticação
 
@@ -287,7 +287,7 @@ Execute o aplicativo no projeto do servidor. Ao usar o Visual Studio, seja:
 
 ### <a name="custom-user-factory"></a>Fábrica de usuário personalizada
 
-No aplicativo cliente, crie uma fábrica de usuário personalizada. Identity O servidor envia várias funções como uma matriz JSON em uma única `role` declaração. Uma única função é enviada como um valor de cadeia de caracteres na declaração. A fábrica cria uma `role` declaração individual para cada uma das funções do usuário.
+No *`Client`* aplicativo, crie uma fábrica de usuário personalizada. Identity O servidor envia várias funções como uma matriz JSON em uma única `role` declaração. Uma única função é enviada como um valor de cadeia de caracteres na declaração. A fábrica cria uma `role` declaração individual para cada uma das funções do usuário.
 
 `CustomUserFactory.cs`:
 
@@ -349,14 +349,14 @@ public class CustomUserFactory
 }
 ```
 
-No aplicativo cliente, registre a fábrica em `Program.Main` ( `Program.cs` ):
+No *`Client`* aplicativo, registre a fábrica em `Program.Main` ( `Program.cs` ):
 
 ```csharp
 builder.Services.AddApiAuthorization()
     .AddAccountClaimsPrincipalFactory<CustomUserFactory>();
 ```
 
-No aplicativo de servidor, chame <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> no Identity Construtor, que adiciona serviços relacionados a funções:
+No *`Server`* aplicativo, chame <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> no Identity Construtor, que adiciona serviços relacionados a funções:
 
 ```csharp
 using Microsoft.AspNetCore.Identity;
@@ -378,7 +378,7 @@ Use **uma** das seguintes abordagens:
 
 #### <a name="api-authorization-options"></a>Opções de autorização de API
 
-No aplicativo do servidor:
+No *`Server`* aplicativo:
 
 * Configure Identity o servidor para colocar o `name` e as `role` declarações no token de ID e no token de acesso.
 * Impedir o mapeamento padrão para funções no manipulador de tokens JWT.
@@ -402,7 +402,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 
 #### <a name="profile-service"></a>Serviço de perfil
 
-No aplicativo de servidor, crie uma `ProfileService` implementação.
+No *`Server`* aplicativo, crie uma `ProfileService` implementação.
 
 `ProfileService.cs`:
 
@@ -436,7 +436,7 @@ public class ProfileService : IProfileService
 }
 ```
 
-No aplicativo de servidor, registre o serviço de perfil em `Startup.ConfigureServices` :
+No *`Server`* aplicativo, registre o serviço de perfil em `Startup.ConfigureServices` :
 
 ```csharp
 using IdentityServer4.Services;
@@ -448,7 +448,7 @@ services.AddTransient<IProfileService, ProfileService>();
 
 ### <a name="use-authorization-mechanisms"></a>Usar mecanismos de autorização
 
-No aplicativo cliente, as abordagens de autorização de componente são funcionais neste ponto. Qualquer um dos mecanismos de autorização nos componentes pode usar uma função para autorizar o usuário:
+No *`Client`* aplicativo, as abordagens de autorização de componente são funcionais neste ponto. Qualquer um dos mecanismos de autorização nos componentes pode usar uma função para autorizar o usuário:
 
 * [ `AuthorizeView` componente](xref:blazor/security/index#authorizeview-component) (exemplo: `<AuthorizeView Roles="admin">` )
 * [ `[Authorize]` diretiva de atributo](xref:blazor/security/index#authorize-attribute) ( <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ) (exemplo: `@attribute [Authorize(Roles = "admin")]` )
@@ -463,7 +463,7 @@ No aplicativo cliente, as abordagens de autorização de componente são funcion
   }
   ```
 
-`User.Identity.Name` é preenchido no aplicativo cliente com o nome de usuário do usuário, que geralmente é seu endereço de email de entrada.
+`User.Identity.Name` é populado no *`Client`* aplicativo com o nome de usuário do usuário, que geralmente é seu endereço de email de entrada.
 
 [!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
 

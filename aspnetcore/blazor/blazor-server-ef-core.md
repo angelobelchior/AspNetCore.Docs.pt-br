@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: 36c0915649d9a25cf1b6b2d9ec69c3919aa7bc2c
-ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
+ms.openlocfilehash: fc902cb5a82fda9fdbed09c40d66a846d9360f6a
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91424159"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900733"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>ASP.NET Core Blazor Server com Entity Framework Core (EFCore)
 
@@ -99,7 +99,7 @@ A maneira mais rápida de criar uma nova <xref:Microsoft.EntityFrameworkCore.DbC
 
 A solução recomendada para criar um novo <xref:Microsoft.EntityFrameworkCore.DbContext> com dependências é usar uma fábrica. O EF Core 5,0 ou posterior fornece uma fábrica interna para a criação de novos contextos.
 
-O exemplo a seguir configura o [SQLite](https://www.sqlite.org/index.html) e habilita o log de dados. O código usa um método de extensão para configurar a fábrica de banco de dados para DI e fornecer opções padrão:
+O exemplo a seguir configura o [SQLite](https://www.sqlite.org/index.html) e habilita o log de dados. O código usa um [método de extensão ( `AddDbContextFactory` )](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Data/FactoryExtensions.cs) para configurar a fábrica de banco de dados para di e fornecer opções padrão:
 
 [!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Startup.cs?name=snippet1)]
 
