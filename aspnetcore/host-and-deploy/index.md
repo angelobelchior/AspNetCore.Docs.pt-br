@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 0111b7944bc95932937f0fd74524e3960c5fb681
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f8271d71f34487062484581ba6b3b8445a62439c
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634612"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113785"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Hospedar e implantar o ASP.NET Core
 
@@ -70,7 +70,7 @@ Configuração adicional pode ser necessária para aplicativos hospedados atrás
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Usar o Visual Studio e o MSBuild para automatizar as implantações
 
-A implantação muitas vezes requer tarefas adicionais além de copiar a saída da [dotnet publish](/dotnet/core/tools/dotnet-publish) para um servidor. Por exemplo, arquivos extras podem ser necessários ou excluídos da pasta *publish*. O MSBuild, que é usado pelo Visual Studio para implantação da Web, pode ser personalizado para fazer muitas outras tarefas durante a implantação. Para saber mais, confira <xref:host-and-deploy/visual-studio-publish-profiles> e o livro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/).
+A implantação muitas vezes requer tarefas adicionais além de copiar a saída da [dotnet publish](/dotnet/core/tools/dotnet-publish) para um servidor. Por exemplo, arquivos extras podem ser necessários ou excluídos da pasta *publish*. O Visual Studio usa o [MSBuild](/visualstudio/msbuild/msbuild) para implantação na Web e o MSBuild pode ser personalizado para realizar muitas outras tarefas durante a implantação. Para saber mais, confira <xref:host-and-deploy/visual-studio-publish-profiles> e o livro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/).
 
 Você pode implantar diretamente do Visual Studio para o Serviço de Aplicativo do Azure usando [o recurso Publicar na Web](xref:tutorials/publish-to-azure-webapp-using-vs) ou usando o [suporte ao Git interno](xref:host-and-deploy/azure-apps/azure-continuous-deployment). O Azure DevOps Services dá suporte à [implantação contínua para o Serviço de Aplicativo do Azure](/azure/devops/pipelines/targets/webapp). Para obter mais informações, confira [DevOps com ASP.NET Core e Azure](xref:azure/devops/index).
 

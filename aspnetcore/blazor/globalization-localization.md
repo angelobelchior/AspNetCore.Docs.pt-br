@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 2b8820acba564bdfb85f8338ed5482573960fbb4
-ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
+ms.openlocfilehash: be73b0c1e33a2cd15c9ff0dc51044f9bd48c43fe
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90080271"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113810"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>ASP.NET Core Blazor globalização e localização
 
@@ -76,7 +76,15 @@ Para configurar explicitamente a cultura, defina <xref:System.Globalization.Cult
 
 ::: moniker range=">= aspnetcore-5.0"
 
-Por padrão, Blazor WebAssembly o transporta os recursos de globalização necessários para exibir valores, como datas e moedas, na cultura do usuário. Se o aplicativo não exigir localização, você poderá configurar o aplicativo para dar suporte à cultura invariável, que se baseia na `en-US` cultura:
+Por padrão, Blazor WebAssembly o carrega os recursos mínimos de globalização necessários para exibir valores, como datas e moedas, na cultura do usuário. Os aplicativos que devem oferecer suporte à alteração dinâmica da cultura devem ser configurados `BlazorWebAssemblyLoadAllGlobalizationData` no arquivo do projeto:
+
+```xml
+<PropertyGroup>
+  <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+</PropertyGroup>
+```
+
+Se o aplicativo não exigir localização, você poderá configurar o aplicativo para dar suporte à cultura invariável, que se baseia na `en-US` cultura:
 
 ```xml
 <PropertyGroup>
@@ -100,7 +108,7 @@ Blazor Server os aplicativos são localizados usando o [middleware de localizaç
 
 A cultura pode ser definida usando uma das seguintes abordagens:
 
-* [Cookie&](#cookies)
+* [Cookies](#cookies)
 * [Fornecer interface do usuário para escolher a cultura](#provide-ui-to-choose-the-culture)
 
 Para obter mais informações e exemplos, consulte <xref:fundamentals/localization>.

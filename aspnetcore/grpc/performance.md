@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: 4d50698b8c55f7fb3ef9a2c3102e73e046a22a9c
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: b54d13bfd9207a7b8961c1c4fa9908d3d54a4270
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722839"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113849"
 ---
 # <a name="performance-best-practices-with-grpc"></a>Práticas recomendadas de desempenho com o gRPC
 
@@ -53,7 +53,7 @@ o gRPC Client Factory oferece uma maneira centralizada de configurar canais. Ele
 
 ## <a name="connection-concurrency"></a>Simultaneidade de conexão
 
-As conexões HTTP/2 normalmente têm um limite no número [máximo de fluxos simultâneos (solicitações HTTP ativas)](https://http2.github.io/http2-spec/#rfc.section.5.1.2) em uma conexão ao mesmo tempo. Por padrão, a maioria dos servidores define esse limite como 100 fluxos simultâneos.
+As conexões HTTP/2 normalmente têm um limite no número [máximo de fluxos simultâneos (solicitações HTTP ativas)](https://httpwg.github.io/specs/rfc7540.html#rfc.section.5.1.2) em uma conexão ao mesmo tempo. Por padrão, a maioria dos servidores define esse limite como 100 fluxos simultâneos.
 
 Um canal do gRPC usa uma única conexão HTTP/2, e as chamadas simultâneas são multiplexada nessa conexão. Quando o número de chamadas ativas atinge o limite de fluxo de conexão, chamadas adicionais são enfileiradas no cliente. As chamadas em fila aguardam que as chamadas ativas sejam concluídas antes de serem enviadas. Aplicativos com alta carga ou chamadas de gRPC de streaming de longa execução podem ver problemas de desempenho causados por chamadas de enfileiramento por causa desse limite.
 

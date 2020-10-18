@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: a0c53755bd56b6c169437ca9f0ea915e46ad79ec
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 2a80a9c4848703802b15348a30f2564f9580a24b
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606746"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113875"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Parte 8, adicionar um novo campo a um aplicativo ASP.NET Core MVC
 
@@ -133,11 +133,16 @@ Se você excluir todos os registros do BD, o método de inicialização propagar
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados *MvcMovie. db* . Em seguida, execute o comando `ef database update`:
+Exclua o banco de dados e a migração anterior e use migrações para recriar o banco de dados:
 
 ```dotnetcli
+dotnet ef migrations remove
+dotnet ef database drop
+dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+
+`dotnet ef migrations remove` Remove a última migração. Se houver mais de uma migração, exclua a pasta Migrations.
 
 ---
 <!-- End of VS tabs -->

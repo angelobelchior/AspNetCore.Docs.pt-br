@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: b807681e00b196449c74dbe4240e9d6996af51fc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a71f81b4fca6d9a84ad98e0e8935748cfd358fa0
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633078"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113771"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory com o ASP.NET Core
 
@@ -41,8 +41,6 @@ Esses tutoriais e exemplos demonstram a autenticação no ASP.NET Core usando a 
 
 * [Habilite seu aplicativo ASP.NET Core para conectar usuários e chamar APIs da Web usando o Azure ad v2](/samples/azure-samples/active-directory-aspnetcore-webapp-openidconnect-v2/enable-webapp-signin/): 
   * Consulte [este vídeo associado](https://channel9.msdn.com/Events/Build/2018/THR5001)
-
 * [Chamando uma API Web do ASP.NET Core 2,0 de um aplicativo WPF usando o Azure ad v2](/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/): 
   * Consulte [este vídeo associado](https://channel9.msdn.com/Events/Build/2018/THR5000)
-
-* [Um aplicativo API Web ASP.NET Core com o Azure AD B2C](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/)
+* [Um aplicativo Web ASP.NET Core com o Azure AD B2C](/samples/azure-samples/active-directory-b2c-dotnetcore-webapp/an-aspnet-core-web-app-with-azure-ad-b2c/)

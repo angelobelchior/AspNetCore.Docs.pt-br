@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 9d70b292a93a5d19cc25b2fc592ec88ce8262434
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 177112106d143a6826c1f927aac807da0aa9f2b4
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629984"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113823"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introdução ao ASP.NET Core MVC
 
@@ -67,7 +67,7 @@ No final, você terá um aplicativo que pode gerenciar e exibir dados de filmes.
 
 * No Visual Studio, selecione **Criar um projeto**.
 
-* Selecione **Aplicativo Web ASP.NET Core** e, em seguida, selecione **Avançar**.
+* Selecione **ASP.NET Core aplicativo Web** a > **seguir**.
 
 ![novo Aplicativo Web ASP.NET Core](start-mvc/_static/np_2.1.png)
 
@@ -75,7 +75,7 @@ No final, você terá um aplicativo que pode gerenciar e exibir dados de filmes.
 
   ![novo Aplicativo Web ASP.NET Core](start-mvc/_static/config.png)
 
-* Selecione **Aplicativo Web (Model-View-Controller)** e, em seguida, **Criar**.
+* Selecione **aplicativo Web (Model-View-Controller)**. Nas caixas suspensas, selecione **.NET Core** e **ASP.NET Core 3,1**e, em seguida, selecione **criar**.
 
 ![Caixa de diálogo Novo projeto, .NET Core no painel esquerdo, Web do ASP.NET Core ](start-mvc/_static/new_project30.png)
 
@@ -87,7 +87,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o comando a seguir:
+* Execute o seguinte comando:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -240,7 +240,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o comando a seguir:
+* Execute o seguinte comando:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie

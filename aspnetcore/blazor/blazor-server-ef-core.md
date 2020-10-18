@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: fc902cb5a82fda9fdbed09c40d66a846d9360f6a
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: ac84b9d2fac4fe3df48d356eea3ea48fd23bfda4
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900733"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113628"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>ASP.NET Core Blazor Server com Entity Framework Core (EFCore)
 
@@ -110,6 +110,19 @@ A fábrica é injetada em componentes e usada para criar novas instâncias. Por 
 > [!NOTE]
 > `Wrapper` é uma [referência de componente](xref:blazor/components/index#capture-references-to-components) para o `GridWrapper` componente. Consulte o `Index` componente ( `Pages/Index.razor` ) no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor).
 
+Novas <xref:Microsoft.EntityFrameworkCore.DbContext> instâncias podem ser criadas com uma fábrica que permite que você configure a cadeia de conexão por `DbContext` , como quando você usa o [modelo de ASP.NET Core Identity ]) (xref: segurança/autenticação/customize_identity_model):
+
+```csharp
+services.AddDbContextFactory<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+});
+
+services.AddScoped<ApplicationDbContext>(p => 
+    p.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
+    .CreateDbContext());
+```
+
 <h3 id="scope-to-the-component-lifetime-5x">Escopo para o tempo de vida do componente</h3>
 
 Talvez você queira criar um <xref:Microsoft.EntityFrameworkCore.DbContext> que existe durante o tempo de vida de um componente. Isso permite que você o use como uma [unidade de trabalho](https://martinfowler.com/eaaCatalog/unitOfWork.html) e aproveite os recursos internos, como o controle de alterações e a resolução de simultaneidade.
@@ -127,6 +140,23 @@ O aplicativo de exemplo garante que o contexto seja Descartado quando o componen
 Por fim, [`OnInitializedAsync`](xref:blazor/components/lifecycle) é substituído para criar um novo contexto. No aplicativo de exemplo, o [`OnInitializedAsync`](xref:blazor/components/lifecycle) carrega o contato no mesmo método:
 
 [!code-csharp[](./common/samples/5.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor?name=snippet2)]
+
+<h3 id="enable-sensitive-data-logging">Habilitar log de dados confidenciais</h3>
+
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> inclui dados de aplicativo em mensagens de exceção e log de estrutura. Os dados registrados podem incluir os valores atribuídos às propriedades de instâncias de entidade e valores de parâmetro para comandos enviados ao banco de dado. O registro em log de dados <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> é um **risco de segurança**, pois ele pode expor senhas e outras informações de identificação pessoal (PII) ao registrar as instruções SQL executadas no banco de dados.
+
+É recomendável habilitar apenas <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> para desenvolvimento e teste:
+
+```csharp
+#if DEBUG
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db")
+        .EnableSensitiveDataLogging());
+#else
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db"));
+#endif
+```
 
 :::moniker-end
 
@@ -218,6 +248,19 @@ A fábrica é injetada em componentes e usada para criar novas instâncias. Por 
 > [!NOTE]
 > `Wrapper` é uma [referência de componente](xref:blazor/components/index#capture-references-to-components) para o `GridWrapper` componente. Consulte o `Index` componente ( `Pages/Index.razor` ) no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/common/samples/3.x/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/Index.razor).
 
+Novas <xref:Microsoft.EntityFrameworkCore.DbContext> instâncias podem ser criadas com uma fábrica que permite que você configure a cadeia de conexão por `DbContext` , como quando você usa o [modelo de ASP.NET Core Identity ]) (xref: segurança/autenticação/customize_identity_model):
+
+```csharp
+services.AddDbContextFactory<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+});
+
+services.AddScoped<ApplicationDbContext>(p => 
+    p.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
+    .CreateDbContext());
+```
+
 <h3 id="scope-to-the-component-lifetime-3x">Escopo para o tempo de vida do componente</h3>
 
 Talvez você queira criar um <xref:Microsoft.EntityFrameworkCore.DbContext> que existe durante o tempo de vida de um componente. Isso permite que você o use como uma [unidade de trabalho](https://martinfowler.com/eaaCatalog/unitOfWork.html) e aproveite os recursos internos, como o controle de alterações e a resolução de simultaneidade.
@@ -240,6 +283,23 @@ No exemplo anterior:
 
 * Quando `Busy` é definido como `true` , as operações assíncronas podem começar. Quando `Busy` é definido de volta como `false` , as operações assíncronas devem ser concluídas.
 * Coloque a lógica de tratamento de erro adicional em um `catch` bloco.
+
+<h3 id="enable-sensitive-data-logging">Habilitar log de dados confidenciais</h3>
+
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> inclui dados de aplicativo em mensagens de exceção e log de estrutura. Os dados registrados podem incluir os valores atribuídos às propriedades de instâncias de entidade e valores de parâmetro para comandos enviados ao banco de dado. O registro em log de dados <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> é um **risco de segurança**, pois ele pode expor senhas e outras informações de identificação pessoal (PII) ao registrar as instruções SQL executadas no banco de dados.
+
+É recomendável habilitar apenas <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> para desenvolvimento e teste:
+
+```csharp
+#if DEBUG
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db")
+        .EnableSensitiveDataLogging());
+#else
+    services.AddDbContextFactory<ContactContext>(opt =>
+        opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db"));
+#endif
+```
 
 :::moniker-end
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 791cc14feac30ad8a571d155624ab821dfd77981
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
+ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722852"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92153646"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Imagens do Docker para o ASP.NET Core
 
@@ -99,7 +99,7 @@ O exemplo de Dockerfile usa o [recurso de build de vários estágios do Docker](
 
 ## <a name="run-in-a-linux-container"></a>Executar em um contêiner do Linux
 
-* No cliente do Docker, alterne para contêineres do Linux.
+* No cliente do Docker, [alterne para contêineres do Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 * Navegue até a pasta do Dockerfile em *dotnet-docker/samples/aspnetapp*.
 
@@ -125,7 +125,7 @@ O exemplo de Dockerfile usa o [recurso de build de vários estágios do Docker](
 
 ## <a name="run-in-a-windows-container"></a>Executar em um contêiner do Windows
 
-* No cliente do Docker, alterne para os contêineres do Windows.
+* No cliente do Docker, [alterne para contêineres do Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 Navegue até a pasta do arquivo do docker em `dotnet-docker/samples/aspnetapp`.
 
@@ -169,7 +169,7 @@ Em alguns cenários, talvez você queira implantar um aplicativo em um contêine
   * Compile o aplicativo no modo de versão (o padrão é o modo de depuração).
   * Crie os arquivos na pasta *published*.
 
-* Execute o aplicativo.
+* Executar o aplicativo.
 
   * Windows:
 
