@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: a7ba41501b856482c8fcf7efa8e1d78857020bf5
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 3bd881b124e00b91ab0aa9d3eb7531f10ef895f2
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113758"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326505"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
 
@@ -260,9 +260,7 @@ public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef,
 
 ## <a name="reference-elements-across-components"></a>Elementos de referência entre componentes
 
-Uma <xref:Microsoft.AspNetCore.Components.ElementReference> só é garantida válida no método de um componente <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> (e uma referência de elemento é a `struct` ), portanto, uma referência de elemento não pode ser passada entre componentes.
-
-Para que um componente pai torne uma referência de elemento disponível para outros componentes, o componente pai pode:
+Uma <xref:Microsoft.AspNetCore.Components.ElementReference> instância só é garantida como válida no método de um componente <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> (e uma referência de elemento é um `struct` ), portanto, uma referência de elemento não pode ser passada entre componentes. Para que um componente pai torne uma referência de elemento disponível para outros componentes, o componente pai pode:
 
 * Permitir que componentes filho registrem retornos de chamada.
 * Invoque os retornos de chamada registrados durante o <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> evento com a referência de elemento passada. Indiretamente, essa abordagem permite que os componentes filho interajam com a referência de elemento do pai.

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: d615f67fc5cb23499ee7e14b747390a7a1b5a693
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 51228e59284b5edf0554e9929b16deafe08ea31e
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865129"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326633"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrar do ASP.NET MVC para o ASP.NET Core MVC
 
@@ -46,7 +46,7 @@ Para migrar a configuração e o Identity código, consulte [migrar a configura�
 
 Crie um projeto MVC de exemplo do ASP.NET no Visual Studio para migrar:
 
-1. No menu **Arquivo**, selecione **Novo** > **Projeto**.
+1. No menu **arquivo** , selecione **novo** > **projeto**.
 1. Selecione **aplicativo Web ASP.net (.NET Framework)** e, em seguida, selecione **Avançar**.
 1. Nomeie o projeto *WebApp1* para que o namespace corresponda ao projeto de ASP.NET Core criado na próxima etapa. Selecione **Criar**.
 1. Selecione **MVC**e, em seguida, selecione **criar**.
@@ -56,8 +56,8 @@ Crie um projeto MVC de exemplo do ASP.NET no Visual Studio para migrar:
 Crie uma nova solução com um novo projeto ASP.NET Core para migrar para o:
 
 1. Inicie uma segunda instância do Visual Studio.
-1. No menu **Arquivo**, selecione **Novo** > **Projeto**.
-1. Selecione **aplicativo Web do ASP.NET Web Core** e, em seguida, selecione **Avançar**.
+1. No menu **arquivo** , selecione **novo** > **projeto**.
+1. Selecione **Aplicativo Web ASP.NET Core** e, em seguida, selecione **Avançar**.
 1. Na caixa de diálogo **configurar seu novo projeto** , nomeie o projeto *WebApp1*.
 1. Defina o local para um diretório diferente do projeto anterior para usar o mesmo nome de projeto. Usar o mesmo namespace torna mais fácil copiar o código entre os dois projetos. Selecione **Criar**.
 1. Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , confirme se o **.net Core** e **ASP.NET Core 3,1** estão selecionados. Selecione o modelo de projeto **aplicativo Web (modelo-exibição-controlador)** e selecione **criar**.

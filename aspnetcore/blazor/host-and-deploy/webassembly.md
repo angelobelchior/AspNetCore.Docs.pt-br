@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 63954bd2fbb8fdb2e347d552a10adc52263c3ad6
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: c3f537ff3b55f295db478cb097bc99023cc71a87
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900707"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326508"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -419,7 +419,7 @@ Uma *implantação autônoma* serve o Blazor WebAssembly aplicativo como um conj
 
 Os ativos de implantação autônomo são publicados na `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` pasta.
 
-### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
 
 Blazor WebAssembly os aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
 
@@ -450,7 +450,13 @@ Quando um Blazor projeto é publicado, um `web.config` arquivo é criado com a s
   
 #### <a name="use-a-custom-webconfig"></a>Usar um web.config personalizado
 
-Para usar um `web.config` arquivo personalizado, coloque o `web.config` arquivo personalizado na raiz da pasta do projeto e publique o projeto.
+Para usar um `web.config` arquivo personalizado, coloque o `web.config` arquivo personalizado na raiz da pasta do projeto. Configure o projeto para publicar ativos específicos do IIS usando `PublishIISAssets` no arquivo de projeto do aplicativo e publique o projeto:
+
+```xml
+<PropertyGroup>
+  <PublishIISAssets>true</PublishIISAssets>
+</PropertyGroup>
+```
 
 #### <a name="install-the-url-rewrite-module"></a>Instalação do Módulo de Regeneração de URL
 
