@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 212d8a80bdc466479c34bc5fbd9c3261ca9d54c4
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 9f67f8104eb5c21f244449ca3a4aaa96c750836d
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393906"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379473"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -91,7 +91,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para a pasta que conterá a pasta do projeto.
-* Execute os comandos a seguir:
+* Execute os seguintes comandos:
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -324,7 +324,7 @@ O código anterior:
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Execute os comandos a seguir:
+Execute os seguintes comandos:
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -520,7 +520,7 @@ Use o Postman para excluir um item pendente:
 * Defina o URI do objeto a ser excluído (por exemplo, `https://localhost:5001/api/TodoItems/1` ).
 * Selecione **Enviar**.
 
-<a name="over-post"></a>
+<a name="over-post-v5"></a>
 
 ## <a name="prevent-over-posting"></a>Evitar excesso de postagem
 
@@ -617,7 +617,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para a pasta que conterá a pasta do projeto.
-* Execute os comandos a seguir:
+* Execute os seguintes comandos:
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -815,7 +815,7 @@ O código anterior:
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Execute os comandos a seguir:
+Execute os seguintes comandos:
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -1008,6 +1008,7 @@ Use o Postman para excluir um item pendente:
 * Selecione **Enviar**.
 
 <a name="over-post"></a>
+<a name="over-post-v3"></a>
 
 ## <a name="prevent-over-posting"></a>Evitar excesso de postagem
 
@@ -1107,7 +1108,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para a pasta que conterá a pasta do projeto.
-* Execute os comandos a seguir:
+* Execute os seguintes comandos:
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -1389,7 +1390,7 @@ O método `CreatedAtAction`:
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/pmc2.png)
 
 * Defina o método como GET.
-* Defina o URI como  `https://localhost:<port>/api/TodoItems/2` .Por exemplo,  `https://localhost:5001/api/TodoItems/2` .
+* Defina o URI como `https://localhost:<port>/api/TodoItems/2` . Por exemplo, `https://localhost:5001/api/TodoItems/2`.
 * Selecione **Enviar**.
 
 ## <a name="add-a-puttodoitem-method-21"></a>Adicionar um método PutTodoItem 2,1
