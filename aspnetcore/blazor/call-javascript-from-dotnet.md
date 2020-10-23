@@ -5,7 +5,7 @@ description: Saiba como invocar funções JavaScript a partir de métodos .NET e
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/02/2020
+ms.date: 10/20/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 3bd881b124e00b91ab0aa9d3eb7531f10ef895f2
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 60682adf8056c99689087977cade0e272ba922c9
+ms.sourcegitcommit: d84a225ec3381355c343460deed50f2fa5722f60
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326505"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92429124"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
 
@@ -208,40 +208,46 @@ O exemplo a seguir mostra a captura de uma referência ao `username` `<input>` e
 >
 > Se a interoperabilidade do JS converter o conteúdo do elemento `MyList` e Blazor tentar aplicar diffs ao elemento, as diferenças não corresponderão ao dom.
 
-No que diz respeito ao código .NET, um <xref:Microsoft.AspNetCore.Components.ElementReference> é um identificador opaco. A *única* coisa que você pode fazer com o <xref:Microsoft.AspNetCore.Components.ElementReference> é passá-lo para o código JavaScript por meio da interoperabilidade do js. Quando você faz isso, o código do lado do JavaScript recebe uma `HTMLElement` instância, que pode ser usada com APIs dom normais.
-
-Por exemplo, o código a seguir define um método de extensão .NET que permite definir o foco em um elemento:
+Um <xref:Microsoft.AspNetCore.Components.ElementReference> é passado para o código JavaScript por meio da interoperabilidade do js. O código JavaScript recebe uma `HTMLElement` instância, que pode ser usada com APIs dom normais. Por exemplo, o código a seguir define um método de extensão .NET que permite enviar um clique do mouse para um elemento:
 
 `exampleJsInterop.js`:
 
 ```javascript
-window.exampleJsFunctions = {
-  focusElement : function (element) {
-    element.focus();
+window.interopFunctions = {
+  clickElement : function (element) {
+    element.click();
   }
 }
 ```
 
-Para chamar uma função JavaScript que não retorna um valor, use <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> . O código a seguir define o foco na entrada de nome de usuário chamando a função JavaScript anterior com o capturado <xref:Microsoft.AspNetCore.Components.ElementReference> :
+::: moniker range=">= aspnetcore-5.0"
 
-[!code-razor[](call-javascript-from-dotnet/samples_snapshot/component1.razor?highlight=1,3,11-12)]
+> [!NOTE]
+> Use [`FocusAsync`](xref:blazor/components/event-handling#focus-an-element) em código C# para focalizar um elemento, que é interno da Blazor estrutura e funciona com referências de elemento.
+
+::: moniker-end
+
+Para chamar uma função JavaScript que não retorna um valor, use <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> . O código a seguir dispara um evento do lado `Click` do cliente chamando a função JavaScript anterior com o capturado <xref:Microsoft.AspNetCore.Components.ElementReference> :
+
+[!code-razor[](call-javascript-from-dotnet/samples_snapshot/component1.razor?highlight=14-15)]
 
 Para usar um método de extensão, crie um método de extensão estático que receba a <xref:Microsoft.JSInterop.IJSRuntime> instância:
 
 ```csharp
-public static async Task Focus(this ElementReference elementRef, IJSRuntime jsRuntime)
+public static async Task TriggerClickEvent(this ElementReference elementRef, 
+    IJSRuntime jsRuntime)
 {
     await jsRuntime.InvokeVoidAsync(
-        "exampleJsFunctions.focusElement", elementRef);
+        "interopFunctions.clickElement", elementRef);
 }
 ```
 
-O `Focus` método é chamado diretamente no objeto. O exemplo a seguir pressupõe que o `Focus` método está disponível no `JsInteropClasses` namespace:
+O `clickElement` método é chamado diretamente no objeto. O exemplo a seguir pressupõe que o `TriggerClickEvent` método está disponível no `JsInteropClasses` namespace:
 
-[!code-razor[](call-javascript-from-dotnet/samples_snapshot/component2.razor?highlight=1-4,12)]
+[!code-razor[](call-javascript-from-dotnet/samples_snapshot/component2.razor?highlight=15)]
 
 > [!IMPORTANT]
-> A `username` variável é populada apenas depois que o componente é renderizado. Se um não populado <xref:Microsoft.AspNetCore.Components.ElementReference> for passado para o código JavaScript, o código JavaScript receberá um valor de `null` . Para manipular referências de elemento após a conclusão da renderização do componente (para definir o foco inicial em um elemento), use os [ `OnAfterRenderAsync` métodos de ciclo de vida do `OnAfterRender` componente ou](xref:blazor/components/lifecycle#after-component-render).
+> A `exampleButton` variável é populada apenas depois que o componente é renderizado. Se um não populado <xref:Microsoft.AspNetCore.Components.ElementReference> for passado para o código JavaScript, o código JavaScript receberá um valor de `null` . Para manipular referências de elemento após a conclusão da renderização do componente, use os [ `OnAfterRenderAsync` métodos de ciclo de vida do `OnAfterRender` componente ou](xref:blazor/components/lifecycle#after-component-render).
 
 Ao trabalhar com tipos genéricos e retornar um valor, use <xref:System.Threading.Tasks.ValueTask%601> :
 
@@ -260,7 +266,12 @@ public static ValueTask<T> GenericMethod<T>(this ElementReference elementRef,
 
 ## <a name="reference-elements-across-components"></a>Elementos de referência entre componentes
 
-Uma <xref:Microsoft.AspNetCore.Components.ElementReference> instância só é garantida como válida no método de um componente <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> (e uma referência de elemento é um `struct` ), portanto, uma referência de elemento não pode ser passada entre componentes. Para que um componente pai torne uma referência de elemento disponível para outros componentes, o componente pai pode:
+Um <xref:Microsoft.AspNetCore.Components.ElementReference> não pode ser passado entre componentes porque:
+
+* Só é garantido que a instância exista depois que o componente é renderizado, que é durante ou após a execução do método de um componente <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> / <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> .
+* Um <xref:Microsoft.AspNetCore.Components.ElementReference> é um [`struct`](/csharp/language-reference/builtin-types/struct) , que não pode ser passado como um [parâmetro de componente](xref:blazor/components/index#component-parameters).
+
+Para que um componente pai torne uma referência de elemento disponível para outros componentes, o componente pai pode:
 
 * Permitir que componentes filho registrem retornos de chamada.
 * Invoque os retornos de chamada registrados durante o <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> evento com a referência de elemento passada. Indiretamente, essa abordagem permite que os componentes filho interajam com a referência de elemento do pai.

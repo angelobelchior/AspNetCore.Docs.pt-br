@@ -5,7 +5,7 @@ description: Saiba mais sobre os recursos de associação de dados para componen
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2020
+ms.date: 10/22/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 0884b0bedd9ed31b8c85790c6950c7c5d63bdf44
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 5a4d50d88ebdf606da397666bf3003232cddd955
+ms.sourcegitcommit: d84a225ec3381355c343460deed50f2fa5722f60
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653900"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92429101"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor Associação de dados
 
@@ -90,7 +90,7 @@ A associação de atributo diferencia maiúsculas de minúsculas:
 
 Quando um usuário fornece um valor não analisável para um elemento de ligação de valores, o valor não analisável é revertido automaticamente para seu valor anterior quando o evento de ligação é disparado.
 
-Considere o cenário a seguir.
+Considere o seguinte cenário:
 
 * Um `<input>` elemento está associado a um `int` tipo com um valor inicial de `123` :
 
@@ -141,9 +141,15 @@ Não é recomendável especificar um formato para o `date` tipo de campo porque 
 <input type="date" @bind="startDate" @bind:format="yyyy-MM-dd">
 ```
 
-## <a name="parent-to-child-binding-with-component-parameters"></a>Associação de pai para filho com parâmetros de componente
+## <a name="binding-with-component-parameters"></a>Associação com parâmetros de componente
+
+Um cenário comum é vincular uma propriedade em um componente filho a uma propriedade em seu pai. Esse cenário é chamado de *Associação encadeada* porque vários níveis de associação ocorrem simultaneamente.
 
 Os parâmetros de componente permitem a associação de propriedades e campos de um componente pai com `@bind-{PROPERTY OR FIELD}` sintaxe.
+
+As associações encadeadas não podem ser implementadas com [`@bind`](xref:mvc/views/razor#bind) a sintaxe no componente filho. Um manipulador de eventos e um valor devem ser especificados separadamente para dar suporte à atualização da propriedade no pai a partir do componente filho.
+
+O componente pai ainda aproveita a [`@bind`](xref:mvc/views/razor#bind) sintaxe para configurar a vinculação de dados com o componente filho.
 
 O `Child` componente () a seguir `Shared/Child.razor` tem um `Year` parâmetro de componente e um retorno de `YearChanged` chamada:
 
@@ -155,16 +161,25 @@ O `Child` componente () a seguir `Shared/Child.razor` tem um `Year` parâmetro d
     </div>
 </div>
 
+<button @onclick="UpdateYearFromChild">Update Year from Child</button>
+
 @code {
+    private Random r = new Random();
+
     [Parameter]
     public int Year { get; set; }
 
     [Parameter]
     public EventCallback<int> YearChanged { get; set; }
+
+    private async Task UpdateYearFromChild()
+    {
+        await YearChanged.InvokeAsync(r.Next(1950, 2021));
+    }
 }
 ```
 
-O retorno de chamada ( <xref:Microsoft.AspNetCore.Components.EventCallback%601> ) deve ser nomeado como o nome do parâmetro de componente seguido pelo `Changed` sufixo "" ( `{PARAMETER NAME}Changed` ). No exemplo anterior, o retorno de chamada é nomeado `YearChanged` . Para obter mais informações sobre o <xref:Microsoft.AspNetCore.Components.EventCallback%601>, consulte <xref:blazor/components/event-handling#eventcallback>.
+O retorno de chamada ( <xref:Microsoft.AspNetCore.Components.EventCallback%601> ) deve ser nomeado como o nome do parâmetro de componente seguido pelo `Changed` sufixo "" ( `{PARAMETER NAME}Changed` ). No exemplo anterior, o retorno de chamada é nomeado `YearChanged` . <xref:Microsoft.AspNetCore.Components.EventCallback.InvokeAsync%2A?displayProperty=nameWithType> invoca o delegado associado à associação com o argumento fornecido e despacha uma notificação de evento para a propriedade alterada.
 
 No componente a seguir `Parent` ( `Parent.razor` ), o `year` campo está associado ao `Year` parâmetro do componente filho:
 
@@ -198,13 +213,7 @@ Por convenção, uma propriedade pode ser associada a um manipulador de eventos 
 <Child @bind-Year="year" @bind-Year:event="YearChanged" />
 ```
 
-## <a name="child-to-parent-binding-with-chained-bind"></a>Associação de filho para pai com associação encadeada
-
-Um cenário comum é encadear um parâmetro de associação de dados a um elemento de página na saída do componente. Esse cenário é chamado de *Associação encadeada* porque vários níveis de associação ocorrem simultaneamente.
-
-Uma associação encadeada não pode ser implementada com [`@bind`](xref:mvc/views/razor#bind) a sintaxe no componente filho. O manipulador de eventos e o valor devem ser especificados separadamente. Um componente pai, no entanto, pode usar [`@bind`](xref:mvc/views/razor#bind) a sintaxe com o parâmetro do componente filho.
-
-O seguinte `PasswordField` componente ( `PasswordField.razor` ):
+Em um exemplo mais sofisticado e do mundo real, o seguinte `PasswordField` componente ( `PasswordField.razor` ):
 
 * Define o `<input>` valor de um elemento para um `password` campo.
 * Expõe as alterações de uma `Password` propriedade em um componente pai com um [`EventCallback`](xref:blazor/components/event-handling#eventcallback) que passa no valor atual do `password` campo filho como seu argumento.
@@ -315,6 +324,8 @@ Password:
     }
 }
 ```
+
+Para obter mais informações sobre o <xref:Microsoft.AspNetCore.Components.EventCallback%601>, consulte <xref:blazor/components/event-handling#eventcallback>.
 
 ## <a name="bind-across-more-than-two-components"></a>Associar entre mais de dois componentes
 
