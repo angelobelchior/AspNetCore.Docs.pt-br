@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 4897abdd067d9068aee9d5843888d188ff240404
-ms.sourcegitcommit: d84a225ec3381355c343460deed50f2fa5722f60
+ms.openlocfilehash: e8c3d6a9f2c6b50fc18da59b8e0b5475360673c7
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92429091"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491452"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>Manipulação de eventos de ASP.NET Core Blazor
 
@@ -71,7 +71,7 @@ No exemplo a seguir, `UpdateHeading` é chamado de forma assíncrona quando o bo
 @code {
     private async Task UpdateHeading(MouseEventArgs e)
     {
-        ...
+        await ...
     }
 }
 ```
@@ -91,7 +91,7 @@ Com suporte, <xref:System.EventArgs> são mostrados na tabela a seguir.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-| Evento            | Classe  | Eventos e observações do DOM |
+| Evento            | Class  | Eventos e observações do DOM |
 | ---------------- | ------ | -------------------- |
 | Área de Transferência        | <xref:Microsoft.AspNetCore.Components.Web.ClipboardEventArgs> | `oncut`, `oncopy`, `onpaste` |
 | Arrastar             | <xref:Microsoft.AspNetCore.Components.Web.DragEventArgs> | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br><xref:Microsoft.AspNetCore.Components.Web.DataTransfer> e <xref:Microsoft.AspNetCore.Components.Web.DataTransferItem> mantenha arrastado os dados do item.<br><br>Implemente o recurso arrastar e soltar em Blazor aplicativos usando a [interoperabilidade js](xref:blazor/call-javascript-from-dotnet) com a [API de arrastar e soltar HTML](https://developer.mozilla.org/docs/Web/API/HTML_Drag_and_Drop_API). |
@@ -110,7 +110,7 @@ Com suporte, <xref:System.EventArgs> são mostrados na tabela a seguir.
 
 ::: moniker range="< aspnetcore-5.0"
 
-| Evento            | Classe | Eventos e observações do DOM |
+| Evento            | Class | Eventos e observações do DOM |
 | ---------------- | ----- | -------------------- |
 | Área de Transferência        | <xref:Microsoft.AspNetCore.Components.Web.ClipboardEventArgs> | `oncut`, `oncopy`, `onpaste` |
 | Arrastar             | <xref:Microsoft.AspNetCore.Components.Web.DragEventArgs> | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br><xref:Microsoft.AspNetCore.Components.Web.DataTransfer> e <xref:Microsoft.AspNetCore.Components.Web.DataTransferItem> mantenha arrastado os dados do item.<br><br>Implemente o recurso arrastar e soltar em Blazor aplicativos usando a [interoperabilidade js](xref:blazor/call-javascript-from-dotnet) com a [API de arrastar e soltar HTML](https://developer.mozilla.org/docs/Web/API/HTML_Drag_and_Drop_API). |

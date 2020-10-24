@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 44558a0f2fdc61eb860223658f5bef1d0117ba87
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 50bf2a60f14238c9b71fe90a64c284da202bff59
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653928"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491594"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementação do servidor Web Kestrel no ASP.NET Core
 
@@ -354,6 +354,34 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 O valor padrão é 96 KB (98.304).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="http2-keep-alive-ping-configuration"></a>Configuração de ping de Keep Alive do HTTP/2
+
+O Kestrel pode ser configurado para enviar pings HTTP/2 para clientes conectados. Os pings HTTP/2 atendem a várias finalidades:
+
+* Mantenha as conexões ociosas ativas. Alguns clientes e servidores proxy fecham as conexões que estão ociosas. Os pings HTTP/2 são considerados como atividade em uma conexão e impedem que a conexão seja fechada como ociosa.
+* Feche as conexões não íntegras. As conexões nas quais o cliente não responde ao ping Keep Alive no tempo configurado são fechadas pelo servidor.
+
+Há duas opções de configuração relacionadas a pings de Keep Alive HTTP/2:
+
+* `Http2.KeepAlivePingInterval` é um `TimeSpan` que configura o ping interno. O servidor enviará um ping de Keep Alive para o cliente se ele não receber nenhum quadro para esse período de tempo. Os pings de Keep Alive são desabilitados quando essa opção é definida como `TimeSpan.MaxValue` . O valor padrão é `TimeSpan.MaxValue`.
+* `Http2.KeepAlivePingTimeout` é um `TimeSpan` que configura o tempo limite de ping. Se o servidor não receber nenhum quadro, como um ping de resposta, durante esse tempo limite, a conexão será fechada. O tempo limite de Keep Alive é desabilitado quando essa opção é definida como `TimeSpan.MaxValue` . O valor padrão é 20 segundos.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.Http2.KeepAlivePingInterval = TimeSpan.FromSeconds(30);
+    serverOptions.Limits.Http2.KeepAlivePingTimeout = TimeSpan.FromSeconds(60);
+});
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="trailers"></a>Trailers
 
@@ -733,8 +761,8 @@ Restrições TLS para HTTP/2:
 * Renegociação desabilitada
 * Compactação desabilitada
 * Tamanhos mínimos de troca de chaves efêmera:
-  * Diffie-Hellman (ECDHE) RFC4492 de curva elíptica &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; : mínimo de 224 bits
-  * Campo finito Diffie-Hellman (DHE) &lbrack; `TLS12` &rbrack; : mínimo de 2048 bits
+  * Diffie-Hellman de curva elíptica (ECDHE) &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; : mínimo de 224 bits
+  * Diffie-Hellman de campo finito (DHE) &lbrack; `TLS12` &rbrack; : mínimo de 2048 bits
 * Conjunto de codificação não proibido. 
 
 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack;`TLS-ECDHE`&rbrack; com a curva elíptica P-256 tem &lbrack; `FIPS186` &rbrack; suporte por padrão.
@@ -1734,8 +1762,8 @@ Restrições TLS para HTTP/2:
 * Renegociação desabilitada
 * Compactação desabilitada
 * Tamanhos mínimos de troca de chaves efêmera:
-  * Diffie-Hellman (ECDHE) RFC4492 de curva elíptica &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; : mínimo de 224 bits
-  * Campo finito Diffie-Hellman (DHE) &lbrack; `TLS12` &rbrack; : mínimo de 2048 bits
+  * Diffie-Hellman de curva elíptica (ECDHE) &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; : mínimo de 224 bits
+  * Diffie-Hellman de campo finito (DHE) &lbrack; `TLS12` &rbrack; : mínimo de 2048 bits
 * Conjunto de codificação não bloqueado
 
 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack;`TLS-ECDHE`&rbrack; com a curva elíptica P-256 tem &lbrack; `FIPS186` &rbrack; suporte por padrão.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 46a9fc7776022a29bedf1c88e8230e1fd52d1607
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: e3dd7168e6974f63fa963d3732bc5df41814c70e
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606766"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491608"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -339,8 +339,6 @@ Devido aos tipos de extensibilidade fornecidos pelo roteamento, não é possíve
 > 
 > * Não tem um conceito de rotas.
 > * Não fornece garantias de ordenação. Todos os pontos de extremidade são processados de uma só vez.
->
-> Se isso significa que você está preso a usar o sistema de roteamento herdado, [abra um problema do GitHub para obter assistência](https://github.com/dotnet/aspnetcore/issues).
 
 <a name="rtp"></a>
 

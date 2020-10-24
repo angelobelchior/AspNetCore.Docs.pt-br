@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 6ae8c55fcfc85dc725a7dd20a7dbecba063a13e9
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 5d92d12a1fcd3797dcffb301998b529935751e8b
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900773"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491477"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
 
@@ -418,7 +418,7 @@ public class ProfileService : IProfileService
     {
     }
 
-    public Task GetProfileDataAsync(ProfileDataRequestContext context)
+    public async Task GetProfileDataAsync(ProfileDataRequestContext context)
     {
         var nameClaim = context.Subject.FindAll(JwtClaimTypes.Name);
         context.IssuedClaims.AddRange(nameClaim);
@@ -426,12 +426,12 @@ public class ProfileService : IProfileService
         var roleClaims = context.Subject.FindAll(JwtClaimTypes.Role);
         context.IssuedClaims.AddRange(roleClaims);
 
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
-    public Task IsActiveAsync(IsActiveContext context)
+    public async Task IsActiveAsync(IsActiveContext context)
     {
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 }
 ```
@@ -549,7 +549,7 @@ Para configurar um aplicativo, Azure App serviço e Azure Key Vault para hospeda
 1. Selecione o link **Editar** sob o nome do perfil de implantação na parte superior da janela. Altere a URL de destino para a URL de domínio personalizado do site (por exemplo, `https://www.contoso.com` ). Salve as configurações.
 1. Publique o aplicativo. O Visual Studio abre uma janela do navegador e solicita o site em seu domínio personalizado.
 
-A documentação do Azure contém detalhes adicionais sobre como usar os serviços do Azure e domínios personalizados com a associação TLS no serviço de aplicativo, incluindo informações sobre como usar registros CNAME em vez de registros. Para saber mais, consulte os recursos a seguir:
+A documentação do Azure contém detalhes adicionais sobre como usar os serviços do Azure e domínios personalizados com a associação TLS no serviço de aplicativo, incluindo informações sobre como usar registros CNAME em vez de registros. Para obter mais informações, consulte os seguintes recursos:
 
 * [Documentação do serviço de aplicativo](/azure/app-service/)
 * [Tutorial: Mapear um nome DNS personalizado existente para o Serviço de Aplicativo do Azure](/azure/app-service/app-service-web-tutorial-custom-domain)

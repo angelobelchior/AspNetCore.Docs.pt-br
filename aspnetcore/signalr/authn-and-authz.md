@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 3a2ae5c7bc4853bad7b94af0d26ad5cd0358688f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e16efa59a82d0f3cb1a2272ae0c07654ebec6a51
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628924"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491555"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-no-locsignalr"></a>Autenticação e autorização no ASP.NET Core SignalR
 
@@ -99,8 +99,6 @@ Cookies são uma maneira específica do navegador de enviar tokens de acesso, ma
 
 O cliente pode fornecer um token de acesso em vez de usar um cookie . O servidor valida o token e o usa para identificar o usuário. Essa validação é feita somente quando a conexão é estabelecida. Durante a vida útil da conexão, o servidor não é revalidado automaticamente para verificar a revogação de tokens.
 
-No servidor, a autenticação de token de portador é configurada usando o [middleware portador JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
-
 No cliente JavaScript, o token pode ser fornecido usando a opção [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) .
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=52-55)]
@@ -119,14 +117,60 @@ var connection = new HubConnectionBuilder()
 > [!NOTE]
 > A função de token de acesso que você fornece é chamada antes de **cada** solicitação HTTP feita pelo SignalR . Se você precisar renovar o token para manter a conexão ativa (porque ela pode expirar durante a conexão), faça isso de dentro dessa função e retorne o token atualizado.
 
-Nas APIs Web padrão, os tokens de portador são enviados em um cabeçalho HTTP. No entanto, o SignalR não pode definir esses cabeçalhos em navegadores ao usar alguns transportes. Ao usar Websockets e eventos enviados pelo servidor, o token é transmitido como um parâmetro de cadeia de caracteres de consulta. Para dar suporte a isso no servidor, é necessária uma configuração adicional:
+Nas APIs Web padrão, os tokens de portador são enviados em um cabeçalho HTTP. No entanto, o SignalR não pode definir esses cabeçalhos em navegadores ao usar alguns transportes. Ao usar Websockets e eventos de Server-Sent, o token é transmitido como um parâmetro de cadeia de caracteres de consulta. 
+
+#### <a name="built-in-jwt-authentication"></a>Autenticação interna de JWT
+
+No servidor, a autenticação de token de portador é configurada usando o [middleware portador JWT](xref:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer%2A):
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
 [!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 > [!NOTE]
-> A cadeia de caracteres de consulta é usada em navegadores ao se conectar com WebSockets e eventos enviados pelo servidor devido a limitações da API do navegador. Ao usar HTTPS, os valores de cadeia de caracteres de consulta são protegidos pela conexão TLS. No entanto, muitos servidores registram valores de cadeia de caracteres de consulta. Para obter mais informações, consulte [considerações de segurança SignalR em ASP.NET Core ](xref:signalr/security). SignalR usa cabeçalhos para transmitir tokens em ambientes que dão suporte a eles (como os clientes .NET e Java).
+> A cadeia de caracteres de consulta é usada em navegadores ao se conectar com WebSockets e Server-Sent eventos devido a limitações da API do navegador. Ao usar HTTPS, os valores de cadeia de caracteres de consulta são protegidos pela conexão TLS. No entanto, muitos servidores registram valores de cadeia de caracteres de consulta. Para obter mais informações, consulte [considerações de segurança SignalR em ASP.NET Core ](xref:signalr/security). SignalR usa cabeçalhos para transmitir tokens em ambientes que dão suporte a eles (como os clientes .NET e Java).
+
+#### <a name="no-locidentity-server-jwt-authentication"></a>Identity Autenticação JWT de servidor
+
+Ao usar Identity o servidor, adicione um <xref:Microsoft.Extensions.Options.PostConfigureOptions%601> serviço ao projeto:
+
+```csharp
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+public class ConfigureJwtBearerOptions : IPostConfigureOptions<JwtBearerOptions>
+{
+    public void PostConfigure(string name, JwtBearerOptions options)
+    {
+        var originalOnMessageReceived = options.Events.OnMessageReceived;
+        options.Events.OnMessageReceived = async context =>
+        {
+            await originalOnMessageReceived(context);
+                
+            if (string.IsNullOrEmpty(context.Token))
+            {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                
+                if (!string.IsNullOrEmpty(accessToken) && 
+                    path.StartsWithSegments("/hubs"))
+                {
+                    context.Token = accessToken;
+                }
+            }
+        };
+    }
+}
+```
+
+Registre o serviço no `Startup.ConfigureServices` depois de adicionar serviços para autenticação ( <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication%2A> ) e o manipulador de autenticação para o Identity servidor ( <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> ):
+
+```csharp
+services.AddAuthentication()
+    .AddIdentityServerJwt();
+services.TryAddEnumerable(
+    ServiceDescriptor.Singleton<IPostConfigureOptions<JwtBearerOptions>, 
+        ConfigureJwtBearerOptions>());
+```
 
 ### <a name="no-loccookies-vs-bearer-tokens"></a>Cookies vs. Tokens de portador 
 

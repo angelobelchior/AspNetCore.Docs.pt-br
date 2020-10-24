@@ -1,7 +1,9 @@
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
 > [!WARNING]
 > Um parâmetro **catch-all** pode corresponder a rotas incorretamente devido a um [bug](https://github.com/dotnet/aspnetcore/issues/18677) no roteamento. Os aplicativos afetados por esse bug têm as seguintes características:
 >
-> * Uma rota catch-all, por exemplo,`{**slug}"`
+> * Uma rota catch-all, por exemplo, `{**slug}"`
 > * A rota capturar tudo falha ao corresponder às solicitações que devem corresponder.
 > * A remoção de outras rotas faz com que a rota capturar tudo comece a funcionar.
 >
@@ -18,3 +20,5 @@
 >}
 >// Remaining code removed for brevity.
 >```
+
+::: moniker-end
