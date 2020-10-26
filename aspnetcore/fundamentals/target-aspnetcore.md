@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: 571e6c66f60bbc09b902ff9064d2fb1c18c433dc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/26/2020
 ms.locfileid: "88630049"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Usar ASP.NET Core APIs em uma biblioteca de classes
@@ -61,7 +61,7 @@ Para dar suporte ao Razor consumo de componentes de [Blazor Server](xref:blazor/
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Use o modelo de projeto de ** Razor biblioteca de classes** . A caixa de seleção páginas de suporte do modelo **e exibições** deve ser desmarcada.
+Use o modelo de projeto de **Razor biblioteca de classes** . A caixa de seleção páginas de suporte do modelo **e exibições** deve ser desmarcada.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -73,7 +73,7 @@ dotnet new razorclasslib
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Use o modelo de projeto de ** Razor biblioteca de classes** .
+Use o modelo de projeto de **Razor biblioteca de classes** .
 
 ---
 
@@ -121,11 +121,11 @@ Se o projeto for destinado ao .NET Core 3. x, ele exigirá:
 * Uma `AddRazorSupportForMvc` Propriedade do MSBuild definida como `true` .
 * Um `<FrameworkReference>` elemento para a estrutura compartilhada.
 
-O modelo de projeto de ** Razor biblioteca de classes** atende aos requisitos anteriores para projetos que visam o .NET Core 3. x. Use as instruções a seguir para o seu editor.
+O modelo de projeto de **Razor biblioteca de classes** atende aos requisitos anteriores para projetos que visam o .NET Core 3. x. Use as instruções a seguir para o seu editor.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Use o modelo de projeto de ** Razor biblioteca de classes** . A caixa de seleção páginas de suporte do modelo **e exibições** deve ser selecionada.
+Use o modelo de projeto de **Razor biblioteca de classes** . A caixa de seleção páginas de suporte do modelo **e exibições** deve ser selecionada.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
