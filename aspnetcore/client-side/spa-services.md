@@ -4,7 +4,7 @@ author: scottaddie
 description: Saiba mais sobre os benefícios de usar os serviços JavaScript para criar um aplicativo de página única (SPA) apoiado por ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 379a8f52dab36d331bc42c1fee8d64b3971e9e91
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625655"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690659"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Use os serviços JavaScript para criar aplicativos de página única no ASP.NET Core
 
@@ -132,7 +132,7 @@ O `UserName` argumento recebido é serializado usando o serializador JSON intern
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Os nomes de propriedade passados em auxiliares de marca são representados com notação de **PascalCase** . Compare com JavaScript, em que os mesmos nomes de propriedade são representados com **CamelCase**. A configuração de serialização JSON padrão é responsável por essa diferença.
+Os nomes de propriedade passados em auxiliares de marca são representados com notação de **PascalCase** . Compare com JavaScript, em que os mesmos nomes de propriedade são representados com **CamelCase** . A configuração de serialização JSON padrão é responsável por essa diferença.
 
 Para expandir o exemplo de código anterior, os dados podem ser passados do servidor para a exibição por HYDRATING a `globals` propriedade fornecida para a `resolve` função:
 
@@ -236,7 +236,7 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 Uma lista de modelos SPA disponíveis é exibida:
 
-| Modelos                                 | Nome curto | Idioma | Marcas        |
+| Modelos                                 | Nome curto | Linguagem | Marcas        |
 | ------------------------------------------| :--------: | :------: | :---------: |
 | ASP.NET Core MVC com angular             | angular    | [C#]     | Web/MVC/SPA |
 | ASP.NET Core MVC com React.js            | react      | [C#]     | Web/MVC/SPA |
@@ -252,10 +252,10 @@ dotnet new angular
 
 Existem dois modos de configuração de tempo de execução primários:
 
-* **Desenvolvimento**:
+* **Desenvolvimento** :
   * Inclui mapas de origem para facilitar a depuração.
   * Não otimiza o código do lado do cliente para desempenho.
-* **Produção**:
+* **Produção** :
   * Exclui mapas de origem.
   * Otimiza o código do lado do cliente por meio de agrupamento e minificação.
 
@@ -289,7 +289,7 @@ Usando o aplicativo angular como um exemplo, dois casos de teste Jasmine já sã
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Abra o prompt de comando no diretório *ClientApp* Execute o comando a seguir:
+Abra o prompt de comando no diretório *ClientApp* Execute o seguinte comando:
 
 ```console
 npm test

@@ -4,7 +4,7 @@ author: anurse
 description: Saiba como coletar diagnósticos do seu SignalR aplicativo ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
-ms.custom: devx-track-csharp, signalr
+ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 649398a3868117b2e7f3358aa25544c99cc625b3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 890359c9e9f6c3c60f3105124f52c66b09a8a4fb
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631336"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690668"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro em log e diagnóstico no ASP.NET Core SignalR
 
@@ -41,7 +41,7 @@ Como SignalR o faz parte do ASP.NET Core, ele usa o sistema de registro em log d
 SignalR usa duas categorias de agente:
 
 * `Microsoft.AspNetCore.SignalR`: Para logs relacionados a protocolos de Hub, ativação de hubs, invocação de métodos e outras atividades relacionadas ao Hub.
-* `Microsoft.AspNetCore.Http.Connections`: Para logs relacionados a transportes, como WebSockets, sondagem longa, eventos enviados pelo servidor e infraestrutura de nível baixo SignalR .
+* `Microsoft.AspNetCore.Http.Connections`: Para logs relacionados a transportes, como WebSockets, sondagem longa, eventos de Server-Sent e infraestrutura de nível baixo SignalR .
 
 Para habilitar logs detalhados do SignalR , configure os dois prefixos anteriores para o `Debug` nível em seu *appsettings.jsno* arquivo adicionando os seguintes itens à `LogLevel` subseção em `Logging` :
 
@@ -177,7 +177,7 @@ Substitua `[interface]` pela interface de rede que você deseja capturar. Normal
 
 Esse método só funciona para aplicativos baseados em navegador.
 
-A maioria dos Ferramentas para Desenvolvedores de navegador tem uma guia de "rede" que permite capturar a atividade de rede entre o navegador e o servidor. No entanto, esses rastreamentos não incluem o WebSocket e as mensagens de evento enviadas pelo servidor. Se você estiver usando esses transportes, usar uma ferramenta como Fiddler ou TcpDump (descrita abaixo) é uma abordagem melhor.
+A maioria dos Ferramentas para Desenvolvedores de navegador tem uma guia de "rede" que permite capturar a atividade de rede entre o navegador e o servidor. No entanto, esses rastreamentos não incluem WebSocket e Server-Sent mensagens de evento. Se você estiver usando esses transportes, usar uma ferramenta como Fiddler ou TcpDump (descrita abaixo) é uma abordagem melhor.
 
 ### <a name="microsoft-edge-and-internet-explorer"></a>Microsoft Edge e Internet Explorer
 
@@ -225,7 +225,7 @@ Métricas é uma representação de medidas de dados em intervalos de tempo. Por
 
 SignalR as métricas do servidor são relatadas na <xref:Microsoft.AspNetCore.Http.Connections> origem do evento.
 
-| Nome                    | Descrição                 |
+| Name                    | Descrição                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | Total de conexões iniciadas   |
 | `connections-stopped`   | Total de conexões interrompidas   |

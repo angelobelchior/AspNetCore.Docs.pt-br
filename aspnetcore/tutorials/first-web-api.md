@@ -3,7 +3,7 @@ title: 'Tutorial: criar uma API Web com ASP.NET Core'
 author: rick-anderson
 description: Saiba como criar uma API Web com o ASP.NET Core.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 08/13/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 9f67f8104eb5c21f244449ca3a4aaa96c750836d
-ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
+ms.openlocfilehash: 17f04dc9a0bdcf8ff016d83b915c017ff485cb36
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379473"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690704"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -80,10 +80,10 @@ O diagrama a seguir mostra o design do aplicativo.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* No menu **arquivo** , selecione **novo** > **projeto**.
-* Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo**.
-* Nomeie o projeto como *TodoApi* e clique em **Criar**.
-* Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , confirme se o **.net Core** e **ASP.NET Core 5,0** estão selecionados. Selecione o modelo **API** e clique em **Criar**.
+* No menu **arquivo** , selecione **novo** > **projeto** .
+* Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo** .
+* Nomeie o projeto como *TodoApi* e clique em **Criar** .
+* Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , confirme se o **.net Core** e **ASP.NET Core 5,0** estão selecionados. Selecione o modelo **API** e clique em **Criar** .
 
 ![Caixa de diálogo Novo projeto do VS](first-web-api/_static/5/vs.png)
 
@@ -101,7 +101,7 @@ O diagrama a seguir mostra o design do aplicativo.
    code -r ../TodoApi
    ```
 
-* Quando uma caixa de diálogo perguntar se você deseja adicionar os ativos necessários ao projeto, selecione **Sim**.
+* Quando uma caixa de diálogo perguntar se você deseja adicionar os ativos necessários ao projeto, selecione **Sim** .
 
   Os comandos anteriores:
 
@@ -110,17 +110,17 @@ O diagrama a seguir mostra o design do aplicativo.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Selecione **Arquivo** > **Nova Solução**.
+* Selecione **Arquivo** > **Nova Solução** .
 
   ![Nova solução do macOS](first-web-api-mac/_static/sln.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar** . Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar** .
 
   ![seleção de modelo de API do macOS](first-web-api-mac/_static/api_template.png)
 
-* Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino**.NET Core 3. x mais recente. Selecione **Avançar**.
+* Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino** .NET Core 3. x mais recente. Selecione **Avançar** .
 
-* Insira *TodoApi* para o **Nome do Projeto** e, em seguida, selecione **Criar**.
+* Insira *TodoApi* para o **Nome do Projeto** e, em seguida, selecione **Criar** .
 
   ![caixa de diálogo de configuração](first-web-api-mac/_static/2.png)
 
@@ -162,7 +162,7 @@ Selecione **executar**  >  **Iniciar Depuração** para iniciar o aplicativo. O 
 
 ---
 
-A página Swagger `/swagger/index.html` é exibida. Selecione **Get**  >  **Experimente**  >  **executar**. A página exibe:
+A página Swagger `/swagger/index.html` é exibida. Selecione **Get**  >  **Experimente**  >  **executar** . A página exibe:
 
 * O comando de [ondulação](https://curl.haxx.se/) para testar a API WeatherForecast.
 * A URL para testar a API WeatherForecast.
@@ -214,7 +214,7 @@ Um JSON semelhante ao seguinte será retornado:
 
 ### <a name="update-the-launchurl"></a>Atualizar o launchUrl
 
-No *Properties\launchSettings.jsem*, atualize `launchUrl` do `"swagger"` para `"api/TodoItems"` :
+No *Properties\launchSettings.jsem* , atualize `launchUrl` do `"swagger"` para `"api/TodoItems"` :
 
 ```json
 "launchUrl": "api/TodoItems",
@@ -228,9 +228,9 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Em **Gerenciador de soluções** , clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta *Models* .
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe** . Dê à classe o nome *TodoItem* e selecione **Adicionar** .
 
 * Substitua o código do modelo pelo seguinte:
 
@@ -242,13 +242,13 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta *Models* .
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia**geral.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia** geral.
 
-* Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
+* Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo** .
 
 * Substitua o código do modelo pelo seguinte:
 
@@ -268,13 +268,13 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 ### <a name="add-nuget-packages"></a>Adicionar pacotes NuGet
 
-* No menu **Ferramentas**, selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
+* No menu **Ferramentas** , selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução** .
 * Selecione a guia **procurar** e, em seguida, insira * * Microsoft.
 **EntityFrameworkCore. SqlServer** na caixa de pesquisa.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
 * Marque a caixa de seleção **incluir pré-lançamento** para que a versão 5,0 RC esteja disponível. 
 * Selecione **Microsoft. EntityFrameworkCore. SqlServer** no painel esquerdo.
-* Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar**.
+* Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar** .
 * Use as instruções anteriores para adicionar o pacote NuGet **Microsoft. EntityFrameworkCore. inmemory** .
 
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Update this image at RTM -->
@@ -282,7 +282,7 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 ## <a name="add-the-todocontext-database-context"></a>Adicione o contexto de banco de dados TodoContext
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe** . Nomeie a classe como *TodoContext* e clique em **Adicionar** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -313,14 +313,14 @@ O código anterior:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Clique com o botão direito do mouse na pasta *Controllers*.
-* Selecione **Adicionar** > **Novo item com scaffold**.
-* Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar**.
-* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework**:
+* Clique com o botão direito do mouse na pasta *Controllers* .
+* Selecione **Adicionar** > **Novo item com scaffold** .
+* Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar** .
+* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework** :
 
-  * Selecione **TodoItem (TodoApi. Models )** na **classe Model**.
-  * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados**.
-  * Selecione **Adicionar**.
+  * Selecione **TodoItem (TodoApi. Models )** na **classe Model** .
+  * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados** .
+  * Selecione **Adicionar** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -378,7 +378,7 @@ Este tutorial usa o Postman para testar a API Web.
 * Inicie o aplicativo Web.
 * Inicie o Postman.
 * Desabilite a **Verificação do certificado SSL**
-  * Em **Arquivo** > **Configurações** (guia **Geral**), desabilite **Verificação de certificado SSL**.
+  * Em **Arquivo** > **Configurações** (guia **Geral** ), desabilite **Verificação de certificado SSL** .
     > [!WARNING]
     > Habilite novamente a verificação do certificado SSL depois de testar o controlador.
 
@@ -389,9 +389,9 @@ Este tutorial usa o Postman para testar a API Web.
 * Crie uma solicitação.
 * Defina o método HTTP como `POST`.
 * Defina o URI como `https://localhost:<port>/api/TodoItems` . Por exemplo, `https://localhost:5001/api/TodoItems`.
-* Selecione a guia **Corpo**.
-* Selecione o botão de opção **bruto**.
-* Defina o tipo como **JSON (aplicativo/json)**.
+* Selecione a guia **Corpo** .
+* Selecione o botão de opção **bruto** .
+* Defina o tipo como **JSON (aplicativo/json)** .
 * No corpo da solicitação, insira JSON para um item pendente:
 
     ```json
@@ -401,7 +401,7 @@ Este tutorial usa o Postman para testar a API Web.
     }
     ```
 
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
   ![Postman com a solicitação Create](first-web-api/_static/3/create.png)
 
@@ -411,14 +411,14 @@ O URI do cabeçalho do local pode ser testado no navegador. Copie e cole o URI d
 
 Para testar no postmaster:
 
-* Selecione a guia **Cabeçalhos** no painel **Resposta**.
-* Copie o valor do cabeçalho **Local**:
+* Selecione a guia **Cabeçalhos** no painel **Resposta** .
+* Copie o valor do cabeçalho **Local** :
 
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/3/create.png)
 
 * Defina o método HTTP como `GET`.
 * Defina o URI como `https://localhost:<port>/api/TodoItems/1` . Por exemplo, `https://localhost:5001/api/TodoItems/1`.
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 ## <a name="examine-the-get-methods"></a>Examine os métodos GET
 
@@ -447,10 +447,10 @@ Uma resposta semelhante à seguinte é produzida pela chamada a `GetTodoItems`:
 ### <a name="test-get-with-postman"></a>Teste o GET com o Postman
 
 * Crie uma solicitação.
-* Defina o método HTTP como **GET**.
+* Defina o método HTTP como **GET** .
 * Defina o URI de solicitação como `https://localhost:<port>/api/TodoItems` . Por exemplo, `https://localhost:5001/api/TodoItems`.
 * Defina **Exibição de dois painéis** no Postman.
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 Este aplicativo usa um banco de dados em memória. Se o aplicativo for interrompido e iniciado, a solicitação GET anterior não retornará nenhum dado. Se nenhum dado for retornado, execute [POST](#post) de dados no aplicativo.
 
@@ -462,7 +462,7 @@ O [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) atributo denota 
 
   [!code-csharp[](first-web-api/samples/5.x/TodoApi/Controllers/TodoItemsController.cs?name=TodoController&highlight=1)]
 
-* Substitua `[controller]` pelo nome do controlador, que é o nome de classe do controlador menos o sufixo "Controlador" por convenção. Para esta amostra, o nome da classe do controlador é **TodoItems**Controller. Portanto, o nome do controlador é "TodoItems". O [roteamento](xref:mvc/controllers/routing) do ASP.NET Core não diferencia maiúsculas de minúsculas.
+* Substitua `[controller]` pelo nome do controlador, que é o nome de classe do controlador menos o sufixo "Controlador" por convenção. Para esta amostra, o nome da classe do controlador é **TodoItems** Controller. Portanto, o nome do controlador é "TodoItems". O [roteamento](xref:mvc/controllers/routing) do ASP.NET Core não diferencia maiúsculas de minúsculas.
 * Se o atributo `[HttpGet]` tiver um modelo de rota (por exemplo, `[HttpGet("products")]`), acrescente isso ao caminho. Esta amostra não usa um modelo. Para obter mais informações, confira [Roteamento de atributo com atributos Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 No método `GetTodoItem` a seguir, `"{id}"` é uma variável de espaço reservado para o identificador exclusivo do item pendente. Quando `GetTodoItem` é invocado, o valor de `"{id}"` na URL é fornecido para o método em seu `id` parâmetro.
@@ -518,7 +518,7 @@ Use o Postman para excluir um item pendente:
 
 * Defina o método como `DELETE`.
 * Defina o URI do objeto a ser excluído (por exemplo, `https://localhost:5001/api/TodoItems/1` ).
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 <a name="over-post-v5"></a>
 
@@ -606,10 +606,10 @@ O diagrama a seguir mostra o design do aplicativo.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* No menu **arquivo** , selecione **novo** > **projeto**.
-* Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo**.
-* Nomeie o projeto como *TodoApi* e clique em **Criar**.
-* Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , confirme se o **.net Core** e **ASP.NET Core 3,1** estão selecionados. Selecione o modelo **API** e clique em **Criar**.
+* No menu **arquivo** , selecione **novo** > **projeto** .
+* Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo** .
+* Nomeie o projeto como *TodoApi* e clique em **Criar** .
+* Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , confirme se o **.net Core** e **ASP.NET Core 3,1** estão selecionados. Selecione o modelo **API** e clique em **Criar** .
 
 ![Caixa de diálogo Novo projeto do VS](first-web-api/_static/vs3.png)
 
@@ -627,7 +627,7 @@ O diagrama a seguir mostra o design do aplicativo.
    code -r ../TodoApi
    ```
 
-* Quando uma caixa de diálogo perguntar se você deseja adicionar os ativos necessários ao projeto, selecione **Sim**.
+* Quando uma caixa de diálogo perguntar se você deseja adicionar os ativos necessários ao projeto, selecione **Sim** .
 
   Os comandos anteriores:
 
@@ -636,17 +636,17 @@ O diagrama a seguir mostra o design do aplicativo.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Selecione **Arquivo** > **Nova Solução**.
+* Selecione **Arquivo** > **Nova Solução** .
 
   ![Nova solução do macOS](first-web-api-mac/_static/sln.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar** . Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar** .
 
   ![seleção de modelo de API do macOS](first-web-api-mac/_static/api_template.png)
 
-* Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino**.NET Core 3. x mais recente. Selecione **Avançar**.
+* Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino** .NET Core 3. x mais recente. Selecione **Avançar** .
 
-* Insira *TodoApi* para o **Nome do Projeto** e, em seguida, selecione **Criar**.
+* Insira *TodoApi* para o **Nome do Projeto** e, em seguida, selecione **Criar** .
 
   ![caixa de diálogo de configuração](first-web-api-mac/_static/2.png)
 
@@ -669,7 +669,7 @@ O modelo de projeto cria uma API `WeatherForecast`. Chame o método `Get` em um 
 
 Pressione CTRL+F5 para executar o aplicativo. O Visual Studio inicia um navegador e navega para `https://localhost:<port>/WeatherForecast`, em que `<port>` é um número de porta escolhido aleatoriamente.
 
-Se você receber uma caixa de diálogo perguntando se você deve confiar no certificado do IIS Express, selecione **Sim**. Na caixa de diálogo **Aviso de Segurança** exibida em seguida, selecione **Sim**.
+Se você receber uma caixa de diálogo perguntando se você deve confiar no certificado do IIS Express, selecione **Sim** . Na caixa de diálogo **Aviso de Segurança** exibida em seguida, selecione **Sim** .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -724,9 +724,9 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Em **Gerenciador de soluções** , clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta *Models* .
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe** . Dê à classe o nome *TodoItem* e selecione **Adicionar** .
 
 * Substitua o código do modelo pelo seguinte código:
 
@@ -738,13 +738,13 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta *Models* .
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia**geral.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia** geral.
 
-* Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
+* Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo** .
 
 * Substitua o código do modelo pelo seguinte código:
 
@@ -764,17 +764,17 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 ### <a name="add-nuget-packages"></a>Adicionar pacotes NuGet
 
-* No menu **Ferramentas**, selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
+* No menu **Ferramentas** , selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução** .
 * Selecione a guia **Procurar** e, em seguida, insira **Microsoft.EntityFrameworkCore.SqlServer** na caixa de pesquisa.
 * Selecione **Microsoft. EntityFrameworkCore. SqlServer** no painel esquerdo.
-* Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar**.
+* Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar** .
 * Use as instruções anteriores para adicionar o pacote NuGet **Microsoft. EntityFrameworkCore. inmemory** .
 
 ![Gerenciador de Pacotes NuGet](first-web-api/_static/vs3NuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>Adicione o contexto de banco de dados TodoContext
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe** . Nomeie a classe como *TodoContext* e clique em **Adicionar** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -804,14 +804,14 @@ O código anterior:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Clique com o botão direito do mouse na pasta *Controllers*.
-* Selecione **Adicionar** > **Novo item com scaffold**.
-* Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar**.
-* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework**:
+* Clique com o botão direito do mouse na pasta *Controllers* .
+* Selecione **Adicionar** > **Novo item com scaffold** .
+* Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar** .
+* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework** :
 
-  * Selecione **TodoItem (TodoApi. Models )** na **classe Model**.
-  * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados**.
-  * Selecione **Adicionar**.
+  * Selecione **TodoItem (TodoApi. Models )** na **classe Model** .
+  * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados** .
+  * Selecione **Adicionar** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -869,7 +869,7 @@ Este tutorial usa o Postman para testar a API Web.
 * Inicie o aplicativo Web.
 * Inicie o Postman.
 * Desabilite a **Verificação do certificado SSL**
-  * Em **Arquivo** > **Configurações** (guia **Geral**), desabilite **Verificação de certificado SSL**.
+  * Em **Arquivo** > **Configurações** (guia **Geral** ), desabilite **Verificação de certificado SSL** .
     > [!WARNING]
     > Habilite novamente a verificação do certificado SSL depois de testar o controlador.
 
@@ -880,9 +880,9 @@ Este tutorial usa o Postman para testar a API Web.
 * Crie uma solicitação.
 * Defina o método HTTP como `POST`.
 * Defina o URI como `https://localhost:<port>/api/TodoItems` . Por exemplo, `https://localhost:5001/api/TodoItems`.
-* Selecione a guia **Corpo**.
-* Selecione o botão de opção **bruto**.
-* Defina o tipo como **JSON (aplicativo/json)**.
+* Selecione a guia **Corpo** .
+* Selecione o botão de opção **bruto** .
+* Defina o tipo como **JSON (aplicativo/json)** .
 * No corpo da solicitação, insira JSON para um item pendente:
 
     ```json
@@ -892,20 +892,20 @@ Este tutorial usa o Postman para testar a API Web.
     }
     ```
 
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
   ![Postman com a solicitação Create](first-web-api/_static/3/create.png)
 
 ### <a name="test-the-location-header-uri-with-postman"></a>Testar o URI do cabeçalho do local com o postmaster
 
-* Selecione a guia **Cabeçalhos** no painel **Resposta**.
-* Copie o valor do cabeçalho **Local**:
+* Selecione a guia **Cabeçalhos** no painel **Resposta** .
+* Copie o valor do cabeçalho **Local** :
 
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/3/create.png)
 
 * Defina o método HTTP como `GET`.
 * Defina o URI como `https://localhost:<port>/api/TodoItems/1` . Por exemplo, `https://localhost:5001/api/TodoItems/1`.
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 ## <a name="examine-the-get-methods"></a>Examine os métodos GET
 
@@ -934,10 +934,10 @@ Uma resposta semelhante à seguinte é produzida pela chamada a `GetTodoItems`:
 ### <a name="test-get-with-postman"></a>Teste o GET com o Postman
 
 * Crie uma solicitação.
-* Defina o método HTTP como **GET**.
+* Defina o método HTTP como **GET** .
 * Defina o URI de solicitação como `https://localhost:<port>/api/TodoItems` . Por exemplo, `https://localhost:5001/api/TodoItems`.
 * Defina **Exibição de dois painéis** no Postman.
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 Este aplicativo usa um banco de dados em memória. Se o aplicativo for interrompido e iniciado, a solicitação GET anterior não retornará nenhum dado. Se nenhum dado for retornado, execute [POST](#post) de dados no aplicativo.
 
@@ -949,7 +949,7 @@ O [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) atributo denota 
 
   [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=TodoController&highlight=1)]
 
-* Substitua `[controller]` pelo nome do controlador, que é o nome de classe do controlador menos o sufixo "Controlador" por convenção. Para esta amostra, o nome da classe do controlador é **TodoItems**Controller. Portanto, o nome do controlador é "TodoItems". O [roteamento](xref:mvc/controllers/routing) do ASP.NET Core não diferencia maiúsculas de minúsculas.
+* Substitua `[controller]` pelo nome do controlador, que é o nome de classe do controlador menos o sufixo "Controlador" por convenção. Para esta amostra, o nome da classe do controlador é **TodoItems** Controller. Portanto, o nome do controlador é "TodoItems". O [roteamento](xref:mvc/controllers/routing) do ASP.NET Core não diferencia maiúsculas de minúsculas.
 * Se o atributo `[HttpGet]` tiver um modelo de rota (por exemplo, `[HttpGet("products")]`), acrescente isso ao caminho. Esta amostra não usa um modelo. Para obter mais informações, confira [Roteamento de atributo com atributos Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 No método `GetTodoItem` a seguir, `"{id}"` é uma variável de espaço reservado para o identificador exclusivo do item pendente. Quando `GetTodoItem` é invocado, o valor de `"{id}"` na URL é fornecido para o método em seu `id` parâmetro.
@@ -1005,7 +1005,7 @@ Use o Postman para excluir um item pendente:
 
 * Defina o método como `DELETE`.
 * Defina o URI do objeto a ser excluído (por exemplo, `https://localhost:5001/api/TodoItems/1` ).
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 <a name="over-post"></a>
 <a name="over-post-v3"></a>
@@ -1097,10 +1097,10 @@ O diagrama a seguir mostra o design do aplicativo.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* No menu **arquivo** , selecione **novo** > **projeto**.
-* Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo**.
-* Nomeie o projeto como *TodoApi* e clique em **Criar**.
-* Na caixa de diálogo **Criar um aplicativo Web ASP.NET Core**, confirme se **.NET Core** e **ASP.NET Core 2.2** estão selecionados. Selecione o modelo **API** e clique em **Criar**. **Não** selecione **Habilitar Suporte ao Docker**.
+* No menu **arquivo** , selecione **novo** > **projeto** .
+* Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo** .
+* Nomeie o projeto como *TodoApi* e clique em **Criar** .
+* Na caixa de diálogo **Criar um aplicativo Web ASP.NET Core** , confirme se **.NET Core** e **ASP.NET Core 2.2** estão selecionados. Selecione o modelo **API** e clique em **Criar** . **Não** selecione **Habilitar Suporte ao Docker** .
 
 ![Caixa de diálogo Novo projeto do VS](first-web-api/_static/vs.png)
 
@@ -1117,19 +1117,19 @@ O diagrama a seguir mostra o design do aplicativo.
 
   Esses comandos criam um novo projeto de API Web e abrem uma nova instância do Visual Studio Code na nova pasta do projeto.
 
-* Quando uma caixa de diálogo perguntar se você deseja adicionar os ativos necessários ao projeto, selecione **Sim**.
+* Quando uma caixa de diálogo perguntar se você deseja adicionar os ativos necessários ao projeto, selecione **Sim** .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Selecione **Arquivo** > **Nova Solução**.
+* Selecione **Arquivo** > **Nova Solução** .
 
   ![Nova solução do macOS](first-web-api-mac/_static/sln.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar** . Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar** .
   
-* Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino**.NET Core 2. x mais recente. Selecione **Avançar**.
+* Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino** .NET Core 2. x mais recente. Selecione **Avançar** .
 
-* Insira *TodoApi* para o **Nome do Projeto** e, em seguida, selecione **Criar**.
+* Insira *TodoApi* para o **Nome do Projeto** e, em seguida, selecione **Criar** .
 
   ![caixa de diálogo de configuração](first-web-api-mac/_static/2.png)
 
@@ -1143,7 +1143,7 @@ O modelo de projeto cria uma API `values`. Chame o método `Get` em um navegador
 
 Pressione CTRL+F5 para executar o aplicativo. O Visual Studio inicia um navegador e navega para `https://localhost:<port>/api/values`, em que `<port>` é um número de porta escolhido aleatoriamente.
 
-Se você receber uma caixa de diálogo perguntando se você deve confiar no certificado do IIS Express, selecione **Sim**. Na caixa de diálogo **Aviso de Segurança** exibida em seguida, selecione **Sim**.
+Se você receber uma caixa de diálogo perguntando se você deve confiar no certificado do IIS Express, selecione **Sim** . Na caixa de diálogo **Aviso de Segurança** exibida em seguida, selecione **Sim** .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -1167,9 +1167,9 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Em **Gerenciador de soluções** , clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta *Models* .
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe** . Dê à classe o nome *TodoItem* e selecione **Adicionar** .
 
 * Substitua o código do modelo pelo seguinte código:
 
@@ -1181,13 +1181,13 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta *Models* .
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia**geral.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia** geral.
 
-* Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
+* Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo** .
 
 * Substitua o código do modelo pelo seguinte código:
 
@@ -1205,7 +1205,7 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Nomeie a classe como *TodoContext* e clique em **Adicionar**.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe** . Nomeie a classe como *TodoContext* e clique em **Adicionar** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -1235,16 +1235,16 @@ O código anterior:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Clique com o botão direito do mouse na pasta *Controllers*.
-* Selecione **Adicionar** > **novo item**.
-* Na caixa de diálogo **Adicionar Novo Item**, selecione o modelo **Classe do Controlador de API**.
-* Dê à classe o nome *TodoController* e selecione **Adicionar**.
+* Clique com o botão direito do mouse na pasta *Controllers* .
+* Selecione **Adicionar** > **novo item** .
+* Na caixa de diálogo **Adicionar Novo Item** , selecione o modelo **Classe do Controlador de API** .
+* Dê à classe o nome *TodoController* e selecione **Adicionar** .
 
   ![Caixa de diálogo Adicionar Novo Item com o controlador na caixa de pesquisa e o controlador da API Web selecionados](first-web-api/_static/new_controller.png)
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Na pasta *Controllers*, crie uma classe chamada `TodoController`.
+* Na pasta *Controllers* , crie uma classe chamada `TodoController`.
 
 ---
 
@@ -1297,7 +1297,7 @@ O [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) atributo denota 
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
-* Substitua `[controller]` pelo nome do controlador, que é o nome de classe do controlador menos o sufixo "Controlador" por convenção. Para esta amostra, o nome da classe do controlador é **Todo**Controller e, portanto, o nome do controlador é "todo". O [roteamento](xref:mvc/controllers/routing) do ASP.NET Core não diferencia maiúsculas de minúsculas.
+* Substitua `[controller]` pelo nome do controlador, que é o nome de classe do controlador menos o sufixo "Controlador" por convenção. Para esta amostra, o nome da classe do controlador é **Todo** Controller e, portanto, o nome do controlador é "todo". O [roteamento](xref:mvc/controllers/routing) do ASP.NET Core não diferencia maiúsculas de minúsculas.
 * Se o atributo `[HttpGet]` tiver um modelo de rota (por exemplo, `[HttpGet("products")]`), acrescente isso ao caminho. Esta amostra não usa um modelo. Para obter mais informações, confira [Roteamento de atributo com atributos Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 No método `GetTodoItem` a seguir, `"{id}"` é uma variável de espaço reservado para o identificador exclusivo do item pendente. Quando `GetTodoItem` é invocado, o valor de `"{id}"` na URL é fornecido para o método no parâmetro `id`.
@@ -1317,18 +1317,18 @@ Os tipos de retorno `ActionResult` podem representar uma ampla variedade de cód
 
 Este tutorial usa o Postman para testar a API Web.
 
-* Instalar o [postmaster](https://www.getpostman.com/downloads/).
+* Instalar o [Postman](https://www.getpostman.com/downloads/).
 * Inicie o aplicativo Web.
 * Inicie o Postman.
-* Desabilite a **verificação de certificado SSL**.
+* Desabilite a **verificação de certificado SSL** .
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Arquivo** > **Configurações** (guia **Geral**), desabilite **Verificação de certificado SSL**.
+* Em **Arquivo** > **Configurações** (guia **Geral** ), desabilite **Verificação de certificado SSL** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* De **Postman**  >  **preferências** do postmaster (guia**geral** ), desabilite a **verificação do certificado SSL**. Como alternativa, selecione a chave inglesa, selecione **Configurações** e desabilite a verificação do certificado SSL.
+* De **Postman**  >  **preferências** do postmaster (guia **geral** ), desabilite a **verificação do certificado SSL** . Como alternativa, selecione a chave inglesa, selecione **Configurações** e desabilite a verificação do certificado SSL.
 
 ---
   
@@ -1336,16 +1336,16 @@ Este tutorial usa o Postman para testar a API Web.
 > Habilite novamente a verificação do certificado SSL depois de testar o controlador.
 
 * Crie uma solicitação.
-  * Defina o método HTTP como **GET**.
+  * Defina o método HTTP como **GET** .
   * Defina o URI de solicitação como `https://localhost:<port>/api/todo` . Por exemplo, `https://localhost:5001/api/todo`.
 * Defina **Exibição de dois painéis** no Postman.
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 ![Postman com solicitação GET](first-web-api/_static/2pv.png)
 
 ## <a name="add-a-create-method-21"></a>Adicionar um método Create 2,1
 
-Adicione o seguinte método `PostTodoItem` dentro de *Controllers/TodoController.cs*: 
+Adicione o seguinte método `PostTodoItem` dentro de *Controllers/TodoController.cs* : 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
@@ -1364,9 +1364,9 @@ O método `CreatedAtAction`:
 * Compile o projeto.
 * No Postman, defina o método HTTP como `POST`.
 * Defina o URI como `https://localhost:<port>/api/TodoItem` . Por exemplo, `https://localhost:5001/api/TodoItem`.
-* Selecione a guia **Corpo**.
-* Selecione o botão de opção **bruto**.
-* Defina o tipo como **JSON (aplicativo/json)**.
+* Selecione a guia **Corpo** .
+* Selecione o botão de opção **bruto** .
+* Defina o tipo como **JSON (aplicativo/json)** .
 * No corpo da solicitação, insira JSON para um item pendente:
 
     ```json
@@ -1376,7 +1376,7 @@ O método `CreatedAtAction`:
     }
     ```
 
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
   ![Postman com a solicitação Create](first-web-api/_static/create.png)
 
@@ -1384,14 +1384,14 @@ O método `CreatedAtAction`:
 
 ### <a name="test-the-location-header-uri-21"></a>Testar o URI do cabeçalho do local 2,1
 
-* Selecione a guia **Cabeçalhos** no painel **Resposta**.
-* Copie o valor do cabeçalho **Local**:
+* Selecione a guia **Cabeçalhos** no painel **Resposta** .
+* Copie o valor do cabeçalho **Local** :
 
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/pmc2.png)
 
 * Defina o método como GET.
 * Defina o URI como `https://localhost:<port>/api/TodoItems/2` . Por exemplo, `https://localhost:5001/api/TodoItems/2`.
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 ## <a name="add-a-puttodoitem-method-21"></a>Adicionar um método PutTodoItem 2,1
 
@@ -1435,7 +1435,7 @@ Use o Postman para excluir um item pendente:
 
 * Defina o método como `DELETE`.
 * Defina o URI do objeto a ser excluído (por exemplo, `https://localhost:5001/api/todo/1` ).
-* Selecione **Enviar**.
+* Selecione **Enviar** .
 
 O aplicativo de exemplo permite que você exclua todos os itens. No entanto, quando o último item é excluído, um novo é criado pelo construtor de classe de modelo na próxima vez que a API for chamada.
 
@@ -1449,17 +1449,17 @@ Configurar o aplicativo para [servir arquivos estáticos](xref:Microsoft.AspNetC
 
 Crie uma pasta *wwwroot* no diretório do projeto.
 
-Adicione um arquivo HTML chamado *index.html* ao diretório *wwwroot*. Substitua seu conteúdo pela seguinte marcação:
+Adicione um arquivo HTML chamado *index.html* ao diretório *wwwroot* . Substitua seu conteúdo pela seguinte marcação:
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo seguinte código:
+Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot* . Substitua o conteúdo pelo seguinte código:
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 
 Uma alteração nas configurações de inicialização do projeto ASP.NET Core pode ser necessária para testar a página HTML localmente:
 
-* Abra *Properties\launchSettings.json*.
+* Abra *Properties\launchSettings.json* .
 * Remova a `launchUrl` propriedade para forçar o aplicativo a abrir em *index.html* &mdash; o arquivo padrão do projeto.
 
 Esta amostra chama todos os métodos CRUD da API Web. Veja a seguir explicações das chamadas à API.
@@ -1500,7 +1500,7 @@ A exclusão de um item pendente é feita definindo o `type` na chamada do AJAX c
 
 [Exibir ou baixar o código de exemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consulte [como baixar](xref:index#how-to-download-a-sample).
 
-Para saber mais, consulte os recursos a seguir:
+Para obter mais informações, consulte os seguintes recursos:
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>

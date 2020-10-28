@@ -4,7 +4,7 @@ author: pranavkm
 description: Dicas para aumentar o desempenho em Blazor WebAssembly aplicativos ASP.NET Core e evitar problemas comuns de desempenho.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 10/09/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: ea3f197e5bab82f4fb40238fe31cd5ce29ab62ad
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 0e827680e7024eabed09b989466476a3a80eb225
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900967"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690265"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyPráticas recomendadas de desempenho de ASP.NET Core
 
@@ -31,8 +31,8 @@ Por [Pranav Krishnamoorthy](https://github.com/pranavkm) e [Steve Sanderson](htt
 
 Blazor WebAssembly é cuidadosamente projetado e otimizado para permitir alto desempenho na maioria dos cenários de interface do usuário do aplicativo. No entanto, a produção dos melhores resultados depende dos desenvolvedores que usam os padrões e recursos certos. Considere os seguintes aspectos:
 
-* **Taxa de transferência de tempo de execução**: o código .net é executado em um intérprete no tempo de execução do Webassembly, portanto, a taxa de transferência da CPU é limitada Em cenários exigentes, o aplicativo se beneficia da [otimização da velocidade de renderização](#optimize-rendering-speed).
-* **Tempo de inicialização**: o aplicativo transfere um tempo de execução do .net para o navegador, portanto, é importante usar recursos que [minimizem o tamanho do download do aplicativo](#minimize-app-download-size).
+* **Taxa de transferência de tempo de execução** : o código .net é executado em um intérprete no tempo de execução do Webassembly, portanto, a taxa de transferência da CPU é limitada Em cenários exigentes, o aplicativo se beneficia da [otimização da velocidade de renderização](#optimize-rendering-speed).
+* **Tempo de inicialização** : o aplicativo transfere um tempo de execução do .net para o navegador, portanto, é importante usar recursos que [minimizem o tamanho do download do aplicativo](#minimize-app-download-size).
 
 ## <a name="optimize-rendering-speed"></a>Otimizar a velocidade de renderização
 

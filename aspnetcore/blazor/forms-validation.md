@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 88c3ded79db65557d9426fde6f43aace4d9d8ae2
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: ad244c29c8e8e904793745119366cd677389b12d
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606669"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690609"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor formulários e validação
 
@@ -224,7 +224,7 @@ O formulário a seguir valida a entrada do usuário usando a validação definid
 
 O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> cria um <xref:Microsoft.AspNetCore.Components.Forms.EditContext> como um [valor em cascata](xref:blazor/components/cascading-values-and-parameters) que controla os metadados sobre o processo de edição, incluindo quais campos foram modificados e as mensagens de validação atuais.
 
-Atribua **um** <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **ou** um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a um <xref:Microsoft.AspNetCore.Components.Forms.EditForm> . A atribuição de ambos não tem suporte e gera um **erro de tempo de execução**.
+Atribua **um** <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **ou** um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a um <xref:Microsoft.AspNetCore.Components.Forms.EditForm> . A atribuição de ambos não tem suporte e gera um **erro de tempo de execução** .
 
 O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> fornece eventos convenientes para envio de formulário válido e inválido:
 
@@ -450,7 +450,7 @@ A validação do servidor pode ser realizada com um [componente de validador](#v
 * Processe a validação do lado do cliente no formulário com o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente.
 * Quando o formulário passar na validação do lado do cliente ( <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> é chamado), envie o <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> para uma API de servidor de back-end para processamento de formulário.
 * Validação do modelo de processo no servidor.
-* A API do servidor inclui a validação interna das anotações de dados da estrutura e a lógica de validação personalizada fornecida pelo desenvolvedor. Se a validação passar no servidor, processe o formulário e envie de volta um código de status de êxito (*200-OK*). Se a validação falhar, retorne um código de status de falha (*400-solicitação inadequada*) e os erros de validação de campo.
+* A API do servidor inclui a validação interna das anotações de dados da estrutura e a lógica de validação personalizada fornecida pelo desenvolvedor. Se a validação passar no servidor, processe o formulário e envie de volta um código de status de êxito ( *200-OK* ). Se a validação falhar, retorne um código de status de falha ( *400-solicitação inadequada* ) e os erros de validação de campo.
 * Desabilite o formulário em caso de êxito ou exiba os erros.
 
 O exemplo a seguir se baseia em:
@@ -519,7 +519,7 @@ namespace BlazorSample.Server.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError("Validation Error: {MESSAGE}", ex.Message);
+                logger.LogError("Validation Error: {Message}", ex.Message);
             }
 
             return BadRequest(ModelState);
@@ -706,7 +706,7 @@ No projeto cliente, o formulário de *banco de dados Starfleet Starship* é atua
         }
         catch (Exception ex)
         {
-            Logger.LogError("Form processing error: {MESSAGE}", ex.Message);
+            Logger.LogError("Form processing error: {Message}", ex.Message);
             disabled = true;
             messageStyles = "color:red";
             message = "There was an error processing the form.";
@@ -1059,7 +1059,7 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ### <a name="no-locblazor-data-annotations-validation-package"></a>Blazor pacote de validação de anotações de dados
 
-O [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) é um pacote que preenche as lacunas da experiência de validação usando o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. O pacote está *experimental*no momento.
+O [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) é um pacote que preenche as lacunas da experiência de validação usando o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente. O pacote está *experimental* no momento.
 
 > [!NOTE]
 > O [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) pacote tem uma versão mais recente do *release candidate* em [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Continue a usar o pacote do Release Candidate *experimental* no momento. O assembly do pacote pode ser movido para a estrutura ou o tempo de execução em uma versão futura. Assista ao [repositório GitHub de anúncios](https://github.com/aspnet/Announcements), no [repositório GitHub do dotnet/aspnetcore](https://github.com/dotnet/aspnetcore)ou nesta seção do tópico para obter mais atualizações.

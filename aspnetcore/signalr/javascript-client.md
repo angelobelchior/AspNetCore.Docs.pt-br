@@ -4,7 +4,7 @@ author: bradygaster
 description: Visão geral de ASP.NET Core SignalR cliente JavaScript.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 6f611e56ec62ad7aea8a93e4761e1f67d0f76574
-ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
+ms.openlocfilehash: be271272c952487fccc5136307c84fdf49391848
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379463"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690652"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>ASP.NET Core SignalR cliente JavaScript
 
@@ -41,7 +41,7 @@ A SignalR biblioteca de cliente JavaScript é entregue como um pacote [NPM](http
 
 ### <a name="install-with-npm"></a>Instalar com NPM
 
-Para o Visual Studio, execute os seguintes comandos no **console do Gerenciador de pacotes** enquanto estiver na pasta raiz. Para Visual Studio Code, execute os seguintes comandos do **terminal integrado**.
+Para o Visual Studio, execute os seguintes comandos no **console do Gerenciador de pacotes** enquanto estiver na pasta raiz. Para Visual Studio Code, execute os seguintes comandos do **terminal integrado** .
 
 ```bash
 npm init -y
@@ -306,7 +306,7 @@ A SignalR biblioteca de cliente JavaScript é entregue como um pacote [NPM](http
 
 ### <a name="install-with-npm"></a>Instalar com NPM
 
-Se estiver usando o Visual Studio, execute os seguintes comandos no **console do Gerenciador de pacotes** enquanto estiver na pasta raiz. Para Visual Studio Code, execute os seguintes comandos do **terminal integrado**.
+Se estiver usando o Visual Studio, execute os seguintes comandos no **console do Gerenciador de pacotes** enquanto estiver na pasta raiz. Para Visual Studio Code, execute os seguintes comandos do **terminal integrado** .
 
 ```bash
 npm init -y

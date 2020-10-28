@@ -3,7 +3,7 @@ title: 'Tutorial: chamar uma API Web do ASP.NET Core com JavaScript'
 author: rick-anderson
 description: Saiba como chamar uma API Web do ASP.NET Core com o JavaScript.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 11/26/2019
 no-loc:
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 3d097d724ac5e2313d24f1f06e47b881f29a4a98
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b41288bd63267a9aa7035e25ebc8d838eed5d93b
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633793"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690685"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Tutorial: chamar uma API Web do ASP.NET Core com JavaScript
 
@@ -51,7 +51,7 @@ A `fetch` função retorna um objeto [Promise](https://developer.mozilla.org/doc
 
 A chamada `fetch` mais simples aceita um parâmetro único que representa a rota. Um segundo parâmetro, conhecido como objeto `init`, é opcional. `init` é usado para configurar a solicitação HTTP.
 
-1. Configure o aplicativo para [atender a arquivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) e [habilitar o mapeamento de arquivo padrão](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). O seguinte código destacado é necessário no método `Configure` de *Startup.cs*:
+1. Configure o aplicativo para [atender a arquivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) e [habilitar o mapeamento de arquivo padrão](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). O seguinte código destacado é necessário no método `Configure` de *Startup.cs* :
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
@@ -69,18 +69,18 @@ A chamada `fetch` mais simples aceita um parâmetro único que representa a rota
 
 Uma alteração nas configurações de inicialização do projeto ASP.NET Core pode ser necessária para testar a página HTML localmente:
 
-1. Abra *Properties\launchSettings.json*.
+1. Abra *Properties\launchSettings.json* .
 1. Remova a `launchUrl` propriedade para forçar o aplicativo a abrir em *index.html* &mdash; o arquivo padrão do projeto.
 
 Esta amostra chama todos os métodos CRUD da API Web. A seguir, são apresentadas explicações sobre as solicitações de API Web.
 
 ### <a name="get-a-list-of-to-do-items"></a>Obter uma lista de itens pendentes
 
-No código a seguir, uma solicitação HTTP GET é enviada para a rota de *api/TodoItems*:
+No código a seguir, uma solicitação HTTP GET é enviada para a rota de *api/TodoItems* :
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_GetItems)]
 
-Quando a API Web retorna um código de status bem-sucedido, a função `_displayItems` é invocada. Cada item de tarefas pendentes no parâmetro de matriz aceito por `_displayItems` é adicionado a uma tabela com os botões **Editar** e **Excluir**. Se a solicitação da API Web falhar, um erro será registrado no console do navegador.
+Quando a API Web retorna um código de status bem-sucedido, a função `_displayItems` é invocada. Cada item de tarefas pendentes no parâmetro de matriz aceito por `_displayItems` é adicionado a uma tabela com os botões **Editar** e **Excluir** . Se a solicitação da API Web falhar, um erro será registrado no console do navegador.
 
 ### <a name="add-a-to-do-item"></a>Adicionar um item pendente
 
@@ -91,7 +91,7 @@ No seguinte código:
   * `method`&mdash; especifica o verbo de ação HTTP POST.
   * `body`&mdash; especifica a representação JSON do corpo da solicitação. O JSON é produzido passando o literal de objeto armazenado em `item` para a função [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
   * `headers`&mdash; especifica os cabeçalhos de solicitação HTTP `Accept` e `Content-Type`. Ambos os cabeçalhos são definidos como `application/json` para especificar o tipo de mídia que está sendo recebido e enviado, respectivamente.
-* Uma solicitação HTTP POST é enviada para a rota de *api/TodoItems*.
+* Uma solicitação HTTP POST é enviada para a rota de *api/TodoItems* .
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
 
@@ -101,7 +101,7 @@ Quando a API Web retorna um código de status de êxito, a função `getItems` �
 
 A atualização de um item de tarefas pendentes é semelhante à adição de um; no entanto, há duas diferenças significativas:
 
-* A rota é sufixada com o identificador exclusivo do item a ser atualizado. Por exemplo, *api/TodoItems/1*.
+* A rota é sufixada com o identificador exclusivo do item a ser atualizado. Por exemplo, *api/TodoItems/1* .
 * O verbo de ação HTTP é PUT, conforme indicado pela opção `method`.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_UpdateItem)]

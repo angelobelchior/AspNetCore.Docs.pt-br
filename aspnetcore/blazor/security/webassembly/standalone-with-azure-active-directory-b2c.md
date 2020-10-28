@@ -5,7 +5,7 @@ description: Saiba como proteger um aplicativo ASP.NET Core Blazor WebAssembly a
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 76486c7170849bb184ec8573e747df095b631632
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 134ec3a913d19c5aba38e7419f25352e93c04e31
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900916"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690413"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com Azure Active Directory B2C
 
@@ -44,45 +44,45 @@ Siga as orientações em [tutorial: registrar um aplicativo no Azure Active Dire
 
 ::: moniker range=">= aspnetcore-5.0"
 
-1. Em **Azure Active Directory** > **registros de aplicativo**, selecione **novo registro**.
-1. Forneça um **nome** para o aplicativo (por exemplo, ** Blazor AAD B2C autônomo**).
-1. Para **tipos de conta com suporte**, selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
+1. Em **Azure Active Directory** > **registros de aplicativo** , selecione **novo registro** .
+1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD B2C autônomo** ).
+1. Para **tipos de conta com suporte** , selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
 1. Defina a lista suspensa **URI de redirecionamento** para o **aplicativo de página única (Spa)** e forneça o seguinte URI de redirecionamento: `https://localhost:{PORT}/authentication/login-callback` . A porta padrão para um aplicativo em execução no Kestrel é 5001. Se o aplicativo for executado em uma porta Kestrel diferente, use a porta do aplicativo. Por IIS Express, a porta gerada aleatoriamente para o aplicativo pode ser encontrada nas propriedades do aplicativo no painel de **depuração** . Como o aplicativo não existe neste ponto e a porta de IIS Express não é conhecida, retorne a essa etapa depois que o aplicativo for criado e atualize o URI de redirecionamento. Um comentário aparece mais adiante neste tópico para lembrar IIS Express usuários para atualizar o URI de redirecionamento.
 1. Confirme se **as permissões** > **concedem consentimento de administrador ao OpenID e offline_access permissões** estão selecionadas.
-1. Selecione **Registrar**.
+1. Selecione **Registrar** .
 
 Registre a ID do aplicativo (cliente) (por exemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
-Em configurações de plataforma de **autenticação** > **Platform configurations** > **, um aplicativo de página única (Spa)**:
+Em configurações de plataforma de **autenticação** > **Platform configurations** > **, um aplicativo de página única (Spa)** :
 
 1. Confirme se o **URI de redirecionamento** do `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. Para **concessão implícita**, verifique se as caixas de seleção para **tokens de acesso** e **tokens de ID** **não** estão selecionadas.
+1. Para **concessão implícita** , verifique se as caixas de seleção para **tokens de acesso** e **tokens de ID** **não** estão selecionadas.
 1. Os padrões restantes para o aplicativo são aceitáveis para essa experiência.
-1. Selecione o botão **Salvar**.
+1. Selecione o botão **Salvar** .
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-1. Em **Azure Active Directory** > **registros de aplicativo**, selecione **novo registro**.
-1. Forneça um **nome** para o aplicativo (por exemplo, ** Blazor AAD B2C autônomo**).
-1. Para **tipos de conta com suporte**, selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
+1. Em **Azure Active Directory** > **registros de aplicativo** , selecione **novo registro** .
+1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD B2C autônomo** ).
+1. Para **tipos de conta com suporte** , selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
 1. Deixe a lista suspensa **URI de redirecionamento** definida como **Web** e forneça o seguinte URI de redirecionamento: `https://localhost:{PORT}/authentication/login-callback` . A porta padrão para um aplicativo em execução no Kestrel é 5001. Se o aplicativo for executado em uma porta Kestrel diferente, use a porta do aplicativo. Por IIS Express, a porta gerada aleatoriamente para o aplicativo pode ser encontrada nas propriedades do aplicativo no painel de **depuração** . Como o aplicativo não existe neste ponto e a porta de IIS Express não é conhecida, retorne a essa etapa depois que o aplicativo for criado e atualize o URI de redirecionamento. Um comentário aparece mais adiante neste tópico para lembrar IIS Express usuários para atualizar o URI de redirecionamento.
 1. Confirme se **as permissões** > **concedem consentimento de administrador ao OpenID e offline_access permissões** estão selecionadas.
-1. Selecione **Registrar**.
+1. Selecione **Registrar** .
 
 Registre a ID do aplicativo (cliente) (por exemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
-Em **Authentication** > **configurações da plataforma** de autenticação > **Web**:
+Em **Authentication** > **configurações da plataforma** de autenticação > **Web** :
 
 1. Confirme se o **URI de redirecionamento** do `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. Para **concessão implícita**, marque as caixas de seleção para **tokens de acesso** e **tokens de ID**.
+1. Para **concessão implícita** , marque as caixas de seleção para **tokens de acesso** e **tokens de ID** .
 1. Os padrões restantes para o aplicativo são aceitáveis para essa experiência.
-1. Selecione o botão **Salvar**.
+1. Selecione o botão **Salvar** .
 
 ::: moniker-end
 
-Em **casa**  >  **Azure ad B2C**  >  **fluxos de usuário**:
+Em **casa**  >  **Azure ad B2C**  >  **fluxos de usuário** :
 
 [Criar um fluxo de usuário de inscrição e de entrada](/azure/active-directory-b2c/tutorial-create-user-flows)
 

@@ -5,7 +5,7 @@ description: Saiba como proteger um aplicativo ASP.NET Core hospedado Blazor Web
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/02/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 5d92d12a1fcd3797dcffb301998b529935751e8b
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: a6fd005e19f532089ac1a1914756fb03eabb24c4
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491477"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690483"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
 
@@ -38,7 +38,7 @@ Este artigo explica como criar um [ Blazor WebAssembly aplicativo hospedado](xre
 
 Para criar um novo Blazor WebAssembly projeto com um mecanismo de autenticação:
 
-1. Depois de escolher o modelo de ** Blazor WebAssembly aplicativo** na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , selecione **alterar** em **autenticação**.
+1. Depois de escolher o modelo de **Blazor WebAssembly aplicativo** na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , selecione **alterar** em **autenticação** .
 
 1. Selecione **contas de usuário individuais** com a opção **armazenar contas de usuário no aplicativo** para armazenar usuários no aplicativo usando o sistema do ASP.NET Core [Identity](xref:security/authentication/identity) .
 
@@ -475,7 +475,7 @@ Para esse cenário de hospedagem, **não use o** mesmo certificado para a [ Iden
 
 * Usar certificados diferentes para esses dois requisitos é uma boa prática de segurança porque isola chaves privadas para cada finalidade.
 * Os certificados TLS para comunicação com navegadores são gerenciados de forma independente sem afetar a Identity assinatura de token do servidor.
-* Quando [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) fornece um certificado a um aplicativo do serviço de aplicativo para associação de domínio personalizada, Identity o servidor não pode obter o mesmo certificado de Azure Key Vault para assinatura de token. Embora Identity seja possível configurar o servidor para usar o mesmo certificado TLS de um caminho físico, colocar os certificados de segurança no controle do código-fonte é uma **prática inadequada e deve ser evitado na maioria dos cenários**.
+* Quando [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) fornece um certificado a um aplicativo do serviço de aplicativo para associação de domínio personalizada, Identity o servidor não pode obter o mesmo certificado de Azure Key Vault para assinatura de token. Embora Identity seja possível configurar o servidor para usar o mesmo certificado TLS de um caminho físico, colocar os certificados de segurança no controle do código-fonte é uma **prática inadequada e deve ser evitado na maioria dos cenários** .
 
 Nas diretrizes a seguir, um certificado autoassinado é criado em Azure Key Vault exclusivamente para Identity assinatura de token do servidor. A Identity configuração do servidor usa o certificado do Key Vault por meio do repositório de certificados do aplicativo `My`  >  `CurrentUser` . Outros certificados usados para tráfego HTTPS com domínios personalizados são criados e configurados separadamente do Identity certificado de autenticação do servidor.
 
@@ -501,23 +501,23 @@ Para configurar um aplicativo, Azure App serviço e Azure Key Vault para hospeda
    Para obter mais informações sobre certificados Azure Key Vault, consulte [Azure Key Vault: certificados](/azure/key-vault/certificates/).
 1. Crie um novo Azure Key Vault ou use um cofre de chaves existente em sua assinatura do Azure.
 1. Na área **certificados** do Key Vault, importe o certificado do site PFX. Registre a impressão digital do certificado, que será usada na configuração do aplicativo mais tarde.
-1. No Azure Key Vault, gere um novo certificado autoassinado para Identity assinatura de token do servidor. Dê ao certificado um **nome de certificado** e **assunto**. O **assunto** é especificado como `CN={COMMON NAME}` , em que o `{COMMON NAME}` espaço reservado é o nome comum do certificado. O nome comum pode ser qualquer cadeia de caracteres alfanumérica. Por exemplo, `CN=IdentityServerSigning` é uma **entidade**de certificado válida. Use as definições de **configuração de política avançada** padrão. Registre a impressão digital do certificado, que será usada na configuração do aplicativo mais tarde.
+1. No Azure Key Vault, gere um novo certificado autoassinado para Identity assinatura de token do servidor. Dê ao certificado um **nome de certificado** e **assunto** . O **assunto** é especificado como `CN={COMMON NAME}` , em que o `{COMMON NAME}` espaço reservado é o nome comum do certificado. O nome comum pode ser qualquer cadeia de caracteres alfanumérica. Por exemplo, `CN=IdentityServerSigning` é uma **entidade** de certificado válida. Use as definições de **configuração de política avançada** padrão. Registre a impressão digital do certificado, que será usada na configuração do aplicativo mais tarde.
 1. Navegue até Azure App serviço no portal do Azure e crie um novo serviço de aplicativo com a seguinte configuração:
    * **Publicar** conjunto como `Code` .
    * Conjunto de **pilhas em tempo de execução** para o tempo de execução do aplicativo.
-   * Para **SKU e tamanho**, confirme se a camada do serviço de aplicativo é `Basic B1` ou superior.  O serviço de aplicativo requer uma `Basic B1` camada de serviço ou mais alta para usar domínios personalizados.
+   * Para **SKU e tamanho** , confirme se a camada do serviço de aplicativo é `Basic B1` ou superior.  O serviço de aplicativo requer uma `Basic B1` camada de serviço ou mais alta para usar domínios personalizados.
 1. Depois que o Azure criar o serviço de aplicativo, abra a **configuração** do aplicativo e adicione uma nova configuração de aplicativo especificando as impressões digitais do certificado registradas anteriormente. A chave de configuração do aplicativo é `WEBSITE_LOAD_CERTIFICATES` . Separe as impressões digitais do certificado no valor de configuração do aplicativo com uma vírgula, como mostra o exemplo a seguir:
    * Chave: `WEBSITE_LOAD_CERTIFICATES`
    * Valor: `57443A552A46DB...D55E28D412B943565,29F43A772CB6AF...1D04F0C67F85FB0B1`
 
    No portal do Azure, salvar as configurações do aplicativo é um processo de duas etapas: Salve a `WEBSITE_LOAD_CERTIFICATES` configuração chave-valor e, em seguida, selecione o botão **salvar** na parte superior da folha.
-1. Selecione as configurações de **TLS/SSL**do aplicativo. Selecione **certificados de chave privada (. pfx)**. Use o processo **importar Key Vault certificado** duas vezes para importar o certificado do site para comunicação HTTPS e o Identity certificado de autenticação de tokens do servidor autoassinado do site.
+1. Selecione as configurações de **TLS/SSL** do aplicativo. Selecione **certificados de chave privada (. pfx)** . Use o processo **importar Key Vault certificado** duas vezes para importar o certificado do site para comunicação HTTPS e o Identity certificado de autenticação de tokens do servidor autoassinado do site.
 1. Navegue até a folha **domínios personalizados** . No site do registrador de domínio, use o **endereço IP** e a **ID de verificação de domínio personalizado** para configurar o domínio. Uma configuração de domínio típica inclui:
    * Um **registro a** com um **host** de `@` e um valor do endereço IP do portal do Azure.
    * Um **registro txt** com um **host** de `asuid` e o valor da ID de verificação gerado pelo Azure e fornecidos pelo portal do Azure.
 
    Certifique-se de salvar as alterações no site do registrador de domínio corretamente. Alguns sites do registrador exigem um processo de duas etapas para salvar registros de domínio: um ou mais registros são salvos individualmente, atualizando o registro do domínio com um botão separado.
-1. Retorne para a folha **domínios personalizados** no portal do Azure. Selecione **Adicionar domínio personalizado**. Selecione a opção **um registro** . Forneça o domínio e selecione **validar**. Se os registros de domínio estiverem corretos e propagados pela Internet, o portal permitirá que você selecione o botão **Adicionar domínio personalizado** .
+1. Retorne para a folha **domínios personalizados** no portal do Azure. Selecione **Adicionar domínio personalizado** . Selecione a opção **um registro** . Forneça o domínio e selecione **validar** . Se os registros de domínio estiverem corretos e propagados pela Internet, o portal permitirá que você selecione o botão **Adicionar domínio personalizado** .
 
    Pode levar alguns dias para que as alterações no registro do domínio se propaguem entre os servidores de nomes de domínio da Internet (DNS) depois que eles forem processados pelo seu registrador de domínio. Se os registros de domínio não forem atualizados dentro de três dias úteis, confirme se os registros estão definidos corretamente com o registrador de domínios e entre em contato com o atendimento ao cliente.
 1. Na folha **domínios personalizados** , o **estado do SSL** para o domínio é marcado `Not Secure` . Selecione o link **Adicionar Associação** . Selecione o certificado HTTPS do site do cofre de chaves para a associação de domínio personalizada.
@@ -537,7 +537,7 @@ Para configurar um aplicativo, Azure App serviço e Azure Key Vault para hospeda
    },
    ```
 
-1. No Visual Studio, crie um perfil de [publicação](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles) de serviço Azure app para o projeto de *servidor* . Na barra de menus, selecione: **Compilar**  >  **publicar**  >  **novo**  >  **Azure**  >  **serviço de Azure app** do Azure (Windows ou Linux). Quando o Visual Studio está conectado a uma assinatura do Azure, você pode definir a **exibição** de recursos do Azure por **tipo de recurso**. Navegue dentro da lista de **aplicativos Web** para localizar o serviço de aplicativo para o aplicativo e selecioná-lo. Selecione **Concluir**.
+1. No Visual Studio, crie um perfil de [publicação](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles) de serviço Azure app para o projeto de *servidor* . Na barra de menus, selecione: **Compilar**  >  **publicar**  >  **novo**  >  **Azure**  >  **serviço de Azure app** do Azure (Windows ou Linux). Quando o Visual Studio está conectado a uma assinatura do Azure, você pode definir a **exibição** de recursos do Azure por **tipo de recurso** . Navegue dentro da lista de **aplicativos Web** para localizar o serviço de aplicativo para o aplicativo e selecioná-lo. Selecione **Concluir** .
 1. Quando o Visual Studio retorna para a janela de **publicação** , as dependências do cofre de chaves e do serviço de banco de dados SQL Server são detectadas automaticamente.
 
    Nenhuma alteração de configuração nas configurações padrão é necessária para o serviço de cofre de chaves.

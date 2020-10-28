@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 07b67cd7c267c39b99277114b73642b5caa3e312
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 745703aaa4ceb39c75789bab0bde4564f3d79a30
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632831"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678553"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Parte 6, métodos e exibições do controlador no ASP.NET Core
 
@@ -43,7 +43,7 @@ Procure o controlador `Movies` e mantenha o ponteiro do mouse pressionado sobre 
 
 ![São mostrados uma janela do navegador com o mouse sobre o link de edição e um link da URL https://localhost:5001/Movies/Edit/5](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-Os links **Editar**, **Detalhes** e **Excluir** são gerados pelo Auxiliar de Marcação de Âncora do MVC Core no arquivo *Views/Movies/Index.cshtml*.
+Os links **Editar** , **Detalhes** e **Excluir** são gerados pelo Auxiliar de Marcação de Âncora do MVC Core no arquivo *Views/Movies/Index.cshtml* .
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
@@ -57,7 +57,7 @@ Os [auxiliares de marca](xref:mvc/views/tag-helpers/intro) permitem que o códig
 </td>
 ```
 
-Lembre-se do formato do [roteamento](xref:mvc/controllers/routing) definido no arquivo *Startup.cs*:
+Lembre-se do formato do [roteamento](xref:mvc/controllers/routing) definido no arquivo *Startup.cs* :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -107,7 +107,7 @@ Observe se o segundo método de ação `Edit` é precedido pelo atributo `[HttpP
 
 O atributo `HttpPost` especifica que esse método `Edit` pode ser invocado *somente* para solicitações `POST`. Você pode aplicar o atributo `[HttpGet]` ao primeiro método de edição, mas isso não é necessário porque `[HttpGet]` é o padrão.
 
-O atributo `ValidateAntiForgeryToken` é usado para [prevenir a falsificação de uma solicitação](xref:security/anti-request-forgery) e é associado a um token antifalsificação gerado no arquivo de exibição de edição (*Views/Movies/Edit.cshtml*). O arquivo de exibição de edição gera o token antifalsificação com o [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms).
+O atributo `ValidateAntiForgeryToken` é usado para [prevenir a falsificação de uma solicitação](xref:security/anti-request-forgery) e é associado a um token antifalsificação gerado no arquivo de exibição de edição ( *Views/Movies/Edit.cshtml* ). O arquivo de exibição de edição gera o token antifalsificação com o [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms).
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
@@ -149,7 +149,7 @@ A lista a seguir mostra a versão `[HttpPost]` do método de ação `Edit`.
 
 O atributo `[ValidateAntiForgeryToken]` valida o token [XSRF](xref:security/anti-request-forgery) oculto gerado pelo gerador de tokens antifalsificação no [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms)
 
-O sistema de [model binding](xref:mvc/models/model-binding) usa os valores de formulário postados e cria um objeto `Movie` que é passado como o parâmetro `movie`. O método `ModelState.IsValid` verifica se os dados enviados no formulário podem ser usados para modificar (editar ou atualizar) um objeto `Movie`. Se os dados forem válidos, eles serão salvos. Os dados de filmes atualizados (editados) são salvos no banco de dados chamando o método `SaveChangesAsync` do contexto de banco de dados. Depois de salvar os dados, o código redireciona o usuário para o método de ação `Index` da classe `MoviesController`, que exibe a coleção de filmes, incluindo as alterações feitas recentemente.
+O sistema de [model binding](xref:mvc/models/model-binding) usa os valores de formulário postados e cria um objeto `Movie` que é passado como o parâmetro `movie`. A `ModelState.IsValid` propriedade verifica se os dados enviados no formulário podem ser usados para modificar (editar ou atualizar) um `Movie` objeto. Se os dados forem válidos, eles serão salvos. Os dados de filmes atualizados (editados) são salvos no banco de dados chamando o método `SaveChangesAsync` do contexto de banco de dados. Depois de salvar os dados, o código redireciona o usuário para o método de ação `Index` da classe `MoviesController`, que exibe a coleção de filmes, incluindo as alterações feitas recentemente.
 
 Antes que o formulário seja postado no servidor, a validação do lado do cliente verifica as regras de validação nos campos. Se houver erros de validação, será exibida uma mensagem de erro e o formulário não será postado. Se o JavaScript estiver desabilitado, você não terá a validação do lado do cliente, mas o servidor detectará os valores postados que não forem válidos e os valores de formulário serão exibidos novamente com mensagens de erro. Mais adiante no tutorial, examinamos a [Validação de Modelos](xref:mvc/models/validation) mais detalhadamente. O [Auxiliar de Marcação de Validação](xref:mvc/views/working-with-forms) no modelo de exibição *Views/Movies/Edit.cshtml* é responsável por exibir as mensagens de erro apropriadas.
 
