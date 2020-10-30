@@ -5,6 +5,7 @@ description: Saiba mais sobre os principais provedores de armazenamento no ASP.N
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: fb21f7d4d784451096db5c420f2ffd4532c2b490
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631323"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051740"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Provedores de armazenamento de chaves no ASP.NET Core
 
@@ -121,7 +122,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * [StackExchange. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
 * [Cache Redis do Azure](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
@@ -131,7 +132,7 @@ Para obter mais informações, consulte estes tópicos:
 
 **Aplica-se somente a implantações do Windows.**
 
-Às vezes, o aplicativo pode não ter acesso de gravação ao sistema de arquivos. Considere um cenário em que um aplicativo está sendo executado como uma conta de serviço virtual (como a identidade do pool de aplicativos do *w3wp.exe*). Nesses casos, o administrador pode provisionar uma chave do registro acessível pela identidade da conta de serviço. Chame o método de extensão [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) , conforme mostrado abaixo. Forneça uma [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) apontando para o local onde as chaves de criptografia devem ser armazenadas:
+Às vezes, o aplicativo pode não ter acesso de gravação ao sistema de arquivos. Considere um cenário em que um aplicativo está sendo executado como uma conta de serviço virtual (como a identidade do pool de aplicativos do *w3wp.exe* ). Nesses casos, o administrador pode provisionar uma chave do registro acessível pela identidade da conta de serviço. Chame o método de extensão [PersistKeysToRegistry](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystoregistry) , conforme mostrado abaixo. Forneça uma [RegistryKey](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository.registrykey) apontando para o local onde as chaves de criptografia devem ser armazenadas:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

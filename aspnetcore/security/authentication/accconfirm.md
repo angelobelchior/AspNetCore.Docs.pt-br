@@ -5,6 +5,7 @@ description: Saiba como criar um aplicativo ASP.NET Core com confirmação de em
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d6ea37ceb83ffbaa94187e0c541c79428594e4b4
-ms.sourcegitcommit: 2039e60eb7b482da8298f82dcd5eda27cf747f32
+ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88906443"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052312"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmação de conta e de recuperação de senha no ASP.NET Core
 
@@ -53,10 +54,10 @@ dotnet run
 
 Execute o aplicativo, selecione o link **registrar** e registre um usuário. Depois de registrado, você será redirecionado para a `/Identity/Account/RegisterConfirmation` página para, que contém um link para simular a confirmação de email:
 
-* Selecione o link `Click here to confirm your account`.
+* Selecione o `Click here to confirm your account` link.
 * Selecione o link de **logon** e entre com as mesmas credenciais.
 * Selecione o `Hello YourEmail@provider.com!` link, que o redireciona para a `/Identity/Account/Manage/PersonalData` página.
-* Selecione a guia **dados pessoais** à esquerda e, em seguida, selecione **excluir**.
+* Selecione a guia **dados pessoais** à esquerda e, em seguida, selecione **excluir** .
 
 ### <a name="configure-an-email-provider"></a>Configurar um provedor de email
 
@@ -64,7 +65,7 @@ Neste tutorial, [SendGrid](https://sendgrid.com) é usado para enviar email. Voc
 
 A conta SendGrid pode exigir a [adição de um remetente](https://sendgrid.com/docs/ui/sending-email/senders/).
 
-Crie uma classe para buscar a chave de email seguro. Para este exemplo, crie *Services/AuthMessageSenderOptions. cs*:
+Crie uma classe para buscar a chave de email seguro. Para este exemplo, crie *Services/AuthMessageSenderOptions. cs* :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -155,7 +156,7 @@ Execute o aplicativo Web e teste a confirmação da conta e o fluxo de recupera�
 
 ### <a name="test-password-reset"></a>Testar redefinição de senha
 
-* Se você estiver conectado, selecione **logout**.
+* Se você estiver conectado, selecione **logout** .
 * Selecione o link **fazer logon** e selecione o link **esqueceu sua senha?** .
 * Insira o email que você usou para registrar a conta.
 * Um email com um link para redefinir sua senha é enviado. Verifique seu email e clique no link para redefinir sua senha. Depois que a senha for redefinida com êxito, você poderá entrar com seu email e nova senha.
@@ -266,7 +267,7 @@ Execute o aplicativo, selecione o link **registrar** e registre um usuário. Nes
 
 Observe que o campo da tabela `EmailConfirmed` é `False` .
 
-Você pode querer usar esse email novamente na próxima etapa quando o aplicativo enviar um email de confirmação. Clique com o botão direito do mouse na linha e selecione **excluir**. A exclusão do alias de email torna mais fácil as etapas a seguir.
+Você pode querer usar esse email novamente na próxima etapa quando o aplicativo enviar um email de confirmação. Clique com o botão direito do mouse na linha e selecione **excluir** . A exclusão do alias de email torna mais fácil as etapas a seguir.
 
 <a name="prevent-login-at-registration"></a>
 
@@ -286,7 +287,7 @@ Atualize `Startup.ConfigureServices`  para exigir um email confirmado:
 
 Neste tutorial, [SendGrid](https://sendgrid.com) é usado para enviar email. Você precisa de uma conta e chave do SendGrid para enviar email. Você pode usar outros provedores de email. O ASP.NET Core 2. x inclui `System.Net.Mail` , que permite enviar emails do seu aplicativo. Recomendamos que você use o SendGrid ou outro serviço de email para enviar email. O SMTP é difícil de proteger e configurar corretamente.
 
-Crie uma classe para buscar a chave de email seguro. Para este exemplo, crie *Services/AuthMessageSenderOptions. cs*:
+Crie uma classe para buscar a chave de email seguro. Para este exemplo, crie *Services/AuthMessageSenderOptions. cs* :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -355,7 +356,7 @@ Adicione o seguinte código ao `ConfigureServices` método no arquivo *Startup.c
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Habilitar confirmação de conta e recuperação de senha
 
-O modelo tem o código para confirmação de conta e recuperação de senha. Localize o `OnPostAsync` método em *áreas/ Identity /pages/Account/Register.cshtml.cs*.
+O modelo tem o código para confirmação de conta e recuperação de senha. Localize o `OnPostAsync` método em *áreas/ Identity /pages/Account/Register.cshtml.cs* .
 
 Impedir que usuários registrados recentemente façam logon automaticamente comentando a seguinte linha:
 
@@ -385,7 +386,7 @@ A página Gerenciar é exibida com a guia **perfil** selecionada. O **email** mo
 
 ### <a name="test-password-reset"></a>Testar redefinição de senha
 
-* Se você estiver conectado, selecione **logout**.
+* Se você estiver conectado, selecione **logout** .
 * Selecione o link **fazer logon** e selecione o link **esqueceu sua senha?** .
 * Insira o email que você usou para registrar a conta.
 * Um email com um link para redefinir sua senha é enviado. Verifique seu email e clique no link para redefinir sua senha. Depois que a senha for redefinida com êxito, você poderá entrar com seu email e nova senha.

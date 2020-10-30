@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 2a80a9c4848703802b15348a30f2564f9580a24b
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: d2b3b22a94e3119712e331565cc74ffa60ada726
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113875"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050700"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Parte 8, adicionar um novo campo a um aplicativo ASP.NET Core MVC
 
@@ -40,7 +41,7 @@ Ao usar o Code First do EF para criar automaticamente um banco de dados, o Code 
 
 ## <a name="add-a-rating-property-to-the-movie-model"></a>Adicionar uma Propriedade de Classificação ao Modelo de Filme
 
-Adicionar uma propriedade `Rating` a *Models/Movie.cs*:
+Adicionar uma propriedade `Rating` a *Models/Movie.cs* :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
@@ -62,7 +63,7 @@ Command ⌘ + B
 
 ------
 
-Como você adicionou um novo campo à `Movie` classe, será necessário atualizar a lista de associação de propriedade para que essa nova propriedade seja incluída. Em *MoviesController.cs*, atualize o atributo `[Bind]` dos métodos de ação `Create` e `Edit` para incluir a propriedade `Rating`:
+Como você adicionou um novo campo à `Movie` classe, será necessário atualizar a lista de associação de propriedade para que essa nova propriedade seja incluída. Em *MoviesController.cs* , atualize o atributo `[Bind]` dos métodos de ação `Create` e `Edit` para incluir a propriedade `Rating`:
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -112,7 +113,7 @@ Para este tutorial, as Migrações do Code First são usadas.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
- No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes** .
 
   ![Menu do PMC](adding-model/_static/pmc.png)
 

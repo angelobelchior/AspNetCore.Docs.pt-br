@@ -5,6 +5,7 @@ description: Saiba como começar a usar o ASP.NET Core MVC.
 ms.author: riande
 ms.date: 10/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 177112106d143a6826c1f927aac807da0aa9f2b4
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: cf17aaf8eff342c378536d4f635e09b936459bee
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113823"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052897"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introdução ao ASP.NET Core MVC
 
@@ -65,17 +66,17 @@ No final, você terá um aplicativo que pode gerenciar e exibir dados de filmes.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* No Visual Studio, selecione **Criar um projeto**.
+* No Visual Studio, selecione **Criar um projeto** .
 
-* Selecione **ASP.NET Core aplicativo Web** a > **seguir**.
+* Selecione **ASP.NET Core aplicativo Web** a > **seguir** .
 
 ![novo Aplicativo Web ASP.NET Core](start-mvc/_static/np_2.1.png)
 
-* Nomeie o projeto como **MvcMovie** e, em seguida, selecione **Criar**. É importante nomear o projeto como **MvcMovie** para corresponder ao namespace quando você copiar o código.
+* Nomeie o projeto como **MvcMovie** e, em seguida, selecione **Criar** . É importante nomear o projeto como **MvcMovie** para corresponder ao namespace quando você copiar o código.
 
   ![novo Aplicativo Web ASP.NET Core](start-mvc/_static/config.png)
 
-* Selecione **aplicativo Web (Model-View-Controller)**. Nas caixas suspensas, selecione **.NET Core** e **ASP.NET Core 3,1**e, em seguida, selecione **criar**.
+* Selecione **aplicativo Web (Model-View-Controller)** . Nas caixas suspensas, selecione **.NET Core** e **ASP.NET Core 3,1** e, em seguida, selecione **criar** .
 
 ![Caixa de diálogo Novo projeto, .NET Core no painel esquerdo, Web do ASP.NET Core ](start-mvc/_static/new_project30.png)
 
@@ -96,27 +97,27 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
   * Uma caixa de diálogo aparece com os **ativos necessários para compilação e depuração estão ausentes em ' MvcMovie '. Adicioná-los?**  Selecione **Sim**
 
-  * `dotnet new mvc -o MvcMovie`: cria um novo projeto do ASP.NET Core MVC na pasta *MvcMovie*.
+  * `dotnet new mvc -o MvcMovie`: cria um novo projeto do ASP.NET Core MVC na pasta *MvcMovie* .
   * `code -r MvcMovie`: Carrega o arquivo de projeto *MvcMovie. csproj* em Visual Studio Code.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Selecione **Arquivo** > **Nova Solução**.
+* Selecione **Arquivo** > **Nova Solução** .
 
   ![Nova solução do macOS](start-mvc/_static/new_project_vsmac.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar** . Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar** .
 
   ![seleção de modelo de aplicativo Web macOS](start-mvc/_static/web_app_template_vsmac.png)
 
 * Na caixa de diálogo **configurar seu novo aplicativo Web** :
 
-  * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 3. x mais recente.
+  * Confirme se a **autenticação** está definida como **sem autenticação** .
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 3. x mais recente.
 
-  Selecione **Avançar**.
+  Selecione **Avançar** .
 
-* Nomeie o projeto **MvcMovie** e, em seguida, selecione **Criar**.
+* Nomeie o projeto **MvcMovie** e, em seguida, selecione **Criar** .
 
   ![nome do macOS o projeto](start-mvc/_static/MvcMovie.png)
 
@@ -132,7 +133,7 @@ Pressione **Ctrl+F5** para executar o aplicativo no modo sem depuração.
 
 * O Visual Studio inicia o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) e executa o aplicativo. Observe que a barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web.
 * Iniciar o aplicativo com Ctrl+F5 (modo de não depuração) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para iniciar o aplicativo rapidamente e exibir as alterações.
-* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar**:
+* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar** :
 
   ![Menu Depurar](start-mvc/_static/debug_menu.png)
 
@@ -163,7 +164,7 @@ Selecione **executar**  >  **Iniciar sem depuração** para iniciar o aplicativo
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
 * A barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web. Quando você executar o aplicativo, você verá um número da porta diferente.
-* Você pode iniciar o aplicativo no modo de depuração ou sem depuração no item de menu **Executar**.
+* Você pode iniciar o aplicativo no modo de depuração ou sem depuração no item de menu **Executar** .
 
   A imagem a seguir mostra o aplicativo:
 
@@ -217,18 +218,18 @@ No final, você terá um aplicativo que pode gerenciar e exibir dados de filmes.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* No Visual Studio, selecione **Criar um projeto**.
+* No Visual Studio, selecione **Criar um projeto** .
 
-* Selecione **Aplicativo Web ASP.NET Core** e, em seguida, selecione **Avançar**.
+* Selecione **Aplicativo Web ASP.NET Core** e, em seguida, selecione **Avançar** .
 
 ![novo Aplicativo Web ASP.NET Core](start-mvc/_static/np_2.1.png)
 
-* Nomeie o projeto como **MvcMovie** e, em seguida, selecione **Criar**. É importante nomear o projeto como **MvcMovie** para corresponder ao namespace quando você copiar o código.
+* Nomeie o projeto como **MvcMovie** e, em seguida, selecione **Criar** . É importante nomear o projeto como **MvcMovie** para corresponder ao namespace quando você copiar o código.
 
   ![novo Aplicativo Web ASP.NET Core](start-mvc/_static/config.png)
 
 
-* Selecione **Aplicativo Web (Model-View-Controller)** e, em seguida, **Criar**.
+* Selecione **Aplicativo Web (Model-View-Controller)** e, em seguida, **Criar** .
 
 ![Caixa de diálogo Novo projeto, .NET Core no painel esquerdo, Web do ASP.NET Core ](start-mvc/_static/new_project22-21.png)
 
@@ -249,25 +250,25 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
   * Uma caixa de diálogo aparece com os **ativos necessários para compilação e depuração estão ausentes em ' MvcMovie '. Adicioná-los?**  Selecione **Sim**
 
-  * `dotnet new mvc -o MvcMovie`: cria um novo projeto do ASP.NET Core MVC na pasta *MvcMovie*.
+  * `dotnet new mvc -o MvcMovie`: cria um novo projeto do ASP.NET Core MVC na pasta *MvcMovie* .
   * `code -r MvcMovie`: Carrega o arquivo de projeto *MvcMovie. csproj* em Visual Studio Code.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Selecione **Arquivo** > **Nova Solução**.
+* Selecione **Arquivo** > **Nova Solução** .
 
   ![Nova solução do macOS](./start-mvc/_static/new_project_vsmac.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar** . Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar** .
 
 * Na caixa de diálogo **configurar seu novo aplicativo Web** :
 
-  * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 2. x mais recente.
+  * Confirme se a **autenticação** está definida como **sem autenticação** .
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 2. x mais recente.
 
-  Selecione **Avançar**.
+  Selecione **Avançar** .
 
-* Nomeie o projeto **MvcMovie** e, em seguida, selecione **Criar**.
+* Nomeie o projeto **MvcMovie** e, em seguida, selecione **Criar** .
 
 ---
 
@@ -281,7 +282,7 @@ Pressione **Ctrl+F5** para executar o aplicativo no modo sem depuração.
 
 * O Visual Studio inicia o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) e executa o aplicativo. Observe que a barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web.
 * Iniciar o aplicativo com Ctrl+F5 (modo de não depuração) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para iniciar o aplicativo rapidamente e exibir as alterações.
-* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar**:
+* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar** :
 
   ![Menu Depurar](start-mvc/_static/debug_menu.png)
 
@@ -322,7 +323,7 @@ Selecione **executar**  >  **Iniciar sem depuração** para iniciar o aplicativo
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
 * A barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web. Quando você executar o aplicativo, você verá um número da porta diferente.
-* Você pode iniciar o aplicativo no modo de depuração ou sem depuração no item de menu **Executar**.
+* Você pode iniciar o aplicativo no modo de depuração ou sem depuração no item de menu **Executar** .
 
 * Selecione **Aceitar** para consentir com o acompanhamento. Este aplicativo não acompanha informações pessoais. O código de modelo gerado inclui ativos para ajudar a cumprir o [RGPD (Regulamento Geral sobre a Proteção de Dados)](xref:security/gdpr).
 

@@ -5,6 +5,7 @@ description: Parte 5, adicionar um modelo a um aplicativo ASP.NET Core MVC
 ms.author: riande
 ms.date: 8/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 23ecee4e3482b3ee82ae597671a8c45515eb4589
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f893aa1041a42c12514b825fb3c8e96a6104358d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634924"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051571"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>Parte 5, trabalhar com um banco de dados em um aplicativo MVC ASP.NET Core
 
@@ -29,13 +30,13 @@ ms.locfileid: "88634924"
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:
+O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:
+O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:
 
 [!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
@@ -43,7 +44,7 @@ O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET 
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=5-6)]
 
-O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:
+O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 
@@ -55,9 +56,9 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.
+O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}* .
 
-* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](working-with-sql/_static/ssox.png)
 
@@ -85,7 +86,7 @@ Observe o ícone de chave ao lado de `ID`. Por padrão, o EF tornará uma propri
 
 ## <a name="seed-the-database"></a>Propagar o banco de dados
 
-Crie uma nova classe chamada `SeedData` na pasta *Models*. Substitua o código gerado pelo seguinte:
+Crie uma nova classe chamada `SeedData` na pasta *Models* . Substitua o código gerado pelo seguinte:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Models/SeedData.cs?name=snippet_1)]
 
@@ -141,13 +142,13 @@ O aplicativo mostra os dados propagados.
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:
+O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=13-99)]
 
-O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:
+O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:
 
 [!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
@@ -155,7 +156,7 @@ O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET 
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
-O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do arquivo *appsettings.json*:
+O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 
@@ -167,9 +168,9 @@ Quando você implanta o aplicativo em um servidor de teste ou de produção, voc
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.
+O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}* .
 
-* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](working-with-sql/_static/ssox.png)
 
@@ -197,7 +198,7 @@ Observe o ícone de chave ao lado de `ID`. Por padrão, o EF tornará uma propri
 
 ## <a name="seed-the-database"></a>Propagar o banco de dados
 
-Crie uma nova classe chamada `SeedData` na pasta *Models*. Substitua o código gerado pelo seguinte:
+Crie uma nova classe chamada `SeedData` na pasta *Models* . Substitua o código gerado pelo seguinte:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/SeedData.cs?name=snippet_1)]
 

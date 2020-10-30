@@ -5,6 +5,7 @@ description: Parte 2 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 4099873142b99afb7f0659dfd9a4fde8bec3081d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 84198760cf8302d379c7630b65641e65b66d72a2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633767"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050921"
 ---
 # <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>Parte 2, adicionar um modelo a um Razor aplicativo de páginas no ASP.NET Core
 
@@ -41,16 +42,16 @@ As classes de modelo são conhecidas como classes POCO (de "objetos CLR básicos
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Clique com o botão direito do mouse no projeto ** Razor PagesMovie** > **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
+Clique com o botão direito do mouse no projeto **Razor PagesMovie** > **Adicionar**  >  **nova pasta** . Nomeie a pasta como *Modelos* .
 
-Clique com o botão direito do mouse na pasta *Modelos*. Selecione **Adicionar**  >  **classe**. Dê à classe o nome **Movie**.
+Clique com o botão direito do mouse na pasta *Modelos* . Selecione **Adicionar**  >  **classe** . Dê à classe o nome **Movie** .
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Adicione uma pasta denominada *Modelos*.
-* Adicionar uma classe denominada *Movie.cs* à pasta *Modelos*.
+* Adicione uma pasta denominada *Modelos* .
+* Adicionar uma classe denominada *Movie.cs* à pasta *Modelos* .
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -58,13 +59,13 @@ Clique com o botão direito do mouse na pasta *Modelos*. Selecione **Adicionar**
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Em painel de soluções, clique com o botão direito do mouse no projeto ** Razor PagesMovie** e selecione **Adicionar** > **nova pasta...**. Nomeie os *modelos*de pasta.
-* Clique com o botão direito do mouse na pasta *modelos* e selecione **Adicionar** > **novo arquivo...**.
-* Na caixa de diálogo **Novo Arquivo**:
+* Em painel de soluções, clique com o botão direito do mouse no projeto **Razor PagesMovie** e selecione **Adicionar** > **nova pasta...** . Nomeie os *modelos* de pasta.
+* Clique com o botão direito do mouse na pasta *modelos* e selecione **Adicionar** > **novo arquivo...** .
+* Na caixa de diálogo **Novo Arquivo** :
 
   * Selecione **Geral** no painel esquerdo.
   * Selecione **Classe Vazia** no painel central.
-  * Nomeie a classe **Movie** e selecione **Novo**.
+  * Nomeie a classe **Movie** e selecione **Novo** .
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -78,48 +79,48 @@ Nesta seção, é feito o scaffold do modelo de filme. Ou seja, a ferramenta de 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Crie uma pasta *Pages/Movies*:
+Crie uma pasta *Pages/Movies* :
 
-* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta**.
+* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta** .
 * Dê à pasta o nome *Movies*
 
-Clique com o botão direito do mouse na pasta *Pages/Movies* > **Adicionar** > **Novo item com scaffold**.
+Clique com o botão direito do mouse na pasta *Pages/Movies* > **Adicionar** > **Novo item com scaffold** .
 
 ![Imagem das instruções anteriores.](model/_static/sca.png)
 
-Na caixa de diálogo **Adicionar Scaffold** , selecione ** Razor páginas usando Entity Framework (CRUD)** > **Adicionar**.
+Na caixa de diálogo **Adicionar Scaffold** , selecione **Razor páginas usando Entity Framework (CRUD)** > **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/add_scaffold.png)
 
 Conclua a caixa de diálogo **Adicionar Razor páginas usando Entity Framework (CRUD)** :
 
-* Na lista suspensa **classe de modelo** , selecione **filme ( Razor PagesMovie. Models)**.
-* Na linha **classe de contexto de dados** , selecione o **+** sinal de (adição) e altere o nome gerado de Razor PagesMovie.** Modelos**. Razor PagesMovieContext Razor PagesMovie.** Dados**. Razor PagesMovieContext. [Esta alteração](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) não é obrigatória. Ela cria a classe de contexto do banco de dados com o namespace correto.
-* Selecione **Adicionar**.
+* Na lista suspensa **classe de modelo** , selecione **filme ( Razor PagesMovie. Models)** .
+* Na linha **classe de contexto de dados** , selecione o **+** sinal de (adição) e altere o nome gerado de Razor PagesMovie. **Modelos** . Razor PagesMovieContext Razor PagesMovie. **Dados** . Razor PagesMovieContext. [Esta alteração](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) não é obrigatória. Ela cria a classe de contexto do banco de dados com o namespace correto.
+* Selecione **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/3/arp.png)
 
-O arquivo *appsettings.json* é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
+O *appsettings.json* arquivo é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
 * Instale a ferramenta de scaffolding:
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Para Windows**: execute o seguinte comando:
+* **Para Windows** : execute o seguinte comando:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **No macOS e Linux**, execute o comando a seguir:
+* **No macOS e Linux** , execute o comando a seguir:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -132,28 +133,28 @@ O arquivo *appsettings.json* é atualizado com a cadeia de conexão usada para s
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Crie uma pasta *Pages/Movies*:
+Crie uma pasta *Pages/Movies* :
 
-* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta**.
+* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta** .
 * Dê à pasta o nome *Movies*
 
-Clique com o botão direito do mouse na pasta *páginas/filmes* > **Adicionar** > **novo scaffolding...**.
+Clique com o botão direito do mouse na pasta *páginas/filmes* > **Adicionar** > **novo scaffolding...** .
 
 ![Imagem das instruções anteriores.](model/_static/scaMac.png)
 
-Na caixa de diálogo **novo scaffolding** , selecione ** Razor páginas usando Entity Framework (CRUD)** > **Avançar**.
+Na caixa de diálogo **novo scaffolding** , selecione **Razor páginas usando Entity Framework (CRUD)** > **Avançar** .
 
 ![Imagem das instruções anteriores.](model/_static/add_scaffoldMac.png)
 
 Conclua a caixa de diálogo **Adicionar Razor páginas usando Entity Framework (CRUD)** :
 
-* Na lista suspensa **classe de modelo** , selecione ou digite **filme ( Razor PagesMovie. Models)**.
-* Na linha **classe de contexto de dados** , digite o nome da nova classe, Razor PagesMovie.** Dados**. Razor PagesMovieContext. [Esta alteração](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) não é obrigatória. Ela cria a classe de contexto do banco de dados com o namespace correto.
-* Selecione **Adicionar**.
+* Na lista suspensa **classe de modelo** , selecione ou digite **filme ( Razor PagesMovie. Models)** .
+* Na linha **classe de contexto de dados** , digite o nome da nova classe, Razor PagesMovie. **Dados** . Razor PagesMovieContext. [Esta alteração](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) não é obrigatória. Ela cria a classe de contexto do banco de dados com o namespace correto.
+* Selecione **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/arpMac.png)
 
-O arquivo *appsettings.json* é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
+O *appsettings.json* arquivo é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
 
 ### <a name="add-ef-tools"></a>Adicionar ferramentas do EF
 
@@ -173,7 +174,7 @@ O comando anterior adiciona as ferramentas de Entity Framework Core para o CLI d
 
 O processo de scaffold cria e atualiza os arquivos a seguir:
 
-* *Pages/Movies*: Create, Delete, Details, Edit e Index.
+* *Pages/Movies* : Create, Delete, Details, Edit e Index.
 * *Data/ Razor PagesMovieContext.cs*
 
 ### <a name="updated"></a>Atualizado
@@ -186,7 +187,7 @@ Os arquivos criados e atualizados são explicados na próxima seção.
 
 O processo de scaffold cria e atualiza os arquivos a seguir:
 
-* *Pages/Movies*: Create, Delete, Details, Edit e Index.
+* *Pages/Movies* : Create, Delete, Details, Edit e Index.
 * *Data/ Razor PagesMovieContext.cs*
 
 ### <a name="updated"></a>Atualizado
@@ -199,7 +200,7 @@ Os arquivos criados e atualizados são explicados na próxima seção.
 
 O processo de scaffold cria os arquivos a seguir:
 
-* *Pages/Movies*: Create, Delete, Details, Edit e Index.
+* *Pages/Movies* : Create, Delete, Details, Edit e Index.
 
 Os arquivos criados são explicados na próxima seção.
 
@@ -216,7 +217,7 @@ Nesta seção, o PMC (Console de Gerenciador de Pacotes) é usado para:
 * Adicionar uma migração inicial.
 * Atualize o banco de dados com a migração inicial.
 
-No menu **Ferramentas** selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes**.
+No menu **Ferramentas** selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** .
 
   ![Menu do PMC](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -263,7 +264,7 @@ O `RazorPagesMovieContext` coordena a funcionalidade do EF Core (Criar, Ler, Atu
 
 O código anterior cria uma [propriedade \<Movie> DbSet](/dotnet/api/microsoft.entityframeworkcore.dbset-1) para o conjunto de entidades. Na terminologia do Entity Framework, um conjunto de entidades normalmente corresponde a uma tabela de banco de dados. Uma entidade corresponde a uma linha da tabela.
 
-O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para o desenvolvimento local, o [sistema de configuração do ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do arquivo *appsettings.json*.
+O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *appsettings.json* arquivo.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -290,14 +291,14 @@ Login failed for user 'User-name'.
 
 Você perdeu a [etapa de migrações](#pmc).
 
-* Teste o link **Criar**.
+* Teste o link **Criar** .
 
   ![Criar página](model/_static/conan.png)
 
   > [!NOTE]
   > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades com idiomas diferentes do inglês que usam uma vírgula (",") para um ponto decimal e formatos de data diferentes do inglês dos EUA, o aplicativo precisa ser globalizado. Para obter instruções sobre a globalização, consulte [esse problema no GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Teste os links **Editar**, **Detalhes** e **Excluir**.
+* Teste os links **Editar** , **Detalhes** e **Excluir** .
 
 O tutorial a seguir explica os arquivos criados por scaffolding.
 
@@ -322,16 +323,16 @@ As classes de modelo são conhecidas como classes POCO (de "objetos CLR básicos
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Clique com o botão direito do mouse no projeto ** Razor PagesMovie** > **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
+Clique com o botão direito do mouse no projeto **Razor PagesMovie** > **Adicionar**  >  **nova pasta** . Nomeie a pasta como *Modelos* .
 
-Clique com o botão direito do mouse na pasta *Modelos*. Selecione **Adicionar**  >  **classe**. Dê à classe o nome **Movie**.
+Clique com o botão direito do mouse na pasta *Modelos* . Selecione **Adicionar**  >  **classe** . Dê à classe o nome **Movie** .
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Adicione uma pasta denominada *Modelos*.
-* Adicionar uma classe denominada *Movie.cs* à pasta *Modelos*.
+* Adicione uma pasta denominada *Modelos* .
+* Adicionar uma classe denominada *Movie.cs* à pasta *Modelos* .
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -339,13 +340,13 @@ Clique com o botão direito do mouse na pasta *Modelos*. Selecione **Adicionar**
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Em Gerenciador de soluções, clique com o botão direito do mouse no projeto ** Razor PagesMovie** e selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta como *Modelos*.
-* Clique com o botão direito do mouse na pasta *Models* e selecione **Adicionar** > **Novo Arquivo**.
-* Na caixa de diálogo **Novo Arquivo**:
+* Em Gerenciador de soluções, clique com o botão direito do mouse no projeto **Razor PagesMovie** e selecione **Adicionar**  >  **nova pasta** . Nomeie a pasta como *Modelos* .
+* Clique com o botão direito do mouse na pasta *Models* e selecione **Adicionar** > **Novo Arquivo** .
+* Na caixa de diálogo **Novo Arquivo** :
 
   * Selecione **Geral** no painel esquerdo.
   * Selecione **Classe Vazia** no painel central.
-  * Nomeie a classe **Movie** e selecione **Novo**.
+  * Nomeie a classe **Movie** e selecione **Novo** .
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -359,16 +360,16 @@ Nesta seção, é feito o scaffold do modelo de filme. Ou seja, a ferramenta de 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Crie uma pasta *Pages/Movies*:
+Crie uma pasta *Pages/Movies* :
 
-* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta**.
+* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta** .
 * Dê à pasta o nome *Movies*
 
-Clique com o botão direito do mouse na pasta *Pages/Movies* > **Adicionar** > **Novo item com scaffold**.
+Clique com o botão direito do mouse na pasta *Pages/Movies* > **Adicionar** > **Novo item com scaffold** .
 
 ![Imagem das instruções anteriores.](model/_static/sca.png)
 
-Na caixa de diálogo **Adicionar Scaffold** , selecione ** Razor páginas usando Entity Framework (CRUD)** > **Adicionar**.
+Na caixa de diálogo **Adicionar Scaffold** , selecione **Razor páginas usando Entity Framework (CRUD)** > **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/add_scaffold.png)
 
@@ -378,28 +379,28 @@ Conclua a caixa de diálogo **Adicionar Razor páginas usando Entity Framework (
 to use Data, it should not use models. That will make the namespace the same for the VS version and the CLI version
 -->
 
-* Na lista suspensa **classe de modelo** , selecione **filme ( Razor PagesMovie. Models)**.
-* Na linha **classe de contexto de dados** , selecione o **+** sinal de (adição) e aceite o nome gerado ** Razor PagesMovie. Models. Razor PagesMovieContext**.
-* Selecione **Adicionar**.
+* Na lista suspensa **classe de modelo** , selecione **filme ( Razor PagesMovie. Models)** .
+* Na linha **classe de contexto de dados** , selecione o **+** sinal de (adição) e aceite o nome gerado **Razor PagesMovie. Models. Razor PagesMovieContext** .
+* Selecione **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/arp.png)
 
-O arquivo *appsettings.json* é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
+O *appsettings.json* arquivo é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
 
-* **Para Windows**: execute o seguinte comando:
+* **Para Windows** : execute o seguinte comando:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **No macOS e Linux**, execute o comando a seguir:
+* **No macOS e Linux** , execute o comando a seguir:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -409,28 +410,28 @@ O arquivo *appsettings.json* é atualizado com a cadeia de conexão usada para s
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Crie uma pasta *Pages/Movies*:
+Crie uma pasta *Pages/Movies* :
 
-* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta**.
+* Clique com o botão direito do mouse na pasta *Pages* > **Adicionar** > **Nova Pasta** .
 * Dê à pasta o nome *Movies*
 
-Clique com o botão direito do mouse na pasta *Pages/Movies* > **Adicionar** > **Novo item com scaffold**.
+Clique com o botão direito do mouse na pasta *Pages/Movies* > **Adicionar** > **Novo item com scaffold** .
 
 ![Imagem das instruções anteriores.](model/_static/scaMac.png)
 
-Na caixa de diálogo **Adicionar novo scaffolding** , selecione ** Razor páginas usando Entity Framework (CRUD)** > **Adicionar**.
+Na caixa de diálogo **Adicionar novo scaffolding** , selecione **Razor páginas usando Entity Framework (CRUD)** > **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/add_scaffoldMac.png)
 
 Conclua a caixa de diálogo **Adicionar Razor páginas usando Entity Framework (CRUD)** :
 
-* Na lista suspensa **classe de modelo** , selecione ou digite **filme**.
-* Na linha **classe de contexto de dados** , digite Select ** Razor PagesMovieContext** isso criará uma nova classe de contexto DB com o namespace correto. Nesse caso, será ** Razor PagesMovie. Models. Razor PagesMovieContext**.
-* Selecione **Adicionar**.
+* Na lista suspensa **classe de modelo** , selecione ou digite **filme** .
+* Na linha **classe de contexto de dados** , digite Select **Razor PagesMovieContext** isso criará uma nova classe de contexto DB com o namespace correto. Nesse caso, será **Razor PagesMovie. Models. Razor PagesMovieContext** .
+* Selecione **Adicionar** .
 
 ![Imagem das instruções anteriores.](model/_static/arpMac.png)
 
-O arquivo *appsettings.json* é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
+O *appsettings.json* arquivo é atualizado com a cadeia de conexão usada para se conectar a um banco de dados local.
 
 ---
 
@@ -438,7 +439,7 @@ O processo de scaffold cria e atualiza os arquivos a seguir:
 
 ### <a name="files-created"></a>Arquivos criados
 
-* *Pages/Movies*: Create, Delete, Details, Edit e Index.
+* *Pages/Movies* : Create, Delete, Details, Edit e Index.
 * *Data/ Razor PagesMovieContext.cs*
 
 ### <a name="file-updated"></a>Arquivo atualizado
@@ -458,7 +459,7 @@ Nesta seção, o PMC (Console de Gerenciador de Pacotes) é usado para:
 * Adicionar uma migração inicial.
 * Atualize o banco de dados com a migração inicial.
 
-No menu **Ferramentas** selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes**.
+No menu **Ferramentas** selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** .
 
   ![Menu do PMC](../first-mvc-app/adding-model/_static/pmc.png)
 
@@ -469,7 +470,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-O comando `Add-Migration` gera código para criar o esquema de banco de dados inicial. O esquema é baseado no modelo especificado no `DbContext` (no arquivo * Razor PagesMovieContext.cs* ). O `InitialCreate` argumento é usado para nomear a migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é usado. Para obter mais informações, consulte <xref:data/ef-mvc/migrations>.
+O comando `Add-Migration` gera código para criar o esquema de banco de dados inicial. O esquema é baseado no modelo especificado no `DbContext` (no arquivo *Razor PagesMovieContext.cs* ). O `InitialCreate` argumento é usado para nomear a migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é usado. Para obter mais informações, consulte <xref:data/ef-mvc/migrations>.
 
 O `Update-Database` comando executa o `Up` método no arquivo *migrations/ \<time-stamp> _InitialCreate. cs* . O método `Up` cria o banco de dados.
 
@@ -483,7 +484,7 @@ O `Update-Database` comando executa o `Up` método no arquivo *migrations/ \<tim
 
 ---
 > [!NOTE]
-> Os comandos anteriores geram o seguinte aviso: "*nenhum tipo foi especificado para a coluna decimal ' Price ' no tipo de entidade ' Movie '. Isso fará com que os valores sejam truncados silenciosamente se não couberem na precisão e na escala padrão. Especifique explicitamente o tipo de coluna do SQL Server que pode acomodar todos os valores usando ' HasColumnType () '.*" Você pode ignorar esse aviso, ele será corrigido em um tutorial posterior.
+> Os comandos anteriores geram o seguinte aviso: " *nenhum tipo foi especificado para a coluna decimal ' Price ' no tipo de entidade ' Movie '. Isso fará com que os valores sejam truncados silenciosamente se não couberem na precisão e na escala padrão. Especifique explicitamente o tipo de coluna do SQL Server que pode acomodar todos os valores usando ' HasColumnType () '.* " Você pode ignorar esse aviso, ele será corrigido em um tutorial posterior.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -503,7 +504,7 @@ O `RazorPagesMovieContext` coordena a funcionalidade do EF Core (Criar, Ler, Atu
 
 O código anterior cria uma [propriedade \<Movie> DbSet](/dotnet/api/microsoft.entityframeworkcore.dbset-1) para o conjunto de entidades. Na terminologia do Entity Framework, um conjunto de entidades normalmente corresponde a uma tabela de banco de dados. Uma entidade corresponde a uma linha da tabela.
 
-O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para o desenvolvimento local, o [sistema de configuração do ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do arquivo *appsettings.json*.
+O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *appsettings.json* arquivo.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -530,14 +531,14 @@ Login failed for user 'User-name'.
 
 Você perdeu a [etapa de migrações](#pmc).
 
-* Teste o link **Criar**.
+* Teste o link **Criar** .
 
   ![Criar página](model/_static/conan.png)
 
   > [!NOTE]
   > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades com idiomas diferentes do inglês que usam uma vírgula (",") para um ponto decimal e formatos de data diferentes do inglês dos EUA, o aplicativo precisa ser globalizado. Para obter instruções sobre a globalização, consulte [esse problema no GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Teste os links **Editar**, **Detalhes** e **Excluir**.
+* Teste os links **Editar** , **Detalhes** e **Excluir** .
 
 O tutorial a seguir explica os arquivos criados por scaffolding.
 

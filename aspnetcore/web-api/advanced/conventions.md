@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 425f1aaf1fa86f10d857c34e621c302f2db258e5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0c5ea8ba69e4c6287afce1771ac9cee65bb188a8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626786"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052533"
 ---
 # <a name="use-web-api-conventions"></a>Usar convenções de API Web
 
@@ -36,7 +37,7 @@ Uma convenção permite que você:
 * Defina os tipos de retorno mais comuns e códigos de status retornados de um tipo de ação específico.
 * Identifica as ações que desviam do padrão definido.
 
-O ASP.NET Core MVC 2.2 (e posterior) inclui um conjunto de convenções padrão em <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. As convenções são baseadas no controlador (*ValuesController.cs*) fornecido no modelo de projeto da **API** do ASP.NET Core. Se suas ações seguem o padrão no modelo, você deve ter êxito ao usar as convenções padrão. Se as convenções padrão não atenderem às suas necessidades, consulte [Criar convenções de API Web](#create-web-api-conventions).
+O ASP.NET Core MVC 2.2 (e posterior) inclui um conjunto de convenções padrão em <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. As convenções são baseadas no controlador ( *ValuesController.cs* ) fornecido no modelo de projeto da **API** do ASP.NET Core. Se suas ações seguem o padrão no modelo, você deve ter êxito ao usar as convenções padrão. Se as convenções padrão não atenderem às suas necessidades, consulte [Criar convenções de API Web](#create-web-api-conventions).
 
 No runtime, <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> reconhece as convenções. `ApiExplorer` é a abstração do MVC para comunicação com geradores de documento da [OpenAPI](https://www.openapis.org/) (também conhecida como Swagger). Os atributos da convenção aplicada são associados a uma ação e estão incluídos na documentação da OpenAPI da ação. Os [Analisadores de API](xref:web-api/advanced/analyzers) também reconhecem as convenções. Se a ação for não convencional (por exemplo, ela retorna um código de status que não está documentado pela convenção aplicada), um aviso incentivará você a fazer a documentação do código de status.
 
@@ -65,11 +66,11 @@ As convenções não fazem composição. Cada ação pode ser associada a exatam
 
 1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` aplicado a um controlador &mdash;. Aplica-se o tipo de convenção especificada a todas as ações no controlador. Um método de Convenção é marcado com dicas que determinam as ações às quais o método de Convenção se aplica. Para obter mais informações sobre dicas, consulte [Criar convenções da API Web](#create-web-api-conventions)).
 
-    No exemplo a seguir, o conjunto padrão de convenções é aplicado a todas as ações no *ContactsConventionController*:
+    No exemplo a seguir, o conjunto padrão de convenções é aplicado a todas as ações no *ContactsConventionController* :
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` aplicado a um assembly &mdash;. Aplica-se o tipo de convenção especificada a todos os controladores no assembly atual. Como recomendação, aplique atributos no nível do assembly ao arquivo *Startup.cs*.
+1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` aplicado a um assembly &mdash;. Aplica-se o tipo de convenção especificada a todos os controladores no assembly atual. Como recomendação, aplique atributos no nível do assembly ao arquivo *Startup.cs* .
 
     No exemplo a seguir, o conjunto padrão de convenções é aplicado a todos os controladores no assembly:
 

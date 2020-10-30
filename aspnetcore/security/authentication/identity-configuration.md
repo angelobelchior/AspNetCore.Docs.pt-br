@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: ae4a2eb9d95339651c3810a9f8489d703d73a3fe
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b11a2d584b7275a9065c9915021ac945823531f8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632675"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051987"
 ---
 # <a name="configure-no-locaspnet-core-identity"></a>configurar ASP.NET Core Identity
 
@@ -130,7 +131,7 @@ O código a seguir define `SignIn` as configurações (para valores padrão):
 
 ### <a name="no-loccookie-settings"></a>Configurações doCookie
 
-Configure o aplicativo cookie no `Startup.ConfigureServices` . [ConfigureApplication Cookie ](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) deve ser chamado **depois** `AddIdentity` de chamar ou `AddDefaultIdentity` .
+Configure o aplicativo cookie no `Startup.ConfigureServices` . [ConfigureApplication Cookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) deve ser chamado **depois** `AddIdentity` de chamar ou `AddDefaultIdentity` .
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
@@ -142,7 +143,7 @@ Para obter mais informações, consulte [ Cookie authenticationoptions](/dotnet/
 
 | Opção | Descrição |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | O modo de compatibilidade usado ao aplicar o hash de novas senhas. O padrão é <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. O primeiro byte de uma senha com hash, chamado de *marcador de formato*, especifica a versão do algoritmo de hash usado para fazer o hash da senha. Ao verificar uma senha em relação a um hash, o <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método seleciona o algoritmo correto com base no primeiro byte. Um cliente é capaz de autenticar, independentemente de qual versão do algoritmo foi usada para fazer o hash da senha. Definir o modo de compatibilidade afeta o hash de *novas senhas*. |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | O modo de compatibilidade usado ao aplicar o hash de novas senhas. Assume o padrão de <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. O primeiro byte de uma senha com hash, chamado de *marcador de formato* , especifica a versão do algoritmo de hash usado para fazer o hash da senha. Ao verificar uma senha em relação a um hash, o <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método seleciona o algoritmo correto com base no primeiro byte. Um cliente é capaz de autenticar, independentemente de qual versão do algoritmo foi usada para fazer o hash da senha. Definir o modo de compatibilidade afeta o hash de *novas senhas* . |
 | <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | O número de iterações usadas ao aplicar o hash de senhas usando PBKDF2. Esse valor é usado somente quando o <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> é definido como <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> . O valor deve ser um inteiro positivo e o padrão é `10000` . |
 
 No exemplo a seguir, o <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> é definido como `12000` em `Startup.ConfigureServices` :

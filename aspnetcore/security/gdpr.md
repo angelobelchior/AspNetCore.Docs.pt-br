@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 35a12cb8d2a9617e51d886e798cff5ee60b0a8ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ec65a2c8362c15716bebd6b22f5639785ba74c98
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634703"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050999"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Suporte a Regulamento Geral sobre a Proteção de Dados da UE (GDPR) no ASP.NET Core
 
@@ -46,7 +47,7 @@ Para habilitar o cookie recurso de consentimento padrão como o encontrado nos m
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_Layout.cshtml?name=snippet&highlight=4)]
 
-* Adicione o arquivo * \_ Cookie ConsentPartial. cshtml* ao projeto:
+* Adicione o arquivo *\_ Cookie ConsentPartial. cshtml* ao projeto:
 
   [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_CookieConsentPartial.cshtml)]
 
@@ -71,8 +72,8 @@ O [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/live/as
 Razor As páginas e os projetos MVC criados com os modelos de projeto incluem o seguinte suporte a GDPR:
 
 * [ Cookie Políticas](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) e políticas [de Cookie uso](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) são definidas na `Startup` classe.
-* A [exibição parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)de * \_ Cookie ConsentPartial. cshtml* . Um botão **aceitar** está incluído neste arquivo. Quando o usuário clica no botão **aceitar** , o consentimento do armazenamento cookie s é fornecido.
-* A página *Pages/privacy. cshtml* ou *views/Home/privacy. cshtml* fornece uma página para detalhar a política de privacidade do seu site. O arquivo * \_ Cookie ConsentPartial. cshtml* gera um link para a página de privacidade.
+* A [exibição parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)de *\_ Cookie ConsentPartial. cshtml* . Um botão **aceitar** está incluído neste arquivo. Quando o usuário clica no botão **aceitar** , o consentimento do armazenamento cookie s é fornecido.
+* A página *Pages/privacy. cshtml* ou *views/Home/privacy. cshtml* fornece uma página para detalhar a política de privacidade do seu site. O arquivo *\_ Cookie ConsentPartial. cshtml* gera um link para a página de privacidade.
 * Para aplicativos criados com contas de usuário individuais, a página Gerenciar fornece links para baixar e excluir [dados de usuário pessoal](#pd).
 
 ### <a name="no-loccookiepolicyoptions-and-useno-loccookiepolicy"></a>CookiePolítica de políticas e Cookie uso
@@ -87,13 +88,13 @@ As [ Cookie políticas](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyopt
 
 ### <a name="_no-loccookieconsentpartialcshtml-partial-view"></a>\_CookieExibição parcial de ConsentPartial. cshtml
 
-A exibição parcial de * \_ Cookie ConsentPartial. cshtml* :
+A exibição parcial de *\_ Cookie ConsentPartial. cshtml* :
 
 [!code-cshtml[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Isso parcial:
 
-* Obtém o estado do controle para o usuário. Se o aplicativo estiver configurado para exigir consentimento, o usuário deverá consentir antes que os cookie s possam ser rastreados. Se o consentimento for necessário, o cookie painel de consentimento será corrigido na parte superior da barra de navegação criada pelo arquivo * \_ layout. cshtml* .
+* Obtém o estado do controle para o usuário. Se o aplicativo estiver configurado para exigir consentimento, o usuário deverá consentir antes que os cookie s possam ser rastreados. Se o consentimento for necessário, o cookie painel de consentimento será corrigido na parte superior da barra de navegação criada pelo arquivo *\_ layout. cshtml* .
 * Fornece um `<p>` elemento HTML para resumir sua política de privacidade e cookie uso.
 * Fornece um link para a página de privacidade ou a exibição em que você pode detalhar a política de privacidade do seu site.
 
@@ -121,7 +122,7 @@ O [provedor TempData](xref:fundamentals/app-state#tempdata) cookie não é essen
 
 ASP.NET Core aplicativos criados com contas de usuário individuais incluem código para baixar e excluir dados pessoais.
 
-Selecione o nome de usuário e, em seguida, selecione **dados pessoais**:
+Selecione o nome de usuário e, em seguida, selecione **dados pessoais** :
 
 ![Página Gerenciar dados pessoais](gdpr/_static/pd.png)
 
@@ -134,7 +135,7 @@ Observações:
 
 ::: moniker-end
 
-## <a name="encryption-at-rest"></a>Criptografar em repouso
+## <a name="encryption-at-rest"></a>Criptografia em repouso
 
 Alguns bancos de dados e mecanismos de armazenamento permitem a criptografia em repouso. Criptografia em repouso:
 

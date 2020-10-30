@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 3ba033b4165b19131d11311e5ae9d64e6afe48ca
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865427"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051610"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Trabalhar com SameSite cookie s no ASP.NET Core
 
@@ -51,7 +52,7 @@ Cada componente de ASP.NET Core que emite cookie s precisa decidir se SameSite �
 
 Os seguintes exemplos podem ser baixados e testados:
 
-| Amostra               | Document |
+| Amostra               | Documento |
 | ----------------- | ------------ |
 | [MVC do .NET Core](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [Páginas do .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -63,7 +64,7 @@ Os seguintes exemplos podem ser baixados e testados:
 O exemplo a seguir pode ser baixado e testado:
 
 
-| Amostra               | Document |
+| Amostra               | Documento |
 | ----------------- | ------------ |
 | [Páginas do .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
@@ -157,7 +158,7 @@ O suporte a SameSite foi implementado pela primeira vez em ASP.NET Core em 2,0 u
 
 ## <a name="supporting-older-browsers"></a>Suporte a navegadores mais antigos
 
-O padrão de 2016 SameSite exigiu que valores desconhecidos devam ser tratados como `SameSite=Strict` valores. Os aplicativos acessados de navegadores mais antigos que dão suporte ao padrão de 2016 SameSite podem falhar quando obtêm uma propriedade SameSite com um valor de `None` . Os aplicativos Web devem implementar a detecção do navegador se pretenderem oferecer suporte a navegadores mais antigos. ASP.NET Core não implementa a detecção de navegador porque os valores dos agentes do usuário são altamente voláteis e mudam com frequência. Um ponto de extensão no <xref:Microsoft.AspNetCore.CookiePolicy> permite a conexão da lógica específica do agente do usuário.
+O padrão de 2016 SameSite exigiu que valores desconhecidos devam ser tratados como `SameSite=Strict` valores. Os aplicativos acessados de navegadores mais antigos que dão suporte ao padrão de 2016 SameSite podem falhar quando obtêm uma propriedade SameSite com um valor de `None` . Os aplicativos Web devem implementar a detecção do navegador se pretenderem oferecer suporte a navegadores mais antigos. ASP.NET Core não implementa a detecção de navegador porque os valores de User-Agents são altamente voláteis e mudam com frequência. Um ponto de extensão no <xref:Microsoft.AspNetCore.CookiePolicy> permite a conexão User-Agent lógica específica.
 
 No `Startup.Configure` , adicione o código que chama <xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*> antes <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> de chamar ou *qualquer* método que grava cookie s:
 
@@ -201,7 +202,7 @@ Teste os aplicativos Web usando uma versão do cliente que pode aceitar o novo c
 
 ### <a name="test-with-chrome"></a>Teste com o Chrome
 
-O Chrome 78 + fornece resultados enganosos porque tem uma mitigação temporária em vigor. A atenuação do Chrome 78 + temporária permite que cookie s menos de dois minutos sejam antigas. O Chrome 76 ou 77 com os sinalizadores de teste apropriados habilitados fornece resultados mais precisos. Para testar o novo comportamento de SameSite, alterne `chrome://flags/#same-site-by-default-cookies` para **habilitado**. Versões mais antigas do Chrome (75 e inferior) são relatadas para falha com a nova `None` configuração. Consulte [suporte a navegadores mais antigos](#sob) neste documento.
+O Chrome 78 + fornece resultados enganosos porque tem uma mitigação temporária em vigor. A atenuação do Chrome 78 + temporária permite que cookie s menos de dois minutos sejam antigas. O Chrome 76 ou 77 com os sinalizadores de teste apropriados habilitados fornece resultados mais precisos. Para testar o novo comportamento de SameSite, alterne `chrome://flags/#same-site-by-default-cookies` para **habilitado** . Versões mais antigas do Chrome (75 e inferior) são relatadas para falha com a nova `None` configuração. Consulte [suporte a navegadores mais antigos](#sob) neste documento.
 
 O Google não disponibiliza versões mais antigas do Chrome. Siga as instruções em [baixar o Chromium](https://www.chromium.org/getting-involved/download-chromium) para testar versões anteriores do Chrome. **Não** Baixe o Chrome de links fornecidos pela pesquisa de versões mais antigas do Chrome.
 
@@ -238,7 +239,7 @@ As versões do Electron incluem versões mais antigas do Chromium. Por exemplo, 
 
  ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
-| Amostra               | Document |
+| Amostra               | Documento |
 | ----------------- | ------------ |
 | [MVC do .NET Core](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [Páginas do .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -247,7 +248,7 @@ As versões do Electron incluem versões mais antigas do Chromium. Por exemplo, 
 
  ::: moniker range=">= aspnetcore-3.0"
 
-| Amostra               | Document |
+| Amostra               | Documento |
 | ----------------- | ------------ |
 | [Páginas do .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 

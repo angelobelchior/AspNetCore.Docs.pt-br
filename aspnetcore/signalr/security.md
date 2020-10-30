@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: 12293c5cb3dc49d505225f1b44e824e9273cfffc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5ecbf07b1527e9c68443870f7fce77adc29a5416
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630985"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050829"
 ---
 # <a name="security-considerations-in-aspnet-core-no-locsignalr"></a>Considerações de segurança no ASP.NET Core SignalR
 
@@ -101,7 +102,7 @@ As proteções fornecidas pelo CORS não se aplicam ao WebSockets. Para a restri
 
 ::: moniker range="< aspnetcore-2.2"
 
-As proteções fornecidas pelo CORS não se aplicam ao WebSockets. Navegadores **não**:
+As proteções fornecidas pelo CORS não se aplicam ao WebSockets. Navegadores **não** :
 
 * Executam solicitações de simulação de CORS.
 * Respeitam as restrições especificadas em cabeçalhos `Access-Control` ao fazer solicitações de WebSocket.
@@ -123,7 +124,7 @@ A exposição `ConnectionId` pode levar à representação mal-intencionada se a
 
 ## <a name="access-token-logging"></a>Log de token de acesso
 
-Ao usar Websockets ou eventos enviados pelo servidor, o cliente de navegador envia o token de acesso na cadeia de caracteres de consulta. O recebimento do token de acesso por meio da cadeia de caracteres de consulta é geralmente seguro com o uso do `Authorization` cabeçalho padrão. Sempre use HTTPS para garantir uma conexão segura de ponta a ponta entre o cliente e o servidor. Muitos servidores Web registram a URL para cada solicitação, incluindo a cadeia de caracteres de consulta. O registro em log das URLs pode registrar o token de acesso. O ASP.NET Core registra em log a URL para cada solicitação por padrão, o que incluirá a cadeia de caracteres de consulta. Por exemplo:
+Ao usar Websockets ou eventos de Server-Sent, o cliente de navegador envia o token de acesso na cadeia de caracteres de consulta. O recebimento do token de acesso por meio da cadeia de caracteres de consulta é geralmente seguro com o uso do `Authorization` cabeçalho padrão. Sempre use HTTPS para garantir uma conexão segura de ponta a ponta entre o cliente e o servidor. Muitos servidores Web registram a URL para cada solicitação, incluindo a cadeia de caracteres de consulta. O registro em log das URLs pode registrar o token de acesso. O ASP.NET Core registra em log a URL para cada solicitação por padrão, o que incluirá a cadeia de caracteres de consulta. Por exemplo:
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]

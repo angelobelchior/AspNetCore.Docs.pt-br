@@ -7,6 +7,7 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: e5e606afaf0219f3a0eb7301203b7142a00322be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634105"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051259"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Autenticação de dois fatores com SMS no ASP.NET Core
 
@@ -48,17 +49,17 @@ Crie uma conta SMS, por exemplo, de [twilio](https://www.twilio.com/) ou [ASPSMS
 
 **Twilio**
 
-Na guia painel da sua conta do twilio, copie o **SID da conta** e o **token de autenticação**.
+Na guia painel da sua conta do twilio, copie o **SID da conta** e o **token de autenticação** .
 
 **ASPSMS:**
 
-Em suas configurações de conta, navegue até **userKey** e copie-o junto com sua **senha**.
+Em suas configurações de conta, navegue até **userKey** e copie-o junto com sua **senha** .
 
 Mais tarde, armazenaremos esses valores no com a ferramenta Secret-Manager dentro das chaves `SMSAccountIdentification` e `SMSAccountPassword` .
 
 #### <a name="specifying-senderid--originator"></a>Especificando SenderId/originador
 
-**Twilio:** Na guia números, copie o número de **telefone**twilio.
+**Twilio:** Na guia números, copie o número de **telefone** twilio.
 
 **ASPSMS:** No menu desbloquear originadores, desbloqueie um ou mais originadores ou escolha um originador alfanumérico (sem suporte em todas as redes).
 
@@ -99,7 +100,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="configure-startup-to-use-smsoptions"></a>Configurar a inicialização para usar `SMSoptions`
 
-Adicione `SMSoptions` ao contêiner de serviço no `ConfigureServices` método no *Startup.cs*:
+Adicione `SMSoptions` ao contêiner de serviço no `ConfigureServices` método no *Startup.cs* :
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet1&highlight=4)]
 
@@ -117,7 +118,7 @@ Abra o arquivo de exibição *views/Manage/index. cshtml* Razor e remova os cara
 
 ![Gerenciar exibição-toque no link "Adicionar"](2fa/_static/login2fa2.png)
 
-* Adicione um número de telefone que receberá o código de verificação e toque em **enviar código de verificação**.
+* Adicione um número de telefone que receberá o código de verificação e toque em **enviar código de verificação** .
 
 ![Página Adicionar número de telefone](2fa/_static/login2fa3.png)
 
@@ -141,13 +142,13 @@ Se você não receber uma mensagem de texto, consulte a página de log do twilio
 
 * Fazer logon.
 
-* A conta de usuário habilitou a autenticação de dois fatores, portanto, você precisa fornecer o segundo fator de autenticação. Neste tutorial, você habilitou a verificação de telefone. Os modelos internos também permitem que você configure o email como o segundo fator. Você pode configurar um segundo fator adicional para autenticação, como códigos QR. Toque em **Enviar**.
+* A conta de usuário habilitou a autenticação de dois fatores, portanto, você precisa fornecer o segundo fator de autenticação. Neste tutorial, você habilitou a verificação de telefone. Os modelos internos também permitem que você configure o email como o segundo fator. Você pode configurar um segundo fator adicional para autenticação, como códigos QR. Toque em **Enviar** .
 
 ![Enviar exibição de código de verificação](2fa/_static/login2fa7.png)
 
 * Insira o código obtido na mensagem SMS.
 
-* Clicar na caixa de seleção **lembrar este navegador** lhe isentará de precisar usar o 2FA para fazer logon ao usar o mesmo dispositivo e navegador. Habilitar o 2FA e clicar em **lembrar este navegador** fornecerá uma forte proteção 2FA de usuários mal-intencionados tentando acessar sua conta, desde que eles não tenham acesso ao seu dispositivo. Você pode fazer isso em qualquer dispositivo privado que usa regularmente. Ao configurar  **lembrar esse navegador**, você obtém a segurança adicional do 2FA de dispositivos que você não usa regularmente, e você tem a conveniência de não ter de passar pelo 2FA em seus próprios dispositivos.
+* Clicar na caixa de seleção **lembrar este navegador** lhe isentará de precisar usar o 2FA para fazer logon ao usar o mesmo dispositivo e navegador. Habilitar o 2FA e clicar em **lembrar este navegador** fornecerá uma forte proteção 2FA de usuários mal-intencionados tentando acessar sua conta, desde que eles não tenham acesso ao seu dispositivo. Você pode fazer isso em qualquer dispositivo privado que usa regularmente. Ao configurar  **lembrar esse navegador** , você obtém a segurança adicional do 2FA de dispositivos que você não usa regularmente, e você tem a conveniência de não ter de passar pelo 2FA em seus próprios dispositivos.
 
 ![Verificar exibição](2fa/_static/login2fa8.png)
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 7fe9629e1c60a6156c69e546736049653a4229b7
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 3c28b6c736f07c0d0483152eeec4300a5a92224c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722638"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052104"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de cache de resposta em ASP.NET Core
 
@@ -113,7 +114,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | Cabeçalho | Detalhes |
 | ------ | ------- |
 | `Authorization` | A resposta não será armazenada em cache se o cabeçalho existir. |
-| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>público</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>públicos</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Um `Pragma: no-cache` cabeçalho na solicitação produz o mesmo efeito que `Cache-Control: no-cache` . Esse cabeçalho é substituído pelas diretivas relevantes no `Cache-Control` cabeçalho, se presente. Considerado para compatibilidade com versões anteriores com HTTP/1.0. |
 | `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookie s impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [ cookie provedor TempData baseado](xref:fundamentals/app-state#tempdata)em Caching).  |
 | `Vary` | O `Vary` cabeçalho é usado para variar a resposta armazenada em cache por outro cabeçalho. Por exemplo, armazene respostas em cache por meio da codificação, incluindo o `Vary: Accept-Encoding` cabeçalho, que armazena em cache as respostas para solicitações com cabeçalhos `Accept-Encoding: gzip` e `Accept-Encoding: text/plain` separadamente. Uma resposta com um valor de cabeçalho de `*` nunca é armazenada. |
@@ -124,7 +125,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | `Content-Length` | Ao servir do cache, o `Content-Length` cabeçalho é definido pelo middleware se ele não foi fornecido na resposta original. |
 | `Age` | O `Age` cabeçalho enviado na resposta original é ignorado. O middleware computa um novo valor ao fornecer uma resposta armazenada em cache. |
 
-## <a name="caching-respects-request-cache-control-directives"></a>Aspectos de cache de solicitação de cache – diretivas de controle
+## <a name="caching-respects-request-cache-control-directives"></a>O cache respeita as diretivas de Cache-Control de solicitação
 
 O middleware respeita as regras da especificação de [cache HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). As regras exigem um cache para honrar um `Cache-Control` cabeçalho válido enviado pelo cliente. Na especificação, um cliente pode fazer solicitações com um `no-cache` valor de cabeçalho e forçar o servidor a gerar uma nova resposta para cada solicitação. Atualmente, não há nenhum controle de desenvolvedor sobre esse comportamento de cache ao usar o middleware porque o middleware segue a especificação de cache oficial.
 
@@ -257,7 +258,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | Cabeçalho | Detalhes |
 | ------ | ------- |
 | `Authorization` | A resposta não será armazenada em cache se o cabeçalho existir. |
-| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>público</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | O middleware só considera respostas de cache marcadas com a `public` diretiva de cache. Controlar o cache com os seguintes parâmetros:<ul><li>idade máxima</li><li>máximo-obsoleto&#8224;</li><li>mín. de atualização</li><li>must-revalidate</li><li>no-cache</li><li>sem armazenamento</li><li>somente-se-em-cache</li><li>particulares</li><li>públicos</li><li>s-maxage</li><li>&#8225; de revalidação de proxy</li></ul>&#8224;se nenhum limite for especificado para `max-stale` , o middleware não executará nenhuma ação.<br>&#8225;`proxy-revalidate` tem o mesmo efeito que `must-revalidate` .<br><br>Para obter mais informações, consulte [RFC 7231: solicitar Cache-Control diretivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Um `Pragma: no-cache` cabeçalho na solicitação produz o mesmo efeito que `Cache-Control: no-cache` . Esse cabeçalho é substituído pelas diretivas relevantes no `Cache-Control` cabeçalho, se presente. Considerado para compatibilidade com versões anteriores com HTTP/1.0. |
 | `Set-Cookie` | A resposta não será armazenada em cache se o cabeçalho existir. Qualquer middleware no pipeline de processamento de solicitação que define um ou mais cookie s impede que o middleware de cache de resposta em cache a resposta (por exemplo, o [ cookie provedor TempData baseado](xref:fundamentals/app-state#tempdata)em Caching).  |
 | `Vary` | O `Vary` cabeçalho é usado para variar a resposta armazenada em cache por outro cabeçalho. Por exemplo, armazene respostas em cache por meio da codificação, incluindo o `Vary: Accept-Encoding` cabeçalho, que armazena em cache as respostas para solicitações com cabeçalhos `Accept-Encoding: gzip` e `Accept-Encoding: text/plain` separadamente. Uma resposta com um valor de cabeçalho de `*` nunca é armazenada. |
@@ -268,7 +269,7 @@ A tabela a seguir fornece informações sobre cabeçalhos HTTP que afetam o cach
 | `Content-Length` | Ao servir do cache, o `Content-Length` cabeçalho é definido pelo middleware se ele não foi fornecido na resposta original. |
 | `Age` | O `Age` cabeçalho enviado na resposta original é ignorado. O middleware computa um novo valor ao fornecer uma resposta armazenada em cache. |
 
-## <a name="caching-respects-request-cache-control-directives"></a>Aspectos de cache de solicitação de cache – diretivas de controle
+## <a name="caching-respects-request-cache-control-directives"></a>O cache respeita as diretivas de Cache-Control de solicitação
 
 O middleware respeita as regras da especificação de [cache HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). As regras exigem um cache para honrar um `Cache-Control` cabeçalho válido enviado pelo cliente. Na especificação, um cliente pode fazer solicitações com um `no-cache` valor de cabeçalho e forçar o servidor a gerar uma nova resposta para cada solicitação. Atualmente, não há nenhum controle de desenvolvedor sobre esse comportamento de cache ao usar o middleware porque o middleware segue a especificação de cache oficial.
 

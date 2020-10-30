@@ -5,6 +5,7 @@ description: Use Identity com um aplicativo ASP.NET Core. Saiba como definir os 
 ms.author: riande
 ms.date: 7/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 1d14a3668192a165ea5025ae0575a8e3d6dfd8e4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bfcef860beb07ab81dda1a10a1648491ae187bef
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633247"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052013"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Introdução ao Identity no ASP.NET Core
 
@@ -61,10 +62,10 @@ Crie um projeto de aplicativo Web ASP.NET Core com contas de usuário individuai
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Selecione **arquivo** > **novo** > **projeto**.
-* Selecione **Aplicativo Web ASP.NET Core**. Nomeie o projeto **WebApp1** para ter o mesmo namespace do download do projeto. Clique em **OK**.
-* Selecione um **aplicativo Web**ASP.NET Core e, em seguida, selecione **alterar autenticação**.
-* Selecione **contas de usuário individuais** e clique em **OK**.
+* Selecione **arquivo** > **novo** > **projeto** .
+* Selecione **Aplicativo Web ASP.NET Core** . Nomeie o projeto **WebApp1** para ter o mesmo namespace do download do projeto. Clique em **OK** .
+* Selecione um **aplicativo Web** ASP.NET Core e, em seguida, selecione **alterar autenticação** .
+* Selecione **contas de usuário individuais** e clique em **OK** .
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
@@ -142,7 +143,7 @@ Adicione os `Register` `Login` arquivos,, `LogOut` e `RegisterConfirmation` . Si
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Se você criou o projeto com o nome **WebApp1**, execute os comandos a seguir. Caso contrário, use o namespace correto para o `ApplicationDbContext` :
+Se você criou o projeto com o nome **WebApp1** , execute os comandos a seguir. Caso contrário, use o namespace correto para o `ApplicationDbContext` :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -189,7 +190,7 @@ No código anterior, o código `return RedirectToPage();` precisa ser um redirec
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) limpa as declarações do usuário armazenadas em um cookie .
 
-Post é especificado nas *páginas/Shared/_LoginPartial. cshtml*:
+Post é especificado nas *páginas/Shared/_LoginPartial. cshtml* :
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
@@ -295,10 +296,10 @@ Crie um projeto de aplicativo Web ASP.NET Core com contas de usuário individuai
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Selecione **arquivo** > **novo** > **projeto**.
-* Selecione **Aplicativo Web ASP.NET Core**. Nomeie o projeto **WebApp1** para ter o mesmo namespace do download do projeto. Clique em **OK**.
-* Selecione um **aplicativo Web**ASP.NET Core e, em seguida, selecione **alterar autenticação**.
-* Selecione **contas de usuário individuais** e clique em **OK**.
+* Selecione **arquivo** > **novo** > **projeto** .
+* Selecione **Aplicativo Web ASP.NET Core** . Nomeie o projeto **WebApp1** para ter o mesmo namespace do download do projeto. Clique em **OK** .
+* Selecione um **aplicativo Web** ASP.NET Core e, em seguida, selecione **alterar autenticação** .
+* Selecione **contas de usuário individuais** e clique em **OK** .
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
@@ -366,7 +367,7 @@ Adicione os arquivos de registro, logon e LogOut.
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Se você criou o projeto com o nome **WebApp1**, execute os comandos a seguir. Caso contrário, use o namespace correto para o `ApplicationDbContext` :
+Se você criou o projeto com o nome **WebApp1** , execute os comandos a seguir. Caso contrário, use o namespace correto para o `ApplicationDbContext` :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -408,7 +409,7 @@ O link **fazer logoff** invoca a `LogoutModel.OnPost` ação.
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) limpa as declarações do usuário armazenadas em um cookie .
 
-Post é especificado nas *páginas/Shared/_LoginPartial. cshtml*:
+Post é especificado nas *páginas/Shared/_LoginPartial. cshtml* :
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 

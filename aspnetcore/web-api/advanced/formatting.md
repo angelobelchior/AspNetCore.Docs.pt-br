@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 04/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: b89be93fc33d1eba5c2ad9508adf93fa54014ff8
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 89e3e51373db5f7cff974b7a8c69d06bedf856ca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606791"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052507"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Formatar dados de resposta na API Web ASP.NET Core
 
@@ -238,7 +239,7 @@ Para obter mais informações, consulte [filtros](xref:mvc/controllers/filters).
 
 ### <a name="special-case-formatters"></a>Formatadores de caso especiais
 
-Alguns casos especiais são implementados com formatadores internos. Por padrão, os `string` tipos de retorno são formatados como *texto/simples* (*texto/HTML* , se solicitado por meio do `Accept` cabeçalho). Esse comportamento pode ser excluído com a remoção do <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter> . Os formatadores são removidos do `ConfigureServices` método. Ações que têm um tipo de retorno de objeto de modelo retornam `204 No Content` ao retornar `null` . Esse comportamento pode ser excluído com a remoção do <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter> . O código a seguir remove o `StringOutputFormatter` e o `HttpNoContentOutputFormatter`.
+Alguns casos especiais são implementados com formatadores internos. Por padrão, os `string` tipos de retorno são formatados como *texto/simples* ( *texto/HTML* , se solicitado por meio do `Accept` cabeçalho). Esse comportamento pode ser excluído com a remoção do <xref:Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter> . Os formatadores são removidos do `ConfigureServices` método. Ações que têm um tipo de retorno de objeto de modelo retornam `204 No Content` ao retornar `null` . Esse comportamento pode ser excluído com a remoção do <xref:Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter> . O código a seguir remove o `StringOutputFormatter` e o `HttpNoContentOutputFormatter`.
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](./formatting/3.0sample/StartupStringOutputFormatter.cs?name=snippet)]

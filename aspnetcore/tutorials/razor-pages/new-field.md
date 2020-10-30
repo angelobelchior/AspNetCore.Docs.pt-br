@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f5efb121b95d84876c9029cf06a96f827137e660
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 951a8ada57ae523f362313426c0279556eb8339b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631440"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050609"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Parte 7, adicione um novo campo a uma Razor página no ASP.NET Core
 
@@ -94,7 +95,7 @@ Compile a solução.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Adicionar uma migração para o campo de classificação
 
- No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes** .
 No PMC, insira os seguintes comandos:
 
 ```powershell
@@ -118,9 +119,9 @@ Se você excluir todos os registros no BD, o inicializador propagará o BD e inc
 Outra opção é excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados no SSOX:
 
 * Selecione o banco de dados no SSOX.
-* Clique com o botão direito do mouse no banco de dados e selecione *Excluir*.
-* Marque **fechar conexões existentes**.
-* Selecione **OK**.
+* Clique com o botão direito do mouse no banco de dados e selecione *Excluir* .
+* Marque **fechar conexões existentes** .
+* Selecione **OK** .
 * No [PMC](xref:tutorials/razor-pages/new-field#pmc), atualize o banco de dados:
 
   ```powershell
@@ -219,7 +220,7 @@ Compile a solução.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Adicionar uma migração para o campo de classificação
 
- No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes** .
 No PMC, insira os seguintes comandos:
 
 ```powershell
@@ -243,9 +244,9 @@ Se você excluir todos os registros no BD, o inicializador propagará o BD e inc
 Outra opção é excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados no SSOX:
 
 * Selecione o banco de dados no SSOX.
-* Clique com o botão direito do mouse no banco de dados e selecione *Excluir*.
-* Marque **fechar conexões existentes**.
-* Selecione **OK**.
+* Clique com o botão direito do mouse no banco de dados e selecione *Excluir* .
+* Marque **fechar conexões existentes** .
+* Selecione **OK** .
 * No [PMC](xref:tutorials/razor-pages/new-field#pmc), atualize o banco de dados:
 
   ```powershell
@@ -258,7 +259,7 @@ Outra opção é excluir o banco de dados e usar as migrações para recriar o b
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados (*MvcMovie.db*). Em seguida, execute o comando `ef database update`:
+Excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados ( *MvcMovie.db* ). Em seguida, execute o comando `ef database update`:
 
 ```dotnetcli
 dotnet ef database update

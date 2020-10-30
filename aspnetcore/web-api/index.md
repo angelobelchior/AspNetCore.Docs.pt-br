@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 594d3dcbf55ed0a3476bb580df8e122cedb1dcd3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 51f76bc33d2da6097d26c1ffe17b1c93046a7b88
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634365"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052455"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Criar APIs Web com o ASP.NET Core
 
@@ -423,7 +424,7 @@ public IActionResult CreateProduct(Product product)
 
 No código anterior, a `CreateProduct` ação especifica o tipo de conteúdo `application/xml` . As solicitações roteadas para esta ação devem especificar um `Content-Type` cabeçalho de `application/xml` . Solicitações que não especificam um `Content-Type` cabeçalho de `application/xml` resultado em uma resposta de [tipo de mídia sem suporte 415](https://developer.mozilla.org/docs/Web/HTTP/Status/415) .
 
-O `[Consumes]` atributo também permite que uma ação influencie sua seleção com base no tipo de conteúdo de uma solicitação de entrada aplicando uma restrição de tipo. Considere o exemplo a seguir:
+O `[Consumes]` atributo também permite que uma ação influencie sua seleção com base no tipo de conteúdo de uma solicitação de entrada aplicando uma restrição de tipo. Considere o seguinte exemplo:
 
 [!code-csharp[](index/samples/3.x/Controllers/ConsumesController.cs?name=snippet_Class)]
 

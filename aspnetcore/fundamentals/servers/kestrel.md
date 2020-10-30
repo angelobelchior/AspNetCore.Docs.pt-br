@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 50bf2a60f14238c9b71fe90a64c284da202bff59
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 56ac6635639eed93a84f47fc915c7013c6ed2381
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491594"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052325"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementação do servidor Web Kestrel no ASP.NET Core
 
@@ -66,7 +67,7 @@ HTTP/2 está desabilitado por padrão. Para obter mais informações sobre a con
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quando usar o Kestrel com um proxy reverso
 
-O Kestrel pode ser usado sozinho ou com um *servidor proxy reverso*, como o [IIS (Serviços de Informações da Internet)](https://www.iis.net/), o [Nginx](https://nginx.org) ou o [Apache](https://httpd.apache.org/). Um servidor proxy reverso recebe solicitações HTTP da rede e encaminha-as para o Kestrel.
+O Kestrel pode ser usado sozinho ou com um *servidor proxy reverso* , como o [IIS (Serviços de Informações da Internet)](https://www.iis.net/), o [Nginx](https://nginx.org) ou o [Apache](https://httpd.apache.org/). Um servidor proxy reverso recebe solicitações HTTP da rede e encaminha-as para o Kestrel.
 
 Kestrel usado como um servidor Web de borda (voltado para a Internet):
 
@@ -94,7 +95,7 @@ Um proxy reverso:
 
 ## <a name="kestrel-in-aspnet-core-apps"></a>KESTREL em aplicativos ASP.NET Core
 
-Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. No *Program.cs*, o <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> método chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> :
+Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. No *Program.cs* , o <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> método chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> :
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
@@ -127,7 +128,7 @@ Os exemplos a seguir usam o namespace <xref:Microsoft.AspNetCore.Server.Kestrel.
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Nos exemplos mostrados posteriormente neste artigo, as opções de Kestrel são configuradas no código C#. As opções de Kestrel também podem ser definidas usando um [provedor de configuração](xref:fundamentals/configuration/index). Por exemplo, o [provedor de configuração de arquivo](xref:fundamentals/configuration/index#file-configuration-provider) pode carregar a configuração de Kestrel de um *appsettings.jsem* ou *appSettings. { Arquivo de ambiente}. JSON* :
+Nos exemplos mostrados posteriormente neste artigo, as opções de Kestrel são configuradas no código C#. As opções de Kestrel também podem ser definidas usando um [provedor de configuração](xref:fundamentals/configuration/index). Por exemplo, o [provedor de configuração de arquivo](xref:fundamentals/configuration/index#file-configuration-provider) pode carregar a configuração Kestrel de um *appsettings.json* ou *appSettings. { Arquivo de ambiente}. JSON* :
 
 ```json
 {
@@ -178,7 +179,7 @@ Use **uma** das seguintes abordagens:
 
 * Configure o Kestrel ao compilar o host:
 
-  No *Program.cs*, carregue a `Kestrel` seção de configuração na configuração do Kestrel:
+  No *Program.cs* , carregue a `Kestrel` seção de configuração na configuração do Kestrel:
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -257,7 +258,7 @@ A taxa mínima de padrão é de 240 bytes/segundo com um período de cortesia de
 
 Uma taxa mínima também se aplica à resposta. O código para definir o limite de solicitação e o limite de resposta é o mesmo, exceto por ter `RequestBody` ou `Response` nos nomes da propriedade e da interface.
 
-Este é um exemplo que mostra como configurar as taxas mínima de dados em *Program.cs*:
+Este é um exemplo que mostra como configurar as taxas mínima de dados em *Program.cs* :
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-11)]
 
@@ -527,10 +528,10 @@ O Kestrel escuta em `http://localhost:5000` e em `https://localhost:5001` (se ho
 
 `CreateDefaultBuilder` chama `Configure(context.Configuration.GetSection("Kestrel"))` por padrão ao carregar a configuração do Kestrel. Há um esquema de definições de configurações de aplicativo HTTPS padrão disponível para o Kestrel. Configure vários pontos de extremidade, incluindo URLs e os certificados a serem usados, por meio de um arquivo no disco ou de um repositório de certificados.
 
-No exemplo de *appsettings.json* a seguir:
+No exemplo a seguir *appsettings.json* :
 
 * Defina **AllowInvalid** como `true` para permitir o uso de certificados inválidos (por exemplo, os certificados autoassinados).
-* Todo ponto de extremidade HTTPS que não especificar um certificado (**HttpsDefaultCert** no exemplo a seguir) será revertido para o certificado definido em **Certificados** > **Padrão** ou para o certificado de desenvolvimento.
+* Todo ponto de extremidade HTTPS que não especificar um certificado ( **HttpsDefaultCert** no exemplo a seguir) será revertido para o certificado definido em **Certificados** > **Padrão** ou para o certificado de desenvolvimento.
 
 ```json
 {
@@ -576,7 +577,7 @@ No exemplo de *appsettings.json* a seguir:
 }
 ```
 
-Uma alternativa ao uso de **Caminho** e **Senha** para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o **Certificates**  >  certificado**padrão** de certificados pode ser especificado como:
+Uma alternativa ao uso de **Caminho** e **Senha** para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o **Certificates**  >  certificado **padrão** de certificados pode ser especificado como:
 
 ```json
 "Default": {
@@ -593,7 +594,7 @@ Observações do esquema:
 * O parâmetro `Url` é necessário para cada ponto de extremidade. O formato desse parâmetro é o mesmo que o do parâmetro de configuração de `Urls` de nível superior, exceto que ele é limitado a um único valor.
 * Esses pontos de extremidade substituem aqueles definidos na configuração de `Urls` de nível superior em vez de serem adicionados a eles. Os pontos de extremidade definidos no código por meio de `Listen` são acumulados com os pontos de extremidade definidos na seção de configuração.
 * A seção `Certificate` é opcional. Se a seção `Certificate` não for especificada, os padrões definidos nos cenários anteriores serão usados. Se não houver nenhum padrão disponível, o servidor gerará uma exceção e não poderá ser iniciado.
-* A `Certificate` seção dá suporte **Path**a &ndash; **senha** de caminho e certificados de repositório de **assunto** &ndash; **Store** .
+* A `Certificate` seção dá suporte **Path** a &ndash; **senha** de caminho e certificados de repositório de **assunto** &ndash; **Store** .
 * Qualquer número de pontos de extremidade pode ser definido dessa forma, contanto que eles não causem conflitos de porta.
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` retorna um `KestrelConfigurationLoader` com um método `.Endpoint(string name, listenOptions => { })` que pode ser usado para complementar as definições de um ponto de extremidade configurado:
 
@@ -889,7 +890,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 `CreateDefaultBuilder` chama `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` por padrão ao carregar a configuração do Kestrel.
 
-O seguinte *appsettings.jsno* exemplo estabelece o http/1.1 como o protocolo de conexão padrão para todos os pontos de extremidade:
+O exemplo a seguir *appsettings.json* estabelece http/1.1 como o protocolo de conexão padrão para todos os pontos de extremidade:
 
 ```json
 {
@@ -901,7 +902,7 @@ O seguinte *appsettings.jsno* exemplo estabelece o http/1.1 como o protocolo de 
 }
 ```
 
-O exemplo a seguir *appsettings.js* estabelece o protocolo de conexão HTTP/1.1 para um ponto de extremidade específico:
+O exemplo a seguir *appsettings.json* estabelece o protocolo de conexão HTTP/1.1 para um ponto de extremidade específico:
 
 ```json
 {
@@ -1001,9 +1002,9 @@ Como uma solução alternativa, use o Middleware de Filtragem de Host. O middlew
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o middleware, defina uma `AllowedHosts` chave no *appsettings.jsem* / *appSettings. \<EnvironmentName> JSON*. O valor dessa chave é uma lista separada por ponto e vírgula de nomes de host sem números de porta:
+Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o middleware, defina uma `AllowedHosts` chave em *appsettings.json* / *appSettings. \<EnvironmentName> JSON* . O valor dessa chave é uma lista separada por ponto e vírgula de nomes de host sem números de porta:
 
-*appsettings.jsem*:
+*appsettings.json* :
 
 ```json
 {
@@ -1055,7 +1056,7 @@ HTTP/2 está desabilitado por padrão. Para obter mais informações sobre a con
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quando usar o Kestrel com um proxy reverso
 
-O Kestrel pode ser usado sozinho ou com um *servidor proxy reverso*, como o [IIS (Serviços de Informações da Internet)](https://www.iis.net/), o [Nginx](https://nginx.org) ou o [Apache](https://httpd.apache.org/). Um servidor proxy reverso recebe solicitações HTTP da rede e encaminha-as para o Kestrel.
+O Kestrel pode ser usado sozinho ou com um *servidor proxy reverso* , como o [IIS (Serviços de Informações da Internet)](https://www.iis.net/), o [Nginx](https://nginx.org) ou o [Apache](https://httpd.apache.org/). Um servidor proxy reverso recebe solicitações HTTP da rede e encaminha-as para o Kestrel.
 
 Kestrel usado como um servidor Web de borda (voltado para a Internet):
 
@@ -1085,7 +1086,7 @@ Um proxy reverso:
 
 O pacote [Microsoft. AspNetCore. Server. Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) está incluído no [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
-Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. Em *Program.cs*, o código de modelo chama <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> em segundo plano.
+Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. Em *Program.cs* , o código de modelo chama <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> em segundo plano.
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
@@ -1135,7 +1136,7 @@ Os exemplos a seguir usam o namespace <xref:Microsoft.AspNetCore.Server.Kestrel.
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-As opções de Kestrel, que são configuradas no código C# nos exemplos a seguir, também podem ser definidas usando um [provedor de configuração](xref:fundamentals/configuration/index). Por exemplo, o provedor de configuração de arquivo pode carregar a configuração de Kestrel de um *appsettings.jsem* ou *appSettings. { Arquivo de ambiente}. JSON* :
+As opções de Kestrel, que são configuradas no código C# nos exemplos a seguir, também podem ser definidas usando um [provedor de configuração](xref:fundamentals/configuration/index). Por exemplo, o provedor de configuração de arquivo pode carregar a configuração Kestrel de um *appsettings.json* ou *appSettings. { Arquivo de ambiente}. JSON* :
 
 ```json
 {
@@ -1182,7 +1183,7 @@ Use **uma** das seguintes abordagens:
 
 * Configure o Kestrel ao compilar o host:
 
-  No *Program.cs*, carregue a `Kestrel` seção de configuração na configuração do Kestrel:
+  No *Program.cs* , carregue a `Kestrel` seção de configuração na configuração do Kestrel:
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -1258,7 +1259,7 @@ A taxa mínima de padrão é de 240 bytes/segundo com um período de cortesia de
 
 Uma taxa mínima também se aplica à resposta. O código para definir o limite de solicitação e o limite de resposta é o mesmo, exceto por ter `RequestBody` ou `Response` nos nomes da propriedade e da interface.
 
-Este é um exemplo que mostra como configurar as taxas mínima de dados em *Program.cs*:
+Este é um exemplo que mostra como configurar as taxas mínima de dados em *Program.cs* :
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-9)]
 
@@ -1515,10 +1516,10 @@ O Kestrel escuta em `http://localhost:5000` e em `https://localhost:5001` (se ho
 
 `CreateDefaultBuilder` chama `Configure(context.Configuration.GetSection("Kestrel"))` por padrão ao carregar a configuração do Kestrel. Há um esquema de definições de configurações de aplicativo HTTPS padrão disponível para o Kestrel. Configure vários pontos de extremidade, incluindo URLs e os certificados a serem usados, por meio de um arquivo no disco ou de um repositório de certificados.
 
-No exemplo de *appsettings.json* a seguir:
+No exemplo a seguir *appsettings.json* :
 
 * Defina **AllowInvalid** como `true` para permitir o uso de certificados inválidos (por exemplo, os certificados autoassinados).
-* Todo ponto de extremidade HTTPS que não especificar um certificado (**HttpsDefaultCert** no exemplo a seguir) será revertido para o certificado definido em **Certificados** > **Padrão** ou para o certificado de desenvolvimento.
+* Todo ponto de extremidade HTTPS que não especificar um certificado ( **HttpsDefaultCert** no exemplo a seguir) será revertido para o certificado definido em **Certificados** > **Padrão** ou para o certificado de desenvolvimento.
 
 ```json
 {
@@ -1568,7 +1569,7 @@ No exemplo de *appsettings.json* a seguir:
 }
 ```
 
-Uma alternativa ao uso de **Caminho** e **Senha** para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o **Certificates**  >  certificado**padrão** de certificados pode ser especificado como:
+Uma alternativa ao uso de **Caminho** e **Senha** para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o **Certificates**  >  certificado **padrão** de certificados pode ser especificado como:
 
 ```json
 "Default": {
@@ -1585,7 +1586,7 @@ Observações do esquema:
 * O parâmetro `Url` é necessário para cada ponto de extremidade. O formato desse parâmetro é o mesmo que o do parâmetro de configuração de `Urls` de nível superior, exceto que ele é limitado a um único valor.
 * Esses pontos de extremidade substituem aqueles definidos na configuração de `Urls` de nível superior em vez de serem adicionados a eles. Os pontos de extremidade definidos no código por meio de `Listen` são acumulados com os pontos de extremidade definidos na seção de configuração.
 * A seção `Certificate` é opcional. Se a seção `Certificate` não for especificada, os padrões definidos nos cenários anteriores serão usados. Se não houver nenhum padrão disponível, o servidor gerará uma exceção e não poderá ser iniciado.
-* A `Certificate` seção dá suporte **Path**a &ndash; **senha** de caminho e certificados de repositório de **assunto** &ndash; **Store** .
+* A `Certificate` seção dá suporte **Path** a &ndash; **senha** de caminho e certificados de repositório de **assunto** &ndash; **Store** .
 * Qualquer número de pontos de extremidade pode ser definido dessa forma, contanto que eles não causem conflitos de porta.
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` retorna um `KestrelConfigurationLoader` com um método `.Endpoint(string name, listenOptions => { })` que pode ser usado para complementar as definições de um ponto de extremidade configurado:
 
@@ -1838,7 +1839,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> chama `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` por padrão ao carregar a configuração do Kestrel.
 
-No exemplo *appsettings.json* a seguir, um protocolo de conexão padrão (HTTP/1.1 e HTTP/2) é estabelecido para todos os pontos de extremidade do Kestrel:
+No exemplo a seguir *appsettings.json* , um protocolo de conexão padrão (http/1.1 e http/2) é estabelecido para todos os pontos de extremidade do Kestrel:
 
 ```json
 {
@@ -1952,9 +1953,9 @@ Como uma solução alternativa, use o Middleware de Filtragem de Host. O middlew
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o middleware, defina uma `AllowedHosts` chave no *appsettings.jsem* / *appSettings. \<EnvironmentName> JSON*. O valor dessa chave é uma lista separada por ponto e vírgula de nomes de host sem números de porta:
+Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o middleware, defina uma `AllowedHosts` chave em *appsettings.json* / *appSettings. \<EnvironmentName> JSON* . O valor dessa chave é uma lista separada por ponto e vírgula de nomes de host sem números de porta:
 
-*appsettings.jsem*:
+*appsettings.json* :
 
 ```json
 {
@@ -1985,7 +1986,7 @@ Há suporte para o Kestrel em todas as plataformas e versões compatíveis com o
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quando usar o Kestrel com um proxy reverso
 
-O Kestrel pode ser usado sozinho ou com um *servidor proxy reverso*, como o [IIS (Serviços de Informações da Internet)](https://www.iis.net/), o [Nginx](https://nginx.org) ou o [Apache](https://httpd.apache.org/). Um servidor proxy reverso recebe solicitações HTTP da rede e encaminha-as para o Kestrel.
+O Kestrel pode ser usado sozinho ou com um *servidor proxy reverso* , como o [IIS (Serviços de Informações da Internet)](https://www.iis.net/), o [Nginx](https://nginx.org) ou o [Apache](https://httpd.apache.org/). Um servidor proxy reverso recebe solicitações HTTP da rede e encaminha-as para o Kestrel.
 
 Kestrel usado como um servidor Web de borda (voltado para a Internet):
 
@@ -2015,7 +2016,7 @@ Um proxy reverso:
 
 O pacote [Microsoft. AspNetCore. Server. Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) está incluído no [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
-Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. Em *Program.cs*, o código de modelo chama <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> em segundo plano.
+Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. Em *Program.cs* , o código de modelo chama <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> em segundo plano.
 
 Para fornecer configuração adicional após chamar `CreateDefaultBuilder`, chame <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>:
 
@@ -2043,7 +2044,7 @@ Os exemplos a seguir usam o namespace <xref:Microsoft.AspNetCore.Server.Kestrel.
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-As opções de Kestrel, que são configuradas no código C# nos exemplos a seguir, também podem ser definidas usando um [provedor de configuração](xref:fundamentals/configuration/index). Por exemplo, o provedor de configuração de arquivo pode carregar a configuração de Kestrel de um *appsettings.jsem* ou *appSettings. { Arquivo de ambiente}. JSON* :
+As opções de Kestrel, que são configuradas no código C# nos exemplos a seguir, também podem ser definidas usando um [provedor de configuração](xref:fundamentals/configuration/index). Por exemplo, o provedor de configuração de arquivo pode carregar a configuração Kestrel de um *appsettings.json* ou *appSettings. { Arquivo de ambiente}. JSON* :
 
 ```json
 {
@@ -2090,7 +2091,7 @@ Use **uma** das seguintes abordagens:
 
 * Configure o Kestrel ao compilar o host:
 
-  No *Program.cs*, carregue a `Kestrel` seção de configuração na configuração do Kestrel:
+  No *Program.cs* , carregue a `Kestrel` seção de configuração na configuração do Kestrel:
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -2198,7 +2199,7 @@ A taxa mínima de padrão é de 240 bytes/segundo com um período de cortesia de
 
 Uma taxa mínima também se aplica à resposta. O código para definir o limite de solicitação e o limite de resposta é o mesmo, exceto por ter `RequestBody` ou `Response` nos nomes da propriedade e da interface.
 
-Este é um exemplo que mostra como configurar as taxas mínima de dados em *Program.cs*:
+Este é um exemplo que mostra como configurar as taxas mínima de dados em *Program.cs* :
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -2379,10 +2380,10 @@ O Kestrel escuta em `http://localhost:5000` e em `https://localhost:5001` (se ho
 
 `CreateDefaultBuilder` chama `Configure(context.Configuration.GetSection("Kestrel"))` por padrão ao carregar a configuração do Kestrel. Há um esquema de definições de configurações de aplicativo HTTPS padrão disponível para o Kestrel. Configure vários pontos de extremidade, incluindo URLs e os certificados a serem usados, por meio de um arquivo no disco ou de um repositório de certificados.
 
-No exemplo de *appsettings.json* a seguir:
+No exemplo a seguir *appsettings.json* :
 
 * Defina **AllowInvalid** como `true` para permitir o uso de certificados inválidos (por exemplo, os certificados autoassinados).
-* Todo ponto de extremidade HTTPS que não especificar um certificado (**HttpsDefaultCert** no exemplo a seguir) será revertido para o certificado definido em **Certificados** > **Padrão** ou para o certificado de desenvolvimento.
+* Todo ponto de extremidade HTTPS que não especificar um certificado ( **HttpsDefaultCert** no exemplo a seguir) será revertido para o certificado definido em **Certificados** > **Padrão** ou para o certificado de desenvolvimento.
 
 ```json
 {
@@ -2432,7 +2433,7 @@ No exemplo de *appsettings.json* a seguir:
 }
 ```
 
-Uma alternativa ao uso de **Caminho** e **Senha** para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o **Certificates**  >  certificado**padrão** de certificados pode ser especificado como:
+Uma alternativa ao uso de **Caminho** e **Senha** para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o **Certificates**  >  certificado **padrão** de certificados pode ser especificado como:
 
 ```json
 "Default": {
@@ -2449,7 +2450,7 @@ Observações do esquema:
 * O parâmetro `Url` é necessário para cada ponto de extremidade. O formato desse parâmetro é o mesmo que o do parâmetro de configuração de `Urls` de nível superior, exceto que ele é limitado a um único valor.
 * Esses pontos de extremidade substituem aqueles definidos na configuração de `Urls` de nível superior em vez de serem adicionados a eles. Os pontos de extremidade definidos no código por meio de `Listen` são acumulados com os pontos de extremidade definidos na seção de configuração.
 * A seção `Certificate` é opcional. Se a seção `Certificate` não for especificada, os padrões definidos nos cenários anteriores serão usados. Se não houver nenhum padrão disponível, o servidor gerará uma exceção e não poderá ser iniciado.
-* A `Certificate` seção dá suporte **Path**a &ndash; **senha** de caminho e certificados de repositório de **assunto** &ndash; **Store** .
+* A `Certificate` seção dá suporte **Path** a &ndash; **senha** de caminho e certificados de repositório de **assunto** &ndash; **Store** .
 * Qualquer número de pontos de extremidade pode ser definido dessa forma, contanto que eles não causem conflitos de porta.
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` retorna um `KestrelConfigurationLoader` com um método `.Endpoint(string name, listenOptions => { })` que pode ser usado para complementar as definições de um ponto de extremidade configurado:
 
@@ -2742,9 +2743,9 @@ Como uma solução alternativa, use o Middleware de Filtragem de Host. O middlew
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o middleware, defina uma `AllowedHosts` chave no *appsettings.jsem* / *appSettings. \<EnvironmentName> JSON*. O valor dessa chave é uma lista separada por ponto e vírgula de nomes de host sem números de porta:
+Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o middleware, defina uma `AllowedHosts` chave em *appsettings.json* / *appSettings. \<EnvironmentName> JSON* . O valor dessa chave é uma lista separada por ponto e vírgula de nomes de host sem números de porta:
 
-*appsettings.jsem*:
+*appsettings.json* :
 
 ```json
 {
