@@ -7,6 +7,7 @@ ms.author: jeliknes
 ms.custom: mvc
 ms.date: 08/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: ac84b9d2fac4fe3df48d356eea3ea48fd23bfda4
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: bfc8f334b9229fed54e6b9841e4fb255ed18249a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113628"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056615"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>ASP.NET Core Blazor Server com Entity Framework Core (EFCore)
 
@@ -31,7 +32,7 @@ Por: [Jeremy Likness](https://github.com/JeremyLikness)
 
 :::moniker range=">= aspnetcore-5.0"
 
-Blazor Server é uma estrutura de aplicativo com estado. O aplicativo mantém uma conexão contínua com o servidor e o estado do usuário é mantido na memória do servidor em um *circuito*. Um exemplo de estado do usuário são os dados mantidos em instâncias de serviço de [injeção de dependência (di)](xref:fundamentals/dependency-injection) que estão no escopo do circuito. O modelo de aplicativo exclusivo que Blazor Server o fornece requer uma abordagem especial para usar Entity Framework Core.
+Blazor Server é uma estrutura de aplicativo com estado. O aplicativo mantém uma conexão contínua com o servidor e o estado do usuário é mantido na memória do servidor em um *circuito* . Um exemplo de estado do usuário são os dados mantidos em instâncias de serviço de [injeção de dependência (di)](xref:fundamentals/dependency-injection) que estão no escopo do circuito. O modelo de aplicativo exclusivo que Blazor Server o fornece requer uma abordagem especial para usar Entity Framework Core.
 
 > [!NOTE]
 > Este artigo aborda EF Core em Blazor Server aplicativos. Blazor WebAssembly os aplicativos são executados em uma área restrita do Webassembly que impede a maioria das conexões de banco de dados direta. A execução do EF Core no Blazor WebAssembly está além do escopo deste artigo.
@@ -143,7 +144,7 @@ Por fim, [`OnInitializedAsync`](xref:blazor/components/lifecycle) é substituíd
 
 <h3 id="enable-sensitive-data-logging">Habilitar log de dados confidenciais</h3>
 
-<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> inclui dados de aplicativo em mensagens de exceção e log de estrutura. Os dados registrados podem incluir os valores atribuídos às propriedades de instâncias de entidade e valores de parâmetro para comandos enviados ao banco de dado. O registro em log de dados <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> é um **risco de segurança**, pois ele pode expor senhas e outras informações de identificação pessoal (PII) ao registrar as instruções SQL executadas no banco de dados.
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> inclui dados de aplicativo em mensagens de exceção e log de estrutura. Os dados registrados podem incluir os valores atribuídos às propriedades de instâncias de entidade e valores de parâmetro para comandos enviados ao banco de dado. O registro em log de dados <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> é um **risco de segurança** , pois ele pode expor senhas e outras informações de identificação pessoal (PII) ao registrar as instruções SQL executadas no banco de dados.
 
 É recomendável habilitar apenas <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> para desenvolvimento e teste:
 
@@ -162,7 +163,7 @@ Por fim, [`OnInitializedAsync`](xref:blazor/components/lifecycle) é substituíd
 
 :::moniker range="< aspnetcore-5.0"
 
-Blazor Server é uma estrutura de aplicativo com estado. O aplicativo mantém uma conexão contínua com o servidor e o estado do usuário é mantido na memória do servidor em um *circuito*. Um exemplo de estado do usuário são os dados mantidos em instâncias de serviço de [injeção de dependência (di)](xref:fundamentals/dependency-injection) que estão no escopo do circuito. O modelo de aplicativo exclusivo que Blazor Server o fornece requer uma abordagem especial para usar Entity Framework Core.
+Blazor Server é uma estrutura de aplicativo com estado. O aplicativo mantém uma conexão contínua com o servidor e o estado do usuário é mantido na memória do servidor em um *circuito* . Um exemplo de estado do usuário são os dados mantidos em instâncias de serviço de [injeção de dependência (di)](xref:fundamentals/dependency-injection) que estão no escopo do circuito. O modelo de aplicativo exclusivo que Blazor Server o fornece requer uma abordagem especial para usar Entity Framework Core.
 
 > [!NOTE]
 > Este artigo aborda EF Core em Blazor Server aplicativos. Blazor WebAssembly os aplicativos são executados em uma área restrita do Webassembly que impede a maioria das conexões de banco de dados direta. A execução do EF Core no Blazor WebAssembly está além do escopo deste artigo.
@@ -286,7 +287,7 @@ No exemplo anterior:
 
 <h3 id="enable-sensitive-data-logging">Habilitar log de dados confidenciais</h3>
 
-<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> inclui dados de aplicativo em mensagens de exceção e log de estrutura. Os dados registrados podem incluir os valores atribuídos às propriedades de instâncias de entidade e valores de parâmetro para comandos enviados ao banco de dado. O registro em log de dados <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> é um **risco de segurança**, pois ele pode expor senhas e outras informações de identificação pessoal (PII) ao registrar as instruções SQL executadas no banco de dados.
+<xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> inclui dados de aplicativo em mensagens de exceção e log de estrutura. Os dados registrados podem incluir os valores atribuídos às propriedades de instâncias de entidade e valores de parâmetro para comandos enviados ao banco de dado. O registro em log de dados <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> é um **risco de segurança** , pois ele pode expor senhas e outras informações de identificação pessoal (PII) ao registrar as instruções SQL executadas no banco de dados.
 
 É recomendável habilitar apenas <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> para desenvolvimento e teste:
 

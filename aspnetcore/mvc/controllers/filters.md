@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: eeae167286e793ecd5a547cea0142cf7d8014ece
-ms.sourcegitcommit: c0a15ab8549cb729731a0fdf1d7da0b7feaa11ff
+ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671776"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058500"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros no ASP.NET Core
 
@@ -48,7 +49,7 @@ Este documento se aplica a Razor páginas, controladores de API e controladores 
 
 ## <a name="how-filters-work"></a>Como os filtros funcionam
 
-Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core*, às vezes chamado de *pipeline de filtros*. O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
+Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core* , às vezes chamado de *pipeline de filtros* . O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
 
 ![A solicitação é processada por meio de outro middleware, middleware de roteamento, seleção de ação e o pipeline de invocação de ação. O processamento de solicitações continua por meio da Seleção de Ação, do Middleware de Roteamento e de diversos Outros Middlewares antes de se tornar uma resposta enviada ao cliente.](filters/_static/filter-pipeline-1.png)
 
@@ -117,7 +118,7 @@ Os atributos permitem que os filtros aceitem argumentos, conforme mostrado no ex
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-Use uma ferramenta como as [ferramentas de desenvolvedor do navegador](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) para examinar os cabeçalhos. Em **cabeçalhos de resposta**, `author: Rick Anderson` é exibido.
+Use uma ferramenta como as [ferramentas de desenvolvedor do navegador](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) para examinar os cabeçalhos. Em **cabeçalhos de resposta** , `author: Rick Anderson` é exibido.
 
 O código a seguir implementa um `ActionFilterAttribute` que:
 
@@ -126,7 +127,7 @@ O código a seguir implementa um `ActionFilterAttribute` que:
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MyActionFilterAttribute.cs?name=snippet)]
 
-As opções de configuração são fornecidas no [sistema de configuração](xref:fundamentals/configuration/index) usando o [padrão de opções](xref:fundamentals/configuration/options). Por exemplo, do *appsettings.jsno* arquivo:
+As opções de configuração são fornecidas no [sistema de configuração](xref:fundamentals/configuration/index) usando o [padrão de opções](xref:fundamentals/configuration/options). Por exemplo, no *appsettings.json* arquivo:
 
 [!code-json[](filters/3.1sample/FiltersSample/appsettings.json)]
 
@@ -145,7 +146,7 @@ O código a seguir aplica o `MyActionFilterAttribute` ao `Index2` método:
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet2&highlight=9)]
 
-Em **cabeçalhos de resposta**, `author: Rick Anderson` e `Editor: Joe Smith` é exibido quando o `Sample/Index2` ponto de extremidade é chamado.
+Em **cabeçalhos de resposta** , `author: Rick Anderson` e `Editor: Joe Smith` é exibido quando o `Sample/Index2` ponto de extremidade é chamado.
 
 O código a seguir aplica o `MyActionFilterAttribute` e o `AddHeaderAttribute` à Razor página:
 
@@ -166,7 +167,7 @@ Atributos de filtro:
 
 ## <a name="filter-scopes-and-order-of-execution"></a>Escopos e ordem de execução dos filtros
 
-Um filtro pode ser adicionado ao pipeline com um de três *escopos*:
+Um filtro pode ser adicionado ao pipeline com um de três *escopos* :
 
 * Usando um atributo em uma ação do controlador. Atributos de filtro não podem ser aplicados a Razor métodos de manipulador de páginas.
 * Usando um atributo em um controlador ou uma Razor página.
@@ -178,7 +179,7 @@ Um filtro pode ser adicionado ao pipeline com um de três *escopos*:
 
 Quando há vários filtros para um determinado estágio do pipeline, o escopo determina a ordem padrão de execução dos filtros.  Filtros globais circundam filtros de classe, que, por sua vez, circundam filtros de método.
 
-Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior*. A sequência de filtro:
+Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior* . A sequência de filtro:
 
 * O código *anterior* dos filtros globais.
   * O código *anterior* de filtros de Razor página e controlador.
@@ -637,7 +638,7 @@ Este documento se aplica a Razor páginas, controladores de API e controladores 
 
 ## <a name="how-filters-work"></a>Como os filtros funcionam
 
-Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core*, às vezes chamado de *pipeline de filtros*.  O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
+Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core* , às vezes chamado de *pipeline de filtros* .  O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
 
 ![A solicitação é processada por meio de Outro Middleware, do Middleware de Roteamento, da Seleção de Ação e do Pipeline de Invocação de Ações do ASP.NET Core. O processamento de solicitações continua por meio da Seleção de Ação, do Middleware de Roteamento e de diversos Outros Middlewares antes de se tornar uma resposta enviada ao cliente.](filters/_static/filter-pipeline-1.png)
 
@@ -710,7 +711,7 @@ Atributos de filtro:
 
 ## <a name="filter-scopes-and-order-of-execution"></a>Escopos e ordem de execução dos filtros
 
-Um filtro pode ser adicionado ao pipeline com um de três *escopos*:
+Um filtro pode ser adicionado ao pipeline com um de três *escopos* :
 
 * Usando um atributo em uma ação.
 * Usando um atributo em um controlador.
@@ -722,9 +723,9 @@ O código anterior adiciona três filtros globalmente usando a coleção [MvcOpt
 
 ### <a name="default-order-of-execution"></a>Ordem padrão de execução
 
-Quando há vários filtros *do mesmo tipo*, o escopo determina a ordem padrão de execução do filtro.  Filtros globais envolvem filtros de classe. Filtros de classe envolvem filtros de método.
+Quando há vários filtros *do mesmo tipo* , o escopo determina a ordem padrão de execução do filtro.  Filtros globais envolvem filtros de classe. Filtros de classe envolvem filtros de método.
 
-Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior*. A sequência de filtro:
+Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior* . A sequência de filtro:
 
 * O código *anterior* dos filtros globais.
   * O código *anterior* dos filtros de controlador.

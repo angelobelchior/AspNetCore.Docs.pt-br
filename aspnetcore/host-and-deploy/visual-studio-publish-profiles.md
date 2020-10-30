@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: e86a648e2707e808452e3bc92d991058c8fde480
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 98dfd539171807cbf94d4ac8746458152c809495
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057564"
 ---
 # <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>Perfis de publicação do Visual Studio (. pubxml) para implantação de aplicativo ASP.NET Core
 
@@ -39,7 +40,7 @@ O `dotnet new mvc` comando produz um arquivo de projeto que contém o seguinte [
 </Project>
 ```
 
-O atributo `Sdk` do elemento `<Project>` anterior importa as [propriedades](/visualstudio/msbuild/msbuild-properties) e os [destinos](/visualstudio/msbuild/msbuild-targets) do MSBuild de *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* e *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets*, respectivamente. O local padrão para `$(MSBuildSDKsPath)` (com o Visual Studio 2019 Enterprise) é a pasta *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks*.
+O atributo `Sdk` do elemento `<Project>` anterior importa as [propriedades](/visualstudio/msbuild/msbuild-properties) e os [destinos](/visualstudio/msbuild/msbuild-targets) do MSBuild de *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* e *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets* , respectivamente. O local padrão para `$(MSBuildSDKsPath)` (com o Visual Studio 2019 Enterprise) é a pasta *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks* .
 
 `Microsoft.NET.Sdk.Web`([SDK da Web](xref:razor-pages/web-sdk)) depende de outros SDKs, incluindo `Microsoft.NET.Sdk` ([SDK do .NET Core](/dotnet/core/project-sdk/msbuild-props)) e `Microsoft.NET.Sdk.Razor` ([ Razor SDK](xref:razor-pages/sdk)). As propriedades e os destinos do MSBuild associados a cada SDK dependente são importados. Os destinos de publicação importam o conjunto apropriado de destinos com base no método de publicação usado.
 
@@ -67,12 +68,12 @@ O [SDK da Web](xref:razor-pages/web-sdk) importa o [ Razor SDK](xref:razor-pages
 
 ::: moniker-end
 
-Para adicionar explicitamente um arquivo à lista de publicação, adicione o arquivo diretamente no arquivo *.csproj*, conforme mostrado na seção [Incluir Arquivos](#include-files).
+Para adicionar explicitamente um arquivo à lista de publicação, adicione o arquivo diretamente no arquivo *.csproj* , conforme mostrado na seção [Incluir Arquivos](#include-files).
 
 Ao selecionar o botão **Publicar** no Visual Studio ou ao publicar da linha de comando:
 
 * Os itens/propriedades são calculados (os arquivos necessários para compilar).
-* **Somente Visual Studio**: os pacotes NuGet são restaurados. (A restauração precisa ser explícita pelo usuário na CLI.)
+* **Somente Visual Studio** : os pacotes NuGet são restaurados. (A restauração precisa ser explícita pelo usuário na CLI.)
 * O projeto é compilado.
 * Os itens de publicação são computados (os arquivos necessários para a publicação).
 * O projeto é publicado (os arquivos computados são copiados para o destino de publicação).
@@ -81,7 +82,7 @@ Quando um projeto do ASP.NET Core faz referência a `Microsoft.NET.Sdk.Web` no a
 
 ## <a name="basic-command-line-publishing"></a>Publicação de linha de comando básica
 
-A publicação de linha de comando funciona em todas as plataformas compatíveis com o .NET Core e não requer o Visual Studio. Nos exemplos a seguir, o comando [dotnet publish](/dotnet/core/tools/dotnet-publish) da CLI do .NET Core é executado no diretório do projeto (que contém o arquivo *.csproj*). Se a pasta do projeto não for o diretório de trabalho atual, passe explicitamente no caminho do arquivo de projeto. Por exemplo:
+A publicação de linha de comando funciona em todas as plataformas compatíveis com o .NET Core e não requer o Visual Studio. Nos exemplos a seguir, o comando [dotnet publish](/dotnet/core/tools/dotnet-publish) da CLI do .NET Core é executado no diretório do projeto (que contém o arquivo *.csproj* ). Se a pasta do projeto não for o diretório de trabalho atual, passe explicitamente no caminho do arquivo de projeto. Por exemplo:
 
 ```dotnetcli
 dotnet publish C:\Webs\Web1
@@ -107,7 +108,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Web1 -> C:\Webs\Web1\bin\Debug\{TARGET FRAMEWORK MONIKER}\publish\
 ```
 
-O formato da pasta de publicação padrão é *bin\Debug\\{MONIKER DA ESTRUTURA DE DESTINO}\publish\\*. Por exemplo, *bin\Debug\netcoreapp2.2\publish\\*.
+O formato da pasta de publicação padrão é *bin\Debug\\{MONIKER DA ESTRUTURA DE DESTINO}\publish\\* . Por exemplo, *bin\Debug\netcoreapp2.2\publish\\* .
 
 O comando a seguir especifica um build de `Release` e o diretório de publicação:
 
@@ -122,7 +123,7 @@ Propriedades do MSBuild podem ser passadas usando qualquer um dos seguintes form
 * `-p:<NAME>=<VALUE>`
 * `/p:<NAME>=<VALUE>`
 
-Por exemplo, o comando a seguir publica um build de `Release` para um compartilhamento de rede. O compartilhamento de rede é especificado com barras "/" (*//r8/*) e funciona em todas as plataformas com suporte do .NET Core.
+Por exemplo, o comando a seguir publica um build de `Release` para um compartilhamento de rede. O compartilhamento de rede é especificado com barras "/" ( *//r8/* ) e funciona em todas as plataformas com suporte do .NET Core.
 
 ```dotnetcli
 dotnet publish -c Release /p:PublishDir=//r8/release/AdminWeb
@@ -136,8 +137,8 @@ Esta seção usa o Visual Studio 2019 ou posterior para criar um perfil de publi
 
 Crie um perfil de publicação no Visual Studio escolhendo um dos seguintes caminhos:
 
-* No Visual Studio, clique com o botão direito do mouse no nome do projeto no **Gerenciador de Soluções** e selecione **Publicar**.
-* Selecione **Publicar {NOME DO PROJETO}** no menu **Build**.
+* No Visual Studio, clique com o botão direito do mouse no nome do projeto no **Gerenciador de Soluções** e selecione **Publicar** .
+* Selecione **Publicar {NOME DO PROJETO}** no menu **Build** .
 
 A guia **Publicar** da página de capacidades do aplicativo é exibida. Se o projeto não tiver um perfil de publicação, a página **Escolher um destino de publicação** é exibida. Você deverá selecionar um dos seguintes destinos de publicação:
 
@@ -150,18 +151,18 @@ A guia **Publicar** da página de capacidades do aplicativo é exibida. Se o pro
 
 Para determinar o destino de publicação mais apropriado, confira [Quais opções de publicação são adequadas para mim](/visualstudio/ide/not-in-toc/web-publish-options).
 
-Quando o destino de publicação **Pasta** é selecionado, especifique um caminho de pasta para armazenar os ativos publicados. O caminho de pasta padrão é *bin\\{CONFIGURAÇÃO DO PROJETO}\\{MONIKER DA ESTRUTURA DE DESTINO}\publish\\*. Por exemplo, *bin\Release\netcoreapp2.2\publish\\*. Selecione o botão **Criar Perfil** para concluir.
+Quando o destino de publicação **Pasta** é selecionado, especifique um caminho de pasta para armazenar os ativos publicados. O caminho de pasta padrão é *bin\\{CONFIGURAÇÃO DO PROJETO}\\{MONIKER DA ESTRUTURA DE DESTINO}\publish\\* . Por exemplo, *bin\Release\netcoreapp2.2\publish\\* . Selecione o botão **Criar Perfil** para concluir.
 
 Depois de um perfil de publicação ser criado, o conteúdo da guia **Publicar** é alterado. O perfil recém-criado é exibido em uma lista suspensa. Abaixo da lista suspensa, selecione **Criar novo perfil** para criar outro novo perfil.
 
-A ferramenta de publicação do Visual Studio cria um arquivo MSBuild *Properties/PublishProfiles/{NOME DO PERFIL}.pubxml* que descreve o perfil de publicação. O arquivo *.pubxml*:
+A ferramenta de publicação do Visual Studio cria um arquivo MSBuild *Properties/PublishProfiles/{NOME DO PERFIL}.pubxml* que descreve o perfil de publicação. O arquivo *.pubxml* :
 
 * Contém as definições de configuração de publicação e é consumido pelo processo de publicação.
 * Pode ser modificado para personalizar o processo de compilação e publicação.
 
-Ao publicar em um destino do Azure, o arquivo *.pubxml* contém o identificador de assinatura do Azure. Com esse tipo de destino, não é recomendável adicionar esse arquivo ao controle do código-fonte. Ao publicar em um destino não Azure, é seguro fazer check-in do arquivo *.pubxml*.
+Ao publicar em um destino do Azure, o arquivo *.pubxml* contém o identificador de assinatura do Azure. Com esse tipo de destino, não é recomendável adicionar esse arquivo ao controle do código-fonte. Ao publicar em um destino não Azure, é seguro fazer check-in do arquivo *.pubxml* .
 
-Informações confidenciais (como a senha de publicação) são criptografadas em um nível por usuário/computador. Elas são armazenadas no arquivo *Properties/PublishProfiles/{NOME DO PERFIL}.pubxml.user*. Já que esse arquivo pode armazenar informações confidenciais, o check-in dele não deve ser realizado no controle do código-fonte.
+Informações confidenciais (como a senha de publicação) são criptografadas em um nível por usuário/computador. Elas são armazenadas no arquivo *Properties/PublishProfiles/{NOME DO PERFIL}.pubxml.user* . Já que esse arquivo pode armazenar informações confidenciais, o check-in dele não deve ser realizado no controle do código-fonte.
 
 Para obter uma visão geral de como publicar um aplicativo web ASP.NET Core, confira <xref:host-and-deploy/index>. As tarefas e os destinos do MSBuild necessários para publicar um aplicativo Web ASP.NET Core são de código-fonte aberto no [repositório dotnet/WebSDK](https://github.com/dotnet/websdk).
 
@@ -219,7 +220,7 @@ Adicione um perfil de publicação à pasta *Properties/PublishProfiles* do proj
 
 ## <a name="folder-publish-example"></a>Exemplo de publicação de pasta
 
-Ao publicar com um perfil chamado *FolderProfile*, use qualquer um dos seguintes comandos:
+Ao publicar com um perfil chamado *FolderProfile* , use qualquer um dos seguintes comandos:
 
 ```dotnetcli
 dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile`
@@ -288,7 +289,7 @@ No exemplo anterior:
 
 ## <a name="publish-to-an-msdeploy-endpoint-from-the-command-line"></a>Publicar em um ponto de extremidade do MSDeploy da linha de comando
 
-O exemplo a seguir usa um aplicativo Web do ASP.NET Core, criado pelo Visual Studio, denominada *AzureWebApp*. Um perfil de publicação dos aplicativos do Azure é adicionado ao Visual Studio. Para obter mais informações sobre como criar um perfil, consulte a seção [Perfis de publicação](#publish-profiles).
+O exemplo a seguir usa um aplicativo Web do ASP.NET Core, criado pelo Visual Studio, denominada *AzureWebApp* . Um perfil de publicação dos aplicativos do Azure é adicionado ao Visual Studio. Para obter mais informações sobre como criar um perfil, consulte a seção [Perfis de publicação](#publish-profiles).
 
 Para implantar o aplicativo usando um perfil de publicação, execute o comando `msbuild` de um **Prompt de Comando do Desenvolvedor** do Visual Studio. O prompt de comando está disponível na pasta do *Visual Studio* do menu **Página Inicial** na barra de tarefas do Windows. Para facilitar o acesso, você pode adicionar o prompt de comando ao menu **Ferramentas** no Visual Studio. Para saber mais, confira [Prompt de comando do desenvolvedor para Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio).
 
@@ -306,10 +307,10 @@ msbuild {PATH}
 * `{PROFILE}`: Nome do perfil de publicação.
 * `{USERNAME}`: Nome de usuário do MSDeploy. O `{USERNAME}` pode ser encontrado no perfil de publicação.
 * `{PASSWORD}`: Senha do MSDeploy. Obtenha o `{PASSWORD}` do *{Profile}. Arquivo PublishSettings* . Baixe o arquivo *.PublishSettings* de uma das seguintes opções:
-  * **Gerenciador de soluções**: selecione **Exibir**  >  **Gerenciador de nuvem**. Conecte-se à sua assinatura do Azure. Abra **Serviços de Aplicativos**. Clique com o botão direito do mouse no aplicativo. Selecione **Baixar Perfil de Publicação**.
+  * **Gerenciador de soluções** : selecione **Exibir**  >  **Gerenciador de nuvem** . Conecte-se à sua assinatura do Azure. Abra **Serviços de Aplicativos** . Clique com o botão direito do mouse no aplicativo. Selecione **Baixar Perfil de Publicação** .
   * Portal do Azure: selecione **obter perfil de publicação** no painel **visão geral** do aplicativo Web.
 
-O exemplo a seguir usa um perfil de publicação denominado *AzureWebApp – Implantação da Web*:
+O exemplo a seguir usa um perfil de publicação denominado *AzureWebApp – Implantação da Web* :
 
 ```bash
 msbuild "AzureWebApp.csproj" 
@@ -334,7 +335,7 @@ dotnet msbuild "AzureWebApp.csproj"
 
 ## <a name="set-the-environment"></a>Definir o ambiente
 
-Inclua a propriedade `<EnvironmentName>` no perfil de publicação (*.pubxml*) ou no arquivo de projeto para definir o [ambiente](xref:fundamentals/environments) do aplicativo:
+Inclua a propriedade `<EnvironmentName>` no perfil de publicação ( *.pubxml* ) ou no arquivo de projeto para definir o [ambiente](xref:fundamentals/environments) do aplicativo:
 
 ```xml
 <PropertyGroup>
@@ -350,11 +351,11 @@ Ao publicar aplicativos Web ASP.NET Core, os seguintes ativos são incluídos:
 
 * Artefatos de compilação
 * As pastas e os arquivos que correspondem aos seguintes padrões de recurso de curinga:
-  * `**\*.config` (por exemplo, *web.config*)
-  * `**\*.json` (por exemplo, *appsettings.json*)
+  * `**\*.config` (por exemplo, *web.config* )
+  * `**\*.json` (por exemplo, *appsettings.json* )
   * `wwwroot\**`
 
-O MSBuild dá suporte aos [padrões de recurso de curinga](https://gruntjs.com/configuring-tasks#globbing-patterns). Por exemplo, o elemento `<Content>` a seguir suprime a cópia dos arquivos de texto (*.txt*) na pasta *wwwroot\content* e suas subpastas:
+O MSBuild dá suporte aos [padrões de recurso de curinga](https://gruntjs.com/configuring-tasks#globbing-patterns). Por exemplo, o elemento `<Content>` a seguir suprime a cópia dos arquivos de texto ( *.txt* ) na pasta *wwwroot\content* e suas subpastas:
 
 ```xml
 <ItemGroup>
@@ -362,7 +363,7 @@ O MSBuild dá suporte aos [padrões de recurso de curinga](https://gruntjs.com/c
 </ItemGroup>
 ```
 
-A marcação anterior pode ser adicionada a um perfil de publicação ou ao arquivo *.csproj*. Quando adicionada ao arquivo *.csproj*, a regra será adicionada a todos os perfis de publicação no projeto.
+A marcação anterior pode ser adicionada a um perfil de publicação ou ao arquivo *.csproj* . Quando adicionada ao arquivo *.csproj* , a regra será adicionada a todos os perfis de publicação no projeto.
 
 O elemento a seguir `<MsDeploySkipRules>` exclui todos os arquivos da pasta *wwwroot\content* :
 
@@ -450,7 +451,7 @@ O elemento `<ItemGroup>` do exemplo a seguir demonstra como copiar uma pasta loc
 
 A marcação anterior:
 
-* Pode ser adicionada ao arquivo *.csproj* ou ao perfil de publicação. Se ela for adicionada ao arquivo *.csproj*, ela será incluída em cada perfil de publicação no projeto.
+* Pode ser adicionada ao arquivo *.csproj* ou ao perfil de publicação. Se ela for adicionada ao arquivo *.csproj* , ela será incluída em cada perfil de publicação no projeto.
 * Declara um item `_CustomFiles` para armazenar os arquivos correspondendo ao padrão de recurso de curinga do atributo `Include`. A pasta *imagens* referenciada no padrão está localizada fora do diretório do projeto. Uma [propriedade reservada](/visualstudio/msbuild/msbuild-reserved-and-well-known-properties), denominada `$(MSBuildProjectDirectory)`, resolve o caminho absoluto do arquivo de projeto.
 * Fornece uma lista de arquivos para o item `DotNetPublishFiles`. Por padrão, o elemento `<DestinationRelativePath>` do item está vazio. O valor padrão é substituído na marcação e usa [metadados de item bem conhecidos](/visualstudio/msbuild/msbuild-well-known-item-metadata), como `%(RecursiveDir)`. O texto interno representa a pasta *wwwroot/images* do site publicado.
 
@@ -459,8 +460,8 @@ A marcação anterior:
 A marcação realçada no exemplo a seguir demonstra:
 
 * Copiar um arquivo localizado fora do projeto para a pasta *wwwroot* do site publicado. O nome de arquivo *ReadMe2.md* é mantido.
-* Excluir a pasta *wwwroot\Content*.
-* Excluir *Views\Home\About2.cshtml*.
+* Excluir a pasta *wwwroot\Content* .
+* Excluir *Views\Home\About2.cshtml* .
 
 [!code-xml[](visual-studio-publish-profiles/samples/Web1.pubxml?highlight=18-23)]
 

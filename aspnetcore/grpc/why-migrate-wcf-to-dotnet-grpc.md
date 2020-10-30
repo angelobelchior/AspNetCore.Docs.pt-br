@@ -1,11 +1,12 @@
 ---
-title: Por que migrar o WCF para ASP.NET Core gRPC
+title: Por que migrar o WCF para o ASP.NET Core gRPC
 author: markrendle
 description: Este artigo fornece um resumo de por que ASP.NET Core gRPC é uma boa opção para desenvolvedores de Windows Communication Foundation (WCF) que desejam migrar para arquiteturas e plataformas modernas.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: wpickett
 ms.date: 09/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/wcf
-ms.openlocfilehash: 811e6037b058b26fcf91063123d04d448a9a28a8
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 26629b4aa5510f4ef5f53f57b64e45f6c32d4014
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90012753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058682"
 ---
 # <a name="grpc-for-windows-communication-foundation-wcf-developers"></a>gRPC para desenvolvedores de Windows Communication Foundation (WCF)
 

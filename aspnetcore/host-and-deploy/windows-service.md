@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: d4df10f9450ca956d7b1a4297caa63cdd0caf23e
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113745"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057226"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Hospedar o ASP.NET Core em um serviço Windows
 
@@ -58,10 +59,10 @@ O aplicativo requer uma referência de pacote para [Microsoft. Extensions. host.
 * Habilita o registro em log no log de eventos:
   * O nome do aplicativo é usado como o nome de origem padrão.
   * O nível de log padrão é *aviso* ou superior para um aplicativo com base em um modelo de ASP.NET Core que chama `CreateDefaultBuilder` para criar o host.
-  * Substitua o nível de log padrão pela `Logging:EventLog:LogLevel:Default` chave no *appsettings.jsem* / *appSettings. { Ambiente}. JSON* ou outro provedor de configuração.
+  * Substitua o nível de log padrão pela `Logging:EventLog:LogLevel:Default` chave em *appsettings.json* / *appSettings. { Ambiente}. JSON* ou outro provedor de configuração.
   * Somente administradores podem criar novas fontes de evento. Quando uma fonte de evento não puder ser criada usando o nome do aplicativo, um aviso será registrado em log como a fonte do *Aplicativo* e os logs de eventos serão desabilitados.
 
-Em `CreateHostBuilder` *Program.cs*:
+Em `CreateHostBuilder` *Program.cs* :
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -96,9 +97,9 @@ Se o serviço executar apenas tarefas em segundo plano (por exemplo, [serviços 
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD (Implantação dependente de estrutura)
 
-A FDD (Implantação Dependente de Estrutura) se baseia na presença de uma versão compartilhada em todo o sistema do .NET Core no sistema de destino. Quando o cenário FDD é adotado após a orientação deste artigo, o SDK produz um executável (*.exe*), chamado de *executável dependente de estrutura*.
+A FDD (Implantação Dependente de Estrutura) se baseia na presença de uma versão compartilhada em todo o sistema do .NET Core no sistema de destino. Quando o cenário FDD é adotado após a orientação deste artigo, o SDK produz um executável ( *.exe* ), chamado de *executável dependente de estrutura* .
 
-Se você estiver usando o [SDK da Web](#sdk), um arquivo *web.config* , que normalmente é produzido ao publicar um aplicativo ASP.NET Core, é desnecessário para um aplicativo de serviços do Windows. Para desabilitar a criação de um arquivo *web.config*, adicione a propriedade `<IsTransformWebConfigDisabled>` definida como `true`.
+Se você estiver usando o [SDK da Web](#sdk), um arquivo *web.config* , que normalmente é produzido ao publicar um aplicativo ASP.NET Core, é desnecessário para um aplicativo de serviços do Windows. Para desabilitar a criação de um arquivo *web.config* , adicione a propriedade `<IsTransformWebConfigDisabled>` definida como `true`.
 
 ```xml
 <PropertyGroup>
@@ -152,13 +153,13 @@ Uma abordagem alternativa ao gerenciamento de usuários ao usar o Active Directo
 
 Para estabelecer os direitos de *Fazer logon como um serviço* para uma conta de usuário do serviço:
 
-1. Abra a janela do editor da Política de Segurança Local executando *secpol.msc*.
-1. Expanda o nó **Políticas Locais** e escolha **Atribuição de Direitos de Usuário**.
-1. Abra a política **Fazer logon como um serviço**.
-1. Selecione **Adicionar Usuário ou Grupo**.
+1. Abra a janela do editor da Política de Segurança Local executando *secpol.msc* .
+1. Expanda o nó **Políticas Locais** e escolha **Atribuição de Direitos de Usuário** .
+1. Abra a política **Fazer logon como um serviço** .
+1. Selecione **Adicionar Usuário ou Grupo** .
 1. Forneça o nome do objeto (conta de usuário) usando uma das abordagens a seguir:
    1. Digite a conta de usuário (`{DOMAIN OR COMPUTER NAME\USER}`) no campo de nome do objeto e escolha **OK** para adicionar o usuário à política.
-   1. Selecione **Avançado**. Escolha **Localizar Agora**. Escolha a conta de usuário na lista. Selecione **OK**. Escolha **OK** novamente para adicionar o usuário à política.
+   1. Selecione **Avançado** . Escolha **Localizar Agora** . Escolha a conta de usuário na lista. Selecione **OK** . Escolha **OK** novamente para adicionar o usuário à política.
 1. Escolha **OK** ou **Aplicar** para aceitar as alterações.
 
 ## <a name="create-and-manage-the-windows-service"></a>Criar e gerenciar o Serviço Windows
@@ -245,7 +246,7 @@ As diretrizes anteriores abordam o suporte para pontos de extremidade HTTPS. Por
 
 ## <a name="current-directory-and-content-root"></a>Diretório atual e a raiz do conteúdo
 
-O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32*. A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
+O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32* . A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
 
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>Usar ContentRootPath ou ContentRootFileProvider
 
@@ -253,7 +254,7 @@ Use [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEn
 
 Quando o aplicativo é executado como um serviço, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> o define <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> como [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory).
 
-Os arquivos de configurações padrão do aplicativo, *appsettings.jsem* e *appSettings. { Environment}. JSON*, são carregados a partir da raiz do conteúdo do aplicativo chamando [CreateDefaultBuilder durante a construção do host](xref:fundamentals/host/generic-host#set-up-a-host).
+Os arquivos de configurações padrão do aplicativo *appsettings.json* e *appSettings. { Environment}. JSON* , são carregados a partir da raiz do conteúdo do aplicativo chamando [CreateDefaultBuilder durante a construção do host](xref:fundamentals/host/generic-host#set-up-a-host).
 
 Para outros arquivos de configurações carregados pelo código do desenvolvedor no <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> , não há necessidade de chamar <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> . No exemplo a seguir, o *custom_settings.jsno* arquivo existe na raiz do conteúdo do aplicativo e é carregado sem definir explicitamente um caminho base:
 
@@ -276,7 +277,7 @@ Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xre
   * FDD do *compartimento/versão/{estrutura de destino}* (a)
   * *bin/Release/{Framework de destino} identificador de/{Runtime}/Publish* (SCD)
 * O serviço não está em estado de execução.
-* Os caminhos para os recursos que o aplicativo usa (por exemplo, certificados) estão incorretos. O caminho base de um serviço do Windows é *c: \\ Windows \\ System32*.
+* Os caminhos para os recursos que o aplicativo usa (por exemplo, certificados) estão incorretos. O caminho base de um serviço do Windows é *c: \\ Windows \\ System32* .
 * O usuário não tem direitos de *logon como um serviço* .
 * A senha do usuário expirou ou foi passada incorretamente ao executar o `New-Service` comando do PowerShell.
 * O aplicativo requer autenticação ASP.NET Core, mas não está configurado para conexões seguras (HTTPS).
@@ -286,8 +287,8 @@ Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xre
 
 Acesse os logs de eventos do sistema e do aplicativo:
 
-1. Abra o menu Iniciar, procure *Visualizador de eventos*e selecione o aplicativo **Visualizador de eventos** .
-1. No **Visualizador de Eventos**, abra o nó **Logs do Windows**.
+1. Abra o menu Iniciar, procure *Visualizador de eventos* e selecione o aplicativo **Visualizador de eventos** .
+1. No **Visualizador de Eventos** , abra o nó **Logs do Windows** .
 1. Selecione **sistema** para abrir o log de eventos do sistema. Selecione **Aplicativo** para abrir o Log de Eventos do Aplicativo.
 1. Procure erros associados ao aplicativo com falha.
 
@@ -299,7 +300,7 @@ Muitos erros de inicialização não produzem informações úteis nos logs de e
 
 Um aplicativo em funcionamento pode falhar imediatamente após a atualização do SDK do .NET Core no computador de desenvolvimento ou a alteração das versões do pacote no aplicativo. Em alguns casos, pacotes incoerentes podem interromper um aplicativo ao executar atualizações principais. A maioria desses problemas pode ser corrigida seguindo estas instruções:
 
-1. Exclua as pastas *bin* e *obj*.
+1. Exclua as pastas *bin* e *obj* .
 1. Limpe os caches de pacote executando [dotnet NuGet local All--Clear](/dotnet/core/tools/dotnet-nuget-locals) de um shell de comando.
 
    Limpar caches de pacote também pode ser feito com a ferramenta de [nuget.exe](https://www.nuget.org/downloads) e executar o comando `nuget locals all -clear` . *nuget.exe* não é uma instalação fornecida com o sistema operacional Windows Desktop e devem ser obtidos separadamente do [site do NuGet](https://www.nuget.org/downloads).
@@ -372,7 +373,7 @@ Para testar e depurar quando a execução estiver sendo feita fora de um serviç
 
 Como o [Provedor de Configuração da Linha de Comando](xref:fundamentals/configuration/index#command-line-configuration-provider) requer pares nome-valor para argumentos de linha de comando, a opção `--console` é removida dos argumentos antes de o <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> recebê-los.
 
-Para gravar no Log de Eventos do Windows, adicione o Provedor de Log de Eventos a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Defina o nível de log com a chave `Logging:LogLevel:Default` no arquivo *appsettings.Production.JSON*.
+Para gravar no Log de Eventos do Windows, adicione o Provedor de Log de Eventos a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Defina o nível de log com a chave `Logging:LogLevel:Default` no arquivo *appsettings.Production.JSON* .
 
 No exemplo a seguir do aplicativo de exemplo, `RunAsCustomService` é chamado em vez de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> para manipular eventos de tempo de vida no aplicativo. Para saber mais, consulte a seção [Manipular eventos de início e de parada](#handle-starting-and-stopping-events).
 
@@ -398,11 +399,11 @@ Se o serviço executar apenas tarefas em segundo plano (por exemplo, [serviços 
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD (Implantação dependente de estrutura)
 
-A FDD (Implantação Dependente de Estrutura) se baseia na presença de uma versão compartilhada em todo o sistema do .NET Core no sistema de destino. Quando o cenário FDD é adotado após a orientação deste artigo, o SDK produz um executável (*.exe*), chamado de *executável dependente de estrutura*.
+A FDD (Implantação Dependente de Estrutura) se baseia na presença de uma versão compartilhada em todo o sistema do .NET Core no sistema de destino. Quando o cenário FDD é adotado após a orientação deste artigo, o SDK produz um executável ( *.exe* ), chamado de *executável dependente de estrutura* .
 
-O [RID (identificador de tempo de execução](/dotnet/core/rid-catalog) do Windows) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contém a estrutura de destino. No exemplo a seguir, o RID é especificado como `win7-x64`. A propriedade `<SelfContained>` está definida como `false`. Essas propriedades instruem o SDK a gerar um arquivo executável (*.exe*) para Windows e um aplicativo que depende da estrutura compartilhada do .NET Core.
+O [RID (identificador de tempo de execução](/dotnet/core/rid-catalog) do Windows) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contém a estrutura de destino. No exemplo a seguir, o RID é especificado como `win7-x64`. A propriedade `<SelfContained>` é definida como `false`. Essas propriedades instruem o SDK a gerar um arquivo executável ( *.exe* ) para Windows e um aplicativo que depende da estrutura compartilhada do .NET Core.
 
-O arquivo *web.config*, que normalmente é gerado durante a publicação de um aplicativo ASP.NET Core, é desnecessário para um aplicativo de serviços do Windows. Para desabilitar a criação de um arquivo *web.config*, adicione a propriedade `<IsTransformWebConfigDisabled>` definida como `true`.
+O arquivo *web.config* , que normalmente é gerado durante a publicação de um aplicativo ASP.NET Core, é desnecessário para um aplicativo de serviços do Windows. Para desabilitar a criação de um arquivo *web.config* , adicione a propriedade `<IsTransformWebConfigDisabled>` definida como `true`.
 
 ```xml
 <PropertyGroup>
@@ -464,13 +465,13 @@ Uma abordagem alternativa ao gerenciamento de usuários ao usar o Active Directo
 
 Para estabelecer os direitos de *Fazer logon como um serviço* para uma conta de usuário do serviço:
 
-1. Abra a janela do editor da Política de Segurança Local executando *secpol.msc*.
-1. Expanda o nó **Políticas Locais** e escolha **Atribuição de Direitos de Usuário**.
-1. Abra a política **Fazer logon como um serviço**.
-1. Selecione **Adicionar Usuário ou Grupo**.
+1. Abra a janela do editor da Política de Segurança Local executando *secpol.msc* .
+1. Expanda o nó **Políticas Locais** e escolha **Atribuição de Direitos de Usuário** .
+1. Abra a política **Fazer logon como um serviço** .
+1. Selecione **Adicionar Usuário ou Grupo** .
 1. Forneça o nome do objeto (conta de usuário) usando uma das abordagens a seguir:
    1. Digite a conta de usuário (`{DOMAIN OR COMPUTER NAME\USER}`) no campo de nome do objeto e escolha **OK** para adicionar o usuário à política.
-   1. Selecione **Avançado**. Escolha **Localizar Agora**. Escolha a conta de usuário na lista. Selecione **OK**. Escolha **OK** novamente para adicionar o usuário à política.
+   1. Selecione **Avançado** . Escolha **Localizar Agora** . Escolha a conta de usuário na lista. Selecione **OK** . Escolha **OK** novamente para adicionar o usuário à política.
 1. Escolha **OK** ou **Aplicar** para aceitar as alterações.
 
 ## <a name="create-and-manage-the-windows-service"></a>Criar e gerenciar o Serviço Windows
@@ -577,7 +578,7 @@ As diretrizes anteriores abordam o suporte para pontos de extremidade HTTPS. Por
 
 ## <a name="current-directory-and-content-root"></a>Diretório atual e a raiz do conteúdo
 
-O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32*. A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
+O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32* . A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>Defina o caminho da raiz do conteúdo para a pasta do aplicativo
 
@@ -610,7 +611,7 @@ Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xre
   * FDD do *compartimento/versão/{estrutura de destino}* (a)
   * *bin/Release/{Framework de destino} identificador de/{Runtime}/Publish* (SCD)
 * O serviço não está em estado de execução.
-* Os caminhos para os recursos que o aplicativo usa (por exemplo, certificados) estão incorretos. O caminho base de um serviço do Windows é *c: \\ Windows \\ System32*.
+* Os caminhos para os recursos que o aplicativo usa (por exemplo, certificados) estão incorretos. O caminho base de um serviço do Windows é *c: \\ Windows \\ System32* .
 * O usuário não tem direitos de *logon como um serviço* .
 * A senha do usuário expirou ou foi passada incorretamente ao executar o `New-Service` comando do PowerShell.
 * O aplicativo requer autenticação ASP.NET Core, mas não está configurado para conexões seguras (HTTPS).
@@ -620,8 +621,8 @@ Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xre
 
 Acesse os logs de eventos do sistema e do aplicativo:
 
-1. Abra o menu Iniciar, procure *Visualizador de eventos*e selecione o aplicativo **Visualizador de eventos** .
-1. No **Visualizador de Eventos**, abra o nó **Logs do Windows**.
+1. Abra o menu Iniciar, procure *Visualizador de eventos* e selecione o aplicativo **Visualizador de eventos** .
+1. No **Visualizador de Eventos** , abra o nó **Logs do Windows** .
 1. Selecione **sistema** para abrir o log de eventos do sistema. Selecione **Aplicativo** para abrir o Log de Eventos do Aplicativo.
 1. Procure erros associados ao aplicativo com falha.
 
@@ -633,7 +634,7 @@ Muitos erros de inicialização não produzem informações úteis nos logs de e
 
 Um aplicativo em funcionamento pode falhar imediatamente após a atualização do SDK do .NET Core no computador de desenvolvimento ou a alteração das versões do pacote no aplicativo. Em alguns casos, pacotes incoerentes podem interromper um aplicativo ao executar atualizações principais. A maioria desses problemas pode ser corrigida seguindo estas instruções:
 
-1. Exclua as pastas *bin* e *obj*.
+1. Exclua as pastas *bin* e *obj* .
 1. Limpe os caches de pacote executando [dotnet NuGet local All--Clear](/dotnet/core/tools/dotnet-nuget-locals) de um shell de comando.
 
    Limpar caches de pacote também pode ser feito com a ferramenta de [nuget.exe](https://www.nuget.org/downloads) e executar o comando `nuget locals all -clear` . *nuget.exe* não é uma instalação fornecida com o sistema operacional Windows Desktop e devem ser obtidos separadamente do [site do NuGet](https://www.nuget.org/downloads).
@@ -706,7 +707,7 @@ Para testar e depurar quando a execução estiver sendo feita fora de um serviç
 
 Como o [Provedor de Configuração da Linha de Comando](xref:fundamentals/configuration/index#command-line-configuration-provider) requer pares nome-valor para argumentos de linha de comando, a opção `--console` é removida dos argumentos antes de o <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> recebê-los.
 
-Para gravar no Log de Eventos do Windows, adicione o Provedor de Log de Eventos a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Defina o nível de log com a chave `Logging:LogLevel:Default` no arquivo *appsettings.Production.JSON*.
+Para gravar no Log de Eventos do Windows, adicione o Provedor de Log de Eventos a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>. Defina o nível de log com a chave `Logging:LogLevel:Default` no arquivo *appsettings.Production.JSON* .
 
 No exemplo a seguir do aplicativo de exemplo, `RunAsCustomService` é chamado em vez de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> para manipular eventos de tempo de vida no aplicativo. Para saber mais, consulte a seção [Manipular eventos de início e de parada](#handle-starting-and-stopping-events).
 
@@ -732,13 +733,13 @@ Se o serviço executar apenas tarefas em segundo plano (por exemplo, [serviços 
 
 ### <a name="framework-dependent-deployment-fdd"></a>FDD (Implantação dependente de estrutura)
 
-A FDD (Implantação Dependente de Estrutura) se baseia na presença de uma versão compartilhada em todo o sistema do .NET Core no sistema de destino. Quando o cenário FDD é adotado após a orientação deste artigo, o SDK produz um executável (*.exe*), chamado de *executável dependente de estrutura*.
+A FDD (Implantação Dependente de Estrutura) se baseia na presença de uma versão compartilhada em todo o sistema do .NET Core no sistema de destino. Quando o cenário FDD é adotado após a orientação deste artigo, o SDK produz um executável ( *.exe* ), chamado de *executável dependente de estrutura* .
 
-O [RID (identificador de tempo de execução](/dotnet/core/rid-catalog) do Windows) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contém a estrutura de destino. No exemplo a seguir, o RID é especificado como `win7-x64`. A propriedade `<SelfContained>` está definida como `false`. Essas propriedades instruem o SDK a gerar um arquivo executável (*.exe*) para Windows e um aplicativo que depende da estrutura compartilhada do .NET Core.
+O [RID (identificador de tempo de execução](/dotnet/core/rid-catalog) do Windows) ( [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ) contém a estrutura de destino. No exemplo a seguir, o RID é especificado como `win7-x64`. A propriedade `<SelfContained>` é definida como `false`. Essas propriedades instruem o SDK a gerar um arquivo executável ( *.exe* ) para Windows e um aplicativo que depende da estrutura compartilhada do .NET Core.
 
-A propriedade `<UseAppHost>` está definida como `true`. Essa propriedade fornece o serviço com um caminho de ativação (um arquivo executável *.exe*) para FDD.
+A propriedade `<UseAppHost>` é definida como `true`. Essa propriedade fornece o serviço com um caminho de ativação (um arquivo executável *.exe* ) para FDD.
 
-O arquivo *web.config*, que normalmente é gerado durante a publicação de um aplicativo ASP.NET Core, é desnecessário para um aplicativo de serviços do Windows. Para desabilitar a criação de um arquivo *web.config*, adicione a propriedade `<IsTransformWebConfigDisabled>` definida como `true`.
+O arquivo *web.config* , que normalmente é gerado durante a publicação de um aplicativo ASP.NET Core, é desnecessário para um aplicativo de serviços do Windows. Para desabilitar a criação de um arquivo *web.config* , adicione a propriedade `<IsTransformWebConfigDisabled>` definida como `true`.
 
 ```xml
 <PropertyGroup>
@@ -801,13 +802,13 @@ Uma abordagem alternativa ao gerenciamento de usuários ao usar o Active Directo
 
 Para estabelecer os direitos de *Fazer logon como um serviço* para uma conta de usuário do serviço:
 
-1. Abra a janela do editor da Política de Segurança Local executando *secpol.msc*.
-1. Expanda o nó **Políticas Locais** e escolha **Atribuição de Direitos de Usuário**.
-1. Abra a política **Fazer logon como um serviço**.
-1. Selecione **Adicionar Usuário ou Grupo**.
+1. Abra a janela do editor da Política de Segurança Local executando *secpol.msc* .
+1. Expanda o nó **Políticas Locais** e escolha **Atribuição de Direitos de Usuário** .
+1. Abra a política **Fazer logon como um serviço** .
+1. Selecione **Adicionar Usuário ou Grupo** .
 1. Forneça o nome do objeto (conta de usuário) usando uma das abordagens a seguir:
    1. Digite a conta de usuário (`{DOMAIN OR COMPUTER NAME\USER}`) no campo de nome do objeto e escolha **OK** para adicionar o usuário à política.
-   1. Selecione **Avançado**. Escolha **Localizar Agora**. Escolha a conta de usuário na lista. Selecione **OK**. Escolha **OK** novamente para adicionar o usuário à política.
+   1. Selecione **Avançado** . Escolha **Localizar Agora** . Escolha a conta de usuário na lista. Selecione **OK** . Escolha **OK** novamente para adicionar o usuário à política.
 1. Escolha **OK** ou **Aplicar** para aceitar as alterações.
 
 ## <a name="create-and-manage-the-windows-service"></a>Criar e gerenciar o Serviço Windows
@@ -914,7 +915,7 @@ As diretrizes anteriores abordam o suporte para pontos de extremidade HTTPS. Por
 
 ## <a name="current-directory-and-content-root"></a>Diretório atual e a raiz do conteúdo
 
-O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32*. A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
+O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32* . A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>Defina o caminho da raiz do conteúdo para a pasta do aplicativo
 
@@ -947,7 +948,7 @@ Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xre
   * FDD do *compartimento/versão/{estrutura de destino}* (a)
   * *bin/Release/{Framework de destino} identificador de/{Runtime}/Publish* (SCD)
 * O serviço não está em estado de execução.
-* Os caminhos para os recursos que o aplicativo usa (por exemplo, certificados) estão incorretos. O caminho base de um serviço do Windows é *c: \\ Windows \\ System32*.
+* Os caminhos para os recursos que o aplicativo usa (por exemplo, certificados) estão incorretos. O caminho base de um serviço do Windows é *c: \\ Windows \\ System32* .
 * O usuário não tem direitos de *logon como um serviço* .
 * A senha do usuário expirou ou foi passada incorretamente ao executar o `New-Service` comando do PowerShell.
 * O aplicativo requer autenticação ASP.NET Core, mas não está configurado para conexões seguras (HTTPS).
@@ -957,8 +958,8 @@ Para solucionar problemas de um aplicativo de serviço do Windows, consulte <xre
 
 Acesse os logs de eventos do sistema e do aplicativo:
 
-1. Abra o menu Iniciar, procure *Visualizador de eventos*e selecione o aplicativo **Visualizador de eventos** .
-1. No **Visualizador de Eventos**, abra o nó **Logs do Windows**.
+1. Abra o menu Iniciar, procure *Visualizador de eventos* e selecione o aplicativo **Visualizador de eventos** .
+1. No **Visualizador de Eventos** , abra o nó **Logs do Windows** .
 1. Selecione **sistema** para abrir o log de eventos do sistema. Selecione **Aplicativo** para abrir o Log de Eventos do Aplicativo.
 1. Procure erros associados ao aplicativo com falha.
 
@@ -970,7 +971,7 @@ Muitos erros de inicialização não produzem informações úteis nos logs de e
 
 Um aplicativo em funcionamento pode falhar imediatamente após a atualização do SDK do .NET Core no computador de desenvolvimento ou a alteração das versões do pacote no aplicativo. Em alguns casos, pacotes incoerentes podem interromper um aplicativo ao executar atualizações principais. A maioria desses problemas pode ser corrigida seguindo estas instruções:
 
-1. Exclua as pastas *bin* e *obj*.
+1. Exclua as pastas *bin* e *obj* .
 1. Limpe os caches de pacote executando [dotnet NuGet local All--Clear](/dotnet/core/tools/dotnet-nuget-locals) de um shell de comando.
 
    Limpar caches de pacote também pode ser feito com a ferramenta de [nuget.exe](https://www.nuget.org/downloads) e executar o comando `nuget locals all -clear` . *nuget.exe* não é uma instalação fornecida com o sistema operacional Windows Desktop e devem ser obtidos separadamente do [site do NuGet](https://www.nuget.org/downloads).

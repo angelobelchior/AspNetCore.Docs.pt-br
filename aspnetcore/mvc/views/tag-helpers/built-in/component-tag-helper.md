@@ -6,6 +6,7 @@ description: Saiba como usar o auxiliar de marca de componente ASP.NET Core para
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 1a0422da6bd48049cac73debe7d335da91e311be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cddbca7f95e4d2143d4632aaa83133bc6210e251
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633910"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059150"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>Auxiliar de marca de componente no ASP.NET Core
 
@@ -106,7 +107,7 @@ O tipo de parâmetro deve ser serializável em JSON, o que normalmente significa
 
 No exemplo a seguir, um objeto de classe é passado para o componente:
 
-*MyClass.cs*:
+*MyClass.cs* :
 
 ```csharp
 public class MyClass
@@ -122,7 +123,7 @@ public class MyClass
 
 **A classe deve ter um construtor público sem parâmetros.**
 
-*Compartilhado/myComponent. Razor*:
+*Compartilhado/myComponent. Razor* :
 
 ```razor
 <h2>MyComponent</h2>
@@ -137,7 +138,7 @@ public class MyClass
 }
 ```
 
-*Páginas/mypage. cshtml*:
+*Páginas/mypage. cshtml* :
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

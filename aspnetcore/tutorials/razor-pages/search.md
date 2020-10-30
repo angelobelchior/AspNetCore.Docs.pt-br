@@ -5,6 +5,7 @@ description: Parte 6 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 5e899929372697f7a381cd493655309fa3f70f79
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 960f60198f5e65ed05d0374fd0704537376d27d6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633845"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058084"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Parte 6, adicionar pesquisa a ASP.NET Core Razor páginas
 
@@ -33,7 +34,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Nas seções a seguir, a pesquisa de filmes por *gênero* ou *nome* é adicionada.
 
-Adicione as seguintes propriedades realçadas em *Pages/Movies/Index.cshtml.cs*:
+Adicione as seguintes propriedades realçadas em *Pages/Movies/Index.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
@@ -136,7 +137,7 @@ Teste o aplicativo pesquisando por gênero, título do filme e por ambos.
 
 Nas seções a seguir, a pesquisa de filmes por *gênero* ou *nome* é adicionada.
 
-Adicione as seguintes propriedades realçadas em *Pages/Movies/Index.cshtml.cs*:
+Adicione as seguintes propriedades realçadas em *Pages/Movies/Index.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 

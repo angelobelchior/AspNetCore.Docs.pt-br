@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 295e5dd025afc486be08ecadbf661bf765c2745f
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113602"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056550"
 ---
 # <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core Blazor cenários avançados
 
@@ -31,7 +32,7 @@ De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com
 
 ## <a name="no-locblazor-server-circuit-handler"></a>Blazor Server manipulador de circuito
 
-Blazor Server permite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Um manipulador de circuito é implementado derivando de `CircuitHandler` e registrando a classe no contêiner de serviço do aplicativo. O exemplo a seguir de um manipulador de circuito rastreia SignalR conexões abertas:
+Blazor Server permite que o código defina um *manipulador de circuito* , que permite a execução de código em alterações no estado do circuito de um usuário. Um manipulador de circuito é implementado derivando de `CircuitHandler` e registrando a classe no contêiner de serviço do aplicativo. O exemplo a seguir de um manipulador de circuito rastreia SignalR conexões abertas:
 
 ```csharp
 using System.Collections.Generic;
@@ -140,7 +141,7 @@ No exemplo a seguir, o loop no `CreateComponent` método gera três `PetDetails`
 
 Razor os arquivos de componente ( `.razor` ) são sempre compilados. A compilação é uma vantagem potencial sobre a interpretação do código, pois a etapa de compilação pode ser usada para injetar informações que melhoram o desempenho do aplicativo em tempo de execução.
 
-Um exemplo importante desses aprimoramentos envolve *números de sequência*. Os números de sequência indicam ao tempo de execução que as saídas vieram de quais linhas de código distintas e ordenadas. O tempo de execução usa essas informações para gerar comparações de árvore eficientes em tempo linear, o que é muito mais rápido do que normalmente é possível para um algoritmo de comparação de árvore geral.
+Um exemplo importante desses aprimoramentos envolve *números de sequência* . Os números de sequência indicam ao tempo de execução que as saídas vieram de quais linhas de código distintas e ordenadas. O tempo de execução usa essas informações para gerar comparações de árvore eficientes em tempo linear, o que é muito mais rápido do que normalmente é possível para um algoritmo de comparação de árvore geral.
 
 Considere o seguinte Razor arquivo de componente ( `.razor` ):
 
@@ -177,7 +178,7 @@ Imagine que `someFlag` se torna `false` e a marcação é renderizada novamente.
 | :------: | ---------- | :----: |
 | 1        | Nó de texto  | Segundo |
 
-Quando o tempo de execução executa uma comparação, ele vê que o item na sequência `0` foi removido e, portanto, gera o seguinte *script de edição*trivial:
+Quando o tempo de execução executa uma comparação, ele vê que o item na sequência `0` foi removido e, portanto, gera o seguinte *script de edição* trivial:
 
 * Remova o primeiro nó de texto.
 

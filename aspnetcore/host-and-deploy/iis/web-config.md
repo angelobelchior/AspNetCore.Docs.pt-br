@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/web-config
-ms.openlocfilehash: 4d7305f7184745b66c5de6c86b907d419183cb3f
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: edeef31042547db79fcec98f1236787f78e187a5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755234"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057278"
 ---
 # <a name="webconfig-file"></a>Arquivo `web.config`
 
@@ -119,9 +120,9 @@ Para saber mais sobre a configuração de subaplicativos do IIS, confira <xref:h
 | `processesPerApplication` | <p>Atributo inteiro opcional.</p><p>Especifica o número de instâncias do processo especificado na `processPath` configuração que pode ser girada por aplicativo.</p><p>&dagger;Para hospedagem em processo, o valor está limitado a `1`.</p><p>A configuração `processesPerApplication` é desencorajada. Esse atributo será removido em uma versão futura.</p> | Padrão: `1`<br>Mín.: `1`<br>Máx.: `100`&dagger; |
 | `processPath` | <p>Atributo de cadeia de caracteres obrigatório.</p><p>Caminho para o executável que inicia um processo que escuta solicitações HTTP. Caminhos relativos são compatíveis. Se o caminho começa com `.`, o caminho é considerado relativo à raiz do site.</p> | |
 | `rapidFailsPerMinute` | <p>Atributo inteiro opcional.</p><p>Especifica o número de vezes que o processo especificado em `processPath` tem permissão para falhar por minuto. Se esse limite for excedido, o módulo interromperá a inicialização do processo pelo restante do minuto.</p><p>Sem suporte com hospedagem padrão.</p> | Padrão: `10`<br>Mín.: `0`<br>Máx.: `100` |
-| `requestTimeout` | <p>Atributo de intervalo de tempo opcional.</p><p>Especifica a duração para a qual o Módulo do ASP.NET Core aguarda uma resposta do processo que escuta em %ASPNETCORE_PORT%.</p><p>Em versões do Módulo do ASP.NET Core que acompanham a versão do ASP.NET Core 2.1 ou posterior, o `requestTimeout` é especificado em horas, minutos e segundos.</p><p>Não se aplica à hospedagem em processo. Para a hospedagem em processo, o módulo aguarda o aplicativo processar a solicitação.</p><p>Os valores válidos para segmentos de minutos e segundos da cadeia de caracteres estão no intervalo 0 a 59. O uso de `60` no valor de minutos ou segundos resulta em um *erro de servidor interno 500*.</p> | Padrão: `00:02:00`<br>Mín.: `00:00:00`<br>Máx.: `360:00:00` |
+| `requestTimeout` | <p>Atributo de intervalo de tempo opcional.</p><p>Especifica a duração para a qual o Módulo do ASP.NET Core aguarda uma resposta do processo que escuta em %ASPNETCORE_PORT%.</p><p>Em versões do Módulo do ASP.NET Core que acompanham a versão do ASP.NET Core 2.1 ou posterior, o `requestTimeout` é especificado em horas, minutos e segundos.</p><p>Não se aplica à hospedagem em processo. Para a hospedagem em processo, o módulo aguarda o aplicativo processar a solicitação.</p><p>Os valores válidos para segmentos de minutos e segundos da cadeia de caracteres estão no intervalo 0 a 59. O uso de `60` no valor de minutos ou segundos resulta em um *erro de servidor interno 500* .</p> | Padrão: `00:02:00`<br>Mín.: `00:00:00`<br>Máx.: `360:00:00` |
 | `shutdownTimeLimit` | <p>Atributo inteiro opcional.</p><p>Duração em segundos que o módulo aguarda até que o executável seja desligado normalmente quando o `app_offline.htm` arquivo é detectado.</p> | Padrão: `10`<br>Mín.: `0`<br>Máx.: `600` |
-| `startupTimeLimit` | <p>Atributo inteiro opcional.</p><p>Duração em segundos que o módulo espera para o arquivo executável iniciar um processo escutando na porta. Se esse tempo limite é excedido, o módulo encerra o processo.</p><p>Ao hospedar *em processo*: o processo **não** é reiniciado e **não usa a** `rapidFailsPerMinute` configuração.</p><p>Ao hospedar *fora do processo*: o módulo tenta reinicializar o processo quando recebe uma nova solicitação e continua tentando reiniciar o processo em solicitações de entrada subsequentes, a menos que o aplicativo não consiga iniciar o `rapidFailsPerMinute` número de vezes no último minuto de reversão.</p><p>Um valor de 0 (zero) **não** é considerado um tempo limite infinito.</p> | Padrão: `120`<br>Mín.: `0`<br>Máx.: `3600` |
+| `startupTimeLimit` | <p>Atributo inteiro opcional.</p><p>Duração em segundos que o módulo espera para o arquivo executável iniciar um processo escutando na porta. Se esse tempo limite é excedido, o módulo encerra o processo.</p><p>Ao hospedar *em processo* : o processo **não** é reiniciado e **não usa a** `rapidFailsPerMinute` configuração.</p><p>Ao hospedar *fora do processo* : o módulo tenta reinicializar o processo quando recebe uma nova solicitação e continua tentando reiniciar o processo em solicitações de entrada subsequentes, a menos que o aplicativo não consiga iniciar o `rapidFailsPerMinute` número de vezes no último minuto de reversão.</p><p>Um valor de 0 (zero) **não** é considerado um tempo limite infinito.</p> | Padrão: `120`<br>Mín.: `0`<br>Máx.: `3600` |
 | `stdoutLogEnabled` | <p>Atributo booliano opcional.</p><p>Se for true, `stdout` e `stderr` para o processo especificado em `processPath` será redirecionado para o arquivo especificado em `stdoutLogFile` .</p> | `false` |
 | `stdoutLogFile` | <p>Atributo de cadeia de caracteres opcional.</p><p>Especifica o caminho de arquivo relativo ou absoluto para o qual `stdout` e `stderr` do processo especificado em `processPath` são registrados. Os caminhos relativos são relativos à raiz do site. Qualquer caminho começando com `.` é relativo à raiz do site e todos os outros caminhos são tratados como caminhos absolutos. Todas as pastas fornecidas no caminho são criadas pelo módulo quando o arquivo de log é criado. O uso de delimitadores de sublinhado, um carimbo de data/hora, uma ID de processo e uma extensão de arquivo ( `.log` ) são adicionados ao último segmento do `stdoutLogFile` caminho. Se `.\logs\stdout` for fornecido como um valor, um log de stdout de exemplo será salvo como `stdout_20180205194132_1934.log` na `logs` pasta quando salvo em 2/5/2018 às 19:41:32 com uma ID de processo de 1934.</p> | `aspnetcore-stdout` |
 
@@ -160,13 +161,13 @@ O exemplo a seguir define duas variáveis de ambiente no `web.config` . `ASPNETC
 
 A configuração do IIS é influenciada pela `<system.webServer>` seção do `web.config` para cenários do IIS que são funcionais para aplicativos ASP.NET Core com o módulo ASP.NET Core. Por exemplo, a configuração do IIS é funcional para a compactação dinâmica. Se o IIS estiver configurado no nível do servidor para usar a compactação dinâmica, o `<urlCompression>` elemento no `web.config` arquivo do aplicativo poderá desabilitá-lo para um aplicativo ASP.NET Core.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * [Referência de configuração para `<system.webServer>`](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
-Para definir variáveis de ambiente para aplicativos individuais em execução em pools de aplicativos isolados (com suporte para o IIS 10,0 ou posterior), consulte a seção de * `AppCmd.exe` comando* do tópico [variáveis `<environmentVariables>` de ambiente](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) na documentação de referência do IIS.
+Para definir variáveis de ambiente para aplicativos individuais em execução em pools de aplicativos isolados (com suporte para o IIS 10,0 ou posterior), consulte a seção de *`AppCmd.exe` comando* do tópico [variáveis `<environmentVariables>` de ambiente](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) na documentação de referência do IIS.
 
 ## <a name="configuration-sections-of-webconfig"></a>Seções de configuração do `web.config`
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: b8947e3c3c4f634fbd838c22ff60799257143480
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9327c98c22a4d42d31ea8ba1eb8337153040b5b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056966"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compactação de resposta no ASP.NET Core
 
@@ -56,12 +57,12 @@ Quando um cliente pode processar conteúdo compactado, o cliente deve informar o
 | `Accept-Encoding` valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sim (padrão)        | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Não                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Sim                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Sim                  | Identificador "sem codificação": a resposta não deve ser codificada. |
-| `pack200-gzip`                  | Não                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Sim                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
+| `deflate`                       | No                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | No                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Yes                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Yes                  | Identificador "sem codificação": a resposta não deve ser codificada. |
+| `pack200-gzip`                  | No                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Yes                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
 
 Para obter mais informações, consulte a [lista de código de conteúdo oficial da IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -233,7 +234,7 @@ O middleware especifica um conjunto padrão de tipos MIME para compactação:
 * `text/plain`
 * `text/xml`
 
-Substitua ou acrescente tipos MIME com as opções de middleware de compactação de resposta. Observe que os tipos MIME curinga, como `text/*` não têm suporte. O aplicativo de exemplo adiciona um tipo MIME para `image/svg+xml` e compacta e serve a imagem de faixa ASP.NET Core (*banner. svg*).
+Substitua ou acrescente tipos MIME com as opções de middleware de compactação de resposta. Observe que os tipos MIME curinga, como `text/*` não têm suporte. O aplicativo de exemplo adiciona um tipo MIME para `image/svg+xml` e compacta e serve a imagem de faixa ASP.NET Core ( *banner. svg* ).
 
 [!code-csharp[](response-compression/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -302,12 +303,12 @@ Quando um cliente pode processar conteúdo compactado, o cliente deve informar o
 | `Accept-Encoding` valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sim (padrão)        | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Não                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Sim                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Sim                  | Identificador "sem codificação": a resposta não deve ser codificada. |
-| `pack200-gzip`                  | Não                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Sim                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
+| `deflate`                       | No                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | No                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `gzip`                          | Yes                  | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Yes                  | Identificador "sem codificação": a resposta não deve ser codificada. |
+| `pack200-gzip`                  | No                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Yes                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
 
 Para obter mais informações, consulte a [lista de código de conteúdo oficial da IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -478,7 +479,7 @@ O middleware especifica um conjunto padrão de tipos MIME para compactação:
 * `text/plain`
 * `text/xml`
 
-Substitua ou acrescente tipos MIME com as opções de middleware de compactação de resposta. Observe que os tipos MIME curinga, como `text/*` não têm suporte. O aplicativo de exemplo adiciona um tipo MIME para `image/svg+xml` e compacta e serve a imagem de faixa ASP.NET Core (*banner. svg*).
+Substitua ou acrescente tipos MIME com as opções de middleware de compactação de resposta. Observe que os tipos MIME curinga, como `text/*` não têm suporte. O aplicativo de exemplo adiciona um tipo MIME para `image/svg+xml` e compacta e serve a imagem de faixa ASP.NET Core ( *banner. svg* ).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -547,12 +548,12 @@ Quando um cliente pode processar conteúdo compactado, o cliente deve informar o
 | `Accept-Encoding` valores de cabeçalho | Suporte do middleware | Descrição |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Não                   | [Formato de dados compactados Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Não                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Não                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `deflate`                       | No                   | [Desinflar formato de dados compactados](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | No                   | [Intercâmbio de XML eficiente do W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Sim (padrão)        | [Formato de arquivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Sim                  | Identificador "sem codificação": a resposta não deve ser codificada. |
-| `pack200-gzip`                  | Não                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Sim                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
+| `identity`                      | Yes                  | Identificador "sem codificação": a resposta não deve ser codificada. |
+| `pack200-gzip`                  | No                   | [Formato de transferência de rede para arquivos Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `*`                             | Yes                  | Qualquer codificação de conteúdo disponível não explicitamente solicitada |
 
 Para obter mais informações, consulte a [lista de código de conteúdo oficial da IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -683,7 +684,7 @@ O middleware especifica um conjunto padrão de tipos MIME para compactação:
 * `text/plain`
 * `text/xml`
 
-Substitua ou acrescente tipos MIME com as opções de middleware de compactação de resposta. Observe que os tipos MIME curinga, como `text/*` não têm suporte. O aplicativo de exemplo adiciona um tipo MIME para `image/svg+xml` e compacta e serve a imagem de faixa ASP.NET Core (*banner. svg*).
+Substitua ou acrescente tipos MIME com as opções de middleware de compactação de resposta. Observe que os tipos MIME curinga, como `text/*` não têm suporte. O aplicativo de exemplo adiciona um tipo MIME para `image/svg+xml` e compacta e serve a imagem de faixa ASP.NET Core ( *banner. svg* ).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 

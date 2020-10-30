@@ -7,6 +7,7 @@ ms.author: shboyer
 ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: ac23f3f53bd7e200b843c10cd246ff16d4a12811
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0bae3f888a1b7a3c2860b85754779189c636d86f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634651"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057694"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Hospedar o ASP.NET Core no Linux com o Apache
 
@@ -37,7 +38,7 @@ Usando este guia, saiba como configurar o [Apache](https://httpd.apache.org/) co
 * Instale o runtime do .NET Core no servidor.
    1. Visite a [página baixar o .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
    1. Selecione a versão mais recente do .NET Core sem visualização.
-   1. Baixe o tempo de execução de não visualização mais recente na tabela em **executar aplicativos-tempo de execução**.
+   1. Baixe o tempo de execução de não visualização mais recente na tabela em **executar aplicativos-tempo de execução** .
    1. Selecione o link de **instruções do Gerenciador de pacotes** do Linux e siga as instruções do CentOS.
 * Um aplicativo ASP.NET Core existente.
 
@@ -50,9 +51,9 @@ Configurar o aplicativo para um [implantação dependente de estrutura](/dotnet/
 Se o aplicativo for executado localmente e não estiver configurado para fazer conexões seguras (HTTPS), adote uma das seguintes abordagens:
 
 * Configure o aplicativo para lidar com conexões seguras locais. Para obter mais informações, veja a seção [Configuração de HTTPS](#https-configuration).
-* Remova `https://localhost:5001` (se houver) da propriedade `applicationUrl` no arquivo *Properties/launchSettings.json*.
+* Remova `https://localhost:5001` (se houver) da propriedade `applicationUrl` no arquivo *Properties/launchSettings.json* .
 
-Execute [dotnet publish](/dotnet/core/tools/dotnet-publish) do ambiente de desenvolvimento para empacotar um aplicativo em um diretório (por exemplo, *bin/Release/&lt;target_framework_moniker&gt;/publish*) que pode ser executado no servidor:
+Execute [dotnet publish](/dotnet/core/tools/dotnet-publish) do ambiente de desenvolvimento para empacotar um aplicativo em um diretório (por exemplo, *bin/Release/&lt;target_framework_moniker&gt;/publish* ) que pode ser executado no servidor:
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -60,7 +61,7 @@ dotnet publish --configuration Release
 
 O aplicativo também poderá ser publicado como uma [implantação autossuficiente](/dotnet/core/deploying/#self-contained-deployments-scd) se você preferir não manter o runtime do .NET Core no servidor.
 
-Copie o aplicativo ASP.NET Core para o servidor usando uma ferramenta que se integre ao fluxo de trabalho da organização (por exemplo, SCP, SFTP). É comum para localizar os aplicativos Web no diretório *var* (por exemplo, *var/www/helloapp*).
+Copie o aplicativo ASP.NET Core para o servidor usando uma ferramenta que se integre ao fluxo de trabalho da organização (por exemplo, SCP, SFTP). É comum para localizar os aplicativos Web no diretório *var* (por exemplo, *var/www/helloapp* ).
 
 > [!NOTE]
 > Em um cenário de implantação de produção, um fluxo de trabalho de integração contínua faz o trabalho de publicar o aplicativo e copiar os ativos para o servidor.
@@ -217,7 +218,7 @@ WantedBy=multi-user.target
 
 No exemplo anterior, o usuário que gerencia o serviço é especificado pela `User` opção. O usuário ( `apache` ) deve existir e ter a propriedade adequada dos arquivos do aplicativo.
 
-Use `TimeoutStopSec` para configurar a duração do tempo de espera para o aplicativo desligar depois de receber o sinal de interrupção inicial. Se o aplicativo não desligar nesse período, o SIGKILL será emitido para encerrá-lo. Forneça o valor como segundos sem unidade (por exemplo, `150`), um valor de duração (por exemplo, `2min 30s`) ou `infinity` para desabilitar o tempo limite. `TimeoutStopSec` é revertido para o valor padrão de `DefaultTimeoutStopSec` no arquivo de configuração do gerenciador (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf* e *user.conf.d*). O tempo limite padrão para a maioria das distribuições é de 90 segundos.
+Use `TimeoutStopSec` para configurar a duração do tempo de espera para o aplicativo desligar depois de receber o sinal de interrupção inicial. Se o aplicativo não desligar nesse período, o SIGKILL será emitido para encerrá-lo. Forneça o valor como segundos sem unidade (por exemplo, `150`), um valor de duração (por exemplo, `2min 30s`) ou `infinity` para desabilitar o tempo limite. `TimeoutStopSec` é revertido para o valor padrão de `DefaultTimeoutStopSec` no arquivo de configuração do gerenciador ( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* e *user.conf.d* ). O tempo limite padrão para a maioria das distribuições é de 90 segundos.
 
 ```
 # The default value is 90 seconds for most distributions.
@@ -265,7 +266,7 @@ Main PID: 9021 (dotnet)
             └─9021 /usr/local/bin/dotnet /var/www/helloapp/helloapp.dll
 ```
 
-Com o proxy reverso configurado e o Kestrel gerenciado por meio de *systemd*, o aplicativo Web está totalmente configurado e pode ser acessado em um navegador no computador local em `http://localhost`. Inspecionando os cabeçalhos de resposta, o cabeçalho **Server** indica que o aplicativo ASP.NET Core é servido pelo Kestrel:
+Com o proxy reverso configurado e o Kestrel gerenciado por meio de *systemd* , o aplicativo Web está totalmente configurado e pode ser acessado em um navegador no computador local em `http://localhost`. Inspecionando os cabeçalhos de resposta, o cabeçalho **Server** indica que o aplicativo ASP.NET Core é servido pelo Kestrel:
 
 ```
 HTTP/1.1 200 OK
@@ -278,7 +279,7 @@ Transfer-Encoding: chunked
 
 ### <a name="view-logs"></a>Exibir logs
 
-Já que o aplicativo Web usando Kestrel é gerenciado usando *systemd*, os eventos e os processos são registrados em um diário centralizado. No entanto, esse diário contém todas as entradas para todos os serviços e processos gerenciados por *systemd*. Para exibir os itens específicos de `kestrel-helloapp.service`, use o seguinte comando:
+Já que o aplicativo Web usando Kestrel é gerenciado usando *systemd* , os eventos e os processos são registrados em um diário centralizado. No entanto, esse diário contém todas as entradas para todos os serviços e processos gerenciados por *systemd* . Para exibir os itens específicos de `kestrel-helloapp.service`, use o seguinte comando:
 
 ```bash
 sudo journalctl -fu kestrel-helloapp.service
@@ -349,7 +350,7 @@ O comando [dotnet run](/dotnet/core/tools/dotnet-run) usa o arquivo *Properties/
 
 Configure o aplicativo para usar um certificado no desenvolvimento para o comando `dotnet run` ou no ambiente de desenvolvimento (F5 ou Ctrl + F5 no Visual Studio Code) usando uma das seguintes abordagens:
 
-* [Substituir o certificado padrão da configuração](xref:fundamentals/servers/kestrel#configuration) (*Recomendado*)
+* [Substituir o certificado padrão da configuração](xref:fundamentals/servers/kestrel#configuration) ( *Recomendado* )
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **Configurar o proxy reverso para conexões de cliente seguras (HTTPS)**
@@ -424,11 +425,11 @@ sudo yum install mod_headers
 
 #### <a name="secure-apache-from-clickjacking-attacks"></a>Proteger o Apache contra ataques de clickjacking
 
-[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), também conhecido como um *ataque por inferência na interface do usuário*, é um ataque mal-intencionado em que o visitante do site é levado a clicar em um link ou botão em uma página diferente daquela que está visitando atualmente. Use `X-FRAME-OPTIONS` para proteger o site.
+[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), também conhecido como um *ataque por inferência na interface do usuário* , é um ataque mal-intencionado em que o visitante do site é levado a clicar em um link ou botão em uma página diferente daquela que está visitando atualmente. Use `X-FRAME-OPTIONS` para proteger o site.
 
 Para atenuar ataques de clickjacking:
 
-1. Edite o arquivo *httpd.conf*:
+1. Edite o arquivo *httpd.conf* :
 
    ```bash
    sudo nano /etc/httpd/conf/httpd.conf
@@ -442,7 +443,7 @@ Para atenuar ataques de clickjacking:
 
 O cabeçalho `X-Content-Type-Options` impedirá o Internet Explorer de *farejar por MIME* (determinar o `Content-Type` de um arquivo com base no conteúdo do arquivo). Se o servidor define o cabeçalho `Content-Type` para `text/html` com a opção `nosniff` definida, o Internet Explorer renderiza o conteúdo como `text/html`, independentemente do conteúdo do arquivo.
 
-Edite o arquivo *httpd.conf*:
+Edite o arquivo *httpd.conf* :
 
 ```bash
 sudo nano /etc/httpd/conf/httpd.conf
@@ -458,7 +459,7 @@ Este exemplo mostra como instalar e configurar o Apache no CentOS 7 e no Kestrel
 sudo yum install mod_proxy_balancer
 ```
 
-No arquivo de configuração mostrado abaixo, uma instância adicional do `helloapp` é configurada para ser executada na porta 5001. A seção *Proxy* é definida com uma configuração de balanceador com dois membros para balancear carga de *byrequests*.
+No arquivo de configuração mostrado abaixo, uma instância adicional do `helloapp` é configurada para ser executada na porta 5001. A seção *Proxy* é definida com uma configuração de balanceador com dois membros para balancear carga de *byrequests* .
 
 ```
 <VirtualHost *:*>
@@ -498,7 +499,7 @@ No arquivo de configuração mostrado abaixo, uma instância adicional do `hello
 
 ### <a name="rate-limits"></a>Limites de taxa
 
-Usando *mod_ratelimit*, que está incluído no módulo *httpd*, a largura de banda de clientes pode ser limitada:
+Usando *mod_ratelimit* , que está incluído no módulo *httpd* , a largura de banda de clientes pode ser limitada:
 
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf

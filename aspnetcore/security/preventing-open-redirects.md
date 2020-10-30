@@ -5,6 +5,7 @@ description: Mostra como evitar ataques de redirecionamento abertos em um aplica
 ms.author: riande
 ms.date: 07/07/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 5226e301960a56145b94b6128d0034c40b86bffd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e546cd852367921c7c694db3639f7a233f606e75
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633455"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058383"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Impedir ataques de redirecionamento abertos no ASP.NET Core
 
@@ -39,7 +40,7 @@ Como a URL de destino é especificada na QueryString da solicitação, um usuár
 
 Um usuário mal-intencionado pode desenvolver um ataque destinado a permitir que o usuário mal-intencionado acesse as credenciais de um usuário ou informações confidenciais. Para iniciar o ataque, o usuário mal-intencionado convencer o usuário a clicar em um link para a página de logon do site com um `returnUrl` valor de QueryString adicionado à URL. Por exemplo, considere um aplicativo no `contoso.com` que inclui uma página de logon em `http://contoso.com/Account/LogOn?returnUrl=/Home/About` . O ataque segue estas etapas:
 
-1. O usuário clica em um link mal-intencionado para `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` (a segunda URL é "Contoso**1**. com", não "contoso.com").
+1. O usuário clica em um link mal-intencionado para `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` (a segunda URL é "Contoso **1** . com", não "contoso.com").
 2. O usuário faz logon com êxito.
 3. O usuário é redirecionado (pelo site) para `http://contoso1.com/Account/LogOn` (um site mal-intencionado que é exatamente como um site real).
 4. O usuário faz logon novamente (concedendo ao site mal-intencionado suas credenciais) e é Redirecionado de volta para o site real.

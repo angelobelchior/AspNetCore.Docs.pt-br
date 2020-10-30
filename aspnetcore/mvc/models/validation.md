@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: e911512c1dce892c670659f04959be89cea067bb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630101"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056953"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>Validação de modelo no ASP.NET Core MVC e Razor páginas
 
@@ -175,7 +176,7 @@ Se precisar de validação não fornecida por atributos internos, você poderá:
 
 Para cenários não compatíveis com os atributos de validação internos, você pode criar atributos de validação personalizados. Crie uma classe que herda de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> e substitua o método <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-O método `IsValid` aceita um objeto chamado *valor*, que é a entrada a ser validada. Uma sobrecarga também aceita um objeto `ValidationContext`, que fornece informações adicionais, como a instância do modelo criada pelo model binding.
+O método `IsValid` aceita um objeto chamado *valor* , que é a entrada a ser validada. Uma sobrecarga também aceita um objeto `ValidationContext`, que fornece informações adicionais, como a instância do modelo criada pelo model binding.
 
 O exemplo a seguir valida se a data de lançamento de um filme no gênero *Clássico* não é posterior a um ano especificado. O `[ClassicMovie]` atributo:
 
@@ -209,7 +210,7 @@ Os nós de nível superior podem usar <xref:Microsoft.AspNetCore.Mvc.ModelBindin
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-Na página Verificar Idade (*CheckAge.cshtml*), há dois formulários. O primeiro formulário envia um `Age` valor de `99` como um parâmetro de cadeia de caracteres de consulta: `https://localhost:5001/Users/CheckAge?Age=99` .
+Na página Verificar Idade ( *CheckAge.cshtml* ), há dois formulários. O primeiro formulário envia um `Age` valor de `99` como um parâmetro de cadeia de caracteres de consulta: `https://localhost:5001/Users/CheckAge?Age=99` .
 
 Quando um parâmetro `age` formatado corretamente da cadeia de caracteres de consulta é enviado, o formulário é validado.
 
@@ -541,9 +542,9 @@ Se precisar de validação não fornecida por atributos internos, você poderá:
 
 Para cenários não compatíveis com os atributos de validação internos, você pode criar atributos de validação personalizados. Crie uma classe que herda de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> e substitua o método <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-O método `IsValid` aceita um objeto chamado *valor*, que é a entrada a ser validada. Uma sobrecarga também aceita um objeto `ValidationContext`, que fornece informações adicionais, como a instância do modelo criada pelo model binding.
+O método `IsValid` aceita um objeto chamado *valor* , que é a entrada a ser validada. Uma sobrecarga também aceita um objeto `ValidationContext`, que fornece informações adicionais, como a instância do modelo criada pelo model binding.
 
-O exemplo a seguir valida se a data de lançamento de um filme no gênero *Clássico* não é posterior a um ano especificado. O atributo `[ClassicMovie2]` verificará o gênero primeiro e continuará apenas se for *Clássico*. Para filmes identificados como clássicos, ele verifica a data de lançamento para garantir que não seja posterior ao limite passado ao construtor de atributo).
+O exemplo a seguir valida se a data de lançamento de um filme no gênero *Clássico* não é posterior a um ano especificado. O atributo `[ClassicMovie2]` verificará o gênero primeiro e continuará apenas se for *Clássico* . Para filmes identificados como clássicos, ele verifica a data de lançamento para garantir que não seja posterior ao limite passado ao construtor de atributo).
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
@@ -572,7 +573,7 @@ Os nós de nível superior podem usar <xref:Microsoft.AspNetCore.Mvc.ModelBindin
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
-Na página Verificar Idade (*CheckAge.cshtml*), há dois formulários. O primeiro formulário envia um valor `Age` de `99` como uma cadeia de caracteres de consulta: `https://localhost:5001/Users/CheckAge?Age=99`.
+Na página Verificar Idade ( *CheckAge.cshtml* ), há dois formulários. O primeiro formulário envia um valor `Age` de `99` como uma cadeia de caracteres de consulta: `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Quando um parâmetro `age` formatado corretamente da cadeia de caracteres de consulta é enviado, o formulário é validado.
 
@@ -757,7 +758,7 @@ E em Razor páginas:
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
-Outra opção para desabilitar a validação do cliente é comentar a referência ao `_ValidationScriptsPartial` em seu arquivo *.cshtml*.
+Outra opção para desabilitar a validação do cliente é comentar a referência ao `_ValidationScriptsPartial` em seu arquivo *.cshtml* .
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

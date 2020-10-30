@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: fcd6a679c5401ec58cc219f56b5dce1cfee07372
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 32b7a4c6722ba45ba998f9430f5d6da6ddca53f9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629685"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058656"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Verificações de integridade no ASP.NET Core
 
@@ -51,7 +52,7 @@ O pacote [Microsoft. AspNetCore. Diagnostics. HealthChecks](https://www.nuget.or
 
 O aplicativo de exemplo fornece um código de inicialização para demonstrar verificações de integridade para vários cenários. O cenário [investigação de banco de dados](#database-probe) verifica a integridade de uma conexão de banco de dados usando [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks). O cenário [investigação de DbContext](#entity-framework-core-dbcontext-probe) verifica um banco de dados usando um `DbContext` do EF Core. Para explorar os cenários de banco de dados, o aplicativo de exemplo:
 
-* Cria um banco de dados e fornece sua cadeia de conexão no arquivo *appsettings.json*.
+* Cria um banco de dados e fornece sua cadeia de conexão no *appsettings.json* arquivo.
 * Tem as seguintes referências de pacote em seu arquivo de projeto:
   * [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/)
   * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
@@ -63,13 +64,13 @@ Outro cenário de verificação de integridade demonstra como filtrar verificaç
 
 ## <a name="basic-health-probe"></a>Investigação de integridade básica
 
-Para muitos aplicativos, uma configuração básica de investigação de integridade que relata a disponibilidade do aplicativo para processar solicitações (*atividade*) é suficiente para descobrir o status do aplicativo.
+Para muitos aplicativos, uma configuração básica de investigação de integridade que relata a disponibilidade do aplicativo para processar solicitações ( *atividade* ) é suficiente para descobrir o status do aplicativo.
 
 A configuração básica registra serviços de verificação de integridade e chama o middleware de verificações de integridade para responder em um ponto de extremidade de URL com uma resposta de integridade. Por padrão, nenhuma verificação de integridade específica é registrada para testar qualquer dependência ou subsistema específico. O aplicativo é considerado íntegro se consegue responder na URL do ponto de extremidade de integridade. O gravador de resposta padrão grava o status (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) como uma resposta de texto não criptografado no cliente, indicando um status [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) ou [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
 Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. Crie um ponto de extremidade de verificação de integridade chamando `MapHealthChecks` em `Startup.Configure` .
 
-No aplicativo de exemplo, o ponto de extremidade de verificação de integridade é criado em `/health` (*BasicStartup.cs*):
+No aplicativo de exemplo, o ponto de extremidade de verificação de integridade é criado em `/health` ( *BasicStartup.cs* ):
 
 ```csharp
 public class BasicStartup
@@ -348,11 +349,11 @@ O aplicativo de exemplo usa [AspNetCore.Diagnostics.HealthChecks](https://github
 
 Inclua uma referência de pacote a [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
 
-Forneça uma cadeia de conexão de banco de dados válida no arquivo *appsettings.json* do aplicativo de exemplo. O aplicativo usa um banco de dados do SQL Server chamado `HealthCheckSample`:
+Forneça uma cadeia de conexão de banco de dados válida no *appsettings.json* arquivo do aplicativo de exemplo. O aplicativo usa um banco de dados do SQL Server chamado `HealthCheckSample`:
 
 [!code-json[](health-checks/samples/3.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. O aplicativo de exemplo chama o método `AddSqlServer` com a cadeia de conexão do banco de dados (*DbHealthStartup.cs*):
+Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. O aplicativo de exemplo chama o método `AddSqlServer` com a cadeia de conexão do banco de dados ( *DbHealthStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -388,7 +389,7 @@ Por padrão:
 * o `DbContextHealthCheck` chama o método `CanConnectAsync` do EF Core. Você pode personalizar qual operação é executada durante a verificação de integridade usando sobrecargas do método `AddDbContextCheck`.
 * O nome da verificação de integridade é o nome do tipo `TContext`.
 
-No aplicativo de exemplo, `AppDbContext` é fornecido `AddDbContextCheck` e registrado como um serviço no `Startup.ConfigureServices` (*DbContextHealthStartup.cs*):
+No aplicativo de exemplo, `AppDbContext` é fornecido `AddDbContextCheck` e registrado como um serviço no `Startup.ConfigureServices` ( *DbContextHealthStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -452,15 +453,15 @@ Em alguns cenários de hospedagem, é usado um par de verificações de integrid
 
 Considere o exemplo a seguir: um aplicativo deve baixar um arquivo de configuração grande antes de estar pronto para processar solicitações. Não queremos que o aplicativo seja reiniciado se o download inicial falhar, pois o aplicativo pode tentar baixar o arquivo várias vezes. Usamos uma *investigação de tempo de vida* para descrever a vida do processo, nenhuma verificação adicional é executada. Também queremos impedir que solicitações sejam enviadas ao aplicativo antes que o download do arquivo de configuração seja bem-sucedido. Usamos uma *investigação de prontidão* para indicar um estado "não pronto" até que o download seja bem sucedido e o aplicativo esteja pronto para receber solicitações.
 
-O aplicativo de exemplo contém uma verificação de integridade para relatar a conclusão da tarefa de inicialização de execução longa em um [Serviço Hospedado](xref:fundamentals/host/hosted-services). A `StartupHostedServiceHealthCheck` expõe uma propriedade `StartupTaskCompleted`, que o serviço hospedado poderá definir como `true` quando sua tarefa de execução longa estiver concluída (*StartupHostedServiceHealthCheck.cs*):
+O aplicativo de exemplo contém uma verificação de integridade para relatar a conclusão da tarefa de inicialização de execução longa em um [Serviço Hospedado](xref:fundamentals/host/hosted-services). A `StartupHostedServiceHealthCheck` expõe uma propriedade `StartupTaskCompleted`, que o serviço hospedado poderá definir como `true` quando sua tarefa de execução longa estiver concluída ( *StartupHostedServiceHealthCheck.cs* ):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-A tarefa em segundo plano de execução longa é iniciada por um [Serviço Hospedado](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*). Após a conclusão da tarefa, `StartupHostedServiceHealthCheck.StartupTaskCompleted` é definido como `true`:
+A tarefa em segundo plano de execução longa é iniciada por um [Serviço Hospedado](xref:fundamentals/host/hosted-services) ( *Services/StartupHostedService* ). Após a conclusão da tarefa, `StartupHostedServiceHealthCheck.StartupTaskCompleted` é definido como `true`:
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-A verificação de integridade é registrada em <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> no `Startup.ConfigureServices` juntamente com o serviço hospedado. Como o serviço hospedado precisa definir a propriedade na verificação de integridade, a verificação de integridade também é registrada no contêiner de serviço (*LivenessProbeStartup.cs*):
+A verificação de integridade é registrada em <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> no `Startup.ConfigureServices` juntamente com o serviço hospedado. Como o serviço hospedado precisa definir a propriedade na verificação de integridade, a verificação de integridade também é registrada no contêiner de serviço ( *LivenessProbeStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -495,7 +496,7 @@ Para executar o cenário de configuração de preparação/atividade usando o ap
 dotnet run --scenario liveness
 ```
 
-Em um navegador, visite `/health/ready` várias vezes até terem decorrido 15 segundos. A verificação de integridade informa *Não íntegro* para os primeiros 15 segundos. Após 15 segundos, o ponto de extremidade informa *Íntegro*, que reflete a conclusão da tarefa de execução longa pelo serviço hospedado.
+Em um navegador, visite `/health/ready` várias vezes até terem decorrido 15 segundos. A verificação de integridade informa *Não íntegro* para os primeiros 15 segundos. Após 15 segundos, o ponto de extremidade informa *Íntegro* , que reflete a conclusão da tarefa de execução longa pelo serviço hospedado.
 
 Este exemplo também cria um Publicador de Verificação de Integridade (implementação <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>) que executa a primeira verificação de preparação com um atraso de dois segundos. Para saber mais, confira a seção [Publicador de Verificação de Integridade](#health-check-publisher).
 
@@ -526,7 +527,7 @@ spec:
 
 O aplicativo de exemplo demonstra uma verificação de integridade da memória com um gravador de resposta personalizada.
 
-`MemoryHealthCheck` relata um estado degradado se o aplicativo usa mais de determinado limite de memória (1 GB no aplicativo de exemplo). O <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclui informações de GC (Coletor de Lixo) para o aplicativo (*MemoryHealthCheck.cs*):
+`MemoryHealthCheck` relata um estado degradado se o aplicativo usa mais de determinado limite de memória (1 GB no aplicativo de exemplo). O <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclui informações de GC (Coletor de Lixo) para o aplicativo ( *MemoryHealthCheck.cs* ):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
@@ -567,7 +568,7 @@ Chame `RequireHost` on `MapHealthChecks` com um padrão de URL que especifica um
 
 O aplicativo de exemplo configura a porta usando o [Provedor de Configuração de Variáveis de Ambiente](xref:fundamentals/configuration/index#environment-variables). A porta é definida no arquivo *launchSettings.json* e passada para o provedor de configuração por meio de uma variável de ambiente. Você também precisa configurar o servidor para escutar as solicitações na porta de gerenciamento.
 
-Para usar o aplicativo de exemplo para demonstrar a configuração de porta de gerenciamento, crie o arquivo *launchSettings.json* em uma pasta *Properties*.
+Para usar o aplicativo de exemplo para demonstrar a configuração de porta de gerenciamento, crie o arquivo *launchSettings.json* em uma pasta *Properties* .
 
 As seguintes *Propriedades/launchSettings.jsno* arquivo no aplicativo de exemplo não estão incluídas nos arquivos de projeto do aplicativo de exemplo e devem ser criadas manualmente:
 
@@ -619,9 +620,9 @@ app.UseEndpoints(endpoints =>
 ```
 
 > [!NOTE]
-> Você pode evitar criar o *launchSettings.jsno* arquivo no aplicativo de exemplo definindo a porta de gerenciamento explicitamente no código. Em *Program.cs* em que o <xref:Microsoft.Extensions.Hosting.HostBuilder> é criado, adicione uma chamada para <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> e forneça o ponto de extremidade da porta de gerenciamento do aplicativo. Em `Configure` *ManagementPortStartup.cs*, especifique a porta de gerenciamento com `RequireHost` :
+> Você pode evitar criar o *launchSettings.jsno* arquivo no aplicativo de exemplo definindo a porta de gerenciamento explicitamente no código. Em *Program.cs* em que o <xref:Microsoft.Extensions.Hosting.HostBuilder> é criado, adicione uma chamada para <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> e forneça o ponto de extremidade da porta de gerenciamento do aplicativo. Em `Configure` *ManagementPortStartup.cs* , especifique a porta de gerenciamento com `RequireHost` :
 >
-> *Program.cs*:
+> *Program.cs* :
 >
 > ```csharp
 > return new HostBuilder()
@@ -637,7 +638,7 @@ app.UseEndpoints(endpoints =>
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs*:
+> *ManagementPortStartup.cs* :
 >
 > ```csharp
 > app.UseEndpoints(endpoints =>
@@ -820,7 +821,7 @@ Referencie o [metapacote Microsoft.AspNetCore.App](xref:fundamentals/metapackage
 
 O aplicativo de exemplo fornece um código de inicialização para demonstrar verificações de integridade para vários cenários. O cenário [investigação de banco de dados](#database-probe) verifica a integridade de uma conexão de banco de dados usando [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks). O cenário [investigação de DbContext](#entity-framework-core-dbcontext-probe) verifica um banco de dados usando um `DbContext` do EF Core. Para explorar os cenários de banco de dados, o aplicativo de exemplo:
 
-* Cria um banco de dados e fornece sua cadeia de conexão no arquivo *appsettings.json*.
+* Cria um banco de dados e fornece sua cadeia de conexão no *appsettings.json* arquivo.
 * Tem as seguintes referências de pacote em seu arquivo de projeto:
   * [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/)
   * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
@@ -832,13 +833,13 @@ Outro cenário de verificação de integridade demonstra como filtrar verificaç
 
 ## <a name="basic-health-probe"></a>Investigação de integridade básica
 
-Para muitos aplicativos, uma configuração básica de investigação de integridade que relata a disponibilidade do aplicativo para processar solicitações (*atividade*) é suficiente para descobrir o status do aplicativo.
+Para muitos aplicativos, uma configuração básica de investigação de integridade que relata a disponibilidade do aplicativo para processar solicitações ( *atividade* ) é suficiente para descobrir o status do aplicativo.
 
 A configuração básica registra serviços de verificação de integridade e chama o middleware de verificações de integridade para responder em um ponto de extremidade de URL com uma resposta de integridade. Por padrão, nenhuma verificação de integridade específica é registrada para testar qualquer dependência ou subsistema específico. O aplicativo é considerado íntegro se consegue responder na URL do ponto de extremidade de integridade. O gravador de resposta padrão grava o status (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) como uma resposta de texto não criptografado no cliente, indicando um status [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) ou [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
 Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. Adicione um ponto de extremidade para o middleware de verificações de integridade com <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> no pipeline de processamento de solicitação de `Startup.Configure` .
 
-No aplicativo de exemplo, o ponto de extremidade de verificação de integridade é criado em `/health` (*BasicStartup.cs*):
+No aplicativo de exemplo, o ponto de extremidade de verificação de integridade é criado em `/health` ( *BasicStartup.cs* ):
 
 ```csharp
 public class BasicStartup
@@ -1067,11 +1068,11 @@ O aplicativo de exemplo usa [AspNetCore.Diagnostics.HealthChecks](https://github
 
 Inclua uma referência de pacote a [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
 
-Forneça uma cadeia de conexão de banco de dados válida no arquivo *appsettings.json* do aplicativo de exemplo. O aplicativo usa um banco de dados do SQL Server chamado `HealthCheckSample`:
+Forneça uma cadeia de conexão de banco de dados válida no *appsettings.json* arquivo do aplicativo de exemplo. O aplicativo usa um banco de dados do SQL Server chamado `HealthCheckSample`:
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. O aplicativo de exemplo chama o método `AddSqlServer` com a cadeia de conexão do banco de dados (*DbHealthStartup.cs*):
+Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. O aplicativo de exemplo chama o método `AddSqlServer` com a cadeia de conexão do banco de dados ( *DbHealthStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1104,7 +1105,7 @@ Por padrão:
 * o `DbContextHealthCheck` chama o método `CanConnectAsync` do EF Core. Você pode personalizar qual operação é executada durante a verificação de integridade usando sobrecargas do método `AddDbContextCheck`.
 * O nome da verificação de integridade é o nome do tipo `TContext`.
 
-No aplicativo de exemplo, `AppDbContext` é fornecido `AddDbContextCheck` e registrado como um serviço no `Startup.ConfigureServices` (*DbContextHealthStartup.cs*):
+No aplicativo de exemplo, `AppDbContext` é fornecido `AddDbContextCheck` e registrado como um serviço no `Startup.ConfigureServices` ( *DbContextHealthStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1165,15 +1166,15 @@ Em alguns cenários de hospedagem, é usado um par de verificações de integrid
 
 Considere o exemplo a seguir: um aplicativo deve baixar um arquivo de configuração grande antes de estar pronto para processar solicitações. Não queremos que o aplicativo seja reiniciado se o download inicial falhar, pois o aplicativo pode tentar baixar o arquivo várias vezes. Usamos uma *investigação de tempo de vida* para descrever a vida do processo, nenhuma verificação adicional é executada. Também queremos impedir que solicitações sejam enviadas ao aplicativo antes que o download do arquivo de configuração seja bem-sucedido. Usamos uma *investigação de prontidão* para indicar um estado "não pronto" até que o download seja bem sucedido e o aplicativo esteja pronto para receber solicitações.
 
-O aplicativo de exemplo contém uma verificação de integridade para relatar a conclusão da tarefa de inicialização de execução longa em um [Serviço Hospedado](xref:fundamentals/host/hosted-services). A `StartupHostedServiceHealthCheck` expõe uma propriedade `StartupTaskCompleted`, que o serviço hospedado poderá definir como `true` quando sua tarefa de execução longa estiver concluída (*StartupHostedServiceHealthCheck.cs*):
+O aplicativo de exemplo contém uma verificação de integridade para relatar a conclusão da tarefa de inicialização de execução longa em um [Serviço Hospedado](xref:fundamentals/host/hosted-services). A `StartupHostedServiceHealthCheck` expõe uma propriedade `StartupTaskCompleted`, que o serviço hospedado poderá definir como `true` quando sua tarefa de execução longa estiver concluída ( *StartupHostedServiceHealthCheck.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-A tarefa em segundo plano de execução longa é iniciada por um [Serviço Hospedado](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*). Após a conclusão da tarefa, `StartupHostedServiceHealthCheck.StartupTaskCompleted` é definido como `true`:
+A tarefa em segundo plano de execução longa é iniciada por um [Serviço Hospedado](xref:fundamentals/host/hosted-services) ( *Services/StartupHostedService* ). Após a conclusão da tarefa, `StartupHostedServiceHealthCheck.StartupTaskCompleted` é definido como `true`:
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-A verificação de integridade é registrada em <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> no `Startup.ConfigureServices` juntamente com o serviço hospedado. Como o serviço hospedado precisa definir a propriedade na verificação de integridade, a verificação de integridade também é registrada no contêiner de serviço (*LivenessProbeStartup.cs*):
+A verificação de integridade é registrada em <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> no `Startup.ConfigureServices` juntamente com o serviço hospedado. Como o serviço hospedado precisa definir a propriedade na verificação de integridade, a verificação de integridade também é registrada no contêiner de serviço ( *LivenessProbeStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1197,7 +1198,7 @@ Para executar o cenário de configuração de preparação/atividade usando o ap
 dotnet run --scenario liveness
 ```
 
-Em um navegador, visite `/health/ready` várias vezes até terem decorrido 15 segundos. A verificação de integridade informa *Não íntegro* para os primeiros 15 segundos. Após 15 segundos, o ponto de extremidade informa *Íntegro*, que reflete a conclusão da tarefa de execução longa pelo serviço hospedado.
+Em um navegador, visite `/health/ready` várias vezes até terem decorrido 15 segundos. A verificação de integridade informa *Não íntegro* para os primeiros 15 segundos. Após 15 segundos, o ponto de extremidade informa *Íntegro* , que reflete a conclusão da tarefa de execução longa pelo serviço hospedado.
 
 Este exemplo também cria um Publicador de Verificação de Integridade (implementação <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>) que executa a primeira verificação de preparação com um atraso de dois segundos. Para saber mais, confira a seção [Publicador de Verificação de Integridade](#health-check-publisher).
 
@@ -1228,13 +1229,13 @@ spec:
 
 O aplicativo de exemplo demonstra uma verificação de integridade da memória com um gravador de resposta personalizada.
 
-`MemoryHealthCheck` relata um status não íntegro se o aplicativo usar mais do que um determinado limite de memória (1 GB no aplicativo de exemplo). O <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclui informações de GC (Coletor de Lixo) para o aplicativo (*MemoryHealthCheck.cs*):
+`MemoryHealthCheck` relata um status não íntegro se o aplicativo usar mais do que um determinado limite de memória (1 GB no aplicativo de exemplo). O <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclui informações de GC (Coletor de Lixo) para o aplicativo ( *MemoryHealthCheck.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
 Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. Em vez de permitir a verificação de integridade passando-a para <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*>, a `MemoryHealthCheck` é registrada como um serviço. Todos os serviços registrados da <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> estão disponíveis para os serviços de verificação de integridade e middleware. Recomendamos registrar os serviços de verificação de integridade como serviços Singleton.
 
-No aplicativo de exemplo (*CustomWriterStartup.cs*):
+No aplicativo de exemplo ( *CustomWriterStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_ConfigureServices&highlight=4)]
 
@@ -1272,7 +1273,7 @@ A chamada a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExte
 
 O aplicativo de exemplo configura a porta usando o [Provedor de Configuração de Variáveis de Ambiente](xref:fundamentals/configuration/index#environment-variables-configuration-provider). A porta é definida no arquivo *launchSettings.json* e passada para o provedor de configuração por meio de uma variável de ambiente. Você também precisa configurar o servidor para escutar as solicitações na porta de gerenciamento.
 
-Para usar o aplicativo de exemplo para demonstrar a configuração de porta de gerenciamento, crie o arquivo *launchSettings.json* em uma pasta *Properties*.
+Para usar o aplicativo de exemplo para demonstrar a configuração de porta de gerenciamento, crie o arquivo *launchSettings.json* em uma pasta *Properties* .
 
 As seguintes *Propriedades/launchSettings.jsno* arquivo no aplicativo de exemplo não estão incluídas nos arquivos de projeto do aplicativo de exemplo e devem ser criadas manualmente:
 
@@ -1294,14 +1295,14 @@ As seguintes *Propriedades/launchSettings.jsno* arquivo no aplicativo de exemplo
 }
 ```
 
-Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. A chamada a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> especifica a porta de gerenciamento (*ManagementPortStartup.cs*):
+Registre os serviços de verificação de integridade com <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> em `Startup.ConfigureServices`. A chamada a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> especifica a porta de gerenciamento ( *ManagementPortStartup.cs* ):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ManagementPortStartup.cs?name=snippet1&highlight=17)]
 
 > [!NOTE]
-> Evite a criação do arquivo *launchSettings.json* no aplicativo de exemplo definindo as URLs e a porta de gerenciamento explicitamente no código. Em *Program.cs*, em que o <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> é criado, adicione uma chamada a <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*> e forneça o ponto de extremidade da resposta normal do aplicativo e o ponto de extremidade da porta de gerenciamento. Em *ManagementPortStartup.cs*, em que <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> é chamado, especifique a porta de gerenciamento explicitamente.
+> Evite a criação do arquivo *launchSettings.json* no aplicativo de exemplo definindo as URLs e a porta de gerenciamento explicitamente no código. Em *Program.cs* , em que o <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> é criado, adicione uma chamada a <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*> e forneça o ponto de extremidade da resposta normal do aplicativo e o ponto de extremidade da porta de gerenciamento. Em *ManagementPortStartup.cs* , em que <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> é chamado, especifique a porta de gerenciamento explicitamente.
 >
-> *Program.cs*:
+> *Program.cs* :
 >
 > ```csharp
 > return new WebHostBuilder()
@@ -1318,7 +1319,7 @@ Registre os serviços de verificação de integridade com <xref:Microsoft.Extens
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs*:
+> *ManagementPortStartup.cs* :
 >
 > ```csharp
 > app.UseHealthChecks("/health", port: 5001);

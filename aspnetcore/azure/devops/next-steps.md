@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/next-steps
-ms.openlocfilehash: 59c6bba7e5d05bbb6ef7db65bbedf70c4524b092
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 35b0486611cc15f25b1c8b54584c264e4c1298c9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056589"
 ---
 # <a name="next-steps"></a>Próximas etapas
 
@@ -44,7 +45,7 @@ O [banco de dados SQL do Azure](/azure/sql-database/) fornece funcionalidade fam
 
 [Azure Active Directory](/azure/active-directory/) e [Azure Active Directory B2C](/azure/active-directory-b2c/) são serviços de identidade. A Azure Active Directory é projetada para cenários empresariais e habilita a colaboração B2B (entre empresas) do Azure AD, enquanto Azure Active Directory B2C se destina a cenários entre clientes, incluindo a entrada de rede social.
 
-## <a name="mobile"></a>Móvel
+## <a name="mobile"></a>Dispositivos móveis
 
 Os [hubs de notificação](/azure/notification-hubs/) são um mecanismo de notificação por push de várias plataformas e escalonáveis para enviar rapidamente milhões de mensagens para aplicativos em execução em vários tipos de dispositivos.
 

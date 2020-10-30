@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 9516410399ce69f1d69b09781b2530d052a11e7a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2864de5b9931ed255569cb087c67c71004c4df92
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631869"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059007"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Cache de resposta no ASP.NET Core
 
@@ -38,30 +39,30 @@ Para o cache do lado do servidor que segue a especificação de cache HTTP 1,1, 
 
 ## <a name="http-based-response-caching"></a>Cache de resposta baseado em HTTP
 
-A [especificação de cache HTTP 1,1](https://tools.ietf.org/html/rfc7234) descreve como os caches da Internet devem se comportar. O cabeçalho HTTP primário usado para cache é o [controle de cache](https://tools.ietf.org/html/rfc7234#section-5.2), que é usado para especificar *diretivas*de cache. As diretivas controlam o comportamento do cache à medida que as solicitações fazem seu caminho de clientes para servidores e, à medida que as respostas voltam dos servidores para os clientes. As solicitações e respostas são movidas por meio de servidores proxy, e os servidores proxy também devem estar em conformidade com a especificação de cache HTTP 1,1.
+A [especificação de cache HTTP 1,1](https://tools.ietf.org/html/rfc7234) descreve como os caches da Internet devem se comportar. O cabeçalho HTTP primário usado para cache é o [controle de cache](https://tools.ietf.org/html/rfc7234#section-5.2), que é usado para especificar *diretivas* de cache. As diretivas controlam o comportamento do cache à medida que as solicitações fazem seu caminho de clientes para servidores e, à medida que as respostas voltam dos servidores para os clientes. As solicitações e respostas são movidas por meio de servidores proxy, e os servidores proxy também devem estar em conformidade com a especificação de cache HTTP 1,1.
 
 `Cache-Control`As diretivas comuns são mostradas na tabela a seguir.
 
 | Diretiva                                                       | Ação |
 | --------------------------------------------------------------- | ------ |
-| [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Um cache pode armazenar a resposta. |
+| [público](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Um cache pode armazenar a resposta. |
 | [pessoal](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | A resposta não deve ser armazenada por um cache compartilhado. Um cache privado pode armazenar e reutilizar a resposta. |
 | [idade máxima](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | O cliente não aceita uma resposta cuja idade é maior que o número especificado de segundos. Exemplos: `max-age=60` (60 segundos), `max-age=2592000` (1 mês) |
-| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **Em solicitações**: um cache não deve usar uma resposta armazenada para atender à solicitação. O servidor de origem regenera a resposta para o cliente e o middleware atualiza a resposta armazenada em seu cache.<br><br>**Em respostas**: a resposta não deve ser usada para uma solicitação subsequente sem validação no servidor de origem. |
-| [sem armazenamento](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **Em solicitações**: um cache não deve armazenar a solicitação.<br><br>**Em respostas**: um cache não deve armazenar nenhuma parte da resposta. |
+| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **Em solicitações** : um cache não deve usar uma resposta armazenada para atender à solicitação. O servidor de origem regenera a resposta para o cliente e o middleware atualiza a resposta armazenada em seu cache.<br><br>**Em respostas** : a resposta não deve ser usada para uma solicitação subsequente sem validação no servidor de origem. |
+| [sem armazenamento](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **Em solicitações** : um cache não deve armazenar a solicitação.<br><br>**Em respostas** : um cache não deve armazenar nenhuma parte da resposta. |
 
 Outros cabeçalhos de cache que desempenham uma função no Caching são mostrados na tabela a seguir.
 
 | Cabeçalho                                                     | Função |
 | ---------------------------------------------------------- | -------- |
-| [Idade](https://tools.ietf.org/html/rfc7234#section-5.1)     | Uma estimativa da quantidade de tempo em segundos desde que a resposta foi gerada ou validada com êxito no servidor de origem. |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Uma estimativa da quantidade de tempo em segundos desde que a resposta foi gerada ou validada com êxito no servidor de origem. |
 | [Expira](https://tools.ietf.org/html/rfc7234#section-5.3) | O tempo após o qual a resposta é considerada obsoleta. |
 | [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | Existe para compatibilidade com versões anteriores com caches HTTP/1.0 para comportamento de configuração `no-cache` . Se o `Cache-Control` cabeçalho estiver presente, o `Pragma` cabeçalho será ignorado. |
 | [Varia](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Especifica que uma resposta armazenada em cache não deve ser enviada, a menos que todos os `Vary` campos de cabeçalho correspondam tanto à solicitação original da resposta em cache quanto à nova solicitação. |
 
-## <a name="http-based-caching-respects-request-cache-control-directives"></a>Os aspectos do cache baseado em HTTP solicitam diretivas de controle de cache
+## <a name="http-based-caching-respects-request-cache-control-directives"></a>Os aspectos de cache baseados em HTTP solicitam Cache-Control diretivas
 
-A [especificação de cache HTTP 1,1 para o cabeçalho de controle de cache](https://tools.ietf.org/html/rfc7234#section-5.2) requer um cache para honrar um `Cache-Control` cabeçalho válido enviado pelo cliente. Um cliente pode fazer solicitações com um `no-cache` valor de cabeçalho e forçar o servidor a gerar uma nova resposta para cada solicitação.
+A [especificação de cache HTTP 1,1 para o cabeçalho Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) requer um cache para honrar um `Cache-Control` cabeçalho válido enviado pelo cliente. Um cliente pode fazer solicitações com um `no-cache` valor de cabeçalho e forçar o servidor a gerar uma nova resposta para cada solicitação.
 
 Sempre respeitando `Cache-Control` os cabeçalhos de solicitação do cliente faz sentido se você considerar a meta do cache http. Sob a especificação oficial, o Caching destina-se a reduzir a latência e a sobrecarga de rede de satisfazer solicitações em uma rede de clientes, proxies e servidores. Não é necessariamente uma maneira de controlar a carga em um servidor de origem.
 
@@ -71,7 +72,7 @@ Não há nenhum controle de desenvolvedor sobre esse comportamento de cache ao u
 
 ### <a name="in-memory-caching"></a>cache na memória
 
-O cache na memória usa a memória do servidor para armazenar dados armazenados em cache. Esse tipo de cache é adequado para um único servidor ou para vários servidores usando *sessões adesivas*. Sessões adesivas significa que as solicitações de um cliente são sempre roteadas para o mesmo servidor para processamento.
+O cache na memória usa a memória do servidor para armazenar dados armazenados em cache. Esse tipo de cache é adequado para um único servidor ou para vários servidores usando *sessões adesivas* . Sessões adesivas significa que as solicitações de um cliente são sempre roteadas para o mesmo servidor para processamento.
 
 Para obter mais informações, consulte <xref:performance/caching/memory>.
 
@@ -104,7 +105,7 @@ O <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> especifica os parâmetr
 
 O [middleware de cache de resposta](xref:performance/caching/middleware) deve estar habilitado para definir a <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> propriedade. Caso contrário, uma exceção de tempo de execução será lançada. Não há um cabeçalho HTTP correspondente para a <xref:Microsoft.AspNetCore.Mvc.CacheProfile.VaryByQueryKeys> propriedade. A propriedade é um recurso HTTP manipulado pelo middleware de cache de resposta. Para que o middleware atenda a uma resposta armazenada em cache, a cadeia de caracteres de consulta e o valor da cadeia de caracteres de consulta devem corresponder a uma solicitação anterior. Por exemplo, considere a sequência de solicitações e os resultados mostrados na tabela a seguir.
 
-| Solicitação                          | Result                    |
+| Solicitação                          | Resultado                    |
 | -------------------------------- | ------------------------- |
 | `http://example.com?key1=value1` | Retornado do servidor. |
 | `http://example.com?key1=value1` | Retornado do middleware. |

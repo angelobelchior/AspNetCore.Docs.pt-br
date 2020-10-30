@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 3d76eff93d5c7c53b57136e5183e1ca5287dec81
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 77ca96b329136ee044ab6fc5f6b5ebb5b67fe64c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631115"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059072"
 ---
 # <a name="no-locrazor-file-compilation-in-aspnet-core"></a>Razor compilação de arquivo no ASP.NET Core
 
@@ -84,7 +85,7 @@ A compilação em tempo de execução pode ser habilitada de modo que esteja dis
 Para habilitar a compilação em tempo de execução somente no ambiente de desenvolvimento:
 
 1. Instale o [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) Pacote NuGet do RuntimeCompilation.
-1. Modifique a seção de perfil de inicialização `environmentVariables` no *launchSettings.jsem*:
+1. Modifique a seção de perfil de inicialização `environmentVariables` no *launchSettings.jsem* :
     * Verifique se `ASPNETCORE_ENVIRONMENT` está definido como `"Development"` .
     * Defina `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` como `"Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"`.
 
@@ -96,7 +97,7 @@ Nenhuma alteração de código é necessária na classe do projeto `Startup` . E
 
 ## <a name="enable-runtime-compilation-for-a-no-locrazor-class-library"></a>Habilitar a compilação em tempo de execução para uma Razor biblioteca de classes
 
-Considere um cenário no qual um Razor projeto de páginas referencia uma [ Razor biblioteca de classes (RCL)](xref:razor-pages/ui-class) chamada *MyClassLib*. O RCL contém um arquivo *_Layout. cshtml* que todos os projetos de página e MVC da sua equipe Razor consomem. Você deseja habilitar a compilação em tempo de execução para o arquivo *_Layout. cshtml* nesse RCL. Faça as seguintes alterações no Razor projeto de páginas:
+Considere um cenário no qual um Razor projeto de páginas referencia uma [ Razor biblioteca de classes (RCL)](xref:razor-pages/ui-class) chamada *MyClassLib* . O RCL contém um arquivo *_Layout. cshtml* que todos os projetos de página e MVC da sua equipe Razor consomem. Você deseja habilitar a compilação em tempo de execução para o arquivo *_Layout. cshtml* nesse RCL. Faça as seguintes alterações no Razor projeto de páginas:
 
 1. Habilite a compilação em tempo de execução com as instruções em [habilitar condicionalmente a compilação em tempo de execução em um projeto existente](#conditionally-enable-runtime-compilation-in-an-existing-project).
 1. Configure as opções de compilação de tempo de execução em `Startup.ConfigureServices` :

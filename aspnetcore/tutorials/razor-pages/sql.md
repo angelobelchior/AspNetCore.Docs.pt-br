@@ -5,6 +5,7 @@ description: Parte 4 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: d2e18782411b1801c74fa33ba1b31bad9662f3b2
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d592cf7d8a96a7e4ec2e53418843a186488951be
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058149"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>Parte 4, com um banco de dados e ASP.NET Core
 
@@ -31,7 +32,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) e [Joe Audette](https://twi
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs*:
+O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -43,7 +44,7 @@ O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dad
 
 ---
 
-O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.jsno* arquivo.
+O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -66,11 +67,11 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Express direcionada para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos `*.mdf` no diretório `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](sql/_static/ssox.png)
 
-* Clique com o botão direito do mouse na tabela `Movie` e selecione **Designer de exibição**:
+* Clique com o botão direito do mouse na tabela `Movie` e selecione **Designer de exibição** :
 
   ![Menus contextuais abertos na tabela Movie](sql/_static/design.png)
 
@@ -78,7 +79,7 @@ O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Expre
 
 Observe o ícone de chave ao lado de `ID`. Por padrão, o EF cria uma propriedade chamada `ID` para a chave primária.
 
-* Clique com o botão direito do mouse na tabela `Movie` e selecione **Exibir dados**:
+* Clique com o botão direito do mouse na tabela `Movie` e selecione **Exibir dados** :
 
   ![Tabela Movie aberta mostrando os dados da tabela](sql/_static/vd22.png)
 
@@ -108,7 +109,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Adicionar o inicializador de semeadura
 
-Em *Program.cs*, modifique o método `Main` para fazer o seguinte:
+Em *Program.cs* , modifique o método `Main` para fazer o seguinte:
 
 * Obtenha uma instância de contexto de BD do contêiner de injeção de dependência.
 * Chame o método de semente passando a ele o contexto.
@@ -130,7 +131,7 @@ A seguinte exceção ocorre quando `Update-Database` não foi executada:
 * Exclua todos os registros no BD. Você pode fazer isso com os links de exclusão no navegador ou em [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Force o aplicativo a ser inicializado (chame os métodos na classe `Startup`) para que o método de semeadura seja executado. Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado. Faça isso com uma das seguintes abordagens:
 
-  * Clique com o botão direito do mouse no ícone da bandeja do sistema IIS Express na área de notificação e toque em **sair** ou **parar site**:
+  * Clique com o botão direito do mouse no ícone da bandeja do sistema IIS Express na área de notificação e toque em **sair** ou **parar site** :
 
     ![Ícone de bandeja do sistema do IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -161,7 +162,7 @@ O próximo tutorial melhorará a apresentação dos dados.
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs*:
+O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -178,7 +179,7 @@ Para obter mais informações sobre os métodos usados em `ConfigureServices`, v
 * [Suporte ao RGPD (Regulamento Geral sobre a Proteção de Dados) da UE no ASP.NET Core](xref:security/gdpr) para `CookiePolicyOptions`.
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
-O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.jsno* arquivo.
+O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`. Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -205,11 +206,11 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Express direcionada para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos `*.mdf` no diretório `C:/Users/<user/>`.
 
 <a name="ssox"></a>
-* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](sql/_static/ssox.png)
 
-* Clique com o botão direito do mouse na tabela `Movie` e selecione **Designer de exibição**:
+* Clique com o botão direito do mouse na tabela `Movie` e selecione **Designer de exibição** :
 
   ![Menu contextual aberto na tabela Movie](sql/_static/design.png)
 
@@ -217,7 +218,7 @@ O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Expre
 
 Observe o ícone de chave ao lado de `ID`. Por padrão, o EF cria uma propriedade chamada `ID` para a chave primária.
 
-* Clique com o botão direito do mouse na tabela `Movie` e selecione **Exibir dados**:
+* Clique com o botão direito do mouse na tabela `Movie` e selecione **Exibir dados** :
 
   ![Tabela Movie aberta mostrando os dados da tabela](sql/_static/vd22.png)
 
@@ -252,7 +253,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Adicionar o inicializador de semeadura
 
-Em *Program.cs*, modifique o método `Main` para fazer o seguinte:
+Em *Program.cs* , modifique o método `Main` para fazer o seguinte:
 
 * Obtenha uma instância de contexto de BD do contêiner de injeção de dependência.
 * Chame o método de semente passando a ele o contexto.
@@ -274,7 +275,7 @@ O logon falhou para o usuário 'user name'.
 * Exclua todos os registros no BD. Você pode fazer isso com os links de exclusão no navegador ou em [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Force o aplicativo a ser inicializado (chame os métodos na classe `Startup`) para que o método de semeadura seja executado. Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado. Faça isso com uma das seguintes abordagens:
 
-  * Clique com botão direito do mouse no ícone na bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou em **Parar site**:
+  * Clique com botão direito do mouse no ícone na bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou em **Parar site** :
 
     ![Ícone de bandeja do sistema do IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 

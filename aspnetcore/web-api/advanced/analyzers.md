@@ -7,6 +7,7 @@ ms.author: prkrishn
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 1bc76f3965009dbdd66c58b197f4c12bd44faf18
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cf0415e7d72e21a48db8bbeb4540f05e0b0a4198
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633026"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057915"
 ---
 # <a name="use-web-api-analyzers"></a>Usar os analisadores da API Web
 
@@ -58,8 +59,8 @@ Instale o pacote NuGet [Microsoft. AspNetCore. Mvc. API. Analyzers](https://www.
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Da janela **Console do Gerenciador de Pacotes**:
-  * Vá para **Exibir** > **outro** > **console do Gerenciador de pacotes**do Windows.
+Da janela **Console do Gerenciador de Pacotes** :
+  * Vá para **Exibir** > **outro** > **console do Gerenciador de pacotes** do Windows.
   * Navegue até o diretório no qual o arquivo *ApiConventions.csproj* está localizado.
   * Execute o seguinte comando:
 
@@ -69,14 +70,14 @@ Da janela **Console do Gerenciador de Pacotes**:
 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Clique com o botão direito do mouse na pasta *pacotes* em **painel de soluções** > **adicionar pacotes...**.
+* Clique com o botão direito do mouse na pasta *pacotes* em **painel de soluções** > **adicionar pacotes...** .
 * Defina a lista suspensa **fonte** da janela **adicionar pacotes** para "NuGet.org".
 * Insira "Microsoft.AspNetCore.Mvc.Api.Analyzers" na caixa de pesquisa.
-* Selecione o pacote "Microsoft.AspNetCore.Mvc.Api.Analyzers" do painel de resultados e clique em **Adicionar Pacote**.
+* Selecione o pacote "Microsoft.AspNetCore.Mvc.Api.Analyzers" do painel de resultados e clique em **Adicionar Pacote** .
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Execute o comando a seguir do **Terminal Integrado**:
+Execute o comando a seguir do **Terminal Integrado** :
 
 ```dotnetcli
 dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
@@ -84,7 +85,7 @@ dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
 
 ### <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Execute o comando a seguir:
+Execute o seguinte comando:
 
 ```dotnetcli
 dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
@@ -98,7 +99,7 @@ dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers
 
 Documentos de OpenAPI contêm códigos de status e tipos de resposta que uma ação pode retornar. No ASP.NET Core MVC, atributos como <xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute> e <xref:Microsoft.AspNetCore.Mvc.ProducesAttribute> são usados para documentar uma ação. <xref:tutorials/web-api-help-pages-using-swagger> apresenta mais detalhes sobre como documentar sua API Web.
 
-Um dos analisadores no pacote inspeciona controladores anotados com <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> e identifica ações que não documentam totalmente as respostas. Considere o exemplo a seguir:
+Um dos analisadores no pacote inspeciona controladores anotados com <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> e identifica ações que não documentam totalmente as respostas. Considere o seguinte exemplo:
 
 [!code-csharp[](conventions/sample/Controllers/ContactsController.cs?name=missing404docs&highlight=10)]
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 3/29/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 7565ede55acd936072fc1930918d46808548f287
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 9e744ec6d0f0dd72bded8284e98fd9ce53056b84
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762341"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057967"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuração no ASP.NET Core
 
@@ -33,9 +34,9 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) e [Kirk Larkin](https://twi
 
 A configuração no ASP.NET Core é executada usando um ou mais [provedores de configuração](#cp). Os provedores de configuração lêem dados de configuração de pares chave-valor usando uma variedade de fontes de configuração:
 
-* Arquivos de configurações, como *appsettings.jsem*
+* Arquivos de configurações, como *appsettings.json*
 * Variáveis de ambiente
-* Cofre de Chave do Azure
+* Azure Key Vault
 * Configuração de Aplicativo do Azure
 * Argumentos de linha de comando
 * Provedores personalizados, instalados ou criados
@@ -57,13 +58,13 @@ ASP.NET Core aplicativos Web criados com [dotnet novo](/dotnet/core/tools/dotnet
  <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> fornece a configuração padrão para o aplicativo na seguinte ordem:
 
 1. [ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource) : Adiciona um existente `IConfiguration` como uma origem. No caso de configuração padrão, o adiciona a configuração do [host](#hvac) e a define como a primeira origem para a configuração do _aplicativo_ .
-1. [appsettings.js](#appsettingsjson) usando o [provedor de configuração JSON](#file-configuration-provider).
-1. *appSettings.* `Environment` *. JSON* usando o [provedor de configuração JSON](#file-configuration-provider). Por exemplo, *appSettings*. ***Produção***. *JSON* e *appSettings*. ***Desenvolvimento***. *JSON*.
+1. [appsettings.json](#appsettingsjson) usando o [provedor de configuração JSON](#file-configuration-provider).
+1. *appSettings.* `Environment` *. JSON* usando o [provedor de configuração JSON](#file-configuration-provider). Por exemplo, *appSettings* . ***Produção * * _._json* e *appSettings* . * * * desenvolvimento** _._json *.
 1. [Segredos do aplicativo](xref:security/app-secrets) quando o aplicativo é executado no `Development` ambiente.
 1. Variáveis de ambiente usando o [provedor de configuração de variáveis de ambiente](#evcp).
 1. Argumentos de linha de comando usando o [provedor de configuração de linha de comando](#command-line).
 
-Os provedores de configuração adicionados posteriormente substituem as configurações de chave anteriores. Por exemplo, se `MyKey` for definido tanto no *appsettings.jsquanto no* ambiente, o valor do ambiente será usado. Usando os provedores de configuração padrão, o  [provedor de configuração de linha de comando](#clcp) substitui todos os outros provedores.
+Os provedores de configuração adicionados posteriormente substituem as configurações de chave anteriores. Por exemplo, se `MyKey` for definido no *appsettings.json* e no ambiente, o valor do ambiente será usado. Usando os provedores de configuração padrão, o  [provedor de configuração de linha de comando](#clcp) substitui todos os outros provedores.
 
 Para obter mais informações sobre o `CreateDefaultBuilder` , consulte [configurações padrão do Construtor](xref:fundamentals/host/generic-host#default-builder-settings).
 
@@ -71,9 +72,9 @@ O código a seguir exibe os provedores de configuração habilitados na ordem em
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Index2.cshtml.cs?name=snippet)]
 
-### <a name="appsettingsjson"></a>appsettings.json
+### appsettings.json
 
-Considere o seguinte *appsettings.jsno* arquivo:
+Considere o seguinte *appsettings.json* arquivo:
 
 [!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
@@ -84,12 +85,12 @@ O código a seguir do [download de exemplo](https://github.com/dotnet/AspNetCore
 O padrão <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider> carrega a configuração na seguinte ordem:
 
 1. *appsettings.json*
-1. *appSettings.* `Environment` *. JSON* : por exemplo, *appSettings*. ***Produção***. *JSON* e *appSettings*. ***Desenvolvimento***. arquivos *JSON* . A versão de ambiente do arquivo é carregada com base no [IHostingEnvironment. environmentname](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*). Para obter mais informações, consulte <xref:fundamentals/environments>.
+1. *appSettings.* `Environment` *. JSON* : por exemplo, *appSettings* . ***Produção * * _._json* e *appSettings* . * * * arquivos de desenvolvimento** _._json *. A versão de ambiente do arquivo é carregada com base no [IHostingEnvironment. environmentname](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*). Para obter mais informações, consulte <xref:fundamentals/environments>.
 
-*appSettings*. `Environment` . os valores *JSON* substituem as chaves no *appsettings.jsem*. Por exemplo, por padrão:
+*appSettings* . `Environment` . valores *JSON* substituem chaves em *appsettings.json* . Por exemplo, por padrão:
 
-* Em desenvolvimento, *appSettings*. ***Desenvolvimento***. a configuração *JSON* substitui os valores encontrados no *appsettings.jsem*.
-* Em produção, *appSettings*. ***Produção***. a configuração *JSON* substitui os valores encontrados no *appsettings.jsem*. Por exemplo, ao implantar o aplicativo no Azure.
+* Em desenvolvimento, *appSettings* . * **desenvolvimento** _._json * a configuração substitui os valores encontrados em *appsettings.json* .
+* Em produção, *appSettings* . * _._Json de **produção** * a configuração substitui os valores encontrados em *appsettings.json* . Por exemplo, ao implantar o aplicativo no Azure.
 
 <a name="optpat"></a>
 
@@ -97,7 +98,7 @@ O padrão <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvide
 
 [!INCLUDE[](~/includes/bind.md)]
 
-Usando a configuração [padrão](#default) , o *appsettings.jsem* e *appSettings.* `Environment` os arquivos *. JSON* são habilitados com [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). As alterações feitas no *appsettings.jsem* e *appSettings.* `Environment` o arquivo *. JSON* ***após*** o início do aplicativo é lido pelo [provedor de configuração JSON](#jcp).
+Usando a configuração [padrão](#default) , o *appsettings.json* e *appSettings.* `Environment` os arquivos *. JSON* são habilitados com [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). As alterações feitas no *appsettings.json* e *appSettings.* `Environment` o arquivo *. JSON* * **após** _, o aplicativo iniciado é lido pelo [provedor de configuração JSON](#jcp).
 
 Consulte [provedor de configuração JSON](#jcp) neste documento para obter informações sobre como adicionar arquivos de configuração JSON adicionais.
 
@@ -111,11 +112,11 @@ Consulte [provedor de configuração JSON](#jcp) neste documento para obter info
 
 Diretrizes de dados de configuração:
 
-* Nunca armazene senhas ou outros dados confidenciais no código do provedor de configuração ou nos arquivos de configuração de texto sem formatação. O [Gerenciador de segredo](xref:security/app-secrets) pode ser usado para armazenar segredos no desenvolvimento.
+_ Nunca armazene senhas ou outros dados confidenciais no código do provedor de configuração ou em arquivos de configuração de texto sem formatação. O [Gerenciador de segredo](xref:security/app-secrets) pode ser usado para armazenar segredos no desenvolvimento.
 * Não use segredos de produção em ambientes de teste ou de desenvolvimento.
 * Especifique segredos fora do projeto para que eles não sejam acidentalmente comprometidos com um repositório de código-fonte.
 
-Por [padrão](#default), o [Gerenciador de segredo](xref:security/app-secrets) lê as definições de configuração depois *deappsettings.js* e *appSettings.* `Environment` *. JSON*.
+Por [padrão](#default), o [Gerenciador de segredo](xref:security/app-secrets) lê as definições de configuração após *appsettings.json* e *appSettings.* `Environment` *. JSON* .
 
 Para obter mais informações sobre como armazenar senhas ou outros dados confidenciais:
 
@@ -128,7 +129,7 @@ O [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) armazena os
 
 ## <a name="environment-variables"></a>Variáveis de ambiente
 
-Usando a configuração [padrão](#default) , o <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> carrega a configuração de pares chave-valor da variável de ambiente depois de ler *appsettings.jsem*, *appSettings.* `Environment` *. JSON*e o [Gerenciador de segredo](xref:security/app-secrets). Portanto, os valores de chave lidos dos valores de substituição de ambiente lidos de *appsettings.jsem*, *appSettings.* `Environment` *. JSON*e o Gerenciador de segredo.
+Usando a configuração [padrão](#default) , o <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> carrega a configuração de pares chave-valor da variável de ambiente após a leitura *appsettings.json* , *appSettings.* `Environment` *. JSON* e o [Gerenciador de segredo](xref:security/app-secrets). Portanto, os valores de chave lidos dos valores de substituição de ambiente lidos de *appsettings.json* , *appSettings.* `Environment` *. JSON* e o Gerenciador de segredo.
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -157,7 +158,7 @@ setx Position__Title Setx_Environment_Editor /M
 setx Position__Name Environment_Rick /M
 ```
 
-Para testar se os comandos anteriores substituem *appsettings.js* e *appSettings.* `Environment` *. JSON*:
+Para testar se os comandos anteriores substituem *appsettings.json* e *appSettings.* `Environment` *. JSON* :
 
 * Com o Visual Studio: saia e reinicie o Visual Studio.
 * Com a CLI: iniciar uma nova janela de comando e Enter `dotnet run` .
@@ -203,7 +204,7 @@ As variáveis de ambiente definidas no *launchSettings.js* substituir aquelas de
 
 Usando a configuração [padrão](#default) , o <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> carrega a configuração de pares de chave-valor de argumento de linha de comando após as seguintes fontes de configuração:
 
-* *appsettings.js* e *appSettings*. `Environment` . arquivos *JSON* .
+* *appsettings.json* e *appSettings* . `Environment` . arquivos *JSON* .
 * [Segredos do aplicativo (Gerenciador de segredo)](xref:security/app-secrets) no ambiente de desenvolvimento.
 * Variáveis de ambiente.
 
@@ -267,7 +268,7 @@ Para aplicativos que usam mapeamentos de opção, a chamada `CreateDefaultBuilde
 
 A API de configuração lê dados de configuração hierárquicas mesclando os dados hierárquicos com o uso de um delimitador nas chaves de configuração.
 
-O [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contém os seguintes  *appsettings.jsno* arquivo:
+O [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contém o seguinte  *appsettings.json* arquivo:
 
 [!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
@@ -308,7 +309,7 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 
 | Provedor | Fornece a configuração de  |
 | -------- | ----------------------------------- |
-| [Provedor de configuração de Azure Key Vault](xref:security/key-vault-configuration) | Cofre de Chave do Azure |
+| [Provedor de configuração de Azure Key Vault](xref:security/key-vault-configuration) | Azure Key Vault |
 | [Provedor de configuração de Azure App](/azure/azure-app-configuration/quickstart-aspnet-core-app) | Configuração de Aplicativo do Azure |
 | [Provedor de configuração de linha de comando](#clcp) | Parâmetros de linha de comando |
 | [Provedor de Configuração personalizado](#custom-configuration-provider) | Fonte personalizada |
@@ -323,7 +324,7 @@ As fontes de configuração são lidas na ordem em que seus provedores de config
 Uma sequência comum de provedores de configuração é:
 
 1. *appsettings.json*
-1. *appSettings*. `Environment` . *JSON*
+1. *appSettings* . `Environment` . *JSON*
 1. [Gerenciador de segredo](xref:security/app-secrets)
 1. Variáveis de ambiente usando o [provedor de configuração de variáveis de ambiente](#evcp).
 1. Argumentos de linha de comando usando o [provedor de configuração de linha de comando](#command-line-configuration-provider).
@@ -375,7 +376,7 @@ O código a seguir limpa todos os provedores de configuração e adiciona vário
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
 
-No código anterior, as configurações no *MyIniConfig.ini* e  *MyIniConfig*. `Environment` . os arquivos *ini* são substituídos pelas configurações no:
+No código anterior, as configurações no *MyIniConfig.ini* e  *MyIniConfig* . `Environment` . os arquivos *ini* são substituídos pelas configurações no:
 
 * [Provedor de configuração de variáveis de ambiente](#evcp)
 * [Provedor de configuração de linha de comando](#clcp).
@@ -410,15 +411,15 @@ O código anterior:
   * `reloadOnChange: true` : O arquivo é recarregado quando as alterações são salvas.
 * Lê os [provedores de configuração padrão](#default) antes da *MyConfig.jsno* arquivo. As configurações no *MyConfig.jsna* configuração de substituição de arquivo nos provedores de configuração padrão, incluindo o [provedor de configuração de variáveis de ambiente](#evcp) e o provedor de configuração de linha de [comando](#clcp).
 
-Normalmente, você ***não*** deseja que um arquivo JSON personalizado substitua valores definidos no [provedor de configuração de variáveis de ambiente](#evcp) e no provedor de configuração de linha de [comando](#clcp).
+Normalmente, você * **não** precisa de um arquivo JSON personalizado que substitua valores definidos no [provedor de configuração de variáveis de ambiente](#evcp) e no provedor de configuração de linha de [comando](#clcp).
 
 O código a seguir limpa todos os provedores de configuração e adiciona vários provedores de configuração:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSON2.cs?name=snippet)]
 
-No código anterior, as configurações na *MyConfig.jsem* e  *myconfig*. `Environment` . arquivos *JSON* :
+No código anterior, as configurações na _MyConfig.jsem * e  *myconfig* . `Environment` . arquivos *JSON* :
 
-* Substitua as configurações no *appsettings.jsem* e *appSettings*. `Environment` . arquivos *JSON* .
+* Substituir as configurações no *appsettings.json* e *appSettings* . `Environment` . arquivos *JSON* .
 * São substituídos por configurações no [provedor de configuração de variáveis de ambiente](#evcp) e no [provedor de configuração de linha de comando](#clcp).
 
 O [download de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contém os seguintes  *MyConfig.jsno* arquivo:
@@ -437,7 +438,7 @@ O código a seguir limpa todos os provedores de configuração e adiciona vário
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramXML.cs?name=snippet)]
 
-No código anterior, as configurações no *MyXMLFile.xml* e  *MyXMLFile*. `Environment` . os arquivos *XML* são substituídos pelas configurações no:
+No código anterior, as configurações no *MyXMLFile.xml* e  *MyXMLFile* . `Environment` . os arquivos *XML* são substituídos pelas configurações no:
 
 * [Provedor de configuração de variáveis de ambiente](#evcp)
 * [Provedor de configuração de linha de comando](#clcp).
@@ -587,7 +588,7 @@ Index: 3  Value: value40
 Index: 4  Value: value50
 ```
 
-Na saída anterior, o índice 3 tem valor `value40` , correspondente a `"4": "value40",` no *MyArray.jsem*. Os índices de matriz associados são contínuos e não associados ao índice de chave de configuração. O associador de configuração não é capaz de ligar valores nulos ou criar entradas nulas em objetos associados
+Na saída anterior, o índice 3 tem valor `value40` , correspondente a `"4": "value40",` no *MyArray.jsem* . Os índices de matriz associados são contínuos e não associados ao índice de chave de configuração. O associador de configuração não é capaz de ligar valores nulos ou criar entradas nulas em objetos associados
 
 O código a seguir carrega a `array:entries` configuração com o <xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*> método de extensão:
 
@@ -646,35 +647,35 @@ O provedor tem as seguintes características:
 
 Defina uma entidade `EFConfigurationValue` para armazenar valores de configuração no banco de dados.
 
-*Models/EFConfigurationValue.cs*:
+*Models/EFConfigurationValue.cs* :
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
 
 Adicione um `EFConfigurationContext` para armazenar e acessar os valores configurados.
 
-*EFConfigurationProvider/EFConfigurationContext.cs*:
+*EFConfigurationProvider/EFConfigurationContext.cs* :
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
 
 Crie uma classe que implementa <xref:Microsoft.Extensions.Configuration.IConfigurationSource>.
 
-*EFConfigurationProvider/EFConfigurationSource.cs*:
+*EFConfigurationProvider/EFConfigurationSource.cs* :
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
 
 Crie o provedor de configuração personalizado através da herança de <xref:Microsoft.Extensions.Configuration.ConfigurationProvider>. O provedor de configuração inicializa o banco de dados quando ele está vazio. Como [as chaves de configuração](#keys)não diferenciam maiúsculas de minúsculas, o dicionário usado para inicializar o banco de dados é criado com o comparador que não diferencia maiúsculas de minúsculas ([StringComparer. OrdinalIgnoreCase](xref:System.StringComparer.OrdinalIgnoreCase)).
 
-*EFConfigurationProvider/EFConfigurationProvider.cs*:
+*EFConfigurationProvider/EFConfigurationProvider.cs* :
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
 
 Um método de extensão `AddEFConfiguration` permite adicionar a fonte de configuração a um `ConfigurationBuilder`.
 
-*Extensions/EntityFrameworkExtensions.cs*:
+*Extensions/EntityFrameworkExtensions.cs* :
 
 [!code-csharp[](index/samples/3.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
-O código a seguir mostra como usar o `EFConfigurationProvider` personalizado em *Program.cs*:
+O código a seguir mostra como usar o `EFConfigurationProvider` personalizado em *Program.cs* :
 
 [!code-csharp[](index/samples_snippets/3.x/ConfigurationSample/Program.cs?highlight=7-8)]
 
@@ -722,7 +723,7 @@ O código a seguir exibe os valores de opções:
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Test2.cshtml.cs?name=snippet)]
 
-No exemplo anterior, os valores de `Option1` e `Option2` são especificados em *appsettings.js* e, em seguida, substituídos pelo delegado configurado.
+No exemplo anterior, os valores de `Option1` e `Option2` são especificados em *appsettings.json* e, em seguida, substituídos pelo delegado configurado.
 
 <a name="hvac"></a>
 
@@ -747,7 +748,7 @@ Para obter detalhes sobre a configuração padrão ao usar o [host da Web](xref:
 
 ## <a name="other-configuration"></a>Outra configuração
 
-Este tópico pertence apenas à *configuração do aplicativo*. Outros aspectos da execução e Hospedagem de aplicativos ASP.NET Core são configurados usando arquivos de configuração não abordados neste tópico:
+Este tópico pertence apenas à *configuração do aplicativo* . Outros aspectos da execução e Hospedagem de aplicativos ASP.NET Core são configurados usando arquivos de configuração não abordados neste tópico:
 
 * *launch.jsem* / As *launchSettings.jsno* são arquivos de configuração de ferramentas para o ambiente de desenvolvimento, descritos:
   * Em <xref:fundamentals/environments#development> .
@@ -774,9 +775,9 @@ Uma implementação <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permite 
 
 ::: moniker range="< aspnetcore-3.0"
 
-A configuração de aplicativos no ASP.NET Core se baseia em pares chave-valor estabelecidos por *provedores de configuração*. Os provedores de configuração leem os dados de configuração em pares chave-valor de várias fontes de configuração:
+A configuração de aplicativos no ASP.NET Core se baseia em pares chave-valor estabelecidos por *provedores de configuração* . Os provedores de configuração leem os dados de configuração em pares chave-valor de várias fontes de configuração:
 
-* Cofre de Chave do Azure
+* Azure Key Vault
 * Configuração de Aplicativo do Azure
 * Argumentos de linha de comando
 * Provedores personalizados (instalados ou criados)
@@ -803,7 +804,7 @@ Antes do aplicativo ser configurado e iniciado, um *host* é configurado e inici
 
 ## <a name="other-configuration"></a>Outra configuração
 
-Este tópico pertence apenas à *configuração do aplicativo*. Outros aspectos da execução e Hospedagem de aplicativos ASP.NET Core são configurados usando arquivos de configuração não abordados neste tópico:
+Este tópico pertence apenas à *configuração do aplicativo* . Outros aspectos da execução e Hospedagem de aplicativos ASP.NET Core são configurados usando arquivos de configuração não abordados neste tópico:
 
 * *launch.jsem* / As *launchSettings.jsno* são arquivos de configuração de ferramentas para o ambiente de desenvolvimento, descritos:
   * Em <xref:fundamentals/environments#development> .
@@ -824,7 +825,7 @@ O seguinte se aplica a aplicativos que usam o [host da Web](xref:fundamentals/ho
   * Variáveis ​​de ambiente prefixadas com `ASPNETCORE_` (por exemplo, `ASPNETCORE_ENVIRONMENT`) usando o [Provedor de Configuração de Variáveis ​​de Ambiente](#environment-variables-configuration-provider). O prefixo (`ASPNETCORE_`) é removido durante o carregamento dos pares chave-valor de configuração.
   * Argumentos de linha de comando usando o [Provedor de Configuração de Linha de Comando](#command-line-configuration-provider).
 * A configuração do aplicativo é fornecida de:
-  * *appsettings.json* usando o [Provedor de Configuração do Arquivo](#file-configuration-provider).
+  * *appsettings.json* usando o [provedor de configuração de arquivo](#file-configuration-provider).
   * *appsettings.{Environment}.json* usando o [Provedor de Configuração do Arquivo](#file-configuration-provider).
   * [Gerenciador de Segredo](xref:security/app-secrets) quando o aplicativo é executado no ambiente `Development` usando o assembly de entrada.
   * Variáveis de ambiente usando o [Provedor de Configuração de Variáveis de Ambiente](#environment-variables-configuration-provider).
@@ -838,7 +839,7 @@ Adote as seguintes práticas para proteger dados de configuração confidenciais
 * Não use segredos de produção em ambientes de teste ou de desenvolvimento.
 * Especifique segredos fora do projeto para que eles não sejam acidentalmente comprometidos com um repositório de código-fonte.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * <xref:fundamentals/environments>
 * <xref:security/app-secrets>: Inclui conselhos sobre como usar variáveis de ambiente para armazenar dados confidenciais. O Gerenciador de Segredo usa o Provedor de Configuração de Arquivo para armazenar segredos do usuário em um arquivo JSON no sistema local. O Provedor de Configuração de Arquivo será descrito mais adiante neste tópico.
@@ -936,7 +937,7 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 
 | Provedor | Fornece a configuração de &hellip; |
 | -------- | ----------------------------------- |
-| [Provedor de Configuração do Azure Key Vault](xref:security/key-vault-configuration) (tópicos de *Segurança*) | Cofre de Chave do Azure |
+| [Provedor de Configuração do Azure Key Vault](xref:security/key-vault-configuration) (tópicos de *Segurança* ) | Azure Key Vault |
 | [Provedor da Configuração de Aplicativos do Azure](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentação do Azure) | Configuração de Aplicativo do Azure |
 | [Provedor de Configuração de Linha de Comando](#command-line-configuration-provider) | Parâmetros de linha de comando |
 | [Provedor de Configuração personalizado](#custom-configuration-provider) | Fonte personalizada |
@@ -944,13 +945,13 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 | [Provedor de Configuração de Arquivo](#file-configuration-provider) | Arquivos (INI, JSON, XML) |
 | [Provedor de Configuração de Chave por Arquivo](#key-per-file-configuration-provider) | Arquivos de diretório |
 | [Provedor de Configuração de Memória](#memory-configuration-provider) | Coleções na memória |
-| [Segredos do usuário (Gerenciador de Segredo)](xref:security/app-secrets) (tópicos de *Segurança*) | Arquivo no diretório de perfil do usuário |
+| [Segredos do usuário (Gerenciador de Segredo)](xref:security/app-secrets) (tópicos de *Segurança* ) | Arquivo no diretório de perfil do usuário |
 
 Na inicialização, as fontes de configuração são lidas na ordem especificada pelos provedores de configuração. Os provedores de configuração descritos neste tópico são descritos em ordem alfabética, não na ordem em que o código os organiza. Solicite provedores de configuração no código para se adequar às prioridades das fontes de configuração subjacentes que o aplicativo requer.
 
 Uma sequência comum de provedores de configuração é:
 
-1. Arquivos (*appsettings.jsem*, *appSettings. { Ambiente}. JSON*, em que `{Environment}` é o ambiente de hospedagem atual do aplicativo)
+1. Arquivos ( *appsettings.json* , *appSettings. { Ambiente}. JSON* , em que `{Environment}` é o ambiente de hospedagem atual do aplicativo)
 1. [Cofre da Chave do Azure](xref:security/key-vault-configuration)
 1. [Segredos do usuário (Gerenciador de Segredo)](xref:security/app-secrets) (apenas no ambiente de desenvolvimento)
 1. Variáveis de ambiente
@@ -1027,7 +1028,7 @@ Para ativar a configuração de linha de comando, o método de extensão <xref:M
 
 `CreateDefaultBuilder` também carrega:
 
-* Configuração opcional de arquivos *appsettings.json* e *appsettings.{Environment}.json*.
+* Configuração opcional de *appsettings.json* e *appSettings. { Arquivos. JSON do ambiente}* .
 * [Segredos do usuário (Gerenciador de segredo)](xref:security/app-secrets) no ambiente de desenvolvimento.
 * Variáveis de ambiente.
 
@@ -1142,11 +1143,11 @@ Para ativar a configuração das variáveis de ambiente, chame o método de exte
 `CreateDefaultBuilder` também carrega:
 
 * Configuração de aplicativo em variáveis de ambiente sem prefixos chamando `AddEnvironmentVariables` sem um prefixo.
-* Configuração opcional de arquivos *appsettings.json* e *appsettings.{Environment}.json*.
+* Configuração opcional de *appsettings.json* e *appSettings. { Arquivos. JSON do ambiente}* .
 * [Segredos do usuário (Gerenciador de segredo)](xref:security/app-secrets) no ambiente de desenvolvimento.
 * Argumentos de linha de comando.
 
-O Provedor de Configuração de Variáveis de Ambiente é chamado depois que a configuração é estabelecida por meio dos segredos do usuário e dos arquivos *appsettings*. Chamar o provedor nessa posição permite que as variáveis de ambiente sejam lidas em runtime para substituir a configuração definida por segredos do usuário e arquivos *appsettings*.
+O Provedor de Configuração de Variáveis de Ambiente é chamado depois que a configuração é estabelecida por meio dos segredos do usuário e dos arquivos *appsettings* . Chamar o provedor nessa posição permite que as variáveis de ambiente sejam lidas em runtime para substituir a configuração definida por segredos do usuário e arquivos *appsettings* .
 
 Para fornecer a configuração de aplicativo de variáveis de ambiente adicionais, chame os provedores adicionais do aplicativo no `ConfigureAppConfiguration` e chame `AddEnvironmentVariables` com o prefixo:
 
@@ -1295,8 +1296,8 @@ As sobrecargas permitem especificar:
 
 `AddJsonFile` é chamado automaticamente duas vezes quando um novo Construtor de hosts é inicializado com o `CreateDefaultBuilder` . O método é chamado para carregar a configuração de:
 
-* *appsettings.jsem*: este arquivo é lido primeiro. A versão do ambiente do arquivo pode substituir os valores fornecidos pelo arquivo *appsettings.json*.
-* *appSettings. {Environment}. JSON*: a versão do ambiente do arquivo é carregada com base no [IHostingEnvironment. environmentname](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
+* *appsettings.json* : Este arquivo é lido primeiro. A versão de ambiente do arquivo pode substituir os valores fornecidos pelo *appsettings.json* arquivo.
+* *appSettings. {Environment}. JSON* : a versão do ambiente do arquivo é carregada com base no [IHostingEnvironment. environmentname](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
 
 Para obter mais informações, confira a seção [Configuração padrão](#default-configuration).
 
@@ -1306,9 +1307,9 @@ Para obter mais informações, confira a seção [Configuração padrão](#defau
 * [Segredos do usuário (Gerenciador de segredo)](xref:security/app-secrets) no ambiente de desenvolvimento.
 * Argumentos de linha de comando.
 
-O Provedor de Configuração JSON é estabelecido primeiro. Portanto, os segredos do usuário, as variáveis de ambiente e os argumentos de linha de comando substituem a configuração definida pelos arquivos *appsettings*.
+O Provedor de Configuração JSON é estabelecido primeiro. Portanto, os segredos do usuário, as variáveis de ambiente e os argumentos de linha de comando substituem a configuração definida pelos arquivos *appsettings* .
 
-Chame `ConfigureAppConfiguration` ao criar o host para especificar a configuração do aplicativo para arquivos que não sejam *appsettings.json* e *appsettings.{Environment}.json*:
+Chame `ConfigureAppConfiguration` ao compilar o host para especificar a configuração do aplicativo para arquivos diferentes de *appsettings.json* e *appSettings. { Ambiente}. JSON* :
 
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
@@ -1322,11 +1323,11 @@ Chame `ConfigureAppConfiguration` ao criar o host para especificar a configuraç
 
 O aplicativo de exemplo aproveita o método de conveniência estática `CreateDefaultBuilder` para criar o host, que inclui duas chamadas para `AddJsonFile` :
 
-* A primeira chamada para `AddJsonFile` carrega a configuração de *appsettings.jsem*:
+* A primeira chamada para `AddJsonFile` carrega a configuração de *appsettings.json* :
 
   [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.json)]
 
-* A segunda chamada para `AddJsonFile` carrega a configuração de *appSettings. { Ambiente}. JSON*. Para *appsettings.Development.js* no aplicativo de exemplo, o seguinte arquivo é carregado:
+* A segunda chamada para `AddJsonFile` carrega a configuração de *appSettings. { Ambiente}. JSON* . Para *appsettings.Development.js* no aplicativo de exemplo, o seguinte arquivo é carregado:
 
   [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.Development.json)]
 
@@ -1336,7 +1337,7 @@ O aplicativo de exemplo aproveita o método de conveniência estática `CreateDe
    1. Abra as *Propriedades/launchSettings.jsno* arquivo.
    1. No `ConfigurationSample` perfil, altere o valor da variável de `ASPNETCORE_ENVIRONMENT` ambiente para `Production` .
    1. Salve o arquivo e execute o aplicativo com o `dotnet run` em um shell de comando.
-1. As configurações no *appsettings.Development.js* não substituem mais as configurações no *appsettings.js*. O nível de log para a chave `Logging:LogLevel:Default` é `Warning` .
+1. As configurações no *appsettings.Development.js* não substituem mais as configurações em *appsettings.json* . O nível de log para a chave `Logging:LogLevel:Default` é `Warning` .
 
 ### <a name="xml-configuration-provider"></a>Provedor de Configuração XML
 
@@ -1593,7 +1594,7 @@ Considerando os dados de exemplo, `sectionExists` é `false`, pois não existe u
 
 <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> é capaz de associar um grafo de objeto POCO inteiro. Assim como acontece com a associação de um objeto simples, somente as propriedades públicas de leitura/gravação são associadas.
 
-O exemplo contém um modelo `TvShow` cujo grafo do objeto inclui as classes `Metadata` e `Actors` (*Models/TvShow.cs*):
+O exemplo contém um modelo `TvShow` cujo grafo do objeto inclui as classes `Metadata` e `Actors` ( *Models/TvShow.cs* ):
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
 
@@ -1657,7 +1658,7 @@ _config.GetSection("array").Bind(arrayExample);
 
 O objeto associado, uma instância de `ArrayExample`, recebe os dados da matriz de configuração.
 
-| Índice `ArrayExample.Entries` | `ArrayExample.Entries` Valor |
+| Índice `ArrayExample.Entries` | Valor `ArrayExample.Entries` |
 | :--------------------------: | :--------------------------: |
 | 0                            | value0                       |
 | 1                            | value1                       |
@@ -1669,7 +1670,7 @@ O índice &num;3 no objeto associado contém os dados de configuração para a c
 
 O item de configuração ausente para o índice &num;3 pode ser fornecido antes da associação à instância `ArrayExample` por qualquer provedor de configuração que produza o par chave-valor correto na configuração. Se o exemplo incluir um Provedor de Configuração JSON adicional com o par chave-valor ausente, o `ArrayExample.Entries` coincidirá com a matriz de configuração completa:
 
-*missing_value.json*:
+*missing_value.json* :
 
 ```json
 {
@@ -1692,7 +1693,7 @@ O par chave-valor mostrado na tabela é carregado na configuração.
 
 Se a instância da classe `ArrayExample` for associada após o Provedor de Configuração JSON incluir a entrada para o índice &num;3, a matriz `ArrayExample.Entries` incluirá o valor.
 
-| Índice `ArrayExample.Entries` | `ArrayExample.Entries` Valor |
+| Índice `ArrayExample.Entries` | Valor `ArrayExample.Entries` |
 | :--------------------------: | :--------------------------: |
 | 0                            | value0                       |
 | 1                            | value1                       |
@@ -1722,7 +1723,7 @@ No aplicativo de exemplo, a seguinte classe POCO está disponível para associar
 
 Após a associação, `JsonArrayExample.Key` contém o valor `valueA`. Os valores de subseção são armazenados na propriedade matriz POCO, `Subsection`.
 
-| Índice `JsonArrayExample.Subsection` | `JsonArrayExample.Subsection` Valor |
+| Índice `JsonArrayExample.Subsection` | Valor `JsonArrayExample.Subsection` |
 | :---------------------------------: | :---------------------------------: |
 | 0                                   | valueB                              |
 | 1                                   | valueC                              |
@@ -1740,35 +1741,35 @@ O provedor tem as seguintes características:
 
 Defina uma entidade `EFConfigurationValue` para armazenar valores de configuração no banco de dados.
 
-*Models/EFConfigurationValue.cs*:
+*Models/EFConfigurationValue.cs* :
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
 
 Adicione um `EFConfigurationContext` para armazenar e acessar os valores configurados.
 
-*EFConfigurationProvider/EFConfigurationContext.cs*:
+*EFConfigurationProvider/EFConfigurationContext.cs* :
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
 
 Crie uma classe que implementa <xref:Microsoft.Extensions.Configuration.IConfigurationSource>.
 
-*EFConfigurationProvider/EFConfigurationSource.cs*:
+*EFConfigurationProvider/EFConfigurationSource.cs* :
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
 
 Crie o provedor de configuração personalizado através da herança de <xref:Microsoft.Extensions.Configuration.ConfigurationProvider>. O provedor de configuração inicializa o banco de dados quando ele está vazio.
 
-*EFConfigurationProvider/EFConfigurationProvider.cs*:
+*EFConfigurationProvider/EFConfigurationProvider.cs* :
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
 
 Um método de extensão `AddEFConfiguration` permite adicionar a fonte de configuração a um `ConfigurationBuilder`.
 
-*Extensions/EntityFrameworkExtensions.cs*:
+*Extensions/EntityFrameworkExtensions.cs* :
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Extensions/EntityFrameworkExtensions.cs?name=snippet1)]
 
-O código a seguir mostra como usar o `EFConfigurationProvider` personalizado em *Program.cs*:
+O código a seguir mostra como usar o `EFConfigurationProvider` personalizado em *Program.cs* :
 
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 

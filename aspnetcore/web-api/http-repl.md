@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
 ms.date: 05/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: b12f4b10230f2631392011a6e443156bf9a2d843
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: efd2208044ad6392131216266afc34187d738b78
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491438"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058968"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Testar APIs Web com o HTTP REPL
 
@@ -565,7 +566,7 @@ O parâmetro de rota, se houver, esperado pelo método de ação do controlador 
 
 Para emitir uma solicitação HTTP PUT:
 
-1. *Opcional*: execute o `get` comando para exibir os dados antes de modificá-los:
+1. *Opcional* : execute o `get` comando para exibir os dados antes de modificá-los:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -627,7 +628,7 @@ Para emitir uma solicitação HTTP PUT:
     Server: Kestrel
     ```
 
-1. *Opcional*: emita um `get` comando para ver as modificações. Por exemplo, se você digitou "Cereja" no editor de texto, um `get` retornará o seguinte:
+1. *Opcional* : emita um `get` comando para ver as modificações. Por exemplo, se você digitou "Cereja" no editor de texto, um `get` retornará o seguinte:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -678,7 +679,7 @@ O parâmetro de rota, se houver, esperado pelo método de ação do controlador 
 
 Para emitir uma solicitação HTTP DELETE:
 
-1. *Opcional*: execute o `get` comando para exibir os dados antes de modificá-los:
+1. *Opcional* : execute o `get` comando para exibir os dados antes de modificá-los:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -718,7 +719,7 @@ Para emitir uma solicitação HTTP DELETE:
     Server: Kestrel
     ```
 
-1. *Opcional*: emita um `get` comando para ver as modificações. Neste exemplo, o `get` retornará o seguinte:
+1. *Opcional* : emita um `get` comando para ver as modificações. Neste exemplo, o `get` retornará o seguinte:
 
     ```console
     https://localhost:5001/fruits~ get

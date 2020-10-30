@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/24/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 15ae8911e2ffba43c7bb885efd153d8b6803bc2a
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: e7d19a42e48048d2be4b87d6b0ac1ba6b2596ff1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393672"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058162"
 ---
 # <a name="use-messagepack-hub-protocol-in-no-locsignalr-for-aspnet-core"></a>Usar o protocolo Hub MessagePack no SignalR para ASP.NET Core
 
@@ -96,10 +97,10 @@ Depois de instalar o pacote NPM, o módulo pode ser usado diretamente por meio d
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js*.
+Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js* .
 
 > [!NOTE]
-> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js*, ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js*.
+> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js* , ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js* .
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -141,7 +142,7 @@ Ao enviar do cliente JavaScript, você deve usar `PascalCased` nomes de propried
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
 ```
 
-O uso de `camelCased` nomes não se associará corretamente à classe C#. Você pode contornar isso usando o `Key` atributo para especificar um nome diferente para a propriedade MessagePack. Para obter mais informações, consulte [a documentação do MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
+O uso de `camelCased` nomes não se associará corretamente à classe C#. Você pode contornar isso usando o `Key` atributo para especificar um nome diferente para a propriedade MessagePack. Para obter mais informações, consulte [a documentação do MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
 
 ### <a name="datetimekind-is-not-preserved-when-serializingdeserializing"></a>DateTime. Kind não é preservado ao serializar/desserializar
 
@@ -161,7 +162,7 @@ Para obter mais informações sobre essa limitação, consulte o problema do Git
 
 ### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>Suporte a MessagePack no ambiente de compilação "antes do tempo"
 
-A biblioteca [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v2.1.90) usada pelo cliente .net e pelo servidor usa a geração de código para otimizar a serialização. Como resultado, ele não tem suporte por padrão em ambientes que usam a compilação "antecipada" (como o Xamarin iOS ou Unity). É possível usar o MessagePack nesses ambientes ao "gerar previamente" o código do serializador/desserializador. Para obter mais informações, consulte [a documentação do MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v2.1.90#aot-code-generation-to-support-unityxamarin). Depois de gerar os serializadores gerados previamente, você pode registrá-los usando o delegado de configuração passado para `AddMessagePackProtocol` :
+A biblioteca [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v2.1.90) usada pelo cliente .net e pelo servidor usa a geração de código para otimizar a serialização. Como resultado, ele não tem suporte por padrão em ambientes que usam a compilação "antecipada" (como o Xamarin iOS ou Unity). É possível usar o MessagePack nesses ambientes ao "gerar previamente" o código do serializador/desserializador. Para obter mais informações, consulte [a documentação do MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp/tree/v2.1.90#aot-code-generation-to-support-unityxamarin). Depois de gerar os serializadores gerados previamente, você pode registrá-los usando o delegado de configuração passado para `AddMessagePackProtocol` :
 
 ```csharp
 services.AddSignalR()
@@ -276,10 +277,10 @@ Depois de instalar o pacote NPM, o módulo pode ser usado diretamente por meio d
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js*.
+Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js* .
 
 > [!NOTE]
-> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js*, ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js*.
+> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js* , ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js* .
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -321,7 +322,7 @@ Ao enviar do cliente JavaScript, você deve usar `PascalCased` nomes de propried
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
 ```
 
-O uso de `camelCased` nomes não se associará corretamente à classe C#. Você pode contornar isso usando o `Key` atributo para especificar um nome diferente para a propriedade MessagePack. Para obter mais informações, consulte [a documentação do MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
+O uso de `camelCased` nomes não se associará corretamente à classe C#. Você pode contornar isso usando o `Key` atributo para especificar um nome diferente para a propriedade MessagePack. Para obter mais informações, consulte [a documentação do MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
 
 ### <a name="datetimekind-is-not-preserved-when-serializingdeserializing"></a>DateTime. Kind não é preservado ao serializar/desserializar
 
@@ -343,7 +344,7 @@ Para obter mais informações sobre essa limitação, consulte o problema do Git
 
 ### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>Suporte a MessagePack no ambiente de compilação "antes do tempo"
 
-A biblioteca [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80) usada pelo cliente .net e pelo servidor usa a geração de código para otimizar a serialização. Como resultado, ele não tem suporte por padrão em ambientes que usam a compilação "antecipada" (como o Xamarin iOS ou Unity). É possível usar o MessagePack nesses ambientes ao "gerar previamente" o código do serializador/desserializador. Para obter mais informações, consulte [a documentação do MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80#pre-code-generationunityxamarin-supports). Depois de gerar os serializadores gerados previamente, você pode registrá-los usando o delegado de configuração passado para `AddMessagePackProtocol` :
+A biblioteca [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80) usada pelo cliente .net e pelo servidor usa a geração de código para otimizar a serialização. Como resultado, ele não tem suporte por padrão em ambientes que usam a compilação "antecipada" (como o Xamarin iOS ou Unity). É possível usar o MessagePack nesses ambientes ao "gerar previamente" o código do serializador/desserializador. Para obter mais informações, consulte [a documentação do MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80#pre-code-generationunityxamarin-supports). Depois de gerar os serializadores gerados previamente, você pode registrá-los usando o delegado de configuração passado para `AddMessagePackProtocol` :
 
 ```csharp
 services.AddSignalR()
@@ -456,10 +457,10 @@ Depois de instalar o pacote NPM, o módulo pode ser usado diretamente por meio d
 
 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*
 
-Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js*.
+Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js* .
 
 > [!NOTE]
-> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js*, ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js*.
+> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js* , ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js* .
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -501,7 +502,7 @@ Ao enviar do cliente JavaScript, você deve usar `PascalCased` nomes de propried
 connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
 ```
 
-O uso de `camelCased` nomes não se associará corretamente à classe C#. Você pode contornar isso usando o `Key` atributo para especificar um nome diferente para a propriedade MessagePack. Para obter mais informações, consulte [a documentação do MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
+O uso de `camelCased` nomes não se associará corretamente à classe C#. Você pode contornar isso usando o `Key` atributo para especificar um nome diferente para a propriedade MessagePack. Para obter mais informações, consulte [a documentação do MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
 
 ### <a name="datetimekind-is-not-preserved-when-serializingdeserializing"></a>DateTime. Kind não é preservado ao serializar/desserializar
 
@@ -523,7 +524,7 @@ Para obter mais informações sobre essa limitação, consulte o problema do Git
 
 ### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>Suporte a MessagePack no ambiente de compilação "antes do tempo"
 
-A biblioteca [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80) usada pelo cliente .net e pelo servidor usa a geração de código para otimizar a serialização. Como resultado, ele não tem suporte por padrão em ambientes que usam a compilação "antecipada" (como o Xamarin iOS ou Unity). É possível usar o MessagePack nesses ambientes ao "gerar previamente" o código do serializador/desserializador. Para obter mais informações, consulte [a documentação do MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80#pre-code-generationunityxamarin-supports). Depois de gerar os serializadores gerados previamente, você pode registrá-los usando o delegado de configuração passado para `AddMessagePackProtocol` :
+A biblioteca [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80) usada pelo cliente .net e pelo servidor usa a geração de código para otimizar a serialização. Como resultado, ele não tem suporte por padrão em ambientes que usam a compilação "antecipada" (como o Xamarin iOS ou Unity). É possível usar o MessagePack nesses ambientes ao "gerar previamente" o código do serializador/desserializador. Para obter mais informações, consulte [a documentação do MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp/tree/v1.8.80#pre-code-generationunityxamarin-supports). Depois de gerar os serializadores gerados previamente, você pode registrá-los usando o delegado de configuração passado para `AddMessagePackProtocol` :
 
 ```csharp
 services.AddSignalR()

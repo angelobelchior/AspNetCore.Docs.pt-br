@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,23 +19,23 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 13f1ad5dcd4a230ec05b08c402f4ee9e455c3c29
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ee78e80a4eda3089943765700aa6bb62c6c1e07d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634131"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057512"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Hospedar o ASP.NET Core em um web farm
 
 Por [Chris Ross](https://github.com/Tratcher)
 
-Um *web farm* é um grupo de dois ou mais servidores web (ou *nós*) que hospedam várias instâncias de um aplicativo. Quando as solicitações de usuários chegam a um web farm, um *balanceador de carga* distribui as solicitações para os nós de farm da web. Os web farms melhoram:
+Um *web farm* é um grupo de dois ou mais servidores web (ou *nós* ) que hospedam várias instâncias de um aplicativo. Quando as solicitações de usuários chegam a um web farm, um *balanceador de carga* distribui as solicitações para os nós de farm da web. Os web farms melhoram:
 
-* **Confiabilidade/disponibilidade**: quando um ou mais nós falham, o balanceador de carga pode rotear solicitações para outros nós de funcionamento para continuar processando solicitações.
-* **Capacidade/desempenho**: vários nós podem processar mais solicitações do que um único servidor. O balanceador de carga equilibra a carga de trabalho ao distribuir as solicitações para os nós.
-* **Escalabilidade**: quando é necessária mais ou menos capacidade, o número de nós ativos pode ser aumentado ou diminuído para corresponder à carga de trabalho. Tecnologias de plataforma de web farm, como o [Serviço de Aplicativo do Azure](https://azure.microsoft.com/services/app-service/), podem adicionar ou remover nós por solicitação do administrador do sistema ou automaticamente sem a intervenção humana.
-* **Manutenção**: os nós de um Web farm podem contar com um conjunto de serviços compartilhados, o que resulta em um gerenciamento de sistema mais fácil. Por exemplo, os nós de um web farm podem contar com um servidor de banco de dados individual e um local de rede comum para recursos estáticos, como imagens e arquivos para download.
+* **Confiabilidade/disponibilidade** : quando um ou mais nós falham, o balanceador de carga pode rotear solicitações para outros nós de funcionamento para continuar processando solicitações.
+* **Capacidade/desempenho** : vários nós podem processar mais solicitações do que um único servidor. O balanceador de carga equilibra a carga de trabalho ao distribuir as solicitações para os nós.
+* **Escalabilidade** : quando é necessária mais ou menos capacidade, o número de nós ativos pode ser aumentado ou diminuído para corresponder à carga de trabalho. Tecnologias de plataforma de web farm, como o [Serviço de Aplicativo do Azure](https://azure.microsoft.com/services/app-service/), podem adicionar ou remover nós por solicitação do administrador do sistema ou automaticamente sem a intervenção humana.
+* **Manutenção** : os nós de um Web farm podem contar com um conjunto de serviços compartilhados, o que resulta em um gerenciamento de sistema mais fácil. Por exemplo, os nós de um web farm podem contar com um servidor de banco de dados individual e um local de rede comum para recursos estáticos, como imagens e arquivos para download.
 
 Este tópico descreve as configurações e dependências para aplicativos ASP.NET Core hospedados em um web farm que conta com recursos compartilhados.
 
@@ -59,7 +60,7 @@ O serviço de cache e a proteção de dados exigem uma configuração para aplic
 
 ### <a name="data-protection"></a>Proteção de dados
 
-O [sistema de proteção de dados do ASP.NET Core](xref:security/data-protection/introduction) é usado por aplicativos para proteger os dados. A proteção de dados baseia-se em um conjunto de chaves de criptografia armazenados em um *token de autenticação*. Quando o sistema de Proteção de dados é inicializado, ele aplica [as configurações padrão](xref:security/data-protection/configuration/default-settings) que armazenam localmente o token de autenticação. Sob a configuração padrão, um token de autenticação exclusivo é armazenado em cada nó do web farm. Consequentemente, cada nó do web farm não pode descriptografar os dados criptografados por um aplicativo em qualquer outro nó. A configuração padrão normalmente não é adequada para hospedagem de aplicativos em um web farm. Uma alternativa à implementação de um token de autenticação compartilhado é sempre rotear as solicitações do usuário para o mesmo nó. Para saber mais sobre a configuração do sistema de Proteção de dados para implantações de web farm, confira <xref:security/data-protection/configuration/overview>.
+O [sistema de proteção de dados do ASP.NET Core](xref:security/data-protection/introduction) é usado por aplicativos para proteger os dados. A proteção de dados baseia-se em um conjunto de chaves de criptografia armazenados em um *token de autenticação* . Quando o sistema de Proteção de dados é inicializado, ele aplica [as configurações padrão](xref:security/data-protection/configuration/default-settings) que armazenam localmente o token de autenticação. Sob a configuração padrão, um token de autenticação exclusivo é armazenado em cada nó do web farm. Consequentemente, cada nó do web farm não pode descriptografar os dados criptografados por um aplicativo em qualquer outro nó. A configuração padrão normalmente não é adequada para hospedagem de aplicativos em um web farm. Uma alternativa à implementação de um token de autenticação compartilhado é sempre rotear as solicitações do usuário para o mesmo nó. Para saber mais sobre a configuração do sistema de Proteção de dados para implantações de web farm, confira <xref:security/data-protection/configuration/overview>.
 
 ### <a name="caching"></a>Cache
 
@@ -85,7 +86,7 @@ Quando a proteção de dados ou cache não está configurada para um ambiente de
 
 Considere um usuário que entra no aplicativo usando a cookie autenticação do. O usuário entra no aplicativo em um nó do web farm. Se a próxima solicitação chegar ao mesmo nó em que se conectou, o aplicativo poderá descriptografar a autenticação cookie e permitir o acesso ao recurso do aplicativo. Se a próxima solicitação chegar em um nó diferente, o aplicativo não poderá descriptografar a autenticação cookie do nó em que o usuário se conectou e a autorização para o recurso solicitado falhará.
 
-Quando qualquer um dos sintomas a seguir ocorre **intermitentemente**, o problema geralmente é rastreado para proteção de dados inadequada ou configuração de cache para um ambiente de Web farm:
+Quando qualquer um dos sintomas a seguir ocorre **intermitentemente** , o problema geralmente é rastreado para proteção de dados inadequada ou configuração de cache para um ambiente de Web farm:
 
 * Quebras de autenticação: a autenticação cookie está configurada incorretamente ou não pode ser descriptografada. Falha de login OpenIdConnect ou OAuth (Facebook, Microsoft, Twitter) com o erro "Falha de correlação".
 * Quebras de autorização: Identity são perdidas.

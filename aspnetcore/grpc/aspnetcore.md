@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: 11237c93832e095abb03d761773d213dfa336052
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633884"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057824"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Serviços do gRPC com o ASP.NET Core
 
@@ -66,7 +67,7 @@ gRPC requer o pacote [gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.AspN
 
 ### <a name="configure-grpc"></a>Configurar o gRPC
 
-Em *Startup.cs*:
+Em *Startup.cs* :
 
 * gRPC é habilitado com o `AddGrpc` método.
 * Cada serviço gRPC é adicionado ao pipeline de roteamento por meio do `MapGrpcService` método.
@@ -93,11 +94,11 @@ O Kestrel [dá suporte a http/2](xref:fundamentals/servers/kestrel#http2-support
 
 Os pontos de extremidade Kestrel usados para gRPC devem ser protegidos com TLS. No desenvolvimento, um ponto de extremidade protegido com TLS é criado automaticamente `https://localhost:5001` quando o certificado de desenvolvimento de ASP.NET Core está presente. Nenhuma configuração é necessária. Um `https` prefixo verifica se o ponto de extremidade Kestrel está usando TLS.
 
-Em produção, o TLS deve ser configurado explicitamente. No exemplo a seguir *appsettings.js* , um ponto de extremidade http/2 protegido com TLS é fornecido:
+Em produção, o TLS deve ser configurado explicitamente. No exemplo a seguir *appsettings.json* , um ponto de extremidade http/2 protegido com TLS é fornecido:
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-Como alternativa, os pontos de extremidade Kestrel podem ser configurados no *Program.cs*:
+Como alternativa, os pontos de extremidade Kestrel podem ser configurados no *Program.cs* :
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 

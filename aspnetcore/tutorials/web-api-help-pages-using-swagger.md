@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: c40aede044c78122a9057613f0eece9acf84df7b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b4b27e6b845d960b4b92612b90938f0770f23170
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056667"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>Páginas de ajuda da API Web ASP.NET Core com o Swagger/OpenAPI
 
@@ -42,7 +43,7 @@ O Swagger é uma especificação independente de linguagem para descrever APIs [
 
 ## <a name="openapi-specification-openapijson"></a>Especificação OpenAPI (openapi.jsem)
 
-O núcleo para o fluxo OpenAPI é a especificação &mdash; por padrão, um documento chamado *openapi.jsem*. Ele é gerado pela cadeia de ferramentas OpenAPI (ou implementações de terceiros) com base em seu serviço. Ele descreve os recursos da API e como acessá-lo com HTTP. Ele gera a interface do usuário do Swagger e é usado pela cadeia de ferramentas para habilitar a geração e a descoberta de código de cliente. Aqui está um exemplo de uma especificação OpenAPI, reduzida para fins de brevidade:
+O núcleo para o fluxo OpenAPI é a especificação &mdash; por padrão, um documento chamado *openapi.jsem* . Ele é gerado pela cadeia de ferramentas OpenAPI (ou implementações de terceiros) com base em seu serviço. Ele descreve os recursos da API e como acessá-lo com HTTP. Ele gera a interface do usuário do Swagger e é usado pela cadeia de ferramentas para habilitar a geração e a descoberta de código de cliente. Aqui está um exemplo de uma especificação OpenAPI, reduzida para fins de brevidade:
 
 ```json
 {
@@ -136,7 +137,7 @@ A [interface do usuário do Swagger](https://swagger.io/swagger-ui/) oferece uma
 
 ![IU do Swagger](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-Todo método de ação pública nos controladores pode ser testado da interface do usuário. Clique em um nome de método para expandir a seção. Adicione todos os parâmetros necessários e clique em **Experimente!**.
+Todo método de ação pública nos controladores pode ser testado da interface do usuário. Clique em um nome de método para expandir a seção. Adicione todos os parâmetros necessários e clique em **Experimente!** .
 
 ![Teste GET de Swagger de exemplo](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 

@@ -5,6 +5,7 @@ description: Saiba como o model binding permite que as ações do controlador tr
 ms.author: riande
 ms.date: 01/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 7e1151b04f39f637f889e690bccc97eb6f0c91ea
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 7675e95c43b9ee428ee5fda86ea3ead9815ed645
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865578"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058461"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Model binding personalizado no ASP.NET Core
 

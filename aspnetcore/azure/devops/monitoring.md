@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: d5d5189563760cb8a61c188436caa3838e75a31e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 74e789828bf5d54e3457f235657f8ed7086df80d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626903"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056745"
 ---
 # <a name="monitor-and-debug"></a>Monitorar e depurar
 
@@ -42,17 +43,17 @@ Nesta seção, você concluirá as seguintes tarefas:
 
 Os aplicativos Web do serviço de aplicativo são facilmente monitorados em tempo real. O portal do Azure renderiza métricas em gráficos fáceis de entender e grafos.
 
-1. Abra o [portal do Azure](https://portal.azure.com)e, em seguida, navegue até o serviço de aplicativo *myWebApp \<unique_number\> * .
+1. Abra o [portal do Azure](https://portal.azure.com)e, em seguida, navegue até o serviço de aplicativo *myWebApp \<unique_number\>* .
 
 1. A guia **visão geral** exibe informações úteis "em breve", incluindo grafos que exibem métricas recentes.
 
     ![Captura de tela mostrando o painel Visão geral](./media/monitoring/overview.png)
 
-    * **Http 5xx**: contagem de erros do lado do servidor, geralmente exceções no código ASP.NET Core.
-    * **Dados em**: entrada de dados que entra em seu aplicativo Web.
-    * **Saída de dados**: dados de saída de seu aplicativo Web para clientes.
-    * **Solicitações**: contagem de solicitações HTTP.
-    * **Tempo médio de resposta**: tempo médio para o aplicativo Web responder a solicitações HTTP.
+    * **Http 5xx** : contagem de erros do lado do servidor, geralmente exceções no código ASP.NET Core.
+    * **Dados em** : entrada de dados que entra em seu aplicativo Web.
+    * **Saída de dados** : dados de saída de seu aplicativo Web para clientes.
+    * **Solicitações** : contagem de solicitações HTTP.
+    * **Tempo médio de resposta** : tempo médio para o aplicativo Web responder a solicitações HTTP.
 
     Várias ferramentas de autoatendimento para solução de problemas e otimização também são encontradas nesta página.
 
@@ -70,7 +71,7 @@ Os aplicativos Web do serviço de aplicativo são facilmente monitorados em temp
 
 [Application insights](/azure/application-insights/app-insights-overview) é um serviço do Azure para analisar o desempenho e a estabilidade de aplicativos Web e como os usuários os usam. Os dados de Application Insights são mais amplos e mais detalhados do que o de Azure Monitor. Os dados podem fornecer aos desenvolvedores e aos administradores informações importantes para melhorar os aplicativos. Application Insights pode ser adicionado a um recurso de serviço de Azure App sem alterações de código.
 
-1. Abra o [portal do Azure](https://portal.azure.com)e, em seguida, navegue até o serviço de aplicativo *myWebApp \<unique_number\> * .
+1. Abra o [portal do Azure](https://portal.azure.com)e, em seguida, navegue até o serviço de aplicativo *myWebApp \<unique_number\>* .
 1. Na guia **visão geral** , clique no bloco **Application insights** .
 
     ![Bloco do Application Insights](./media/monitoring/app-insights.png)
@@ -79,8 +80,8 @@ Os aplicativos Web do serviço de aplicativo são facilmente monitorados em temp
 
     ![Application Insights configuração](./media/monitoring/new-app-insights.png)
 
-1. Para **tempo de execução/estrutura**, selecione **ASP.NET Core**. Aceite as configurações padrão.
-1. Selecione **OK**. Se for solicitado a confirmar, selecione **continuar**.
+1. Para **tempo de execução/estrutura** , selecione **ASP.NET Core** . Aceite as configurações padrão.
+1. Selecione **OK** . Se for solicitado a confirmar, selecione **continuar** .
 1. Depois que o recurso tiver sido criado, clique no nome do Application Insights recurso para navegar diretamente para a página Application Insights.
 
     ![Novo recurso de Application Insights está pronto](./media/monitoring/new-app-insights-done.png)
@@ -95,13 +96,13 @@ Application Insights fornece informações úteis do lado do servidor sem nenhum
 
 Os logs do servidor Web e do aplicativo são desabilitados por padrão no serviço Azure App. Habilite os logs com as seguintes etapas:
 
-1. Abra o [portal do Azure](https://portal.azure.com)e navegue até o serviço de aplicativo *myWebApp \<unique_number\> * .
-1. No menu à esquerda, role para baixo até a seção **monitoramento** . Selecione **logs de diagnóstico**.
+1. Abra o [portal do Azure](https://portal.azure.com)e navegue até o serviço de aplicativo *myWebApp \<unique_number\>* .
+1. No menu à esquerda, role para baixo até a seção **monitoramento** . Selecione **logs de diagnóstico** .
 
     ![Link de logs de diagnóstico](./media/monitoring/logging.png)
 
-1. Ative o **registro em log do aplicativo (Filesystem)**. Se solicitado, clique na caixa para instalar as extensões para habilitar o log de aplicativo no aplicativo Web.
-1. Defina o **log do servidor Web** no **sistema de arquivos**.
+1. Ative o **registro em log do aplicativo (Filesystem)** . Se solicitado, clique na caixa para instalar as extensões para habilitar o log de aplicativo no aplicativo Web.
+1. Defina o **log do servidor Web** no **sistema de arquivos** .
 1. Insira o **período de retenção** em dias. Por exemplo, 30.
 1. Clique em **Save** (Salvar).
 
@@ -111,8 +112,8 @@ Os logs do ASP.NET Core e do servidor Web (serviço de aplicativo) são gerados 
 
 Os logs do aplicativo e do servidor Web podem ser transmitidos em tempo real por meio do Portal.
 
-1. Abra o [portal do Azure](https://portal.azure.com)e navegue até o serviço de aplicativo *myWebApp \<unique_number\> * .
-1. No menu à esquerda, role para baixo até a seção **monitoramento** e selecione **fluxo de log**.
+1. Abra o [portal do Azure](https://portal.azure.com)e navegue até o serviço de aplicativo *myWebApp \<unique_number\>* .
+1. No menu à esquerda, role para baixo até a seção **monitoramento** e selecione **fluxo de log** .
 
     ![Captura de tela mostrando link de fluxo de log](./media/monitoring/log-stream.png)
 

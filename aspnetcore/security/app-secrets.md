@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 74c9ae63ffbe39d6ba6e77aee8f6adcc8c8a157a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 174f831583c2ef6cb7f122a22fe855acc8fe3047
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634898"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056862"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Armazenamento seguro de segredos do aplicativo em desenvolvimento no ASP.NET Core
 
@@ -38,7 +39,7 @@ Este documento explica técnicas para armazenar e recuperar dados confidenciais 
 
 As variáveis de ambiente são usadas para evitar o armazenamento de segredos do aplicativo no código ou nos arquivos de configuração locais. Variáveis de ambiente substituem valores de configuração para todas as fontes de configuração especificadas anteriormente.
 
-Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada. Uma cadeia de conexão de banco de dados padrão é incluída naappsettings.jsdo projeto * no* arquivo com a chave `DefaultConnection` . A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha. Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente. A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.
+Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada. Uma cadeia de conexão de banco de dados padrão é incluída no arquivo do projeto *appsettings.json* com a chave `DefaultConnection` . A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha. Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente. A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.
 
 > [!WARNING]
 > Variáveis de ambiente geralmente são armazenadas em texto simples e não criptografado. Se o computador ou o processo estiver comprometido, as variáveis de ambiente poderão ser acessadas por partes não confiáveis. Outras medidas para evitar a divulgação de segredos do usuário podem ser necessárias.
@@ -181,7 +182,7 @@ Os `Movies:ConnectionString` `Movies:ServiceApiKey` segredos e são mapeados par
 
 ## <a name="string-replacement-with-secrets"></a>Substituição de cadeia de caracteres com segredos
 
-O armazenamento de senhas em texto sem formatação não é seguro. Por exemplo, uma cadeia de conexão de banco de dados armazenada no *appsettings.jsno* pode incluir uma senha para o usuário especificado:
+O armazenamento de senhas em texto sem formatação não é seguro. Por exemplo, uma cadeia de conexão de banco de dados armazenada em *appsettings.json* pode incluir uma senha para o usuário especificado:
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -191,7 +192,7 @@ Uma abordagem mais segura é armazenar a senha como um segredo. Por exemplo:
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Remova o `Password` par chave-valor da cadeia de conexão no *appsettings.jsem*. Por exemplo:
+Remova o `Password` par chave-valor da cadeia de conexão no *appsettings.json* . Por exemplo:
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -216,7 +217,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-No exemplo anterior, dois-pontos nos nomes de chave denota a hierarquia de objeto dentro de *secrets.jsem*.
+No exemplo anterior, dois-pontos nos nomes de chave denota a hierarquia de objeto dentro de *secrets.jsem* .
 
 ## <a name="remove-a-single-secret"></a>Remover um único segredo
 
@@ -228,7 +229,7 @@ Execute o seguinte comando do diretório no qual o arquivo *. csproj* existe:
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-Osecrets.jsdo aplicativo * no* arquivo foi modificado para remover o par chave-valor associado à `MoviesConnectionString` chave:
+Osecrets.jsdo aplicativo *no* arquivo foi modificado para remover o par chave-valor associado à `MoviesConnectionString` chave:
 
 ```json
 {
@@ -286,7 +287,7 @@ Este documento explica técnicas para armazenar e recuperar dados confidenciais 
 
 As variáveis de ambiente são usadas para evitar o armazenamento de segredos do aplicativo no código ou nos arquivos de configuração locais. Variáveis de ambiente substituem valores de configuração para todas as fontes de configuração especificadas anteriormente.
 
-Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada. Uma cadeia de conexão de banco de dados padrão é incluída naappsettings.jsdo projeto * no* arquivo com a chave `DefaultConnection` . A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha. Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente. A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.
+Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada. Uma cadeia de conexão de banco de dados padrão é incluída no arquivo do projeto *appsettings.json* com a chave `DefaultConnection` . A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha. Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente. A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.
 
 > [!WARNING]
 > Variáveis de ambiente geralmente são armazenadas em texto simples e não criptografado. Se o computador ou o processo estiver comprometido, as variáveis de ambiente poderão ser acessadas por partes não confiáveis. Outras medidas para evitar a divulgação de segredos do usuário podem ser necessárias.
@@ -426,7 +427,7 @@ Os `Movies:ConnectionString` `Movies:ServiceApiKey` segredos e são mapeados par
 
 ## <a name="string-replacement-with-secrets"></a>Substituição de cadeia de caracteres com segredos
 
-O armazenamento de senhas em texto sem formatação não é seguro. Por exemplo, uma cadeia de conexão de banco de dados armazenada no *appsettings.jsno* pode incluir uma senha para o usuário especificado:
+O armazenamento de senhas em texto sem formatação não é seguro. Por exemplo, uma cadeia de conexão de banco de dados armazenada em *appsettings.json* pode incluir uma senha para o usuário especificado:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -436,7 +437,7 @@ Uma abordagem mais segura é armazenar a senha como um segredo. Por exemplo:
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Remova o `Password` par chave-valor da cadeia de conexão no *appsettings.jsem*. Por exemplo:
+Remova o `Password` par chave-valor da cadeia de conexão no *appsettings.json* . Por exemplo:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -461,7 +462,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-No exemplo anterior, dois-pontos nos nomes de chave denota a hierarquia de objeto dentro de *secrets.jsem*.
+No exemplo anterior, dois-pontos nos nomes de chave denota a hierarquia de objeto dentro de *secrets.jsem* .
 
 ## <a name="remove-a-single-secret"></a>Remover um único segredo
 
@@ -473,7 +474,7 @@ Execute o seguinte comando do diretório no qual o arquivo *. csproj* existe:
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-Osecrets.jsdo aplicativo * no* arquivo foi modificado para remover o par chave-valor associado à `MoviesConnectionString` chave:
+Osecrets.jsdo aplicativo *no* arquivo foi modificado para remover o par chave-valor associado à `MoviesConnectionString` chave:
 
 ```json
 {

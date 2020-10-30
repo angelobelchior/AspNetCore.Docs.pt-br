@@ -7,6 +7,7 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 07/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: 0c897c8c640f8713fc7d3b6cad0e6c571131d7a5
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: cbce85caf7ba792253ba62c6be084c8905acd00f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113836"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058708"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Solucionar problemas do gRPC no .NET Core
 
@@ -108,7 +109,7 @@ O Kestrel não dá suporte a HTTP/2 com TLS no macOS e versões mais antigas do 
 
 Para contornar esse problema, configure o Kestrel e o cliente gRPC para usar HTTP/2 *sem* TLS. Você só deve fazer isso durante o desenvolvimento. Não usar o TLS fará com que as mensagens gRPC sejam enviadas sem criptografia.
 
-Kestrel deve configurar um ponto de extremidade HTTP/2 sem TLS em *Program.cs*:
+Kestrel deve configurar um ponto de extremidade HTTP/2 sem TLS em *Program.cs* :
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -166,9 +167,9 @@ Os projetos do WPF têm um [problema conhecido](https://github.com/dotnet/wpf/is
 Você pode solucionar esse problema:
 
 1. Crie um novo projeto de biblioteca de classes do .NET Core.
-2. No novo projeto, adicione referências para habilitar a [geração de código C# a partir de arquivos * \* . proto* ](xref:grpc/basics#generated-c-assets):
+2. No novo projeto, adicione referências para habilitar a [geração de código C# a partir de arquivos *\* . proto*](xref:grpc/basics#generated-c-assets):
     * Adicione uma referência de pacote ao pacote [Grpc. Tools](https://www.nuget.org/packages/Grpc.Tools/) .
-    * Adicione arquivos * \* . proto* ao `<Protobuf>` grupo de itens.
+    * Adicione arquivos *\* . proto* ao `<Protobuf>` grupo de itens.
 3. No aplicativo do WPF, adicione uma referência ao novo projeto.
 
 O aplicativo WPF pode usar os tipos gerados gRPC do novo projeto de biblioteca de classes.
