@@ -6,41 +6,42 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: de37bf704ac377a15ef600b96ba78056c51ea7be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4f8330521bb9114f6639c1889cc15ebd18adc0ed
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633858"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061126"
 ---
-# <a name="environment-tag-helper-in-aspnet-core"></a><span data-ttu-id="ca757-103">Auxiliar de Marca de Ambiente no ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="ca757-103">Environment Tag Helper in ASP.NET Core</span></span>
+# <a name="environment-tag-helper-in-aspnet-core"></a><span data-ttu-id="41b14-103">Auxiliar de Marca de Ambiente no ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="41b14-103">Environment Tag Helper in ASP.NET Core</span></span>
 
-<span data-ttu-id="ca757-104">Por [Peter Kellner](https://peterkellner.net) e [Hisham Bin Ateya](https://twitter.com/hishambinateya)</span><span class="sxs-lookup"><span data-stu-id="ca757-104">By [Peter Kellner](https://peterkellner.net) and [Hisham Bin Ateya](https://twitter.com/hishambinateya)</span></span>
+<span data-ttu-id="41b14-104">Por [Peter Kellner](https://peterkellner.net) e [Hisham Bin Ateya](https://twitter.com/hishambinateya)</span><span class="sxs-lookup"><span data-stu-id="41b14-104">By [Peter Kellner](https://peterkellner.net) and [Hisham Bin Ateya](https://twitter.com/hishambinateya)</span></span>
 
-<span data-ttu-id="ca757-105">A marca de ambiente auxiliar processa condicionalmente seu conteúdo embutido com base no [ambiente de hospedagem](xref:fundamentals/environments)atual.</span><span class="sxs-lookup"><span data-stu-id="ca757-105">The Environment Tag Helper conditionally renders its enclosed content based on the current [hosting environment](xref:fundamentals/environments).</span></span> <span data-ttu-id="ca757-106">Atributo único do Auxiliar de Marca de Ambiente, `names`, é uma lista separada por vírgulas de nomes de ambiente.</span><span class="sxs-lookup"><span data-stu-id="ca757-106">The Environment Tag Helper's single attribute, `names`, is a comma-separated list of environment names.</span></span> <span data-ttu-id="ca757-107">Se nenhum dos nomes de ambiente fornecido corresponder ao ambiente atual, o conteúdo contido será renderizado.</span><span class="sxs-lookup"><span data-stu-id="ca757-107">If any of the provided environment names match the current environment, the enclosed content is rendered.</span></span>
+<span data-ttu-id="41b14-105">A marca de ambiente auxiliar processa condicionalmente seu conteúdo embutido com base no [ambiente de hospedagem](xref:fundamentals/environments)atual.</span><span class="sxs-lookup"><span data-stu-id="41b14-105">The Environment Tag Helper conditionally renders its enclosed content based on the current [hosting environment](xref:fundamentals/environments).</span></span> <span data-ttu-id="41b14-106">Atributo único do Auxiliar de Marca de Ambiente, `names`, é uma lista separada por vírgulas de nomes de ambiente.</span><span class="sxs-lookup"><span data-stu-id="41b14-106">The Environment Tag Helper's single attribute, `names`, is a comma-separated list of environment names.</span></span> <span data-ttu-id="41b14-107">Se nenhum dos nomes de ambiente fornecido corresponder ao ambiente atual, o conteúdo contido será renderizado.</span><span class="sxs-lookup"><span data-stu-id="41b14-107">If any of the provided environment names match the current environment, the enclosed content is rendered.</span></span>
 
-<span data-ttu-id="ca757-108">Para obter uma visão geral de Auxiliares de marcação, consulte <xref:mvc/views/tag-helpers/intro>.</span><span class="sxs-lookup"><span data-stu-id="ca757-108">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
+<span data-ttu-id="41b14-108">Para obter uma visão geral de Auxiliares de marcação, consulte <xref:mvc/views/tag-helpers/intro>.</span><span class="sxs-lookup"><span data-stu-id="41b14-108">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
 
-## <a name="environment-tag-helper-attributes"></a><span data-ttu-id="ca757-109">Atributos do Auxiliar de Marca de Ambiente</span><span class="sxs-lookup"><span data-stu-id="ca757-109">Environment Tag Helper Attributes</span></span>
+## <a name="environment-tag-helper-attributes"></a><span data-ttu-id="41b14-109">Atributos do Auxiliar de Marca de Ambiente</span><span class="sxs-lookup"><span data-stu-id="41b14-109">Environment Tag Helper Attributes</span></span>
 
-### <a name="names"></a><span data-ttu-id="ca757-110">nomes</span><span class="sxs-lookup"><span data-stu-id="ca757-110">names</span></span>
+### <a name="names"></a><span data-ttu-id="41b14-110">nomes</span><span class="sxs-lookup"><span data-stu-id="41b14-110">names</span></span>
 
-<span data-ttu-id="ca757-111">`names` aceita um único nome de ambiente de hospedagem ou uma lista separada por vírgula de nomes de ambiente de hospedagem que disparam a renderização do conteúdo contido.</span><span class="sxs-lookup"><span data-stu-id="ca757-111">`names` accepts a single hosting environment name or a comma-separated list of hosting environment names that trigger the rendering of the enclosed content.</span></span>
+<span data-ttu-id="41b14-111">`names` aceita um único nome de ambiente de hospedagem ou uma lista separada por vírgula de nomes de ambiente de hospedagem que disparam a renderização do conteúdo contido.</span><span class="sxs-lookup"><span data-stu-id="41b14-111">`names` accepts a single hosting environment name or a comma-separated list of hosting environment names that trigger the rendering of the enclosed content.</span></span>
 
-<span data-ttu-id="ca757-112">Valores de ambiente são comparados com o valor retornado por [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*).</span><span class="sxs-lookup"><span data-stu-id="ca757-112">Environment values are compared to the current value returned by [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*).</span></span> <span data-ttu-id="ca757-113">A comparação ignora o uso de maiúsculas.</span><span class="sxs-lookup"><span data-stu-id="ca757-113">The comparison ignores case.</span></span>
+<span data-ttu-id="41b14-112">Valores de ambiente são comparados com o valor retornado por [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*).</span><span class="sxs-lookup"><span data-stu-id="41b14-112">Environment values are compared to the current value returned by [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*).</span></span> <span data-ttu-id="41b14-113">A comparação ignora o uso de maiúsculas.</span><span class="sxs-lookup"><span data-stu-id="41b14-113">The comparison ignores case.</span></span>
 
-<span data-ttu-id="ca757-114">O exemplo a seguir usa um Auxiliar de Marca de Ambiente.</span><span class="sxs-lookup"><span data-stu-id="ca757-114">The following example uses an Environment Tag Helper.</span></span> <span data-ttu-id="ca757-115">O conteúdo será renderizado se o ambiente de hospedagem for De Preparo ou de Produção:</span><span class="sxs-lookup"><span data-stu-id="ca757-115">The content is rendered if the hosting environment is Staging or Production:</span></span>
+<span data-ttu-id="41b14-114">O exemplo a seguir usa um Auxiliar de Marca de Ambiente.</span><span class="sxs-lookup"><span data-stu-id="41b14-114">The following example uses an Environment Tag Helper.</span></span> <span data-ttu-id="41b14-115">O conteúdo será renderizado se o ambiente de hospedagem for De Preparo ou de Produção:</span><span class="sxs-lookup"><span data-stu-id="41b14-115">The content is rendered if the hosting environment is Staging or Production:</span></span>
 
 ```cshtml
 <environment names="Staging,Production">
@@ -50,13 +51,13 @@ ms.locfileid: "88633858"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-## <a name="include-and-exclude-attributes"></a><span data-ttu-id="ca757-116">incluir e excluir atributos</span><span class="sxs-lookup"><span data-stu-id="ca757-116">include and exclude attributes</span></span>
+## <a name="include-and-exclude-attributes"></a><span data-ttu-id="41b14-116">incluir e excluir atributos</span><span class="sxs-lookup"><span data-stu-id="41b14-116">include and exclude attributes</span></span>
 
-<span data-ttu-id="ca757-117">`include`o & `exclude` controle de atributos que renderiza o conteúdo incluído com base nos nomes de ambiente de hospedagem incluídos ou excluídos.</span><span class="sxs-lookup"><span data-stu-id="ca757-117">`include` & `exclude` attributes control rendering the enclosed content based on the included or excluded hosting environment names.</span></span>
+<span data-ttu-id="41b14-117">`include`o & `exclude` controle de atributos que renderiza o conteúdo incluído com base nos nomes de ambiente de hospedagem incluídos ou excluídos.</span><span class="sxs-lookup"><span data-stu-id="41b14-117">`include` & `exclude` attributes control rendering the enclosed content based on the included or excluded hosting environment names.</span></span>
 
-### <a name="include"></a><span data-ttu-id="ca757-118">include</span><span class="sxs-lookup"><span data-stu-id="ca757-118">include</span></span>
+### <a name="include"></a><span data-ttu-id="41b14-118">include</span><span class="sxs-lookup"><span data-stu-id="41b14-118">include</span></span>
 
-<span data-ttu-id="ca757-119">A propriedade `include` exibe um comportamento semelhante para o atributo `names`.</span><span class="sxs-lookup"><span data-stu-id="ca757-119">The `include` property exhibits similar behavior to the `names` attribute.</span></span> <span data-ttu-id="ca757-120">Um ambiente listado no valor do atributo `include` deve corresponder ao ambiente de hospedagem do aplicativo ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) para renderizar o conteúdo da marcação `<environment>`.</span><span class="sxs-lookup"><span data-stu-id="ca757-120">An environment listed in the `include` attribute value must match the app's hosting environment ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) to render the content of the `<environment>` tag.</span></span>
+<span data-ttu-id="41b14-119">A propriedade `include` exibe um comportamento semelhante para o atributo `names`.</span><span class="sxs-lookup"><span data-stu-id="41b14-119">The `include` property exhibits similar behavior to the `names` attribute.</span></span> <span data-ttu-id="41b14-120">Um ambiente listado no valor do atributo `include` deve corresponder ao ambiente de hospedagem do aplicativo ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) para renderizar o conteúdo da marcação `<environment>`.</span><span class="sxs-lookup"><span data-stu-id="41b14-120">An environment listed in the `include` attribute value must match the app's hosting environment ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) to render the content of the `<environment>` tag.</span></span>
 
 ```cshtml
 <environment include="Staging,Production">
@@ -64,9 +65,9 @@ ms.locfileid: "88633858"
 </environment>
 ```
 
-### <a name="exclude"></a><span data-ttu-id="ca757-121">excluir</span><span class="sxs-lookup"><span data-stu-id="ca757-121">exclude</span></span>
+### <a name="exclude"></a><span data-ttu-id="41b14-121">excluir</span><span class="sxs-lookup"><span data-stu-id="41b14-121">exclude</span></span>
 
-<span data-ttu-id="ca757-122">Em contraste com o atributo `include`, o conteúdo da marcação `<environment>` é processado quando o ambiente de hospedagem não corresponde a um ambiente listado no valor do atributo `exclude`.</span><span class="sxs-lookup"><span data-stu-id="ca757-122">In contrast to the `include` attribute, the content of the `<environment>` tag is rendered when the hosting environment doesn't match an environment listed in the `exclude` attribute value.</span></span>
+<span data-ttu-id="41b14-122">Em contraste com o atributo `include`, o conteúdo da marcação `<environment>` é processado quando o ambiente de hospedagem não corresponde a um ambiente listado no valor do atributo `exclude`.</span><span class="sxs-lookup"><span data-stu-id="41b14-122">In contrast to the `include` attribute, the content of the `<environment>` tag is rendered when the hosting environment doesn't match an environment listed in the `exclude` attribute value.</span></span>
 
 ```cshtml
 <environment exclude="Development">
@@ -76,6 +77,6 @@ ms.locfileid: "88633858"
 
 ::: moniker-end
 
-## <a name="additional-resources"></a><span data-ttu-id="ca757-123">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="ca757-123">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="41b14-123">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="41b14-123">Additional resources</span></span>
 
 * <xref:fundamentals/environments>

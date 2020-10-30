@@ -6,37 +6,38 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: grpc/clientfactory
-ms.openlocfilehash: dfdcb8d73017c0c1ccb4cf2aaffdbe7c49030179
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c63bf495f558237ed801881d378953119791b8ce
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633728"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060944"
 ---
-# <a name="grpc-client-factory-integration-in-net-core"></a><span data-ttu-id="eb000-103">integração do gRPC Client Factory no .NET Core</span><span class="sxs-lookup"><span data-stu-id="eb000-103">gRPC client factory integration in .NET Core</span></span>
+# <a name="grpc-client-factory-integration-in-net-core"></a><span data-ttu-id="d9ad4-103">integração do gRPC Client Factory no .NET Core</span><span class="sxs-lookup"><span data-stu-id="d9ad4-103">gRPC client factory integration in .NET Core</span></span>
 
-<span data-ttu-id="eb000-104">a integração do gRPC com `HttpClientFactory` o oferece uma maneira centralizada de criar clientes do gRPC.</span><span class="sxs-lookup"><span data-stu-id="eb000-104">gRPC integration with `HttpClientFactory` offers a centralized way to create gRPC clients.</span></span> <span data-ttu-id="eb000-105">Ele pode ser usado como uma alternativa para [configurar instâncias de cliente gRPC](xref:grpc/client)autônomas.</span><span class="sxs-lookup"><span data-stu-id="eb000-105">It can be used as an alternative to [configuring stand-alone gRPC client instances](xref:grpc/client).</span></span> <span data-ttu-id="eb000-106">A integração de fábrica está disponível no pacote NuGet do [.net. ClientFactory do Grpc](https://www.nuget.org/packages/Grpc.Net.ClientFactory) .</span><span class="sxs-lookup"><span data-stu-id="eb000-106">Factory integration is available in the [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet package.</span></span>
+<span data-ttu-id="d9ad4-104">a integração do gRPC com `HttpClientFactory` o oferece uma maneira centralizada de criar clientes do gRPC.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-104">gRPC integration with `HttpClientFactory` offers a centralized way to create gRPC clients.</span></span> <span data-ttu-id="d9ad4-105">Ele pode ser usado como uma alternativa para [configurar instâncias de cliente gRPC](xref:grpc/client)autônomas.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-105">It can be used as an alternative to [configuring stand-alone gRPC client instances](xref:grpc/client).</span></span> <span data-ttu-id="d9ad4-106">A integração de fábrica está disponível no pacote NuGet do [.net. ClientFactory do Grpc](https://www.nuget.org/packages/Grpc.Net.ClientFactory) .</span><span class="sxs-lookup"><span data-stu-id="d9ad4-106">Factory integration is available in the [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) NuGet package.</span></span>
 
-<span data-ttu-id="eb000-107">A fábrica oferece os seguintes benefícios:</span><span class="sxs-lookup"><span data-stu-id="eb000-107">The factory offers the following benefits:</span></span>
+<span data-ttu-id="d9ad4-107">A fábrica oferece os seguintes benefícios:</span><span class="sxs-lookup"><span data-stu-id="d9ad4-107">The factory offers the following benefits:</span></span>
 
-* <span data-ttu-id="eb000-108">Fornece um local central para configurar instâncias de cliente gRPC lógicas</span><span class="sxs-lookup"><span data-stu-id="eb000-108">Provides a central location for configuring logical gRPC client instances</span></span>
-* <span data-ttu-id="eb000-109">Gerencia o tempo de vida do subjacente `HttpClientMessageHandler`</span><span class="sxs-lookup"><span data-stu-id="eb000-109">Manages the lifetime of the underlying `HttpClientMessageHandler`</span></span>
-* <span data-ttu-id="eb000-110">Propagação automática de prazo e cancelamento em um serviço de ASP.NET Core gRPC</span><span class="sxs-lookup"><span data-stu-id="eb000-110">Automatic propagation of deadline and cancellation in an ASP.NET Core gRPC service</span></span>
+* <span data-ttu-id="d9ad4-108">Fornece um local central para configurar instâncias de cliente gRPC lógicas</span><span class="sxs-lookup"><span data-stu-id="d9ad4-108">Provides a central location for configuring logical gRPC client instances</span></span>
+* <span data-ttu-id="d9ad4-109">Gerencia o tempo de vida do subjacente `HttpClientMessageHandler`</span><span class="sxs-lookup"><span data-stu-id="d9ad4-109">Manages the lifetime of the underlying `HttpClientMessageHandler`</span></span>
+* <span data-ttu-id="d9ad4-110">Propagação automática de prazo e cancelamento em um serviço de ASP.NET Core gRPC</span><span class="sxs-lookup"><span data-stu-id="d9ad4-110">Automatic propagation of deadline and cancellation in an ASP.NET Core gRPC service</span></span>
 
-## <a name="register-grpc-clients"></a><span data-ttu-id="eb000-111">Registrar clientes gRPC</span><span class="sxs-lookup"><span data-stu-id="eb000-111">Register gRPC clients</span></span>
+## <a name="register-grpc-clients"></a><span data-ttu-id="d9ad4-111">Registrar clientes gRPC</span><span class="sxs-lookup"><span data-stu-id="d9ad4-111">Register gRPC clients</span></span>
 
-<span data-ttu-id="eb000-112">Para registrar um cliente gRPC, o `AddGrpcClient` método de extensão genérico pode ser usado no `Startup.ConfigureServices` , especificando a classe de cliente tipada gRPC e o endereço de serviço:</span><span class="sxs-lookup"><span data-stu-id="eb000-112">To register a gRPC client, the generic `AddGrpcClient` extension method can be used within `Startup.ConfigureServices`, specifying the gRPC typed client class and service address:</span></span>
+<span data-ttu-id="d9ad4-112">Para registrar um cliente gRPC, o `AddGrpcClient` método de extensão genérico pode ser usado no `Startup.ConfigureServices` , especificando a classe de cliente tipada gRPC e o endereço de serviço:</span><span class="sxs-lookup"><span data-stu-id="d9ad4-112">To register a gRPC client, the generic `AddGrpcClient` extension method can be used within `Startup.ConfigureServices`, specifying the gRPC typed client class and service address:</span></span>
 
 ```csharp
 services.AddGrpcClient<Greeter.GreeterClient>(o =>
@@ -45,7 +46,7 @@ services.AddGrpcClient<Greeter.GreeterClient>(o =>
 });
 ```
 
-<span data-ttu-id="eb000-113">O tipo de cliente gRPC é registrado como transitório com injeção de dependência (DI).</span><span class="sxs-lookup"><span data-stu-id="eb000-113">The gRPC client type is registered as transient with dependency injection (DI).</span></span> <span data-ttu-id="eb000-114">Agora, o cliente pode ser injetado e consumido diretamente em tipos criados por DI.</span><span class="sxs-lookup"><span data-stu-id="eb000-114">The client can now be injected and consumed directly in types created by DI.</span></span> <span data-ttu-id="eb000-115">ASP.NET Core controladores MVC, SignalR hubs e serviços gRPCs são locais onde os clientes gRPC podem ser injetados automaticamente:</span><span class="sxs-lookup"><span data-stu-id="eb000-115">ASP.NET Core MVC controllers, SignalR hubs and gRPC services are places where gRPC clients can automatically be injected:</span></span>
+<span data-ttu-id="d9ad4-113">O tipo de cliente gRPC é registrado como transitório com injeção de dependência (DI).</span><span class="sxs-lookup"><span data-stu-id="d9ad4-113">The gRPC client type is registered as transient with dependency injection (DI).</span></span> <span data-ttu-id="d9ad4-114">Agora, o cliente pode ser injetado e consumido diretamente em tipos criados por DI.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-114">The client can now be injected and consumed directly in types created by DI.</span></span> <span data-ttu-id="d9ad4-115">ASP.NET Core controladores MVC, :::no-loc(SignalR)::: hubs e serviços gRPCs são locais onde os clientes gRPC podem ser injetados automaticamente:</span><span class="sxs-lookup"><span data-stu-id="d9ad4-115">ASP.NET Core MVC controllers, :::no-loc(SignalR)::: hubs and gRPC services are places where gRPC clients can automatically be injected:</span></span>
 
 ```csharp
 public class AggregatorService : Aggregator.AggregatorBase
@@ -72,9 +73,9 @@ public class AggregatorService : Aggregator.AggregatorBase
 }
 ```
 
-## <a name="configure-httpclient"></a><span data-ttu-id="eb000-116">Configurar o HttpClient</span><span class="sxs-lookup"><span data-stu-id="eb000-116">Configure HttpClient</span></span>
+## <a name="configure-httpclient"></a><span data-ttu-id="d9ad4-116">Configurar o HttpClient</span><span class="sxs-lookup"><span data-stu-id="d9ad4-116">Configure HttpClient</span></span>
 
-<span data-ttu-id="eb000-117">`HttpClientFactory` cria o `HttpClient` usado pelo cliente gRPC.</span><span class="sxs-lookup"><span data-stu-id="eb000-117">`HttpClientFactory` creates the `HttpClient` used by the gRPC client.</span></span> <span data-ttu-id="eb000-118">Os `HttpClientFactory` métodos padrão podem ser usados para adicionar middleware de solicitação de saída ou para configurar o subjacente `HttpClientHandler` do `HttpClient` :</span><span class="sxs-lookup"><span data-stu-id="eb000-118">Standard `HttpClientFactory` methods can be used to add outgoing request middleware or to configure the underlying `HttpClientHandler` of the `HttpClient`:</span></span>
+<span data-ttu-id="d9ad4-117">`HttpClientFactory` cria o `HttpClient` usado pelo cliente gRPC.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-117">`HttpClientFactory` creates the `HttpClient` used by the gRPC client.</span></span> <span data-ttu-id="d9ad4-118">Os `HttpClientFactory` métodos padrão podem ser usados para adicionar middleware de solicitação de saída ou para configurar o subjacente `HttpClientHandler` do `HttpClient` :</span><span class="sxs-lookup"><span data-stu-id="d9ad4-118">Standard `HttpClientFactory` methods can be used to add outgoing request middleware or to configure the underlying `HttpClientHandler` of the `HttpClient`:</span></span>
 
 ```csharp
 services
@@ -90,14 +91,14 @@ services
     });
 ```
 
-<span data-ttu-id="eb000-119">Para obter mais informações, consulte [fazer solicitações HTTP usando IHttpClientFactory](xref:fundamentals/http-requests).</span><span class="sxs-lookup"><span data-stu-id="eb000-119">For more information, see [Make HTTP requests using IHttpClientFactory](xref:fundamentals/http-requests).</span></span>
+<span data-ttu-id="d9ad4-119">Para obter mais informações, consulte [fazer solicitações HTTP usando IHttpClientFactory](xref:fundamentals/http-requests).</span><span class="sxs-lookup"><span data-stu-id="d9ad4-119">For more information, see [Make HTTP requests using IHttpClientFactory](xref:fundamentals/http-requests).</span></span>
 
-## <a name="configure-channel-and-interceptors"></a><span data-ttu-id="eb000-120">Configurar canal e interceptores</span><span class="sxs-lookup"><span data-stu-id="eb000-120">Configure Channel and Interceptors</span></span>
+## <a name="configure-channel-and-interceptors"></a><span data-ttu-id="d9ad4-120">Configurar canal e interceptores</span><span class="sxs-lookup"><span data-stu-id="d9ad4-120">Configure Channel and Interceptors</span></span>
 
-<span data-ttu-id="eb000-121">os métodos específicos do gRPC estão disponíveis para:</span><span class="sxs-lookup"><span data-stu-id="eb000-121">gRPC-specific methods are available to:</span></span>
+<span data-ttu-id="d9ad4-121">os métodos específicos do gRPC estão disponíveis para:</span><span class="sxs-lookup"><span data-stu-id="d9ad4-121">gRPC-specific methods are available to:</span></span>
 
-* <span data-ttu-id="eb000-122">Configure um canal subjacente do cliente gRPC.</span><span class="sxs-lookup"><span data-stu-id="eb000-122">Configure a gRPC client's underlying channel.</span></span>
-* <span data-ttu-id="eb000-123">Adicione `Interceptor` instâncias que o cliente usará ao fazer chamadas gRPC.</span><span class="sxs-lookup"><span data-stu-id="eb000-123">Add `Interceptor` instances that the client will use when making gRPC calls.</span></span>
+* <span data-ttu-id="d9ad4-122">Configure um canal subjacente do cliente gRPC.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-122">Configure a gRPC client's underlying channel.</span></span>
+* <span data-ttu-id="d9ad4-123">Adicione `Interceptor` instâncias que o cliente usará ao fazer chamadas gRPC.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-123">Add `Interceptor` instances that the client will use when making gRPC calls.</span></span>
 
 ```csharp
 services
@@ -112,11 +113,11 @@ services
     });
 ```
 
-## <a name="deadline-and-cancellation-propagation"></a><span data-ttu-id="eb000-124">Data limite e propagação de cancelamento</span><span class="sxs-lookup"><span data-stu-id="eb000-124">Deadline and cancellation propagation</span></span>
+## <a name="deadline-and-cancellation-propagation"></a><span data-ttu-id="d9ad4-124">Data limite e propagação de cancelamento</span><span class="sxs-lookup"><span data-stu-id="d9ad4-124">Deadline and cancellation propagation</span></span>
 
-<span data-ttu-id="eb000-125">Os clientes gRPC criados pela fábrica em um serviço gRPC podem ser configurados com `EnableCallContextPropagation()` o para propagar automaticamente o token de prazo e cancelamento para chamadas filhas.</span><span class="sxs-lookup"><span data-stu-id="eb000-125">gRPC clients created by the factory in a gRPC service can be configured with `EnableCallContextPropagation()` to automatically propagate the deadline and cancellation token to child calls.</span></span> <span data-ttu-id="eb000-126">O `EnableCallContextPropagation()` método de extensão está disponível no pacote NuGet [Grpc. AspNetCore. Server. ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) .</span><span class="sxs-lookup"><span data-stu-id="eb000-126">The `EnableCallContextPropagation()` extension method is available in the [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet package.</span></span>
+<span data-ttu-id="d9ad4-125">Os clientes gRPC criados pela fábrica em um serviço gRPC podem ser configurados com `EnableCallContextPropagation()` o para propagar automaticamente o token de prazo e cancelamento para chamadas filhas.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-125">gRPC clients created by the factory in a gRPC service can be configured with `EnableCallContextPropagation()` to automatically propagate the deadline and cancellation token to child calls.</span></span> <span data-ttu-id="d9ad4-126">O `EnableCallContextPropagation()` método de extensão está disponível no pacote NuGet [Grpc. AspNetCore. Server. ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) .</span><span class="sxs-lookup"><span data-stu-id="d9ad4-126">The `EnableCallContextPropagation()` extension method is available in the [Grpc.AspNetCore.Server.ClientFactory](https://www.nuget.org/packages/Grpc.AspNetCore.Server.ClientFactory) NuGet package.</span></span>
 
-<span data-ttu-id="eb000-127">A propagação de contexto de chamada funciona lendo o data limite e o token de cancelamento do contexto de solicitação gRPC atual e propagando-os automaticamente para chamadas de saída feitas pelo cliente gRPC.</span><span class="sxs-lookup"><span data-stu-id="eb000-127">Call context propagation works by reading the deadline and cancellation token from the current gRPC request context and automatically propagating them to outgoing calls made by the gRPC client.</span></span> <span data-ttu-id="eb000-128">A propagação de contexto de chamada é uma maneira excelente de garantir que cenários gRPC complexos e aninhados sempre propaguem o prazo e o cancelamento.</span><span class="sxs-lookup"><span data-stu-id="eb000-128">Call context propagation is an excellent way of ensuring that complex, nested gRPC scenarios always propagate the deadline and cancellation.</span></span>
+<span data-ttu-id="d9ad4-127">A propagação de contexto de chamada funciona lendo o data limite e o token de cancelamento do contexto de solicitação gRPC atual e propagando-os automaticamente para chamadas de saída feitas pelo cliente gRPC.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-127">Call context propagation works by reading the deadline and cancellation token from the current gRPC request context and automatically propagating them to outgoing calls made by the gRPC client.</span></span> <span data-ttu-id="d9ad4-128">A propagação de contexto de chamada é uma maneira excelente de garantir que cenários gRPC complexos e aninhados sempre propaguem o prazo e o cancelamento.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-128">Call context propagation is an excellent way of ensuring that complex, nested gRPC scenarios always propagate the deadline and cancellation.</span></span>
 
 ```csharp
 services
@@ -127,7 +128,7 @@ services
     .EnableCallContextPropagation();
 ```
 
-<span data-ttu-id="eb000-129">Por padrão, `EnableCallContextPropagation` o gerará um erro se o cliente for usado fora do contexto de uma chamada gRPC.</span><span class="sxs-lookup"><span data-stu-id="eb000-129">By default, `EnableCallContextPropagation` raises an error if the client is used outside the context of a gRPC call.</span></span> <span data-ttu-id="eb000-130">O erro foi projetado para alertá-lo de que não há um contexto de chamada a ser propagado.</span><span class="sxs-lookup"><span data-stu-id="eb000-130">The error is designed to alert you that there isn't a call context to propagate.</span></span> <span data-ttu-id="eb000-131">Se você quiser usar o cliente fora de um contexto de chamada, suprimir o erro quando o cliente for configurado com `SuppressContextNotFoundErrors` :</span><span class="sxs-lookup"><span data-stu-id="eb000-131">If you want to use the client outside of a call context, suppress the error when the client is configured with `SuppressContextNotFoundErrors`:</span></span>
+<span data-ttu-id="d9ad4-129">Por padrão, `EnableCallContextPropagation` o gerará um erro se o cliente for usado fora do contexto de uma chamada gRPC.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-129">By default, `EnableCallContextPropagation` raises an error if the client is used outside the context of a gRPC call.</span></span> <span data-ttu-id="d9ad4-130">O erro foi projetado para alertá-lo de que não há um contexto de chamada a ser propagado.</span><span class="sxs-lookup"><span data-stu-id="d9ad4-130">The error is designed to alert you that there isn't a call context to propagate.</span></span> <span data-ttu-id="d9ad4-131">Se você quiser usar o cliente fora de um contexto de chamada, suprimir o erro quando o cliente for configurado com `SuppressContextNotFoundErrors` :</span><span class="sxs-lookup"><span data-stu-id="d9ad4-131">If you want to use the client outside of a call context, suppress the error when the client is configured with `SuppressContextNotFoundErrors`:</span></span>
 
 ```csharp
 services
@@ -138,9 +139,9 @@ services
     .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
 ```
 
-<span data-ttu-id="eb000-132">Para obter mais informações sobre prazos e cancelamento de RPC, consulte [ciclo de vida RPC](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).</span><span class="sxs-lookup"><span data-stu-id="eb000-132">For more information about deadlines and RPC cancellation, see [RPC life cycle](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).</span></span>
+<span data-ttu-id="d9ad4-132">Para obter mais informações sobre prazos e cancelamento de RPC, consulte [ciclo de vida RPC](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).</span><span class="sxs-lookup"><span data-stu-id="d9ad4-132">For more information about deadlines and RPC cancellation, see [RPC life cycle](https://www.grpc.io/docs/guides/concepts/#rpc-life-cycle).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="eb000-133">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="eb000-133">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="d9ad4-133">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="d9ad4-133">Additional resources</span></span>
 
 * <xref:grpc/client>
 * <xref:fundamentals/http-requests>
