@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 629baeba545142e156e1a51107b470c932dae3cb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d476c836e8d497ca1291992dda38da1fc9f59ed2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629269"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054366"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutorial: manipular o ASP.NET MVC de simultaneidade com EF Core
 
@@ -68,7 +69,7 @@ A alternativa à simultaneidade pessimista é a simultaneidade otimista. Simulta
 
 ![Alterando o orçamento para 0](concurrency/_static/change-budget.png)
 
-Antes que Alice clique em **Salvar**, Julio visita a mesma página e altera o campo Data de Início de 1/9/2007 para 1/9/2013.
+Antes que Alice clique em **Salvar** , Julio visita a mesma página e altera o campo Data de Início de 1/9/2007 para 1/9/2013.
 
 ![Alterando a data de início para 2013](concurrency/_static/change-date.png)
 
@@ -86,11 +87,11 @@ Algumas das opções incluem o seguinte:
 
 * Você não pode deixar a alteração de Julio substituir a alteração de Alice.
 
-     Na próxima vez que alguém navegar pelo departamento de inglês, verá 1/9/2013 e o valor de US$ 350.000,00 restaurado. Isso é chamado de um cenário *O cliente vence* ou *O último vence*. (Todos os valores do cliente têm precedência sobre o que está no armazenamento de dados.) Conforme observado na introdução a esta seção, se você não fizer qualquer codificação para manipulação de simultaneidade, isso ocorrerá automaticamente.
+     Na próxima vez que alguém navegar pelo departamento de inglês, verá 1/9/2013 e o valor de US$ 350.000,00 restaurado. Isso é chamado de um cenário *O cliente vence* ou *O último vence* . (Todos os valores do cliente têm precedência sobre o que está no armazenamento de dados.) Conforme observado na introdução a esta seção, se você não fizer qualquer codificação para manipulação de simultaneidade, isso ocorrerá automaticamente.
 
 * Você pode impedir que as alterações de Julio sejam atualizadas no banco de dados.
 
-     Normalmente, você exibirá uma mensagem de erro, mostrará a ele o estado atual dos dados e permitirá a ele aplicar as alterações novamente se ele ainda desejar fazê-las. Isso é chamado de um cenário *O armazenamento vence*. (Os valores de armazenamento de dados têm precedência sobre os valores enviados pelo cliente.) Você implementará o cenário armazenar vence neste tutorial. Esse método garante que nenhuma alteração é substituída sem que um usuário seja alertado sobre o que está acontecendo.
+     Normalmente, você exibirá uma mensagem de erro, mostrará a ele o estado atual dos dados e permitirá a ele aplicar as alterações novamente se ele ainda desejar fazê-las. Isso é chamado de um cenário *O armazenamento vence* . (Os valores de armazenamento de dados têm precedência sobre os valores enviados pelo cliente.) Você implementará o cenário armazenar vence neste tutorial. Esse método garante que nenhuma alteração é substituída sem que um usuário seja alertado sobre o que está acontecendo.
 
 ### <a name="detecting-concurrency-conflicts"></a>Detectando conflitos de simultaneidade
 
@@ -110,13 +111,13 @@ No restante deste tutorial, você adicionará uma propriedade de acompanhamento 
 
 ## <a name="add-a-tracking-property"></a>Adicionar uma propriedade de acompanhamento
 
-Em *Models/Department.cs*, adicione uma propriedade de controle chamada RowVersion:
+Em *Models/Department.cs* , adicione uma propriedade de controle chamada RowVersion:
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
 O atributo `Timestamp` especifica que essa coluna será incluída na cláusula Where de comandos Update e Delete enviados ao banco de dados. O atributo é chamado `Timestamp` porque as versões anteriores do SQL Server usavam um tipo de dados `timestamp` do SQL antes de o `rowversion` do SQL substituí-lo. O tipo do .NET para `rowversion` é uma matriz de bytes.
 
-Se preferir usar a API fluente, use o método `IsConcurrencyToken` (em *Data/SchoolContext.cs*) para especificar a propriedade de acompanhamento, conforme mostrado no seguinte exemplo:
+Se preferir usar a API fluente, use o método `IsConcurrencyToken` (em *Data/SchoolContext.cs* ) para especificar a propriedade de acompanhamento, conforme mostrado no seguinte exemplo:
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -141,7 +142,7 @@ Gere por scaffolding um controlador e exibições Departamentos, como você fez 
 
 ![Gerar o departamento por scaffolding](concurrency/_static/add-departments-controller.png)
 
-No arquivo *DepartmentsController.cs*, altere todas as quatro ocorrências de "FirstMidName" para "FullName", de modo que as listas suspensas do administrador do departamento contenham o nome completo do instrutor em vez de apenas o sobrenome.
+No arquivo *DepartmentsController.cs* , altere todas as quatro ocorrências de "FirstMidName" para "FullName", de modo que as listas suspensas do administrador do departamento contenham o nome completo do instrutor em vez de apenas o sobrenome.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
@@ -187,7 +188,7 @@ O código adiciona uma mensagem de erro personalizada a cada coluna que tem valo
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
 
-Por fim, o código define o valor `RowVersion` do `departmentToUpdate` com o novo valor recuperado do banco de dados. Esse novo valor `RowVersion` será armazenado no campo oculto quando a página Editar for exibida novamente, e na próxima vez que o usuário clicar em **Salvar**, somente os erros de simultaneidade que ocorrem desde a nova exibição da página Editar serão capturados.
+Por fim, o código define o valor `RowVersion` do `departmentToUpdate` com o novo valor recuperado do banco de dados. Esse novo valor `RowVersion` será armazenado no campo oculto quando a página Editar for exibida novamente, e na próxima vez que o usuário clicar em **Salvar** , somente os erros de simultaneidade que ocorrem desde a nova exibição da página Editar serão capturados.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
 
@@ -195,7 +196,7 @@ A instrução `ModelState.Remove` é obrigatória porque `ModelState` tem o valo
 
 ## <a name="update-edit-view"></a>Atualizar a exibição de Edição
 
-Em *Views/Departments/Edit.cshtml*, faça as seguintes alterações:
+Em *Views/Departments/Edit.cshtml* , faça as seguintes alterações:
 
 * Adicione um campo oculto para salvar o valor da propriedade `RowVersion`, imediatamente após o campo oculto da propriedade `DepartmentID`.
 
@@ -207,7 +208,7 @@ Em *Views/Departments/Edit.cshtml*, faça as seguintes alterações:
 
 Execute o aplicativo e acesse a página Índice de Departamentos. Clique com o botão direito do mouse na hiperlink **Editar** do departamento de inglês e selecione **Abrir em uma nova guia** e, em seguida, clique no hiperlink **Editar** no departamento de inglês. As duas guias do navegador agora exibem as mesmas informações.
 
-Altere um campo na primeira guia do navegador e clique em **Salvar**.
+Altere um campo na primeira guia do navegador e clique em **Salvar** .
 
 ![Página 1 Editar Departamento após a alteração](concurrency/_static/edit-after-change-1.png)
 
@@ -229,7 +230,7 @@ Para a página Excluir, o Entity Framework detecta conflitos de simultaneidade c
 
 ### <a name="update-the-delete-methods-in-the-departments-controller"></a>Atualizar os métodos Excluir no controlador Departamentos
 
-Em *DepartmentsController.cs*, substitua o método HttpGet `Delete` pelo seguinte código:
+Em *DepartmentsController.cs* , substitua o método HttpGet `Delete` pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
@@ -259,7 +260,7 @@ Se um erro de simultaneidade é capturado, o código exibe novamente a página C
 
 ### <a name="update-the-delete-view"></a>Atualizar a exibição Excluir
 
-Em *Views/Departments/Delete.cshtml*, substitua o código gerado por scaffolding pelo seguinte código que adiciona um campo de mensagem de erro e campos ocultos às propriedades DepartmentID e RowVersion. As alterações são realçadas.
+Em *Views/Departments/Delete.cshtml* , substitua o código gerado por scaffolding pelo seguinte código que adiciona um campo de mensagem de erro e campos ocultos às propriedades DepartmentID e RowVersion. As alterações são realçadas.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
@@ -267,7 +268,7 @@ Isso faz as seguintes alterações:
 
 * Adiciona uma mensagem de erro entre os cabeçalhos `h2` e `h3`.
 
-* Substitua FirstMidName por FullName no campo **Administrador**.
+* Substitua FirstMidName por FullName no campo **Administrador** .
 
 * Remove o campo RowVersion.
 
@@ -275,11 +276,11 @@ Isso faz as seguintes alterações:
 
 Execute o aplicativo e acesse a página Índice de Departamentos. Clique com o botão direito do mouse na hiperlink **Excluir** do departamento de inglês e selecione **Abrir em uma nova guia** e, em seguida, na primeira guia, clique no hiperlink **Editar** no departamento de inglês.
 
-Na primeira janela, altere um dos valores e clique em **Salvar**:
+Na primeira janela, altere um dos valores e clique em **Salvar** :
 
 ![Página Editar Departamento após a alteração antes da exclusão](concurrency/_static/edit-after-change-for-delete.png)
 
-Na segunda guia, clique em **Excluir**. Você verá a mensagem de erro de simultaneidade e os valores de Departamento serão atualizados com o que está atualmente no banco de dados.
+Na segunda guia, clique em **Excluir** . Você verá a mensagem de erro de simultaneidade e os valores de Departamento serão atualizados com o que está atualmente no banco de dados.
 
 ![Página Confirmação de Exclusão de Departamento com erro de simultaneidade](concurrency/_static/delete-error.png)
 

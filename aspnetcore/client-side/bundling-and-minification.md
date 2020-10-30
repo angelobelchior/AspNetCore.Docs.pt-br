@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: f696df0b421e5aab6f50cfaec3ca8edac894cea9
-ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
+ms.openlocfilehash: 7dd11ceb7a7c01ce1042f50595013b7fe7f1cd5c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379387"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054834"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Empacotar e reduzirr ativos estáticos no ASP.NET Core
 
@@ -64,7 +65,7 @@ Original | Renomeado
 
 A tabela a seguir descreve as diferenças entre os ativos de carregamento individualmente e o uso de agrupamento e minificação:
 
-Ação | Com B/M | Sem B/M | Alteração
+Ação | Com B/M | Sem B/M | Alterar
 --- | :---: | :---: | :---:
 Solicitações de arquivo  | 7   | 18     | 157%
 KB transferidos | 156 | 264,68 | 70%
@@ -89,25 +90,25 @@ No ASP.NET Core 2,0 ou anterior, os modelos de Razor projeto MVC e pages fornece
 
 ::: moniker range=">= aspnetcore-2.1"
 
-No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno*, à raiz do projeto MVC ou de Razor páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
+No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno* , à raiz do projeto MVC ou de Razor páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
 
 ::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-O *bundleconfig.jsno* arquivo define as opções para cada pacote. No exemplo anterior, uma única configuração de pacote é definida para os arquivos JavaScript (*wwwroot/js/site.js*) e folha de estilo (*wwwroot/CSS/site. css*) personalizados.
+O *bundleconfig.jsno* arquivo define as opções para cada pacote. No exemplo anterior, uma única configuração de pacote é definida para os arquivos JavaScript ( *wwwroot/js/site.js* ) e folha de estilo ( *wwwroot/CSS/site. css* ) personalizados.
 
 As opções de configuração incluem:
 
 * `outputFileName`: O nome do arquivo de pacote para saída. Pode conter um caminho relativo do *bundleconfig.jsno* arquivo. **Necessário**
-* `inputFiles`: Uma matriz de arquivos para agrupar. Esses são caminhos relativos ao arquivo de configuração. **opcional**, * um valor vazio resulta em um arquivo de saída vazio. Há suporte para padrões de [mascaramento](https://www.tldp.org/LDP/abs/html/globbingref.html) .
-* `minify`: As opções de minificação para o tipo de saída. **opcional**, *padrão- `minify: { enabled: true }` *
+* `inputFiles`: Uma matriz de arquivos para agrupar. Esses são caminhos relativos ao arquivo de configuração. **opcional** , * um valor vazio resulta em um arquivo de saída vazio. Há suporte para padrões de [mascaramento](https://www.tldp.org/LDP/abs/html/globbingref.html) .
+* `minify`: As opções de minificação para o tipo de saída. **opcional** , *padrão- `minify: { enabled: true }`*
   * As opções de configuração estão disponíveis por tipo de arquivo de saída.
     * [Minificador CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minificador JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minificador HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Sinalizador que indica se os arquivos gerados devem ser adicionados ao arquivo de projeto. **opcional**, *padrão-falso*
-* `sourceMap`: Sinalizador que indica se um mapa de origem deve ser gerado para o arquivo agrupado. **opcional**, *padrão-falso*
+* `includeInProject`: Sinalizador que indica se os arquivos gerados devem ser adicionados ao arquivo de projeto. **opcional** , *padrão-falso*
+* `sourceMap`: Sinalizador que indica se um mapa de origem deve ser gerado para o arquivo agrupado. **opcional** , *padrão-falso*
 * `sourceMapRootPath`: O caminho raiz para armazenar o arquivo de mapa de origem gerado.
 
 ## <a name="add-files-to-workflow"></a>Adicionar arquivos ao fluxo de trabalho
@@ -116,7 +117,7 @@ Considere um exemplo no qual um arquivo *. CSS personalizado* adicional é adici
 
 [!code-css[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/css/custom.css)]
 
-Para reduzir *Custom. css* e agrupá-lo com *site. css* em um arquivo *site. min. css* , adicione o caminho relativo para *bundleconfig.jsem*:
+Para reduzir *Custom. css* e agrupá-lo com *site. css* em um arquivo *site. min. css* , adicione o caminho relativo para *bundleconfig.jsem* :
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig2.json?highlight=6)]
 
@@ -178,7 +179,7 @@ Adicione um *package.jsno* arquivo, com o seguinte `devDependencies` , à raiz d
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
-Instale as dependências executando o seguinte comando no mesmo nível que *package.jsem*:
+Instale as dependências executando o seguinte comando no mesmo nível que *package.jsem* :
 
 ```bash
 npm i

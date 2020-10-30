@@ -5,6 +5,7 @@ description: Usar Grunt no ASP.NET Core
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/using-grunt
-ms.openlocfilehash: e8e4459f7fe496135d6cfd7f4ff52511a5e1c064
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 374c23f440dcf301b3a1e1e9e6684dd050f218c6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628021"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054548"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Usar Grunt no ASP.NET Core
 
@@ -31,17 +32,17 @@ Este exemplo usa um projeto de ASP.NET Core vazio como ponto de partida, para mo
 
 O exemplo concluído limpa o diretório de implantação de destino, combina arquivos JavaScript, verifica a qualidade do código, condensa o conteúdo do arquivo JavaScript e implanta na raiz do seu aplicativo Web. Usaremos os seguintes pacotes:
 
-* **Grunt**: o pacote do executor de tarefa do Grunt.
+* **Grunt** : o pacote do executor de tarefa do Grunt.
 
-* **Grunt-contrib-Clean**: um plug-in que remove arquivos ou diretórios.
+* **Grunt-contrib-Clean** : um plug-in que remove arquivos ou diretórios.
 
-* **Grunt-contrib-jshint**: um plug-in que revisa a qualidade do código JavaScript.
+* **Grunt-contrib-jshint** : um plug-in que revisa a qualidade do código JavaScript.
 
-* **Grunt-contrib-Concat**: um plug-in que une arquivos em um único arquivo.
+* **Grunt-contrib-Concat** : um plug-in que une arquivos em um único arquivo.
 
-* **Grunt-contrib-uglify**: um plug-in que minifies JavaScript para reduzir o tamanho.
+* **Grunt-contrib-uglify** : um plug-in que minifies JavaScript para reduzir o tamanho.
 
-* **Grunt-contrib-Watch**: um plug-in que observa a atividade do arquivo.
+* **Grunt-contrib-Watch** : um plug-in que observa a atividade do arquivo.
 
 ## <a name="preparing-the-application"></a>Preparando o aplicativo
 
@@ -57,7 +58,7 @@ Para começar, configure um novo aplicativo Web vazio e adicione arquivos de exe
 
 4. Adicione uma nova pasta chamada `TypeScript` ao diretório do projeto.
 
-5. Antes de adicionar qualquer arquivo, verifique se o Visual Studio tem a opção ' Compilar ao salvar ' para arquivos TypeScript verificados. Navegue até **ferramentas**  >  **Opções**  >  **Editor de texto**  >  **Typescript**  >  **projeto**typescript:
+5. Antes de adicionar qualquer arquivo, verifique se o Visual Studio tem a opção ' Compilar ao salvar ' para arquivos TypeScript verificados. Navegue até **ferramentas**  >  **Opções**  >  **Editor de texto**  >  **Typescript**  >  **projeto** typescript:
 
     ![opções de configuração da compilação automática de arquivos TypeScript](using-grunt/_static/typescript-options.png)
 
@@ -98,7 +99,7 @@ Para começar, configure um novo aplicativo Web vazio e adicione arquivos de exe
 
 Em seguida, configure NPM para baixar Grunt e Grunt-Tasks.
 
-1. Na Gerenciador de Soluções, clique com o botão direito do mouse no projeto e selecione **adicionar > novo item** no menu de contexto. Selecione o item de **arquivo de configuração NPM** , deixe o nome padrão, *package.jsem*, e clique no botão **Adicionar** .
+1. Na Gerenciador de Soluções, clique com o botão direito do mouse no projeto e selecione **adicionar > novo item** no menu de contexto. Selecione o item de **arquivo de configuração NPM** , deixe o nome padrão, *package.jsem* , e clique no botão **Adicionar** .
 
 2. Na *package.jsno* arquivo, dentro das `devDependencies` chaves do objeto, digite "Grunt". Selecione `grunt` na lista do IntelliSense e pressione a tecla Enter. O Visual Studio irá citar o nome do pacote Grunt e adicionará dois-pontos. À direita dos dois-pontos, selecione a versão estável mais recente do pacote na parte superior da lista do IntelliSense (pressione `Ctrl-Space` se o IntelliSense não aparece).
 
@@ -107,7 +108,7 @@ Em seguida, configure NPM para baixar Grunt e Grunt-Tasks.
     > [!NOTE]
     > O NPM usa o [controle de versão semântico](https://semver.org/) para organizar dependências. O controle de versão semântico, também conhecido como SemVer, identifica pacotes com o esquema de numeração \<major> . \<minor> . \<patch> . O IntelliSense simplifica o controle de versão semântico mostrando apenas algumas opções comuns. O item superior na lista do IntelliSense (0.4.5 no exemplo acima) é considerado a versão estável mais recente do pacote. O símbolo de acento circunflexo (^) corresponde à versão principal mais recente e o til (~) corresponde à versão secundária mais recente. Consulte a [referência do analisador de versão do NPM semver](https://www.npmjs.com/package/semver) como um guia para o expressividade completo que o semver fornece.
 
-3. Adicione mais dependências para carregar Grunt-contrib- \* Packages para *Clean*, *jshint*, *concat*, *uglify*e *Watch* , conforme mostrado no exemplo a seguir. As versões não precisam corresponder ao exemplo.
+3. Adicione mais dependências para carregar Grunt-contrib- \* Packages para *Clean* , *jshint* , *concat* , *uglify* e *Watch* , conforme mostrado no exemplo a seguir. As versões não precisam corresponder ao exemplo.
 
     ```json
     "devDependencies": {
@@ -120,9 +121,9 @@ Em seguida, configure NPM para baixar Grunt e Grunt-Tasks.
     }
     ```
 
-4. Salve o arquivo *package.json*.
+4. Salve o arquivo *package.json* .
 
-Os pacotes para cada `devDependencies` item serão baixados, juntamente com todos os arquivos que cada pacote exigir. Você pode encontrar os arquivos de pacote no diretório *node_modules* habilitando o botão **Mostrar todos os arquivos** em **Gerenciador de soluções**.
+Os pacotes para cada `devDependencies` item serão baixados, juntamente com todos os arquivos que cada pacote exigir. Você pode encontrar os arquivos de pacote no diretório *node_modules* habilitando o botão **Mostrar todos os arquivos** em **Gerenciador de soluções** .
 
 ![node_modules Grunt](using-grunt/_static/node-modules.png)
 
@@ -135,9 +136,9 @@ Os pacotes para cada `devDependencies` item serão baixados, juntamente com todo
 
 O Grunt é configurado usando um manifesto chamado *Gruntfile.js* que define, carrega e registra tarefas que podem ser executadas manualmente ou configuradas para serem executadas automaticamente com base em eventos no Visual Studio.
 
-1. Clique com o botão direito do mouse no projeto e selecione **Adicionar**  >  **novo item**. Selecione o modelo de item de **arquivo JavaScript** , altere o nome para *Gruntfile.js*e clique no botão **Adicionar** .
+1. Clique com o botão direito do mouse no projeto e selecione **Adicionar**  >  **novo item** . Selecione o modelo de item de **arquivo JavaScript** , altere o nome para *Gruntfile.js* e clique no botão **Adicionar** .
 
-1. Adicione o código a seguir a *Gruntfile.js*. A `initConfig` função define as opções para cada pacote e o restante do módulo carrega e registra as tarefas.
+1. Adicione o código a seguir a *Gruntfile.js* . A `initConfig` função define as opções para cada pacote e o restante do módulo carrega e registra as tarefas.
 
    ```javascript
    module.exports = function (grunt) {
@@ -162,7 +163,7 @@ O Grunt é configurado usando um manifesto chamado *Gruntfile.js* que define, ca
     grunt.loadNpmTasks("grunt-contrib-clean");
     ```
 
-1. Salve *Gruntfile.js*. O arquivo deve ser semelhante à captura de tela abaixo.
+1. Salve *Gruntfile.js* . O arquivo deve ser semelhante à captura de tela abaixo.
 
     ![gruntfile inicial](using-grunt/_static/gruntfile-js-initial.png)
 
@@ -170,7 +171,7 @@ O Grunt é configurado usando um manifesto chamado *Gruntfile.js* que define, ca
 
     ![menu do Gerenciador de executor de tarefas](using-grunt/_static/task-runner-explorer-menu.png)
 
-1. Verifique se `clean` o mostra em **tarefas** no **Task Runner Explorer**.
+1. Verifique se `clean` o mostra em **tarefas** no **Task Runner Explorer** .
 
     ![lista de tarefas do Gerenciador de executor de tarefas](using-grunt/_static/task-runner-explorer-tasks.png)
 
@@ -215,7 +216,7 @@ O Grunt é configurado usando um manifesto chamado *Gruntfile.js* que define, ca
 
 1. Adicione a `uglify` tarefa usando o código a seguir.
 
-    A tarefa minifies o arquivo de *combined.js* encontrado no diretório temp e cria o arquivo de resultado em wwwroot/lib seguindo a Convenção de nomenclatura padrão * \<file name\>.min.js*.
+    A tarefa minifies o arquivo de *combined.js* encontrado no diretório temp e cria o arquivo de resultado em wwwroot/lib seguindo a Convenção de nomenclatura padrão *\<file name\>.min.js* .
 
     ```javascript
     uglify: {
@@ -234,15 +235,15 @@ O Grunt é configurado usando um manifesto chamado *Gruntfile.js* que define, ca
     grunt.loadNpmTasks('grunt-contrib-uglify');
     ```
 
-1. Salve *Gruntfile.js*. O arquivo deve ser semelhante ao exemplo abaixo.
+1. Salve *Gruntfile.js* . O arquivo deve ser semelhante ao exemplo abaixo.
 
     ![exemplo de arquivo Grunt completo](using-grunt/_static/gruntfile-js-complete.png)
 
-1. Observe que a lista de tarefas do **Gerenciador de executores de tarefas** inclui `clean` `concat` tarefas, `jshint` e `uglify` . Execute cada tarefa na ordem e observe os resultados em **Gerenciador de soluções**. Cada tarefa deve ser executada sem erros.
+1. Observe que a lista de tarefas do **Gerenciador de executores de tarefas** inclui `clean` `concat` tarefas, `jshint` e `uglify` . Execute cada tarefa na ordem e observe os resultados em **Gerenciador de soluções** . Cada tarefa deve ser executada sem erros.
 
     ![Explorador do executor de tarefas executar cada tarefa](using-grunt/_static/task-runner-explorer-run-each-task.png)
 
-    A tarefa Concat cria um novo arquivo de *combined.js* e o coloca no diretório temporário. A `jshint` tarefa simplesmente é executada e não produz a saída. A `uglify` tarefa cria um novo arquivo de *combined.min.js* e o coloca em *wwwroot/lib*. Ao concluir, a solução deve ser semelhante à captura de tela abaixo:
+    A tarefa Concat cria um novo arquivo de *combined.js* e o coloca no diretório temporário. A `jshint` tarefa simplesmente é executada e não produz a saída. A `uglify` tarefa cria um novo arquivo de *combined.min.js* e o coloca em *wwwroot/lib* . Ao concluir, a solução deve ser semelhante à captura de tela abaixo:
 
     ![Gerenciador de soluções após todas as tarefas](using-grunt/_static/solution-explorer-after-all-tasks.png)
 
@@ -284,9 +285,9 @@ Clique com o botão direito do mouse na tarefa de inspeção no Gerenciador do e
 
 ## <a name="binding-to-visual-studio-events"></a>Associação a eventos do Visual Studio
 
-A menos que você queira iniciar manualmente suas tarefas sempre que trabalhar no Visual Studio, associe tarefas a **antes da compilação**, **após a compilação**, **limpeza**e eventos **abertos do projeto** .
+A menos que você queira iniciar manualmente suas tarefas sempre que trabalhar no Visual Studio, associe tarefas a **antes da compilação** , **após a compilação** , **limpeza** e eventos **abertos do projeto** .
 
-Associe `watch` para que ele seja executado toda vez que o Visual Studio for aberto. No Gerenciador do executor de tarefas, clique com o botão direito do **Bindings**mouse na tarefa de inspeção e selecione  >  **projeto** de associações abrir no menu de contexto.
+Associe `watch` para que ele seja executado toda vez que o Visual Studio for aberto. No Gerenciador do executor de tarefas, clique com o botão direito do **Bindings** mouse na tarefa de inspeção e selecione  >  **projeto** de associações abrir no menu de contexto.
 
 ![associar uma tarefa à abertura do projeto](using-grunt/_static/bindings-project-open.png)
 

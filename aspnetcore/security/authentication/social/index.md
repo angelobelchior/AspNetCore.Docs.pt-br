@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: da025cb8dced8ac8a6ecf559d4de7795c9797f71
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634274"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053300"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Autenticação de Facebook, Google e de provedor externo no ASP.NET Core
 
@@ -44,11 +45,11 @@ Para obter exemplos de como os logons sociais podem impulsionar o tráfego e as 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Criar um novo projeto.
-* Selecione **Aplicativo Web ASP.NET Core** e **Próximo**.
-* Forneça um **Nome do projeto** e confirme ou altere a **localização**. Selecione **Criar**.
-* Selecione a versão mais recente do ASP.NET Core na lista suspensa (**ASP.NET Core {X. Y}**) e, em seguida, selecione **aplicativo Web**.
-* Selecione **Autenticação** selecione **Mudar** e configure a autenticação para **Contas de Usuário Individuais**. Selecione **OK**.
-* Na janela **Criar novo aplicativo Web ASP.NET Core**, selecione **Criar**.
+* Selecione **Aplicativo Web ASP.NET Core** e **Próximo** .
+* Forneça um **Nome do projeto** e confirme ou altere a **localização** . Selecione **Criar** .
+* Selecione a versão mais recente do ASP.NET Core na lista suspensa ( **ASP.NET Core {X. Y}** ) e, em seguida, selecione **aplicativo Web** .
+* Selecione **Autenticação** selecione **Mudar** e configure a autenticação para **Contas de Usuário Individuais** . Selecione **OK** .
+* Na janela **Criar novo aplicativo Web ASP.NET Core** , selecione **Criar** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -77,15 +78,15 @@ Para obter exemplos de como os logons sociais podem impulsionar o tráfego e as 
 
 ## <a name="apply-migrations"></a>Aplicar migrações
 
-* Execute o aplicativo e selecione o link **Registrar**.
-* Insira o email e a senha para a nova conta e, em seguida, selecione **Registrar**.
+* Execute o aplicativo e selecione o link **Registrar** .
+* Insira o email e a senha para a nova conta e, em seguida, selecione **Registrar** .
 * Siga as instruções para aplicar as migrações.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Usar o SecretManager para armazenar os tokens atribuídos por provedores de logon
 
-Os provedores de logon social atribuem tokens de **ID do Aplicativo** e **Segredo do Aplicativo** durante o processo de registro. Os nomes de token exatos variam de acordo com o provedor. Esses tokens representam as credenciais que seu aplicativo usa para acessar a API. Os tokens constituem os "segredos" que podem ser vinculados à configuração de aplicativo com a ajuda do [Secret Manager](xref:security/app-secrets#secret-manager). O Secret Manager é uma alternativa mais segura para armazenar os tokens em um arquivo de configuração, como *appsettings.json*.
+Os provedores de logon social atribuem tokens de **ID do Aplicativo** e **Segredo do Aplicativo** durante o processo de registro. Os nomes de token exatos variam de acordo com o provedor. Esses tokens representam as credenciais que seu aplicativo usa para acessar a API. Os tokens constituem os "segredos" que podem ser vinculados à configuração de aplicativo com a ajuda do [Secret Manager](xref:security/app-secrets#secret-manager). O Gerenciador de segredo é uma alternativa mais segura para armazenar os tokens em um arquivo de configuração, como *appsettings.json* .
 
 > [!IMPORTANT]
 > O Secret Manager destina-se apenas para fins de desenvolvimento. Você pode armazenar e proteger os segredos de teste e produção do Azure com o [provedor de configuração do Azure Key Vault](xref:security/key-vault-configuration).
@@ -110,7 +111,7 @@ Ao registrar um provedor de logon externo, você não precisa ter uma senha regi
 
 Para criar uma senha e entrar usando seu email definido durante o processo de entrada com provedores externos:
 
-* Selecione o link **Olá,&lt;&gt;alias de email** no canto superior direito para navegar até a exibição **Gerenciar**.
+* Selecione o link **Olá,&lt;&gt;alias de email** no canto superior direito para navegar até a exibição **Gerenciar** .
 
 ![Exibição Gerenciar do Aplicativo Web](index/_static/pass1a.png)
 

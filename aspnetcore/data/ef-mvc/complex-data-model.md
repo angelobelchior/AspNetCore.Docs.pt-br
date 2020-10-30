@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 07f5e910236f78105c039e462ab51d6e62b09439
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cee9e9eb4c5435f3f63f7d1d04f131d88effe9f6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626929"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054470"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutorial: criar um modelo de dados complexo – ASP.NET MVC com EF Core
 
@@ -61,7 +62,7 @@ Nesta seção, você verá como personalizar o modelo de dados usando atributos 
 
 Para datas de registro de alunos, todas as páginas da Web atualmente exibem a hora junto com a data, embora tudo o que você deseje exibir nesse campo seja a data. Usando atributos de anotação de dados, você pode fazer uma alteração de código que corrigirá o formato de exibição em cada exibição que mostra os dados. Para ver um exemplo de como fazer isso, você adicionará um atributo à propriedade `EnrollmentDate` na classe `Student`.
 
-Em *Models/Student.cs*, adicione uma instrução `using` ao namespace `System.ComponentModel.DataAnnotations` e adicione os atributos `DataType` e `DisplayFormat` à `EnrollmentDate` propriedade, conforme mostrado no seguinte exemplo:
+Em *Models/Student.cs* , adicione uma instrução `using` ao namespace `System.ComponentModel.DataAnnotations` e adicione os atributos `DataType` e `DisplayFormat` à `EnrollmentDate` propriedade, conforme mostrado no seguinte exemplo:
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
@@ -117,11 +118,11 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-O comando `migrations add` alerta que pode ocorrer perda de dados, pois a alteração torna o tamanho máximo mais curto para duas colunas.  As migrações criam um arquivo chamado * \<timeStamp> _MaxLengthOnNames. cs*. Esse arquivo contém o código no método `Up` que atualizará o banco de dados para que ele corresponda ao modelo de dados atual. O comando `database update` executou esse código.
+O comando `migrations add` alerta que pode ocorrer perda de dados, pois a alteração torna o tamanho máximo mais curto para duas colunas.  As migrações criam um arquivo chamado *\<timeStamp> _MaxLengthOnNames. cs* . Esse arquivo contém o código no método `Up` que atualizará o banco de dados para que ele corresponda ao modelo de dados atual. O comando `database update` executou esse código.
 
 O carimbo de data/hora prefixado ao nome do arquivo de migrações é usado pelo Entity Framework para ordenar as migrações. Crie várias migrações antes de executar o comando de atualização de banco de dados e, em seguida, todas as migrações são aplicadas na ordem em que foram criadas.
 
-Execute o aplicativo, selecione a guia **Alunos**, clique em **Criar Novo** e tente inserir um nome com mais de 50 caracteres. O aplicativo deve impedir isso. 
+Execute o aplicativo, selecione a guia **Alunos** , clique em **Criar Novo** e tente inserir um nome com mais de 50 caracteres. O aplicativo deve impedir isso. 
 
 ### <a name="the-column-attribute"></a>O atributo Column
 
@@ -129,7 +130,7 @@ Você também pode usar atributos para controlar como as classes e propriedades 
 
 O atributo `Column` especifica que quando o banco de dados for criado, a coluna da tabela `Student` que é mapeada para a propriedade `FirstMidName` será nomeada `FirstName`. Em outras palavras, quando o código se referir a `Student.FirstMidName`, os dados serão obtidos ou atualizados na coluna `FirstName` da tabela `Student`. Se você não especificar nomes de coluna, elas receberão o mesmo nome da propriedade.
 
-No arquivo *Student.cs*, adicione uma instrução `using` a `System.ComponentModel.DataAnnotations.Schema` e adicione o atributo de nome de coluna à propriedade `FirstMidName`, conforme mostrado no seguinte código realçado:
+No arquivo *Student.cs* , adicione uma instrução `using` a `System.ComponentModel.DataAnnotations.Schema` e adicione o atributo de nome de coluna à propriedade `FirstMidName`, conforme mostrado no seguinte código realçado:
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
@@ -145,7 +146,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-No **Pesquisador de Objetos do SQL Server**, abra o designer de tabela Aluno clicando duas vezes na tabela **Aluno**.
+No **Pesquisador de Objetos do SQL Server** , abra o designer de tabela Aluno clicando duas vezes na tabela **Aluno** .
 
 ![Tabela Alunos no SSOX após as migrações](complex-data-model/_static/ssox-after-migration.png)
 
@@ -158,7 +159,7 @@ Antes de você aplicar as duas primeiras migrações, as colunas de nome eram do
 
 ![Entidade Student](complex-data-model/_static/student-entity.png)
 
-Em *Models/Student.cs*, substitua o código que você adicionou anteriormente pelo código a seguir. As alterações são realçadas.
+Em *Models/Student.cs* , substitua o código que você adicionou anteriormente pelo código a seguir. As alterações são realçadas.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
@@ -187,7 +188,7 @@ O atributo `Display` especifica que a legenda para as caixas de texto deve ser "
 
 ![Entidade Instructor](complex-data-model/_static/instructor-entity.png)
 
-Crie *Models/Instructor.cs*, substituindo o código de modelo com o seguinte código:
+Crie *Models/Instructor.cs* , substituindo o código de modelo com o seguinte código:
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
@@ -250,7 +251,7 @@ Você pode colocar um atributo `[Required]` na propriedade de navegação Instru
 
 ![Entidade Course](complex-data-model/_static/course-entity.png)
 
-Em *Models/Course.cs*, substitua o código que você adicionou anteriormente pelo código a seguir. As alterações são realçadas.
+Em *Models/Course.cs* , substitua o código que você adicionou anteriormente pelo código a seguir. As alterações são realçadas.
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
@@ -345,7 +346,7 @@ public ICollection<Course> Courses { get; set; }
 
 ![Entidade Enrollment](complex-data-model/_static/enrollment-entity.png)
 
-Em *Models/Enrollment.cs*, substitua o código que você adicionou anteriormente pelo seguinte código:
+Em *Models/Enrollment.cs* , substitua o código que você adicionou anteriormente pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
@@ -401,7 +402,7 @@ A chave composta garante que, embora você possa ter várias linhas para um curs
 
 ## <a name="update-the-database-context"></a>Atualizar o contexto de banco de dados
 
-Adicione o seguinte código realçado ao arquivo *Data/SchoolContext.cs*:
+Adicione o seguinte código realçado ao arquivo *Data/SchoolContext.cs* :
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
@@ -465,7 +466,7 @@ Se você tiver tentado executar o comando `database update` neste ponto (não fa
 
 Para fazer a migração funcionar com os dados existentes, você precisa alterar o código para fornecer à nova coluna um valor padrão e criar um departamento de stub chamado "Temp" para atuar como o departamento padrão. Como resultado, as linhas Curso existentes serão todas relacionadas ao departamento "Temp" após a execução do método `Up`.
 
-* Abra o arquivo *{timestamp}_ComplexDataModel.cs*.
+* Abra o arquivo *{timestamp}_ComplexDataModel.cs* .
 
 * Comente a linha de código que adiciona a coluna DepartmentID à tabela Curso.
 
@@ -481,7 +482,7 @@ Salve as alterações e compile o projeto.
 
 ## <a name="change-the-connection-string"></a>Alterar a cadeia de conexão
 
-Agora, você tem novo código na classe `DbInitializer` que adiciona dados de semente para as novas entidades a um banco de dados vazio. Para fazer com que o EF crie um novo banco de dados vazio, altere o nome do banco de dados na cadeia de conexão em *appsettings.json* para ContosoUniversity3 ou para outro nome que você ainda não usou no computador que está sendo usado.
+Agora, você tem novo código na classe `DbInitializer` que adiciona dados de semente para as novas entidades a um banco de dados vazio. Para fazer com que o EF crie um novo banco de dados vazio, altere o nome do banco de dados na cadeia de conexão em *appsettings.json* para ContosoUniversity3 ou algum outro nome que você não tenha usado no computador que você está usando.
 
 ```json
 {
@@ -490,7 +491,7 @@ Agora, você tem novo código na classe `DbInitializer` que adiciona dados de se
   },
 ```
 
-Salve as alterações em *appsettings.json*.
+Salve sua alteração no *appsettings.json* .
 
 > [!NOTE]
 > Como alternativa à alteração do nome do banco de dados, você pode excluir o banco de dados. Use o **SSOX** (Pesquisador de Objetos do SQL Server) ou o comando `database drop` da CLI:
@@ -509,7 +510,7 @@ dotnet ef database update
 
 Execute o aplicativo para fazer com que o método `DbInitializer.Initialize` execute e popule o novo banco de dados.
 
-Abra o banco de dados no SSOX, como você fez anteriormente, e expanda o nó **Tabelas** para ver se todas as tabelas foram criadas. (Se você ainda tem o SSOX aberto do momento anterior, clique no botão **Atualizar**.)
+Abra o banco de dados no SSOX, como você fez anteriormente, e expanda o nó **Tabelas** para ver se todas as tabelas foram criadas. (Se você ainda tem o SSOX aberto do momento anterior, clique no botão **Atualizar** .)
 
 ![Tabelas no SSOX](complex-data-model/_static/ssox-tables.png)
 

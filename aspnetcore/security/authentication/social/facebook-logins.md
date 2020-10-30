@@ -7,6 +7,7 @@ ms.custom: seoapril2019, mvc, seodec18
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: ce0e7ad30c137562b74dc9fe5c53235e3599e575
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: be0b655645fd2bd0eab9f9c30a65485f386cead3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634352"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053352"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Configuração de logon externo do Facebook no ASP.NET Core
 
@@ -48,7 +49,7 @@ Este tutorial com exemplos de código mostra como permitir que os usuários entr
 
   ![Criar um novo formulário de ID do aplicativo](index/_static/FBNewAppId.png)
 
-* Na nova placa de aplicativo, selecione **Adicionar um produto**.  No cartão de **logon do Facebook** , clique em **Configurar** 
+* Na nova placa de aplicativo, selecione **Adicionar um produto** .  No cartão de **logon do Facebook** , clique em **Configurar** 
 
   ![Página configuração do produto](index/_static/FBProductSetup.png)
 
@@ -65,9 +66,9 @@ Este tutorial com exemplos de código mostra como permitir que os usuários entr
 > [!NOTE]
 > O URI */SignIn-Facebook* é definido como o retorno de chamada padrão do provedor de autenticação do Facebook. Você pode alterar o URI de retorno de chamada padrão ao configurar o middleware de autenticação do Facebook por meio da propriedade [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) herdada da classe [facebookoptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) .
 
-* Clique em **Salvar Alterações**.
+* Clique em **Salvar Alterações** .
 
-* Clique **Settings**  >  no link configurações**básico** no painel de navegação esquerdo.
+* Clique **Settings**  >  no link configurações **básico** no painel de navegação esquerdo.
 
   Nesta página, anote seu `App ID` e seu `App Secret` . Você adicionará ambos ao seu aplicativo ASP.NET Core na próxima seção:
 
@@ -103,7 +104,7 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 ## <a name="sign-in-with-facebook"></a>Entrar com o Facebook
 
-* Execute o aplicativo e selecione **fazer logon**. 
+* Execute o aplicativo e selecione **fazer logon** . 
 * Em **usar outro serviço para fazer logon.** selecione Facebook.
 * Você será redirecionado para o **Facebook** para autenticação.
 * Insira suas credenciais do Facebook.
@@ -132,7 +133,7 @@ Recomendamos que a `AccessDeniedPath` página contenha as seguintes informaçõe
 * Navegue até [Facebook.com](https://www.facebook.com/)
 * Se você estiver conectado, deverá sair.
 * Execute o aplicativo e selecione entrada no Facebook.
-* Selecione **não agora**. Você será redirecionado para a `AccessDeniedPath` página especificada.
+* Selecione **não agora** . Você será redirecionado para a `AccessDeniedPath` página especificada.
 
 <!-- End of React  -->
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
@@ -146,7 +147,7 @@ Consulte a referência da API do [facebookoptions](/dotnet/api/microsoft.aspnetc
 
 ## <a name="troubleshooting"></a>Solução de problemas
 
-* **Somente ASP.NET Core 2. x:** Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , a tentativa de autenticar resultará em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida*. O modelo de projeto usado neste tutorial garante que isso seja feito.
+* **Somente ASP.NET Core 2. x:** Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , a tentativa de autenticar resultará em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida* . O modelo de projeto usado neste tutorial garante que isso seja feito.
 * Se o banco de dados do site não tiver sido criado aplicando a migração inicial, você obterá *uma operação de banco de dados com falha ao processar o erro de solicitação* . Toque em **aplicar migrações** para criar o banco de dados e atualizar para continuar após o erro.
 
 ## <a name="next-steps"></a>Próximas etapas

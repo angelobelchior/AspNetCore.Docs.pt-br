@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: be1584e72fc1504ac9f8ca10a6b084c95a579b5b
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056264"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -31,11 +32,11 @@ Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-Blazor os aplicativos são criados usando *componentes*. Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário. Os componentes são flexíveis e leves. Eles podem ser aninhados, reutilizados e compartilhados entre projetos.
+Blazor os aplicativos são criados usando *componentes* . Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário. Os componentes são flexíveis e leves. Eles podem ser aninhados, reutilizados e compartilhados entre projetos.
 
 ## <a name="component-classes"></a>Classes de componente
 
-Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML. Um componente no Blazor é conhecido formalmente como um * Razor componente*.
+Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML. Um componente no Blazor é conhecido formalmente como um *Razor componente* .
 
 ### <a name="no-locrazor-syntax"></a>Sintaxe de Razor
 
@@ -253,7 +254,7 @@ Para obter informações sobre como capturar todos os parâmetros de rota ( `{*p
 
 ### <a name="component-parameters"></a>Parâmetros do componente
 
-Os componentes podem ter *parâmetros de componente*, que são definidos usando propriedades públicas na classe de componente com o [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) atributo. Use atributos para especificar argumentos para um componente na marcação.
+Os componentes podem ter *parâmetros de componente* , que são definidos usando propriedades públicas na classe de componente com o [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) atributo. Use atributos para especificar argumentos para um componente na marcação.
 
 `Components/ChildComponent.razor`:
 
@@ -266,7 +267,7 @@ No exemplo a seguir do aplicativo de exemplo, o `ParentComponent` define o valor
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> Não crie componentes que gravam em seus próprios *parâmetros de componente*, use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos](#overwritten-parameters) .
+> Não crie componentes que gravam em seus próprios *parâmetros de componente* , use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos](#overwritten-parameters) .
 
 ## <a name="child-content"></a>Conteúdo filho
 

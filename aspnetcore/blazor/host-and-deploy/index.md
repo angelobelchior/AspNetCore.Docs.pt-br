@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: 7bde61b0ff1d122b449ccc9d7ea9629fc8fb6108
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 082072d2b70abfe60da8e2cd40daa8b93ebcc9ac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055809"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor"></a>Hospedar e implantar ASP.NET Core Blazor
 
@@ -36,12 +37,12 @@ Os aplicativos são publicados para implantação na configuração de versão.
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Selecione **Compilar**  >  **publicar {Application}** na barra de navegação.
-1. Selecione o botão *destino de publicação*. Para publicar localmente, selecione **Pasta**.
-1. Aceite o local padrão no campo **Escolher uma pasta** ou especifique um local diferente. Selecione o botão **`Publish`**.
+1. Selecione o botão *destino de publicação* . Para publicar localmente, selecione **Pasta** .
+1. Aceite o local padrão no campo **Escolher uma pasta** ou especifique um local diferente. Selecione o botão **`Publish`** .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. Selecione **criar**  >  **publicar na pasta**.
+1. Selecione **criar**  >  **publicar na pasta** .
 1. Confirme a pasta para receber os ativos publicados e selecione **`Publish`** .
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
@@ -96,7 +97,7 @@ Em muitos cenários de hospedagem, o caminho de URL relativo para o aplicativo �
 
 Para definir o caminho base do aplicativo, atualize a `<base>` marca dentro dos `<head>` elementos de marca do `Pages/_Host.cshtml` arquivo ( Blazor Server ) ou `wwwroot/index.html` arquivo ( Blazor WebAssembly ). Defina o `href` valor do atributo como `/{RELATIVE URL PATH}/` (a barra à direita é necessária), em que `{RELATIVE URL PATH}` é o caminho de URL relativo completo do aplicativo.
 
-Para um Blazor WebAssembly aplicativo com um caminho de URL não raiz relativo (por exemplo, `<base href="/CoolApp/">` ), o aplicativo não consegue localizar seus recursos *quando executado localmente*. Para superar esse problema durante o desenvolvimento e os testes locais, você pode fornecer um argumento *base de caminho* que corresponde ao valor de `href` da tag `<base>` no runtime. Não inclua uma barra à direita. Para passar o argumento de base Path ao executar o aplicativo localmente, execute o `dotnet run` comando no diretório do aplicativo com a `--pathbase` opção:
+Para um Blazor WebAssembly aplicativo com um caminho de URL não raiz relativo (por exemplo, `<base href="/CoolApp/">` ), o aplicativo não consegue localizar seus recursos *quando executado localmente* . Para superar esse problema durante o desenvolvimento e os testes locais, você pode fornecer um argumento *base de caminho* que corresponde ao valor de `href` da tag `<base>` no runtime. Não inclua uma barra à direita. Para passar o argumento de base Path ao executar o aplicativo localmente, execute o `dotnet run` comando no diretório do aplicativo com a `--pathbase` opção:
 
 ```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}

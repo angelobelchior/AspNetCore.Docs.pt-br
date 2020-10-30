@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -19,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: d1626fe753782d524bf75c398c11235c3110633a
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762146"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054808"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Ferramentas para ASP.NET Core Blazor
 
@@ -36,11 +37,11 @@ Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.c
 
 1. Criar um novo projeto.
 
-1. Selecione ** Blazor aplicativo**. Selecione **Avançar**.
+1. Selecione **Blazor aplicativo** . Selecione **Avançar** .
 
-1. Forneça um nome ao projeto no campo **Nome do projeto** ou aceite o nome do projeto padrão. Confirme se a entrada de **local** está correta ou forneça um local para o projeto. Selecione **Criar**.
+1. Forneça um nome ao projeto no campo **Nome do projeto** ou aceite o nome do projeto padrão. Confirme se a entrada de **local** está correta ou forneça um local para o projeto. Selecione **Criar** .
 
-1. Para obter uma Blazor WebAssembly experiência, escolha o modelo de ** Blazor WebAssembly aplicativo** . Para obter uma Blazor Server experiência, escolha o modelo de ** Blazor Server aplicativo** . Selecione **Criar**.
+1. Para obter uma Blazor WebAssembly experiência, escolha o modelo de **Blazor WebAssembly aplicativo** . Para obter uma Blazor Server experiência, escolha o modelo de **Blazor Server aplicativo** . Selecione **Criar** .
 
    Para obter informações sobre os dois Blazor modelos de hospedagem *Blazor WebAssembly* e *Blazor Server* , consulte <xref:blazor/hosting-models> .
 
@@ -98,19 +99,19 @@ Para obter mais informações, consulte a orientação fornecida pelo fabricante
 
 1. Instale o [Visual Studio para Mac](https://visualstudio.microsoft.com/vs/mac/).
 
-1. Selecione **arquivo**  >  **nova solução** ou crie um **novo** projeto na **janela iniciar**.
+1. Selecione **arquivo**  >  **nova solução** ou crie um **novo** projeto na **janela iniciar** .
 
-1. Na barra lateral, selecione **aplicativo Web e de console**  >  **App**.
+1. Na barra lateral, selecione **aplicativo Web e de console**  >  **App** .
 
-   Para obter uma Blazor WebAssembly experiência, escolha o modelo de ** Blazor WebAssembly aplicativo** . Para obter uma Blazor Server experiência, escolha o modelo de ** Blazor Server aplicativo** . Selecione **Avançar**.
+   Para obter uma Blazor WebAssembly experiência, escolha o modelo de **Blazor WebAssembly aplicativo** . Para obter uma Blazor Server experiência, escolha o modelo de **Blazor Server aplicativo** . Selecione **Avançar** .
 
    Para obter informações sobre os dois Blazor modelos de hospedagem *Blazor WebAssembly* e *Blazor Server* , consulte <xref:blazor/hosting-models> .
 
-1. Confirme se a **autenticação** está definida como **sem autenticação**. Selecione **Avançar**.
+1. Confirme se a **autenticação** está definida como **sem autenticação** . Selecione **Avançar** .
 
-1. No campo **nome do projeto** , nomeie o aplicativo `WebApplication1` . Selecione **Criar**.
+1. No campo **nome do projeto** , nomeie o aplicativo `WebApplication1` . Selecione **Criar** .
 
-1. Selecione **executar**  >  **Iniciar sem depuração** para executar o aplicativo *sem o depurador*. Execute o aplicativo com **executar**  >  **Iniciar Depuração** ou o botão Executar (&#9654;) para executar o aplicativo *com o depurador*.
+1. Selecione **executar**  >  **Iniciar sem depuração** para executar o aplicativo *sem o depurador* . Execute o aplicativo com **executar**  >  **Iniciar Depuração** ou o botão Executar (&#9654;) para executar o aplicativo *com o depurador* .
 
 Se aparecer um prompt para confiar no certificado de desenvolvimento, confie no certificado e continue. As senhas de usuário e de conjunto de chaves são necessárias para confiar no certificado. Para obter mais informações sobre como confiar no certificado de desenvolvimento ASP.NET Core HTTPS, consulte <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> .
 

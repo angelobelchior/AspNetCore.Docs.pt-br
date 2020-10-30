@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: e081c13f9ffb33c1ff137cb0989e747d51571ea7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 36d72e037087399c8893d5ecb4a6fffdca3a3608
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629191"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054236"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutorial: introdução ao EF Core em um aplicativo Web ASP.NET MVC
 
@@ -81,21 +82,21 @@ Os usuários podem exibir e atualizar informações de alunos, cursos e instruto
 
 * Abra o Visual Studio.
 
-* No menu **Arquivo**, selecione **Novo > Projeto**.
+* No menu **Arquivo** , selecione **Novo > Projeto** .
 
-* No painel esquerdo, selecione **Instalado > Visual C# > Web**.
+* No painel esquerdo, selecione **Instalado > Visual C# > Web** .
 
-* Selecione o modelo de projeto **Aplicativo Web ASP.NET Core**.
+* Selecione o modelo de projeto **Aplicativo Web ASP.NET Core** .
 
-* Insira **ContosoUniversity** como o nome e clique em **OK**.
+* Insira **ContosoUniversity** como o nome e clique em **OK** .
 
   ![Caixa de diálogo Novo Projeto](intro/_static/new-project2.png)
 
 * Aguarde a exibição da caixa de diálogo **novo ASP.NET Core aplicativo Web** .
 
-* Selecione **.NET Core**, **ASP.NET Core 2.2** e o modelo **Aplicativo Web (Model-View-Controller)**.
+* Selecione **.NET Core** , **ASP.NET Core 2.2** e o modelo **Aplicativo Web (Model-View-Controller)** .
 
-* Verifique se a **autenticação** está definida como **sem autenticação**.
+* Verifique se a **autenticação** está definida como **sem autenticação** .
 
 * Selecione **OK**
 
@@ -109,13 +110,13 @@ Abra *Views/Shared/_Layout.cshtml* e faça as seguintes alterações:
 
 * Altere cada ocorrência de "ContosoUniversity" para "Contoso University". Há três ocorrências.
 
-* Adicione entradas de menu **Sobre**, **Alunos**, **Cursos**, **Instrutores** e **Departamentos** e exclua a entrada de menu **Privacidade**.
+* Adicione entradas de menu **Sobre** , **Alunos** , **Cursos** , **Instrutores** e **Departamentos** e exclua a entrada de menu **Privacidade** .
 
 As alterações são realçadas.
 
 [!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,34-48,63)]
 
-Em *Views/Home/Index.cshtml*, substitua o conteúdo do arquivo pelo seguinte código para substituir o texto sobre o ASP.NET e MVC pelo texto sobre este aplicativo:
+Em *Views/Home/Index.cshtml* , substitua o conteúdo do arquivo pelo seguinte código para substituir o texto sobre o ASP.NET e MVC pelo texto sobre este aplicativo:
 
 [!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
@@ -145,11 +146,11 @@ Nas seções a seguir, você criará uma classe para cada uma dessas entidades.
 
 ![Diagrama da entidade Student](intro/_static/student-entity.png)
 
-Na pasta *Models*, crie um arquivo de classe chamado *Student.cs* e substitua o código de modelo pelo código a seguir.
+Na pasta *Models* , crie um arquivo de classe chamado *Student.cs* e substitua o código de modelo pelo código a seguir.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
-A propriedade `ID` se tornará a coluna de chave primária da tabela de banco de dados que corresponde a essa classe. Por padrão, o Entity Framework interpreta uma propriedade nomeada `ID` ou `classnameID` como a chave primária.
+A propriedade `ID` se tornará a coluna de chave primária da tabela de banco de dados que corresponde a essa classe. Por padrão, o Entity Framework interpreta uma propriedade chamada `ID` ou `classnameID` como a chave primária.
 
 A propriedade `Enrollments` é uma [propriedade de navegação](/ef/core/modeling/relationships). As propriedades de navegação armazenam outras entidades que estão relacionadas a essa entidade. Nesse caso, a propriedade `Enrollments` de uma `Student entity` armazenará todas as entidades `Enrollment` relacionadas a essa entidade `Student`. Em outras palavras, se determinada linha Aluno no banco de dados tiver duas linhas Registro relacionadas (linhas que contêm o valor de chave primária do aluno na coluna de chave estrangeira StudentID), a propriedade de navegação `Enrollments` dessa entidade `Student` conterá as duas entidades `Enrollment`.
 
@@ -159,7 +160,7 @@ Se uma propriedade de navegação pode armazenar várias entidades (como em rela
 
 ![Diagrama da entidade Enrollment](intro/_static/enrollment-entity.png)
 
-Na pasta *Models*, crie *Enrollment.cs* e substitua o código existente pelo seguinte código:
+Na pasta *Models* , crie *Enrollment.cs* e substitua o código existente pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
@@ -177,7 +178,7 @@ O Entity Framework interpreta uma propriedade como uma propriedade de chave estr
 
 ![Diagrama de entidade Curso](intro/_static/course-entity.png)
 
-Na pasta *Models*, crie *Course.cs* e substitua o código existente pelo seguinte código:
+Na pasta *Models* , crie *Course.cs* e substitua o código existente pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
 
@@ -189,9 +190,9 @@ Falaremos mais sobre o atributo `DatabaseGenerated` em um [tutorial posterior](c
 
 A classe principal que coordena a funcionalidade do Entity Framework para determinado modelo de dados é a classe de contexto de banco de dados. Você cria essa classe derivando-a da classe `Microsoft.EntityFrameworkCore.DbContext`. No código, especifique quais entidades são incluídas no modelo de dados. Também personalize o comportamento específico do Entity Framework. Neste projeto, a classe é chamada `SchoolContext`.
 
-Na pasta do projeto, crie uma pasta chamada *Dados*.
+Na pasta do projeto, crie uma pasta chamada *Dados* .
 
-Na pasta *Dados*, crie um novo arquivo de classe chamado *SchoolContext.cs* e substitua o código de modelo pelo seguinte código:
+Na pasta *Dados* , crie um novo arquivo de classe chamado *SchoolContext.cs* e substitua o código de modelo pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
@@ -211,13 +212,13 @@ Para registrar `SchoolContext` como um serviço, abra *Startup.cs* e adicione as
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_SchoolContext&highlight=9-10)]
 
-O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto `DbContextOptionsBuilder`. Para o desenvolvimento local, o [sistema de configuração do ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do arquivo *appsettings.json*.
+O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto `DbContextOptionsBuilder`. Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *appsettings.json* arquivo.
 
 Adicione instruções `using` aos namespaces `ContosoUniversity.Data` e `Microsoft.EntityFrameworkCore` e, em seguida, compile o projeto.
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Usings)]
 
-Abra o arquivo *appsettings.json* e adicione uma cadeia de conexão, conforme mostrado no exemplo a seguir.
+Abra o *appsettings.json* arquivo e adicione uma cadeia de conexão, conforme mostrado no exemplo a seguir.
 
 [!code-json[](./intro/samples/cu/appsettings1.json?highlight=2-4)]
 
@@ -231,13 +232,13 @@ O Entity Framework criará um banco de dados vazio para você. Nesta seção, vo
 
 Aqui, você usará o método `EnsureCreated` para criar o banco de dados automaticamente. Em um [tutorial posterior](migrations.md), você verá como manipular as alterações do modelo usando as Migrações do Code First para alterar o esquema de banco de dados, em vez de remover e recriar o banco de dados.
 
-Na pasta *Data*, crie um novo arquivo de classe chamado *DbInitializer.cs* e substitua o código de modelo pelo código a seguir, que faz com que um banco de dados seja criado, quando necessário, e carrega dados de teste no novo banco de dados.
+Na pasta *Data* , crie um novo arquivo de classe chamado *DbInitializer.cs* e substitua o código de modelo pelo código a seguir, que faz com que um banco de dados seja criado, quando necessário, e carrega dados de teste no novo banco de dados.
 
 [!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
 O código verifica se há alunos no banco de dados e, se não há, ele pressupõe que o banco de dados é novo e precisa ser propagado com os dados de teste. Ele carrega os dados de teste em matrizes em vez de em coleções `List<T>` para otimizar o desempenho.
 
-Em *Program.cs*, modifique o método `Main` para fazer o seguinte na inicialização do aplicativo:
+Em *Program.cs* , modifique o método `Main` para fazer o seguinte na inicialização do aplicativo:
 
 * Obtenha uma instância de contexto de banco de dados do contêiner de injeção de dependência.
 * Chame o método de semente passando a ele o contexto.
@@ -249,7 +250,7 @@ Adicione instruções `using`:
 
 [!code-csharp[](intro/samples/cu/Program.cs?name=snippet_Usings)]
 
-Nos tutoriais mais antigos, você poderá ver um código semelhante no método `Configure` em *Startup.cs*. Recomendamos que você use o método `Configure` apenas para configurar o pipeline de solicitação. O código de inicialização do aplicativo pertence ao método `Main`.
+Nos tutoriais mais antigos, você poderá ver um código semelhante no método `Configure` em *Startup.cs* . Recomendamos que você use o método `Configure` apenas para configurar o pipeline de solicitação. O código de inicialização do aplicativo pertence ao método `Main`.
 
 Agora, na primeira vez que você executar o aplicativo, o banco de dados será criado e propagado com os dados de teste. Sempre que você alterar o modelo de dados, exclua o banco de dados, atualize o método de semente e comece novamente com um novo banco de dados da mesma maneira. Nos próximos tutoriais, você verá como modificar o banco de dados quando o modelo de dados for alterado, sem excluí-lo e recriá-lo.
 
@@ -259,27 +260,27 @@ Em seguida, você usará o mecanismo de scaffolding no Visual Studio para adicio
 
 A criação automática de métodos de ação CRUD e exibições é conhecida como scaffolding. O scaffolding difere da geração de código, em que o código gerado por scaffolding é um ponto de partida que você pode modificar de acordo com seus requisitos, enquanto que normalmente o código gerado não é modificado. Quando precisar personalizar o código gerado, use classes parciais ou regenere o código quando as coisas mudarem.
 
-* Clique com o botão direito do mouse na pasta **Controladores** no **Gerenciador de Soluções** e selecione **Adicionar > Novo Item Gerado por Scaffolding**.
+* Clique com o botão direito do mouse na pasta **Controladores** no **Gerenciador de Soluções** e selecione **Adicionar > Novo Item Gerado por Scaffolding** .
 
-* Na caixa de diálogo **Adicionar Scaffolding**:
+* Na caixa de diálogo **Adicionar Scaffolding** :
 
-  * Selecione **Controlador MVC com exibições, usando o Entity Framework**.
+  * Selecione **Controlador MVC com exibições, usando o Entity Framework** .
 
-  * Clique em **Adicionar**. A caixa de diálogo **Adicionar Controlador MVC com exibições, usando o Entity Framework** é exibida.
+  * Clique em **Adicionar** . A caixa de diálogo **Adicionar Controlador MVC com exibições, usando o Entity Framework** é exibida.
 
     ![Gerar aluno por scaffolding](intro/_static/scaffold-student2.png)
 
-  * Na **classe Model**, selecione **Aluno**.
+  * Na **classe Model** , selecione **Aluno** .
 
-  * Na **Classe de contexto de dados** selecione **SchoolContext**.
+  * Na **Classe de contexto de dados** selecione **SchoolContext** .
 
   * Aceite o **StudentsController** padrão como o nome.
 
-  * Clique em **Adicionar**.
+  * Clique em **Adicionar** .
 
-  Quando você clica em **Adicionar**, o mecanismo de scaffolding do Visual Studio cria um arquivo *StudentsController.cs* e um conjunto de exibições (arquivos *.cshtml*) que funcionam com o controlador.
+  Quando você clica em **Adicionar** , o mecanismo de scaffolding do Visual Studio cria um arquivo *StudentsController.cs* e um conjunto de exibições (arquivos *.cshtml* ) que funcionam com o controlador.
 
-(O mecanismo de scaffolding também poderá criar o contexto de banco de dados para você se não criá-lo manualmente primeiro como fez anteriormente para este tutorial. Especifique uma nova classe de contexto na caixa **Adicionar Controlador** clicando no sinal de adição à direita de **Classe de contexto de dados**.  Em seguida, o Visual Studio criará a classe `DbContext`, bem como o controlador e as exibições.)
+(O mecanismo de scaffolding também poderá criar o contexto de banco de dados para você se não criá-lo manualmente primeiro como fez anteriormente para este tutorial. Especifique uma nova classe de contexto na caixa **Adicionar Controlador** clicando no sinal de adição à direita de **Classe de contexto de dados** .  Em seguida, o Visual Studio criará a classe `DbContext`, bem como o controlador e as exibições.)
 
 Você observará que o controlador usa um `SchoolContext` como parâmetro de construtor.
 
@@ -313,7 +314,7 @@ Feche o navegador.
 
 Se a janela do SSOX ainda não estiver aberta, selecione-a no menu **Exibir** do Visual Studio.
 
-No SSOX, clique em **(localdb)\MSSQLLocalDB > Bancos de Dados** e, em seguida, clique na entrada do nome do banco de dados que está na cadeia de conexão no arquivo *appsettings.json*.
+Em SSOX, clique em **(LocalDB) \MSSQLLocalDB > bancos** de dados e, em seguida, clique na entrada do nome do banco de dados que está na cadeia de conexão em seu *appsettings.json* arquivo.
 
 Expanda o nó **Tabelas** para ver as tabelas no banco de dados.
 
@@ -323,7 +324,7 @@ Clique com o botão direito do mouse na tabela **Aluno** e clique em **Exibir Da
 
 ![Tabela Aluno no SSOX](intro/_static/ssox-student-table.png)
 
-Os arquivos de banco de dados *.mdf* e *.ldf* estão na pasta *C:\Users\\\<yourusername>*.
+Os arquivos de banco de dados *.mdf* e *.ldf* estão na pasta *C:\Users\\\<yourusername>* .
 
 Como você está chamando `EnsureCreated` no método inicializador executado na inicialização do aplicativo, agora você pode fazer uma alteração na classe `Student`, excluir o banco de dados, executar novamente o aplicativo e o banco de dados será recriado automaticamente para que ele corresponda à alteração. Por exemplo, se você adicionar uma propriedade `EmailAddress` à classe `Student`, verá uma nova coluna `EmailAddress` na tabela recriada.
 

@@ -5,8 +5,9 @@ description: Saiba mais sobre cenários adicionais para ASP.NET Core Blazor conf
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/12/2020
+ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 075bcc68fd2dff0ebf2cfceacec24fde8c818603
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: f8b6e65424948aaa7b28023497bbbf2a1ceb47dd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326536"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056043"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
 
@@ -177,7 +178,7 @@ Para executar tarefas adicionais, como a inicialização de interoperabilidade d
 
 ### <a name="configure-the-no-locsignalr-client"></a>Configurar o SignalR cliente
 
-#### <a name="logging"></a>Registro em log
+#### <a name="logging"></a>Registrando em log
 
 Para configurar SignalR o log do cliente, passe um objeto de configuração ( `configureSignalR` ) que chame `configureLogging` com o nível de log no construtor do cliente:
 
@@ -300,11 +301,13 @@ window.addEventListener('pagehide', () => {
 });
 ```
 
-## <a name="influence-html-head-tag-elements"></a>Influenciar `<head>` elementos de marca HTML
+<!-- HOLD for reactivation at 5x
 
-*Esta seção se aplica à próxima versão ASP.NET Core 5,0 do Blazor WebAssembly e do Blazor Server .*
+## Influence HTML `<head>` tag elements
 
-Quando renderizado, `Title` os `Link` componentes, e `Meta` adicionam ou atualizam dados nos `<head>` elementos de marca HTML:
+*This section applies to the upcoming ASP.NET Core 5.0 release of Blazor WebAssembly and Blazor Server.*
+
+When rendered, the `Title`, `Link`, and `Meta` components add or update data in the HTML `<head>` tag elements:
 
 ```razor
 @using Microsoft.AspNetCore.Components.Web.Extensions.Head
@@ -314,22 +317,24 @@ Quando renderizado, `Title` os `Link` componentes, e `Meta` adicionam ou atualiz
 <Meta content="{DESCRIPTION}" name="description" />
 ```
 
-No exemplo anterior, espaços reservados para `{TITLE}` , `{URL}` , e `{DESCRIPTION}` são valores de cadeia de caracteres, Razor variáveis ou Razor expressões.
+In the preceding example, placeholders for `{TITLE}`, `{URL}`, and `{DESCRIPTION}` are string values, Razor variables, or Razor expressions.
 
-As seguintes características se aplicam:
+The following characteristics apply:
 
-* Há suporte para o pré-processamento do lado do servidor.
-* O `Value` parâmetro é o único parâmetro válido para o `Title` componente.
-* Os atributos HTML fornecidos para `Meta` os `Link` componentes e são capturados em [atributos adicionais](xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters) e passados para a marca HTML renderizada.
-* Para vários `Title` componentes, o título da página reflete o `Value` do último `Title` componente renderizado.
-* Se vários `Meta` `Link` componentes ou forem incluídos com atributos idênticos, haverá exatamente uma marca HTML renderizada `Meta` por `Link` componente ou. Dois `Meta` ou mais `Link` componentes não podem se referir à mesma marca HTML renderizada.
-* As alterações nos parâmetros dos existentes `Meta` ou dos `Link` componentes são refletidas em suas marcas HTML renderizadas.
-* Quando os `Link` `Meta` componentes ou não são mais renderizados e, portanto, descartados pelo Framework, suas marcas HTML renderizadas são removidas.
+* Server-side prerendering is supported.
+* The `Value` parameter is the only valid parameter for the `Title` component.
+* HTML attributes provided to the `Meta` and `Link` components are captured in [additional attributes](xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters) and passed through to the rendered HTML tag.
+* For multiple `Title` components, the title of the page reflects the `Value` of the last `Title` component rendered.
+* If multiple `Meta` or `Link` components are included with identical attributes, there's exactly one HTML tag rendered per `Meta` or `Link` component. Two `Meta` or `Link` components can't refer to the same rendered HTML tag.
+* Changes to the parameters of existing `Meta` or `Link` components are reflected in their rendered HTML tags.
+* When the `Link` or `Meta` components are no longer rendered and thus disposed by the framework, their rendered HTML tags are removed.
 
-Quando um dos componentes do Framework é usado em um componente filho, a marca HTML renderizada influencia qualquer outro componente filho do componente pai, desde que o componente filho que contém o componente da estrutura seja renderizado. A distinção entre usar um desses componentes de estrutura em um componente filho e colocar uma marca HTML no `wwwroot/index.html` ou `Pages/_Host.cshtml` é que a marca HTML renderizada de um componente de estrutura:
+When one of the framework components is used in a child component, the rendered HTML tag influences any other child component of the parent component as long as the child component containing the framework component is rendered. The distinction between using the one of these framework components in a child component and placing a an HTML tag in `wwwroot/index.html` or `Pages/_Host.cshtml` is that a framework component's rendered HTML tag:
 
-* Pode ser modificado pelo estado do aplicativo. Uma marca HTML embutida em código não pode ser modificada pelo estado do aplicativo.
-* É removido do HTML `<head>` quando o componente pai não é mais renderizado.
+* Can be modified by application state. A hard-coded HTML tag can't be modified by application state.
+* Is removed from the HTML `<head>` when the parent component is no longer rendered.
+
+-->
 
 ::: moniker-end
 

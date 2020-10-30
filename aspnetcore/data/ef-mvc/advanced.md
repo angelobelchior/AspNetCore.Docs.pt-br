@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 9f02165f54d3cd3328496710dc92ebc86c4640d6
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 386be395399bf4131e4b6c8cac8221f994e8b7c5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626825"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054379"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Tutorial: Saiba mais sobre cenários avançados – ASP.NET MVC com EF Core
 
@@ -62,7 +63,7 @@ Como é sempre verdadeiro quando você executa comandos SQL em um aplicativo Web
 
 A classe `DbSet<TEntity>` fornece um método que você pode usar para executar uma consulta que retorna uma entidade do tipo `TEntity`. Para ver como isso funciona, você alterará o código no método `Details` do controlador Departamento.
 
-Em *DepartmentsController.cs*, no método `Details`, substitua o código que recupera um departamento com uma chamada de método `FromSql`, conforme mostrado no seguinte código realçado:
+Em *DepartmentsController.cs* , no método `Details`, substitua o código que recupera um departamento com uma chamada de método `FromSql`, conforme mostrado no seguinte código realçado:
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
@@ -74,7 +75,7 @@ Para verificar se o novo código funciona corretamente, selecione a guia **Depar
 
 Anteriormente, você criou uma grade de estatísticas de alunos para a página Sobre que mostrava o número de alunos para cada data de registro. Você obteve os dados do conjunto de entidades Students (`_context.Students`) e usou o LINQ para projetar os resultados em uma lista de objetos de modelo de exibição `EnrollmentDateGroup`. Suponha que você deseje gravar o próprio SQL em vez de usar LINQ. Para fazer isso, você precisa executar uma consulta SQL que retorna algo diferente de objetos de entidade. No EF Core 1.0, uma maneira de fazer isso é escrever um código ADO.NET e obter a conexão de banco de dados do EF.
 
-Em *HomeController.cs*, substitua o método `About` pelo seguinte código:
+Em *HomeController.cs* , substitua o método `About` pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
@@ -92,7 +93,7 @@ Suponha que os administradores do Contoso University desejem executar alteraçõ
 
 ![Página Atualizar Créditos de Curso](advanced/_static/update-credits.png)
 
-Em *CoursesController.cs*, adicione métodos UpdateCourseCredits para HttpGet e HttpPost:
+Em *CoursesController.cs* , adicione métodos UpdateCourseCredits para HttpGet e HttpPost:
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
@@ -102,19 +103,19 @@ Quando o controlador processa uma solicitação HttpGet, nada é retornado em `V
 
 Quando o botão **Atualizar** recebe um clique, o método HttpPost é chamado e multiplicador tem o valor inserido na caixa de texto. Em seguida, o código executa o SQL que atualiza os cursos e retorna o número de linhas afetadas para a exibição em `ViewData`. Quando a exibição obtém um valor `RowsAffected`, ela mostra o número de linhas atualizadas.
 
-No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta *Views/Courses* e, em seguida, clique em **Adicionar > Novo Item**.
+No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta *Views/Courses* e, em seguida, clique em **Adicionar > Novo Item** .
 
-Na caixa de diálogo **Adicionar novo item** , clique em **ASP.NET Core** em **instalado** no painel esquerdo, clique em ** Razor Exibir**e nomeie o novo modo de exibição *UpdateCourseCredits. cshtml*.
+Na caixa de diálogo **Adicionar novo item** , clique em **ASP.NET Core** em **instalado** no painel esquerdo, clique em **Razor Exibir** e nomeie o novo modo de exibição *UpdateCourseCredits. cshtml* .
 
-Em *Views/Courses/UpdateCourseCredits.cshtml*, substitua o código de modelo pelo seguinte código:
+Em *Views/Courses/UpdateCourseCredits.cshtml* , substitua o código de modelo pelo seguinte código:
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
-Execute o método `UpdateCourseCredits` selecionando a guia **Cursos**, adicionando, em seguida, "/UpdateCourseCredits" ao final da URL na barra de endereços do navegador (por exemplo: `http://localhost:5813/Courses/UpdateCourseCredits`). Insira um número na caixa de texto:
+Execute o método `UpdateCourseCredits` selecionando a guia **Cursos** , adicionando, em seguida, "/UpdateCourseCredits" ao final da URL na barra de endereços do navegador (por exemplo: `http://localhost:5813/Courses/UpdateCourseCredits`). Insira um número na caixa de texto:
 
 ![Página Atualizar Créditos de Curso](advanced/_static/update-credits.png)
 
-Clique em **Atualizar**. O número de linhas afetadas é exibido:
+Clique em **Atualizar** . O número de linhas afetadas é exibido:
 
 ![Linhas afetadas na página Atualizar Créditos de Curso](advanced/_static/update-credits-rows-affected.png)
 
@@ -158,7 +159,7 @@ Você observará algo aqui que pode ser surpreendente: o SQL seleciona até 2 li
 * Se a consulta retorna várias linhas, o método retorna nulo.
 * Para determinar se a consulta retorna várias linhas, o EF precisa verificar se ela retorna pelo menos 2.
 
-Observe que você não precisa usar o modo de depuração e parar em um ponto de interrupção para obter a saída de log na janela de **Saída**. É apenas um modo conveniente de parar o log no ponto em que você deseja examinar a saída. Se você não fizer isso, o log continuará e você precisará rolar para baixo para localizar as partes de seu interesse.
+Observe que você não precisa usar o modo de depuração e parar em um ponto de interrupção para obter a saída de log na janela de **Saída** . É apenas um modo conveniente de parar o log no ponto em que você deseja examinar a saída. Se você não fizer isso, o log continuará e você precisará rolar para baixo para localizar as partes de seu interesse.
 
 ## <a name="create-an-abstraction-layer"></a>Criar uma camada de abstração
 
@@ -214,7 +215,7 @@ Tom Dykstra e Rick Anderson (twitter @RickAndMSFT) escreveram este tutorial. Row
 
 <a id="common-errors"></a>
 
-## <a name="troubleshoot-common-errors"></a>Solução de problemas comuns
+## <a name="troubleshoot-common-errors"></a>Solucionar erros comuns
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>ContosoUniversity.dll usada por outro processo
 
@@ -224,7 +225,7 @@ Mensagem de erro:
 
 Solução:
 
-Pare o site no IIS Express. Acesse a Bandeja do Sistema do Windows, localize o IIS Express e clique com o botão direito do mouse em seu ícone, selecione o site da Contoso University e, em seguida, clique em **Parar Site**.
+Pare o site no IIS Express. Acesse a Bandeja do Sistema do Windows, localize o IIS Express e clique com o botão direito do mouse em seu ícone, selecione o site da Contoso University e, em seguida, clique em **Parar Site** .
 
 ### <a name="migration-scaffolded-with-no-code-in-up-and-down-methods"></a>Migração gerada por scaffolding sem nenhum código nos métodos Up e Down
 
@@ -240,9 +241,9 @@ Execute o comando `migrations remove`, salve as alterações de código e execut
 
 É possível receber outros erros ao fazer alterações de esquema em um banco de dados que contém dados existentes. Se você receber erros de migração que não consegue resolver, altere o nome do banco de dados na cadeia de conexão ou exclua o banco de dados. Com um novo banco de dados, não há nenhum dado a ser migrado e o comando de atualização de banco de dados terá uma probabilidade muito maior de ser concluído sem erros.
 
-A abordagem mais simples é renomear o banco de dados em *appsettings.json*. Na próxima vez que você executar `database update`, um novo banco de dados será criado.
+A abordagem mais simples é renomear o banco de dados no *appsettings.json* . Na próxima vez que você executar `database update`, um novo banco de dados será criado.
 
-Para excluir um banco de dados no SSOX, clique com o botão direito do mouse no banco de dados, clique **Excluir** e, em seguida, na caixa de diálogo **Excluir Banco de Dados**, selecione **Fechar conexões existentes** e clique em **OK**.
+Para excluir um banco de dados no SSOX, clique com o botão direito do mouse no banco de dados, clique **Excluir** e, em seguida, na caixa de diálogo **Excluir Banco de Dados** , selecione **Fechar conexões existentes** e clique em **OK** .
 
 Para excluir um banco de dados usando a CLI, execute o comando `database drop` da CLI:
 

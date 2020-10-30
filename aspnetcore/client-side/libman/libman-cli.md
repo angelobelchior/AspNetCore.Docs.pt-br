@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 8b883269a82a1a6e55bf04bd40bfcbab28ae1fb3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dad9136439b61ad98523061d181fe44d3bf1273d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625694"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054743"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>Usar a CLI do LibMan com ASP.NET Core
 
@@ -118,11 +119,11 @@ As opções a seguir estão disponíveis para o comando `libman init`:
 
 * `-d|--default-destination <PATH>`
 
-  Um caminho relativo à pasta atual. Os arquivos de biblioteca serão instalados nesse local se nenhuma `destination` propriedade for definida para uma biblioteca no *libman.jsem*. O `<PATH>` valor é gravado na `defaultDestination` propriedade de *libman.jsem*.
+  Um caminho relativo à pasta atual. Os arquivos de biblioteca serão instalados nesse local se nenhuma `destination` propriedade for definida para uma biblioteca no *libman.jsem* . O `<PATH>` valor é gravado na `defaultDestination` propriedade de *libman.jsem* .
 
 * `-p|--default-provider <PROVIDER>`
 
-  O provedor a ser usado se nenhum provedor for definido para uma determinada biblioteca. O `<PROVIDER>` valor é gravado na `defaultProvider` propriedade de *libman.jsem*. Substitua `<PROVIDER>` por um dos seguintes valores:
+  O provedor a ser usado se nenhum provedor for definido para uma determinada biblioteca. O `<PROVIDER>` valor é gravado na `defaultProvider` propriedade de *libman.jsem* . Substitua `<PROVIDER>` por um dos seguintes valores:
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -133,7 +134,7 @@ As opções a seguir estão disponíveis para o comando `libman init`:
 Para criar um *libman.jsno* arquivo em um projeto ASP.NET Core:
 
 * Navegue até a raiz do projeto.
-* Execute o comando a seguir:
+* Execute o seguinte comando:
 
   ```console
   libman init
@@ -178,7 +179,7 @@ As opções a seguir estão disponíveis para o comando `libman install`:
 
 * `-d|--destination <PATH>`
 
-  O local para instalar a biblioteca. Se não for especificado, o local padrão será usado. Se nenhuma `defaultDestination` propriedade for especificada no *libman.jsem*, essa opção será necessária.
+  O local para instalar a biblioteca. Se não for especificado, o local padrão será usado. Se nenhuma `defaultDestination` propriedade for especificada no *libman.jsem* , essa opção será necessária.
 
 * `--files <FILE>`
 
@@ -190,7 +191,7 @@ As opções a seguir estão disponíveis para o comando `libman install`:
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  Se não for especificado, a `defaultProvider` propriedade no *libman.jsem* será usada. Se nenhuma `defaultProvider` propriedade for especificada no *libman.jsem*, essa opção será necessária.
+  Se não for especificado, a `defaultProvider` propriedade no *libman.jsem* será usada. Se nenhuma `defaultProvider` propriedade for especificada no *libman.jsem* , essa opção será necessária.
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -230,7 +231,7 @@ O *libman.jsno* arquivo é semelhante ao seguinte:
 }
 ```
 
-Para instalar os arquivos *calendar.js* e *Calendar. css* de *C: \\ temp \\ contosoCalendar \\ * usando o provedor do sistema de arquivos:
+Para instalar os arquivos *calendar.js* e *Calendar. css* de *C: \\ temp \\ contosoCalendar \\* usando o provedor do sistema de arquivos:
 
   ```console
   libman install C:\temp\contosoCalendar\ --provider filesystem --files calendar.js --files calendar.css
@@ -272,7 +273,7 @@ Depois de aceitar o destino padrão, o *libman.jsno* arquivo é semelhante ao se
 
 ## <a name="restore-library-files"></a>Restaurar arquivos de biblioteca
 
-O `libman restore` comando instala os arquivos de biblioteca definidos no *libman.jsem*. As seguintes regras se aplicam:
+O `libman restore` comando instala os arquivos de biblioteca definidos no *libman.jsem* . As seguintes regras se aplicam:
 
 * Se nenhum *libman.jsno* arquivo existir na raiz do projeto, um erro será retornado.
 * Se uma biblioteca especificar um provedor, a `defaultProvider` propriedade no *libman.jsem* será ignorada.
@@ -293,7 +294,7 @@ As opções a seguir estão disponíveis para o comando `libman restore`:
 
 ### <a name="examples"></a>Exemplos
 
-Para restaurar os arquivos de biblioteca definidos no *libman.jsem*:
+Para restaurar os arquivos de biblioteca definidos no *libman.jsem* :
 
 ```console
 libman restore
@@ -328,8 +329,8 @@ libman clean
 
 O comando `libman uninstall`:
 
-* Exclui todos os arquivos associados à biblioteca especificada do destino no *libman.jsem*.
-* Remove a configuração da biblioteca associada do *libman.jsem*.
+* Exclui todos os arquivos associados à biblioteca especificada do destino no *libman.jsem* .
+* Remove a configuração da biblioteca associada do *libman.jsem* .
 
 Ocorrerá um erro quando:
 

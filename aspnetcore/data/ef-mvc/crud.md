@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: c17461f8d1d43335230a967a4b62943c055c06b9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 043fe513f370cf63637733b66ca195e7887faab0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629204"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054288"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: implementar a funcionalidade CRUD – ASP.NET MVC com EF Core
 
@@ -47,9 +48,9 @@ Neste tutorial, você:
 
 ## <a name="customize-the-details-page"></a>Personalizar a página Detalhes
 
-O código gerado por scaffolding da página Índice de Alunos omitiu a propriedade `Enrollments`, porque essa propriedade contém uma coleção. Na página **Detalhes**, você exibirá o conteúdo da coleção em uma tabela HTML.
+O código gerado por scaffolding da página Índice de Alunos omitiu a propriedade `Enrollments`, porque essa propriedade contém uma coleção. Na página **Detalhes** , você exibirá o conteúdo da coleção em uma tabela HTML.
 
-Em *Controllers/StudentsController.cs*, o método de ação para a exibição Detalhes usa o método `SingleOrDefaultAsync` para recuperar uma única entidade `Student`. Adicione um código que chama `Include`. Os métodos `ThenInclude` e `AsNoTracking`, conforme mostrado no código realçado a seguir.
+Em *Controllers/StudentsController.cs* , o método de ação para a exibição Detalhes usa o método `SingleOrDefaultAsync` para recuperar uma única entidade `Student`. Adicione um código que chama `Include`. Os métodos `ThenInclude` e `AsNoTracking`, conforme mostrado no código realçado a seguir.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
@@ -59,7 +60,7 @@ O método `AsNoTracking` melhora o desempenho em cenários em que as entidades r
 
 ### <a name="route-data"></a>Rotear dados
 
-O valor de chave que é passado para o método `Details` é obtido dos *dados de rota*. Dados de rota são dados que o associador de modelos encontrou em um segmento da URL. Por exemplo, a rota padrão especifica os segmentos de controlador, ação e ID:
+O valor de chave que é passado para o método `Details` é obtido dos *dados de rota* . Dados de rota são dados que o associador de modelos encontrou em um segmento da URL. Por exemplo, a rota padrão especifica os segmentos de controlador, ação e ID:
 
 [!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
@@ -103,7 +104,7 @@ Para obter mais informações sobre os auxiliares de marca, confira <xref:mvc/vi
 
 ### <a name="add-enrollments-to-the-details-view"></a>Adicionar registros à exibição Detalhes
 
-Abra *Views/Students/Details.cshtml*. Cada campo é exibido usando auxiliares `DisplayNameFor` e `DisplayFor`, conforme mostrado no seguinte exemplo:
+Abra *Views/Students/Details.cshtml* . Cada campo é exibido usando auxiliares `DisplayNameFor` e `DisplayFor`, conforme mostrado no seguinte exemplo:
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
@@ -121,7 +122,7 @@ Execute o aplicativo, selecione a guia **Alunos** e clique no link **Detalhes** 
 
 ## <a name="update-the-create-page"></a>Atualizar a página Criar
 
-Em *StudentsController.cs*, modifique o método HttpPost `Create` adicionando um bloco try-catch e removendo a ID do atributo `Bind`.
+Em *StudentsController.cs* , modifique o método HttpPost `Create` adicionando um bloco try-catch e removendo a ID do atributo `Bind`.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
@@ -164,7 +165,7 @@ Uma maneira alternativa de impedir o excesso de postagem preferida por muitos de
 
 O código em *views/Students/Create. cshtml* usa `label` , `input` e `span` (para mensagens de validação) os auxiliares de marca para cada campo.
 
-Execute o aplicativo, selecione a guia **Alunos** e, em seguida, clique em **Criar Novo**.
+Execute o aplicativo, selecione a guia **Alunos** e, em seguida, clique em **Criar Novo** .
 
 Insira nomes e uma data. Tente inserir uma data inválida se o navegador permitir fazer isso. (Alguns navegadores forçam você a usar um seletor de data.) Em seguida, clique em **criar** para ver a mensagem de erro.
 
@@ -174,11 +175,11 @@ Essa é a validação do lado do servidor que você obtém por padrão; em um tu
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
-Altere a data para um valor válido e clique em **Criar** para ver o novo aluno ser exibido na página **Índice**.
+Altere a data para um valor válido e clique em **Criar** para ver o novo aluno ser exibido na página **Índice** .
 
 ## <a name="update-the-edit-page"></a>Atualizar a página Editar
 
-Em *StudentController.cs*, o método HttpGet `Edit` (aquele sem o atributo `HttpPost`) usa o método `SingleOrDefaultAsync` para recuperar a entidade Student selecionada, como você viu no método `Details`. Não é necessário alterar esse método.
+Em *StudentController.cs* , o método HttpGet `Edit` (aquele sem o atributo `HttpPost`) usa o método `SingleOrDefaultAsync` para recuperar a entidade Student selecionada, como você viu no método `Details`. Não é necessário alterar esse método.
 
 ### <a name="recommended-httppost-edit-code-read-and-update"></a>Código HttpPost Edit recomendado: ler e atualizar
 
@@ -230,15 +231,15 @@ Caso deseje evitar a abordagem de primeira leitura, mas também deseje que a ins
 
 ### <a name="test-the-edit-page"></a>Testar a página Editar
 
-Execute o aplicativo, selecione a guia **Alunos** e, em seguida, clique em um hiperlink **Editar**.
+Execute o aplicativo, selecione a guia **Alunos** e, em seguida, clique em um hiperlink **Editar** .
 
 ![Página Editar Alunos](crud/_static/student-edit.png)
 
-Altere alguns dos dados e clique em **Salvar**. A página **Índice** será aberta e você verá os dados alterados.
+Altere alguns dos dados e clique em **Salvar** . A página **Índice** será aberta e você verá os dados alterados.
 
 ## <a name="update-the-delete-page"></a>Atualizar a página Excluir
 
-Em *StudentController.cs*, o código de modelo para o método HttpGet `Delete` usa o método `SingleOrDefaultAsync` para recuperar a entidade Student selecionada, como você viu nos métodos Details e Edit. No entanto, para implementar uma mensagem de erro personalizada quando a chamada a `SaveChanges` falhar, você adicionará uma funcionalidade a esse método e à sua exibição correspondente.
+Em *StudentController.cs* , o código de modelo para o método HttpGet `Delete` usa o método `SingleOrDefaultAsync` para recuperar a entidade Student selecionada, como você viu nos métodos Details e Edit. No entanto, para implementar uma mensagem de erro personalizada quando a chamada a `SaveChanges` falhar, você adicionará uma funcionalidade a esse método e à sua exibição correspondente.
 
 Como você viu para operações de atualização e criação, as operações de exclusão exigem dois métodos de ação. O método chamado em resposta a uma solicitação GET mostra uma exibição que dá ao usuário uma oportunidade de aprovar ou cancelar a operação de exclusão. Se o usuário aprová-la, uma solicitação POST será criada. Quando isso acontece, o método HttpPost `Delete` é chamado e, em seguida, esse método executa, de fato, a operação de exclusão.
 
@@ -268,21 +269,21 @@ Se a entidade tiver dados relacionados, eles também deverão ser excluídos. Ve
 
 ### <a name="update-the-delete-view"></a>Atualizar a exibição Excluir
 
-Em *Views/Student/Delete.cshtml*, adicione uma mensagem de erro entre o cabeçalho h2 e o cabeçalho h3, conforme mostrado no seguinte exemplo:
+Em *Views/Student/Delete.cshtml* , adicione uma mensagem de erro entre o cabeçalho h2 e o cabeçalho h3, conforme mostrado no seguinte exemplo:
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-Execute o aplicativo, selecione a guia **Alunos** e, em seguida, clique em um hiperlink **Excluir**:
+Execute o aplicativo, selecione a guia **Alunos** e, em seguida, clique em um hiperlink **Excluir** :
 
 ![Página Confirmação de exclusão](crud/_static/student-delete.png)
 
-Clique em **Excluir**. A página Índice será exibida sem o aluno excluído. (Você verá um exemplo de código de tratamento de erro em ação no tutorial sobre simultaneidade.)
+Clique em **Excluir** . A página Índice será exibida sem o aluno excluído. (Você verá um exemplo de código de tratamento de erro em ação no tutorial sobre simultaneidade.)
 
 ## <a name="close-database-connections"></a>Fechará conexões de banco de dados
 
 Para liberar os recursos contidos em uma conexão de banco de dados, a instância de contexto precisa ser descartada assim que possível quando você tiver terminado. A [injeção de dependência](../../fundamentals/dependency-injection.md) interna do ASP.NET Core cuida dessa tarefa para você.
 
-Em *Startup.cs*, chame o [método de extensão AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) para provisionar a classe `DbContext` no contêiner de DI do ASP.NET Core. Esse método define o tempo de vida do serviço como `Scoped` por padrão. `Scoped` significa que o tempo de vida do objeto de contexto coincide com o tempo de vida da solicitação da Web, e o método `Dispose` será chamado automaticamente ao final da solicitação da Web.
+Em *Startup.cs* , chame o [método de extensão AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) para provisionar a classe `DbContext` no contêiner de DI do ASP.NET Core. Esse método define o tempo de vida do serviço como `Scoped` por padrão. `Scoped` significa que o tempo de vida do objeto de contexto coincide com o tempo de vida da solicitação da Web, e o método `Dispose` será chamado automaticamente ao final da solicitação da Web.
 
 ## <a name="handle-transactions"></a>Lidar com transações
 

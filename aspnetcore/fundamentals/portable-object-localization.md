@@ -5,6 +5,7 @@ description: Este artigo apresenta arquivos de Objeto Portátil e descreve as et
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f471c5b7511434cf42717e52ef271663c2e36647
-ms.sourcegitcommit: 6ecdc481d5b9a10d2c6e091217f017b36bdba957
+ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90456043"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053716"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurar a localização de objeto portátil no ASP.NET Core
 
@@ -38,8 +39,8 @@ Este artigo explica as etapas para usar arquivos PO (Objeto Portátil) em um apl
 ## <a name="what-is-a-po-file"></a>O que é um arquivo PO?
 
 Os arquivos PO são distribuídos como arquivos de texto que contém cadeias de caracteres traduzidas em determinado idioma. Algumas vantagens do uso de arquivos PO em vez de arquivos *.resx* incluem:
-- Os arquivos PO dão suporte à pluralização, ao contrário dos arquivos *.resx*.
-- Os arquivos PO não são compilados como os arquivos *.resx*. Dessa forma, não são necessárias ferramentas especializadas nem etapas de build.
+- Os arquivos PO dão suporte à pluralização, ao contrário dos arquivos *.resx* .
+- Os arquivos PO não são compilados como os arquivos *.resx* . Dessa forma, não são necessárias ferramentas especializadas nem etapas de build.
 - Os arquivos PO funcionam bem com ferramentas de colaboração de edição online.
 
 ### <a name="example"></a>Exemplo
@@ -88,11 +89,11 @@ O arquivo *.csproj* agora contém uma linha semelhante à seguinte (o número de
 
 ### <a name="registering-the-service"></a>Registrando o serviço
 
-Adicione os serviços necessários ao método `ConfigureServices` de *Startup.cs*:
+Adicione os serviços necessários ao método `ConfigureServices` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-Adicione o middleware necessário ao método `Configure` de *Startup.cs*:
+Adicione o middleware necessário ao método `Configure` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -104,7 +105,7 @@ Uma instância `IViewLocalizer` é injetada e usada para traduzir o texto “Ol�
 
 ### <a name="creating-a-po-file"></a>Criando um arquivo PO
 
-Crie um arquivo chamado * \<culture code> . po* na pasta raiz do aplicativo. Neste exemplo, o nome do arquivo é *fr.po* porque o idioma francês é usado:
+Crie um arquivo chamado *\<culture code> . po* na pasta raiz do aplicativo. Neste exemplo, o nome do arquivo é *fr.po* porque o idioma francês é usado:
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -204,7 +205,7 @@ Os aplicativos costumam conter as cadeias de caracteres a serem traduzidas em v�
 
 Os serviços de localização de PO usam o nome da classe completa ou da exibição que é usado ao traduzir uma cadeia de caracteres. Isso é feito definindo o valor na entrada `msgctxt`.
 
-Considere uma adição mínima ao exemplo anterior de *fr.po*. Uma Razor exibição localizada em *views/Home/about. cshtml* pode ser definida como o contexto do arquivo, definindo o `msgctxt` valor da entrada reservada:
+Considere uma adição mínima ao exemplo anterior de *fr.po* . Uma Razor exibição localizada em *views/Home/about. cshtml* pode ser definida como o contexto do arquivo, definindo o `msgctxt` valor da entrada reservada:
 
 ```text
 msgctxt "Views.Home.About"
@@ -214,7 +215,7 @@ msgstr "Bonjour le monde!"
 
 Com o `msgctxt` definido assim, a tradução de texto ocorre durante a navegação para `/Home/About?culture=fr-FR`. A tradução não ocorre durante a navegação para `/Home/Contact?culture=fr-FR`.
 
-Quando não é encontrada a correspondência de nenhuma entrada específica com um contexto de arquivo fornecido, o mecanismo de fallback do Orchard Core procura um arquivo PO apropriado sem contexto. Supondo que não haja nenhum contexto de arquivo específico definido para *Views/Home/Contact.cshtml*, a navegação para `/Home/Contact?culture=fr-FR` carrega um arquivo PO, como:
+Quando não é encontrada a correspondência de nenhuma entrada específica com um contexto de arquivo fornecido, o mecanismo de fallback do Orchard Core procura um arquivo PO apropriado sem contexto. Supondo que não haja nenhum contexto de arquivo específico definido para *Views/Home/Contact.cshtml* , a navegação para `/Home/Contact?culture=fr-FR` carrega um arquivo PO, como:
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -226,7 +227,7 @@ A localização padrão dos arquivos PO pode ser alterada em `ConfigureServices`
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-Neste exemplo, os arquivos PO são carregados da pasta *Localization*.
+Neste exemplo, os arquivos PO são carregados da pasta *Localization* .
 
 ### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>Implementando uma lógica personalizada para encontrar arquivos de localização
 
@@ -253,8 +254,8 @@ Este artigo explica as etapas para usar arquivos PO (Objeto Portátil) em um apl
 ## <a name="what-is-a-po-file"></a>O que é um arquivo PO?
 
 Os arquivos PO são distribuídos como arquivos de texto que contém cadeias de caracteres traduzidas em determinado idioma. Algumas vantagens do uso de arquivos PO em vez de arquivos *.resx* incluem:
-- Os arquivos PO dão suporte à pluralização, ao contrário dos arquivos *.resx*.
-- Os arquivos PO não são compilados como os arquivos *.resx*. Dessa forma, não são necessárias ferramentas especializadas nem etapas de build.
+- Os arquivos PO dão suporte à pluralização, ao contrário dos arquivos *.resx* .
+- Os arquivos PO não são compilados como os arquivos *.resx* . Dessa forma, não são necessárias ferramentas especializadas nem etapas de build.
 - Os arquivos PO funcionam bem com ferramentas de colaboração de edição online.
 
 ### <a name="example"></a>Exemplo
@@ -303,11 +304,11 @@ O arquivo *.csproj* agora contém uma linha semelhante à seguinte (o número de
 
 ### <a name="registering-the-service"></a>Registrando o serviço
 
-Adicione os serviços necessários ao método `ConfigureServices` de *Startup.cs*:
+Adicione os serviços necessários ao método `ConfigureServices` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-Adicione o middleware necessário ao método `Configure` de *Startup.cs*:
+Adicione o middleware necessário ao método `Configure` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -319,7 +320,7 @@ Uma instância `IViewLocalizer` é injetada e usada para traduzir o texto “Ol�
 
 ### <a name="creating-a-po-file"></a>Criando um arquivo PO
 
-Crie um arquivo chamado * \<culture code> . po* na pasta raiz do aplicativo. Neste exemplo, o nome do arquivo é *fr.po* porque o idioma francês é usado:
+Crie um arquivo chamado *\<culture code> . po* na pasta raiz do aplicativo. Neste exemplo, o nome do arquivo é *fr.po* porque o idioma francês é usado:
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
@@ -419,7 +420,7 @@ Os aplicativos costumam conter as cadeias de caracteres a serem traduzidas em v�
 
 Os serviços de localização de PO usam o nome da classe completa ou da exibição que é usado ao traduzir uma cadeia de caracteres. Isso é feito definindo o valor na entrada `msgctxt`.
 
-Considere uma adição mínima ao exemplo anterior de *fr.po*. Uma Razor exibição localizada em *views/Home/about. cshtml* pode ser definida como o contexto do arquivo, definindo o `msgctxt` valor da entrada reservada:
+Considere uma adição mínima ao exemplo anterior de *fr.po* . Uma Razor exibição localizada em *views/Home/about. cshtml* pode ser definida como o contexto do arquivo, definindo o `msgctxt` valor da entrada reservada:
 
 ```text
 msgctxt "Views.Home.About"
@@ -429,7 +430,7 @@ msgstr "Bonjour le monde!"
 
 Com o `msgctxt` definido assim, a tradução de texto ocorre durante a navegação para `/Home/About?culture=fr-FR`. A tradução não ocorre durante a navegação para `/Home/Contact?culture=fr-FR`.
 
-Quando não é encontrada a correspondência de nenhuma entrada específica com um contexto de arquivo fornecido, o mecanismo de fallback do Orchard Core procura um arquivo PO apropriado sem contexto. Supondo que não haja nenhum contexto de arquivo específico definido para *Views/Home/Contact.cshtml*, a navegação para `/Home/Contact?culture=fr-FR` carrega um arquivo PO, como:
+Quando não é encontrada a correspondência de nenhuma entrada específica com um contexto de arquivo fornecido, o mecanismo de fallback do Orchard Core procura um arquivo PO apropriado sem contexto. Supondo que não haja nenhum contexto de arquivo específico definido para *Views/Home/Contact.cshtml* , a navegação para `/Home/Contact?culture=fr-FR` carrega um arquivo PO, como:
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
@@ -441,7 +442,7 @@ A localização padrão dos arquivos PO pode ser alterada em `ConfigureServices`
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-Neste exemplo, os arquivos PO são carregados da pasta *Localization*.
+Neste exemplo, os arquivos PO são carregados da pasta *Localization* .
 
 ### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>Implementando uma lógica personalizada para encontrar arquivos de localização
 

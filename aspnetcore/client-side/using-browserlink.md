@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 01/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: ab4ca78fa50768ff66536608a7cf03e73aecf73a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 80f05acab55af973faf08b5db79ea4cbaf896b14
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628814"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054483"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Link do navegador no ASP.NET Core
 
@@ -34,7 +35,7 @@ O link do navegador é um recurso do Visual Studio. Ele cria um canal de comunic
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Adicione o pacote [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ao seu projeto. Para ASP.NET Core Razor páginas ou projetos MVC, habilite também a compilação em tempo de execução de Razor arquivos (*. cshtml*), conforme descrito em <xref:mvc/views/view-compilation> . Razor as alterações de sintaxe são aplicadas somente quando a compilação em tempo de execução tiver sido habilitada.
+Adicione o pacote [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ao seu projeto. Para ASP.NET Core Razor páginas ou projetos MVC, habilite também a compilação em tempo de execução de Razor arquivos ( *. cshtml* ), conforme descrito em <xref:mvc/views/view-compilation> . Razor as alterações de sintaxe são aplicadas somente quando a compilação em tempo de execução tiver sido habilitada.
 
 ::: moniker-end
 
@@ -46,7 +47,7 @@ Ao converter um projeto ASP.NET Core 2,0 para ASP.NET Core 2,1 e fazer a transi�
 
 ::: moniker range="= aspnetcore-2.0"
 
-Os modelos de projeto de **aplicativo web**ASP.NET Core 2,0, **vazio**e de **API Web** usam o [metapacote Microsoft. AspNetCore. All](xref:fundamentals/metapackage), que contém uma referência de pacote para [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Portanto, o uso do `Microsoft.AspNetCore.All` metapacote não requer nenhuma ação adicional para disponibilizar o link do navegador para uso.
+Os modelos de projeto de **aplicativo web** ASP.NET Core 2,0, **vazio** e de **API Web** usam o [metapacote Microsoft. AspNetCore. All](xref:fundamentals/metapackage), que contém uma referência de pacote para [Microsoft. VisualStudio. Web. BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Portanto, o uso do `Microsoft.AspNetCore.All` metapacote não requer nenhuma ação adicional para disponibilizar o link do navegador para uso.
 
 ::: moniker-end
 
@@ -85,8 +86,8 @@ Quando você tem um projeto ASP.NET Core aberto, o Visual Studio mostra o contro
 No controle da barra de ferramentas do link do navegador, você pode:
 
 * Atualize o aplicativo Web em vários navegadores de uma vez.
-* Abra o **painel de link do navegador**.
-* Habilitar ou desabilitar o **link do navegador**. Observação: o link do navegador está desabilitado por padrão no Visual Studio.
+* Abra o **painel de link do navegador** .
+* Habilitar ou desabilitar o **link do navegador** . Observação: o link do navegador está desabilitado por padrão no Visual Studio.
 * Habilitar ou desabilitar [a sincronização automática de CSS](#enable-or-disable-css-auto-sync).
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>Atualizar o aplicativo Web em vários navegadores de uma vez
@@ -95,7 +96,7 @@ Para escolher um único navegador da Web para iniciar ao iniciar o projeto, use 
 
 ![F5 menu suspenso](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Para abrir vários navegadores de uma vez, escolha **procurar com...** na mesma lista suspensa. Mantenha pressionada a tecla <kbd>Ctrl</kbd> para selecionar os navegadores desejados e clique em **procurar**:
+Para abrir vários navegadores de uma vez, escolha **procurar com...** na mesma lista suspensa. Mantenha pressionada a tecla <kbd>Ctrl</kbd> para selecionar os navegadores desejados e clique em **procurar** :
 
 ![Abrir vários navegadores de uma vez](using-browserlink/_static/open-many-browsers-at-once.png)
 

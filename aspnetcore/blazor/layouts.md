@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: f41b41194f597505d775c95f1e65960c2f827e3b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e61c76b5d53ad7646961632d00b047ecd2d9e477
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628008"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055601"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>BlazorLayouts de ASP.NET Core
 
@@ -33,7 +34,7 @@ Alguns elementos do aplicativo, como menus, mensagens de direitos autorais e log
 
 Tecnicamente, um layout é apenas outro componente. Um layout é definido em um Razor modelo ou em código C# e pode usar [Associação de dados](xref:blazor/components/data-binding), [injeção de dependência](xref:blazor/fundamentals/dependency-injection)e outros cenários de componente.
 
-Para transformar um *componente* em um *layout*, o componente:
+Para transformar um *componente* em um *layout* , o componente:
 
 * Herda de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> , que define uma <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> propriedade para o conteúdo renderizado dentro do layout.
 * Usa a Razor sintaxe `@Body` para especificar o local na marcação de layout onde o conteúdo é renderizado.
@@ -86,7 +87,7 @@ As seguintes `_Imports.razor` importações de arquivo:
 
 O `_Imports.razor` arquivo é semelhante ao [arquivo _ViewImports. cshtml para Razor exibições e páginas](xref:mvc/views/layout#importing-shared-directives) , mas é aplicado especificamente a Razor arquivos de componente.
 
-A especificação de um layout em `_Imports.razor` substitui um layout especificado como o *Layout padrão*do roteador.
+A especificação de um layout em `_Imports.razor` substitui um layout especificado como o *Layout padrão* do roteador.
 
 > [!WARNING]
 > **Não** adicione uma Razor `@layout` diretiva ao `_Imports.razor` arquivo raiz, o que resulta em um loop infinito de layouts no aplicativo. Para controlar o layout do aplicativo padrão, especifique o layout no `Router` componente. Para obter mais informações, consulte a seção [Layout padrão](#default-layout) .

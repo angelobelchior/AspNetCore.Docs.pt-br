@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/react
-ms.openlocfilehash: 0ace8f358b509634c86dfa29c3f943626797ed69
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6c3539d96329489189f49a3af0c718791824be6b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628742"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054444"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Usar o modelo de projeto do React com o ASP.NET Core
 
@@ -62,7 +63,7 @@ Execute [dotnet run](/dotnet/core/tools/dotnet-run) para iniciar o aplicativo.
 
 ---
 
-O modelo de projeto cria um aplicativo ASP.NET Core e um aplicativo do React. O aplicativo ASP.NET Core destina-se a ser usado para acesso a dados, autorização e outras questões do lado do servidor. O aplicativo do React, que reside no subdiretório *ClientApp*, destina-se a ser usado para todas as questões de interface do usuário.
+O modelo de projeto cria um aplicativo ASP.NET Core e um aplicativo do React. O aplicativo ASP.NET Core destina-se a ser usado para acesso a dados, autorização e outras questões do lado do servidor. O aplicativo do React, que reside no subdiretório *ClientApp* , destina-se a ser usado para todas as questões de interface do usuário.
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Adicione páginas, imagens, estilos, módulos, etc.
 
@@ -72,7 +73,7 @@ Há pequenas diferenças entre o aplicativo do React criado por este modelo e um
 
 ## <a name="install-npm-packages"></a>Instalar pacotes npm
 
-Para instalar pacotes npm de terceiros, use um prompt de comando no subdiretório *ClientApp*. Por exemplo:
+Para instalar pacotes npm de terceiros, use um prompt de comando no subdiretório *ClientApp* . Por exemplo:
 
 ```console
 cd ClientApp
@@ -108,7 +109,7 @@ Há uma desvantagem nessa configuração padrão. Cada vez que você modificar s
     npm start
     ```
 
-3. Modifique o aplicativo ASP.NET Core para, em vez de iniciar uma instância do servidor CRA própria, usar a externa. Na classe *Startup*, substitua a invocação `spa.UseReactDevelopmentServer` pelo seguinte:
+3. Modifique o aplicativo ASP.NET Core para, em vez de iniciar uma instância do servidor CRA própria, usar a externa. Na classe *Startup* , substitua a invocação `spa.UseReactDevelopmentServer` pelo seguinte:
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");

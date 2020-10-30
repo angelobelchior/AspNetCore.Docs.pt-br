@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: 879b775ba2998ee803708ebf231b5fcd363b811c
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: d906474b0fd291cc4a68390f390b2bf538e21eff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326434"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053703"
 ---
 # <a name="request-features-in-aspnet-core"></a>Solicitar recursos no ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/)
 
-A `HttpContext` API que os aplicativos e o middleware usam para processar solicitações tem uma camada de abstração undernieth ela chamou *interfaces de recurso*. Cada interface de recurso fornece um subconjunto granular da funcionalidade exposta pelo `HttpContext` . Essas interfaces podem ser adicionadas, modificadas, encapsuladas, substituídas ou até mesmo removidas pelo servidor ou middleware, pois a solicitação é processada sem a necessidade de reimplementar todo o processo `HttpContext` . Eles também podem ser usados para simular a funcionalidade durante o teste.
+A `HttpContext` API que os aplicativos e o middleware usam para processar solicitações tem uma camada de abstração undernieth ela chamou *interfaces de recurso* . Cada interface de recurso fornece um subconjunto granular da funcionalidade exposta pelo `HttpContext` . Essas interfaces podem ser adicionadas, modificadas, encapsuladas, substituídas ou até mesmo removidas pelo servidor ou middleware, pois a solicitação é processada sem a necessidade de reimplementar todo o processo `HttpContext` . Eles também podem ser usados para simular a funcionalidade durante o teste.
 
 ## <a name="feature-collections"></a>Coleções de recursos
 

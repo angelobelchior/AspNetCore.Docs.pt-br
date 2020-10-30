@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 77cfced18edd9db5be21265469b42f32e3de274d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625668"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054704"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Usar o LibMan com ASP.NET Core no Visual Studio
 
@@ -45,16 +46,16 @@ O Visual Studio tem suporte interno para [LibMan](xref:client-side/libman/index)
 
 Os arquivos de biblioteca podem ser adicionados a um projeto ASP.NET Core de duas maneiras diferentes:
 
-1. [Usar a caixa de diálogo Adicionar biblioteca do lado do cliente](#use-the-add-client-side-library-dialog)
+1. [Usar a caixa de diálogo Adicionar biblioteca de Client-Side](#use-the-add-client-side-library-dialog)
 1. [Configurar manualmente as entradas do arquivo de manifesto LibMan](#manually-configure-libman-manifest-file-entries)
 
-### <a name="use-the-add-client-side-library-dialog"></a>Usar a caixa de diálogo Adicionar biblioteca do lado do cliente
+### <a name="use-the-add-client-side-library-dialog"></a>Usar a caixa de diálogo Adicionar biblioteca de Client-Side
 
 Siga estas etapas para instalar uma biblioteca do lado do cliente:
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse na pasta do projeto na qual os arquivos devem ser adicionados. Escolha **Adicionar**  >  **biblioteca do lado do cliente**. A caixa de diálogo **Adicionar biblioteca do lado do cliente** é exibida:
+* Em **Gerenciador de soluções** , clique com o botão direito do mouse na pasta do projeto na qual os arquivos devem ser adicionados. Escolha **Adicionar**  >  **biblioteca do lado do cliente** . A caixa de diálogo **Adicionar biblioteca de Client-Side** é exibida:
 
-  ![Caixa de diálogo Adicionar biblioteca do lado do cliente](_static/add-library-dialog.png)
+  ![Caixa de diálogo Adicionar biblioteca de Client-Side](_static/add-library-dialog.png)
 
 * Selecione o provedor de biblioteca na lista suspensa **provedor** . CDNJS é o provedor padrão.
 * Digite o nome da biblioteca a ser buscada na caixa de texto **biblioteca** . O IntelliSense fornece uma lista de bibliotecas que começam com o texto fornecido.
@@ -79,7 +80,7 @@ Siga estas etapas para instalar uma biblioteca do lado do cliente:
   |raiz do projeto (se *wwwroot* não existir) |*lib/jQuery/*         |
   |Pasta *páginas* no projeto                 |*Páginas/jQuery/*       |
 
-* Clique no botão **instalar** para baixar os arquivos, de acordo com a configuração no *libman.jsem*.
+* Clique no botão **instalar** para baixar os arquivos, de acordo com a configuração no *libman.jsem* .
 * Examine o feed do **Gerenciador de biblioteca** da janela **saída** para obter detalhes da instalação. Por exemplo:
 
   ```console
@@ -95,13 +96,13 @@ Siga estas etapas para instalar uma biblioteca do lado do cliente:
 
 ### <a name="manually-configure-libman-manifest-file-entries"></a>Configurar manualmente as entradas do arquivo de manifesto LibMan
 
-Todas as operações de LibMan no Visual Studio se baseiam no conteúdo do manifesto LibMan da raiz do projeto (*libman.jsem*). Você pode editar manualmente *libman.jsem* para configurar os arquivos de biblioteca para o projeto. O Visual Studio restaura todos os arquivos de biblioteca quando *libman.jsno* é salvo.
+Todas as operações de LibMan no Visual Studio se baseiam no conteúdo do manifesto LibMan da raiz do projeto ( *libman.jsem* ). Você pode editar manualmente *libman.jsem* para configurar os arquivos de biblioteca para o projeto. O Visual Studio restaura todos os arquivos de biblioteca quando *libman.jsno* é salvo.
 
 Para abrir *libman.js* para edição, existem as seguintes opções:
 
-* Clique duas vezes na *libman.jsno* arquivo **Gerenciador de soluções**.
-* Clique com o botão direito do mouse no projeto no **Gerenciador de soluções** e selecione **gerenciar bibliotecas do lado do cliente**. **&#8224;**
-* Selecione **gerenciar bibliotecas do lado do cliente** no menu do **projeto** do Visual Studio. **&#8224;**
+* Clique duas vezes na *libman.jsno* arquivo **Gerenciador de soluções** .
+* Clique com o botão direito do mouse no projeto no **Gerenciador de soluções** e selecione **gerenciar bibliotecas de Client-Side** . **&#8224;**
+* Selecione **gerenciar bibliotecas de Client-Side** no menu do **projeto** do Visual Studio. **&#8224;**
 
 **&#8224;** Se o *libman.jsno* arquivo ainda não existir na raiz do projeto, ele será criado com o conteúdo do modelo de item padrão.
 
@@ -109,9 +110,9 @@ O Visual Studio oferece suporte avançado para edição de JSON, como colorizaç
 
 Com o arquivo de manifesto a seguir, LibMan recupera arquivos de acordo com a configuração definida na `libraries` propriedade. Uma explicação dos literais de objeto definidos na `libraries` seguinte maneira:
 
-* Um subconjunto do [jQuery](https://jquery.com/) versão 3.3.1 é recuperado do provedor CDNJS. O subconjunto é definido na `files` propriedade &mdash; *jquery.min.js*, *jquery.js*e *jQuery. min. map*. Os arquivos são colocados na pasta *wwwroot/lib/jQuery* do projeto.
+* Um subconjunto do [jQuery](https://jquery.com/) versão 3.3.1 é recuperado do provedor CDNJS. O subconjunto é definido na `files` propriedade &mdash; *jquery.min.js* , *jquery.js* e *jQuery. min. map* . Os arquivos são colocados na pasta *wwwroot/lib/jQuery* do projeto.
 * A totalidade da versão de [Bootstrap](https://getbootstrap.com/) 4.1.3 é recuperada e colocada em uma pasta *wwwroot/lib/Bootstrap* . A propriedade do literal do objeto `provider` substitui o `defaultProvider` valor da propriedade. LibMan recupera os arquivos de inicialização do provedor unpkg.
-* Um subconjunto de [Lodash](https://lodash.com/) foi aprovado por um corpo governado dentro da organização. Os arquivos de *lodash.js* e *lodash.min.js* são recuperados do sistema de arquivos local em *C: \\ temp \\ lodash \\ *. Os arquivos são copiados para a pasta *wwwroot/lib/lodash* do projeto.
+* Um subconjunto de [Lodash](https://lodash.com/) foi aprovado por um corpo governado dentro da organização. Os arquivos de *lodash.js* e *lodash.min.js* são recuperados do sistema de arquivos local em *C: \\ temp \\ lodash \\* . Os arquivos são copiados para a pasta *wwwroot/lib/lodash* do projeto.
 
 [!code-json[](samples/LibManSample/libman.json)]
 
@@ -133,7 +134,7 @@ LibMan pode restaurar os arquivos de biblioteca definidos como parte do processo
 
 Para habilitar e testar o comportamento de Restore-on-Build:
 
-* Clique com o botão direito do mouse em *libman.js* em **Gerenciador de soluções** e selecione **habilitar a restauração de bibliotecas do lado do cliente no Build** no menu de contexto.
+* Clique com o botão direito do mouse em *libman.js* em **Gerenciador de soluções** e selecione **habilitar restaurar bibliotecas de Client-Side no Build** no menu de contexto.
 * Clique no botão **Sim** quando for solicitado a instalar um pacote NuGet. O pacote NuGet [Microsoft. Web. LibraryManager. Build](https://www.nuget.org/packages/Microsoft.Web.LibraryManager.Build/) é adicionado ao projeto:
 
   [!code-xml[](samples/LibManSample/LibManSample.csproj?name=snippet_RestoreOnBuildPackage)]
@@ -153,7 +154,7 @@ Para habilitar e testar o comportamento de Restore-on-Build:
   ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
   ```
 
-Quando o comportamento de Restore-on-Build é habilitado, o *libman.jsno menu de* contexto exibe uma opção **Disable restaurar bibliotecas do lado do cliente no Build** . A seleção dessa opção remove a `Microsoft.Web.LibraryManager.Build` referência de pacote do arquivo de projeto. Consequentemente, as bibliotecas do lado do cliente não são mais restauradas em cada compilação.
+Quando o comportamento de restauração no Build é habilitado, o *libman.jsno menu de* contexto exibe uma opção **desabilitar bibliotecas de Client-Side de restauração no Build** . A seleção dessa opção remove a `Microsoft.Web.LibraryManager.Build` referência de pacote do arquivo de projeto. Consequentemente, as bibliotecas do lado do cliente não são mais restauradas em cada compilação.
 
 Independentemente da configuração de Restore-on-Build, você pode restaurar manualmente a qualquer momento do *libman.jsno* menu de contexto. Para obter mais informações, consulte [restaurar arquivos manualmente](#restore-files-manually).
 
@@ -162,15 +163,15 @@ Independentemente da configuração de Restore-on-Build, você pode restaurar ma
 Para restaurar manualmente os arquivos de biblioteca:
 
 * Para todos os projetos na solução:
-  * Clique com o botão direito do mouse no nome da solução em **Gerenciador de soluções**.
-  * Selecione a opção **restaurar bibliotecas do lado do cliente** .
+  * Clique com o botão direito do mouse no nome da solução em **Gerenciador de soluções** .
+  * Selecione a opção **restaurar bibliotecas de Client-Side** .
 * Para um projeto específico:
-  * Clique com o botão direito do mouse no arquivo *libman.js* no **Gerenciador de soluções**.
-  * Selecione a opção **restaurar bibliotecas do lado do cliente** .
+  * Clique com o botão direito do mouse no arquivo *libman.js* no **Gerenciador de soluções** .
+  * Selecione a opção **restaurar bibliotecas de Client-Side** .
 
 Enquanto a operação de restauração está em execução:
 
-* O ícone de Central de Status de Tarefas (TSC) na barra de status do Visual Studio será animado e a operação de restauração de leitura será *iniciada*. Clicar no ícone abre uma dica de ferramenta listando as tarefas em segundo plano conhecidas.
+* O ícone de Central de Status de Tarefas (TSC) na barra de status do Visual Studio será animado e a operação de restauração de leitura será *iniciada* . Clicar no ícone abre uma dica de ferramenta listando as tarefas em segundo plano conhecidas.
 * As mensagens serão enviadas à barra de status e ao feed do **Gerenciador de bibliotecas** da janela de **saída** . Por exemplo:
 
   ```console
@@ -188,14 +189,14 @@ Enquanto a operação de restauração está em execução:
 
 Para executar a operação de *limpeza* , que exclui os arquivos de biblioteca restaurados anteriormente no Visual Studio:
 
-* Clique com o botão direito do mouse no arquivo *libman.js* no **Gerenciador de soluções**.
-* Selecione a opção **limpar bibliotecas do lado do cliente** .
+* Clique com o botão direito do mouse no arquivo *libman.js* no **Gerenciador de soluções** .
+* Selecione a opção **limpar bibliotecas de Client-Side** .
 
 Para evitar a remoção não intencional de arquivos que não são da biblioteca, a operação de limpeza não exclui diretórios inteiros. Ele remove apenas os arquivos que foram incluídos na restauração anterior.
 
 Enquanto a operação de limpeza está em execução:
 
-* O ícone de TSC na barra de status do Visual Studio será animado e a operação de leitura de *bibliotecas do cliente será iniciada*. Clicar no ícone abre uma dica de ferramenta listando as tarefas em segundo plano conhecidas.
+* O ícone de TSC na barra de status do Visual Studio será animado e a operação de leitura de *bibliotecas do cliente será iniciada* . Clicar no ícone abre uma dica de ferramenta listando as tarefas em segundo plano conhecidas.
 * As mensagens são enviadas à barra de status e ao feed do **Gerenciador de bibliotecas** da janela de **saída** . Por exemplo:
 
 ```console
@@ -210,21 +211,21 @@ A operação de limpeza somente exclui arquivos do projeto. Os arquivos de bibli
 
 Para desinstalar os arquivos de biblioteca:
 
-* Abra *libman.jsem*.
+* Abra *libman.jsem* .
 * Posicione o cursor dentro do `libraries` literal de objeto correspondente.
-* Clique no ícone de lâmpada que aparece na margem esquerda e selecione **desinstalar \<library_name> @ \<library_version> **:
+* Clique no ícone de lâmpada que aparece na margem esquerda e selecione **desinstalar \<library_name> @ \<library_version>** :
 
   ![Opção de menu de contexto desinstalar biblioteca](_static/uninstall-menu-option.png)
 
-Como alternativa, você pode editar e salvar manualmente o manifesto LibMan (*libman.jsem*). A [operação de restauração](#restore-library-files) é executada quando o arquivo é salvo. Os arquivos de biblioteca que não estão mais definidos no *libman.jsem* são removidos do projeto.
+Como alternativa, você pode editar e salvar manualmente o manifesto LibMan ( *libman.jsem* ). A [operação de restauração](#restore-library-files) é executada quando o arquivo é salvo. Os arquivos de biblioteca que não estão mais definidos no *libman.jsem* são removidos do projeto.
 
 ## <a name="update-library-version"></a>Atualizar versão da biblioteca
 
 Para verificar se há uma versão atualizada da biblioteca:
 
-* Abra *libman.jsem*.
+* Abra *libman.jsem* .
 * Posicione o cursor dentro do `libraries` literal de objeto correspondente.
-* Clique no ícone de lâmpada que aparece na margem esquerda. Passe o mouse sobre **verificar se há atualizações**.
+* Clique no ícone de lâmpada que aparece na margem esquerda. Passe o mouse sobre **verificar se há atualizações** .
 
 LibMan verifica se há uma versão de biblioteca mais recente do que a versão instalada. Os seguintes resultados podem ocorrer:
 

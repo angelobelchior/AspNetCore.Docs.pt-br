@@ -5,6 +5,7 @@ description: Parte 2 de Razor páginas e Entity Framework série de tutoriais.
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 083214c01dbec6c6f44d6b82f5b514a029e57cbe
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: c5b9be64ea30cce7a3178bfbb244ef893e9639d2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606738"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053859"
 ---
 # <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>Parte 2, Razor páginas com EF Core em ASP.NET Core-CRUD
 
@@ -136,7 +137,7 @@ O método [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.p
 
 ## <a name="update-the-edit-page"></a>Atualizar a página Editar
 
-Em *Pages/Students/Edit.cshtml.cs*, substitua os métodos `OnGetAsync` e `OnPostAsync` pelo código a seguir.
+Em *Pages/Students/Edit.cshtml.cs* , substitua os métodos `OnGetAsync` e `OnPostAsync` pelo código a seguir.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -183,7 +184,7 @@ O método `OnPostAsync` recupera a entidade selecionada e, em seguida, chama o m
 * A exceção de banco de dados é capturada.
 * O método `OnGetAsync` das páginas Excluir é chamado com `saveChangesError=true`.
 
-Adicione uma mensagem de erro a *páginas/alunos/Delete. cshtml*:
+Adicione uma mensagem de erro a *páginas/alunos/Delete. cshtml* :
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -299,7 +300,7 @@ Usar `StudentVM` requer atualizar [Create.cshtml](https://github.com/dotnet/AspN
 
 ## <a name="update-the-edit-page"></a>Atualizar a página Editar
 
-Em *Pages/Students/Edit.cshtml.cs*, substitua os métodos `OnGetAsync` e `OnPostAsync` pelo código a seguir.
+Em *Pages/Students/Edit.cshtml.cs* , substitua os métodos `OnGetAsync` e `OnPostAsync` pelo código a seguir.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -346,7 +347,7 @@ O método `OnPostAsync` recupera a entidade selecionada e, em seguida, chama o m
 * A exceção de banco de dados é capturada.
 * O método `OnGetAsync` das páginas Excluir é chamado com `saveChangesError=true`.
 
-Adicione uma mensagem de erro à Razor página excluir (*páginas/alunos/Delete. cshtml*):
+Adicione uma mensagem de erro à Razor página excluir ( *páginas/alunos/Delete. cshtml* ):
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -404,11 +405,11 @@ Mas se você deseja `Include` outras entidades, `FindAsync` não é mais apropri
 
 ## <a name="customize-the-details-page"></a>Personalizar a página Detalhes
 
-Navegue para a página `Pages/Students`. Os links **Editar**, **Detalhes** e **Excluir** são gerados pelo [Auxiliar de Marcação de Âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) no arquivo *Pages/Students/Index.cshtml*.
+Navegue para a página `Pages/Students`. Os links **Editar** , **Detalhes** e **Excluir** são gerados pelo [Auxiliar de Marcação de Âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) no arquivo *Pages/Students/Index.cshtml* .
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 
-Execute o aplicativo e selecione o link **Detalhes**. A URL tem o formato `http://localhost:5000/Students/Details?id=2`. A ID do Aluno é passada com uma cadeia de caracteres de consulta (`?id=2`).
+Execute o aplicativo e selecione o link **Detalhes** . A URL tem o formato `http://localhost:5000/Students/Details?id=2`. A ID do Aluno é passada com uma cadeia de caracteres de consulta (`?id=2`).
 
 Atualize as páginas editar, detalhes e excluir Razor para usar o `"{id:int}"` modelo de rota. Altere a diretiva de página de cada uma dessas páginas de `@page` para `@page "{id:int}"`.
 
@@ -438,7 +439,7 @@ O método [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframewo
 
 ### <a name="display-related-enrollments-on-the-details-page"></a>Exibir registros relacionados na página Detalhes
 
-Abra *Pages/Students/Details.cshtml*. Adicione o seguinte código realçado para exibir uma lista de registros:
+Abra *Pages/Students/Details.cshtml* . Adicione o seguinte código realçado para exibir uma lista de registros:
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Details.cshtml?highlight=32-53)]
 

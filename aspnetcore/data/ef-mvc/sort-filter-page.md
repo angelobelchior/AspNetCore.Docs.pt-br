@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 16a0b264f8395670b02d091afd44e71d0dad4d0b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8e425d413471912c763c4892a90e9d12039efec4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053976"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutorial: Adicionar classificação, filtragem e paginação-ASP.NET MVC com EF Core
 
@@ -52,7 +53,7 @@ Para adicionar uma classificação à página Índice de Alunos, você alterará
 
 ### <a name="add-sorting-functionality-to-the-index-method"></a>Adicionar a funcionalidade de classificação ao método Index
 
-No *StudentsController.cs*, substitua o `Index` método pelo código a seguir:
+No *StudentsController.cs* , substitua o `Index` método pelo código a seguir:
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
@@ -95,7 +96,7 @@ Para adicionar a filtragem à página Índice de Alunos, você adicionará uma c
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>Adicionar a funcionalidade de filtragem a método Index
 
-Em *StudentsController.cs*, substitua o método `Index` pelo código a seguir (as alterações são realçadas).
+Em *StudentsController.cs* , substitua o método `Index` pelo código a seguir (as alterações são realçadas).
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
@@ -104,17 +105,17 @@ Você adicionou um parâmetro `searchString` ao método `Index`. O valor de cade
 > [!NOTE]
 > Aqui você está chamando o método `Where` em um objeto `IQueryable`, e o filtro será processado no servidor. Em alguns cenários, você pode chamar o método `Where` como um método de extensão em uma coleção em memória. (Por exemplo, suponha que você altere a referência para `_context.Students` que, em vez de um EF, `DbSet` ele faça referência a um método de repositório que retorne uma `IEnumerable` coleção.) O resultado normalmente seria o mesmo, mas em alguns casos pode ser diferente.
 >
->Por exemplo, a implementação do .NET Framework do método `Contains` executa uma comparação que diferencia maiúsculas de minúsculas por padrão, mas no SQL Server, isso é determinado pela configuração de ordenação da instância do SQL Server. Por padrão, essa configuração diferencia maiúsculas de minúsculas. Você pode chamar o método `ToUpper` para fazer com que o teste diferencie maiúsculas de minúsculas de forma explícita: *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*. Isso garantirá que os resultados permaneçam os mesmos se você alterar o código mais tarde para usar um repositório que retorna uma coleção `IEnumerable` em vez de um objeto `IQueryable`. (Ao chamar o `Contains` método em uma `IEnumerable` coleção, você obtém a implementação de .NET Framework; ao chamá-la em um `IQueryable` objeto, você obtém a implementação do provedor de banco de dados.) No entanto, há uma penalidade de desempenho para essa solução. O código `ToUpper` colocará uma função na cláusula WHERE da instrução TSQL SELECT. Isso pode impedir que o otimizador use um índice. Considerando que o SQL geralmente é instalado como não diferenciando maiúsculas e minúsculas, é melhor evitar o código `ToUpper` até você migrar para um armazenamento de dados que diferencia maiúsculas de minúsculas.
+>Por exemplo, a implementação do .NET Framework do método `Contains` executa uma comparação que diferencia maiúsculas de minúsculas por padrão, mas no SQL Server, isso é determinado pela configuração de ordenação da instância do SQL Server. Por padrão, essa configuração diferencia maiúsculas de minúsculas. Você pode chamar o método `ToUpper` para fazer com que o teste diferencie maiúsculas de minúsculas de forma explícita: *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* . Isso garantirá que os resultados permaneçam os mesmos se você alterar o código mais tarde para usar um repositório que retorna uma coleção `IEnumerable` em vez de um objeto `IQueryable`. (Ao chamar o `Contains` método em uma `IEnumerable` coleção, você obtém a implementação de .NET Framework; ao chamá-la em um `IQueryable` objeto, você obtém a implementação do provedor de banco de dados.) No entanto, há uma penalidade de desempenho para essa solução. O código `ToUpper` colocará uma função na cláusula WHERE da instrução TSQL SELECT. Isso pode impedir que o otimizador use um índice. Considerando que o SQL geralmente é instalado como não diferenciando maiúsculas e minúsculas, é melhor evitar o código `ToUpper` até você migrar para um armazenamento de dados que diferencia maiúsculas de minúsculas.
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Adicionar uma Caixa de Pesquisa à exibição Índice de Alunos
 
-Em *Views/Student/Index.cshtml*, adicione o código realçado imediatamente antes da marcação de tabela de abertura para criar uma legenda, uma caixa de texto e um botão **Pesquisar**.
+Em *Views/Student/Index.cshtml* , adicione o código realçado imediatamente antes da marcação de tabela de abertura para criar uma legenda, uma caixa de texto e um botão **Pesquisar** .
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 Esse código usa o  [auxiliar de marcação](xref:mvc/views/tag-helpers/intro)`<form>` para adicionar o botão e a caixa de texto de pesquisa. Por padrão, o auxiliar de marcação `<form>` envia dados de formulário com um POST, o que significa que os parâmetros são passados no corpo da mensagem HTTP e não na URL como cadeias de consulta. Quando você especifica HTTP GET, os dados de formulário são passados na URL como cadeias de consulta, o que permite aos usuários marcar a URL. As diretrizes do W3C recomendam o uso de GET quando a ação não resulta em uma atualização.
 
-Execute o aplicativo, selecione a guia **Alunos**, insira uma cadeia de caracteres de pesquisa e clique em Pesquisar para verificar se a filtragem está funcionando.
+Execute o aplicativo, selecione a guia **Alunos** , insira uma cadeia de caracteres de pesquisa e clique em Pesquisar para verificar se a filtragem está funcionando.
 
 ![Página Índice de Alunos com filtragem](sort-filter-page/_static/filtering.png)
 
@@ -126,7 +127,7 @@ http://localhost:5813/Students?SearchString=an
 
 Se você marcar essa página, obterá a lista filtrada quando usar o indicador. A adição de `method="get"` à marcação `form` é o que fez com que a cadeia de caracteres de consulta fosse gerada.
 
-Neste estágio, se você clicar em um link de classificação de título de coluna perderá o valor de filtro inserido na caixa **Pesquisa**. Você corrigirá isso na próxima seção.
+Neste estágio, se você clicar em um link de classificação de título de coluna perderá o valor de filtro inserido na caixa **Pesquisa** . Você corrigirá isso na próxima seção.
 
 ## <a name="add-paging-to-students-index"></a>Adicionar paginação ao Índice de Alunos
 
@@ -138,13 +139,13 @@ Na pasta do projeto, crie `PaginatedList.cs` e, em seguida, substitua o código 
 
 [!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
-O método `CreateAsync` nesse código usa o tamanho da página e o número da página e aplica as instruções `Skip` e `Take` ao `IQueryable`. Quando `ToListAsync` for chamado no `IQueryable`, ele retornará uma Lista que contém somente a página solicitada. As propriedades `HasPreviousPage` e `HasNextPage` podem ser usadas para habilitar ou desabilitar os botões de paginação **Anterior** e **Próximo**.
+O método `CreateAsync` nesse código usa o tamanho da página e o número da página e aplica as instruções `Skip` e `Take` ao `IQueryable`. Quando `ToListAsync` for chamado no `IQueryable`, ele retornará uma Lista que contém somente a página solicitada. As propriedades `HasPreviousPage` e `HasNextPage` podem ser usadas para habilitar ou desabilitar os botões de paginação **Anterior** e **Próximo** .
 
 Um método `CreateAsync` é usado em vez de um construtor para criar o objeto `PaginatedList<T>`, porque os construtores não podem executar um código assíncrono.
 
 ## <a name="add-paging-to-index-method"></a>Adicionar paginação ao método Index
 
-Em *StudentsController.cs*, substitua o método `Index` pelo código a seguir.
+Em *StudentsController.cs* , substitua o método `Index` pelo código a seguir.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
@@ -187,7 +188,7 @@ O método `PaginatedList.CreateAsync` usa um número de página. Os dois pontos 
 
 ## <a name="add-paging-links"></a>Adicionar links de paginação
 
-Em *Views/Students/Index.cshtml*, substitua o código existente pelo código a seguir. As alterações são realçadas.
+Em *Views/Students/Index.cshtml* , substitua o código existente pelo código a seguir. As alterações são realçadas.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
@@ -227,7 +228,7 @@ Para a página **Sobre** do site da Contoso University, você exibirá quantos a
 
 ### <a name="create-the-view-model"></a>Criar o modelo de exibição
 
-Crie uma pasta *SchoolViewModels* na pasta *Models*.
+Crie uma pasta *SchoolViewModels* na pasta *Models* .
 
 Na nova pasta, adicione um arquivo de classe *EnrollmentDateGroup.cs* e substitua o código de modelo pelo seguinte código:
 
@@ -235,7 +236,7 @@ Na nova pasta, adicione um arquivo de classe *EnrollmentDateGroup.cs* e substitu
 
 ### <a name="modify-the-home-controller"></a>Modificar o controlador Home
 
-Em *HomeController.cs*, adicione o seguinte usando as instruções na parte superior do arquivo:
+Em *HomeController.cs* , adicione o seguinte usando as instruções na parte superior do arquivo:
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 4f184a1264614b16ce98ba5474aacd60f175bd8a
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: c8ff2fc0f2f4d4e75f535f379ec94ea9de2e3ecb
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865217"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055692"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Crie aplicativos Web progressivos com ASP.NET Core Blazor WebAssembly
 
@@ -46,7 +47,7 @@ A palavra *progressiva* é usada para descrever tais aplicativos porque:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Ao criar um novo ** Blazor WebAssembly aplicativo** no diálogo **criar um novo projeto** , marque a caixa de seleção **aplicativo Web progressivo** :
+Ao criar um novo **Blazor WebAssembly aplicativo** no diálogo **criar um novo projeto** , marque a caixa de seleção **aplicativo Web progressivo** :
 
 ![A caixa de seleção ' aplicativo Web progressivo ' é marcada na diálogo novo projeto do Visual Studio.](progressive-web-app/_static/image1.png)
 
@@ -74,7 +75,7 @@ Ao visitar um aplicativo criado usando o modelo do PWA, os usuários têm a opç
 
 ![A caixa de diálogo de confirmação no Google Chrome apresenta um botão de instalação ao usuário para o aplicativo ' My::: no-Loc (mais alto):::P wa '.](progressive-web-app/_static/image2.png)
 
-No iOS, os visitantes podem instalar o PWA usando o botão **compartilhar** do Safari e sua opção **Adicionar à homescreen** . No Chrome para Android, os usuários devem selecionar o botão de **menu** no canto superior direito, seguido por **Adicionar à tela inicial**.
+No iOS, os visitantes podem instalar o PWA usando o botão **compartilhar** do Safari e sua opção **Adicionar à homescreen** . No Chrome para Android, os usuários devem selecionar o botão de **menu** no canto superior direito, seguido por **Adicionar à tela inicial** .
 
 Uma vez instalado, o aplicativo aparece em sua própria janela sem uma barra de endereços:
 
@@ -144,7 +145,7 @@ Como um modelo mental, você pode considerar um PWA offline como se comportando 
 
 O Blazor modelo do PWA produz aplicativos que tentam se atualizar automaticamente em segundo plano sempre que o usuário visita e tem uma conexão de rede em funcionamento. A maneira como isso funciona é a seguinte:
 
-* Durante a compilação, o projeto gera um *manifesto de ativos de trabalho de serviço*. Por padrão, isso é chamado `service-worker-assets.js` . O manifesto lista todos os recursos estáticos que o aplicativo requer para funcionar offline, como assemblies .NET, arquivos JavaScript e CSS, incluindo seus hashes de conteúdo. A lista de recursos é carregada pelo trabalhador do serviço para que ele saiba quais recursos armazenar em cache.
+* Durante a compilação, o projeto gera um *manifesto de ativos de trabalho de serviço* . Por padrão, isso é chamado `service-worker-assets.js` . O manifesto lista todos os recursos estáticos que o aplicativo requer para funcionar offline, como assemblies .NET, arquivos JavaScript e CSS, incluindo seus hashes de conteúdo. A lista de recursos é carregada pelo trabalhador do serviço para que ele saiba quais recursos armazenar em cache.
 * Cada vez que o usuário visita o aplicativo, o navegador solicita novamente `service-worker.js` e `service-worker-assets.js` em segundo plano. Os arquivos são comparados byte por byte com o trabalho de serviço instalado existente. Se o servidor retornar o conteúdo alterado para qualquer um desses arquivos, o trabalho de serviço tentará instalar uma nova versão de si mesmo.
 * Ao instalar uma nova versão de si mesma, o trabalho de serviço cria um novo cache separado para recursos offline e começa a popular o cache com os recursos listados em `service-worker-assets.js` . Essa lógica é implementada na `onInstall` função dentro do `service-worker.published.js` .
 * O processo é concluído com êxito quando todos os recursos são carregados sem erros e todos os hashes de conteúdo correspondem. Se for bem-sucedido, o novo trabalho de serviço entrará *em aguardando o estado de ativação* . Assim que o usuário fecha o aplicativo (não há guias de aplicativo restantes ou janelas), o novo trabalho de serviço torna-se *ativo* e é usado para visitas de aplicativos subsequentes. O antigo trabalho de serviço e seu cache são excluídos.
@@ -167,7 +168,7 @@ Considere o que acontece quando o usuário navega pela primeira vez para uma URL
 
 O operador de serviço padrão contém uma lógica de caso especial para solicitações de navegação. O trabalho de serviço resolve as solicitações retornando o conteúdo armazenado em cache para `/index.html` , independentemente da URL solicitada. Essa lógica é implementada na `onFetch` função dentro do `service-worker.published.js` .
 
-Se seu aplicativo tiver determinadas URLs que devem retornar o HTML renderizado pelo servidor e não atender `/index.html` do cache, você precisará editar a lógica em seu trabalho de serviço. Se todas as URLs que contêm `/Identity/` precisam ser tratadas como solicitações regulares somente online para o servidor, modifique a `service-worker.published.js` `onFetch` lógica. Localize o seguinte código:
+Se seu aplicativo tiver determinadas URLs que devem retornar o HTML renderizado pelo servidor e não atender `/index.html` do cache, você precisará editar a lógica em seu trabalho de serviço. Se todas as URLs que contêm `/Identity/` precisam ser tratadas como solicitações regulares somente online para o servidor, modifique a `service-worker.published.js` `onFetch` lógica. Localize o código a seguir:
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate';
