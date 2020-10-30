@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core Blazor valores e parâmetros em cascata
+title: 'ASP.NET Core :::no-loc(Blazor)::: valores e parâmetros em cascata'
 author: guardrex
 description: Saiba como fluir dados de um componente ancestral para componentes descendentes.
 monikerRange: '>= aspnetcore-3.1'
@@ -7,37 +7,38 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: 8cb2bd5f19a4cc21671a0b077d4ef0fda2e30455
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dec71f881dc815a26d62da6df92118926b1dcf06
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056420"
 ---
-# <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a><span data-ttu-id="05abe-103">ASP.NET Core Blazor valores e parâmetros em cascata</span><span class="sxs-lookup"><span data-stu-id="05abe-103">ASP.NET Core Blazor cascading values and parameters</span></span>
+# <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a><span data-ttu-id="054d3-103">ASP.NET Core :::no-loc(Blazor)::: valores e parâmetros em cascata</span><span class="sxs-lookup"><span data-stu-id="054d3-103">ASP.NET Core :::no-loc(Blazor)::: cascading values and parameters</span></span>
 
-<span data-ttu-id="05abe-104">De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="05abe-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
+<span data-ttu-id="054d3-104">De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="054d3-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
 
-<span data-ttu-id="05abe-105">[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="05abe-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="054d3-105">[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="054d3-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="05abe-106">Em alguns cenários, é inconveniente fluir dados de um componente ancestral para um componente descendente usando [parâmetros de componente](xref:blazor/components/index#component-parameters), especialmente quando há várias camadas de componente.</span><span class="sxs-lookup"><span data-stu-id="05abe-106">In some scenarios, it's inconvenient to flow data from an ancestor component to a descendent component using [component parameters](xref:blazor/components/index#component-parameters), especially when there are several component layers.</span></span> <span data-ttu-id="05abe-107">Valores e parâmetros em cascata resolvem esse problema fornecendo uma maneira conveniente para um componente ancestral fornecer um valor para todos os seus componentes descendentes.</span><span class="sxs-lookup"><span data-stu-id="05abe-107">Cascading values and parameters solve this problem by providing a convenient way for an ancestor component to provide a value to all of its descendent components.</span></span> <span data-ttu-id="05abe-108">Valores e parâmetros em cascata também fornecem uma abordagem para que os componentes sejam coordenados.</span><span class="sxs-lookup"><span data-stu-id="05abe-108">Cascading values and parameters also provide an approach for components to coordinate.</span></span>
+<span data-ttu-id="054d3-106">Em alguns cenários, é inconveniente fluir dados de um componente ancestral para um componente descendente usando [parâmetros de componente](xref:blazor/components/index#component-parameters), especialmente quando há várias camadas de componente.</span><span class="sxs-lookup"><span data-stu-id="054d3-106">In some scenarios, it's inconvenient to flow data from an ancestor component to a descendent component using [component parameters](xref:blazor/components/index#component-parameters), especially when there are several component layers.</span></span> <span data-ttu-id="054d3-107">Valores e parâmetros em cascata resolvem esse problema fornecendo uma maneira conveniente para um componente ancestral fornecer um valor para todos os seus componentes descendentes.</span><span class="sxs-lookup"><span data-stu-id="054d3-107">Cascading values and parameters solve this problem by providing a convenient way for an ancestor component to provide a value to all of its descendent components.</span></span> <span data-ttu-id="054d3-108">Valores e parâmetros em cascata também fornecem uma abordagem para que os componentes sejam coordenados.</span><span class="sxs-lookup"><span data-stu-id="054d3-108">Cascading values and parameters also provide an approach for components to coordinate.</span></span>
 
-### <a name="theme-example"></a><span data-ttu-id="05abe-109">Exemplo de tema</span><span class="sxs-lookup"><span data-stu-id="05abe-109">Theme example</span></span>
+### <a name="theme-example"></a><span data-ttu-id="054d3-109">Exemplo de tema</span><span class="sxs-lookup"><span data-stu-id="054d3-109">Theme example</span></span>
 
-<span data-ttu-id="05abe-110">No exemplo a seguir do aplicativo de exemplo, a `ThemeInfo` classe especifica as informações do tema para fluir para baixo na hierarquia do componente para que todos os botões de uma determinada parte do aplicativo compartilhem o mesmo estilo.</span><span class="sxs-lookup"><span data-stu-id="05abe-110">In the following example from the sample app, the `ThemeInfo` class specifies the theme information to flow down the component hierarchy so that all of the buttons within a given part of the app share the same style.</span></span>
+<span data-ttu-id="054d3-110">No exemplo a seguir do aplicativo de exemplo, a `ThemeInfo` classe especifica as informações do tema para fluir para baixo na hierarquia do componente para que todos os botões de uma determinada parte do aplicativo compartilhem o mesmo estilo.</span><span class="sxs-lookup"><span data-stu-id="054d3-110">In the following example from the sample app, the `ThemeInfo` class specifies the theme information to flow down the component hierarchy so that all of the buttons within a given part of the app share the same style.</span></span>
 
-<span data-ttu-id="05abe-111">`UIThemeClasses/ThemeInfo.cs`:</span><span class="sxs-lookup"><span data-stu-id="05abe-111">`UIThemeClasses/ThemeInfo.cs`:</span></span>
+<span data-ttu-id="054d3-111">`UIThemeClasses/ThemeInfo.cs`:</span><span class="sxs-lookup"><span data-stu-id="054d3-111">`UIThemeClasses/ThemeInfo.cs`:</span></span>
 
 ```csharp
 public class ThemeInfo
@@ -46,15 +47,15 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="05abe-112">Um componente ancestral pode fornecer um valor em cascata usando o componente de valor em cascata.</span><span class="sxs-lookup"><span data-stu-id="05abe-112">An ancestor component can provide a cascading value using the Cascading Value component.</span></span> <span data-ttu-id="05abe-113">O <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componente encapsula uma subárvore da hierarquia do componente e fornece um único valor para todos os componentes dentro dessa subárvore.</span><span class="sxs-lookup"><span data-stu-id="05abe-113">The <xref:Microsoft.AspNetCore.Components.CascadingValue%601> component wraps a subtree of the component hierarchy and supplies a single value to all components within that subtree.</span></span>
+<span data-ttu-id="054d3-112">Um componente ancestral pode fornecer um valor em cascata usando o componente de valor em cascata.</span><span class="sxs-lookup"><span data-stu-id="054d3-112">An ancestor component can provide a cascading value using the Cascading Value component.</span></span> <span data-ttu-id="054d3-113">O <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componente encapsula uma subárvore da hierarquia do componente e fornece um único valor para todos os componentes dentro dessa subárvore.</span><span class="sxs-lookup"><span data-stu-id="054d3-113">The <xref:Microsoft.AspNetCore.Components.CascadingValue%601> component wraps a subtree of the component hierarchy and supplies a single value to all components within that subtree.</span></span>
 
-<span data-ttu-id="05abe-114">Por exemplo, o aplicativo de exemplo especifica informações de tema ( `ThemeInfo` ) em um dos layouts do aplicativo como um parâmetro em cascata para todos os componentes que compõem o corpo do layout da `@Body` propriedade.</span><span class="sxs-lookup"><span data-stu-id="05abe-114">For example, the sample app specifies theme information (`ThemeInfo`) in one of the app's layouts as a cascading parameter for all components that make up the layout body of the `@Body` property.</span></span> <span data-ttu-id="05abe-115">`ButtonClass` é atribuído um valor de `btn-success` no componente layout.</span><span class="sxs-lookup"><span data-stu-id="05abe-115">`ButtonClass` is assigned a value of `btn-success` in the layout component.</span></span> <span data-ttu-id="05abe-116">Qualquer componente descendente pode consumir essa propriedade por meio do `ThemeInfo` objeto em cascata.</span><span class="sxs-lookup"><span data-stu-id="05abe-116">Any descendent component can consume this property through the `ThemeInfo` cascading object.</span></span>
+<span data-ttu-id="054d3-114">Por exemplo, o aplicativo de exemplo especifica informações de tema ( `ThemeInfo` ) em um dos layouts do aplicativo como um parâmetro em cascata para todos os componentes que compõem o corpo do layout da `@Body` propriedade.</span><span class="sxs-lookup"><span data-stu-id="054d3-114">For example, the sample app specifies theme information (`ThemeInfo`) in one of the app's layouts as a cascading parameter for all components that make up the layout body of the `@Body` property.</span></span> <span data-ttu-id="054d3-115">`ButtonClass` é atribuído um valor de `btn-success` no componente layout.</span><span class="sxs-lookup"><span data-stu-id="054d3-115">`ButtonClass` is assigned a value of `btn-success` in the layout component.</span></span> <span data-ttu-id="054d3-116">Qualquer componente descendente pode consumir essa propriedade por meio do `ThemeInfo` objeto em cascata.</span><span class="sxs-lookup"><span data-stu-id="054d3-116">Any descendent component can consume this property through the `ThemeInfo` cascading object.</span></span>
 
-<span data-ttu-id="05abe-117">`CascadingValuesParametersLayout` componente</span><span class="sxs-lookup"><span data-stu-id="05abe-117">`CascadingValuesParametersLayout` component:</span></span>
+<span data-ttu-id="054d3-117">`CascadingValuesParametersLayout` componente</span><span class="sxs-lookup"><span data-stu-id="054d3-117">`CascadingValuesParametersLayout` component:</span></span>
 
 ```razor
 @inherits LayoutComponentBase
-@using BlazorSample.UIThemeClasses
+@using :::no-loc(Blazor):::Sample.UIThemeClasses
 
 <div class="container-fluid">
     <div class="row">
@@ -76,16 +77,16 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="05abe-118">Para fazer uso de valores em cascata, os componentes declaram parâmetros em cascata usando o [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) atributo.</span><span class="sxs-lookup"><span data-stu-id="05abe-118">To make use of cascading values, components declare cascading parameters using the [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) attribute.</span></span> <span data-ttu-id="05abe-119">Os valores em cascata são associados a parâmetros em cascata por tipo.</span><span class="sxs-lookup"><span data-stu-id="05abe-119">Cascading values are bound to cascading parameters by type.</span></span>
+<span data-ttu-id="054d3-118">Para fazer uso de valores em cascata, os componentes declaram parâmetros em cascata usando o [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) atributo.</span><span class="sxs-lookup"><span data-stu-id="054d3-118">To make use of cascading values, components declare cascading parameters using the [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) attribute.</span></span> <span data-ttu-id="054d3-119">Os valores em cascata são associados a parâmetros em cascata por tipo.</span><span class="sxs-lookup"><span data-stu-id="054d3-119">Cascading values are bound to cascading parameters by type.</span></span>
 
-<span data-ttu-id="05abe-120">No aplicativo de exemplo, o `CascadingValuesParametersTheme` componente associa o `ThemeInfo` valor em cascata a um parâmetro em cascata.</span><span class="sxs-lookup"><span data-stu-id="05abe-120">In the sample app, the `CascadingValuesParametersTheme` component binds the `ThemeInfo` cascading value to a cascading parameter.</span></span> <span data-ttu-id="05abe-121">O parâmetro é usado para definir a classe CSS para um dos botões exibidos pelo componente.</span><span class="sxs-lookup"><span data-stu-id="05abe-121">The parameter is used to set the CSS class for one of the buttons displayed by the component.</span></span>
+<span data-ttu-id="054d3-120">No aplicativo de exemplo, o `CascadingValuesParametersTheme` componente associa o `ThemeInfo` valor em cascata a um parâmetro em cascata.</span><span class="sxs-lookup"><span data-stu-id="054d3-120">In the sample app, the `CascadingValuesParametersTheme` component binds the `ThemeInfo` cascading value to a cascading parameter.</span></span> <span data-ttu-id="054d3-121">O parâmetro é usado para definir a classe CSS para um dos botões exibidos pelo componente.</span><span class="sxs-lookup"><span data-stu-id="054d3-121">The parameter is used to set the CSS class for one of the buttons displayed by the component.</span></span>
 
-<span data-ttu-id="05abe-122">`CascadingValuesParametersTheme` componente</span><span class="sxs-lookup"><span data-stu-id="05abe-122">`CascadingValuesParametersTheme` component:</span></span>
+<span data-ttu-id="054d3-122">`CascadingValuesParametersTheme` componente</span><span class="sxs-lookup"><span data-stu-id="054d3-122">`CascadingValuesParametersTheme` component:</span></span>
 
 ```razor
 @page "/cascadingvaluesparameterstheme"
 @layout CascadingValuesParametersLayout
-@using BlazorSample.UIThemeClasses
+@using :::no-loc(Blazor):::Sample.UIThemeClasses
 
 <h1>Cascading Values & Parameters</h1>
 
@@ -116,7 +117,7 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="05abe-123">Para propagar vários valores do mesmo tipo dentro da mesma subárvore, forneça uma <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> cadeia de caracteres exclusiva para cada <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componente e seu [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) atributo correspondente.</span><span class="sxs-lookup"><span data-stu-id="05abe-123">To cascade multiple values of the same type within the same subtree, provide a unique <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> string to each <xref:Microsoft.AspNetCore.Components.CascadingValue%601> component and its corresponding [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) attribute.</span></span> <span data-ttu-id="05abe-124">No exemplo a seguir, dois <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componentes em cascata diferentes instâncias de `MyCascadingType` por nome:</span><span class="sxs-lookup"><span data-stu-id="05abe-124">In the following example, two <xref:Microsoft.AspNetCore.Components.CascadingValue%601> components cascade different instances of `MyCascadingType` by name:</span></span>
+<span data-ttu-id="054d3-123">Para propagar vários valores do mesmo tipo dentro da mesma subárvore, forneça uma <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> cadeia de caracteres exclusiva para cada <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componente e seu [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) atributo correspondente.</span><span class="sxs-lookup"><span data-stu-id="054d3-123">To cascade multiple values of the same type within the same subtree, provide a unique <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> string to each <xref:Microsoft.AspNetCore.Components.CascadingValue%601> component and its corresponding [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) attribute.</span></span> <span data-ttu-id="054d3-124">No exemplo a seguir, dois <xref:Microsoft.AspNetCore.Components.CascadingValue%601> componentes em cascata diferentes instâncias de `MyCascadingType` por nome:</span><span class="sxs-lookup"><span data-stu-id="054d3-124">In the following example, two <xref:Microsoft.AspNetCore.Components.CascadingValue%601> components cascade different instances of `MyCascadingType` by name:</span></span>
 
 ```razor
 <CascadingValue Value="@parentCascadeParameter1" Name="CascadeParam1">
@@ -135,7 +136,7 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="05abe-125">Em um componente descendente, os parâmetros em cascata recebem seus valores dos valores em cascata correspondentes no componente ancestral por nome:</span><span class="sxs-lookup"><span data-stu-id="05abe-125">In a descendant component, the cascaded parameters receive their values from the corresponding cascaded values in the ancestor component by name:</span></span>
+<span data-ttu-id="054d3-125">Em um componente descendente, os parâmetros em cascata recebem seus valores dos valores em cascata correspondentes no componente ancestral por nome:</span><span class="sxs-lookup"><span data-stu-id="054d3-125">In a descendant component, the cascaded parameters receive their values from the corresponding cascaded values in the ancestor component by name:</span></span>
 
 ```razor
 ...
@@ -149,15 +150,15 @@ public class ThemeInfo
 }
 ```
 
-### <a name="tabset-example"></a><span data-ttu-id="05abe-126">Exemplo de TabSet</span><span class="sxs-lookup"><span data-stu-id="05abe-126">TabSet example</span></span>
+### <a name="tabset-example"></a><span data-ttu-id="054d3-126">Exemplo de TabSet</span><span class="sxs-lookup"><span data-stu-id="054d3-126">TabSet example</span></span>
 
-<span data-ttu-id="05abe-127">Os parâmetros em cascata também permitem que os componentes colaborem na hierarquia do componente.</span><span class="sxs-lookup"><span data-stu-id="05abe-127">Cascading parameters also enable components to collaborate across the component hierarchy.</span></span> <span data-ttu-id="05abe-128">Por exemplo, considere o exemplo a seguir `TabSet` no aplicativo de exemplo.</span><span class="sxs-lookup"><span data-stu-id="05abe-128">For example, consider the following `TabSet` example in the sample app.</span></span>
+<span data-ttu-id="054d3-127">Os parâmetros em cascata também permitem que os componentes colaborem na hierarquia do componente.</span><span class="sxs-lookup"><span data-stu-id="054d3-127">Cascading parameters also enable components to collaborate across the component hierarchy.</span></span> <span data-ttu-id="054d3-128">Por exemplo, considere o exemplo a seguir `TabSet` no aplicativo de exemplo.</span><span class="sxs-lookup"><span data-stu-id="054d3-128">For example, consider the following `TabSet` example in the sample app.</span></span>
 
-<span data-ttu-id="05abe-129">O aplicativo de exemplo tem uma `ITab` interface que implementa as guias:</span><span class="sxs-lookup"><span data-stu-id="05abe-129">The sample app has an `ITab` interface that tabs implement:</span></span>
+<span data-ttu-id="054d3-129">O aplicativo de exemplo tem uma `ITab` interface que implementa as guias:</span><span class="sxs-lookup"><span data-stu-id="054d3-129">The sample app has an `ITab` interface that tabs implement:</span></span>
 
-[!code-csharp[](../common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
+[!code-csharp[](../common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/UIInterfaces/ITab.cs)]
 
-<span data-ttu-id="05abe-130">O `CascadingValuesParametersTabSet` componente usa o `TabSet` componente, que contém vários `Tab` componentes:</span><span class="sxs-lookup"><span data-stu-id="05abe-130">The `CascadingValuesParametersTabSet` component uses the `TabSet` component, which contains several `Tab` components:</span></span>
+<span data-ttu-id="054d3-130">O `CascadingValuesParametersTabSet` componente usa o `TabSet` componente, que contém vários `Tab` componentes:</span><span class="sxs-lookup"><span data-stu-id="054d3-130">The `CascadingValuesParametersTabSet` component uses the `TabSet` component, which contains several `Tab` components:</span></span>
 
 ```razor
 @page "/CascadingValuesParametersTabSet"
@@ -189,14 +190,14 @@ public class ThemeInfo
 }
 ```
 
-<span data-ttu-id="05abe-131">Os `Tab` componentes filho não são passados explicitamente como parâmetros para `TabSet` .</span><span class="sxs-lookup"><span data-stu-id="05abe-131">The child `Tab` components aren't explicitly passed as parameters to the `TabSet`.</span></span> <span data-ttu-id="05abe-132">Em vez disso, os `Tab` componentes filho fazem parte do conteúdo filho do `TabSet` .</span><span class="sxs-lookup"><span data-stu-id="05abe-132">Instead, the child `Tab` components are part of the child content of the `TabSet`.</span></span> <span data-ttu-id="05abe-133">No entanto, o `TabSet` ainda precisa saber sobre cada `Tab` componente para que ele possa renderizar os cabeçalhos e a guia ativa. Para habilitar essa coordenação sem a necessidade de código adicional, o `TabSet` componente *pode fornecer a si mesmo como um valor em cascata* que é então coletado pelos componentes descendentes `Tab` .</span><span class="sxs-lookup"><span data-stu-id="05abe-133">However, the `TabSet` still needs to know about each `Tab` component so that it can render the headers and the active tab. To enable this coordination without requiring additional code, the `TabSet` component *can provide itself as a cascading value* that is then picked up by the descendent `Tab` components.</span></span>
+<span data-ttu-id="054d3-131">Os `Tab` componentes filho não são passados explicitamente como parâmetros para `TabSet` .</span><span class="sxs-lookup"><span data-stu-id="054d3-131">The child `Tab` components aren't explicitly passed as parameters to the `TabSet`.</span></span> <span data-ttu-id="054d3-132">Em vez disso, os `Tab` componentes filho fazem parte do conteúdo filho do `TabSet` .</span><span class="sxs-lookup"><span data-stu-id="054d3-132">Instead, the child `Tab` components are part of the child content of the `TabSet`.</span></span> <span data-ttu-id="054d3-133">No entanto, o `TabSet` ainda precisa saber sobre cada `Tab` componente para que ele possa renderizar os cabeçalhos e a guia ativa. Para habilitar essa coordenação sem a necessidade de código adicional, o `TabSet` componente *pode fornecer a si mesmo como um valor em cascata* que é então coletado pelos componentes descendentes `Tab` .</span><span class="sxs-lookup"><span data-stu-id="054d3-133">However, the `TabSet` still needs to know about each `Tab` component so that it can render the headers and the active tab. To enable this coordination without requiring additional code, the `TabSet` component *can provide itself as a cascading value* that is then picked up by the descendent `Tab` components.</span></span>
 
-<span data-ttu-id="05abe-134">`TabSet` componente</span><span class="sxs-lookup"><span data-stu-id="05abe-134">`TabSet` component:</span></span>
+<span data-ttu-id="054d3-134">`TabSet` componente</span><span class="sxs-lookup"><span data-stu-id="054d3-134">`TabSet` component:</span></span>
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
+[!code-razor[](../common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/Components/TabSet.razor)]
 
-<span data-ttu-id="05abe-135">Os componentes descendentes `Tab` capturam o que contém `TabSet` como um parâmetro em cascata, de modo que os `Tab` componentes se adicionam à `TabSet` coordenada e na qual a guia está ativa.</span><span class="sxs-lookup"><span data-stu-id="05abe-135">The descendent `Tab` components capture the containing `TabSet` as a cascading parameter, so the `Tab` components add themselves to the `TabSet` and coordinate on which tab is active.</span></span>
+<span data-ttu-id="054d3-135">Os componentes descendentes `Tab` capturam o que contém `TabSet` como um parâmetro em cascata, de modo que os `Tab` componentes se adicionam à `TabSet` coordenada e na qual a guia está ativa.</span><span class="sxs-lookup"><span data-stu-id="054d3-135">The descendent `Tab` components capture the containing `TabSet` as a cascading parameter, so the `Tab` components add themselves to the `TabSet` and coordinate on which tab is active.</span></span>
 
-<span data-ttu-id="05abe-136">`Tab` componente</span><span class="sxs-lookup"><span data-stu-id="05abe-136">`Tab` component:</span></span>
+<span data-ttu-id="054d3-136">`Tab` componente</span><span class="sxs-lookup"><span data-stu-id="054d3-136">`Tab` component:</span></span>
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
+[!code-razor[](../common/samples/3.x/:::no-loc(Blazor):::WebAssemblySample/Components/Tab.razor)]
