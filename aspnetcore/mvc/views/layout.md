@@ -5,6 +5,7 @@ description: Saiba como usar layouts comuns, compartilhar diretivas e executar u
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 308e567e0480f83972ab7a55c7b957af83a164fd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 502df268e7f5f33acfffccd5ec0bd65267fa12da
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060970"
 ---
 # <a name="layout-in-aspnet-core"></a>Layout no ASP.NET Core
 
@@ -46,7 +47,7 @@ A maioria dos aplicativos Web tem um layout comum que fornece aos usuários uma 
 
 Estruturas HTML comuns, como scripts e folhas de estilo, também são usadas frequentemente por muitas páginas em um aplicativo. Todos esses elementos compartilhados podem ser definidos em um arquivo de *layout* , que pode ser referenciado por qualquer exibição usada no aplicativo. Os layouts reduzem o código duplicado nas exibições.
 
-Por convenção, o layout padrão de um aplicativo ASP.NET Core é chamado *_Layout.cshtml*. Os arquivos de layout para novos projetos do ASP.NET Core criados com os modelos são:
+Por convenção, o layout padrão de um aplicativo ASP.NET Core é chamado *_Layout.cshtml* . Os arquivos de layout para novos projetos do ASP.NET Core criados com os modelos são:
 
 * Razor Páginas: *páginas/compartilhadas/_Layout. cshtml*
 
@@ -68,7 +69,7 @@ Razor as exibições têm uma `Layout` propriedade. As exibições individuais e
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-O layout especificado pode usar um caminho completo (por exemplo, */Pages/Shared/_Layout.cshtml* ou */Views/Shared/_Layout.cshtml*) ou um nome parcial (exemplo: `_Layout`). Quando um nome parcial é fornecido, o Razor mecanismo de exibição pesquisa o arquivo de layout usando seu processo de descoberta padrão. A pasta em que o método do manipulador (ou controlador) existe é pesquisada primeiro, seguida pela pasta *Shared*. Esse processo de descoberta é idêntico àquele usado para descobrir [exibições parciais](xref:mvc/views/partial#partial-view-discovery).
+O layout especificado pode usar um caminho completo (por exemplo, */Pages/Shared/_Layout.cshtml* ou */Views/Shared/_Layout.cshtml* ) ou um nome parcial (exemplo: `_Layout`). Quando um nome parcial é fornecido, o Razor mecanismo de exibição pesquisa o arquivo de layout usando seu processo de descoberta padrão. A pasta em que o método do manipulador (ou controlador) existe é pesquisada primeiro, seguida pela pasta *Shared* . Esse processo de descoberta é idêntico àquele usado para descobrir [exibições parciais](xref:mvc/views/partial#partial-view-discovery).
 
 Por padrão, todo layout precisa chamar `RenderBody`. Sempre que a chamada a `RenderBody` for feita, o conteúdo da exibição será renderizado.
 
@@ -76,7 +77,7 @@ Por padrão, todo layout precisa chamar `RenderBody`. Sempre que a chamada a `Re
 <!-- https://stackoverflow.com/questions/23327578 -->
 ### <a name="sections"></a>Seções
 
-Um layout, opcionalmente, pode referenciar uma ou mais *seções*, chamando `RenderSection`. As seções fornecem uma maneira de organizar o local em que determinados elementos da página devem ser colocados. Cada chamada a `RenderSection` pode especificar se essa seção é obrigatória ou opcional:
+Um layout, opcionalmente, pode referenciar uma ou mais *seções* , chamando `RenderSection`. As seções fornecem uma maneira de organizar o local em que determinados elementos da página devem ser colocados. Cada chamada a `RenderSection` pode especificar se essa seção é obrigatória ou opcional:
 
 ```html
 <script type="text/javascript" src="~/scripts/global.js"></script>
@@ -96,7 +97,7 @@ Uma `@section` definição de exemplo no Razor modo de exibição páginas:
 
 No código anterior, *scripts/main.js* é adicionado à seção `scripts` em uma página ou exibição. Outras páginas ou exibições no mesmo aplicativo podem não exigir esse script e não definirão uma seção de scripts.
 
-A marcação a seguir usa o [Auxiliar de Marca Parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) para renderizar *_ValidationScriptsPartial.cshtml*:
+A marcação a seguir usa o [Auxiliar de Marca Parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) para renderizar *_ValidationScriptsPartial.cshtml* :
 
 ```html
 @section Scripts {
@@ -136,7 +137,7 @@ Um arquivo `_ViewImports.cshtml` de exemplo:
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
-O arquivo *_ViewImports.cshtml* para um aplicativo ASP.NET Core MVC normalmente é colocado na pasta *Pages* (ou *Views*). Um arquivo *_ViewImports.cshtml* pode ser colocado em qualquer pasta, caso em que só será aplicado a páginas ou exibições nessa pasta e em suas subpastas. Arquivos `_ViewImports` são processados começando no nível raiz e, em seguida, para cada pasta até o local da página ou da exibição em si. As configurações `_ViewImports` especificadas no nível raiz podem ser substituídas no nível da pasta.
+O arquivo *_ViewImports.cshtml* para um aplicativo ASP.NET Core MVC normalmente é colocado na pasta *Pages* (ou *Views* ). Um arquivo *_ViewImports.cshtml* pode ser colocado em qualquer pasta, caso em que só será aplicado a páginas ou exibições nessa pasta e em suas subpastas. Arquivos `_ViewImports` são processados começando no nível raiz e, em seguida, para cada pasta até o local da página ou da exibição em si. As configurações `_ViewImports` especificadas no nível raiz podem ser substituídas no nível da pasta.
 
 Por exemplo, suponha:
 
@@ -158,12 +159,12 @@ Se vários arquivos *_ViewImports.cshtml* forem encontrados na hierarquia de arq
 
 ## <a name="running-code-before-each-view"></a>Executando o código antes de cada exibição
 
-Código que precisa ser executado antes de cada exibição ou página precisa ser colocada no arquivo *_ViewStart.cshtml*. Por convenção, o arquivo *_ViewStart.cshtml* está localizado na pasta *Pages* (ou *Views*). As instruções listadas em *_ViewStart.cshtml* são executadas antes de cada exibição completa (não layouts nem exibições parciais). Como [ViewImports.cshtml](xref:mvc/views/layout#viewimports), *_ViewStart.cshtml* é hierárquico. Se um arquivo *_ViewStart.cshtml* for definido na pasta de exibições ou páginas, ele será executado depois daquele definido na raiz da pasta *Pages* (ou *Views*) (se houver).
+Código que precisa ser executado antes de cada exibição ou página precisa ser colocada no arquivo *_ViewStart.cshtml* . Por convenção, o arquivo *_ViewStart.cshtml* está localizado na pasta *Pages* (ou *Views* ). As instruções listadas em *_ViewStart.cshtml* são executadas antes de cada exibição completa (não layouts nem exibições parciais). Como [ViewImports.cshtml](xref:mvc/views/layout#viewimports), *_ViewStart.cshtml* é hierárquico. Se um arquivo *_ViewStart.cshtml* for definido na pasta de exibições ou páginas, ele será executado depois daquele definido na raiz da pasta *Pages* (ou *Views* ) (se houver).
 
 Um arquivo *_ViewStart.cshtml* de amostra:
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
-O arquivo acima especifica que todas as exibições usarão o layout *_Layout.cshtml*.
+O arquivo acima especifica que todas as exibições usarão o layout *_Layout.cshtml* .
 
-*_ViewStart.cshtml* é *_ViewImports.cshtml* normalmente **não** são colocados na pasta */Pages/Shared* (ou */Views/Shared*). As versões no nível do aplicativo desses arquivos devem ser colocadas diretamente na pasta */Pages* (ou */Views*).
+*_ViewStart.cshtml* é *_ViewImports.cshtml* normalmente **não** são colocados na pasta */Pages/Shared* (ou */Views/Shared* ). As versões no nível do aplicativo desses arquivos devem ser colocadas diretamente na pasta */Pages* (ou */Views* ).

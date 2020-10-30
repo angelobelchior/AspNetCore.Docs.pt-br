@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: db718b8d4c305b75ad52054efde6b2d03f6825ed
-ms.sourcegitcommit: 4cce99cbd44372fd4575e8da8c0f4345949f4d9a
+ms.openlocfilehash: 08ec018238d18cd253e793267c5b146df8319485
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89153526"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060762"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Extensibilidade de gerenciamento de chaves no ASP.NET Core
 
 Leia a seção [Gerenciamento de chaves](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) antes de ler esta seção, pois ela explica alguns dos conceitos fundamentais por trás dessas APIs.
 
-**Aviso**: os tipos que implementam qualquer uma das interfaces a seguir devem ser thread-safe para vários chamadores.
+**Aviso** : os tipos que implementam qualquer uma das interfaces a seguir devem ser thread-safe para vários chamadores.
 
 ## <a name="key"></a>Chave
 

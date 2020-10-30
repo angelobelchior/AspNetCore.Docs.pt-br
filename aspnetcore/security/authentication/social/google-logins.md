@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 03/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/google-logins
-ms.openlocfilehash: a7a5260a2446ac3f3be00755ef051e56080a7485
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 111ea7c972778dfd5296d0401c16563aeaa36a63
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634287"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060307"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Configuração de logon externo do Google no ASP.NET Core
 
@@ -33,11 +34,11 @@ Este tutorial mostra como permitir que os usuários entrem com sua conta do Goog
 ## <a name="create-a-google-api-console-project-and-client-id"></a>Criar um projeto do console do Google API e uma ID do cliente
 
 * Instale [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google).
-* Navegue até [integrando o logon do Google ao seu aplicativo Web](https://developers.google.com/identity/sign-in/web/sign-in) e selecione **configurar um projeto**.
-* Na caixa de diálogo **configurar seu cliente OAuth** , selecione **servidor Web**.
+* Navegue até [integração do Google Sign-In ao seu aplicativo Web](https://developers.google.com/identity/sign-in/web/sign-in) e selecione **configurar um projeto** .
+* Na caixa de diálogo **configurar seu cliente OAuth** , selecione **servidor Web** .
 * Na caixa de entrada de texto **URIs de redirecionamento autorizados** , defina o URI de redirecionamento. Por exemplo, `https://localhost:44312/signin-google`
-* Salve a **ID do cliente** e o **segredo do cliente**.
-* Ao implantar o site, registre a nova URL pública do console do **Google**.
+* Salve a **ID do cliente** e o **segredo do cliente** .
+* Ao implantar o site, registre a nova URL pública do console do **Google** .
 
 ## <a name="store-the-google-client-id-and-secret"></a>Armazenar a ID e o segredo do cliente do Google
 
@@ -65,7 +66,7 @@ Adicione o serviço do Google a `Startup.ConfigureServices` :
 
 ## <a name="sign-in-with-google"></a>Entrar com o Google
 
-* Execute o aplicativo e clique em **fazer logon**. É exibida uma opção para entrar com o Google.
+* Execute o aplicativo e clique em **fazer logon** . É exibida uma opção para entrar com o Google.
 * Clique no botão **Google** , que redireciona para o Google para autenticação.
 * Depois de inserir suas credenciais do Google, você será Redirecionado de volta para o site da Web.
 
@@ -82,7 +83,7 @@ O segmento URI `/signin-google` é definido como o retorno de chamada padrão do
 ## <a name="troubleshooting"></a>Solução de problemas
 
 * Se a entrada não funcionar e você não estiver recebendo erros, mude para o modo de desenvolvimento para facilitar a depuração do problema.
-* Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , tentando autenticar resultados em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida*. O modelo de projeto usado neste tutorial garante que isso seja feito.
+* Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , tentando autenticar resultados em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida* . O modelo de projeto usado neste tutorial garante que isso seja feito.
 * Se o banco de dados do site não tiver sido criado aplicando a migração inicial, você obterá *uma operação de banco de dados com falha ao processar o erro de solicitação* . Selecione **aplicar migrações** para criar o banco de dados e atualize a página para continuar após o erro.
 
 ## <a name="next-steps"></a>Próximas etapas

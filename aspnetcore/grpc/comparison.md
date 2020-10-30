@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 3f0e44bb374214328f589c6ca3952c6d7aab88d8
-ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
+ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/18/2020
-ms.locfileid: "90770123"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059943"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparar serviços gRPC com APIs HTTP
 
@@ -36,12 +37,12 @@ A tabela a seguir oferece uma comparação de alto nível dos recursos entre as 
 
 | Recurso          | gRPC                                               | APIs HTTP com JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
-| Contrato         | Necessário (*. proto*)                                | Opcional (OpenAPI)            |
+| Contrato         | Necessário ( *. proto* )                                | Opcional (OpenAPI)            |
 | Protocolo         | HTTP/2                                             | HTTP                          |
 | Carga útil          | [Protobuf (pequeno, binário)](#performance)           | JSON (grande, legível por humanos)  |
 | Prescriptiveness | [Especificação estrita](#strict-specification)      | Cancelar. Qualquer HTTP é válido.     |
 | Streaming        | [Cliente, servidor, bidirecional](#streaming)       | Cliente, servidor                |
-| Suporte ao navegador  | [Não (requer grpc-Web)](#limited-browser-support) | Sim                           |
+| Suporte ao navegador  | [Não (requer grpc-Web)](#limited-browser-support) | Yes                           |
 | Segurança         | Transporte (TLS)                                    | Transporte (TLS)               |
 | Geração de código de cliente | [Sim](#code-generation)                      | OpenAPI + ferramentas de terceiros |
 
@@ -91,11 +92,11 @@ Propagar o prazo e o cancelamento por meio de chamadas gRPC filho ajuda a impor 
 
 o gRPC é bem adequado para os seguintes cenários:
 
-* **Microserviços**: o gRPC foi projetado para comunicação de baixa latência e alta taxa de transferência. o gRPC é ótimo para microserviços leves em que a eficiência é fundamental.
-* **Comunicação ponto a ponto em tempo real**: o gRPC tem excelente suporte para streaming bidirecional. os serviços gRPCs podem enviar mensagens por push em tempo real sem sondagem.
-* **Ambientes poliglota**: as ferramentas de gRPC dão suporte a todas as linguagens de desenvolvimento populares, tornando o gRPC uma boa opção para ambientes com vários idiomas.
-* **Ambientes com restrição de rede**: as mensagens gRPC são serializadas com Protobuf, um formato de mensagem leve. Uma mensagem gRPC é sempre menor do que uma mensagem JSON equivalente.
-* **Comunicação entre processos (IPC)**: transportes IPC, como soquetes de domínio UNIX e pipes nomeados, podem ser usados com gRPC para se comunicar entre aplicativos no mesmo computador. Para obter mais informações, consulte <xref:grpc/interprocess>.
+* **Microserviços** : o gRPC foi projetado para comunicação de baixa latência e alta taxa de transferência. o gRPC é ótimo para microserviços leves em que a eficiência é fundamental.
+* **Comunicação ponto a ponto em tempo real** : o gRPC tem excelente suporte para streaming bidirecional. os serviços gRPCs podem enviar mensagens por push em tempo real sem sondagem.
+* **Ambientes poliglota** : as ferramentas de gRPC dão suporte a todas as linguagens de desenvolvimento populares, tornando o gRPC uma boa opção para ambientes com vários idiomas.
+* **Ambientes com restrição de rede** : as mensagens gRPC são serializadas com Protobuf, um formato de mensagem leve. Uma mensagem gRPC é sempre menor do que uma mensagem JSON equivalente.
+* **Comunicação entre processos (IPC)** : transportes IPC, como soquetes de domínio UNIX e pipes nomeados, podem ser usados com gRPC para se comunicar entre aplicativos no mesmo computador. Para obter mais informações, consulte <xref:grpc/interprocess>.
 
 ## <a name="grpc-weaknesses"></a>gRPC fracos
 
@@ -125,8 +126,8 @@ Recursos como [reflexão de servidor](https://github.com/grpc/grpc/blob/master/d
 
 Outras estruturas são recomendadas em relação ao gRPC nos seguintes cenários:
 
-* **APIs acessíveis ao navegador**: o gRPC não tem suporte total no navegador. o gRPC-Web pode oferecer suporte a navegador, mas tem limitações e introduz um proxy de servidor.
-* **Transmitir comunicação em tempo real**: o gRPC dá suporte à comunicação em tempo real via streaming, mas o conceito de difusão de uma mensagem para conexões registradas não existe. Por exemplo, em um cenário de sala de chat em que novas mensagens de chat devem ser enviadas a todos os clientes na sala de chat, cada chamada de gRPC é necessária para transmitir individualmente novas mensagens de chat para o cliente. [SignalR](xref:signalr/introduction) é uma estrutura útil para esse cenário. SignalR tem o conceito de conexões persistentes e suporte interno para mensagens de difusão.
+* **APIs acessíveis ao navegador** : o gRPC não tem suporte total no navegador. o gRPC-Web pode oferecer suporte a navegador, mas tem limitações e introduz um proxy de servidor.
+* **Transmitir comunicação em tempo real** : o gRPC dá suporte à comunicação em tempo real via streaming, mas o conceito de difusão de uma mensagem para conexões registradas não existe. Por exemplo, em um cenário de sala de chat em que novas mensagens de chat devem ser enviadas a todos os clientes na sala de chat, cada chamada de gRPC é necessária para transmitir individualmente novas mensagens de chat para o cliente. [SignalR](xref:signalr/introduction) é uma estrutura útil para esse cenário. SignalR tem o conceito de conexões persistentes e suporte interno para mensagens de difusão.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

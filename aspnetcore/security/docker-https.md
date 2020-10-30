@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-https
-ms.openlocfilehash: d9f0b88a5e23b64e151ae1a622914dcae3129af6
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 63d6e220c0f28e552207039c1649041bfdf4a0d4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722742"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059670"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hospedando ASP.NET Core imagens com o Docker via HTTPS
 
@@ -52,7 +53,7 @@ Para certificados de produção:
 * A `dotnet dev-certs` ferramenta não é necessária.
 * Os certificados não precisam ser armazenados no local usado nas instruções. Qualquer local deve funcionar, embora o armazenamento de certificados no diretório do site não seja recomendado.
 
-As instruções contidas na seção a seguir montam os certificados de montagem em contêineres usando a opção de linha de comando do Docker `-v` . Você pode adicionar certificados em imagens de contêiner com um `COPY` comando em um *Dockerfile*, mas isso não é recomendado. A cópia de certificados em uma imagem não é recomendada pelos seguintes motivos:
+As instruções contidas na seção a seguir montam os certificados de montagem em contêineres usando a opção de linha de comando do Docker `-v` . Você pode adicionar certificados em imagens de contêiner com um `COPY` comando em um *Dockerfile* , mas isso não é recomendado. A cópia de certificados em uma imagem não é recomendada pelos seguintes motivos:
 
 * Torna difícil usar a mesma imagem para teste com certificados de desenvolvedor.
 * Dificulta o uso da mesma imagem para hospedagem com certificados de produção.

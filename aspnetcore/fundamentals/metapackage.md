@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/25/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/metapackage
-ms.openlocfilehash: 133eee71fcd85a95ac53684c3c6e475a54592967
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b739398c2a440f21c8bdfdc1f4d8e25412358a6a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634560"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060684"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Metapacote Microsoft.AspNetCore.All para ASP.NET Core 2.0
 
@@ -38,7 +39,7 @@ O `Microsoft.AspNetCore.All` metapacote não está incluído no ASP.NET Core 3,0
 
 Este recurso exige o ASP.NET Core 2.x direcionado ao .NET Core 2.x.
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) é um metapacote que faz referência a uma estrutura compartilhada. Uma *estrutura compartilhada* é um conjunto de assemblies (arquivos *.dll*) que não estão em pastas do aplicativo. A estrutura compartilhada deve ser instalada no computador para executar o aplicativo. Saiba mais em [A estrutura compartilhada](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) é um metapacote que faz referência a uma estrutura compartilhada. Uma *estrutura compartilhada* é um conjunto de assemblies (arquivos *.dll* ) que não estão em pastas do aplicativo. A estrutura compartilhada deve ser instalada no computador para executar o aplicativo. Saiba mais em [A estrutura compartilhada](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 A estrutura compartilhada a que `Microsoft.AspNetCore.All` se refere inclui:
 

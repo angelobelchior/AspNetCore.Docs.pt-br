@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: d6c70d828d6c2f62f9e7b849a299df3077f2da32
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 962c1cf0be0f80ecd6c3adda7d22db7f16519a2a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635223"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060346"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Lógica do controlador de teste de unidade no ASP.NET Core
 
@@ -35,7 +36,7 @@ Os [testes de unidade](/dotnet/articles/core/testing/unit-testing-with-dotnet-te
 
 ## <a name="unit-testing-controllers"></a>Controladores de teste de unidade
 
-Configure testes de unidade de ações do controlador para se concentrarem no comportamento do controlador. Um teste de unidade do controlador evita cenários como [filtros](xref:mvc/controllers/filters), [roteamento](xref:fundamentals/routing) ou [model binding](xref:mvc/models/model-binding). Os testes que abrangem as interações entre os componentes que respondem coletivamente a uma solicitação são manipulados pelos *testes de integração*. Para obter mais informações sobre os testes de integração, consulte <xref:test/integration-tests>.
+Configure testes de unidade de ações do controlador para se concentrarem no comportamento do controlador. Um teste de unidade do controlador evita cenários como [filtros](xref:mvc/controllers/filters), [roteamento](xref:fundamentals/routing) ou [model binding](xref:mvc/models/model-binding). Os testes que abrangem as interações entre os componentes que respondem coletivamente a uma solicitação são manipulados pelos *testes de integração* . Para obter mais informações sobre os testes de integração, consulte <xref:test/integration-tests>.
 
 Se você estiver escrevendo filtros e rotas personalizados, realize testes de unidade neles de forma isolada, não como parte dos testes em uma ação do controlador específica.
 
@@ -89,7 +90,7 @@ Chamadas fictícias que não são chamadas são normalmente ignoradas, mas a cha
 > [!NOTE]
 > A biblioteca do Moq usada neste exemplo possibilita a combinação de simulações verificáveis ou "estritas" com simulações não verificáveis (também chamadas de simulações "flexíveis" ou stubs). Saiba mais sobre como [personalizar o comportamento de Simulação com o Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) no exemplo de aplicativo exibe informações relacionadas a uma sessão de debate específica. O controlador inclui lógica para lidar com valores `id` inválidos (há dois cenários `return` no exemplo a seguir para abordar esses cenários). A última instrução `return` retorna um novo `StormSessionViewModel` para a exibição (*Controllers/SessionController.cs*):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) no exemplo de aplicativo exibe informações relacionadas a uma sessão de debate específica. O controlador inclui lógica para lidar com valores `id` inválidos (há dois cenários `return` no exemplo a seguir para abordar esses cenários). A última instrução `return` retorna um novo `StormSessionViewModel` para a exibição ( *Controllers/SessionController.cs* ):
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -202,7 +203,7 @@ Para uma sessão `id` válida, o teste final confirmará se:
 
 Os [testes de unidade](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) envolvem o teste de uma parte de um aplicativo isoladamente em relação à sua infraestrutura e às suas dependências. Quando a unidade está testando a lógica do controlador, somente o conteúdo de uma única ação é testada, não o comportamento de suas dependências ou da estrutura em si.
 
-Configure testes de unidade de ações do controlador para se concentrarem no comportamento do controlador. Um teste de unidade do controlador evita cenários como [filtros](xref:mvc/controllers/filters), [roteamento](xref:fundamentals/routing) ou [model binding](xref:mvc/models/model-binding). Os testes que abrangem as interações entre os componentes que respondem coletivamente a uma solicitação são manipulados pelos *testes de integração*. Para obter mais informações sobre os testes de integração, consulte <xref:test/integration-tests>.
+Configure testes de unidade de ações do controlador para se concentrarem no comportamento do controlador. Um teste de unidade do controlador evita cenários como [filtros](xref:mvc/controllers/filters), [roteamento](xref:fundamentals/routing) ou [model binding](xref:mvc/models/model-binding). Os testes que abrangem as interações entre os componentes que respondem coletivamente a uma solicitação são manipulados pelos *testes de integração* . Para obter mais informações sobre os testes de integração, consulte <xref:test/integration-tests>.
 
 Se você estiver escrevendo filtros e rotas personalizados, realize testes de unidade neles de forma isolada, não como parte dos testes em uma ação do controlador específica.
 
@@ -252,7 +253,7 @@ Chamadas fictícias que não são chamadas são normalmente ignoradas, mas a cha
 > [!NOTE]
 > A biblioteca do Moq usada neste exemplo possibilita a combinação de simulações verificáveis ou "estritas" com simulações não verificáveis (também chamadas de simulações "flexíveis" ou stubs). Saiba mais sobre como [personalizar o comportamento de Simulação com o Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) no exemplo de aplicativo exibe informações relacionadas a uma sessão de debate específica. O controlador inclui lógica para lidar com valores `id` inválidos (há dois cenários `return` no exemplo a seguir para abordar esses cenários). A última instrução `return` retorna um novo `StormSessionViewModel` para a exibição (*Controllers/SessionController.cs*):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) no exemplo de aplicativo exibe informações relacionadas a uma sessão de debate específica. O controlador inclui lógica para lidar com valores `id` inválidos (há dois cenários `return` no exemplo a seguir para abordar esses cenários). A última instrução `return` retorna um novo `StormSessionViewModel` para a exibição ( *Controllers/SessionController.cs* ):
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -359,6 +360,6 @@ Para uma sessão `id` válida, o teste final confirmará se:
 
 * <xref:test/integration-tests>
 * [Criar e executar testes de unidade com o Visual Studio](/visualstudio/test/unit-test-your-code)
-* [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. (*Não é mantido ou não tem suporte da Microsoft.*)
-* [JustMockLite](https://github.com/telerik/JustMockLite): uma estrutura fictícia para desenvolvedores .net. (*Não é mantido ou não tem suporte da Microsoft.*)
+* [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. ( *Não é mantido ou não tem suporte da Microsoft.* )
+* [JustMockLite](https://github.com/telerik/JustMockLite): uma estrutura fictícia para desenvolvedores .net. ( *Não é mantido ou não tem suporte da Microsoft.* )
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 40c47da472257862414ba33be582eb19d3f0b29c
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: b3c714ea8e741430df1f70b2df258f1e8f1c7ad5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754548"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060502"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Publicar um aplicativo ASP.NET Core no IIS
 
@@ -39,7 +40,7 @@ Este tutorial cobre os seguintes assuntos:
 ## <a name="prerequisites"></a>Pré-requisitos
 
 * [SDK do .NET Core](/dotnet/core/sdk) instalado no computador de desenvolvimento.
-* O Windows Server foi configurado com a função de servidor **Servidor Web (IIS)**. Se o servidor não estiver configurado para hospedar sites com o IIS, siga as orientações na seção *Configuração do IIS* do artigo <xref:host-and-deploy/iis/index#iis-configuration> e, em seguida, retorne a este tutorial.
+* O Windows Server foi configurado com a função de servidor **Servidor Web (IIS)** . Se o servidor não estiver configurado para hospedar sites com o IIS, siga as orientações na seção *Configuração do IIS* do artigo <xref:host-and-deploy/iis/index#iis-configuration> e, em seguida, retorne a este tutorial.
 
 > [!WARNING]
 > **A configuração do IIS e a segurança do site envolvem conceitos que não são cobertos por este tutorial.** Consulte as diretrizes do IIS na [documentação do IIS da Microsoft](https://www.iis.net/) e o [artigo ASP.NET Core sobre como hospedar com o IIS](xref:host-and-deploy/iis/index) antes de hospedar aplicativos de produção no IIS.
@@ -66,16 +67,16 @@ Baixe o instalador usando o seguinte link:
 
 1. No servidor IIS, crie uma pasta para conter arquivos e pastas publicados do aplicativo. Em uma etapa a seguir, o caminho da pasta é fornecido ao IIS como o caminho físico para o aplicativo. Para obter mais informações sobre o layout de arquivo e a pasta de implantação de um aplicativo, confira <xref:host-and-deploy/directory-structure>.
 
-1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites**. Selecione **Adicionar Site** no menu contextual.
+1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites** . Selecione **Adicionar Site** no menu contextual.
 
-1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo que você criou. Forneça a configuração **Associação** e crie o site ao selecionar **OK**.
+1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo que você criou. Forneça a configuração **Associação** e crie o site ao selecionar **OK** .
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior podem abrir o aplicativo para vulnerabilidades de segurança. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não têm esse risco de segurança se você controlar o domínio pai completo (em vez de `*.com`, o qual é vulnerável). Veja [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) para obter mais informações.
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada de `ApplicationPoolIdentity` para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos ( **modelo de processo**  >  **Identity** ) for alterada de `ApplicationPoolIdentity` para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 ## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a>Criar um Razor aplicativo de páginas ASP.NET Core
 
@@ -83,16 +84,16 @@ Siga o <xref:getting-started> tutorial para criar um Razor aplicativo de página
 
 ## <a name="publish-and-deploy-the-app"></a>Publicar e implantar o aplicativo
 
-*Publicar um aplicativo* significa produzir um aplicativo compilado que pode ser hospedado por um servidor. *Implantar um aplicativo* significa mover o aplicativo publicado para um sistema de hospedagem. A etapa de publicação é tratada pelo [SDK do .NET Core](/dotnet/core/sdk), enquanto a etapa de implantação pode ser tratada por diversas abordagens. Este tutorial adota a abordagem de implantação de *pasta*, em que:
+*Publicar um aplicativo* significa produzir um aplicativo compilado que pode ser hospedado por um servidor. *Implantar um aplicativo* significa mover o aplicativo publicado para um sistema de hospedagem. A etapa de publicação é tratada pelo [SDK do .NET Core](/dotnet/core/sdk), enquanto a etapa de implantação pode ser tratada por diversas abordagens. Este tutorial adota a abordagem de implantação de *pasta* , em que:
  
 * O aplicativo é publicado em uma pasta.
 * O conteúdo da pasta é movido para a pasta do site do IIS (o **caminho físico** para o site no Gerenciador do IIS).
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Clique com o botão direito do mouse no projeto, no **Gerenciador de Soluções**, e selecione **Publicar**.
-1. Na caixa de diálogo **Escolher um destino de publicação**, selecione a opção de publicação de **Pasta**.
-1. Defina o caminho **Pasta ou Compartilhamento de arquivo**.
+1. Clique com o botão direito do mouse no projeto, no **Gerenciador de Soluções** , e selecione **Publicar** .
+1. Na caixa de diálogo **Escolher um destino de publicação** , selecione a opção de publicação de **Pasta** .
+1. Defina o caminho **Pasta ou Compartilhamento de arquivo** .
    * Se você criou uma pasta para o site do IIS que está disponível no computador de desenvolvimento como um compartilhamento de rede, forneça o caminho para o compartilhamento. O usuário atual deve ter acesso de gravação para publicar no compartilhamento.
    * Se não for possível implantar diretamente na pasta do site do IIS no servidor IIS, publique em uma pasta em mídia removível e mova fisicamente o aplicativo publicado para a pasta do site do IIS no servidor, que é o **caminho físico** do site no Gerenciador do IIS. Mova o conteúdo da `bin/Release/{TARGET FRAMEWORK}/publish` pasta para a pasta do site do IIS no servidor, que é o **caminho físico** do site no Gerenciador do IIS.
 
@@ -108,8 +109,8 @@ Siga o <xref:getting-started> tutorial para criar um Razor aplicativo de página
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. Clique com o botão direito do mouse no projeto em **Solução** e selecione **Publicar** > **Publicar na Pasta**.
-1. Defina o caminho **Escolher uma pasta**.
+1. Clique com o botão direito do mouse no projeto em **Solução** e selecione **Publicar** > **Publicar na Pasta** .
+1. Defina o caminho **Escolher uma pasta** .
    * Se você criou uma pasta para o site do IIS que está disponível no computador de desenvolvimento como um compartilhamento de rede, forneça o caminho para o compartilhamento. O usuário atual deve ter acesso de gravação para publicar no compartilhamento.
    * Se não for possível implantar diretamente na pasta do site do IIS no servidor IIS, publique em uma pasta na mídia removida e mova fisicamente o aplicativo publicado para a pasta do site do IIS no servidor, que é o **Caminho físico** do site no IIS Manager. Mova o conteúdo da `bin/Release/{TARGET FRAMEWORK}/publish` pasta para a pasta do site do IIS no servidor, que é o **caminho físico** do site no Gerenciador do IIS.
 

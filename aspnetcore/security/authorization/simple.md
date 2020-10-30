@@ -5,6 +5,7 @@ description: Saiba como usar o atributo Authorize para restringir o acesso a ASP
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/simple
-ms.openlocfilehash: edf027b23ba6b22146e4521c134e67ac6fe1bd03
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ae8fb47e58924d559f1c2c4ed7c9545c37141209
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634794"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061334"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>Autorização simples no ASP.NET Core
 
@@ -91,19 +92,18 @@ Isso permitiria apenas usuários autenticados para o `AccountController` , excet
 
 ## <a name="authorize-attribute-and-no-locrazor-pages"></a>Autorizar atributo e Razor páginas
 
-O <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ***não*** pode ser aplicado a Razor manipuladores de página. Por exemplo, `[Authorize]` não pode ser aplicado a `OnGet` , `OnPost` ou a qualquer outro manipulador de página. Considere o uso de um controlador MVC ASP.NET Core para páginas com diferentes requisitos de autorização para diferentes manipuladores.
+O <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> pode * **não** ser aplicado a Razor manipuladores de página. Por exemplo, `[Authorize]` não pode ser aplicado a `OnGet` , `OnPost` ou a qualquer outro manipulador de página. Considere o uso de um controlador MVC ASP.NET Core para páginas com diferentes requisitos de autorização para diferentes manipuladores.
 
 As duas abordagens a seguir podem ser usadas para aplicar a autorização aos Razor métodos do manipulador de página:
 
-* Use páginas separadas para manipuladores de página que exigem autorização diferente. Moveu o conteúdo compartilhado em uma ou mais [exibições parciais](xref:mvc/views/partial). Quando possível, essa é a abordagem recomendada.
+_ Use páginas separadas para manipuladores de página que exigem autorização diferente. Moveu o conteúdo compartilhado em uma ou mais [exibições parciais](xref:mvc/views/partial). Quando possível, essa é a abordagem recomendada.
 * Para o conteúdo que deve compartilhar uma página comum, escreva um filtro que execute a autorização como parte do [IAsyncPageFilter. OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A). O projeto GitHub [PageHandlerAuth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) demonstra essa abordagem:
   * O [AuthorizeIndexPageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs) implementa o filtro de autorização: [!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]
 
   * O atributo [[AuthorizePageHandler]](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs#L16) é aplicado ao `OnGet` manipulador de página: [!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs?name=snippet)]
 
 > [!WARNING]
-> A [PageHandlerAuth](https://github.com/pranavkm/PageHandlerAuth) abordagem de exemplo PageHandlerAuth ***não:***
-> * Compor com atributos de autorização aplicados à página, ao modelo de página ou globalmente. A composição de atributos de autorização resulta em autenticação e autorização em execução várias vezes quando você tem mais `AuthorizeAttribute` ou `AuthorizeFilter` instâncias também aplicadas à página.
+> A abordagem de exemplo [PageHandlerAuth](https://github.com/pranavkm/PageHandlerAuth) não **é * _: _** compor com atributos de autorização aplicados à página, ao modelo de página ou globalmente. A composição de atributos de autorização resulta em autenticação e autorização em execução várias vezes quando você tem mais `AuthorizeAttribute` ou `AuthorizeFilter` instâncias também aplicadas à página.
 > * Trabalhe em conjunto com o restante de ASP.NET Core sistema de autenticação e autorização. Você deve verificar se o uso dessa abordagem funciona corretamente para seu aplicativo.
 
 Não há planos para dar suporte aos `AuthorizeAttribute` Razor manipuladores de página. 

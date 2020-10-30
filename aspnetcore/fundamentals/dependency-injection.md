@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/21/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - Blazor
 - Blazor Server
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 6f677cc4fc26eb9d50ab6e149b7363079ae756a9
-ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
+ms.openlocfilehash: 53ccb90e92b99385fcc1d9358686b505ac1a0dcc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678563"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060515"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -33,11 +34,11 @@ O ASP.NET Core é compatível com o padrão de design de software de DI (injeç�
 
 Para obter mais informações específicas sobre injeção de dependência em controladores de MVC, consulte <xref:mvc/controllers/dependency-injection>.
 
-Para obter informações sobre como usar a injeção de dependência em aplicativos de console, consulte [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
+Para obter informações sobre como usar a injeção de dependência em aplicativos diferentes de aplicativos Web, consulte [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection).
 
 Para obter mais informações sobre injeção de dependência de opções, consulte <xref:fundamentals/configuration/options> .
 
-Este tópico fornece informações sobre injeção de dependência no ASP.NET Core. Para obter informações sobre como usar a injeção de dependência em aplicativos de console, consulte [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection).
+Este tópico fornece informações sobre injeção de dependência no ASP.NET Core. A documentação principal sobre como usar a injeção de dependência está contida na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection).
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([como baixar](xref:index#how-to-download-a-sample))
 
@@ -160,34 +161,7 @@ O código a seguir é gerado pelo Razor modelo de páginas usando contas de usu�
 
 ## <a name="service-lifetimes"></a>Tempos de vida do serviço
 
-Os serviços podem ser registrados com um dos seguintes tempos de vida:
-
-* Transitório
-* Com escopo
-* Singleton
-
-As seções a seguir descrevem cada um dos tempos de vida anteriores. Escolha um tempo de vida apropriado para cada serviço registrado. 
-
-### <a name="transient"></a>Transitório
-
-Serviços temporários de tempo de vida são criados cada vez que são solicitados pelo contêiner de serviço. Esse tempo de vida funciona melhor para serviços leves e sem estado. Registre serviços transitórios com <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A> .
-
-Em aplicativos que processam solicitações, os serviços transitórios são descartados no final da solicitação.
-
-### <a name="scoped"></a>Com escopo
-
-Os serviços com tempo de vida com escopo são criados uma vez por solicitação de cliente (conexão). Registre os serviços com escopo com <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A> .
-
-Em aplicativos que processam solicitações, os serviços com escopo são descartados no final da solicitação.
-
-Ao usar Entity Framework Core, o <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> método de extensão registra os `DbContext` tipos com um tempo de vida com escopo definido por padrão.
-
-**Não resolva** um serviço com escopo de um singleton e tenha cuidado para não fazê-lo indiretamente, por exemplo, por meio de um serviço transitório. Pode fazer com que o serviço tenha um estado incorreto durante o processamento das solicitações seguintes. Não há problema em:
-
-_ Resolver um serviço singleton de um serviço com escopo ou transitório.
-* Resolva um serviço com escopo de outro serviço com escopo ou transitório.
-
-Por padrão, no ambiente de desenvolvimento, a resolução de um serviço de outro serviço com um tempo de vida maior gera uma exceção. Para obter mais informações, confira [Validação de escopo](#sv).
+Confira [tempos de vida de serviço](/dotnet/core/extensions/dependency-injection#service-lifetimes) na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
 Para usar serviços com escopo no middleware, use uma das seguintes abordagens:
 
@@ -196,39 +170,13 @@ Para usar serviços com escopo no middleware, use uma das seguintes abordagens:
 
 Para obter mais informações, consulte <xref:fundamentals/middleware/write#per-request-middleware-dependencies>.
 
-### <a name="singleton"></a>Singleton
-
-Os serviços de vida útil singleton são criados:
-
-* Na primeira vez que forem solicitadas.
-* Pelo desenvolvedor, ao fornecer uma instância de implementação diretamente para o contêiner. Essa abordagem raramente é necessária.
-
-Cada solicitação subsequente usa a mesma instância. Se o aplicativo exigir um comportamento singleton, permita que o contêiner de serviço gerencie o tempo de vida do serviço. Não implemente o padrão de design singleton e forneça código para descartar o singleton. Os serviços nunca devem ser descartados pelo código que resolveu o serviço do contêiner. Se um tipo ou fábrica for registrado como um singleton, o contêiner descartará o singleton automaticamente.
-
-Registre os serviços singleton com <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A> . Os serviços singleton devem ser thread-safe e geralmente são usados em serviços sem estado.
-
-Em aplicativos que processam solicitações, os serviços singleton são descartados quando o <xref:Microsoft.Extensions.DependencyInjection.ServiceProvider> é Descartado no desligamento do aplicativo. Como a memória não é liberada até que o aplicativo seja desligado, considere o uso de memória com um serviço singleton.
-
-> [!WARNING]
-> * **Não** _ resolver um serviço com escopo de um singleton. Pode fazer com que o serviço tenha um estado incorreto durante o processamento das solicitações seguintes. É bom resolver um serviço singleton de um serviço com escopo ou transitório.
-
 ## <a name="service-registration-methods"></a>Métodos de registro do serviço
 
-A estrutura fornece métodos de extensão de registro de serviço que são úteis em cenários específicos:
+Consulte [métodos de registro de serviço](/dotnet/core/extensions/dependency-injection#service-registration-methods) na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
-<!-- Review: Auto disposal at end of app lifetime is not what you think of auto disposal  -->
+ É comum usar várias implementações ao [simular tipos para teste](xref:test/integration-tests#inject-mock-services).
 
-| Método                                                                                                                                                                              | Automática<br>objeto<br>descarte | Vários<br>implementações | Passar argumentos |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------:|:---------------------------:|:---------:|
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<IMyDep, MyDep>();`                                                                             | Sim                             | Sim                         | Não        |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep(99));` | Sim                             | Sim                         | Sim       |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Exemplo:<br>`services.AddSingleton<MyDep>();`                                                                                                | Sim                             | Não                          | Não        |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep(99));`                    | Não                              | Sim                         | Sim       |
-| `AddSingleton(new {IMPLEMENTATION})`<br>Exemplos:<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep(99));`                                               | Não                              | Não                          | Sim       |
-
-Para obter mais informações sobre o descarte de tipos, consulte a seção [Descarte de serviços](#disposal-of-services). É comum usar várias implementações ao [simular tipos para teste](xref:test/integration-tests#inject-mock-services).
-
-O registro de um serviço com apenas um tipo de implementação é equivalente ao registro desse serviço com a mesma implementação e tipo de serviço. É por isso que várias implementações de um serviço não podem ser registradas usando os métodos que não usam um tipo de serviço explícito. Esses métodos podem registrar vários _instances * de um serviço, mas todos terão o mesmo tipo de *implementação* .
+O registro de um serviço com apenas um tipo de implementação é equivalente ao registro desse serviço com a mesma implementação e tipo de serviço. É por isso que várias implementações de um serviço não podem ser registradas usando os métodos que não usam um tipo de serviço explícito. Esses métodos podem registrar várias *instâncias* de um serviço, mas todos terão o mesmo tipo de *implementação* .
 
 Qualquer um dos métodos de registro de serviço acima pode ser usado para registrar várias instâncias de serviço do mesmo tipo de serviço. No exemplo a seguir, `AddSingleton` é chamado duas vezes com `IMyDependency` como o tipo de serviço. A segunda chamada para `AddSingleton` substitui a anterior quando resolvida como `IMyDependency` e a adiciona à anterior quando vários serviços são resolvidos por meio de `IEnumerable<IMyDependency>` . Os serviços aparecem na ordem em que foram registrados quando resolvidos por meio de `IEnumerable<{SERVICE}>` .
 
@@ -250,70 +198,9 @@ public class MyService
 }
 ```
 
-A estrutura também fornece `TryAdd{LIFETIME}` métodos de extensão, que registram o serviço somente se ainda não houver uma implementação registrada.
+## <a name="constructor-injection-behavior"></a>Comportamento da injeção de construtor
 
-No exemplo a seguir, a chamada para `AddSingleton` registra `MyDependency` como uma implementação para `IMyDependency` . A chamada para `TryAddSingleton` não tem efeito porque `IMyDependency` já tem uma implementação registrada.
-
-```csharp
-services.AddSingleton<IMyDependency, MyDependency>();
-// The following line has no effect:
-services.TryAddSingleton<IMyDependency, DifferentDependency>();
-
-public class MyService
-{
-    public MyService(IMyDependency myDependency, 
-        IEnumberable<IMyDependency> myDependencies)
-    {
-        Trace.Assert(myDependency is MyDependency);
-        Trace.Assert(myDependencies.Single() is MyDependency);
-    }
-}
-```
-
-Para obter mais informações, consulte:
-
-* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd%2A>
-* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient%2A>
-* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped%2A>
-* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton%2A>
-
-Os métodos [TryAddEnumerable (Service Descriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable%2A) registram o serviço somente se ainda não houver uma implementação *do mesmo tipo* . Vários serviços são resolvidos via `IEnumerable<{SERVICE}>`. Ao registrar serviços, o desenvolvedor deve adicionar uma instância se um do mesmo tipo ainda não tiver sido adicionado. Em geral, os autores `TryAddEnumerable` de biblioteca usam para evitar o registro de várias cópias de uma implementação no contêiner.
-
-No exemplo a seguir, a primeira chamada para `TryAddEnumerable` registra `MyDependency` como uma implementação para `IMyDependency1` . A segunda chamada é registrada `MyDependency` para `IMyDependency2` . A terceira chamada não tem nenhum efeito porque `IMyDependency1` já tem uma implementação registrada de `MyDependency` :
-
-```csharp
-public interface IMyDependency1 { }
-public interface IMyDependency2 { }
-
-public class MyDependency : IMyDependency1, IMyDependency2 { }
-
-services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDependency1, MyDependency>());
-services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDependency2, MyDependency>());
-services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDependency1, MyDependency>());
-```
-
-O registro de serviço geralmente é independente de ordem, exceto ao registrar várias implementações do mesmo tipo.
-
-`IServiceCollection` é uma coleção de <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor> objetos. O exemplo a seguir mostra como registrar um serviço criando e adicionando um `ServiceDescriptor` :
-
-[!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Startup5.cs?name=snippet)]
-
-Os `Add{LIFETIME}` métodos internos usam a mesma abordagem. Por exemplo, consulte o [código-fonte de Addscoped](https://github.com/dotnet/extensions/blob/v3.1.6/src/DependencyInjection/DI.Abstractions/src/ServiceCollectionServiceExtensions.cs#L216-L237).
-
-### <a name="constructor-injection-behavior"></a>Comportamento da injeção de construtor
-
-Os serviços podem ser resolvidos usando:
-
-* <xref:System.IServiceProvider>
-* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>:
-  * Cria objetos que não estão registrados no contêiner.
-  * Usado com recursos de estrutura, como [auxiliares de marca](xref:mvc/views/tag-helpers/intro), controladores MVC e [ASSOCIADORES de modelo](xref:mvc/models/model-binding).
-
-Os construtores podem aceitar argumentos que não são fornecidos pela injeção de dependência, mas que precisam atribuir valores padrão.
-
-Quando os serviços são resolvidos pelo `IServiceProvider` ou `ActivatorUtilities` , a [injeção de Construtor](xref:mvc/controllers/dependency-injection#constructor-injection) requer um construtor *público* .
-
-Quando os serviços são resolvidos pelo `ActivatorUtilities` , a [injeção de Construtor](xref:mvc/controllers/dependency-injection#constructor-injection) requer que apenas um Construtor aplicável exista. Há suporte para sobrecargas de construtor, mas somente uma sobrecarga pode existir, cujos argumentos podem ser todos atendidos pela injeção de dependência.
+Consulte [comportamento de injeção de Construtor](/dotnet/core/extensions/dependency-injection#constructor-injection-behavior) na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
 ## <a name="entity-framework-contexts"></a>Contextos de Entity Framework
 
@@ -328,16 +215,6 @@ Para demonstrar a diferença entre tempos de vida de serviço e suas opções de
 A classe a seguir `Operation` implementa todas as interfaces anteriores. O `Operation` Construtor gera um GUID e armazena os quatro últimos caracteres na `OperationId` Propriedade:
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
-
-<!--
-An `OperationService` is registered that depends on each of the other `Operation` types. When `OperationService` is requested via dependency injection, it receives either a new instance of each service or an existing instance based on the lifetime of the dependent service.
-
-* When transient services are created when requested from the container, the `OperationId` of the `IOperationTransient` service is different than the `OperationId` of the `OperationService`. `OperationService` receives a new instance of the `IOperationTransient` class. The new instance yields a different `OperationId`.
-* When scoped services are created per client request, the `OperationId` of the `IOperationScoped` service is the same as that of `OperationService` within a client request. Across client requests, both services share a different `OperationId` value.
-* When singleton and singleton-instance services are created once and used across all client requests and all services, the `OperationId` is constant across all service requests.
-
-[!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
--->
 
 O `Startup.ConfigureServices` método cria vários registros da classe de `Operation` acordo com os tempos de vida nomeados:
 
@@ -377,14 +254,7 @@ O exemplo a seguir mostra como acessar o serviço com escopo `IMyDependency` e c
 
 ## <a name="scope-validation"></a>Validação de escopo
 
-Quando o aplicativo é executado no [ambiente de desenvolvimento](xref:fundamentals/environments) e chama [CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings) para criar o host, o provedor de serviço padrão executa verificações para verificar se:
-
-* Os serviços com escopo não são resolvidos do provedor de serviços raiz.
-* Os serviços com escopo não são injetados em singletons.
-
-O provedor de serviços raiz é criado quando <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider%2A> é chamado. O tempo de vida do provedor de serviço raiz corresponde ao tempo de vida do aplicativo quando o provedor começa com o aplicativo e é Descartado quando o aplicativo é desligado.
-
-Os serviços com escopo são descartados pelo contêiner que os criou. Se um serviço com escopo for criado no contêiner raiz, o tempo de vida do serviço será efetivamente promovido para singleton porque é descartado apenas pelo contêiner raiz quando o aplicativo é desligado. A validação dos escopos de serviço detecta essas situações quando `BuildServiceProvider` é chamado.
+Consulte [comportamento de injeção de Construtor](/dotnet/core/extensions/dependency-injection#constructor-injection-behavior) na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
 Para obter mais informações, confira [Validação de escopo](xref:fundamentals/host/web-host#scope-validation).
 
@@ -442,72 +312,16 @@ No código anterior:
 
 ### <a name="idisposable-guidance-for-transient-and-shared-instances"></a>Diretrizes de IDisposable para instâncias transitórias e compartilhadas
 
-#### <a name="transient-limited-lifetime"></a>Tempo de vida transitório, limitado
-
-**Cenário**
-
-O aplicativo requer uma <xref:System.IDisposable> instância com um tempo de vida transitório para qualquer um dos seguintes cenários:
-
-* A instância é resolvida no escopo raiz (contêiner raiz).
-* A instância deve ser descartada antes do término do escopo.
-
-**Solução**
-
-Use o padrão de fábrica para criar uma instância fora do escopo pai. Nessa situação, o aplicativo geralmente teria um `Create` método que chamasse o construtor do tipo final diretamente. Se o tipo final tiver outras dependências, a fábrica poderá:
-
-* Receber um <xref:System.IServiceProvider> em seu construtor.
-* Use <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities.CreateInstance%2A?displayProperty=nameWithType> para instanciar a instância fora do contêiner, ao usar o contêiner para suas dependências.
-
-#### <a name="shared-instance-limited-lifetime"></a>Instância compartilhada, tempo de vida limitado
-
-**Cenário**
-
-O aplicativo requer uma <xref:System.IDisposable> instância compartilhada em vários serviços, mas a <xref:System.IDisposable> instância deve ter um tempo de vida limitado.
-
-**Solução**
-
-Registre a instância com um tempo de vida de escopo. Use <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope%2A?displayProperty=nameWithType> para criar um novo <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> . Use o escopo <xref:System.IServiceProvider> para obter os serviços necessários. Descarte o escopo quando ele não for mais necessário.
-
-#### <a name="general-idisposable-guidelines"></a>Diretrizes gerais de IDisposable
-
-* Não registre <xref:System.IDisposable> instâncias com um tempo de vida transitório. Em vez disso, use o padrão de fábrica.
-* Não resolva <xref:System.IDisposable> instâncias com um tempo de vida transitório ou com escopo definido no escopo raiz. A única exceção a isso é se o aplicativo cria/recria e descarta <xref:System.IServiceProvider> , mas esse não é um padrão ideal.
-* O recebimento de uma <xref:System.IDisposable> dependência por meio de di não exige que o receptor se implemente <xref:System.IDisposable> . O receptor da <xref:System.IDisposable> dependência não deve chamar <xref:System.IDisposable.Dispose%2A> essa dependência.
-* Use escopos para controlar os tempos de vida dos serviços. Os escopos não são hierárquicos e não há nenhuma conexão especial entre escopos.
+Consulte as [diretrizes de IDisposable para a instância transitória e compartilhada](/dotnet/core/extensions/dependency-injection-guidelines#idisposable-guidance-for-transient-and-shared-instances) na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
 ## <a name="default-service-container-replacement"></a>Substituição do contêiner de serviço padrão
 
-O contêiner de serviço interno foi projetado para atender às necessidades da estrutura e da maioria dos aplicativos de consumidor. É recomendável usar o contêiner interno, a menos que você precise de um recurso específico ao qual ele não ofereça suporte, como:
-
-* Injeção de propriedade
-* Injeção com base no nome
-* Contêineres filho
-* Gerenciamento de tempo de vida personalizado
-* Suporte de `Func<T>` para inicialização lenta
-* Registro baseado em Convenção
-
-Os seguintes contêineres de terceiros podem ser usados com aplicativos ASP.NET Core:
-
-* [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
-* [DryIoc](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
-* [Grace](https://www.nuget.org/packages/Grace.DependencyInjection.Extensions)
-* [LightInject](https://github.com/seesharper/LightInject.Microsoft.DependencyInjection)
-* [Lamar](https://jasperfx.github.io/lamar/)
-* [Stashbox](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
-* [Unity](https://www.nuget.org/packages/Unity.Microsoft.DependencyInjection)
-
-## <a name="thread-safety"></a>Acesso thread-safe
-
-Crie serviços singleton thread-safe. Se um serviço singleton tiver uma dependência em um serviço transitório, o serviço transitório também poderá exigir a segurança do thread dependendo de como ele é usado pelo singleton.
-
-O método de fábrica de um único serviço, como o segundo argumento para [addsingleton \<TService> (IServiceCollection, Func \<IServiceProvider,TService> )](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), não precisa ser thread-safe. Como um construtor de tipo ( `static` ), é garantido que ele seja chamado apenas uma vez por um único thread.
+Consulte [substituição do contêiner de serviço padrão](/dotnet/core/extensions/dependency-injection-guidelines#default-service-container-replacement) na [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
 ## <a name="recommendations"></a>Recomendações
 
-* `async/await` e a `Task` resolução de serviço baseada não tem suporte. Como o C# não dá suporte a construtores assíncronos, use métodos assíncronos após a resolução síncrona do serviço.
-* Evite armazenar dados e a configuração diretamente no contêiner do serviço. Por exemplo, o carrinho de compras de um usuário normalmente não deve ser adicionado ao contêiner do serviço. A configuração deve usar o [padrão de opções](xref:fundamentals/configuration/options). Da mesma forma, evite objetos de "portador de dados" que existem somente para permitir o acesso a outro objeto. É melhor solicitar o item real por meio da DI.
-* Evite o acesso estático aos serviços. Por exemplo, evite capturar [IApplicationBuilder. ApplicationServices](xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices) como um campo ou propriedade estática para uso em outro lugar.
-* Mantenha as fábricas de injeção rápida e síncrona.
+Consulte as [recomendações](/dotnet/core/extensions/dependency-injection-guidelines#recommendations) em [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
+
 * Evite usar o *padrão do localizador de serviço* . Por exemplo, não invoque <xref:System.IServiceProvider.GetService%2A> para obter uma instância de serviço quando for possível usar a DI:
 
   **Incorreto:**

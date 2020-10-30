@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/index
-ms.openlocfilehash: 8fa44f567906ecf36a9bbaa5076cd36c75c10781
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 25348f8486ec6ccb53ebf527ad4519638dd5f73e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634872"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059371"
 ---
 # <a name="aspnet-core-fundamentals"></a>Conceitos básicos do ASP.NET Core
 
@@ -48,7 +49,7 @@ Para obter mais informações, consulte <xref:fundamentals/startup>.
 
 ASP.NET Core inclui uma estrutura de injeção de dependência interna (DI) que torna os serviços configurados disponíveis em todo o aplicativo. Por exemplo, um componente de registro em log é um serviço.
 
-Código para configurar (ou *registrar*) serviços é adicionado ao método `Startup.ConfigureServices`. Por exemplo:
+Código para configurar (ou *registrar* ) serviços é adicionado ao método `Startup.ConfigureServices`. Por exemplo:
 
 [!code-csharp[](index/samples_snapshot/3.x/ConfigureServices.cs)]
 
@@ -78,7 +79,7 @@ Para obter mais informações, consulte <xref:fundamentals/middleware/index>.
 
 ## <a name="host"></a>Host
 
-Na inicialização, um aplicativo ASP.NET Core cria um *host*. O host encapsula todos os recursos do aplicativo, como:
+Na inicialização, um aplicativo ASP.NET Core cria um *host* . O host encapsula todos os recursos do aplicativo, como:
 
 * Uma implementação do servidor HTTP
 * Componentes de middleware
@@ -100,7 +101,7 @@ O exemplo a seguir cria um host genérico .NET:
 Os `CreateDefaultBuilder` `ConfigureWebHostDefaults` métodos e configuram um host com um conjunto de opções padrão, como:
 
 * Uso do [Kestrel](#servers) como o servidor Web e habilitação da integração do IIS.
-* Configuração de carregamento de *appsettings.json*, *appsettings.{EnvironmentName}.json*, de variáveis de ambiente, de argumentos de linha de comando e outras fontes de configuração.
+* Carregar a configuração de *appsettings.json* , *appSettings. { Nome do ambiente}. JSON* , variáveis de ambiente, argumentos de linha de comando e outras fontes de configuração.
 * Envio da saída de log para os provedores de console e de depuração.
 
 Para obter mais informações, consulte <xref:fundamentals/host/generic-host>.
@@ -123,11 +124,11 @@ O ASP.NET Core vem com as seguintes implementações de servidor:
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
-O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel*. No ASP.NET Core 2,0 ou posterior, o Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
+O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel* . No ASP.NET Core 2,0 ou posterior, o Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel*. No ASP.NET Core 2,0 ou posterior, o Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
+O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel* . No ASP.NET Core 2,0 ou posterior, o Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
 
 ---
 
@@ -137,7 +138,7 @@ Para obter mais informações, consulte <xref:fundamentals/servers/index>.
 
 O ASP.NET Core fornece uma estrutura de configuração que obtém as configurações como pares nome-valor de um conjunto ordenado de provedores de configuração. Os provedores de configuração internos estão disponíveis para uma variedade de fontes, como arquivos *. JSON* , arquivos *. xml* , variáveis de ambiente e argumentos de linha de comando. Escreva provedores de configuração personalizados para dar suporte a outras fontes.
 
-Por [padrão](xref:fundamentals/configuration/index#default), os aplicativos ASP.NET Core são configurados para ler de *appsettings.js*, variáveis de ambiente, linha de comando e muito mais. Quando a configuração do aplicativo é carregada, os valores das variáveis de ambiente substituem valores de *appsettings.jsem*.
+Por [padrão](xref:fundamentals/configuration/index#default), os aplicativos ASP.NET Core são configurados para leitura *appsettings.json* , variáveis de ambiente, linha de comando e muito mais. Quando a configuração do aplicativo é carregada, os valores das variáveis de ambiente substituem valores de *appsettings.json* .
 
 A maneira preferida de ler valores de configuração relacionados é usar o [padrão de opções](xref:fundamentals/configuration/options). Para obter mais informações, consulte [associar dados de configuração hierárquica usando o padrão de opções](xref:fundamentals/configuration/index#optpat).
 
@@ -198,7 +199,7 @@ Uma implementação de `IHttpClientFactory` está disponível para a criação d
 
 * Fornece um local central para nomear e configurar instâncias lógicas de `HttpClient`. Por exemplo, registre e configure um cliente *GitHub* para acessar o github. Registre e configure um cliente padrão para outras finalidades.
 * Dá suporte ao registro e ao encadeamento de vários manipuladores de delegação para criar um pipeline do middleware de solicitação saída. Esse padrão é semelhante ao pipeline de middleware de entrada de ASP.NET Core. O padrão fornece um mecanismo para gerenciar preocupações abrangentes para solicitações HTTP, incluindo cache, tratamento de erros, serialização e registro em log.
-* Integra-se com a *Polly*, uma biblioteca de terceiros popular para tratamento de falhas transitórias.
+* Integra-se com a *Polly* , uma biblioteca de terceiros popular para tratamento de falhas transitórias.
 * Gerencia o pooling e o tempo de vida de instâncias subjacentes `HttpClientHandler` para evitar problemas comuns de DNS que ocorrem durante o gerenciamento `HttpClient` manual de tempos de vida.
 * Adiciona uma experiência de registro configurável por meio <xref:Microsoft.Extensions.Logging.ILogger> de todas as solicitações enviadas por clientes criados pela fábrica.
 
@@ -208,12 +209,12 @@ Para obter mais informações, consulte <xref:fundamentals/http-requests>.
 
 A raiz do conteúdo é o caminho base para:
 
-* O executável que hospeda o aplicativo (*. exe*).
-* Assemblies compilados que compõem o aplicativo (*. dll*).
+* O executável que hospeda o aplicativo ( *. exe* ).
+* Assemblies compilados que compõem o aplicativo ( *. dll* ).
 * Arquivos de conteúdo usados pelo aplicativo, como:
-  * Razor arquivos (*. cshtml*, *. Razor*)
-  * Arquivos de configuração (*. JSON*, *. xml*)
-  * Arquivos de dados (*. db*)
+  * Razor arquivos ( *. cshtml* , *. Razor* )
+  * Arquivos de configuração ( *. JSON* , *. xml* )
+  * Arquivos de dados ( *. db* )
 * A [raiz da Web](#web-root), normalmente a pasta *wwwroot* .
 
 Durante o desenvolvimento, a raiz do conteúdo assume como padrão o diretório raiz do projeto. Esse diretório também é o caminho base para os arquivos de conteúdo do aplicativo e a [raiz da Web](#web-root). Especifique uma raiz de conteúdo diferente definindo seu caminho ao [compilar o host](#host). Para obter mais informações, veja [Raiz de conteúdo](xref:fundamentals/host/generic-host#contentroot).
@@ -222,11 +223,11 @@ Durante o desenvolvimento, a raiz do conteúdo assume como padrão o diretório 
 
 A raiz da Web é o caminho base para arquivos de recursos públicos e estáticos, como:
 
-* Folhas de estilo (*. css*)
-* JavaScript (*. js*)
-* Imagens (*. png*, *. jpg*)
+* Folhas de estilo ( *. css* )
+* JavaScript ( *. js* )
+* Imagens ( *. png* , *. jpg* )
 
-Por padrão, os arquivos estáticos são servidos somente do diretório raiz da Web e de seus subdiretórios. O caminho raiz da Web tem como padrão *{Content root}/wwwroot*. Especifique uma raiz da Web diferente definindo seu caminho ao [compilar o host](#host). Para obter mais informações, confira [Diretório base](xref:fundamentals/host/generic-host#webroot).
+Por padrão, os arquivos estáticos são servidos somente do diretório raiz da Web e de seus subdiretórios. O caminho raiz da Web tem como padrão *{Content root}/wwwroot* . Especifique uma raiz da Web diferente definindo seu caminho ao [compilar o host](#host). Para obter mais informações, confira [Diretório base](xref:fundamentals/host/generic-host#webroot).
 
 Impedir a publicação de arquivos em *wwwroot* com o [ \<Content> item de projeto](/visualstudio/msbuild/common-msbuild-project-items#content) no arquivo de projeto. O exemplo a seguir impede a publicação de conteúdo em *wwwroot/local* e em seus subdiretórios:
 
@@ -236,7 +237,7 @@ Impedir a publicação de arquivos em *wwwroot* com o [ \<Content> item de proje
 </ItemGroup>
 ```
 
-Em Razor arquivos *. cshtml* , a barra til ( `~/` ) aponta para a raiz da Web. Um caminho que começa com `~/` é conhecido como um *caminho virtual*.
+Em Razor arquivos *. cshtml* , a barra til ( `~/` ) aponta para a raiz da Web. Um caminho que começa com `~/` é conhecido como um *caminho virtual* .
 
 Para obter mais informações, consulte <xref:fundamentals/static-files>.
 
@@ -253,7 +254,7 @@ A classe `Startup` é o local em que:
 * Os serviços exigidos pelo aplicativo são configurados.
 * O pipeline de tratamento de solicitação é definido.
 
-*Serviços* são componentes usados pelo aplicativo. Por exemplo, um componente de registro em log é um serviço. Código para configurar (ou *registrar*) serviços é adicionado ao método `Startup.ConfigureServices`.
+*Serviços* são componentes usados pelo aplicativo. Por exemplo, um componente de registro em log é um serviço. Código para configurar (ou *registrar* ) serviços é adicionado ao método `Startup.ConfigureServices`.
 
 O pipeline de tratamento de solicitação é composto como uma série de componentes de *middleware* . Por exemplo, um middleware pode manipular as solicitações para arquivos estáticos ou redirecionar solicitações HTTP para HTTPS. Cada middleware executa operações assíncronas em um `HttpContext` e invoca o próximo middleware no pipeline ou encerra a solicitação. O código para configurar a pipeline de tratamento de solicitação é adicionado ao método `Startup.Configure`.
 
@@ -310,7 +311,7 @@ O código para criar um host está em `Program.Main`:
 O método `CreateDefaultBuilder` configura um host com as opções usadas com frequência, como as seguintes:
 
 * Uso do [Kestrel](#servers) como o servidor Web e habilitação da integração do IIS.
-* Configuração de carregamento de *appsettings.json*, *appsettings.{EnvironmentName}.json*, de variáveis de ambiente, de argumentos de linha de comando e outras fontes de configuração.
+* Carregar a configuração de *appsettings.json* , *appSettings. { Nome do ambiente}. JSON* , variáveis de ambiente, argumentos de linha de comando e outras fontes de configuração.
 * Envio da saída de log para os provedores de console e de depuração.
 
 Para obter mais informações, consulte <xref:fundamentals/host/web-host>.
@@ -337,11 +338,11 @@ O ASP.NET Core vem com as seguintes implementações de servidor:
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
-O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel*. Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
+O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel* . Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel*. Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
+O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel* . Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
 
 ---
 
@@ -358,11 +359,11 @@ O ASP.NET Core vem com as seguintes implementações de servidor:
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
-O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel*. Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
+O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel* . Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel*. Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
+O ASP.NET Core fornece a implementação de servidor multiplataforma do *Kestrel* . Kestrel pode ser executado como um servidor de borda voltado para o público exposto diretamente à Internet. O Kestrel normalmente é executado em uma configuração de proxy reverso com [Nginx](https://nginx.org) ou [Apache](https://httpd.apache.org/).
 
 ---
 
@@ -374,9 +375,9 @@ Para obter mais informações, consulte <xref:fundamentals/servers/index>.
 
 ## <a name="configuration"></a>Configuração
 
-O ASP.NET Core fornece uma estrutura de configuração que obtém as configurações como pares nome-valor de um conjunto ordenado de provedores de configuração. Há provedores de configuração internos para uma variedade de fontes, como arquivos *.json*, arquivos *.xml*, variáveis de ambiente e argumentos de linha de comando. Você também pode escrever seus próprios provedores de configuração personalizados.
+O ASP.NET Core fornece uma estrutura de configuração que obtém as configurações como pares nome-valor de um conjunto ordenado de provedores de configuração. Há provedores de configuração internos para uma variedade de fontes, como arquivos *.json* , arquivos *.xml* , variáveis de ambiente e argumentos de linha de comando. Você também pode escrever seus próprios provedores de configuração personalizados.
 
-Por exemplo, você poderia especificar que a configuração é proveniente de *appsettings.json* e variáveis de ambiente. Então, quando o valor de *ConnectionString* for solicitado, a estrutura procura primeiro no arquivo *appsettings.json*. Se o valor for encontrado lá, mas também em uma variável de ambiente, o valor da variável de ambiente terá precedência.
+Por exemplo, você pode especificar que a configuração vem de *appsettings.json* e de variáveis de ambiente. Em seguida, quando o valor de *ConnectionString* é solicitado, a estrutura procura primeiro no *appsettings.json* arquivo. Se o valor for encontrado lá, mas também em uma variável de ambiente, o valor da variável de ambiente terá precedência.
 
 Para gerenciar dados de configuração confidenciais como senhas, o ASP.NET Core fornece uma [ferramenta Secret Manager](xref:security/app-secrets). Para segredos de produção, recomendamos o [Azure Key Vault](xref:security/key-vault-configuration).
 
@@ -394,7 +395,7 @@ Para obter mais informações, consulte <xref:fundamentals/configuration/options
 
 ## <a name="environments"></a>Ambientes
 
-Ambientes de execução, como *Desenvolvimento*, *Preparo* e *Produção*, são uma noção de primeira classe no ASP.NET Core. Você pode especificar o ambiente em que um aplicativo está em execução definindo a variável de ambiente `ASPNETCORE_ENVIRONMENT`. O ASP.NET Core lê a variável de ambiente na inicialização do aplicativo e armazena o valor em uma implementação `IHostingEnvironment`. O objeto de ambiente está disponível em qualquer lugar no aplicativo por meio de DI.
+Ambientes de execução, como *Desenvolvimento* , *Preparo* e *Produção* , são uma noção de primeira classe no ASP.NET Core. Você pode especificar o ambiente em que um aplicativo está em execução definindo a variável de ambiente `ASPNETCORE_ENVIRONMENT`. O ASP.NET Core lê a variável de ambiente na inicialização do aplicativo e armazena o valor em uma implementação `IHostingEnvironment`. O objeto de ambiente está disponível em qualquer lugar no aplicativo por meio de DI.
 
 O seguinte código de exemplo da classe `Startup` configura o aplicativo para fornecer informações de erro detalhadas somente quando ele é executado no desenvolvimento:
 
@@ -447,7 +448,7 @@ Uma implementação de `IHttpClientFactory` está disponível para a criação d
 
 * Fornece um local central para nomear e configurar instâncias lógicas de `HttpClient`. Por exemplo, um cliente *GitHub* pode ser registrado e configurado para acessar o github. Um cliente padrão pode ser registrado para outras finalidades.
 * Dá suporte ao registro e ao encadeamento de vários manipuladores de delegação para criar um pipeline do middleware de solicitação saída. Esse padrão é semelhante ao pipeline do middleware de entrada no ASP.NET Core. O padrão fornece um mecanismo para gerenciar interesses paralelos em relação às solicitações HTTP, incluindo o armazenamento em cache, o tratamento de erro, a serialização e o registro em log.
-* Integra-se com a *Polly*, uma biblioteca de terceiros popular para tratamento de falhas transitórias.
+* Integra-se com a *Polly* , uma biblioteca de terceiros popular para tratamento de falhas transitórias.
 * Gerencia o pooling e o tempo de vida das instâncias de `HttpClientHandler` subjacentes para evitar problemas de DNS comuns que ocorrem no gerenciamento manual de tempos de vida de `HttpClient`.
 * Adiciona uma experiência de registro em log configurável (via `ILogger`) para todas as solicitações enviadas por meio de clientes criados pelo alocador.
 
@@ -457,12 +458,12 @@ Para obter mais informações, consulte <xref:fundamentals/http-requests>.
 
 A raiz do conteúdo é o caminho base para:
 
-* Executável que hospeda o aplicativo (*. exe*).
-* Assemblies compilados que compõem o aplicativo (*. dll*).
+* Executável que hospeda o aplicativo ( *. exe* ).
+* Assemblies compilados que compõem o aplicativo ( *. dll* ).
 * Arquivos de conteúdo que não são de código usados pelo aplicativo, como:
-  * Razor arquivos (*. cshtml*, *. Razor*)
-  * Arquivos de configuração (*. JSON*, *. xml*)
-  * Arquivos de dados (*. db*)
+  * Razor arquivos ( *. cshtml* , *. Razor* )
+  * Arquivos de configuração ( *. JSON* , *. xml* )
+  * Arquivos de dados ( *. db* )
 * [Raiz da Web](#web-root), normalmente a pasta *wwwroot* publicada.
 
 Durante o desenvolvimento:
@@ -478,13 +479,13 @@ Um caminho de raiz de conteúdo alternativo pode ser especificado ao [criar o ho
 
 A raiz da Web é o caminho base para arquivos de recurso estáticos, não de código e públicos, como:
 
-* Folhas de estilo (*. css*)
-* JavaScript (*. js*)
-* Imagens (*. png*, *. jpg*)
+* Folhas de estilo ( *. css* )
+* JavaScript ( *. js* )
+* Imagens ( *. png* , *. jpg* )
 
 Os arquivos estáticos são servidos apenas por padrão no diretório raiz da Web (e subdiretórios).
 
-O caminho raiz da Web tem como padrão *{Content root}/wwwroot*, mas uma raiz da Web diferente pode ser especificada ao [criar o host](#host). Para obter mais informações, confira [Diretório base](xref:fundamentals/host/web-host#web-root).
+O caminho raiz da Web tem como padrão *{Content root}/wwwroot* , mas uma raiz da Web diferente pode ser especificada ao [criar o host](#host). Para obter mais informações, confira [Diretório base](xref:fundamentals/host/web-host#web-root).
 
 Impedir a publicação de arquivos em *wwwroot* com o [ \<Content> item de projeto](/visualstudio/msbuild/common-msbuild-project-items#content) no arquivo de projeto. O exemplo a seguir impede a publicação de conteúdo no diretório *wwwroot/local* e nos subpastas:
 
@@ -494,7 +495,7 @@ Impedir a publicação de arquivos em *wwwroot* com o [ \<Content> item de proje
 </ItemGroup>
 ```
 
-Em Razor arquivos (*. cshtml*), a barra til ( `~/` ) aponta para a raiz da Web. Um caminho que começa com `~/` é conhecido como um *caminho virtual*.
+Em Razor arquivos ( *. cshtml* ), a barra til ( `~/` ) aponta para a raiz da Web. Um caminho que começa com `~/` é conhecido como um *caminho virtual* .
 
 Para obter mais informações, consulte <xref:fundamentals/static-files>.
 

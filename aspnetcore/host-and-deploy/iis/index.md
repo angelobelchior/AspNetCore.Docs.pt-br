@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/7/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 7fe3e18b226061260d0c17220ba110bd61486b5f
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: e4a94ca9e3607868f3eb25d88338e8156f7f5206
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754691"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061516"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Hospedar o ASP.NET Core no Windows com o IIS
 
@@ -270,41 +271,41 @@ Se você precisar transformar `web.config` em publicar, consulte <xref:host-and-
 
 Habilite a função **Servidor Web (IIS)** e estabeleça serviços de função.
 
-1. Use o assistente **Adicionar Funções e Recursos** por meio do menu **Gerenciar** ou do link no **Gerenciador do Servidor**. Na etapa **Funções de Servidor**, marque a caixa de **Servidor Web (IIS)**.
+1. Use o assistente **Adicionar Funções e Recursos** por meio do menu **Gerenciar** ou do link no **Gerenciador do Servidor** . Na etapa **Funções de Servidor** , marque a caixa de **Servidor Web (IIS)** .
 
    ![A função de Servidor Web IIS é selecionada na etapa Selecionar funções de servidor.](index/_static/server-roles-ws2016.png)
 
-1. Após a etapa **Recursos**, a etapa **Serviços de função** é carregada para o servidor Web (IIS). Selecione os serviços de função do IIS desejados ou aceite os serviços de função padrão fornecidos.
+1. Após a etapa **Recursos** , a etapa **Serviços de função** é carregada para o servidor Web (IIS). Selecione os serviços de função do IIS desejados ou aceite os serviços de função padrão fornecidos.
 
    ![Os serviços de função padrão são selecionados na etapa Selecionar serviços de função.](index/_static/role-services-ws2016.png)
 
    **Autenticação do Windows (opcional)**  
-   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança do **servidor Web**  >  **Security**. Selecione o recurso **Autenticação do Windows**. Para obter mais informações, consulte [autenticação `<windowsAuthentication>` do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
+   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança do **servidor Web**  >  **Security** . Selecione o recurso **Autenticação do Windows** . Para obter mais informações, consulte [autenticação `<windowsAuthentication>` do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (opcional)**  
-   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: desenvolvimento de aplicativo de **servidor Web**  >  **Application Development**. Selecione o recurso **Protocolo WebSocket**. Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
+   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: desenvolvimento de aplicativo de **servidor Web**  >  **Application Development** . Selecione o recurso **Protocolo WebSocket** . Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
 
 1. Continue para a etapa **Confirmação** para instalar os serviços e a função de servidor Web. Uma reinicialização de servidor/IIS não é necessária após a instalação da função do **servidor Web (IIS)** .
 
 **Sistemas operacionais de área de trabalho do Windows**
 
-Habilite o **Console de Gerenciamento do IIS** e os **Serviços na World Wide Web**.
+Habilite o **Console de Gerenciamento do IIS** e os **Serviços na World Wide Web** .
 
 1. Navegue até **Painel de Controle** > **Programas** > **Programas e Recursos** > **Ativar ou desativar recursos do Windows** (lado esquerdo da tela).
 
-1. Abra o nó **Serviços de Informações da Internet**. Abra o nó **Ferramentas de Gerenciamento da Web**.
+1. Abra o nó **Serviços de Informações da Internet** . Abra o nó **Ferramentas de Gerenciamento da Web** .
 
-1. Marque a caixa de **Console de Gerenciamento do IIS**.
+1. Marque a caixa de **Console de Gerenciamento do IIS** .
 
-1. Marque a caixa de **Serviços na World Wide Web**.
+1. Marque a caixa de **Serviços na World Wide Web** .
 
 1. Aceite os recursos padrão dos **Serviços na World Wide Web** ou personalize os recursos do IIS.
 
    **Autenticação do Windows (opcional)**  
-   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança **dos serviços de World Wide Web**  >  **Security**. Selecione o recurso **Autenticação do Windows**. Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
+   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança **dos serviços de World Wide Web**  >  **Security** . Selecione o recurso **Autenticação do Windows** . Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (opcional)**  
-   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: recursos de desenvolvimento de aplicativos **World Wide Web Services**  >  **Application Development Features**. Selecione o recurso **Protocolo WebSocket**. Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
+   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: recursos de desenvolvimento de aplicativos **World Wide Web Services**  >  **Application Development Features** . Selecione o recurso **Protocolo WebSocket** . Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
 
 1. Se a instalação do IIS exigir uma reinicialização, reinicie o sistema.
 
@@ -331,7 +332,7 @@ Para obter uma versão anterior do instalador:
 
 1. Navegue até a página [baixar o .NET Core](https://dotnet.microsoft.com/download/dotnet-core) .
 1. Selecione a versão do .NET Core desejada.
-1. Na coluna **Executar aplicativos – runtime**, localize a linha da versão de runtime do .NET Core desejada.
+1. Na coluna **Executar aplicativos – runtime** , localize a linha da versão de runtime do .NET Core desejada.
 1. Baixe o instalador usando o link **pacote de hospedagem** .
 
 > [!WARNING]
@@ -372,34 +373,34 @@ Ao implantar aplicativos para servidores com [Implantação da Web](/iis/install
 
 1. No sistema de hospedagem, crie uma pasta para conter arquivos e pastas publicados do aplicativo. Em uma etapa a seguir, o caminho da pasta é fornecido ao IIS como o caminho físico para o aplicativo. Para obter mais informações sobre o layout de arquivo e a pasta de implantação de um aplicativo, confira <xref:host-and-deploy/directory-structure>.
 
-1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites**. Selecione **Adicionar Site** no menu contextual.
+1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites** . Selecione **Adicionar Site** no menu contextual.
 
-1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo. Forneça a configuração de **Associação** e crie o site selecionando **OK**:
+1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo. Forneça a configuração de **Associação** e crie o site selecionando **OK** :
 
    ![Forneça o Nome do site, o caminho físico e o Nome do host na etapa Adicionar Site.](index/_static/add-website-ws2016.png)
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior podem abrir o aplicativo para vulnerabilidades de segurança. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não têm esse risco de segurança se você controlar o domínio pai completo (em vez de `*.com`, o qual é vulnerável). Veja [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) para obter mais informações.
 
-1. No nó do servidor, selecione **Pools de Aplicativos**.
+1. No nó do servidor, selecione **Pools de Aplicativos** .
 
 1. Clique com o botão direito do mouse no pool de aplicativos do site e selecione **Configurações Básicas** no menu contextual.
 
-1. Na janela **Editar Pool de Aplicativos**, defina a **versão do CLR do .NET** como **Sem Código Gerenciado**:
+1. Na janela **Editar Pool de Aplicativos** , defina a **versão do CLR do .NET** como **Sem Código Gerenciado** :
 
    ![Defina Sem Código Gerenciado para a versão do CLR do .NET.](index/_static/edit-apppool-ws2016.png)
 
     O ASP.NET Core é executado em um processo separado e gerencia o runtime. ASP.NET Core não depende do carregamento do CLR da área de trabalho (.NET CLR). O principal CoreCLR (Common Language Runtime) para .NET Core é inicializado para hospedar o aplicativo no processo de trabalho. Definir a **versão do CLR do .NET** como **Sem Código Gerenciado** é opcional, porém recomendado.
 
-1. *ASP.NET Core 2.2 ou posterior*:
+1. *ASP.NET Core 2.2 ou posterior* :
 
-   * Para uma [implantação autônoma](/dotnet/core/deploying/#self-contained-deployments-scd) de 32 bits (x86) publicada com um SDK de 32 bits que usa o modelo de [hospedagem em processo](#in-process-hosting-model), habilite o Pool de aplicativos para 32 bits. No Gerenciador do IIS, navegue até **pools de aplicativos** na barra lateral **conexões** . Selecione o pool de aplicativos do aplicativo. Na barra lateral **ações** , selecione **Configurações avançadas**. Defina **habilitar aplicativos de 32 bits** como `True` . 
+   * Para uma [implantação autônoma](/dotnet/core/deploying/#self-contained-deployments-scd) de 32 bits (x86) publicada com um SDK de 32 bits que usa o modelo de [hospedagem em processo](#in-process-hosting-model), habilite o Pool de aplicativos para 32 bits. No Gerenciador do IIS, navegue até **pools de aplicativos** na barra lateral **conexões** . Selecione o pool de aplicativos do aplicativo. Na barra lateral **ações** , selecione **Configurações avançadas** . Defina **habilitar aplicativos de 32 bits** como `True` . 
 
-   * para uma [implantação autocontida](/dotnet/core/deploying/#self-contained-deployments-scd) de 64 bits (x64) que usa o [modelo de hospedagem em processo](#in-process-hosting-model), desabilite o pool de aplicativos para processos de 32 bits (x86). No Gerenciador do IIS, navegue até **pools de aplicativos** na barra lateral **conexões** . Selecione o pool de aplicativos do aplicativo. Na barra lateral **ações** , selecione **Configurações avançadas**. Defina **habilitar aplicativos de 32 bits** como `False` . 
+   * para uma [implantação autocontida](/dotnet/core/deploying/#self-contained-deployments-scd) de 64 bits (x64) que usa o [modelo de hospedagem em processo](#in-process-hosting-model), desabilite o pool de aplicativos para processos de 32 bits (x86). No Gerenciador do IIS, navegue até **pools de aplicativos** na barra lateral **conexões** . Selecione o pool de aplicativos do aplicativo. Na barra lateral **ações** , selecione **Configurações avançadas** . Defina **habilitar aplicativos de 32 bits** como `False` . 
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos ( **modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 **Configuração de Autenticação do Windows (opcional)**  
 Para saber mais, veja [Configurar a Autenticação do Windows](xref:security/authentication/windowsauth).
@@ -474,12 +475,12 @@ Para configurar a proteção de dados no IIS para persistir o token de autentica
 
 * **Configurar o pool de aplicativos do IIS para carregar o perfil do usuário**
 
-  Essa configuração está na seção **Modelo de processo** nas **Configurações avançadas** do pool de aplicativos. Defina **carregar perfil do usuário** como `True` . Quando definido como `True`, as chaves são armazenadas no diretório do perfil do usuário e protegidas usando DPAPI com uma chave específica para a conta de usuário. As chaves são persistidas para a pasta *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys*.
+  Essa configuração está na seção **Modelo de processo** nas **Configurações avançadas** do pool de aplicativos. Defina **carregar perfil do usuário** como `True` . Quando definido como `True`, as chaves são armazenadas no diretório do perfil do usuário e protegidas usando DPAPI com uma chave específica para a conta de usuário. As chaves são persistidas para a pasta *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys* .
 
   O [atributo setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) do pool de aplicativos também deve ser habilitado. O valor padrão de `setProfileEnvironment` é `true`. Em alguns cenários (por exemplo, um SO Windows), `setProfileEnvironment` é definido como `false`. Se as chaves não estiverem armazenadas no diretório do perfil do usuário como esperado:
 
-  1. navegue até a pasta *%windir%/system32/inetsrv/config*.
-  1. Abra o arquivo *applicationHost.config*.
+  1. navegue até a pasta *%windir%/system32/inetsrv/config* .
+  1. Abra o arquivo *applicationHost.config* .
   1. Localize o elemento `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>`.
   1. Confirme se o atributo `setProfileEnvironment` não está presente, que tem como padrão o valor `true`, ou defina explicitamente o valor do atributo como `true`.
 
@@ -506,7 +507,7 @@ Um aplicativo ASP.NET Core pode ser hospedado como um [subaplicativo IIS (sub-ap
 
 Links de ativos estáticos dentro do subaplicativo devem usar a notação de sinal de til e barra (`~/`). A notação de sinal de til e barra aciona um [Auxiliar de Marca](xref:mvc/views/tag-helpers/intro) para preceder a base de caminho do subaplicativo ao link relativo renderizado. Para um subaplicativo no `/subapp_path`, uma imagem vinculada com `src="~/image.png"` é renderizada como `src="/subapp_path/image.png"`. O Middleware de Arquivo Estático do aplicativo raiz não processa a solicitação de arquivo estático. A solicitação é processada pelo Middleware de Arquivo Estático do subaplicativo.
 
-Se um atributo de ativo estático `src` for definido como um caminho absoluto (por exemplo, `src="/image.png"`), o link será renderizado sem a base de caminho do subaplicativo. O Middleware de Arquivos Estáticos do aplicativo raiz tenta fornecer o ativo do [webroot](xref:fundamentals/index#web-root) da raiz do aplicativo, que resulta em uma resposta *404 – Não encontrado*, a menos que o ativo estático esteja disponível no aplicativo raiz.
+Se um atributo de ativo estático `src` for definido como um caminho absoluto (por exemplo, `src="/image.png"`), o link será renderizado sem a base de caminho do subaplicativo. O Middleware de Arquivos Estáticos do aplicativo raiz tenta fornecer o ativo do [webroot](xref:fundamentals/index#web-root) da raiz do aplicativo, que resulta em uma resposta *404 – Não encontrado* , a menos que o ativo estático esteja disponível no aplicativo raiz.
 
 Para hospedar um aplicativo ASP.NET Core como um subaplicativo em outro aplicativo do ASP.NET Core:
 
@@ -514,9 +515,9 @@ Para hospedar um aplicativo ASP.NET Core como um subaplicativo em outro aplicati
 
 1. Adicione o site raiz no Gerenciador do IIS com o subaplicativo em uma pasta no site raiz.
 
-1. Clique com o botão direito do mouse na pasta do subaplicativo no Gerenciador do IIS e selecione **Converter em aplicativo**.
+1. Clique com o botão direito do mouse na pasta do subaplicativo no Gerenciador do IIS e selecione **Converter em aplicativo** .
 
-1. Na caixa de diálogo **Adicionar Aplicativo**, use o botão **Selecionar** no **Pool de Aplicativos** para atribuir o pool de aplicativos que você criou ao subaplicativo. Selecione **OK**.
+1. Na caixa de diálogo **Adicionar Aplicativo** , use o botão **Selecionar** no **Pool de Aplicativos** para atribuir o pool de aplicativos que você criou ao subaplicativo. Selecione **OK** .
 
 A atribuição de um pool de aplicativos separado para o subaplicativo é um requisito ao usar o modelo de hospedagem em processo.
 
@@ -526,7 +527,7 @@ Para obter mais informações sobre o modelo de hospedagem em processo e como co
 
 A configuração do IIS é influenciada pela seção `<system.webServer>` do *web.config* para cenários do IIS que são funcionais para aplicativos ASP.NET Core com o Módulo do ASP.NET Core. Por exemplo, a configuração do IIS é funcional para a compactação dinâmica. Se o IIS for configurado no nível do servidor para usar a compactação dinâmica, o elemento `<urlCompression>` no arquivo *web.config* do aplicativo pode desabilitá-la para um aplicativo do ASP.NET Core.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * [Referência de configuração para \<system.webServer>](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
@@ -552,11 +553,11 @@ O isolamento do pool de aplicativos é determinado pelo modelo de hospedagem:
 * Hospedagem em processo: os aplicativos devem ser executados em pools de aplicativos separados.
 * Hospedagem fora do processo: é recomendável isolar os aplicativos uns dos outros executando cada aplicativo em seu próprio pool de aplicativos.
 
-A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos**. Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
+A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos** . Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
 
 ## <a name="application-pool-no-locidentity"></a>Pool de aplicativos Identity
 
-Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity **:
+Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity** :
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 
@@ -566,23 +567,23 @@ Se o processo de trabalho do IIS requerer acesso elevado ao aplicativo, modifiqu
 
 1. Abra o Windows Explorer e navegue para o diretório.
 
-1. Clique com o botão direito do mouse no diretório e selecione **Propriedades**.
+1. Clique com o botão direito do mouse no diretório e selecione **Propriedades** .
 
-1. Na guia **Segurança**, selecione o botão **Editar** e, em seguida, no botão **Adicionar**.
+1. Na guia **Segurança** , selecione o botão **Editar** e, em seguida, no botão **Adicionar** .
 
 1. Clique no botão **Locais** e verifique se o sistema está selecionado.
 
-1. Insira `IIS AppPool\{APP POOL NAME}` , em que o espaço reservado `{APP POOL NAME}` é o nome do pool de aplicativos, em **digite os nomes de objeto para selecionar a** área. Selecione o botão **Verificar Nomes**. Para o *DefaultAppPool* , verifique os nomes usando `IIS AppPool\DefaultAppPool` . Quando o botão **verificar nomes** é selecionado, um valor de `DefaultAppPool` é indicado na área nomes de objetos. Não é possível inserir o nome do pool de aplicativos diretamente na área de nomes de objeto. Use o `IIS AppPool\{APP POOL NAME}` formato, em que o espaço reservado `{APP POOL NAME}` é o nome do pool de aplicativos, ao verificar o nome do objeto.
+1. Insira `IIS AppPool\{APP POOL NAME}` , em que o espaço reservado `{APP POOL NAME}` é o nome do pool de aplicativos, em **digite os nomes de objeto para selecionar a** área. Selecione o botão **Verificar Nomes** . Para o *DefaultAppPool* , verifique os nomes usando `IIS AppPool\DefaultAppPool` . Quando o botão **verificar nomes** é selecionado, um valor de `DefaultAppPool` é indicado na área nomes de objetos. Não é possível inserir o nome do pool de aplicativos diretamente na área de nomes de objeto. Use o `IIS AppPool\{APP POOL NAME}` formato, em que o espaço reservado `{APP POOL NAME}` é o nome do pool de aplicativos, ao verificar o nome do objeto.
 
    ![Selecione a caixa de diálogo de usuários ou grupos para a pasta do aplicativo: o nome do pool de aplicativos "DefaultAppPool" é anexado ao "IIS AppPool\" na área de nomes de objeto antes de selecionar"Verificar Nomes".](index/_static/select-users-or-groups-1.png)
 
-1. Selecione **OK**.
+1. Selecione **OK** .
 
    ![Selecione a caixa de diálogo de usuários ou grupos para a pasta do aplicativo: depois de selecionar "Verificar Nomes", o nome do objeto "DefaultAppPool" é mostrado na área de nomes de objeto.](index/_static/select-users-or-groups-2.png)
 
 1. As permissões de leitura &amp; execução devem ser concedidas por padrão. Forneça permissões adicionais conforme necessário.
 
-O acesso também pode ser concedido por meio de um prompt de comando usando a ferramenta **ICACLS**. Usando o `DefaultAppPool` como exemplo, o comando a seguir é usado:
+O acesso também pode ser concedido por meio de um prompt de comando usando a ferramenta **ICACLS** . Usando o `DefaultAppPool` como exemplo, o comando a seguir é usado:
 
 ```console
 ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
@@ -632,25 +633,25 @@ Confirme se o recurso da função Inicialização de Aplicativo do IIS está hab
 No Windows 7 ou sistemas de área de trabalho posteriores, ao usar o IIS localmente:
 
 1. Navegue até **Painel de Controle** > **Programas** > **Programas e Recursos** > **Ativar ou desativar recursos do Windows** (lado esquerdo da tela).
-1. Abra **Serviços de Informações da Internet** > **Serviços da World Wide Web** > **Recursos de Desenvolvimento de Aplicativos**.
-1. Marque a caixa de seleção **Inicialização de Aplicativo**.
+1. Abra **Serviços de Informações da Internet** > **Serviços da World Wide Web** > **Recursos de Desenvolvimento de Aplicativos** .
+1. Marque a caixa de seleção **Inicialização de Aplicativo** .
 
 No Windows Server 2008 R2 ou posterior:
 
-1. Abra o **Assistente de Adição de Funções e Recursos**.
-1. No painel **Selecionar serviços de função**, abra o nó **Desenvolvimento de aplicativos**.
-1. Marque a caixa de seleção **Inicialização de Aplicativo**.
+1. Abra o **Assistente de Adição de Funções e Recursos** .
+1. No painel **Selecionar serviços de função** , abra o nó **Desenvolvimento de aplicativos** .
+1. Marque a caixa de seleção **Inicialização de Aplicativo** .
 
 Use quaisquer das abordagens a seguir para habilitar o Módulo de Inicialização do Aplicativo para o site:
 
 * Usando o Gerenciador do IIS:
 
-  1. Selecione **Pools de Aplicativos** no painel **Conexões**.
-  1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas**.
-  1. O **Modo de Inicialização** padrão é **OnDemand**. Defina o **Modo de Inicialização** como **AlwaysRunning**. Selecione **OK**.
-  1. Abra o nó **Sites** no painel **Conexões**.
-  1. Clique com o botão direito do mouse no aplicativo e selecione **Gerenciar Site** > **Configurações Avançadas**.
-  1. A configuração de **Pré-carregamento Habilitado** padrão é **Falso**. Defina **Pré-carregamento Habilitado** como **Verdadeiro**. Selecione **OK**.
+  1. Selecione **Pools de Aplicativos** no painel **Conexões** .
+  1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas** .
+  1. O **Modo de Inicialização** padrão é **OnDemand** . Defina o **Modo de Inicialização** como **AlwaysRunning** . Selecione **OK** .
+  1. Abra o nó **Sites** no painel **Conexões** .
+  1. Clique com o botão direito do mouse no aplicativo e selecione **Gerenciar Site** > **Configurações Avançadas** .
+  1. A configuração de **Pré-carregamento Habilitado** padrão é **Falso** . Defina **Pré-carregamento Habilitado** como **Verdadeiro** . Selecione **OK** .
 
 * Usando `web.config` , adicione o `<applicationInitialization>` elemento com `doAppInitAfterRestart` definido como `true` para os `<system.webServer>` elementos no arquivo do web.configdo aplicativo:
 
@@ -671,9 +672,9 @@ Use quaisquer das abordagens a seguir para habilitar o Módulo de Inicializaçã
 
 Para impedir que o aplicativo fique ocioso, defina o tempo limite de ociosidade do pool de aplicativos, usando o Gerenciador do IIS:
 
-1. Selecione **Pools de Aplicativos** no painel **Conexões**.
-1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas**.
-1. O **Tempo Limite de Ociosidade (minutos)** é de **20** minutos. Defina o **Tempo Limite de Ociosidade (minutos)** como **0** (zero). Selecione **OK**.
+1. Selecione **Pools de Aplicativos** no painel **Conexões** .
+1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas** .
+1. O **Tempo Limite de Ociosidade (minutos)** é de **20** minutos. Defina o **Tempo Limite de Ociosidade (minutos)** como **0** (zero). Selecione **OK** .
 1. Recicle o processo de trabalho.
 
 Para impedir que aplicativos hospedados [fora de processo](#out-of-process-hosting-model) atinjam o tempo limite, use uma das seguintes abordagens:
@@ -767,7 +768,7 @@ Depois que o Servidor HTTP do IIS processa a solicitação, a solicitação é e
 
 A hospedagem em processo é uma opção de aceitação para os aplicativos existentes, mas o padrão dos modelos [dotnet new](/dotnet/core/tools/dotnet-new) é o modelo de hospedagem em processo para todos os cenários do IIS e do IIS Express.
 
-`CreateDefaultBuilder` adiciona uma instância <xref:Microsoft.AspNetCore.Hosting.Server.IServer> chamando o método <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS%2A> para inicializar o [CoreCLR](/dotnet/standard/glossary#coreclr) e hospedar o aplicativo no processo de trabalho do IIS (*w3wp.exe* ou *iisexpress.exe*). Os testes de desempenho indicam que hospedar um aplicativo em processo do .NET Core oferece uma taxa de transferência de solicitação significativamente mais elevada em comparação a hospedar o aplicativo fora do processo e enviar por proxy as solicitações para o servidor [Kestrel](xref:fundamentals/servers/kestrel).
+`CreateDefaultBuilder` adiciona uma instância <xref:Microsoft.AspNetCore.Hosting.Server.IServer> chamando o método <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS%2A> para inicializar o [CoreCLR](/dotnet/standard/glossary#coreclr) e hospedar o aplicativo no processo de trabalho do IIS ( *w3wp.exe* ou *iisexpress.exe* ). Os testes de desempenho indicam que hospedar um aplicativo em processo do .NET Core oferece uma taxa de transferência de solicitação significativamente mais elevada em comparação a hospedar o aplicativo fora do processo e enviar por proxy as solicitações para o servidor [Kestrel](xref:fundamentals/servers/kestrel).
 
 ### <a name="out-of-process-hosting-model"></a>Modelo de hospedagem de fora do processo
 
@@ -791,7 +792,7 @@ Para saber mais sobre hospedagem, confira [Host no ASP.NET Core](xref:fundamenta
 
 ### <a name="enable-the-iisintegration-components"></a>Habilitar os componentes de IISIntegration
 
-Ao criar um host no `CreateWebHostBuilder` (*Program.cs*), chame <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> para habilitar a integração do IIS:
+Ao criar um host no `CreateWebHostBuilder` ( *Program.cs* ), chame <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> para habilitar a integração do IIS:
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -868,7 +869,7 @@ Ao impedir que o SDK Web transforme o arquivo, o *processPath* e os *argumentos*
 
 Para configurar o [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) corretamente, o arquivo de *web.config* deve estar presente no caminho raiz do [conteúdo](xref:fundamentals/index#content-root) (normalmente o caminho base do aplicativo) do aplicativo implantado. Esse é o mesmo local que o caminho físico do site fornecido ao IIS. O arquivo *web.config* é necessário na raiz do aplicativo para habilitar a publicação de vários aplicativos usando a Implantação da Web.
 
-Existem arquivos confidenciais no caminho físico do aplicativo, como * \<assembly>.runtimeconfig.jsem*, * \<assembly> . xml* (comentários de documentação XML) e * \<assembly>.deps.jsem*. Quando o arquivo *web.config* estiver presente e o site for iniciado normalmente, o IIS não atenderá a esses arquivos confidenciais se eles forem solicitados. Se o arquivo *web.config* estiver ausente, nomeado incorretamente ou se não for possível configurar o site para inicialização normal, o IIS poderá servir arquivos confidenciais publicamente.
+Existem arquivos confidenciais no caminho físico do aplicativo, como *\<assembly>.runtimeconfig.jsem* , *\<assembly> . xml* (comentários de documentação XML) e *\<assembly>.deps.jsem* . Quando o arquivo *web.config* estiver presente e o site for iniciado normalmente, o IIS não atenderá a esses arquivos confidenciais se eles forem solicitados. Se o arquivo *web.config* estiver ausente, nomeado incorretamente ou se não for possível configurar o site para inicialização normal, o IIS poderá servir arquivos confidenciais publicamente.
 
 **O arquivo de *web.config* deve estar presente na implantação o tempo todo, corretamente nomeado e ser capaz de configurar o site para inicialização normal. Nunca remova o arquivo de *web.config* de uma implantação de produção.**
 
@@ -882,41 +883,41 @@ Se você precisar transformar o *Web.config* em publicação (por exemplo, defin
 
 Habilite a função **Servidor Web (IIS)** e estabeleça serviços de função.
 
-1. Use o assistente **Adicionar Funções e Recursos** por meio do menu **Gerenciar** ou do link no **Gerenciador do Servidor**. Na etapa **Funções de Servidor**, marque a caixa de **Servidor Web (IIS)**.
+1. Use o assistente **Adicionar Funções e Recursos** por meio do menu **Gerenciar** ou do link no **Gerenciador do Servidor** . Na etapa **Funções de Servidor** , marque a caixa de **Servidor Web (IIS)** .
 
    ![A função de Servidor Web IIS é selecionada na etapa Selecionar funções de servidor.](index/_static/server-roles-ws2016.png)
 
-1. Após a etapa **Recursos**, a etapa **Serviços de função** é carregada para o servidor Web (IIS). Selecione os serviços de função do IIS desejados ou aceite os serviços de função padrão fornecidos.
+1. Após a etapa **Recursos** , a etapa **Serviços de função** é carregada para o servidor Web (IIS). Selecione os serviços de função do IIS desejados ou aceite os serviços de função padrão fornecidos.
 
    ![Os serviços de função padrão são selecionados na etapa Selecionar serviços de função.](index/_static/role-services-ws2016.png)
 
    **Autenticação do Windows (opcional)**  
-   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança do **servidor Web**  >  **Security**. Selecione o recurso **Autenticação do Windows**. Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
+   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança do **servidor Web**  >  **Security** . Selecione o recurso **Autenticação do Windows** . Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (opcional)**  
-   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: desenvolvimento de aplicativo de **servidor Web**  >  **Application Development**. Selecione o recurso **Protocolo WebSocket**. Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
+   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: desenvolvimento de aplicativo de **servidor Web**  >  **Application Development** . Selecione o recurso **Protocolo WebSocket** . Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
 
 1. Continue para a etapa **Confirmação** para instalar os serviços e a função de servidor Web. Uma reinicialização de servidor/IIS não é necessária após a instalação da função do **servidor Web (IIS)** .
 
 **Sistemas operacionais de área de trabalho do Windows**
 
-Habilite o **Console de Gerenciamento do IIS** e os **Serviços na World Wide Web**.
+Habilite o **Console de Gerenciamento do IIS** e os **Serviços na World Wide Web** .
 
 1. Navegue até **Painel de Controle** > **Programas** > **Programas e Recursos** > **Ativar ou desativar recursos do Windows** (lado esquerdo da tela).
 
-1. Abra o nó **Serviços de Informações da Internet**. Abra o nó **Ferramentas de Gerenciamento da Web**.
+1. Abra o nó **Serviços de Informações da Internet** . Abra o nó **Ferramentas de Gerenciamento da Web** .
 
-1. Marque a caixa de **Console de Gerenciamento do IIS**.
+1. Marque a caixa de **Console de Gerenciamento do IIS** .
 
-1. Marque a caixa de **Serviços na World Wide Web**.
+1. Marque a caixa de **Serviços na World Wide Web** .
 
 1. Aceite os recursos padrão dos **Serviços na World Wide Web** ou personalize os recursos do IIS.
 
    **Autenticação do Windows (opcional)**  
-   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança **dos serviços de World Wide Web**  >  **Security**. Selecione o recurso **Autenticação do Windows**. Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
+   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança **dos serviços de World Wide Web**  >  **Security** . Selecione o recurso **Autenticação do Windows** . Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (opcional)**  
-   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: recursos de desenvolvimento de aplicativos **World Wide Web Services**  >  **Application Development Features**. Selecione o recurso **Protocolo WebSocket**. Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
+   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: recursos de desenvolvimento de aplicativos **World Wide Web Services**  >  **Application Development Features** . Selecione o recurso **Protocolo WebSocket** . Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
 
 1. Se a instalação do IIS exigir uma reinicialização, reinicie o sistema.
 
@@ -935,7 +936,7 @@ Instale o *pacote de hospedagem do .NET Core* no sistema de hospedagem. O pacote
 
 1. Navegue até a página [baixar o .NET Core](https://dotnet.microsoft.com/download/dotnet-core) .
 1. Selecione a versão do .NET Core desejada.
-1. Na coluna **Executar aplicativos – runtime**, localize a linha da versão de runtime do .NET Core desejada.
+1. Na coluna **Executar aplicativos – runtime** , localize a linha da versão de runtime do .NET Core desejada.
 1. Baixe o instalador usando o link **pacote de hospedagem** .
 
 > [!WARNING]
@@ -949,7 +950,7 @@ Instale o *pacote de hospedagem do .NET Core* no sistema de hospedagem. O pacote
    * `OPT_NO_RUNTIME=1`: Ignorar a instalação do tempo de execução do .NET Core. Usado quando o servidor hospeda apenas [implantações independentes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_SHAREDFX=1`: Ignorar a instalação da estrutura compartilhada ASP.NET (ASP.NET Runtime). Usado quando o servidor hospeda apenas [implantações independentes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_X86=1`: Ignorar a instalação de tempos de execução x86. Use esse parâmetro quando você souber que não hospedará aplicativos de 32 bits. Se houver uma possibilidade de hospedar aplicativos de 32 bits e 64 bits no futuro, não use esse parâmetro e instale ambos os runtimes.
-   * `OPT_NO_SHARED_CONFIG_CHECK=1`: Desabilite a verificação para usar uma configuração compartilhada do IIS quando a configuração compartilhada (*applicationHost.config*) estiver no mesmo computador que a instalação do IIS. *Disponível somente para instaladores do ASP.NET Core 2.2 ou Hosting Bundler posterior.* Para obter mais informações, consulte <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
+   * `OPT_NO_SHARED_CONFIG_CHECK=1`: Desabilite a verificação para usar uma configuração compartilhada do IIS quando a configuração compartilhada ( *applicationHost.config* ) estiver no mesmo computador que a instalação do IIS. *Disponível somente para instaladores do ASP.NET Core 2.2 ou Hosting Bundler posterior.* Para obter mais informações, consulte <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
 1. Reinicie o sistema ou execute os seguintes comandos em um shell de comando:
 
    ```console
@@ -973,32 +974,32 @@ Ao implantar aplicativos para servidores com [Implantação da Web](/iis/install
 
 1. No sistema de hospedagem, crie uma pasta para conter arquivos e pastas publicados do aplicativo. Em uma etapa a seguir, o caminho da pasta é fornecido ao IIS como o caminho físico para o aplicativo. Para obter mais informações sobre o layout de arquivo e a pasta de implantação de um aplicativo, confira <xref:host-and-deploy/directory-structure>.
 
-1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites**. Selecione **Adicionar Site** no menu contextual.
+1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites** . Selecione **Adicionar Site** no menu contextual.
 
-1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo. Forneça a configuração de **Associação** e crie o site selecionando **OK**:
+1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo. Forneça a configuração de **Associação** e crie o site selecionando **OK** :
 
    ![Forneça o Nome do site, o caminho físico e o Nome do host na etapa Adicionar Site.](index/_static/add-website-ws2016.png)
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior podem abrir o aplicativo para vulnerabilidades de segurança. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não têm esse risco de segurança se você controlar o domínio pai completo (em vez de `*.com`, o qual é vulnerável). Veja [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) para obter mais informações.
 
-1. No nó do servidor, selecione **Pools de Aplicativos**.
+1. No nó do servidor, selecione **Pools de Aplicativos** .
 
 1. Clique com o botão direito do mouse no pool de aplicativos do site e selecione **Configurações Básicas** no menu contextual.
 
-1. Na janela **Editar Pool de Aplicativos**, defina a **versão do CLR do .NET** como **Sem Código Gerenciado**:
+1. Na janela **Editar Pool de Aplicativos** , defina a **versão do CLR do .NET** como **Sem Código Gerenciado** :
 
    ![Defina Sem Código Gerenciado para a versão do CLR do .NET.](index/_static/edit-apppool-ws2016.png)
 
     O ASP.NET Core é executado em um processo separado e gerencia o runtime. O ASP.NET Core não depende do carregamento do CLR de Área de trabalho (CLR do .NET)&mdash;o Core Common Language Runtime (CoreCLR) para o .NET Core é inicializado para hospedar o aplicativo no processo de trabalho. Definir a **versão do CLR do .NET** como **Sem Código Gerenciado** é opcional, porém recomendado.
 
-1. *ASP.NET Core 2.2 ou posterior*: para uma [implantação autocontida](/dotnet/core/deploying/#self-contained-deployments-scd) de 64 bits (x64) que usa o [modelo de hospedagem em processo](#in-process-hosting-model), desabilite o pool de aplicativos para processos de 32 bits (x86).
+1. *ASP.NET Core 2.2 ou posterior* : para uma [implantação autocontida](/dotnet/core/deploying/#self-contained-deployments-scd) de 64 bits (x64) que usa o [modelo de hospedagem em processo](#in-process-hosting-model), desabilite o pool de aplicativos para processos de 32 bits (x86).
 
-   Na barra lateral **Ações** do Gerenciador do IIS > **Pools de Aplicativos**, selecione **Definir Padrões do Pool de Aplicativos** ou **Configurações Avançadas**. Localize **Habilitar Aplicativos de 32 bits** e defina o valor como `False`. Essa configuração não afeta os aplicativos implantados para a [hospedagem fora do processo](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
+   Na barra lateral **Ações** do Gerenciador do IIS > **Pools de Aplicativos** , selecione **Definir Padrões do Pool de Aplicativos** ou **Configurações Avançadas** . Localize **Habilitar Aplicativos de 32 bits** e defina o valor como `False`. Essa configuração não afeta os aplicativos implantados para a [hospedagem fora do processo](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos ( **modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 **Configuração de Autenticação do Windows (opcional)**  
 Para saber mais, veja [Configurar a Autenticação do Windows](xref:security/authentication/windowsauth).
@@ -1074,12 +1075,12 @@ Para configurar a proteção de dados no IIS para persistir o token de autentica
 
 * **Configurar o pool de aplicativos do IIS para carregar o perfil do usuário**
 
-  Essa configuração está na seção **Modelo de processo** nas **Configurações avançadas** do pool de aplicativos. Defina **carregar perfil do usuário** como `True` . Quando definido como `True`, as chaves são armazenadas no diretório do perfil do usuário e protegidas usando DPAPI com uma chave específica para a conta de usuário. As chaves são persistidas para a pasta *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys*.
+  Essa configuração está na seção **Modelo de processo** nas **Configurações avançadas** do pool de aplicativos. Defina **carregar perfil do usuário** como `True` . Quando definido como `True`, as chaves são armazenadas no diretório do perfil do usuário e protegidas usando DPAPI com uma chave específica para a conta de usuário. As chaves são persistidas para a pasta *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys* .
 
   O [atributo setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) do pool de aplicativos também deve ser habilitado. O valor padrão de `setProfileEnvironment` é `true`. Em alguns cenários (por exemplo, um SO Windows), `setProfileEnvironment` é definido como `false`. Se as chaves não estiverem armazenadas no diretório do perfil do usuário como esperado:
 
-  1. navegue até a pasta *%windir%/system32/inetsrv/config*.
-  1. Abra o arquivo *applicationHost.config*.
+  1. navegue até a pasta *%windir%/system32/inetsrv/config* .
+  1. Abra o arquivo *applicationHost.config* .
   1. Localize o elemento `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>`.
   1. Confirme se o atributo `setProfileEnvironment` não está presente, que tem como padrão o valor `true`, ou defina explicitamente o valor do atributo como `true`.
 
@@ -1106,7 +1107,7 @@ Um aplicativo ASP.NET Core pode ser hospedado como um [subaplicativo IIS (sub-ap
 
 Links de ativos estáticos dentro do subaplicativo devem usar a notação de sinal de til e barra (`~/`). A notação de sinal de til e barra aciona um [Auxiliar de Marca](xref:mvc/views/tag-helpers/intro) para preceder a base de caminho do subaplicativo ao link relativo renderizado. Para um subaplicativo no `/subapp_path`, uma imagem vinculada com `src="~/image.png"` é renderizada como `src="/subapp_path/image.png"`. O Middleware de Arquivo Estático do aplicativo raiz não processa a solicitação de arquivo estático. A solicitação é processada pelo Middleware de Arquivo Estático do subaplicativo.
 
-Se um atributo de ativo estático `src` for definido como um caminho absoluto (por exemplo, `src="/image.png"`), o link será renderizado sem a base de caminho do subaplicativo. O Middleware de Arquivos Estáticos do aplicativo raiz tenta fornecer o ativo do [webroot](xref:fundamentals/index#web-root) da raiz do aplicativo, que resulta em uma resposta *404 – Não encontrado*, a menos que o ativo estático esteja disponível no aplicativo raiz.
+Se um atributo de ativo estático `src` for definido como um caminho absoluto (por exemplo, `src="/image.png"`), o link será renderizado sem a base de caminho do subaplicativo. O Middleware de Arquivos Estáticos do aplicativo raiz tenta fornecer o ativo do [webroot](xref:fundamentals/index#web-root) da raiz do aplicativo, que resulta em uma resposta *404 – Não encontrado* , a menos que o ativo estático esteja disponível no aplicativo raiz.
 
 Para hospedar um aplicativo ASP.NET Core como um subaplicativo em outro aplicativo do ASP.NET Core:
 
@@ -1114,9 +1115,9 @@ Para hospedar um aplicativo ASP.NET Core como um subaplicativo em outro aplicati
 
 1. Adicione o site raiz no Gerenciador do IIS com o subaplicativo em uma pasta no site raiz.
 
-1. Clique com o botão direito do mouse na pasta do subaplicativo no Gerenciador do IIS e selecione **Converter em aplicativo**.
+1. Clique com o botão direito do mouse na pasta do subaplicativo no Gerenciador do IIS e selecione **Converter em aplicativo** .
 
-1. Na caixa de diálogo **Adicionar Aplicativo**, use o botão **Selecionar** no **Pool de Aplicativos** para atribuir o pool de aplicativos que você criou ao subaplicativo. Selecione **OK**.
+1. Na caixa de diálogo **Adicionar Aplicativo** , use o botão **Selecionar** no **Pool de Aplicativos** para atribuir o pool de aplicativos que você criou ao subaplicativo. Selecione **OK** .
 
 A atribuição de um pool de aplicativos separado para o subaplicativo é um requisito ao usar o modelo de hospedagem em processo.
 
@@ -1126,7 +1127,7 @@ Para obter mais informações sobre o modelo de hospedagem em processo e como co
 
 A configuração do IIS é influenciada pela seção `<system.webServer>` do *web.config* para cenários do IIS que são funcionais para aplicativos ASP.NET Core com o Módulo do ASP.NET Core. Por exemplo, a configuração do IIS é funcional para a compactação dinâmica. Se o IIS for configurado no nível do servidor para usar a compactação dinâmica, o elemento `<urlCompression>` no arquivo *web.config* do aplicativo pode desabilitá-la para um aplicativo do ASP.NET Core.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * [Referência de configuração para \<system.webServer>](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
@@ -1152,11 +1153,11 @@ O isolamento do pool de aplicativos é determinado pelo modelo de hospedagem:
 * Hospedagem em processo: os aplicativos devem ser executados em pools de aplicativos separados.
 * Hospedagem fora do processo: é recomendável isolar os aplicativos uns dos outros executando cada aplicativo em seu próprio pool de aplicativos.
 
-A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos**. Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
+A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos** . Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
 
 ## <a name="application-pool-no-locidentity"></a>Pool de aplicativos Identity
 
-Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity **:
+Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity** :
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 
@@ -1166,23 +1167,23 @@ Se o processo de trabalho do IIS requerer acesso elevado ao aplicativo, modifiqu
 
 1. Abra o Windows Explorer e navegue para o diretório.
 
-1. Clique com o botão direito do mouse no diretório e selecione **Propriedades**.
+1. Clique com o botão direito do mouse no diretório e selecione **Propriedades** .
 
-1. Na guia **Segurança**, selecione o botão **Editar** e, em seguida, no botão **Adicionar**.
+1. Na guia **Segurança** , selecione o botão **Editar** e, em seguida, no botão **Adicionar** .
 
 1. Clique no botão **Locais** e verifique se o sistema está selecionado.
 
-1. Insira **IIS AppPool\\<nome_pool_aplicativos>** na área **Inserir os nomes de objeto a serem selecionados**. Selecione o botão **Verificar Nomes**. Para o *DefaultAppPool*, verifique os nomes usando **IIS AppPool\DefaultAppPool**. Quando o botão **Verificar Nomes** é selecionado, um valor de **DefaultAppPool** é indicado na área de nomes de objeto. Não é possível inserir o nome do pool de aplicativos diretamente na área de nomes de objeto. Use o formato **IIS AppPool\\<nome_pool_aplicativos>** ao verificar o nome do objeto.
+1. Insira **IIS AppPool\\<nome_pool_aplicativos>** na área **Inserir os nomes de objeto a serem selecionados** . Selecione o botão **Verificar Nomes** . Para o *DefaultAppPool* , verifique os nomes usando **IIS AppPool\DefaultAppPool** . Quando o botão **Verificar Nomes** é selecionado, um valor de **DefaultAppPool** é indicado na área de nomes de objeto. Não é possível inserir o nome do pool de aplicativos diretamente na área de nomes de objeto. Use o formato **IIS AppPool\\<nome_pool_aplicativos>** ao verificar o nome do objeto.
 
    ![Selecione a caixa de diálogo de usuários ou grupos para a pasta do aplicativo: o nome do pool de aplicativos "DefaultAppPool" é anexado ao "IIS AppPool\" na área de nomes de objeto antes de selecionar"Verificar Nomes".](index/_static/select-users-or-groups-1.png)
 
-1. Selecione **OK**.
+1. Selecione **OK** .
 
    ![Selecione a caixa de diálogo de usuários ou grupos para a pasta do aplicativo: depois de selecionar "Verificar Nomes", o nome do objeto "DefaultAppPool" é mostrado na área de nomes de objeto.](index/_static/select-users-or-groups-2.png)
 
 1. As permissões de leitura &amp; execução devem ser concedidas por padrão. Forneça permissões adicionais conforme necessário.
 
-O acesso também pode ser concedido por meio de um prompt de comando usando a ferramenta **ICACLS**. Usando o *DefaultAppPool* como exemplo, o comando a seguir é usado:
+O acesso também pode ser concedido por meio de um prompt de comando usando a ferramenta **ICACLS** . Usando o *DefaultAppPool* como exemplo, o comando a seguir é usado:
 
 ```console
 ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
@@ -1232,27 +1233,27 @@ Confirme se o recurso da função Inicialização de Aplicativo do IIS está hab
 No Windows 7 ou sistemas de área de trabalho posteriores, ao usar o IIS localmente:
 
 1. Navegue até **Painel de Controle** > **Programas** > **Programas e Recursos** > **Ativar ou desativar recursos do Windows** (lado esquerdo da tela).
-1. Abra **Serviços de Informações da Internet** > **Serviços da World Wide Web** > **Recursos de Desenvolvimento de Aplicativos**.
-1. Marque a caixa de seleção **Inicialização de Aplicativo**.
+1. Abra **Serviços de Informações da Internet** > **Serviços da World Wide Web** > **Recursos de Desenvolvimento de Aplicativos** .
+1. Marque a caixa de seleção **Inicialização de Aplicativo** .
 
 No Windows Server 2008 R2 ou posterior:
 
-1. Abra o **Assistente de Adição de Funções e Recursos**.
-1. No painel **Selecionar serviços de função**, abra o nó **Desenvolvimento de aplicativos**.
-1. Marque a caixa de seleção **Inicialização de Aplicativo**.
+1. Abra o **Assistente de Adição de Funções e Recursos** .
+1. No painel **Selecionar serviços de função** , abra o nó **Desenvolvimento de aplicativos** .
+1. Marque a caixa de seleção **Inicialização de Aplicativo** .
 
 Use quaisquer das abordagens a seguir para habilitar o Módulo de Inicialização do Aplicativo para o site:
 
 * Usando o Gerenciador do IIS:
 
-  1. Selecione **Pools de Aplicativos** no painel **Conexões**.
-  1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas**.
-  1. O **Modo de Inicialização** padrão é **OnDemand**. Defina o **Modo de Inicialização** como **AlwaysRunning**. Selecione **OK**.
-  1. Abra o nó **Sites** no painel **Conexões**.
-  1. Clique com o botão direito do mouse no aplicativo e selecione **Gerenciar Site** > **Configurações Avançadas**.
-  1. A configuração de **Pré-carregamento Habilitado** padrão é **Falso**. Defina **Pré-carregamento Habilitado** como **Verdadeiro**. Selecione **OK**.
+  1. Selecione **Pools de Aplicativos** no painel **Conexões** .
+  1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas** .
+  1. O **Modo de Inicialização** padrão é **OnDemand** . Defina o **Modo de Inicialização** como **AlwaysRunning** . Selecione **OK** .
+  1. Abra o nó **Sites** no painel **Conexões** .
+  1. Clique com o botão direito do mouse no aplicativo e selecione **Gerenciar Site** > **Configurações Avançadas** .
+  1. A configuração de **Pré-carregamento Habilitado** padrão é **Falso** . Defina **Pré-carregamento Habilitado** como **Verdadeiro** . Selecione **OK** .
 
-* Usando o *web.config*, adicione o elemento `<applicationInitialization>` definindo `doAppInitAfterRestart` como `true` aos elementos `<system.webServer>` no arquivo *web.config* do aplicativo:
+* Usando o *web.config* , adicione o elemento `<applicationInitialization>` definindo `doAppInitAfterRestart` como `true` aos elementos `<system.webServer>` no arquivo *web.config* do aplicativo:
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -1271,9 +1272,9 @@ Use quaisquer das abordagens a seguir para habilitar o Módulo de Inicializaçã
 
 Para impedir que o aplicativo fique ocioso, defina o tempo limite de ociosidade do pool de aplicativos, usando o Gerenciador do IIS:
 
-1. Selecione **Pools de Aplicativos** no painel **Conexões**.
-1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas**.
-1. O **Tempo Limite de Ociosidade (minutos)** é de **20** minutos. Defina o **Tempo Limite de Ociosidade (minutos)** como **0** (zero). Selecione **OK**.
+1. Selecione **Pools de Aplicativos** no painel **Conexões** .
+1. Clique com o botão direito do mouse no pool de aplicativos do aplicativo na lista e selecione **Configurações Avançadas** .
+1. O **Tempo Limite de Ociosidade (minutos)** é de **20** minutos. Defina o **Tempo Limite de Ociosidade (minutos)** como **0** (zero). Selecione **OK** .
 1. Recicle o processo de trabalho.
 
 Para impedir que aplicativos hospedados [fora de processo](#out-of-process-hosting-model) atinjam o tempo limite, use uma das seguintes abordagens:
@@ -1340,7 +1341,7 @@ Use um SDK do .NET Core de 64 bits (x64) para publicar um aplicativo de 64 bits.
 
 O ASP.NET Core vem com o [servidor Kestrel](xref:fundamentals/servers/kestrel), um servidor HTTP padrão multiplataforma.
 
-Ao usar o [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) ou o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview), o aplicativo é executado em um processo separado do processo de trabalho do IIS (*fora do processo*) com o [servidor Kestrel](xref:fundamentals/servers/index#kestrel).
+Ao usar o [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) ou o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview), o aplicativo é executado em um processo separado do processo de trabalho do IIS ( *fora do processo* ) com o [servidor Kestrel](xref:fundamentals/servers/index#kestrel).
 
 Como os aplicativos ASP.NET Core são executados em um processo separado do processo de trabalho do IIS, o módulo realiza o gerenciamento de processos. O módulo inicia o processo para o aplicativo ASP.NET Core quando a primeira solicitação chega e reinicia o aplicativo se ele é desligado ou falha. Isso é basicamente o mesmo comportamento que o dos aplicativos que são executados dentro do processo e são gerenciados pelo [WAS (Serviço de Ativação de Processos do Windows)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
 
@@ -1372,7 +1373,7 @@ Para saber mais sobre hospedagem, confira [Host no ASP.NET Core](xref:fundamenta
 
 ### <a name="enable-the-iisintegration-components"></a>Habilitar os componentes de IISIntegration
 
-Ao criar um host no `CreateWebHostBuilder` (*Program.cs*), chame <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> para habilitar a integração do IIS:
+Ao criar um host no `CreateWebHostBuilder` ( *Program.cs* ), chame <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> para habilitar a integração do IIS:
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -1436,7 +1437,7 @@ Ao impedir que o SDK Web transforme o arquivo, o *processPath* e os *argumentos*
 
 Para configurar o [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) corretamente, o arquivo de *web.config* deve estar presente no caminho raiz do [conteúdo](xref:fundamentals/index#content-root) (normalmente o caminho base do aplicativo) do aplicativo implantado. Esse é o mesmo local que o caminho físico do site fornecido ao IIS. O arquivo *web.config* é necessário na raiz do aplicativo para habilitar a publicação de vários aplicativos usando a Implantação da Web.
 
-Existem arquivos confidenciais no caminho físico do aplicativo, como * \<assembly>.runtimeconfig.jsem*, * \<assembly> . xml* (comentários de documentação XML) e * \<assembly>.deps.jsem*. Quando o arquivo *web.config* estiver presente e o site for iniciado normalmente, o IIS não atenderá a esses arquivos confidenciais se eles forem solicitados. Se o arquivo *web.config* estiver ausente, nomeado incorretamente ou se não for possível configurar o site para inicialização normal, o IIS poderá servir arquivos confidenciais publicamente.
+Existem arquivos confidenciais no caminho físico do aplicativo, como *\<assembly>.runtimeconfig.jsem* , *\<assembly> . xml* (comentários de documentação XML) e *\<assembly>.deps.jsem* . Quando o arquivo *web.config* estiver presente e o site for iniciado normalmente, o IIS não atenderá a esses arquivos confidenciais se eles forem solicitados. Se o arquivo *web.config* estiver ausente, nomeado incorretamente ou se não for possível configurar o site para inicialização normal, o IIS poderá servir arquivos confidenciais publicamente.
 
 **O arquivo de *web.config* deve estar presente na implantação o tempo todo, corretamente nomeado e ser capaz de configurar o site para inicialização normal. Nunca remova o arquivo de *web.config* de uma implantação de produção.**
 
@@ -1450,41 +1451,41 @@ Se você precisar transformar o *Web.config* em publicação (por exemplo, defin
 
 Habilite a função **Servidor Web (IIS)** e estabeleça serviços de função.
 
-1. Use o assistente **Adicionar Funções e Recursos** por meio do menu **Gerenciar** ou do link no **Gerenciador do Servidor**. Na etapa **Funções de Servidor**, marque a caixa de **Servidor Web (IIS)**.
+1. Use o assistente **Adicionar Funções e Recursos** por meio do menu **Gerenciar** ou do link no **Gerenciador do Servidor** . Na etapa **Funções de Servidor** , marque a caixa de **Servidor Web (IIS)** .
 
    ![A função de Servidor Web IIS é selecionada na etapa Selecionar funções de servidor.](index/_static/server-roles-ws2016.png)
 
-1. Após a etapa **Recursos**, a etapa **Serviços de função** é carregada para o servidor Web (IIS). Selecione os serviços de função do IIS desejados ou aceite os serviços de função padrão fornecidos.
+1. Após a etapa **Recursos** , a etapa **Serviços de função** é carregada para o servidor Web (IIS). Selecione os serviços de função do IIS desejados ou aceite os serviços de função padrão fornecidos.
 
    ![Os serviços de função padrão são selecionados na etapa Selecionar serviços de função.](index/_static/role-services-ws2016.png)
 
    **Autenticação do Windows (opcional)**  
-   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança do **servidor Web**  >  **Security**. Selecione o recurso **Autenticação do Windows**. Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
+   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança do **servidor Web**  >  **Security** . Selecione o recurso **Autenticação do Windows** . Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (opcional)**  
-   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: desenvolvimento de aplicativo de **servidor Web**  >  **Application Development**. Selecione o recurso **Protocolo WebSocket**. Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
+   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: desenvolvimento de aplicativo de **servidor Web**  >  **Application Development** . Selecione o recurso **Protocolo WebSocket** . Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
 
 1. Continue para a etapa **Confirmação** para instalar os serviços e a função de servidor Web. Uma reinicialização de servidor/IIS não é necessária após a instalação da função do **servidor Web (IIS)** .
 
 **Sistemas operacionais de área de trabalho do Windows**
 
-Habilite o **Console de Gerenciamento do IIS** e os **Serviços na World Wide Web**.
+Habilite o **Console de Gerenciamento do IIS** e os **Serviços na World Wide Web** .
 
 1. Navegue até **Painel de Controle** > **Programas** > **Programas e Recursos** > **Ativar ou desativar recursos do Windows** (lado esquerdo da tela).
 
-1. Abra o nó **Serviços de Informações da Internet**. Abra o nó **Ferramentas de Gerenciamento da Web**.
+1. Abra o nó **Serviços de Informações da Internet** . Abra o nó **Ferramentas de Gerenciamento da Web** .
 
-1. Marque a caixa de **Console de Gerenciamento do IIS**.
+1. Marque a caixa de **Console de Gerenciamento do IIS** .
 
-1. Marque a caixa de **Serviços na World Wide Web**.
+1. Marque a caixa de **Serviços na World Wide Web** .
 
 1. Aceite os recursos padrão dos **Serviços na World Wide Web** ou personalize os recursos do IIS.
 
    **Autenticação do Windows (opcional)**  
-   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança **dos serviços de World Wide Web**  >  **Security**. Selecione o recurso **Autenticação do Windows**. Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
+   Para habilitar a autenticação do Windows, expanda os seguintes nós: segurança **dos serviços de World Wide Web**  >  **Security** . Selecione o recurso **Autenticação do Windows** . Para obter mais informações, consulte [autenticação \<windowsAuthentication> do Windows](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) e [Configurar a autenticação do Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (opcional)**  
-   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: recursos de desenvolvimento de aplicativos **World Wide Web Services**  >  **Application Development Features**. Selecione o recurso **Protocolo WebSocket**. Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
+   O WebSockets é compatível com o ASP.NET Core 1.1 ou posterior. Para habilitar WebSockets, expanda os seguintes nós: recursos de desenvolvimento de aplicativos **World Wide Web Services**  >  **Application Development Features** . Selecione o recurso **Protocolo WebSocket** . Para obter mais informações, consulte [WebSockets](xref:fundamentals/websockets).
 
 1. Se a instalação do IIS exigir uma reinicialização, reinicie o sistema.
 
@@ -1503,7 +1504,7 @@ Instale o *pacote de hospedagem do .NET Core* no sistema de hospedagem. O pacote
 
 1. Navegue até a página [baixar o .NET Core](https://dotnet.microsoft.com/download/dotnet-core) .
 1. Selecione a versão do .NET Core desejada.
-1. Na coluna **Executar aplicativos – runtime**, localize a linha da versão de runtime do .NET Core desejada.
+1. Na coluna **Executar aplicativos – runtime** , localize a linha da versão de runtime do .NET Core desejada.
 1. Baixe o instalador usando o link **pacote de hospedagem** .
 
 > [!WARNING]
@@ -1517,7 +1518,7 @@ Instale o *pacote de hospedagem do .NET Core* no sistema de hospedagem. O pacote
    * `OPT_NO_RUNTIME=1`: Ignorar a instalação do tempo de execução do .NET Core. Usado quando o servidor hospeda apenas [implantações independentes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_SHAREDFX=1`: Ignorar a instalação da estrutura compartilhada ASP.NET (ASP.NET Runtime). Usado quando o servidor hospeda apenas [implantações independentes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_X86=1`: Ignorar a instalação de tempos de execução x86. Use esse parâmetro quando você souber que não hospedará aplicativos de 32 bits. Se houver uma possibilidade de hospedar aplicativos de 32 bits e 64 bits no futuro, não use esse parâmetro e instale ambos os runtimes.
-   * `OPT_NO_SHARED_CONFIG_CHECK=1`: Desabilite a verificação para usar uma configuração compartilhada do IIS quando a configuração compartilhada (*applicationHost.config*) estiver no mesmo computador que a instalação do IIS. *Disponível somente para instaladores do ASP.NET Core 2.2 ou Hosting Bundler posterior.* Para obter mais informações, consulte <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
+   * `OPT_NO_SHARED_CONFIG_CHECK=1`: Desabilite a verificação para usar uma configuração compartilhada do IIS quando a configuração compartilhada ( *applicationHost.config* ) estiver no mesmo computador que a instalação do IIS. *Disponível somente para instaladores do ASP.NET Core 2.2 ou Hosting Bundler posterior.* Para obter mais informações, consulte <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
 1. Reinicie o sistema ou execute os seguintes comandos em um shell de comando:
 
    ```console
@@ -1541,32 +1542,32 @@ Ao implantar aplicativos para servidores com [Implantação da Web](/iis/install
 
 1. No sistema de hospedagem, crie uma pasta para conter arquivos e pastas publicados do aplicativo. Em uma etapa a seguir, o caminho da pasta é fornecido ao IIS como o caminho físico para o aplicativo. Para obter mais informações sobre o layout de arquivo e a pasta de implantação de um aplicativo, confira <xref:host-and-deploy/directory-structure>.
 
-1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites**. Selecione **Adicionar Site** no menu contextual.
+1. No Gerenciador do IIS, abra o nó do servidor no painel **conexões** . Clique com botão direito do mouse na pasta **Sites** . Selecione **Adicionar Site** no menu contextual.
 
-1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo. Forneça a configuração de **Associação** e crie o site selecionando **OK**:
+1. Forneça um **Nome do site** e defina o **Caminho físico** como a pasta de implantação do aplicativo. Forneça a configuração de **Associação** e crie o site selecionando **OK** :
 
    ![Forneça o Nome do site, o caminho físico e o Nome do host na etapa Adicionar Site.](index/_static/add-website-ws2016.png)
 
    > [!WARNING]
    > Associações de curinga de nível superior (`http://*:80/` e `http://+:80`) **não** devem ser usadas. Associações de curinga de nível superior podem abrir o aplicativo para vulnerabilidades de segurança. Isso se aplica a curingas fortes e fracos. Use nomes de host explícitos em vez de curingas. Associações de curinga de subdomínio (por exemplo, `*.mysub.com`) não têm esse risco de segurança se você controlar o domínio pai completo (em vez de `*.com`, o qual é vulnerável). Veja [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) para obter mais informações.
 
-1. No nó do servidor, selecione **Pools de Aplicativos**.
+1. No nó do servidor, selecione **Pools de Aplicativos** .
 
 1. Clique com o botão direito do mouse no pool de aplicativos do site e selecione **Configurações Básicas** no menu contextual.
 
-1. Na janela **Editar Pool de Aplicativos**, defina a **versão do CLR do .NET** como **Sem Código Gerenciado**:
+1. Na janela **Editar Pool de Aplicativos** , defina a **versão do CLR do .NET** como **Sem Código Gerenciado** :
 
    ![Defina Sem Código Gerenciado para a versão do CLR do .NET.](index/_static/edit-apppool-ws2016.png)
 
     O ASP.NET Core é executado em um processo separado e gerencia o runtime. O ASP.NET Core não depende do carregamento do CLR de Área de trabalho (CLR do .NET)&mdash;o Core Common Language Runtime (CoreCLR) para o .NET Core é inicializado para hospedar o aplicativo no processo de trabalho. Definir a **versão do CLR do .NET** como **Sem Código Gerenciado** é opcional, porém recomendado.
 
-1. *ASP.NET Core 2.2 ou posterior*: para uma [implantação autocontida](/dotnet/core/deploying/#self-contained-deployments-scd) de 64 bits (x64) que usa o [modelo de hospedagem em processo](#in-process-hosting-model), desabilite o pool de aplicativos para processos de 32 bits (x86).
+1. *ASP.NET Core 2.2 ou posterior* : para uma [implantação autocontida](/dotnet/core/deploying/#self-contained-deployments-scd) de 64 bits (x64) que usa o [modelo de hospedagem em processo](#in-process-hosting-model), desabilite o pool de aplicativos para processos de 32 bits (x86).
 
-   Na barra lateral **Ações** do Gerenciador do IIS > **Pools de Aplicativos**, selecione **Definir Padrões do Pool de Aplicativos** ou **Configurações Avançadas**. Localize **Habilitar Aplicativos de 32 bits** e defina o valor como `False`. Essa configuração não afeta os aplicativos implantados para a [hospedagem fora do processo](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
+   Na barra lateral **Ações** do Gerenciador do IIS > **Pools de Aplicativos** , selecione **Definir Padrões do Pool de Aplicativos** ou **Configurações Avançadas** . Localize **Habilitar Aplicativos de 32 bits** e defina o valor como `False`. Essa configuração não afeta os aplicativos implantados para a [hospedagem fora do processo](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
 
 1. Confirme se a identidade do modelo de processo tem as permissões apropriadas.
 
-   Se a identidade padrão do pool de aplicativos (**modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
+   Se a identidade padrão do pool de aplicativos ( **modelo de processo**  >  **Identity** ) for alterada **de Identity ApplicationPool** para outra identidade, verifique se a nova identidade tem as permissões necessárias para acessar a pasta, o banco de dados e outros recursos necessários do aplicativo. Por exemplo, o pool de aplicativos requer acesso de leitura e gravação às pastas nas quais o aplicativo lê e grava os arquivos.
 
 **Configuração de Autenticação do Windows (opcional)**  
 Para saber mais, veja [Configurar a Autenticação do Windows](xref:security/authentication/windowsauth).
@@ -1642,12 +1643,12 @@ Para configurar a proteção de dados no IIS para persistir o token de autentica
 
 * **Configurar o pool de aplicativos do IIS para carregar o perfil do usuário**
 
-  Essa configuração está na seção **Modelo de processo** nas **Configurações avançadas** do pool de aplicativos. Defina **carregar perfil do usuário** como `True` . Quando definido como `True`, as chaves são armazenadas no diretório do perfil do usuário e protegidas usando DPAPI com uma chave específica para a conta de usuário. As chaves são persistidas para a pasta *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys*.
+  Essa configuração está na seção **Modelo de processo** nas **Configurações avançadas** do pool de aplicativos. Defina **carregar perfil do usuário** como `True` . Quando definido como `True`, as chaves são armazenadas no diretório do perfil do usuário e protegidas usando DPAPI com uma chave específica para a conta de usuário. As chaves são persistidas para a pasta *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys* .
 
   O [atributo setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) do pool de aplicativos também deve ser habilitado. O valor padrão de `setProfileEnvironment` é `true`. Em alguns cenários (por exemplo, um SO Windows), `setProfileEnvironment` é definido como `false`. Se as chaves não estiverem armazenadas no diretório do perfil do usuário como esperado:
 
-  1. navegue até a pasta *%windir%/system32/inetsrv/config*.
-  1. Abra o arquivo *applicationHost.config*.
+  1. navegue até a pasta *%windir%/system32/inetsrv/config* .
+  1. Abra o arquivo *applicationHost.config* .
   1. Localize o elemento `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>`.
   1. Confirme se o atributo `setProfileEnvironment` não está presente, que tem como padrão o valor `true`, ou defina explicitamente o valor do atributo como `true`.
 
@@ -1707,7 +1708,7 @@ Ao hospedar um subaplicativo não ASP.NET Core abaixo de um aplicativo ASP.NET C
 
 Links de ativos estáticos dentro do subaplicativo devem usar a notação de sinal de til e barra (`~/`). A notação de sinal de til e barra aciona um [Auxiliar de Marca](xref:mvc/views/tag-helpers/intro) para preceder a base de caminho do subaplicativo ao link relativo renderizado. Para um subaplicativo no `/subapp_path`, uma imagem vinculada com `src="~/image.png"` é renderizada como `src="/subapp_path/image.png"`. O Middleware de Arquivo Estático do aplicativo raiz não processa a solicitação de arquivo estático. A solicitação é processada pelo Middleware de Arquivo Estático do subaplicativo.
 
-Se um atributo de ativo estático `src` for definido como um caminho absoluto (por exemplo, `src="/image.png"`), o link será renderizado sem a base de caminho do subaplicativo. O Middleware de Arquivos Estáticos do aplicativo raiz tenta fornecer o ativo do [webroot](xref:fundamentals/index#web-root) da raiz do aplicativo, que resulta em uma resposta *404 – Não encontrado*, a menos que o ativo estático esteja disponível no aplicativo raiz.
+Se um atributo de ativo estático `src` for definido como um caminho absoluto (por exemplo, `src="/image.png"`), o link será renderizado sem a base de caminho do subaplicativo. O Middleware de Arquivos Estáticos do aplicativo raiz tenta fornecer o ativo do [webroot](xref:fundamentals/index#web-root) da raiz do aplicativo, que resulta em uma resposta *404 – Não encontrado* , a menos que o ativo estático esteja disponível no aplicativo raiz.
 
 Para hospedar um aplicativo ASP.NET Core como um subaplicativo em outro aplicativo do ASP.NET Core:
 
@@ -1715,9 +1716,9 @@ Para hospedar um aplicativo ASP.NET Core como um subaplicativo em outro aplicati
 
 1. Adicione o site raiz no Gerenciador do IIS com o subaplicativo em uma pasta no site raiz.
 
-1. Clique com o botão direito do mouse na pasta do subaplicativo no Gerenciador do IIS e selecione **Converter em aplicativo**.
+1. Clique com o botão direito do mouse na pasta do subaplicativo no Gerenciador do IIS e selecione **Converter em aplicativo** .
 
-1. Na caixa de diálogo **Adicionar Aplicativo**, use o botão **Selecionar** no **Pool de Aplicativos** para atribuir o pool de aplicativos que você criou ao subaplicativo. Selecione **OK**.
+1. Na caixa de diálogo **Adicionar Aplicativo** , use o botão **Selecionar** no **Pool de Aplicativos** para atribuir o pool de aplicativos que você criou ao subaplicativo. Selecione **OK** .
 
 A atribuição de um pool de aplicativos separado para o subaplicativo é um requisito ao usar o modelo de hospedagem em processo.
 
@@ -1727,7 +1728,7 @@ Para obter mais informações sobre o modelo de hospedagem em processo e como co
 
 A configuração do IIS é influenciada pela seção `<system.webServer>` do *web.config* para cenários do IIS que são funcionais para aplicativos ASP.NET Core com o Módulo do ASP.NET Core. Por exemplo, a configuração do IIS é funcional para a compactação dinâmica. Se o IIS for configurado no nível do servidor para usar a compactação dinâmica, o elemento `<urlCompression>` no arquivo *web.config* do aplicativo pode desabilitá-la para um aplicativo do ASP.NET Core.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * [Referência de configuração para \<system.webServer>](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
@@ -1748,11 +1749,11 @@ Aplicativos ASP.NET Core são configurados para usar outros provedores de config
 
 ## <a name="application-pools"></a>Pools de aplicativos
 
-Ao hospedar vários sites em um servidor, é recomendável isolar os aplicativos uns dos outros, executando cada aplicativo em seu próprio pool de aplicativo. A caixa de diálogo **Adicionar Site** do IIS usa como padrão essa configuração. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos**. Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
+Ao hospedar vários sites em um servidor, é recomendável isolar os aplicativos uns dos outros, executando cada aplicativo em seu próprio pool de aplicativo. A caixa de diálogo **Adicionar Site** do IIS usa como padrão essa configuração. Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos** . Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.
 
 ## <a name="application-pool-no-locidentity"></a>Pool de aplicativos Identity
 
-Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity **:
+Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais. No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão. No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está definido para usar **ApplicationPool Identity** :
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 
@@ -1762,23 +1763,23 @@ Se o processo de trabalho do IIS requerer acesso elevado ao aplicativo, modifiqu
 
 1. Abra o Windows Explorer e navegue para o diretório.
 
-1. Clique com o botão direito do mouse no diretório e selecione **Propriedades**.
+1. Clique com o botão direito do mouse no diretório e selecione **Propriedades** .
 
-1. Na guia **Segurança**, selecione o botão **Editar** e, em seguida, no botão **Adicionar**.
+1. Na guia **Segurança** , selecione o botão **Editar** e, em seguida, no botão **Adicionar** .
 
 1. Clique no botão **Locais** e verifique se o sistema está selecionado.
 
-1. Insira **IIS AppPool\\<nome_pool_aplicativos>** na área **Inserir os nomes de objeto a serem selecionados**. Selecione o botão **Verificar Nomes**. Para o *DefaultAppPool*, verifique os nomes usando **IIS AppPool\DefaultAppPool**. Quando o botão **Verificar Nomes** é selecionado, um valor de **DefaultAppPool** é indicado na área de nomes de objeto. Não é possível inserir o nome do pool de aplicativos diretamente na área de nomes de objeto. Use o formato **IIS AppPool\\<nome_pool_aplicativos>** ao verificar o nome do objeto.
+1. Insira **IIS AppPool\\<nome_pool_aplicativos>** na área **Inserir os nomes de objeto a serem selecionados** . Selecione o botão **Verificar Nomes** . Para o *DefaultAppPool* , verifique os nomes usando **IIS AppPool\DefaultAppPool** . Quando o botão **Verificar Nomes** é selecionado, um valor de **DefaultAppPool** é indicado na área de nomes de objeto. Não é possível inserir o nome do pool de aplicativos diretamente na área de nomes de objeto. Use o formato **IIS AppPool\\<nome_pool_aplicativos>** ao verificar o nome do objeto.
 
    ![Selecione a caixa de diálogo de usuários ou grupos para a pasta do aplicativo: o nome do pool de aplicativos "DefaultAppPool" é anexado ao "IIS AppPool\" na área de nomes de objeto antes de selecionar"Verificar Nomes".](index/_static/select-users-or-groups-1.png)
 
-1. Selecione **OK**.
+1. Selecione **OK** .
 
    ![Selecione a caixa de diálogo de usuários ou grupos para a pasta do aplicativo: depois de selecionar "Verificar Nomes", o nome do objeto "DefaultAppPool" é mostrado na área de nomes de objeto.](index/_static/select-users-or-groups-2.png)
 
 1. As permissões de leitura &amp; execução devem ser concedidas por padrão. Forneça permissões adicionais conforme necessário.
 
-O acesso também pode ser concedido por meio de um prompt de comando usando a ferramenta **ICACLS**. Usando o *DefaultAppPool* como exemplo, o comando a seguir é usado:
+O acesso também pode ser concedido por meio de um prompt de comando usando a ferramenta **ICACLS** . Usando o *DefaultAppPool* como exemplo, o comando a seguir é usado:
 
 ```console
 ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F

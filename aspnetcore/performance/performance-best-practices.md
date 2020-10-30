@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 01575ec87d2d346da7367523ca5e257d53de4983
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060996"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Práticas recomendadas de desempenho de ASP.NET Core
 
@@ -50,7 +51,7 @@ Um problema de desempenho comum no ASP.NET Core aplicativos é bloquear chamadas
 * Adquirir bloqueios em caminhos de código comuns. Os aplicativos ASP.NET Core são mais com o melhor desempenho quando arquitetados para executar código em paralelo.
 * Chame [Task. Execute](/dotnet/api/system.threading.tasks.task.run) e o Await imediatamente. ASP.NET Core já executa o código do aplicativo em threads de pool de threads normais, portanto, chamar Task. Run só resulta em agendamento de pool de threads desnecessários extra. Mesmo que o código agendado bloqueie um thread, Task. Run não impede isso.
 
-**Fazer**:
+**Fazer** :
 
 * Torne os [caminhos de código dinâmico](#understand-hot-code-paths) assíncronos.
 * Chame acesso a dados, e/s e APIs de operações de longa execução de forma assíncrona se uma API assíncrona estiver disponível. Não **use** [Task. Execute](/dotnet/api/system.threading.tasks.task.run) para tornar uma API síncrona assíncrona.
@@ -71,7 +72,7 @@ O [coletor de lixo do .NET Core](/dotnet/standard/garbage-collection/) gerencia 
 Recomendações:
 
 * **Considere armazenar** em cache objetos grandes que são usados com frequência. O Caching de objetos grandes impede alocações caras.
-* **Faça** buffers de pool usando um [ArrayPool \<T> ](/dotnet/api/system.buffers.arraypool-1) para armazenar matrizes grandes.
+* **Faça** buffers de pool usando um [ArrayPool \<T>](/dotnet/api/system.buffers.arraypool-1) para armazenar matrizes grandes.
 * **Não** aloque muitos objetos grandes de curta duração em caminhos de [código quente](#understand-hot-code-paths).
 
 Problemas de memória, como os anteriores, podem ser diagnosticados examinando as estatísticas de GC (coleta de lixo) em [Perfview](https://github.com/Microsoft/perfview) e examinando:

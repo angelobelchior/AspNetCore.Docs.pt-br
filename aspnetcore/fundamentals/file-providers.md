@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 30c28e7bd4cd9c926b157f5a7b9e6688bd5b9b9a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634599"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059436"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Provedores de arquivos no ASP.NET Core
 
@@ -114,7 +115,7 @@ Use [padrões glob](#glob-patterns) para especificar um ou mais arquivos a serem
 
 O aplicativo de exemplo *FileProviderSample* cria um `ManifestEmbeddedFileProvider` e passa o assembly atualmente em execução para seu construtor.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -161,7 +162,7 @@ Alguns sistemas de arquivos, como contêineres do Docker e compartilhamentos de 
 
 ### <a name="glob-patterns"></a>Padrões glob
 
-Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)*. Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
+Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)* . Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
 
 **`*`**  
 Corresponde a qualquer coisa no nível da pasta atual, qualquer nome de arquivo ou qualquer extensão de arquivo. As correspondências são terminadas pelos caracteres `/` e `.` no caminho do arquivo.
@@ -175,7 +176,7 @@ A tabela a seguir fornece exemplos comuns de padrões de glob.
 |---------|---------|
 |`directory/file.txt`|Corresponde a um arquivo específico em um diretório específico.|
 |`directory/*.txt`|Corresponde a todos os arquivos com a extensão *.txt* em um diretório específico.|
-|`directory/*/appsettings.json`|Corresponde a todos os *appsettings.jsem* arquivos em diretórios exatamente um nível abaixo da pasta do *diretório* .|
+|`directory/*/appsettings.json`|Faz a correspondência de todos os *appsettings.json* arquivos nos diretórios exatamente um nível abaixo da pasta do *diretório* .|
 |`directory/**/*.txt`|Corresponde a todos os arquivos com uma extensão *. txt* encontrado em qualquer lugar na pasta do *diretório* .|
 
 ::: moniker-end
@@ -261,7 +262,7 @@ Use [padrões glob](#glob-patterns) para especificar um ou mais arquivos a serem
 
 O aplicativo de amostra cria um `ManifestEmbeddedFileProvider` e passa o assembly atualmente em execução para seu construtor.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -303,7 +304,7 @@ Alguns sistemas de arquivos, como contêineres do Docker e compartilhamentos de 
 
 ## <a name="glob-patterns"></a>Padrões glob
 
-Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)*. Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
+Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)* . Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
 
 **`*`**  
 Corresponde a qualquer coisa no nível da pasta atual, qualquer nome de arquivo ou qualquer extensão de arquivo. As correspondências são terminadas pelos caracteres `/` e `.` no caminho do arquivo.
@@ -320,9 +321,9 @@ Corresponde a um arquivo específico em um diretório específico.
 Corresponde a todos os arquivos com a extensão *.txt* em um diretório específico.
 
 **`directory/*/appsettings.json`**  
-Corresponde a todos os arquivos `appsettings.json` em diretórios que estão exatamente um nível abaixo da pasta *diretório*.
+Corresponde a todos os arquivos `appsettings.json` em diretórios que estão exatamente um nível abaixo da pasta *diretório* .
 
 **`directory/**/*.txt`**  
-Corresponde a todos os arquivos com a extensão *.txt* encontrados em qualquer lugar abaixo da pasta *diretório*.
+Corresponde a todos os arquivos com a extensão *.txt* encontrados em qualquer lugar abaixo da pasta *diretório* .
 
 ::: moniker-end

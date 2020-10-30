@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 0d27206412a098f4ea749ec10189bf24d2322de1
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712474"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061139"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Caching distribuído no ASP.NET Core
 
@@ -112,7 +113,7 @@ O aplicativo de exemplo implementa <xref:Microsoft.Extensions.Caching.SqlServer.
 [!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> Um <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (e, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> e <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) normalmente são armazenados fora do controle do código-fonte (por exemplo, armazenado pelo [Gerenciador de segredo](xref:security/app-secrets) ou no *appsettings.jsem* / *appSettings. { Arquivos de ambiente}. JSON* ). A cadeia de conexão pode conter credenciais que devem ser mantidas fora dos sistemas de controle do código-fonte.
+> Um <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (e, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> e <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) normalmente são armazenados fora do controle do código-fonte (por exemplo, armazenado pelo [Gerenciador de segredo](xref:security/app-secrets) ou em *appsettings.json* / *appSettings. { Arquivos de ambiente}. JSON* ). A cadeia de conexão pode conter credenciais que devem ser mantidas fora dos sistemas de controle do código-fonte.
 
 ### <a name="distributed-redis-cache"></a>Cache Redis distribuído
 
@@ -155,7 +156,7 @@ Quando o aplicativo de exemplo é iniciado, <xref:Microsoft.Extensions.Caching.D
 
 O aplicativo de exemplo injeta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> no `IndexModel` para ser usado pela página de índice.
 
-Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado*.
+Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado* .
 
 Atualize imediatamente a hora em cache para a hora atual selecionando o botão **Redefinir tempo de cache** . O botão dispara o `OnPostResetCachedTime` método do manipulador.
 
@@ -279,7 +280,7 @@ O aplicativo de exemplo implementa <xref:Microsoft.Extensions.Caching.SqlServer.
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> Um <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (e, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> e <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) normalmente são armazenados fora do controle do código-fonte (por exemplo, armazenado pelo [Gerenciador de segredo](xref:security/app-secrets) ou no *appsettings.jsem* / *appSettings. { Arquivos de ambiente}. JSON* ). A cadeia de conexão pode conter credenciais que devem ser mantidas fora dos sistemas de controle do código-fonte.
+> Um <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (e, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> e <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) normalmente são armazenados fora do controle do código-fonte (por exemplo, armazenado pelo [Gerenciador de segredo](xref:security/app-secrets) ou em *appsettings.json* / *appSettings. { Arquivos de ambiente}. JSON* ). A cadeia de conexão pode conter credenciais que devem ser mantidas fora dos sistemas de controle do código-fonte.
 
 ### <a name="distributed-redis-cache"></a>Cache Redis distribuído
 
@@ -325,7 +326,7 @@ Quando o aplicativo de exemplo é iniciado, <xref:Microsoft.Extensions.Caching.D
 
 O aplicativo de exemplo injeta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> no `IndexModel` para ser usado pela página de índice.
 
-Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado*.
+Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado* .
 
 Atualize imediatamente a hora em cache para a hora atual selecionando o botão **Redefinir tempo de cache** . O botão dispara o `OnPostResetCachedTime` método do manipulador.
 
@@ -449,7 +450,7 @@ O aplicativo de exemplo implementa <xref:Microsoft.Extensions.Caching.SqlServer.
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> Um <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (e, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> e <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) normalmente são armazenados fora do controle do código-fonte (por exemplo, armazenado pelo [Gerenciador de segredo](xref:security/app-secrets) ou no *appsettings.jsem* / *appSettings. { Arquivos de ambiente}. JSON* ). A cadeia de conexão pode conter credenciais que devem ser mantidas fora dos sistemas de controle do código-fonte.
+> Um <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (e, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> e <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) normalmente são armazenados fora do controle do código-fonte (por exemplo, armazenado pelo [Gerenciador de segredo](xref:security/app-secrets) ou em *appsettings.json* / *appSettings. { Arquivos de ambiente}. JSON* ). A cadeia de conexão pode conter credenciais que devem ser mantidas fora dos sistemas de controle do código-fonte.
 
 ### <a name="distributed-redis-cache"></a>Cache Redis distribuído
 
@@ -501,7 +502,7 @@ Quando o aplicativo de exemplo é iniciado, <xref:Microsoft.Extensions.Caching.D
 
 O aplicativo de exemplo injeta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> no `IndexModel` para ser usado pela página de índice.
 
-Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado*.
+Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado* .
 
 Atualize imediatamente a hora em cache para a hora atual selecionando o botão **Redefinir tempo de cache** . O botão dispara o `OnPostResetCachedTime` método do manipulador.
 

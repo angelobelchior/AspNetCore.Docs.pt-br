@@ -5,6 +5,7 @@ description: Este tutorial demonstra como instalar e usar a ferramenta observado
 ms.author: riande
 ms.date: 05/31/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 3569e9440b8e431ec0e5357e548af2e3783481ac
-ms.sourcegitcommit: 422e02bad384775bfe19a90910737340ad106c5b
+ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90083447"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060034"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Desenvolver aplicativos ASP.NET Core usando um observador de arquivo
 
@@ -33,14 +34,14 @@ Este tutorial usa um aplicativo de API Web existente com dois pontos de extremid
 
 Baixe o [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Ele consiste em dois projetos: *WebApp* (uma API Web ASP.NET Core) e *WebAppTests* (testes de unidade para a API Web).
 
-Em um shell de comando, navegue até a pasta *WebApp*. Execute o comando a seguir:
+Em um shell de comando, navegue até a pasta *WebApp* . Execute o seguinte comando:
 
 ```dotnetcli
 dotnet run
 ```
 
 > [!NOTE]
-> `dotnet run --project <PROJECT>` pode ser usado para especificar um projeto a ser executado. Por exemplo, a execução de `dotnet run --project WebApp` da raiz do aplicativo de exemplo também executará o projeto *WebApp*.
+> `dotnet run --project <PROJECT>` pode ser usado para especificar um projeto a ser executado. Por exemplo, a execução de `dotnet run --project WebApp` da raiz do aplicativo de exemplo também executará o projeto *WebApp* .
 
 O resultado do console mostra mensagens semelhantes à seguinte (indicando que o aplicativo está em execução e aguarda solicitações):
 
@@ -62,7 +63,7 @@ Navegue para o API do produto (`http://localhost:<port number>/api/math/product?
 
 A ferramenta de observador de arquivo `dotnet watch` está incluída com a versão 2.1.300 do SDK do .NET Core. As etapas a seguir são necessárias ao usar uma versão anterior do SDK do .NET Core.
 
-1. Adicionar uma referência ao pacote de `Microsoft.DotNet.Watcher.Tools` para o arquivo *.csproj*:
+1. Adicionar uma referência ao pacote de `Microsoft.DotNet.Watcher.Tools` para o arquivo *.csproj* :
 
     ```xml
     <ItemGroup>
@@ -89,7 +90,7 @@ Qualquer [comando da CLI do .NET Core](/dotnet/core/tools#cli-commands) pode ser
 | dotnet Run-f netcoreapp 3.1----arg1 | execução do relógio dotnet-f netcoreapp 3.1----arg1 |
 | dotnet test | dotnet watch test |
 
-Executar `dotnet watch run` na pasta *WebApp*. O resultado do console indica que `watch` foi iniciado.
+Executar `dotnet watch run` na pasta *WebApp* . O resultado do console indica que `watch` foi iniciado.
 
 ::: moniker range=">= aspnetcore-5.0"
 A execução `dotnet watch run` em um aplicativo Web inicia um navegador que navega para a URL do aplicativo quando estiver pronto. `dotnet watch` faz isso lendo a saída do console do aplicativo e aguardando a mensagem pronta exibida pelo <xref:Microsoft.AspNetCore.WebHost> .
@@ -106,7 +107,7 @@ Para obter mais informações sobre a configuração, consulte [dotnet – confi
 ::: moniker-end
 
 > [!NOTE]
-> `dotnet watch --project <PROJECT>` pode ser usado para especificar um projeto a ser observado. Por exemplo, a execução de `dotnet watch --project WebApp run` da raiz do aplicativo de exemplo também executará e observará o projeto *WebApp*.
+> `dotnet watch --project <PROJECT>` pode ser usado para especificar um projeto a ser observado. Por exemplo, a execução de `dotnet watch --project WebApp run` da raiz do aplicativo de exemplo também executará e observará o projeto *WebApp* .
 
 ## <a name="make-changes-with-dotnet-watch"></a>Fazer alterações com `dotnet watch`
 
@@ -128,7 +129,7 @@ Verifique se `http://localhost:<port number>/api/math/product?a=4&b=5` retorna o
 ## <a name="run-tests-using-dotnet-watch"></a>Executar testes usando o `dotnet watch`
 
 1. Altere o método `Product` de *MathController.cs* de volta para retornar a soma. Salve o arquivo.
-1. Em um shell de comando, navegue até a pasta *WebAppTests*.
+1. Em um shell de comando, navegue até a pasta *WebAppTests* .
 1. Execute [dotnet restore](/dotnet/core/tools/dotnet-restore).
 1. Execute `dotnet watch test`. Seu resultado indica que um teste falhou e que o observador está aguardando as alterações de arquivo:
 
@@ -149,7 +150,7 @@ Por padrão, o `dotnet-watch` controla todos os arquivos que correspondem aos se
 * `*.csproj`
 * `**/*.resx`
 
-Mais itens podem ser adicionados à lista de inspeção editando o arquivo *.csproj*. Os itens podem ser especificados individualmente ou usando padrões glob.
+Mais itens podem ser adicionados à lista de inspeção editando o arquivo *.csproj* . Os itens podem ser especificados individualmente ou usando padrões glob.
 
 ```xml
 <ItemGroup>
@@ -160,7 +161,7 @@ Mais itens podem ser adicionados à lista de inspeção editando o arquivo *.csp
 
 ## <a name="opt-out-of-files-to-be-watched"></a>Recusa de arquivos a serem observados
 
-`dotnet-watch` pode ser configurado para ignorar as configurações padrão. Para ignorar arquivos específicos, adicione o atributo `Watch="false"` à definição de um item no arquivo *.csproj*:
+`dotnet-watch` pode ser configurado para ignorar as configurações padrão. Para ignorar arquivos específicos, adicione o atributo `Watch="false"` à definição de um item no arquivo *.csproj* :
 
 ```xml
 <ItemGroup>
@@ -200,7 +201,7 @@ Se a meta é observar ambos os projetos, crie um arquivo de projeto personalizad
 </Project>
 ```
 
-Para iniciar a observação de arquivo em ambos os projetos, mude para a pasta de *teste*. Execute o seguinte comando:
+Para iniciar a observação de arquivo em ambos os projetos, mude para a pasta de *teste* . Execute o seguinte comando:
 
 ```dotnetcli
 dotnet watch msbuild /t:Test
@@ -212,11 +213,11 @@ O VSTest é executado quando há qualquer mudança de arquivo no projeto de test
 
 Algumas opções de configuração podem ser passadas para `dotnet watch` por meio de variáveis de ambiente. As variáveis disponíveis são:
 
-| Setting  | Descrição |
+| Configuração  | Descrição |
 | ------------- | ------------- |
 | `DOTNET_USE_POLLING_FILE_WATCHER`                | Se definido como "1" ou "true", `dotnet watch` usa um observador de arquivo de sondagem em vez de CoreFx `FileSystemWatcher` . Usado ao assistir arquivos em compartilhamentos de rede ou volumes montados no Docker.                       |
 | `DOTNET_WATCH_SUPPRESS_MSBUILD_INCREMENTALISM`   | Por padrão, `dotnet watch` o otimiza a compilação ao evitar determinadas operações, como executar a restauração ou reavaliar o conjunto de arquivos observados em cada alteração de arquivo. Se definido como "1" ou "verdadeiro", essas otimizações serão desabilitadas. |
-| `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run` tenta iniciar navegadores para aplicativos Web com `launchBrowser` configurado no *launchSettings.jsno*. Se definido como "1" ou "true", esse comportamento é suprimido. |
+| `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER`   | `dotnet watch run` tenta iniciar navegadores para aplicativos Web com `launchBrowser` configurado no *launchSettings.jsno* . Se definido como "1" ou "true", esse comportamento é suprimido. |
 | `DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH`   | `dotnet watch run` tenta atualizar os navegadores quando detecta alterações de arquivo. Se definido como "1" ou "true", esse comportamento é suprimido. Esse comportamento também será suprimido se `DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER` estiver definido. |
 
 ## <a name="dotnet-watch-in-github"></a>`dotnet-watch` no GitHub

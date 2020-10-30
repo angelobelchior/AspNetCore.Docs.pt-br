@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/diagnostics
-ms.openlocfilehash: 7d2da20d04b93ebcd16fb58a4b74b5b67d37bd72
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 1f25ae76e5a480e5e6f247e4ac78d06dd4e778e9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722917"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060437"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>Registro em log e diagnóstico no gRPC no .NET
 
@@ -34,7 +35,7 @@ Este artigo fornece diretrizes para coletar diagnósticos de um aplicativo gRPC 
 * **Rastreamento** -eventos relacionados a uma operação escrita usando `DiaganosticSource` e `Activity` . Os rastreamentos da fonte de diagnóstico são comumente usados para coletar telemetria de aplicativo por bibliotecas como [Application insights](/azure/azure-monitor/app/asp-net-core) e [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet).
 * **Métricas** – representação de medidas de dados em intervalos de tempo, por exemplo, solicitações por segundo. As métricas são emitidas usando `EventCounter` e podem ser observadas usando [a ferramenta de linha de comando dotnet-Counters](/dotnet/core/diagnostics/dotnet-counters) ou com [Application insights](/azure/azure-monitor/app/eventcounters).
 
-## <a name="logging"></a>Registro em log
+## <a name="logging"></a>Registrando em log
 
 os serviços gRPC e o cliente gRPC gravam logs usando o [log do .NET Core](xref:fundamentals/logging/index). Os logs são um bom lugar para começar quando você precisa depurar um comportamento inesperado em seus aplicativos.
 
@@ -45,7 +46,7 @@ os serviços gRPC e o cliente gRPC gravam logs usando o [log do .NET Core](xref:
 
 Como os serviços gRPCs são hospedados em ASP.NET Core, ele usa o sistema de registro em log de ASP.NET Core. Na configuração padrão, o gRPC registra muito pouca informação, mas isso pode ser configurado. Consulte a documentação em [log de ASP.NET Core](xref:fundamentals/logging/index#configuration) para obter detalhes sobre como configurar o log de ASP.NET Core.
 
-gRPC adiciona logs na `Grpc` categoria. Para habilitar logs detalhados do gRPC, configure os `Grpc` prefixos para o `Debug` nível em seu *appsettings.jsno* arquivo adicionando os seguintes itens à `LogLevel` subseção em `Logging` :
+gRPC adiciona logs na `Grpc` categoria. Para habilitar logs detalhados do gRPC, configure os `Grpc` prefixos para o `Debug` nível em seu *appsettings.json* arquivo adicionando os seguintes itens à `LogLevel` subseção em `Logging` :
 
 [!code-json[](diagnostics/sample/logging-config.json?highlight=7)]
 
@@ -222,7 +223,7 @@ Press p to pause, r to resume, q to quit.
 
 Outra maneira de observar as métricas do gRPC é capturar dados do contador usando [o pacote Microsoft. ApplicationInsights. EventCounterCollector](/azure/azure-monitor/app/eventcounters)da Application insights. Depois da instalação, o Application Insights coleta contadores comuns do .NET em tempo de execução. os contadores de gRPC não são coletados por padrão, mas o app insights pode ser [personalizado para incluir contadores adicionais](/azure/azure-monitor/app/eventcounters#customizing-counters-to-be-collected).
 
-Especifique os contadores de gRPC para o Application insights coletar em *Startup.cs*:
+Especifique os contadores de gRPC para o Application insights coletar em *Startup.cs* :
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;

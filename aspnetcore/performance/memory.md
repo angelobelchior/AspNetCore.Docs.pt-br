@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: 7f1d20687f6dd588e125acf3815815c2bcf0cd04
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6d2a89ec7c64728bc585ad235293f2277f9a66f7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722677"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061477"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gerenciamento de memória e coleta de lixo (GC) no ASP.NET Core
 
@@ -137,8 +138,8 @@ O gráfico anterior mostra:
 
 O coletor de lixo do .NET tem dois modos diferentes:
 
-* **Estação**de trabalho GC: otimizada para o desktop.
-* **GC do servidor**. O GC padrão para aplicativos ASP.NET Core. Otimizado para o servidor.
+* **Estação** de trabalho GC: otimizada para o desktop.
+* **GC do servidor** . O GC padrão para aplicativos ASP.NET Core. Otimizado para o servidor.
 
 O modo GC pode ser definido explicitamente no arquivo de projeto ou no *runtimeconfig.jsno* arquivo do aplicativo publicado. A marcação a seguir mostra a configuração `ServerGarbageCollection` no arquivo de projeto:
 
@@ -235,7 +236,7 @@ O mesmo vazamento pode ocorrer no código do usuário, de uma das seguintes form
 
 ### <a name="large-objects-heap"></a>Heap de objetos grandes
 
-A alocação de memória frequente/ciclos livres pode fragmentar a memória, especialmente ao alocar grandes partes de memória. Os objetos são alocados em blocos contíguos de memória. Para atenuar a fragmentação, quando o GC libera memória, ele tenta desfragmentá-la. Esse processo é chamado de **compactação**. A compactação envolve a movimentação de objetos. Mover objetos grandes impõe uma penalidade de desempenho. Por esse motivo, o GC cria uma zona de memória especial para objetos _grandes_ , chamada de Loh ( [heap de objeto grande](/dotnet/standard/garbage-collection/large-object-heap) ). Os objetos maiores que 85.000 bytes (aproximadamente 83 KB) são:
+A alocação de memória frequente/ciclos livres pode fragmentar a memória, especialmente ao alocar grandes partes de memória. Os objetos são alocados em blocos contíguos de memória. Para atenuar a fragmentação, quando o GC libera memória, ele tenta desfragmentá-la. Esse processo é chamado de **compactação** . A compactação envolve a movimentação de objetos. Mover objetos grandes impõe uma penalidade de desempenho. Por esse motivo, o GC cria uma zona de memória especial para objetos _grandes_ , chamada de Loh ( [heap de objeto grande](/dotnet/standard/garbage-collection/large-object-heap) ). Os objetos maiores que 85.000 bytes (aproximadamente 83 KB) são:
 
 * Colocado no LOH.
 * Não compactado.
@@ -271,7 +272,7 @@ O gráfico a seguir mostra o perfil de memória de chamada do `/api/loh/84975` p
 
 ![gráfico anterior](memory/_static/loh1.png)
 
-O gráfico a seguir mostra o perfil de memória de chamada do `/api/loh/84976` ponto de extremidade, alocando *apenas mais um byte*:
+O gráfico a seguir mostra o perfil de memória de chamada do `/api/loh/84976` ponto de extremidade, alocando *apenas mais um byte* :
 
 ![gráfico anterior](memory/_static/loh2.png)
 

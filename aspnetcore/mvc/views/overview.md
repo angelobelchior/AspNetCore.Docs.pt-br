@@ -5,6 +5,7 @@ description: Saiba como as exibições tratam da apresentação de dados do apli
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/overview
-ms.openlocfilehash: 6afd69414f2dc0158f724c6e6f7b3a3e51c1e92c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 373b17377740441d3859e3b7d942017a22bc7a68
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630673"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060619"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Exibições no ASP.NET Core MVC
 
@@ -35,7 +36,7 @@ No ASP.NET Core MVC, as exibições são arquivos *. cshtml* que usam a [linguag
 
 ![A pasta Views no Gerenciador de Soluções do Visual Studio é aberta com a pasta Inicial aberta para mostrar os arquivos About.cshtml, Contact.cshtml e Index.cshtml](overview/_static/views_solution_explorer.png)
 
-O controlador *Home* é representado por uma pasta *Home* dentro da pasta *Views*. A pasta *Home* contém as exibições das páginas da Web *About*, *Contact* e *Index* (home page). Quando um usuário solicita uma dessas três páginas da Web, ações do controlador *Home* determinam qual das três exibições é usada para compilar e retornar uma página da Web para o usuário.
+O controlador *Home* é representado por uma pasta *Home* dentro da pasta *Views* . A pasta *Home* contém as exibições das páginas da Web *About* , *Contact* e *Index* (home page). Quando um usuário solicita uma dessas três páginas da Web, ações do controlador *Home* determinam qual das três exibições é usada para compilar e retornar uma página da Web para o usuário.
 
 Use [layouts](xref:mvc/views/layout) para fornecer seções de páginas da Web consistentes e reduzir repetições de código. Layouts geralmente contêm o cabeçalho, elementos de navegação e menu e o rodapé. O cabeçalho e o rodapé geralmente contêm marcações repetitivas para muitos elementos de metadados, bem como links para ativos de script e estilo. Layouts ajudam a evitar essa marcação repetitiva em suas exibições.
 
@@ -54,7 +55,7 @@ As exibições ajudam a estabelecer uma [separação de Interesses](/dotnet/stan
 
 ## <a name="creating-a-view"></a>Criando uma exibição
 
-Exibições que são específicas de um controlador são criadas na pasta *Views/ [NomeDoControlador]*. Exibições que são compartilhadas entre controladores são colocadas na pasta *Views/Shared*. Para criar uma exibição, adicione um novo arquivo e dê a ele o mesmo nome que o da ação de seu controlador associado, com a extensão de arquivo *.cshtml*. Para criar uma exibição correspondente à ação *About* no controlador *Home*, crie um arquivo *About.cshtml* na pasta *Views/Home*:
+Exibições que são específicas de um controlador são criadas na pasta *Views/ [NomeDoControlador]* . Exibições que são compartilhadas entre controladores são colocadas na pasta *Views/Shared* . Para criar uma exibição, adicione um novo arquivo e dê a ele o mesmo nome que o da ação de seu controlador associado, com a extensão de arquivo *.cshtml* . Para criar uma exibição correspondente à ação *About* no controlador *Home* , crie um arquivo *About.cshtml* na pasta *Views/Home* :
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -98,7 +99,7 @@ O método auxiliar `View` tem várias sobrecargas. Opcionalmente, você pode esp
 
 Quando uma ação retorna uma exibição, um processo chamado *descoberta de exibição* ocorre. Esse processo determina qual arquivo de exibição é usado com base no nome da exibição. 
 
-O comportamento padrão do método `View` (`return View();`) é retornar uma exibição com o mesmo nome que o método de ação do qual ela é chamada. Por exemplo, o *About* `ActionResult` nome do método about do controlador é usado para pesquisar um arquivo de exibição chamado *about. cshtml*. Primeiro, o tempo de execução pesquisa pela exibição na pasta *Views/[NomeDoControlador]*. Se não encontrar uma exibição correspondente nela, ele procura pela exibição na pasta *Shared*.
+O comportamento padrão do método `View` (`return View();`) é retornar uma exibição com o mesmo nome que o método de ação do qual ela é chamada. Por exemplo, o *About* `ActionResult` nome do método about do controlador é usado para pesquisar um arquivo de exibição chamado *about. cshtml* . Primeiro, o tempo de execução pesquisa pela exibição na pasta *Views/[NomeDoControlador]* . Se não encontrar uma exibição correspondente nela, ele procura pela exibição na pasta *Shared* .
 
 Não importa se você retornar implicitamente o `ViewResult` com `return View();` ou se passar explicitamente o nome de exibição para o método `View` com `return View("<ViewName>");`. Nos dois casos, a descoberta de exibição pesquisa por um arquivo de exibição correspondente nesta ordem:
 
@@ -111,7 +112,7 @@ Um caminho de arquivo de exibição pode ser fornecido em vez de um nome de exib
 return View("Views/Home/About.cshtml");
 ```
 
-Você também pode usar um caminho relativo para especificar exibições em diretórios diferentes sem a extensão *.cshtml*. Dentro do `HomeController`, você pode retornar a exibição *Index* de suas exibições *Manage* com um caminho relativo:
+Você também pode usar um caminho relativo para especificar exibições em diretórios diferentes sem a extensão *.cshtml* . Dentro do `HomeController`, você pode retornar a exibição *Index* de suas exibições *Manage* com um caminho relativo:
 
 ```csharp
 return View("../Manage/Index");
@@ -142,9 +143,9 @@ Passe dados para exibições usando várias abordagens:
 
 ### <a name="strongly-typed-data-viewmodel"></a>Dados fortemente tipados (viewmodel)
 
-A abordagem mais robusta é especificar um tipo de [modelo](xref:mvc/models/model-binding) na exibição. Esse modelo é conhecido como *viewmodel*. Você passa uma instância do tipo viewmodel para a exibição da ação.
+A abordagem mais robusta é especificar um tipo de [modelo](xref:mvc/models/model-binding) na exibição. Esse modelo é conhecido como *viewmodel* . Você passa uma instância do tipo viewmodel para a exibição da ação.
 
-Usar um viewmodel para passar dados para uma exibição permite que a exibição tire proveito da verificação de tipo *forte*. *Tipagem forte* (ou *fortemente tipado*) significa que cada variável e constante têm um tipo definido explicitamente (por exemplo, `string`, `int` ou `DateTime`). A validade dos tipos usados em uma exibição é verificada em tempo de compilação.
+Usar um viewmodel para passar dados para uma exibição permite que a exibição tire proveito da verificação de tipo *forte* . *Tipagem forte* (ou *fortemente tipado* ) significa que cada variável e constante têm um tipo definido explicitamente (por exemplo, `string`, `int` ou `DateTime`). A validade dos tipos usados em uma exibição é verificada em tempo de compilação.
 
 O [Visual Studio](https://visualstudio.microsoft.com) e o [Visual Studio Code](https://code.visualstudio.com/) listam membros de classe fortemente tipados usando um recurso chamado [IntelliSense](/visualstudio/ide/using-intellisense). Quando quiser ver as propriedades de um viewmodel, digite o nome da variável para o viewmodel, seguido por um ponto final (`.`). Isso ajuda você a escrever código mais rapidamente e com menos erros.
 
@@ -181,7 +182,7 @@ public IActionResult Contact()
 }
 ```
 
-Não há restrições quanto aos tipos de modelo que você pode fornecer a uma exibição. Recomendamos o uso de viewmodels do tipo POCO (objeto CRL básico) com pouco ou nenhum comportamento (métodos) definido. Geralmente, classes de viewmodel são armazenadas na pasta *Models* ou em uma pasta *ViewModels* separada na raiz do aplicativo. O viewmodel *Address* usado no exemplo acima é um viewmodel POCO armazenado em um arquivo chamado *Address.cs*:
+Não há restrições quanto aos tipos de modelo que você pode fornecer a uma exibição. Recomendamos o uso de viewmodels do tipo POCO (objeto CRL básico) com pouco ou nenhum comportamento (métodos) definido. Geralmente, classes de viewmodel são armazenadas na pasta *Models* ou em uma pasta *ViewModels* separada na raiz do aplicativo. O viewmodel *Address* usado no exemplo acima é um viewmodel POCO armazenado em um arquivo chamado *Address.cs* :
 
 ```csharp
 namespace WebApplication1.ViewModels
@@ -205,7 +206,7 @@ Nada impede que você use as mesmas classes para seus tipos de viewmodel e seus 
 
 `ViewBag`*não está disponível em Razor Páginas.*
 
-Além de exibições fortemente tipadas, as exibições têm acesso a uma coleção de dados *fracamente tipados* (também chamada de *tipagem flexível*). Diferente dos tipos fortes, ter *tipos fracos* (ou *tipos flexíveis*) significa que você não declara explicitamente o tipo dos dados que está usando. Você pode usar a coleção de dados fracamente tipados para transmitir pequenas quantidades de dados para dentro e para fora dos controladores e das exibições.
+Além de exibições fortemente tipadas, as exibições têm acesso a uma coleção de dados *fracamente tipados* (também chamada de *tipagem flexível* ). Diferente dos tipos fortes, ter *tipos fracos* (ou *tipos flexíveis* ) significa que você não declara explicitamente o tipo dos dados que está usando. Você pode usar a coleção de dados fracamente tipados para transmitir pequenas quantidades de dados para dentro e para fora dos controladores e das exibições.
 
 | Passar dados entre...                        | Exemplo                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -334,7 +335,7 @@ public IActionResult SomeAction()
 
 Como `ViewData` e `ViewBag` fazem referência à mesma coleção `ViewData` subjacente, você pode usar `ViewData` e `ViewBag`, além de misturá-los e combiná-los ao ler e gravar valores.
 
-Defina o título usando `ViewBag` e a descrição usando `ViewData` na parte superior de uma exibição *About.cshtml*:
+Defina o título usando `ViewBag` e a descrição usando `ViewData` na parte superior de uma exibição *About.cshtml* :
 
 ```cshtml
 @{
@@ -344,7 +345,7 @@ Defina o título usando `ViewBag` e a descrição usando `ViewData` na parte sup
 }
 ```
 
-Leia as propriedades, mas inverta o uso de `ViewData` e `ViewBag`. No arquivo *_Layout.cshtml*, obtenha o título usando `ViewData` e a descrição usando `ViewBag`:
+Leia as propriedades, mas inverta o uso de `ViewData` e `ViewBag`. No arquivo *_Layout.cshtml* , obtenha o título usando `ViewData` e a descrição usando `ViewBag`:
 
 ```cshtml
 <!DOCTYPE html>

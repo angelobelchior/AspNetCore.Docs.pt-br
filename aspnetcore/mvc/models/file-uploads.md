@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 6ff78b26e8e2363cf6c54ebb2a392f390fb2995c
-ms.sourcegitcommit: cd412a44f26cb416ceb348fc0a1ccc9a6e9ca73e
+ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88720273"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061165"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carregar arquivos no ASP.NET Core
 
@@ -35,7 +36,7 @@ O ASP.NET Core dá suporte ao carregamento de um ou mais arquivos usando a assoc
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Considerações sobre segurança
+## <a name="security-considerations"></a>Considerações de segurança
 
 Tome cuidado ao fornecer aos usuários a capacidade de carregar arquivos em um servidor. Os invasores podem tentar:
 
@@ -112,7 +113,7 @@ Os recursos (disco, memória) usados por carregamentos de arquivos dependem do n
 O armazenamento em buffer de arquivos pequenos é abordado nas seguintes seções deste tópico:
 
 * [Armazenamento físico](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Backup de banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -124,7 +125,7 @@ O streaming de arquivos grandes é abordado na seção [carregar arquivos grande
 
 Para carregar arquivos pequenos, use um formulário com diversas partes ou Construa uma solicitação POST usando JavaScript.
 
-O exemplo a seguir demonstra o uso de um Razor formulário de páginas para carregar um único arquivo (*pages/BufferedSingleFileUploadPhysical. cshtml* no aplicativo de exemplo):
+O exemplo a seguir demonstra o uso de um Razor formulário de páginas para carregar um único arquivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* no aplicativo de exemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -435,7 +436,7 @@ O `StreamingController.UploadDatabase` método completo para streaming para um b
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*):
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -533,7 +534,7 @@ Muitas implementações devem incluir uma verificação de que o arquivo existe;
 
 Limite o tamanho dos arquivos carregados.
 
-No aplicativo de exemplo, o tamanho do arquivo é limitado a 2 MB (indicado em bytes). O limite é fornecido por meio da [configuração](xref:fundamentals/configuration/index) do *appsettings.jsno* arquivo:
+No aplicativo de exemplo, o tamanho do arquivo é limitado a 2 MB (indicado em bytes). O limite é fornecido por meio da [configuração](xref:fundamentals/configuration/index) do *appsettings.json* arquivo:
 
 ```json
 {
@@ -724,7 +725,7 @@ O limite de solicitação padrão ( `maxAllowedContentLength` ) é 30 milhões b
 
 A `maxAllowedContentLength` configuração se aplica somente ao IIS. Para obter mais informações, consulte [limites `<requestLimits>` de solicitação ](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Abaixo, são listados alguns problemas comuns encontrados ao trabalhar com o upload de arquivos e suas possíveis soluções.
 
@@ -759,7 +760,7 @@ O ASP.NET Core dá suporte ao carregamento de um ou mais arquivos usando a assoc
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Considerações sobre segurança
+## <a name="security-considerations"></a>Considerações de segurança
 
 Tome cuidado ao fornecer aos usuários a capacidade de carregar arquivos em um servidor. Os invasores podem tentar:
 
@@ -836,7 +837,7 @@ Os recursos (disco, memória) usados por carregamentos de arquivos dependem do n
 O armazenamento em buffer de arquivos pequenos é abordado nas seguintes seções deste tópico:
 
 * [Armazenamento físico](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Backup de banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -848,7 +849,7 @@ O streaming de arquivos grandes é abordado na seção [carregar arquivos grande
 
 Para carregar arquivos pequenos, use um formulário com diversas partes ou Construa uma solicitação POST usando JavaScript.
 
-O exemplo a seguir demonstra o uso de um Razor formulário de páginas para carregar um único arquivo (*pages/BufferedSingleFileUploadPhysical. cshtml* no aplicativo de exemplo):
+O exemplo a seguir demonstra o uso de um Razor formulário de páginas para carregar um único arquivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* no aplicativo de exemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1159,7 +1160,7 @@ O `StreamingController.UploadDatabase` método completo para streaming para um b
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*):
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1257,7 +1258,7 @@ Muitas implementações devem incluir uma verificação de que o arquivo existe;
 
 Limite o tamanho dos arquivos carregados.
 
-No aplicativo de exemplo, o tamanho do arquivo é limitado a 2 MB (indicado em bytes). O limite é fornecido por meio da [configuração](xref:fundamentals/configuration/index) do *appsettings.jsno* arquivo:
+No aplicativo de exemplo, o tamanho do arquivo é limitado a 2 MB (indicado em bytes). O limite é fornecido por meio da [configuração](xref:fundamentals/configuration/index) do *appsettings.json* arquivo:
 
 ```json
 {
@@ -1459,7 +1460,7 @@ services.Configure<IISServerOptions>(options =>
 
 Para obter mais informações, consulte <xref:host-and-deploy/iis/index#iis-options>.
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Abaixo, são listados alguns problemas comuns encontrados ao trabalhar com o upload de arquivos e suas possíveis soluções.
 
@@ -1494,7 +1495,7 @@ O ASP.NET Core dá suporte ao carregamento de um ou mais arquivos usando a assoc
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Considerações sobre segurança
+## <a name="security-considerations"></a>Considerações de segurança
 
 Tome cuidado ao fornecer aos usuários a capacidade de carregar arquivos em um servidor. Os invasores podem tentar:
 
@@ -1571,7 +1572,7 @@ Os recursos (disco, memória) usados por carregamentos de arquivos dependem do n
 O armazenamento em buffer de arquivos pequenos é abordado nas seguintes seções deste tópico:
 
 * [Armazenamento físico](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Backup de banco de dados](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -1583,7 +1584,7 @@ O streaming de arquivos grandes é abordado na seção [carregar arquivos grande
 
 Para carregar arquivos pequenos, use um formulário com diversas partes ou Construa uma solicitação POST usando JavaScript.
 
-O exemplo a seguir demonstra o uso de um Razor formulário de páginas para carregar um único arquivo (*pages/BufferedSingleFileUploadPhysical. cshtml* no aplicativo de exemplo):
+O exemplo a seguir demonstra o uso de um Razor formulário de páginas para carregar um único arquivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* no aplicativo de exemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1894,7 +1895,7 @@ O `StreamingController.UploadDatabase` método completo para streaming para um b
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper. cs*):
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper. cs* ):
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1992,7 +1993,7 @@ Muitas implementações devem incluir uma verificação de que o arquivo existe;
 
 Limite o tamanho dos arquivos carregados.
 
-No aplicativo de exemplo, o tamanho do arquivo é limitado a 2 MB (indicado em bytes). O limite é fornecido por meio da [configuração](xref:fundamentals/configuration/index) do *appsettings.jsno* arquivo:
+No aplicativo de exemplo, o tamanho do arquivo é limitado a 2 MB (indicado em bytes). O limite é fornecido por meio da [configuração](xref:fundamentals/configuration/index) do *appsettings.json* arquivo:
 
 ```json
 {
@@ -2189,7 +2190,7 @@ services.Configure<IISServerOptions>(options =>
 
 Para obter mais informações, consulte <xref:host-and-deploy/iis/index#iis-options>.
 
-## <a name="troubleshoot"></a>Solução de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Abaixo, são listados alguns problemas comuns encontrados ao trabalhar com o upload de arquivos e suas possíveis soluções.
 

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 07/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 6515e87845cc5aa101532c18711d175a73581bee
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 9322020083ce25b00b2979633ae8a692cfd4da4a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722703"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060957"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Chamar os serviços gRPC com o cliente .NET
 
@@ -33,7 +34,7 @@ Uma biblioteca de cliente .NET gRPC está disponível no pacote NuGet [gRPC .net
 
 ## <a name="configure-grpc-client"></a>Configurar o cliente gRPC
 
-Os clientes gRPC são tipos de cliente concretos que são [gerados a partir de arquivos * \* . proto* ](xref:grpc/basics#generated-c-assets). O cliente gRPC concreto tem métodos que se convertem para o serviço gRPC no arquivo * \* . proto* . Por exemplo, um serviço chamado `Greeter` gera um `GreeterClient` tipo com métodos para chamar o serviço.
+Os clientes gRPC são tipos de cliente concretos que são [gerados a partir de arquivos *\* . proto*](xref:grpc/basics#generated-c-assets). O cliente gRPC concreto tem métodos que se convertem para o serviço gRPC no arquivo *\* . proto* . Por exemplo, um serviço chamado `Greeter` gera um `GreeterClient` tipo com métodos para chamar o serviço.
 
 Um cliente gRPC é criado a partir de um canal. Comece usando `GrpcChannel.ForAddress` para criar um canal e, em seguida, use o canal para criar um cliente gRPC:
 
@@ -102,7 +103,7 @@ Console.WriteLine("Greeting: " + response.Message);
 // Greeting: Hello World
 ```
 
-Cada método de serviço unário no arquivo * \* . proto* resultará em dois métodos .net no tipo de cliente concreto gRPC para chamar o método: um método assíncrono e um método de bloqueio. Por exemplo, `GreeterClient` há duas maneiras de chamar `SayHello` :
+Cada método de serviço unário no arquivo *\* . proto* resultará em dois métodos .net no tipo de cliente concreto gRPC para chamar o método: um método assíncrono e um método de bloqueio. Por exemplo, `GreeterClient` há duas maneiras de chamar `SayHello` :
 
 * `GreeterClient.SayHelloAsync` -chama o `Greeter.SayHello` serviço de forma assíncrona. Pode ser esperado.
 * `GreeterClient.SayHello` -chama `Greeter.SayHello` serviço e bloqueia até a conclusão. Não use em código assíncrono.

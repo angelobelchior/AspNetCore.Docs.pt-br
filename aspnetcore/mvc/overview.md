@@ -5,6 +5,7 @@ description: Saiba como o ASP.NET Core MVC é uma estrutura avançada para a cri
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 29701506d9f6c1ff90081a548d524bc0deb65cda
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c55421efa1fd559f462549bfaceb794d4a9c35b8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059306"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Visão geral sobre o ASP.NET Core MVC
 
@@ -70,7 +71,7 @@ ASP.NET Core MVC fornece uma maneira com base em padrões para criar sites dinâ
 
 ASP.NET Core MVC inclui o seguinte:
 
-* [Roteamento](#routing)
+* [Roteiros](#routing)
 * [Model binding](#model-binding)
 * [Validação de modelo](#model-validation)
 * [Injeção de dependência](../fundamentals/dependency-injection.md)
@@ -268,5 +269,5 @@ Para obter mais informações, consulte <xref:mvc/compatibility-version>.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
-* [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. (*Não é mantido ou não tem suporte da Microsoft.*)
+* [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. ( *Não é mantido ou não tem suporte da Microsoft.* )
 * <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>

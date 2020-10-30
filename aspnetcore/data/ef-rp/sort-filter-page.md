@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: e01704cb10c88f3e9442e74034f5e5d39787f300
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: 51a1e2a90259898262ac655b7a0e8a55d766f0c7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653887"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061035"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Parte 3, Razor páginas com EF Core em ASP.NET Core-classificar, filtrar, paginação
 
@@ -55,13 +56,13 @@ O método `OnGetAsync` recebe um parâmetro `sortOrder` da cadeia de caracteres 
 
 O `sortOrder` parâmetro é `Name` ou `Date` . O `sortOrder` parâmetro é opcionalmente seguido de `_desc` para especificar ordem decrescente. A ordem de classificação padrão é crescente.
 
-Quando a página Índice é solicitada do link **Alunos**, não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. Ordem crescente por sobrenome é o `default` na `switch` instrução. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
+Quando a página Índice é solicitada do link **Alunos** , não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. Ordem crescente por sobrenome é o `default` na `switch` instrução. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
 
 `NameSort` e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-O código usa o [operador condicional C#?:](/dotnet/csharp/language-reference/operators/conditional-operator). O `?:` operador é um operador ternário, usa três operandos. A primeira linha especifica que quando `sortOrder` é nulo ou vazio, `NameSort` é definido como `name_desc` . Se `sortOrder`***não*** é nulo nem vazio, `NameSort` é definido como uma cadeia de caracteres vazia.
+O código usa o [operador condicional C#?:](/dotnet/csharp/language-reference/operators/conditional-operator). O `?:` operador é um operador ternário, usa três operandos. A primeira linha especifica que quando `sortOrder` é nulo ou vazio, `NameSort` é definido como `name_desc` . Se `sortOrder` for * *_not_* _ NULL ou Empty, `NameSort` será definido como uma cadeia de caracteres vazia.
 
 Essas duas instruções permitem que a página defina os hiperlinks de título de coluna da seguinte maneira:
 
@@ -84,7 +85,7 @@ Quando um `IQueryable` é criado ou modificado, nenhuma consulta é enviada ao b
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>Adicionar hiperlinks de título de coluna à página Student Index
 
-Substitua o código em *Students/Index.cshtml* pelo código a seguir. As alterações são realçadas.
+Substitua o código em _Students/index.cshtml * pelo código a seguir. As alterações são realçadas.
 
 [!code-cshtml[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml?highlight=5,8,17-19,22,25-27,33)]
 
@@ -97,7 +98,7 @@ O código anterior:
 
 Para verificar se a classificação funciona:
 
-* Execute o aplicativo e selecione a guia **Alunos**.
+* Execute o aplicativo e selecione a guia **Alunos** .
 * Clique nos títulos de coluna.
 
 ## <a name="add-filtering"></a>Adicionar filtragem
@@ -150,7 +151,7 @@ Teste o aplicativo:
 
 * Selecione a guia **Alunos** e insira uma cadeia de caracteres de pesquisa. Se você estiver usando o SQLite, o filtro não diferenciará maiúsculas de minúsculas apenas se você tiver implementado o código opcional `ToUpper` mostrado anteriormente.
 
-* Selecione **Pesquisar**.
+* Selecione **Pesquisar** .
 
 Observe que a URL contém a cadeia de caracteres de pesquisa. Por exemplo:
 
@@ -174,7 +175,7 @@ Na pasta do projeto, crie `PaginatedList.cs` com o seguinte código:
 
 [!code-csharp[Main](intro/samples/cu30/PaginatedList.cs)]
 
-O método `CreateAsync` no código anterior usa o tamanho da página e o número da página e aplica as instruções `Skip` e `Take` ao `IQueryable`. Quando `ToListAsync` é chamado no `IQueryable`, ele retorna uma Lista que contém somente a página solicitada. As propriedades `HasPreviousPage` e `HasNextPage` são usadas para habilitar ou desabilitar os botões de paginação **Anterior** e **Próximo**.
+O método `CreateAsync` no código anterior usa o tamanho da página e o número da página e aplica as instruções `Skip` e `Take` ao `IQueryable`. Quando `ToListAsync` é chamado no `IQueryable`, ele retorna uma Lista que contém somente a página solicitada. As propriedades `HasPreviousPage` e `HasNextPage` são usadas para habilitar ou desabilitar os botões de paginação **Anterior** e **Próximo** .
 
 O método `CreateAsync` é usado para criar o `PaginatedList<T>`. Um construtor não pode criar o objeto `PaginatedList<T>`; construtores não podem executar um código assíncrono.
 
@@ -195,7 +196,7 @@ O código anterior:
 
 Todos os parâmetros que `OnGetAsync` recebe são nulos quando:
 
-* A página é chamada no link **Alunos**.
+* A página é chamada no link **Alunos** .
 * O usuário ainda não clicou em um link de paginação ou classificação.
 
 Quando um link de paginação recebe um clique, a variável de índice de páginas contém o número da página a ser exibido.
@@ -246,7 +247,7 @@ Esta seção cria uma página Sobre que exibe quantos alunos se inscreveram para
 
 ### <a name="create-the-view-model"></a>Criar o modelo de exibição
 
-Crie uma pasta *Models/SchoolViewModels*.
+Crie uma pasta *Models/SchoolViewModels* .
 
 Crie *SchoolViewModels/EnrollmentDateGroup.cs* com o seguinte código:
 
@@ -305,7 +306,7 @@ O código anterior recebe um parâmetro `sortOrder` da cadeia de caracteres de c
 
 O parâmetro `sortOrder` é "Name" ou "Data". O parâmetro `sortOrder` é opcionalmente seguido de "_desc" para especificar a ordem descendente. A ordem de classificação padrão é crescente.
 
-Quando a página Índice é solicitada do link **Alunos**, não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. A ordem ascendente por sobrenome é o padrão (caso fall-through) na instrução `switch`. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
+Quando a página Índice é solicitada do link **Alunos** , não há nenhuma cadeia de caracteres de consulta. Os alunos são exibidos em ordem ascendente por sobrenome. A ordem ascendente por sobrenome é o padrão (caso fall-through) na instrução `switch`. Quando o usuário clica em um link de título de coluna, o valor `sortOrder` apropriado é fornecido no valor de cadeia de caracteres de consulta.
 
 `NameSort` e `DateSort` são usados pela Razor página para configurar os hiperlinks de título de coluna com os valores de cadeia de caracteres de consulta apropriados:
 
@@ -340,7 +341,7 @@ O método usa o LINQ to Entities para especificar a coluna pela qual classificar
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>Adicionar hiperlinks de título de coluna à página Student Index
 
-Substitua o código em *Students/Index.cshtml*, pelo seguinte código realçado:
+Substitua o código em *Students/Index.cshtml* , pelo seguinte código realçado:
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
@@ -351,15 +352,15 @@ O código anterior:
 
 Para verificar se a classificação funciona:
 
-* Execute o aplicativo e selecione a guia **Alunos**.
-* Clique em **Sobrenome**.
-* Clique em **Data de Registro**.
+* Execute o aplicativo e selecione a guia **Alunos** .
+* Clique em **Sobrenome** .
+* Clique em **Data de Registro** .
 
 Para obter um melhor entendimento do código:
 
-* Em *Students/Index.cshtml.cs*, defina um ponto de interrupção em `switch (sortOrder)`.
+* Em *Students/Index.cshtml.cs* , defina um ponto de interrupção em `switch (sortOrder)`.
 * Adicione uma inspeção para `NameSort` e `DateSort`.
-* Em *Students/Index.cshtml*, defina um ponto de interrupção em `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* Em *Students/Index.cshtml* , defina um ponto de interrupção em `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Execute o depurador em etapas.
 
@@ -396,7 +397,7 @@ Há uma penalidade de desempenho por chamar `ToUpper`. O código `ToUpper` adici
 
 ### <a name="add-a-search-box-to-the-student-index-page"></a>Adicionar uma Caixa de Pesquisa à página Student Index
 
-Em *Pages/Students/Index.cshtml*, adicione o código realçado a seguir para criar um botão **Pesquisar** e o cromado variado.
+Em *Pages/Students/Index.cshtml* , adicione o código realçado a seguir para criar um botão **Pesquisar** e o cromado variado.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -405,7 +406,7 @@ O código anterior usa o  [auxiliar de marcação](xref:mvc/views/tag-helpers/in
 Teste o aplicativo:
 
 * Selecione a guia **Alunos** e insira uma cadeia de caracteres de pesquisa.
-* Selecione **Pesquisar**.
+* Selecione **Pesquisar** .
 
 Observe que a URL contém a cadeia de caracteres de pesquisa.
 
@@ -427,13 +428,13 @@ Na pasta do projeto, crie `PaginatedList.cs` com o seguinte código:
 
 [!code-csharp[](intro/samples/cu21/PaginatedList.cs)]
 
-O método `CreateAsync` no código anterior usa o tamanho da página e o número da página e aplica as instruções `Skip` e `Take` ao `IQueryable`. Quando `ToListAsync` é chamado no `IQueryable`, ele retorna uma Lista que contém somente a página solicitada. As propriedades `HasPreviousPage` e `HasNextPage` são usadas para habilitar ou desabilitar os botões de paginação **Anterior** e **Próximo**.
+O método `CreateAsync` no código anterior usa o tamanho da página e o número da página e aplica as instruções `Skip` e `Take` ao `IQueryable`. Quando `ToListAsync` é chamado no `IQueryable`, ele retorna uma Lista que contém somente a página solicitada. As propriedades `HasPreviousPage` e `HasNextPage` são usadas para habilitar ou desabilitar os botões de paginação **Anterior** e **Próximo** .
 
 O método `CreateAsync` é usado para criar o `PaginatedList<T>`. Um construtor não pode criar o objeto `PaginatedList<T>`; construtores não podem executar um código assíncrono.
 
 ## <a name="add-paging-functionality-to-the-index-method"></a>Adicionar a funcionalidade de paginação ao método Index
 
-Em *Students/Index.cshtml.cs*, atualize o tipo de `Student` em `IList<Student>` para `PaginatedList<Student>`:
+Em *Students/Index.cshtml.cs* , atualize o tipo de `Student` em `IList<Student>` para `PaginatedList<Student>`:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
@@ -447,7 +448,7 @@ O código anterior adiciona o índice de página, o `sortOrder` atual e o `curre
 
 Todos os parâmetros são nulos quando:
 
-* A página é chamada no link **Alunos**.
+* A página é chamada no link **Alunos** .
 * O usuário ainda não clicou em um link de paginação ou classificação.
 
 Quando um link de paginação recebe um clique, a variável de índice de páginas contém o número da página a ser exibido.
@@ -474,7 +475,7 @@ Os dois pontos de interrogação em `PaginatedList.CreateAsync` representam o [o
 
 ## <a name="add-paging-links-to-the-student-no-locrazor-page"></a>Adicionar links de paginação à página do aluno Razor
 
-Atualize a marcação em *Students/Index.cshtml*. As alterações são realçadas:
+Atualize a marcação em *Students/Index.cshtml* . As alterações são realçadas:
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
@@ -495,9 +496,9 @@ Execute o aplicativo e navegue para a página de alunos.
 
 Para obter um melhor entendimento do código:
 
-* Em *Students/Index.cshtml.cs*, defina um ponto de interrupção em `switch (sortOrder)`.
+* Em *Students/Index.cshtml.cs* , defina um ponto de interrupção em `switch (sortOrder)`.
 * Adicione uma inspeção para `NameSort`, `DateSort`, `CurrentSort` e `Model.Student.PageIndex`.
-* Em *Students/Index.cshtml*, defina um ponto de interrupção em `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* Em *Students/Index.cshtml* , defina um ponto de interrupção em `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Execute o depurador em etapas.
 
@@ -505,14 +506,14 @@ Execute o depurador em etapas.
 
 Nesta etapa, *Pages/About.cshtml* é atualizada para exibir quantos alunos se registraram para cada data de registro. A atualização usa o agrupamento e inclui as seguintes etapas:
 
-* Criar um modelo de exibição para os dados usados pela página **Sobre**.
+* Criar um modelo de exibição para os dados usados pela página **Sobre** .
 * Atualizar a página Sobre para usar o modelo de exibição.
 
 ### <a name="create-the-view-model"></a>Criar o modelo de exibição
 
-Crie uma pasta *SchoolViewModels* na pasta *Models*.
+Crie uma pasta *SchoolViewModels* na pasta *Models* .
 
-Na pasta *SchoolViewModels*, adicione um *EnrollmentDateGroup.cs* com o seguinte código:
+Na pasta *SchoolViewModels* , adicione um *EnrollmentDateGroup.cs* com o seguinte código:
 
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

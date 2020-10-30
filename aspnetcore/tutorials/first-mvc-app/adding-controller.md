@@ -5,6 +5,7 @@ description: Parte 2 da série de tutoriais no ASP.NET Core MVC.
 ms.author: riande
 ms.date: 08/05/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: b5ef99d5645e0bbd453d09809a446bf4af38a975
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634040"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061282"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2, adicionar um controlador a um aplicativo ASP.NET Core MVC
 
@@ -29,45 +30,45 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-O padrão de arquitetura MVC (Model-View-Controller) separa um aplicativo em três componentes principais: **M**odel, **V**iew e **C**ontroller. O padrão MVC ajuda a criar aplicativos que são mais testáveis e fáceis de atualizar comparado aos aplicativos monolíticos tradicionais. Os aplicativos baseados no MVC contêm:
+O padrão de arquitetura MVC (Model-View-Controller) separa um aplicativo em três componentes principais: **M** odel, **V** iew e **C** ontroller. O padrão MVC ajuda a criar aplicativos que são mais testáveis e fáceis de atualizar comparado aos aplicativos monolíticos tradicionais. Os aplicativos baseados no MVC contêm:
 
-* **M**odels: classes que representam os dados do aplicativo. As classes de modelo usam a lógica de validação para impor regras de negócio aos dados. Normalmente, os objetos de modelo recuperam e armazenam o estado do modelo em um banco de dados. Neste tutorial, um modelo `Movie` recupera dados de filmes de um banco de dados, fornece-os para a exibição ou atualiza-os. O dados atualizados são gravados em um banco de dados.
+* **M** odels: classes que representam os dados do aplicativo. As classes de modelo usam a lógica de validação para impor regras de negócio aos dados. Normalmente, os objetos de modelo recuperam e armazenam o estado do modelo em um banco de dados. Neste tutorial, um modelo `Movie` recupera dados de filmes de um banco de dados, fornece-os para a exibição ou atualiza-os. O dados atualizados são gravados em um banco de dados.
 
-* **V**iews: exibições são os componentes que exibem a interface do usuário do aplicativo. Em geral, essa interface do usuário exibe os dados de modelo.
+* **V** iews: exibições são os componentes que exibem a interface do usuário do aplicativo. Em geral, essa interface do usuário exibe os dados de modelo.
 
-* **C**ontrollers: classes que manipulam as solicitações do navegador. Elas recuperam dados de modelo e chamam modelos de exibição que retornam uma resposta. Em um aplicativo MVC, a exibição mostra apenas informações; o controlador manipula e responde à entrada e à interação do usuário. Por exemplo, o controlador manipula os dados de rota e os valores de cadeia de consulta e passa esses valores para o modelo. O modelo pode usar esses valores para consultar o banco de dados. Por exemplo, `https://localhost:5001/Home/Privacy` tem dados de rota de `Home` (o controlador) e `Privacy` (o método de ação a ser chamado no controlador principal). `https://localhost:5001/Movies/Edit/5` é uma solicitação para editar o filme com ID=5 usando o controlador do filme. Os dados de rota são explicados posteriormente no tutorial.
+* **C** ontrollers: classes que manipulam as solicitações do navegador. Elas recuperam dados de modelo e chamam modelos de exibição que retornam uma resposta. Em um aplicativo MVC, a exibição mostra apenas informações; o controlador manipula e responde à entrada e à interação do usuário. Por exemplo, o controlador manipula os dados de rota e os valores de cadeia de consulta e passa esses valores para o modelo. O modelo pode usar esses valores para consultar o banco de dados. Por exemplo, `https://localhost:5001/Home/Privacy` tem dados de rota de `Home` (o controlador) e `Privacy` (o método de ação a ser chamado no controlador principal). `https://localhost:5001/Movies/Edit/5` é uma solicitação para editar o filme com ID=5 usando o controlador do filme. Os dados de rota são explicados posteriormente no tutorial.
 
 O padrão MVC ajuda a criar aplicativos que separam os diferentes aspectos do aplicativo (lógica de entrada, lógica de negócios e lógica da interface do usuário), ao mesmo tempo que fornece um acoplamento flexível entre esses elementos. O padrão especifica o local em que cada tipo de lógica deve estar localizado no aplicativo. A lógica da interface do usuário pertence à exibição. A lógica de entrada pertence ao controlador. A lógica de negócios pertence ao modelo. Essa separação ajuda a gerenciar a complexidade ao criar um aplicativo, porque permite que você trabalhe em um aspecto da implementação por vez, sem afetar o código de outro. Por exemplo, você pode trabalhar no código de exibição sem depender do código da lógica de negócios.
 
-Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições*.
+Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições* .
 
 ## <a name="add-a-controller"></a>Adicionar um controlador
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse em **controladores >** 
+* Em **Gerenciador de soluções** , clique com o botão direito do mouse em **controladores >** 
    ![ menu contextual adicionar > controlador](adding-controller/_static/add_controller.png)
 
 * Na caixa de diálogo **Adicionar Scaffold** , selecione **classe de controlador-vazia**
 
   ![Adicionar o controlador MVC e nomeá-lo](adding-controller/_static/ac.png)
 
-* Na **caixa de diálogo Adicionar Controlador MVC Vazio**, insira **HelloWorldController** e selecione **ADICIONAR**.
+* Na **caixa de diálogo Adicionar Controlador MVC Vazio** , insira **HelloWorldController** e selecione **ADICIONAR** .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs*.
+Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs* .
 
   ![Menu contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-No **Gerenciador de Soluções**, clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo**.
+No **Gerenciador de Soluções** , clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo** .
 ![Menu contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Selecione **ASP.NET Core** e **classe de controlador**.
+Selecione **ASP.NET Core** e **classe de controlador** .
 
-Nomeie o controlador **HelloWorldController**.
+Nomeie o controlador **HelloWorldController** .
 
 ![Adicionar o controlador MVC e nomeá-lo](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
@@ -91,13 +92,13 @@ O MVC invoca as classes do controlador (e os métodos de ação dentro delas), d
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs*.
+O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs* .
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 Quando você acessa o aplicativo e não fornece nenhum segmento de URL, ele usa como padrão o controlador “Home” e o método “Index” especificado na linha do modelo realçada acima.
 
-O primeiro segmento de URL determina a classe do controlador a ser executada. Portanto, o `localhost:{PORT}/HelloWorld` mapeia para a classe **HelloWorld**Controller. A segunda parte do segmento de URL determina o método de ação na classe. Portanto, `localhost:{PORT}/HelloWorld/Index` fará com que o método `Index` da classe `HelloWorldController` seja executado. Observe que você precisou apenas navegar para `localhost:{PORT}/HelloWorld` e o método `Index` foi chamado por padrão. Isso ocorre porque `Index` é o método padrão que será chamado em um controlador se não houver um nome de método explicitamente especificado. A terceira parte do segmento de URL (`id`) refere-se aos dados de rota. Os dados de rota são explicados posteriormente no tutorial.
+O primeiro segmento de URL determina a classe do controlador a ser executada. Portanto, o `localhost:{PORT}/HelloWorld` mapeia para a classe **HelloWorld** Controller. A segunda parte do segmento de URL determina o método de ação na classe. Portanto, `localhost:{PORT}/HelloWorld/Index` fará com que o método `Index` da classe `HelloWorldController` seja executado. Observe que você precisou apenas navegar para `localhost:{PORT}/HelloWorld` e o método `Index` foi chamado por padrão. Isso ocorre porque `Index` é o método padrão que será chamado em um controlador se não houver um nome de método explicitamente especificado. A terceira parte do segmento de URL (`id`) refere-se aos dados de rota. Os dados de rota são explicados posteriormente no tutorial.
 
 Navegue até `https://localhost:{PORT}/HelloWorld/Welcome`. O método `Welcome` é executado e retorna a cadeia de caracteres `This is the Welcome action method...`. Para essa URL, o controlador é `HelloWorld` e `Welcome` é o método de ação. Você ainda não usou a parte `[Parameters]` da URL.
 
@@ -133,7 +134,7 @@ Agora, o terceiro segmento de URL correspondeu ao parâmetro de rota `id`. O mé
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
-Nestes exemplos, o controlador tem feito a parte "VC" do MVC – ou seja, o trabalho de **V**iew e de **C**ontroller. O controlador retorna o HTML diretamente. Em geral, você não deseja que os controladores retornem HTML diretamente, pois isso é muito difícil de codificar e manter. Em vez disso, você normalmente usa um Razor arquivo de modelo de exibição separado para gerar a resposta HTML. Faça isso no próximo tutorial.
+Nestes exemplos, o controlador tem feito a parte "VC" do MVC – ou seja, o trabalho de **V** iew e de **C** ontroller. O controlador retorna o HTML diretamente. Em geral, você não deseja que os controladores retornem HTML diretamente, pois isso é muito difícil de codificar e manter. Em vez disso, você normalmente usa um Razor arquivo de modelo de exibição separado para gerar a resposta HTML. Faça isso no próximo tutorial.
 
 > [!div class="step-by-step"]
 > [Anterior](start-mvc.md) 
@@ -143,45 +144,45 @@ Nestes exemplos, o controlador tem feito a parte "VC" do MVC – ou seja, o trab
 
 ::: moniker range="< aspnetcore-3.0"
 
-O padrão de arquitetura MVC (Model-View-Controller) separa um aplicativo em três componentes principais: **M**odel, **V**iew e **C**ontroller. O padrão MVC ajuda a criar aplicativos que são mais testáveis e fáceis de atualizar comparado aos aplicativos monolíticos tradicionais. Os aplicativos baseados no MVC contêm:
+O padrão de arquitetura MVC (Model-View-Controller) separa um aplicativo em três componentes principais: **M** odel, **V** iew e **C** ontroller. O padrão MVC ajuda a criar aplicativos que são mais testáveis e fáceis de atualizar comparado aos aplicativos monolíticos tradicionais. Os aplicativos baseados no MVC contêm:
 
-* **M**odels: classes que representam os dados do aplicativo. As classes de modelo usam a lógica de validação para impor regras de negócio aos dados. Normalmente, os objetos de modelo recuperam e armazenam o estado do modelo em um banco de dados. Neste tutorial, um modelo `Movie` recupera dados de filmes de um banco de dados, fornece-os para a exibição ou atualiza-os. O dados atualizados são gravados em um banco de dados.
+* **M** odels: classes que representam os dados do aplicativo. As classes de modelo usam a lógica de validação para impor regras de negócio aos dados. Normalmente, os objetos de modelo recuperam e armazenam o estado do modelo em um banco de dados. Neste tutorial, um modelo `Movie` recupera dados de filmes de um banco de dados, fornece-os para a exibição ou atualiza-os. O dados atualizados são gravados em um banco de dados.
 
-* **V**iews: exibições são os componentes que exibem a interface do usuário do aplicativo. Em geral, essa interface do usuário exibe os dados de modelo.
+* **V** iews: exibições são os componentes que exibem a interface do usuário do aplicativo. Em geral, essa interface do usuário exibe os dados de modelo.
 
-* **C**ontrollers: classes que manipulam as solicitações do navegador. Elas recuperam dados de modelo e chamam modelos de exibição que retornam uma resposta. Em um aplicativo MVC, a exibição mostra apenas informações; o controlador manipula e responde à entrada e à interação do usuário. Por exemplo, o controlador manipula os dados de rota e os valores de cadeia de consulta e passa esses valores para o modelo. O modelo pode usar esses valores para consultar o banco de dados. Por exemplo, `https://localhost:5001/Home/About` tem dados de rota de `Home` (o controlador) e `About` (o método de ação a ser chamado no controlador principal). `https://localhost:5001/Movies/Edit/5` é uma solicitação para editar o filme com ID=5 usando o controlador do filme. Os dados de rota são explicados posteriormente no tutorial.
+* **C** ontrollers: classes que manipulam as solicitações do navegador. Elas recuperam dados de modelo e chamam modelos de exibição que retornam uma resposta. Em um aplicativo MVC, a exibição mostra apenas informações; o controlador manipula e responde à entrada e à interação do usuário. Por exemplo, o controlador manipula os dados de rota e os valores de cadeia de consulta e passa esses valores para o modelo. O modelo pode usar esses valores para consultar o banco de dados. Por exemplo, `https://localhost:5001/Home/About` tem dados de rota de `Home` (o controlador) e `About` (o método de ação a ser chamado no controlador principal). `https://localhost:5001/Movies/Edit/5` é uma solicitação para editar o filme com ID=5 usando o controlador do filme. Os dados de rota são explicados posteriormente no tutorial.
 
 O padrão MVC ajuda a criar aplicativos que separam os diferentes aspectos do aplicativo (lógica de entrada, lógica de negócios e lógica da interface do usuário), ao mesmo tempo que fornece um acoplamento flexível entre esses elementos. O padrão especifica o local em que cada tipo de lógica deve estar localizado no aplicativo. A lógica da interface do usuário pertence à exibição. A lógica de entrada pertence ao controlador. A lógica de negócios pertence ao modelo. Essa separação ajuda a gerenciar a complexidade ao criar um aplicativo, porque permite que você trabalhe em um aspecto da implementação por vez, sem afetar o código de outro. Por exemplo, você pode trabalhar no código de exibição sem depender do código da lógica de negócios.
 
-Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições*.
+Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições* .
 
 ## <a name="add-a-controller"></a>Adicionar um controlador
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções**, clique com o botão direito do mouse em **controladores >** 
+* Em **Gerenciador de soluções** , clique com o botão direito do mouse em **controladores >** 
    ![ menu contextual adicionar > controlador](adding-controller/_static/add_controller.png)
 
-* Na caixa de diálogo **Adicionar Scaffold**, selecione **Controlador MVC – Vazio**
+* Na caixa de diálogo **Adicionar Scaffold** , selecione **Controlador MVC – Vazio**
 
   ![Adicionar o controlador MVC e nomeá-lo](adding-controller/_static/ac.png)
 
-* Na **caixa de diálogo Adicionar Controlador MVC Vazio**, insira **HelloWorldController** e selecione **ADICIONAR**.
+* Na **caixa de diálogo Adicionar Controlador MVC Vazio** , insira **HelloWorldController** e selecione **ADICIONAR** .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs*.
+Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs* .
 
   ![Menu contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-No **Gerenciador de Soluções**, clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo**.
+No **Gerenciador de Soluções** , clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo** .
 ![Menu contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Selecione **ASP.NET Core** e **Classe do Controlador MVC**.
+Selecione **ASP.NET Core** e **Classe do Controlador MVC** .
 
-Nomeie o controlador **HelloWorldController**.
+Nomeie o controlador **HelloWorldController** .
 
 ![Adicionar o controlador MVC e nomeá-lo](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
@@ -205,7 +206,7 @@ O MVC invoca as classes do controlador (e os métodos de ação dentro delas), d
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs*.
+O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs* .
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 

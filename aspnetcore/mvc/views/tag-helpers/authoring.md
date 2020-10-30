@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: c1891b8093c5a4c1599cd3c4ed4e5e60e2fd13e8
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 306416db3d9ae0219f859c3cf459eb08a5b778cf
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628996"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060918"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Auxiliares de marca de autor no ASP.NET Core
 
@@ -36,9 +37,9 @@ Este tutorial fornece uma introdução à programação de auxiliares de marcaç
 
 Um auxiliar de marca é qualquer classe que implementa a interface `ITagHelper`. No entanto, quando cria um auxiliar de marca, você geralmente deriva de `TagHelper`, o que fornece acesso ao método `Process`.
 
-1. Crie um novo projeto do ASP.NET Core chamado **AuthoringTagHelpers**. Você não precisará de autenticação para esse projeto.
+1. Crie um novo projeto do ASP.NET Core chamado **AuthoringTagHelpers** . Você não precisará de autenticação para esse projeto.
 
-1. Criar uma pasta para armazenar os auxiliares de marca chamados *TagHelpers*. A pasta *TagHelpers* pasta *não* é necessária, mas é uma convenção comum. Agora vamos começar a escrever alguns auxiliares de marca simples.
+1. Criar uma pasta para armazenar os auxiliares de marca chamados *TagHelpers* . A pasta *TagHelpers* pasta *não* é necessária, mas é uma convenção comum. Agora vamos começar a escrever alguns auxiliares de marca simples.
 
 ## <a name="a-minimal-tag-helper"></a>Um auxiliar de marca mínimo
 
@@ -56,7 +57,7 @@ O servidor usará nosso auxiliar de marca de email para converter essa marcaçã
 
 Ou seja, uma marca de âncora que torna isso um link de email. Talvez você deseje fazer isso se estiver escrevendo um mecanismo de blog e precisar que ele envie emails para o marketing, suporte e outros contatos, todos para o mesmo domínio.
 
-1. Adicione a classe `EmailTagHelper` a seguir à pasta *TagHelpers*.
+1. Adicione a classe `EmailTagHelper` a seguir à pasta *TagHelpers* .
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
@@ -70,7 +71,7 @@ Ou seja, uma marca de âncora que torna isso um link de email. Talvez você dese
 
    * O parâmetro de saída para `Process` (e `ProcessAsync`) contém um elemento HTML com estado que representa a fonte original usada para gerar uma marca HTML e o conteúdo.
 
-   * Nosso nome de classe tem um sufixo **TagHelper**, que *não* é necessário, mas que é considerado uma convenção de melhor prática. Você pode declarar a classe como:
+   * Nosso nome de classe tem um sufixo **TagHelper** , que *não* é necessário, mas que é considerado uma convenção de melhor prática. Você pode declarar a classe como:
 
    ```csharp
    public class Email : TagHelper
@@ -93,7 +94,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-Para adicionar um auxiliar de marca para uma exibição usando um FQN, primeiro adicione o FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) e, em seguida, o **nome do assembly** (*AuthoringTagHelpers*, não necessariamente o `namespace`). A maioria dos desenvolvedores vão preferir usar a sintaxe de curinga. [Introdução ao tag helpers](intro.md) apresenta detalhes sobre a sintaxe de adição, remoção, hierarquia e curinga do tag helper.
+Para adicionar um auxiliar de marca para uma exibição usando um FQN, primeiro adicione o FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) e, em seguida, o **nome do assembly** ( *AuthoringTagHelpers* , não necessariamente o `namespace`). A maioria dos desenvolvedores vão preferir usar a sintaxe de curinga. [Introdução ao tag helpers](intro.md) apresenta detalhes sobre a sintaxe de adição, remoção, hierarquia e curinga do tag helper.
 
 1. Atualize a marcação no arquivo *Views/Home/Contact.cshtml* com essas alterações:
 
@@ -156,7 +157,7 @@ Nesta seção, escreveremos um auxiliar de email assíncrono.
 
 ### <a name="removeall-precontentsethtmlcontent-and-postcontentsethtmlcontent"></a>RemoveAll, PreContent.SetHtmlContent e PostContent.SetHtmlContent
 
-1. Adicione a classe `BoldTagHelper` a seguir à pasta *TagHelpers*.
+1. Adicione a classe `BoldTagHelper` a seguir à pasta *TagHelpers* .
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs)]
 
@@ -172,7 +173,7 @@ Nesta seção, escreveremos um auxiliar de email assíncrono.
 
    O `[HtmlTargetElement]` atributo acima se destina somente a marcação HTML que fornece um nome de atributo de "bold". O `<bold>` elemento não foi modificado pelo tag helper.
 
-1. Comente a linha de atributo `[HtmlTargetElement]` e ela usará como padrão as marcações `<bold>` de direcionamento, ou seja, a marcação HTML do formato `<bold>`. Lembre-se de que a convenção de nomenclatura padrão fará a correspondência do nome da classe **Bold**TagHelper com as marcações `<bold>`.
+1. Comente a linha de atributo `[HtmlTargetElement]` e ela usará como padrão as marcações `<bold>` de direcionamento, ou seja, a marcação HTML do formato `<bold>`. Lembre-se de que a convenção de nomenclatura padrão fará a correspondência do nome da classe **Bold** TagHelper com as marcações `<bold>`.
 
 1. Execute o aplicativo e verifique se a marca `<bold>` é processada pelo auxiliar de marca.
 
@@ -194,13 +195,13 @@ Também use o `[HtmlTargetElement]` para alterar o nome do elemento de destino. 
 
 ## <a name="pass-a-model-to-a-tag-helper"></a>Passe um model para um tag helper
 
-1. Adicionar uma pasta *models*.
+1. Adicionar uma pasta *models* .
 
-1. Adicione a seguinte classe `WebsiteContext` à pasta *Models*:
+1. Adicione a seguinte classe `WebsiteContext` à pasta *Models* :
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 
-1. Adicione a classe `WebsiteInformationTagHelper` a seguir à pasta *TagHelpers*.
+1. Adicione a classe `WebsiteInformationTagHelper` a seguir à pasta *TagHelpers* .
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
@@ -226,7 +227,7 @@ Também use o `[HtmlTargetElement]` para alterar o nome do elemento de destino. 
    $@"<ul><li><strong>Version:</strong> {Info.Version}</li>
    ```
 
-1. Adicione a marcação a seguir à exibição *About.cshtml*. A marcação realçada exibe as informações do site.
+1. Adicione a marcação a seguir à exibição *About.cshtml* . A marcação realçada exibe as informações do site.
 
    [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
@@ -248,7 +249,7 @@ Também use o `[HtmlTargetElement]` para alterar o nome do elemento de destino. 
 
 O auxiliar de marca de condição renderiza a saída quando recebe um valor true.
 
-1. Adicione a classe `ConditionTagHelper` a seguir à pasta *TagHelpers*.
+1. Adicione a classe `ConditionTagHelper` a seguir à pasta *TagHelpers* .
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs)]
 
@@ -275,14 +276,14 @@ Nesta seção, você escreve um par de tag helpers de vinculação automática. 
 
 Como esses dois auxiliares estão intimamente relacionados e você poderá refatorá-los no futuro, vamos mantê-los no mesmo arquivo.
 
-1. Adicione a classe `AutoLinkerHttpTagHelper` a seguir à pasta *TagHelpers*.
+1. Adicione a classe `AutoLinkerHttpTagHelper` a seguir à pasta *TagHelpers* .
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=7-19)]
 
    >[!NOTE]
    >A classe `AutoLinkerHttpTagHelper` é direcionada a elementos `p` e usa o [Regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) para criar a âncora.
 
-1. Adicione a seguinte marcação ao final do arquivo *Views/Home/Contact.cshtml*:
+1. Adicione a seguinte marcação ao final do arquivo *Views/Home/Contact.cshtml* :
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
 

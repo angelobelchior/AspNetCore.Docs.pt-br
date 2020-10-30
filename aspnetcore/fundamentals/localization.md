@@ -5,6 +5,7 @@ description: Saiba como o ASP.NET Core fornece serviços e middleware para local
 ms.author: riande
 ms.date: 11/30/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: fcf69bdaaed5cf0283ae27440c28061857d2cbcb
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606771"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059514"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalização e localização no ASP.NET Core
 
@@ -139,27 +140,27 @@ O ASP.NET Core permite que você especifique dois valores de cultura, `Supported
 
 Um arquivo de recurso é um mecanismo útil para separar cadeias de caracteres localizáveis do código. As cadeias de caracteres traduzidas para o idioma não padrão são isoladas em arquivos de recurso *. resx* . Por exemplo, talvez você queira criar um arquivo de recurso em espanhol chamado *Welcome.es.resx* contendo cadeias de caracteres traduzidas. "es" são o código de idioma para o espanhol. Para criar esse arquivo de recurso no Visual Studio:
 
-1. No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta que conterá o arquivo de recurso > **Adicionar** > **Novo Item**.
+1. No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta que conterá o arquivo de recurso > **Adicionar** > **Novo Item** .
 
    ![Menu contextual aninhado: no Gerenciador de Soluções, um menu contextual é aberto para Recursos. Um segundo menu contextual é aberto para Adicionar mostrando o comando Novo Item realçado.](localization/_static/newi.png)
 
-1. Na caixa **Pesquisar modelos instalados**, insira "recurso" e nomeie o arquivo.
+1. Na caixa **Pesquisar modelos instalados** , insira "recurso" e nomeie o arquivo.
 
    ![Caixa de diálogo Adicionar Novo Item](localization/_static/res.png)
 
-1. Insira o valor da chave (cadeia de caracteres nativa) na coluna **Nome** e a cadeia de caracteres traduzida na coluna **Valor**.
+1. Insira o valor da chave (cadeia de caracteres nativa) na coluna **Nome** e a cadeia de caracteres traduzida na coluna **Valor** .
 
    ![Arquivo Welcome.es.resx (o arquivo de recurso Welcome em espanhol) com a palavra Hello na coluna Nome e a palavra Hola (Olá, em espanhol) na coluna valor](localization/_static/hola.png)
 
-   O Visual Studio mostra o arquivo *Welcome.es.resx*.
+   O Visual Studio mostra o arquivo *Welcome.es.resx* .
 
    ![Gerenciador de Soluções mostrando o arquivo de recurso Welcome em espanhol (es)](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Nomenclatura do arquivo de recurso
 
-Os recursos são nomeados com o nome completo do tipo de sua classe menos o nome do assembly. Por exemplo, um recurso em francês em um projeto cujo assembly principal é `LocalizationWebsite.Web.dll` para a classe `LocalizationWebsite.Web.Startup` será nomeado *Startup.fr.resx*. Um recurso para a classe `LocalizationWebsite.Web.Controllers.HomeController` será nomeado *Controllers.HomeController.fr.resx*. Se o namespace da classe de destino não for o mesmo que o nome do assembly, você precisará do nome completo do tipo. Por exemplo, no projeto de exemplo, um recurso para o tipo `ExtraNamespace.Tools` será nomeado *ExtraNamespace.Tools.fr.resx*.
+Os recursos são nomeados com o nome completo do tipo de sua classe menos o nome do assembly. Por exemplo, um recurso em francês em um projeto cujo assembly principal é `LocalizationWebsite.Web.dll` para a classe `LocalizationWebsite.Web.Startup` será nomeado *Startup.fr.resx* . Um recurso para a classe `LocalizationWebsite.Web.Controllers.HomeController` será nomeado *Controllers.HomeController.fr.resx* . Se o namespace da classe de destino não for o mesmo que o nome do assembly, você precisará do nome completo do tipo. Por exemplo, no projeto de exemplo, um recurso para o tipo `ExtraNamespace.Tools` será nomeado *ExtraNamespace.Tools.fr.resx* .
 
-No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` como "Resources", de modo que o caminho relativo do projeto para o arquivo de recurso em francês do controlador principal seja *Resources/Controllers.HomeController.fr.resx*. Como alternativa, você pode usar pastas para organizar arquivos de recurso. Para o controlador principal, o caminho será *Resources/Controllers/HomeController.fr.resx*. Se você não usar a opção `ResourcesPath`, o arquivo *.resx* entrará no diretório base do projeto. O arquivo de recurso para `HomeController` será nomeado *Controllers.HomeController.fr.resx*. A opção de usar a convenção de nomenclatura de ponto ou caminho depende de como você deseja organizar os arquivos de recurso.
+No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` como "Resources", de modo que o caminho relativo do projeto para o arquivo de recurso em francês do controlador principal seja *Resources/Controllers.HomeController.fr.resx* . Como alternativa, você pode usar pastas para organizar arquivos de recurso. Para o controlador principal, o caminho será *Resources/Controllers/HomeController.fr.resx* . Se você não usar a opção `ResourcesPath`, o arquivo *.resx* entrará no diretório base do projeto. O arquivo de recurso para `HomeController` será nomeado *Controllers.HomeController.fr.resx* . A opção de usar a convenção de nomenclatura de ponto ou caminho depende de como você deseja organizar os arquivos de recurso.
 
 | Nome do recurso | Nomenclatura de ponto ou caminho |
 | ------------   | ------------- |
@@ -212,11 +213,11 @@ Por exemplo, se você remover o designador de cultura ".fr" e tiver a cultura de
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Gerar arquivos de recurso com o Visual Studio
 
-Se você criar um arquivo de recurso no Visual Studio sem uma cultura no nome do arquivo (por exemplo, *Welcome.resx*), o Visual Studio criará uma classe do C# com uma propriedade para cada cadeia de caracteres. Geralmente isso não é o desejado com o ASP.NET Core. Normalmente você não tem um arquivo de recurso *.resx* padrão (um arquivo *.resx* sem o nome de cultura). Sugerimos que você crie o arquivo *.resx* com um nome de cultura (por exemplo *Welcome.fr.resx*). Quando você criar um arquivo *.resx* com um nome de cultura, o Visual Studio não gerará o arquivo de classe.
+Se você criar um arquivo de recurso no Visual Studio sem uma cultura no nome do arquivo (por exemplo, *Welcome.resx* ), o Visual Studio criará uma classe do C# com uma propriedade para cada cadeia de caracteres. Geralmente isso não é o desejado com o ASP.NET Core. Normalmente você não tem um arquivo de recurso *.resx* padrão (um arquivo *.resx* sem o nome de cultura). Sugerimos que você crie o arquivo *.resx* com um nome de cultura (por exemplo *Welcome.fr.resx* ). Quando você criar um arquivo *.resx* com um nome de cultura, o Visual Studio não gerará o arquivo de classe.
 
 ### <a name="add-other-cultures"></a>Adicionar outras culturas
 
-Cada combinação de idioma e cultura (que não seja o idioma padrão) exige um arquivo de recurso exclusivo. Crie arquivos de recurso para diferentes culturas e localidades criando novos arquivos de recurso, nos quais os códigos ISO e de idioma fazem parte do nome do arquivo (por exemplo, **en-us**, **fr-ca** e **en-gb**). Esses códigos ISO são colocados entre o nome do arquivo e a extensão de arquivo *.resx*, como em *Welcome.es-MX.resx* (espanhol/México).
+Cada combinação de idioma e cultura (que não seja o idioma padrão) exige um arquivo de recurso exclusivo. Crie arquivos de recurso para diferentes culturas e localidades criando novos arquivos de recurso, nos quais os códigos ISO e de idioma fazem parte do nome do arquivo (por exemplo, **en-us** , **fr-ca** e **en-gb** ). Esses códigos ISO são colocados entre o nome do arquivo e a extensão de arquivo *.resx* , como em *Welcome.es-MX.resx* (espanhol/México).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implementar uma estratégia para selecionar o idioma e a cultura para cada solicitação
 
@@ -228,7 +229,7 @@ A localização é configurada no método `Startup.ConfigureServices`:
 
 * `AddLocalization` Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
 
-* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
+* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml* .
 
 * `AddDataAnnotationsLocalization` Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
 
@@ -250,7 +251,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de Accept-Language, adicionar uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
    `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
 
@@ -280,19 +281,19 @@ O [cabeçalho Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>Definir o cabeçalho HTTP Accept-Language no IE
 
-1. No ícone de engrenagem, toque em **Opções da Internet**.
+1. No ícone de engrenagem, toque em **Opções da Internet** .
 
-1. Toque em **Idiomas**.
+1. Toque em **Idiomas** .
 
    ![Opções da Internet](localization/_static/lang.png)
 
-1. Toque em **Definir Preferências de Idioma**.
+1. Toque em **Definir Preferências de Idioma** .
 
-1. Toque em **Adicionar um idioma**.
+1. Toque em **Adicionar um idioma** .
 
 1. Adicione o idioma.
 
-1. Toque no idioma e, em seguida, em **Mover Para Cima**.
+1. Toque no idioma e, em seguida, em **Mover Para Cima** .
 
 ### <a name="use-a-custom-provider"></a>Usar um provedor personalizado
 
@@ -493,27 +494,27 @@ O ASP.NET Core permite que você especifique dois valores de cultura, `Supported
 
 Um arquivo de recurso é um mecanismo útil para separar cadeias de caracteres localizáveis do código. As cadeias de caracteres traduzidas para o idioma não padrão são isoladas em arquivos de recurso *. resx* . Por exemplo, talvez você queira criar um arquivo de recurso em espanhol chamado *Welcome.es.resx* contendo cadeias de caracteres traduzidas. "es" são o código de idioma para o espanhol. Para criar esse arquivo de recurso no Visual Studio:
 
-1. No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta que conterá o arquivo de recurso > **Adicionar** > **Novo Item**.
+1. No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta que conterá o arquivo de recurso > **Adicionar** > **Novo Item** .
 
    ![Menu contextual aninhado: no Gerenciador de Soluções, um menu contextual é aberto para Recursos. Um segundo menu contextual é aberto para Adicionar mostrando o comando Novo Item realçado.](localization/_static/newi.png)
 
-1. Na caixa **Pesquisar modelos instalados**, insira "recurso" e nomeie o arquivo.
+1. Na caixa **Pesquisar modelos instalados** , insira "recurso" e nomeie o arquivo.
 
    ![Caixa de diálogo Adicionar Novo Item](localization/_static/res.png)
 
-1. Insira o valor da chave (cadeia de caracteres nativa) na coluna **Nome** e a cadeia de caracteres traduzida na coluna **Valor**.
+1. Insira o valor da chave (cadeia de caracteres nativa) na coluna **Nome** e a cadeia de caracteres traduzida na coluna **Valor** .
 
    ![Arquivo Welcome.es.resx (o arquivo de recurso Welcome em espanhol) com a palavra Hello na coluna Nome e a palavra Hola (Olá, em espanhol) na coluna valor](localization/_static/hola.png)
 
-   O Visual Studio mostra o arquivo *Welcome.es.resx*.
+   O Visual Studio mostra o arquivo *Welcome.es.resx* .
 
    ![Gerenciador de Soluções mostrando o arquivo de recurso Welcome em espanhol (es)](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Nomenclatura do arquivo de recurso
 
-Os recursos são nomeados com o nome completo do tipo de sua classe menos o nome do assembly. Por exemplo, um recurso em francês em um projeto cujo assembly principal é `LocalizationWebsite.Web.dll` para a classe `LocalizationWebsite.Web.Startup` será nomeado *Startup.fr.resx*. Um recurso para a classe `LocalizationWebsite.Web.Controllers.HomeController` será nomeado *Controllers.HomeController.fr.resx*. Se o namespace da classe de destino não for o mesmo que o nome do assembly, você precisará do nome completo do tipo. Por exemplo, no projeto de exemplo, um recurso para o tipo `ExtraNamespace.Tools` será nomeado *ExtraNamespace.Tools.fr.resx*.
+Os recursos são nomeados com o nome completo do tipo de sua classe menos o nome do assembly. Por exemplo, um recurso em francês em um projeto cujo assembly principal é `LocalizationWebsite.Web.dll` para a classe `LocalizationWebsite.Web.Startup` será nomeado *Startup.fr.resx* . Um recurso para a classe `LocalizationWebsite.Web.Controllers.HomeController` será nomeado *Controllers.HomeController.fr.resx* . Se o namespace da classe de destino não for o mesmo que o nome do assembly, você precisará do nome completo do tipo. Por exemplo, no projeto de exemplo, um recurso para o tipo `ExtraNamespace.Tools` será nomeado *ExtraNamespace.Tools.fr.resx* .
 
-No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` como "Resources", de modo que o caminho relativo do projeto para o arquivo de recurso em francês do controlador principal seja *Resources/Controllers.HomeController.fr.resx*. Como alternativa, você pode usar pastas para organizar arquivos de recurso. Para o controlador principal, o caminho será *Resources/Controllers/HomeController.fr.resx*. Se você não usar a opção `ResourcesPath`, o arquivo *.resx* entrará no diretório base do projeto. O arquivo de recurso para `HomeController` será nomeado *Controllers.HomeController.fr.resx*. A opção de usar a convenção de nomenclatura de ponto ou caminho depende de como você deseja organizar os arquivos de recurso.
+No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` como "Resources", de modo que o caminho relativo do projeto para o arquivo de recurso em francês do controlador principal seja *Resources/Controllers.HomeController.fr.resx* . Como alternativa, você pode usar pastas para organizar arquivos de recurso. Para o controlador principal, o caminho será *Resources/Controllers/HomeController.fr.resx* . Se você não usar a opção `ResourcesPath`, o arquivo *.resx* entrará no diretório base do projeto. O arquivo de recurso para `HomeController` será nomeado *Controllers.HomeController.fr.resx* . A opção de usar a convenção de nomenclatura de ponto ou caminho depende de como você deseja organizar os arquivos de recurso.
 
 | Nome do recurso | Nomenclatura de ponto ou caminho |
 | ------------   | ------------- |
@@ -566,11 +567,11 @@ Por exemplo, se você remover o designador de cultura ".fr" e tiver a cultura de
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Gerar arquivos de recurso com o Visual Studio
 
-Se você criar um arquivo de recurso no Visual Studio sem uma cultura no nome do arquivo (por exemplo, *Welcome.resx*), o Visual Studio criará uma classe do C# com uma propriedade para cada cadeia de caracteres. Geralmente isso não é o desejado com o ASP.NET Core. Normalmente você não tem um arquivo de recurso *.resx* padrão (um arquivo *.resx* sem o nome de cultura). Sugerimos que você crie o arquivo *.resx* com um nome de cultura (por exemplo *Welcome.fr.resx*). Quando você criar um arquivo *.resx* com um nome de cultura, o Visual Studio não gerará o arquivo de classe.
+Se você criar um arquivo de recurso no Visual Studio sem uma cultura no nome do arquivo (por exemplo, *Welcome.resx* ), o Visual Studio criará uma classe do C# com uma propriedade para cada cadeia de caracteres. Geralmente isso não é o desejado com o ASP.NET Core. Normalmente você não tem um arquivo de recurso *.resx* padrão (um arquivo *.resx* sem o nome de cultura). Sugerimos que você crie o arquivo *.resx* com um nome de cultura (por exemplo *Welcome.fr.resx* ). Quando você criar um arquivo *.resx* com um nome de cultura, o Visual Studio não gerará o arquivo de classe.
 
 ### <a name="add-other-cultures"></a>Adicionar outras culturas
 
-Cada combinação de idioma e cultura (que não seja o idioma padrão) exige um arquivo de recurso exclusivo. Crie arquivos de recurso para diferentes culturas e localidades criando novos arquivos de recurso, nos quais os códigos ISO e de idioma fazem parte do nome do arquivo (por exemplo, **en-us**, **fr-ca** e **en-gb**). Esses códigos ISO são colocados entre o nome do arquivo e a extensão de arquivo *.resx*, como em *Welcome.es-MX.resx* (espanhol/México).
+Cada combinação de idioma e cultura (que não seja o idioma padrão) exige um arquivo de recurso exclusivo. Crie arquivos de recurso para diferentes culturas e localidades criando novos arquivos de recurso, nos quais os códigos ISO e de idioma fazem parte do nome do arquivo (por exemplo, **en-us** , **fr-ca** e **en-gb** ). Esses códigos ISO são colocados entre o nome do arquivo e a extensão de arquivo *.resx* , como em *Welcome.es-MX.resx* (espanhol/México).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implementar uma estratégia para selecionar o idioma e a cultura para cada solicitação
 
@@ -582,7 +583,7 @@ A localização é configurada no método `Startup.ConfigureServices`:
 
 * `AddLocalization` Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
 
-* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
+* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml* .
 
 * `AddDataAnnotationsLocalization` Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
 
@@ -604,7 +605,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de Accept-Language, adicionar uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX
@@ -636,19 +637,19 @@ O [cabeçalho Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>Definir o cabeçalho HTTP Accept-Language no IE
 
-1. No ícone de engrenagem, toque em **Opções da Internet**.
+1. No ícone de engrenagem, toque em **Opções da Internet** .
 
-1. Toque em **Idiomas**.
+1. Toque em **Idiomas** .
 
    ![Opções da Internet](localization/_static/lang.png)
 
-1. Toque em **Definir Preferências de Idioma**.
+1. Toque em **Definir Preferências de Idioma** .
 
-1. Toque em **Adicionar um idioma**.
+1. Toque em **Adicionar um idioma** .
 
 1. Adicione o idioma.
 
-1. Toque no idioma e, em seguida, em **Mover Para Cima**.
+1. Toque no idioma e, em seguida, em **Mover Para Cima** .
 
 ### <a name="use-a-custom-provider"></a>Usar um provedor personalizado
 
@@ -848,27 +849,27 @@ O ASP.NET Core permite que você especifique dois valores de cultura, `Supported
 
 Um arquivo de recurso é um mecanismo útil para separar cadeias de caracteres localizáveis do código. As cadeias de caracteres traduzidas para o idioma não padrão são isoladas em arquivos de recurso *. resx* . Por exemplo, talvez você queira criar um arquivo de recurso em espanhol chamado *Welcome.es.resx* contendo cadeias de caracteres traduzidas. "es" são o código de idioma para o espanhol. Para criar esse arquivo de recurso no Visual Studio:
 
-1. No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta que conterá o arquivo de recurso > **Adicionar** > **Novo Item**.
+1. No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta que conterá o arquivo de recurso > **Adicionar** > **Novo Item** .
 
    ![Menu contextual aninhado: no Gerenciador de Soluções, um menu contextual é aberto para Recursos. Um segundo menu contextual é aberto para Adicionar mostrando o comando Novo Item realçado.](localization/_static/newi.png)
 
-1. Na caixa **Pesquisar modelos instalados**, insira "recurso" e nomeie o arquivo.
+1. Na caixa **Pesquisar modelos instalados** , insira "recurso" e nomeie o arquivo.
 
    ![Caixa de diálogo Adicionar Novo Item](localization/_static/res.png)
 
-1. Insira o valor da chave (cadeia de caracteres nativa) na coluna **Nome** e a cadeia de caracteres traduzida na coluna **Valor**.
+1. Insira o valor da chave (cadeia de caracteres nativa) na coluna **Nome** e a cadeia de caracteres traduzida na coluna **Valor** .
 
    ![Arquivo Welcome.es.resx (o arquivo de recurso Welcome em espanhol) com a palavra Hello na coluna Nome e a palavra Hola (Olá, em espanhol) na coluna valor](localization/_static/hola.png)
 
-   O Visual Studio mostra o arquivo *Welcome.es.resx*.
+   O Visual Studio mostra o arquivo *Welcome.es.resx* .
 
    ![Gerenciador de Soluções mostrando o arquivo de recurso Welcome em espanhol (es)](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>Nomenclatura do arquivo de recurso
 
-Os recursos são nomeados com o nome completo do tipo de sua classe menos o nome do assembly. Por exemplo, um recurso em francês em um projeto cujo assembly principal é `LocalizationWebsite.Web.dll` para a classe `LocalizationWebsite.Web.Startup` será nomeado *Startup.fr.resx*. Um recurso para a classe `LocalizationWebsite.Web.Controllers.HomeController` será nomeado *Controllers.HomeController.fr.resx*. Se o namespace da classe de destino não for o mesmo que o nome do assembly, você precisará do nome completo do tipo. Por exemplo, no projeto de exemplo, um recurso para o tipo `ExtraNamespace.Tools` será nomeado *ExtraNamespace.Tools.fr.resx*.
+Os recursos são nomeados com o nome completo do tipo de sua classe menos o nome do assembly. Por exemplo, um recurso em francês em um projeto cujo assembly principal é `LocalizationWebsite.Web.dll` para a classe `LocalizationWebsite.Web.Startup` será nomeado *Startup.fr.resx* . Um recurso para a classe `LocalizationWebsite.Web.Controllers.HomeController` será nomeado *Controllers.HomeController.fr.resx* . Se o namespace da classe de destino não for o mesmo que o nome do assembly, você precisará do nome completo do tipo. Por exemplo, no projeto de exemplo, um recurso para o tipo `ExtraNamespace.Tools` será nomeado *ExtraNamespace.Tools.fr.resx* .
 
-No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` como "Resources", de modo que o caminho relativo do projeto para o arquivo de recurso em francês do controlador principal seja *Resources/Controllers.HomeController.fr.resx*. Como alternativa, você pode usar pastas para organizar arquivos de recurso. Para o controlador principal, o caminho será *Resources/Controllers/HomeController.fr.resx*. Se você não usar a opção `ResourcesPath`, o arquivo *.resx* entrará no diretório base do projeto. O arquivo de recurso para `HomeController` será nomeado *Controllers.HomeController.fr.resx*. A opção de usar a convenção de nomenclatura de ponto ou caminho depende de como você deseja organizar os arquivos de recurso.
+No projeto de exemplo, o método `ConfigureServices` define o `ResourcesPath` como "Resources", de modo que o caminho relativo do projeto para o arquivo de recurso em francês do controlador principal seja *Resources/Controllers.HomeController.fr.resx* . Como alternativa, você pode usar pastas para organizar arquivos de recurso. Para o controlador principal, o caminho será *Resources/Controllers/HomeController.fr.resx* . Se você não usar a opção `ResourcesPath`, o arquivo *.resx* entrará no diretório base do projeto. O arquivo de recurso para `HomeController` será nomeado *Controllers.HomeController.fr.resx* . A opção de usar a convenção de nomenclatura de ponto ou caminho depende de como você deseja organizar os arquivos de recurso.
 
 | Nome do recurso | Nomenclatura de ponto ou caminho |
 | ------------   | ------------- |
@@ -921,11 +922,11 @@ Por exemplo, se você remover o designador de cultura ".fr" e tiver a cultura de
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Gerar arquivos de recurso com o Visual Studio
 
-Se você criar um arquivo de recurso no Visual Studio sem uma cultura no nome do arquivo (por exemplo, *Welcome.resx*), o Visual Studio criará uma classe do C# com uma propriedade para cada cadeia de caracteres. Geralmente isso não é o desejado com o ASP.NET Core. Normalmente você não tem um arquivo de recurso *.resx* padrão (um arquivo *.resx* sem o nome de cultura). Sugerimos que você crie o arquivo *.resx* com um nome de cultura (por exemplo *Welcome.fr.resx*). Quando você criar um arquivo *.resx* com um nome de cultura, o Visual Studio não gerará o arquivo de classe.
+Se você criar um arquivo de recurso no Visual Studio sem uma cultura no nome do arquivo (por exemplo, *Welcome.resx* ), o Visual Studio criará uma classe do C# com uma propriedade para cada cadeia de caracteres. Geralmente isso não é o desejado com o ASP.NET Core. Normalmente você não tem um arquivo de recurso *.resx* padrão (um arquivo *.resx* sem o nome de cultura). Sugerimos que você crie o arquivo *.resx* com um nome de cultura (por exemplo *Welcome.fr.resx* ). Quando você criar um arquivo *.resx* com um nome de cultura, o Visual Studio não gerará o arquivo de classe.
 
 ### <a name="add-other-cultures"></a>Adicionar outras culturas
 
-Cada combinação de idioma e cultura (que não seja o idioma padrão) exige um arquivo de recurso exclusivo. Crie arquivos de recurso para diferentes culturas e localidades criando novos arquivos de recurso, nos quais os códigos ISO e de idioma fazem parte do nome do arquivo (por exemplo, **en-us**, **fr-ca** e **en-gb**). Esses códigos ISO são colocados entre o nome do arquivo e a extensão de arquivo *.resx*, como em *Welcome.es-MX.resx* (espanhol/México).
+Cada combinação de idioma e cultura (que não seja o idioma padrão) exige um arquivo de recurso exclusivo. Crie arquivos de recurso para diferentes culturas e localidades criando novos arquivos de recurso, nos quais os códigos ISO e de idioma fazem parte do nome do arquivo (por exemplo, **en-us** , **fr-ca** e **en-gb** ). Esses códigos ISO são colocados entre o nome do arquivo e a extensão de arquivo *.resx* , como em *Welcome.es-MX.resx* (espanhol/México).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implementar uma estratégia para selecionar o idioma e a cultura para cada solicitação
 
@@ -937,7 +938,7 @@ A localização é configurada no método `Startup.ConfigureServices`:
 
 * `AddLocalization` Adiciona os serviços de localização ao contêiner de serviços. O código acima também define o caminho de recursos como "Resources".
 
-* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml*.
+* `AddViewLocalization` Adiciona suporte para arquivos de exibição localizados. Nesta amostra, a localização de exibição se baseia no sufixo do arquivo de exibição. Por exemplo, "fr" no arquivo *Index.fr.cshtml* .
 
 * `AddDataAnnotationsLocalization` Adiciona suporte para mensagens de validação localizadas `DataAnnotations` por meio de `IStringLocalizer` abstrações.
 
@@ -959,7 +960,7 @@ A lista padrão é apresentada do mais específico ao menos específico. Mais ad
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <xref:System.Globalization.CultureInfo> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de aceitação de idioma, a adição de uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
+Alguns aplicativos usarão uma cadeia de caracteres de consulta para definir o <xref:System.Globalization.CultureInfo> . Para aplicativos que usam a cookie abordagem de cabeçalho ou de Accept-Language, adicionar uma cadeia de caracteres de consulta à URL é útil para depuração e teste de código. Por padrão, o `QueryStringRequestCultureProvider` é registrado como o primeiro provedor de localização na lista `RequestCultureProvider`. Passe os parâmetros `culture` e `ui-culture` da cadeia de caracteres de consulta. O seguinte exemplo define a cultura específica (idioma e região) como espanhol/México:
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX
@@ -991,19 +992,19 @@ O [cabeçalho Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 ### <a name="set-the-accept-language-http-header-in-ie"></a>Definir o cabeçalho HTTP Accept-Language no IE
 
-1. No ícone de engrenagem, toque em **Opções da Internet**.
+1. No ícone de engrenagem, toque em **Opções da Internet** .
 
-1. Toque em **Idiomas**.
+1. Toque em **Idiomas** .
 
    ![Opções da Internet](localization/_static/lang.png)
 
-1. Toque em **Definir Preferências de Idioma**.
+1. Toque em **Definir Preferências de Idioma** .
 
-1. Toque em **Adicionar um idioma**.
+1. Toque em **Adicionar um idioma** .
 
 1. Adicione o idioma.
 
-1. Toque no idioma e, em seguida, em **Mover Para Cima**.
+1. Toque no idioma e, em seguida, em **Mover Para Cima** .
 
 ### <a name="the-content-language-http-header"></a>O cabeçalho HTTP do idioma do conteúdo
 

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: fa4e7489920338344b78874690e64d4080b5a719
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 45e2a1a5e6a9f00294147db769454b78c5b866e5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805577"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059930"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>Criar APIs da Web JSON do gRPC
 
@@ -38,7 +39,7 @@ Por [James Newton – King](https://twitter.com/jamesnk)
 
 o gRPC é uma maneira moderna de se comunicar entre aplicativos. o gRPC usa HTTP/2, transmissão, Protobuf e contratos de mensagem para criar serviços de alto desempenho e em tempo real.
 
-Uma limitação com o gRPC não é cada plataforma que pode usá-lo. Os navegadores não dão suporte total a HTTP/2, tornando REST e JSON a maneira primária de obter dados em aplicativos de navegador. Mesmo com os benefícios que o gRPC traz, REST e JSON têm um lugar importante em aplicativos modernos. A criação ***de*** APIs Web gRPC e JSON adiciona sobrecarga indesejada ao desenvolvimento de aplicativos.
+Uma limitação com o gRPC não é cada plataforma que pode usá-lo. Os navegadores não dão suporte total a HTTP/2, tornando REST e JSON a maneira primária de obter dados em aplicativos de navegador. Mesmo com os benefícios que o gRPC traz, REST e JSON têm um lugar importante em aplicativos modernos. A criação de APIs Web gRPC * **e** _ JSON adiciona sobrecarga indesejada ao desenvolvimento de aplicativos.
 
 Este documento discute como criar APIs Web JSON usando os serviços gRPCs.
 
@@ -46,7 +47,7 @@ Este documento discute como criar APIs Web JSON usando os serviços gRPCs.
 
 a API HTTP gRPC é uma extensão experimental para ASP.NET Core que cria APIs JSON de RESTful para serviços gRPCs. Uma vez configurado, a API HTTP gRPC permite que os aplicativos chamem os serviços gRPC com conceitos HTTP familiares:
 
-* Verbos HTTP
+_ Verbos HTTP
 * Associação de parâmetro de URL
 * Solicitações/respostas JSON
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: eeddc75e7bcf368b476f62900c14575c9937e1f7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 733afec8d3253ec58a7edf6d7fcf35e303a7fe57
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631518"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060320"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Manter declarações e tokens adicionais de provedores externos no ASP.NET Core
 
@@ -79,7 +80,7 @@ O aplicativo de exemplo cria `urn:google:locale` declarações de localidade () 
 
 No `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` , um <xref:Microsoft.AspNetCore.Identity.IdentityUser> ( `ApplicationUser` ) é conectado ao aplicativo com <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . Durante o processo de entrada, o <xref:Microsoft.AspNetCore.Identity.UserManager%601> pode armazenar uma `ApplicationUser` declaração de dados do usuário disponível no <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-No aplicativo de exemplo, `OnPostConfirmationAsync` (*Account/ExternalLogin. cshtml. cs*) estabelece as declarações de locale ( `urn:google:locale` ) e Picture ( `urn:google:picture` ) para o conectado `ApplicationUser` , incluindo uma declaração para <xref:System.Security.Claims.ClaimTypes.GivenName> :
+No aplicativo de exemplo, `OnPostConfirmationAsync` ( *Account/ExternalLogin. cshtml. cs* ) estabelece as declarações de locale ( `urn:google:locale` ) e Picture ( `urn:google:picture` ) para o conectado `ApplicationUser` , incluindo uma declaração para <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -103,7 +104,7 @@ O aplicativo de exemplo define o valor de `SaveTokens` para `true` em <xref:Micr
 
 Quando `OnPostConfirmationAsync` o é executado, armazene o token de acesso ([ExternalLoginInfo. AuthenticationTokens](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) do provedor externo `ApplicationUser` no `AuthenticationProperties` .
 
-O aplicativo de exemplo salva o token de acesso em `OnPostConfirmationAsync` (novo registro de usuário) e `OnGetCallbackAsync` (usuário registrado anteriormente) em *Account/ExternalLogin. cshtml. cs*:
+O aplicativo de exemplo salva o token de acesso em `OnPostConfirmationAsync` (novo registro de usuário) e `OnGetCallbackAsync` (usuário registrado anteriormente) em *Account/ExternalLogin. cshtml. cs* :
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 
@@ -219,7 +220,7 @@ O aplicativo de exemplo cria `urn:google:locale` declarações de localidade () 
 
 No `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` , um <xref:Microsoft.AspNetCore.Identity.IdentityUser> ( `ApplicationUser` ) é conectado ao aplicativo com <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . Durante o processo de entrada, o <xref:Microsoft.AspNetCore.Identity.UserManager%601> pode armazenar uma `ApplicationUser` declaração de dados do usuário disponível no <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-No aplicativo de exemplo, `OnPostConfirmationAsync` (*Account/ExternalLogin. cshtml. cs*) estabelece as declarações de locale ( `urn:google:locale` ) e Picture ( `urn:google:picture` ) para o conectado `ApplicationUser` , incluindo uma declaração para <xref:System.Security.Claims.ClaimTypes.GivenName> :
+No aplicativo de exemplo, `OnPostConfirmationAsync` ( *Account/ExternalLogin. cshtml. cs* ) estabelece as declarações de locale ( `urn:google:locale` ) e Picture ( `urn:google:picture` ) para o conectado `ApplicationUser` , incluindo uma declaração para <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -243,7 +244,7 @@ O aplicativo de exemplo define o valor de `SaveTokens` para `true` em <xref:Micr
 
 Quando `OnPostConfirmationAsync` o é executado, armazene o token de acesso ([ExternalLoginInfo. AuthenticationTokens](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) do provedor externo `ApplicationUser` no `AuthenticationProperties` .
 
-O aplicativo de exemplo salva o token de acesso em `OnPostConfirmationAsync` (novo registro de usuário) e `OnGetCallbackAsync` (usuário registrado anteriormente) em *Account/ExternalLogin. cshtml. cs*:
+O aplicativo de exemplo salva o token de acesso em `OnPostConfirmationAsync` (novo registro de usuário) e `OnGetCallbackAsync` (usuário registrado anteriormente) em *Account/ExternalLogin. cshtml. cs* :
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 

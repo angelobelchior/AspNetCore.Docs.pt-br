@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 46fa3138e3fbcc4ed5e4497ec017a5873a4cdb13
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: b009cc61a94e618a48d96ecbd770ef6371308f6a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754652"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059839"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Referência de erros comuns para o Serviço de Aplicativo do Azure e o IIS com o ASP.NET Core
 
@@ -39,7 +40,7 @@ Colete as seguintes informações:
 * Entradas do Log de Eventos do Aplicativo
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
   * IIS
-    1. Selecione **Iniciar** no menu **Windows**, digite *Visualizador de Eventos* e pressione **Enter**.
+    1. Selecione **Iniciar** no menu **Windows** , digite *Visualizador de Eventos* e pressione **Enter** .
     1. Após o **Visualizador de Eventos** ser aberto, expanda **Logs do Windows** > **Aplicativo** na barra lateral.
 * Entradas do log de depuração e stdout do Módulo do ASP.NET Core
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
@@ -63,7 +64,7 @@ Arquivos que não são do sistema operacional no diretório **C:\Windows\SysWOW6
 
 *Aplica-se aos aplicativos hospedados pelos Serviços de Aplicativo do Azure.*
 
-* **Navegador:** Erro HTTP 500,0-ANCM falha no carregamento do manipulador em processo
+* **Navegador:** Erro HTTP 500,0-falha no carregamento do manipulador de In-Process ANCM
 
 * **Log do aplicativo:** Invocar hostfxr para localizar o manipulador de solicitação de inprocesso falhou sem encontrar nenhuma dependência nativa. Não foi possível localizar o manipulador de solicitação inprocess. Saída capturada de invocação de hostfxr: não foi possível encontrar nenhuma versão de estrutura compatível. A estrutura especificada 'Microsoft.AspNetCore.App', versão '{VERSION}-preview-\*' não foi encontrada. Falha ao iniciar o aplicativo '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'.
 
@@ -90,7 +91,7 @@ Para obter mais informações, consulte <xref:host-and-deploy/azure-apps/index#i
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>Um aplicativo x86 é implantado, mas o pool de aplicativos não está habilitado para aplicativos de 32 bits
 
-* **Navegador:** Erro HTTP 500,30-ANCM falha no início do processo
+* **Navegador:** Erro HTTP 500,30-ANCM In-Process falha de inicialização
 
 * **Log do aplicativo:** O aplicativo '/LM/W3SVC/5/ROOT ' com a raiz física ' {PATH} ' atingiu uma exceção gerenciada inesperada, código de exceção = ' 0xe0434352 '. Verifique os logs de stderr para obter mais informações. Aplicativo '/LM/W3SVC/5/ROOT' com raiz física '{PATH}' falhou ao carregar o clr e o aplicativo gerenciado. O thread de trabalho do CLR foi encerrado prematuramente
 
@@ -102,7 +103,7 @@ Esse cenário é interceptado pelo SDK ao publicar um aplicativo autocontido. O 
 
 Solucionar problemas:
 
-Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro**.
+Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro** .
 
 ## <a name="platform-conflicts-with-rid"></a>Conflitos de plataforma com o RID
 
@@ -132,7 +133,7 @@ Solucionar problemas:
 
 * Confirme se o ponto de extremidade do URI correto para o aplicativo está sendo usado. Verifique as associações.
 
-* Confirme que o site do IIS não está no estado *Parado*.
+* Confirme que o site do IIS não está no estado *Parado* .
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>Recursos do servidor CoreWebEngine ou W3SVC desabilitados
 
@@ -176,7 +177,7 @@ Solucionar problemas:
 
   Para obter mais informações, confira [Instalar o pacote de hospedagem do .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity ** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
+* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
 
 * Se você desinstalou o Pacote de Hospedagem do ASP.NET Core e instalou uma versão anterior do pacote de hospedagem, o arquivo *applicationHost.config* não inclui uma seção para o Módulo do ASP.NET Core. Abra *applicationHost.config* em *%windir%/System32/inetsrv/config* e encontre o grupo de seção `<configuration><configSections><sectionGroup name="system.webServer">`. Se estiver faltando a seção do Módulo do ASP.NET Core no grupo de seções, adicione o elemento da seção:
 
@@ -188,7 +189,7 @@ Solucionar problemas:
 
 ## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>processPath incorreto, variável de PATH ausente, pacote de hospedagem não instalado, sistema/IIS não reiniciado, Pacotes Redistribuíveis do VC++ não instalados ou violação de acesso de dotnet.exe
 
-* **Navegador:** Erro HTTP 500,0-ANCM falha no carregamento do manipulador em processo
+* **Navegador:** Erro HTTP 500,0-falha no carregamento do manipulador de In-Process ANCM
 
 * **Log do aplicativo:** O aplicativo ' MACHINE/WEBROOT/APPHOST/{ASSEMBLY} ' com a raiz física ' C: \{ Path} \' falhou ao iniciar o processo com linha de comando ' "{...}" ', ErrorCode = ' 0x80070002:0. Não foi possível iniciar o aplicativo '{PATH}'. O executável não foi encontrado em '{PATH}'. Falha ao iniciar o aplicativo '/LM/W3SVC/2/ROOT', ErrorCode '0x8007023e'.
 
@@ -204,7 +205,7 @@ Solucionar problemas:
 
 * Para uma FDD, o *dotnet.exe* pode não estar acessível por meio das configurações de PATH. Confirme se *C:\Arquivos de Programas\dotnet\\* existe nas configurações de PATH do Sistema.
 
-* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet*. Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
+* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet* . Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
 
 * Talvez você tenha implantado uma FDD e instalado o .NET Core sem reiniciar o IIS. Reinicie o servidor ou o IIS executando **net stop was /y** seguido por **net start w3svc** em um prompt de comando.
 
@@ -218,7 +219,7 @@ Solucionar problemas:
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>Argumentos incorretos do \<aspNetCore> elemento
 
-* **Navegador:** Erro HTTP 500,0-ANCM falha no carregamento do manipulador em processo
+* **Navegador:** Erro HTTP 500,0-falha no carregamento do manipulador de In-Process ANCM
 
 * **Log do aplicativo:** Invocar hostfxr para localizar o manipulador de solicitação de inprocesso falhou sem encontrar nenhuma dependência nativa. Isso provavelmente significa que o aplicativo está configurado incorretamente, verifique as versões do Microsoft.NetCore.App e Microsoft.AspNetCore.App que são afetadas pelo aplicativo e estão instaladas no computador. Não foi possível localizar o manipulador de solicitação inprocess. Saída capturada da invocação de hostfxr: você pretendia executar comandos do SDK dotnet? Instale o SDK dotNet de: https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409 falha ao iniciar o aplicativo '/LM/W3SVC/3/root ', ErrorCode ' 0x8000ffff '.
 
@@ -234,7 +235,7 @@ Solucionar problemas:
 
 ## <a name="missing-net-core-shared-framework"></a>Estrutura compartilhada do .NET Core ausente
 
-* **Navegador:** Erro HTTP 500,0-ANCM falha no carregamento do manipulador em processo
+* **Navegador:** Erro HTTP 500,0-falha no carregamento do manipulador de In-Process ANCM
 
 * **Log do aplicativo:** Invocar hostfxr para localizar o manipulador de solicitação de inprocesso falhou sem encontrar nenhuma dependência nativa. Isso provavelmente significa que o aplicativo está configurado incorretamente, verifique as versões do Microsoft.NetCore.App e Microsoft.AspNetCore.App que são afetadas pelo aplicativo e estão instaladas no computador. Não foi possível localizar o manipulador de solicitação inprocess. Saída capturada de invocação de hostfxr: não foi possível encontrar nenhuma versão de estrutura compatível. A estrutura especificada 'Microsoft.AspNetCore.App', versão '{VERSION}', não foi encontrada.
 
@@ -260,7 +261,7 @@ Para uma FDD (implantação dependente de estrutura), confirme se você tem o ru
 
 Solucionar problemas:
 
-Confirme que o Pool de Aplicativos não está no estado *Parado*.
+Confirme que o Pool de Aplicativos não está no estado *Parado* .
 
 ## <a name="sub-application-includes-a-handlers-section"></a>O subaplicativo inclui uma \<handlers> seção
 
@@ -296,7 +297,7 @@ Solucionar problemas:
 
 ## <a name="application-configuration-general-issue"></a>Problema geral de configuração do aplicativo
 
-* **Navegador:** Erro HTTP 500,0-ANCM falha no carregamento do manipulador em processo **--ou--** erro http 500,30-ANCM falha no processo de inicialização
+* **Navegador:** Erro HTTP 500,0-ANCM In-Process falha no carregamento do manipulador **--ou--** erro http 500,30-ANCM In-Process falha de inicialização
 
 * **Log do aplicativo:** Ela
 
@@ -308,7 +309,7 @@ Solucionar problemas:
 
 O processo não pôde ser iniciado, provavelmente, devido a um problema de programação ou configuração do aplicativo.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * <xref:test/troubleshoot-azure-iis>
 * <xref:test/troubleshoot>
@@ -327,7 +328,7 @@ Colete as seguintes informações:
 * Entradas do Log de Eventos do Aplicativo
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
   * IIS
-    1. Selecione **Iniciar** no menu **Windows**, digite *Visualizador de Eventos* e pressione **Enter**.
+    1. Selecione **Iniciar** no menu **Windows** , digite *Visualizador de Eventos* e pressione **Enter** .
     1. Após o **Visualizador de Eventos** ser aberto, expanda **Logs do Windows** > **Aplicativo** na barra lateral.
 * Entradas do log de depuração e stdout do Módulo do ASP.NET Core
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
@@ -351,7 +352,7 @@ Arquivos que não são do sistema operacional no diretório **C:\Windows\SysWOW6
 
 *Aplica-se aos aplicativos hospedados pelos Serviços de Aplicativo do Azure.*
 
-* **Navegador:** Erro HTTP 500,0-ANCM falha no carregamento do manipulador em processo
+* **Navegador:** Erro HTTP 500,0-falha no carregamento do manipulador de In-Process ANCM
 
 * **Log do aplicativo:** Invocar hostfxr para localizar o manipulador de solicitação de inprocesso falhou sem encontrar nenhuma dependência nativa. Não foi possível localizar o manipulador de solicitação inprocess. Saída capturada de invocação de hostfxr: não foi possível encontrar nenhuma versão de estrutura compatível. A estrutura especificada 'Microsoft.AspNetCore.App', versão '{VERSION}-preview-\*' não foi encontrada. Falha ao iniciar o aplicativo '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'.
 
@@ -376,7 +377,7 @@ Para obter mais informações, consulte <xref:host-and-deploy/azure-apps/index#i
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>Um aplicativo x86 é implantado, mas o pool de aplicativos não está habilitado para aplicativos de 32 bits
 
-* **Navegador:** Erro HTTP 500,30-ANCM falha no início do processo
+* **Navegador:** Erro HTTP 500,30-ANCM In-Process falha de inicialização
 
 * **Log do aplicativo:** O aplicativo '/LM/W3SVC/5/ROOT ' com a raiz física ' {PATH} ' atingiu uma exceção gerenciada inesperada, código de exceção = ' 0xe0434352 '. Verifique os logs de stderr para obter mais informações. Aplicativo '/LM/W3SVC/5/ROOT' com raiz física '{PATH}' falhou ao carregar o clr e o aplicativo gerenciado. O thread de trabalho do CLR foi encerrado prematuramente
 
@@ -386,7 +387,7 @@ Esse cenário é interceptado pelo SDK ao publicar um aplicativo autocontido. O 
 
 Solucionar problemas:
 
-Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro**.
+Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro** .
 
 ## <a name="platform-conflicts-with-rid"></a>Conflitos de plataforma com o RID
 
@@ -414,7 +415,7 @@ Solucionar problemas:
 
 * Confirme se o ponto de extremidade do URI correto para o aplicativo está sendo usado. Verifique as associações.
 
-* Confirme que o site do IIS não está no estado *Parado*.
+* Confirme que o site do IIS não está no estado *Parado* .
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>Recursos do servidor CoreWebEngine ou W3SVC desabilitados
 
@@ -454,7 +455,7 @@ Solucionar problemas:
 
   Para obter mais informações, confira [Instalar o pacote de hospedagem do .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity ** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
+* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
 
 * Se você desinstalou o Pacote de Hospedagem do ASP.NET Core e instalou uma versão anterior do pacote de hospedagem, o arquivo *applicationHost.config* não inclui uma seção para o Módulo do ASP.NET Core. Abra *applicationHost.config* em *%windir%/System32/inetsrv/config* e encontre o grupo de seção `<configuration><configSections><sectionGroup name="system.webServer">`. Se estiver faltando a seção do Módulo do ASP.NET Core no grupo de seções, adicione o elemento da seção:
 
@@ -480,7 +481,7 @@ Solucionar problemas:
 
 * Para uma FDD, o *dotnet.exe* pode não estar acessível por meio das configurações de PATH. Confirme se *C:\Arquivos de Programas\dotnet\\* existe nas configurações de PATH do Sistema.
 
-* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet*. Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
+* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet* . Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
 
 * Talvez você tenha implantado uma FDD e instalado o .NET Core sem reiniciar o IIS. Reinicie o servidor ou o IIS executando **net stop was /y** seguido por **net start w3svc** em um prompt de comando.
 
@@ -520,7 +521,7 @@ Para uma FDD (implantação dependente de estrutura), confirme se você tem o ru
 
 Solucionar problemas:
 
-Confirme que o Pool de Aplicativos não está no estado *Parado*.
+Confirme que o Pool de Aplicativos não está no estado *Parado* .
 
 ## <a name="sub-application-includes-a-handlers-section"></a>O subaplicativo inclui uma \<handlers> seção
 
@@ -560,7 +561,7 @@ Solucionar problemas:
 
 O processo não pôde ser iniciado, provavelmente, devido a um problema de programação ou configuração do aplicativo.
 
-Para obter mais informações, consulte estes tópicos:
+Para mais informações, consulte os seguintes tópicos:
 
 * <xref:test/troubleshoot-azure-iis>
 * <xref:test/troubleshoot>

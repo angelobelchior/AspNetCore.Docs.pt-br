@@ -5,6 +5,7 @@ description: Parte 4 de Razor páginas e Entity Framework série de tutoriais.
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 78eb466fcfeb130e411df490f033114b3fdebeef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: e6d1b9f041e892aaa37840c28fdb3153bf098b0d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722625"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061100"
 ---
 # <a name="part-4-no-locrazor-pages-with-ef-core-migrations-in-aspnet-core"></a>Parte 4, Razor páginas com EF Core migrações no ASP.NET Core
 
@@ -45,7 +46,7 @@ Em vez de remover e recriar o banco de dados quando o modelo de dados é alterad
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Use o SSOX **(Pesquisador de Objetos do SQL Server)** para excluir o banco de dados ou execute o seguinte comando no PMC **(Console do Gerenciador de Pacotes)**:
+Use o SSOX **(Pesquisador de Objetos do SQL Server)** para excluir o banco de dados ou execute o seguinte comando no PMC **(Console do Gerenciador de Pacotes)** :
 
 ```powershell
 Drop-Database
@@ -59,7 +60,7 @@ Drop-Database
   dotnet tool install --global dotnet-ef
   ```
 
-* No prompt de comando, navegue até a pasta do projeto. A pasta do projeto contém o arquivo *ContosoUniversity.csproj*.
+* No prompt de comando, navegue até a pasta do projeto. A pasta do projeto contém o arquivo *ContosoUniversity.csproj* .
 
 * Exclua o arquivo *CU.db* ou execute o seguinte comando:
 
@@ -113,7 +114,7 @@ O parâmetro de nome da migração ("InitialCreate" no exemplo) é usado para o 
 
 ## <a name="the-data-model-snapshot"></a>O instantâneo do modelo de dados
 
-As migrações criam um *instantâneo* do modelo de dados atual em *Migrations/SchoolContextModelSnapshot.cs*. Quando você adiciona uma migração, o EF determina o que foi alterado, comparando o modelo de dados atual com o arquivo de instantâneo.
+As migrações criam um *instantâneo* do modelo de dados atual em *Migrations/SchoolContextModelSnapshot.cs* . Quando você adiciona uma migração, o EF determina o que foi alterado, comparando o modelo de dados atual com o arquivo de instantâneo.
 
 Como o arquivo de instantâneo rastreia o estado do modelo de dados, não é possível excluir uma migração excluindo o arquivo `<timestamp>_<migrationname>.cs`. Para fazer backup da migração mais recente, você precisa usar o comando `migrations remove`. Esse comando exclui a migração e garante que o instantâneo seja redefinido corretamente. Para obter mais informações, consulte [dotnet EF migrações remover](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove).
 
@@ -123,7 +124,7 @@ Esta série de tutoriais começou usando o `EnsureCreated`. O `EnsureCreated` n�
 
 Deste ponto em diante, os tutoriais usarão as migrações.
 
-Em *data/DBInitializer.cs*, comente a seguinte linha:
+Em *data/DBInitializer.cs* , comente a seguinte linha:
 
 ```csharp
 context.Database.EnsureCreated();
@@ -199,7 +200,7 @@ Execute `Get-Help about_EntityFrameworkCore` no PMC para obter informações de 
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *Startup.cs*.
+Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *Startup.cs* .
 
 Insira o seguinte na janela Comando:
 
@@ -250,7 +251,7 @@ Anteriormente, o BD foi removido, e não existe mais. Então, as migrações cri
 
 ### <a name="the-data-model-snapshot"></a>O instantâneo do modelo de dados
 
-As migrações criam um *instantâneo* do esquema de banco de dados atual em *Migrations/SchoolContextModelSnapshot.cs*. Quando você adiciona uma migração, o EF determina o que foi alterado, comparando o modelo de dados com o arquivo de instantâneo.
+As migrações criam um *instantâneo* do esquema de banco de dados atual em *Migrations/SchoolContextModelSnapshot.cs* . Quando você adiciona uma migração, o EF determina o que foi alterado, comparando o modelo de dados com o arquivo de instantâneo.
 
 Para excluir uma migração, use o seguinte comando:
 

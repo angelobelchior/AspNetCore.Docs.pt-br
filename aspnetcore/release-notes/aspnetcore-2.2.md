@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 085a26d508af5bdce506ab923a3256046b3894ab
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 67581904c686b0f8b6736b751c8e3f1545f6a286
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722482"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059696"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Novidades do ASP.NET Core 2.2
 
@@ -32,7 +33,7 @@ Este artigo destaca as alterações mais significativas no ASP.NET Core 2.2, com
 
 O Open API (anteriormente conhecido como Swagger) é uma especificação independente de linguagem para descrever APIs REST. O ecossistema do Open API tem ferramentas que permitem descobrir, testar e produzir o código do cliente usando a especificação. O suporte para gerar e visualizar documentos do OpenAPI no ASP.NET Core MVC é fornecido por meio de projetos orientados pela Comunidade, como [NSwag](https://github.com/RicoSuter/NSwag) e [swashbuckle. AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). O ASP.NET Core 2.2 fornece ferramentas e experiências de runtime aprimoradas para a criação de documentos do OpenAPI.
 
-Para saber mais, consulte os recursos a seguir:
+Para obter mais informações, consulte os seguintes recursos:
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
@@ -46,10 +47,10 @@ O ASP.NET Core 2.1 introduziu o `ProblemDetails`, com base na especificação [R
 
 O ASP.NET Core 2.2 usa um novo sistema de *roteamento de ponto de extremidade* para expedição aprimorada de solicitações. As alterações incluem novos membros da API de geração de link e transformadores de parâmetro de rota.
 
-Para saber mais, consulte os recursos a seguir:
+Para obter mais informações, consulte os seguintes recursos:
 
 * [Roteamento de ponto de extremidade no 2.2](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/)
-* [Transformadores de parâmetro de rota](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (confira a seção **Roteamento**)
+* [Transformadores de parâmetro de rota](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (confira a seção **Roteamento** )
 * [Diferenças entre o roteamento baseado em IRouter e em ponto de extremidade](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
 ## <a name="health-checks"></a>Verificações de integridade
@@ -79,14 +80,14 @@ Para obter mais informações, confira [Suporte ao HTTP/2](xref:fundamentals/ser
 
 ## <a name="kestrel-configuration"></a>Configuração do Kestrel
 
-Em versões anteriores do ASP.NET Core, as opções do Kestrel são configuradas por meio da chamada a `UseKestrel`. No 2.2, as opções do Kestrel são configuradas por meio da chamada a `ConfigureKestrel` no construtor do host. Essa alteração resolve um problema com a ordem dos registros `IServer` para a hospedagem em processo. Para saber mais, consulte os recursos a seguir:
+Em versões anteriores do ASP.NET Core, as opções do Kestrel são configuradas por meio da chamada a `UseKestrel`. No 2.2, as opções do Kestrel são configuradas por meio da chamada a `ConfigureKestrel` no construtor do host. Essa alteração resolve um problema com a ordem dos registros `IServer` para a hospedagem em processo. Para obter mais informações, consulte os seguintes recursos:
 
 * [Atenuar conflitos do UseIIS](https://github.com/aspnet/KestrelHttpServer/issues/2760)
 * [Configurar opções do servidor Kestrel com ConfigureKestrel](xref:fundamentals/servers/kestrel?view=aspnetcore-2.2#how-to-use-kestrel-in-aspnet-core-apps)
 
 ## <a name="iis-in-process-hosting"></a>Hospedagem em processo do IIS
 
-Em versões anteriores do ASP.NET Core, o IIS funciona como um proxy reverso. No 2.2, o Módulo do ASP.NET Core pode inicializar o CoreCLR e hospedar um aplicativo dentro do processo de trabalho do IIS (*w3wp.exe*). A hospedagem em processo fornece ganhos de desempenho e diagnóstico durante a execução com o IIS.
+Em versões anteriores do ASP.NET Core, o IIS funciona como um proxy reverso. No 2.2, o Módulo do ASP.NET Core pode inicializar o CoreCLR e hospedar um aplicativo dentro do processo de trabalho do IIS ( *w3wp.exe* ). A hospedagem em processo fornece ganhos de desempenho e diagnóstico durante a execução com o IIS.
 
 Para obter mais informações, confira [Hospedagem em processo para IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
 

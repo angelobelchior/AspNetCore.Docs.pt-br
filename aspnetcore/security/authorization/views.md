@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/views
-ms.openlocfilehash: 775ebdffe2b0753de18bf07d9ff1193235a45b17
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b3d6e595aa08208f2bf9e95d7070cf9c24802b62
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061321"
 ---
 # <a name="view-based-authorization-in-aspnet-core-mvc"></a>Autorização baseada em exibição no ASP.NET Core MVC
 
@@ -57,4 +58,4 @@ Em alguns casos, o recurso será seu modelo de exibição. Invoque `AuthorizeAsy
 No código anterior, o modelo é passado como um recurso que a avaliação da política deve levar em consideração.
 
 > [!WARNING]
-> Não confie na alternância de visibilidade dos elementos da interface do usuário de seu aplicativo como a única verificação de autorização. Ocultar um elemento de interface do usuário pode não impedir completamente o acesso à sua ação de controlador associada. Por exemplo, considere o botão no trecho de código anterior. Um usuário poderá invocar o `Edit` método de ação se ele souber que a URL de recurso relativa é */Document/Edit/1*. Por esse motivo, o `Edit` método de ação deve executar sua própria verificação de autorização.
+> Não confie na alternância de visibilidade dos elementos da interface do usuário de seu aplicativo como a única verificação de autorização. Ocultar um elemento de interface do usuário pode não impedir completamente o acesso à sua ação de controlador associada. Por exemplo, considere o botão no trecho de código anterior. Um usuário poderá invocar o `Edit` método de ação se ele souber que a URL de recurso relativa é */Document/Edit/1* . Por esse motivo, o `Edit` método de ação deve executar sua própria verificação de autorização.

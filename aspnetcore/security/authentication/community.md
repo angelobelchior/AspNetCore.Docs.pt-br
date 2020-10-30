@@ -5,6 +5,7 @@ description: Descubra as opções de autenticação de código aberto para ASP.N
 ms.author: riande
 ms.date: 10/28/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/community
-ms.openlocfilehash: ae95221850711b4133a0966c0bd787b892135698
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: fcea5384b9f1d9f7e4c5a210dd2ceb7cf2e957ca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627163"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061358"
 ---
 # <a name="community-oss-authentication-options-for-aspnet-core"></a>Opções de autenticação OSS da Comunidade para ASP.NET Core
 

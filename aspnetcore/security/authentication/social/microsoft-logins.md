@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 36341a0e439be57d7da4f787aa6103b92c624e96
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 3161e4f0f735294d69dd51634b424d1ed573e615
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847579"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060294"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Configuração de logon externo da conta da Microsoft com o ASP.NET Core
 
@@ -36,25 +37,25 @@ Este exemplo mostra como permitir que os usuários entrem com seus conta Microso
 * Adicione o pacote NuGet [Microsoft. AspNetCore. Authentication. MicrosoftAccount](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.MicrosoftAccount/) ao projeto.
 * Navegue até a página de [portal do Azure registros de aplicativo](https://go.microsoft.com/fwlink/?linkid=2083908) e crie ou entre em uma conta Microsoft:
 
-Se você não tiver um conta Microsoft, selecione **criar um**. Depois de entrar, você será redirecionado para a página de **registros de aplicativo** :
+Se você não tiver um conta Microsoft, selecione **criar um** . Depois de entrar, você será redirecionado para a página de **registros de aplicativo** :
 
 * Selecionar **novo registro**
-* Insira um **Nome**.
-* Selecione uma opção para **tipos de conta com suporte**.  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts. It took 24 hours after setting this up for the keys to work -->
+* Insira um **Nome** .
+* Selecione uma opção para **tipos de conta com suporte** .  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts. It took 24 hours after setting this up for the keys to work -->
   * O `MicrosoftAccount` pacote dá suporte a registros de aplicativo criados usando as opções "contas em qualquer diretório organizacional" ou "contas em qualquer diretório organizacional e contas da Microsoft" por padrão.
   * Para usar outras opções, defina `AuthorizationEndpoint` e `TokenEndpoint` os membros de `MicrosoftAccountOptions` usados para inicializar a autenticação da conta da Microsoft para as URLs exibidas na página **pontos de extremidade** do registro do aplicativo após sua criação (disponível ao clicar em pontos de extremidade na página **visão geral** ).
-* Em **URI de redirecionamento**, insira a URL de desenvolvimento com `/signin-microsoft` anexado. Por exemplo, `https://localhost:5001/signin-microsoft`. O esquema de autenticação da Microsoft configurado mais adiante neste exemplo tratará automaticamente as solicitações na `/signin-microsoft` rota para implementar o fluxo OAuth.
+* Em **URI de redirecionamento** , insira a URL de desenvolvimento com `/signin-microsoft` anexado. Por exemplo, `https://localhost:5001/signin-microsoft`. O esquema de autenticação da Microsoft configurado mais adiante neste exemplo tratará automaticamente as solicitações na `/signin-microsoft` rota para implementar o fluxo OAuth.
 * Escolha **Registrar**
 
 ### <a name="create-client-secret"></a>Criar segredo do cliente
 
-* No painel esquerdo, selecione **Certificados e segredos**.
-* Em **segredos do cliente**, selecione **novo segredo do cliente**
+* No painel esquerdo, selecione **Certificados e segredos** .
+* Em **segredos do cliente** , selecione **novo segredo do cliente**
 
   * Adicione uma descrição para o segredo do cliente.
-  * Selecione o botão **Adicionar**.
+  * Selecione o botão **Adicionar** .
 
-* Em **segredos do cliente**, copie o valor do segredo do cliente.
+* Em **segredos do cliente** , copie o valor do segredo do cliente.
 
 O segmento URI `/signin-microsoft` é definido como o retorno de chamada padrão do provedor de autenticação da Microsoft. Você pode alterar o URI de retorno de chamada padrão ao configurar o middleware de autenticação da Microsoft por meio da propriedade herdada [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) da classe [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) .
 
@@ -84,7 +85,7 @@ Para obter mais informações sobre as opções de configuração com suporte da
 
 ## <a name="sign-in-with-microsoft-account"></a>Conta de Entrar com a conta da Microsoft
 
-Execute o aplicativo e clique em **fazer logon**. É exibida uma opção para entrar com a Microsoft. Ao clicar em Microsoft, você será redirecionado para a Microsoft para autenticação. Depois de entrar com sua conta da Microsoft, você será solicitado a permitir que o aplicativo acesse suas informações:
+Execute o aplicativo e clique em **fazer logon** . É exibida uma opção para entrar com a Microsoft. Ao clicar em Microsoft, você será redirecionado para a Microsoft para autenticação. Depois de entrar com sua conta da Microsoft, você será solicitado a permitir que o aplicativo acesse suas informações:
 
 Toque em **Sim** e você será Redirecionado de volta para o site da Web onde você pode definir seu email.
 
@@ -99,7 +100,7 @@ Agora você está conectado usando suas credenciais da Microsoft:
 * Se o provedor de conta da Microsoft o redireciona para uma página de erro de entrada, observe os parâmetros título e descrição da cadeia de caracteres de consulta diretamente seguindo o `#` (hashtag) no URI.
 
   Embora a mensagem de erro pareça indicar um problema com a autenticação da Microsoft, a causa mais comum é o URI do aplicativo não corresponder a nenhum dos **URIs de redirecionamento** especificados para a plataforma **da Web** .
-* Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , a tentativa de autenticar resultará em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida*. O modelo de projeto usado neste exemplo garante que isso seja feito.
+* Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , a tentativa de autenticar resultará em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida* . O modelo de projeto usado neste exemplo garante que isso seja feito.
 * Se o banco de dados do site não tiver sido criado aplicando a migração inicial, você obterá *uma operação de banco de dados com falha ao processar o erro de solicitação* . Toque em **aplicar migrações** para criar o banco de dados e atualizar para continuar após o erro.
 
 ## <a name="next-steps"></a>Próximas etapas

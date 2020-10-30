@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 07/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/basics
-ms.openlocfilehash: aacaf9cca131d3fba1c3ae96cf42d51d3fdc17b6
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 4968ac889cd3b4e0780ce73dc729d0107a416932
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945422"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061009"
 ---
 # <a name="grpc-services-with-c"></a>serviços gRPCs com C\#
 
@@ -32,7 +33,7 @@ Este documento descreve os conceitos necessários para escrever aplicativos [gRP
 
 ## <a name="proto-file"></a>arquivo proto
 
-o gRPC usa uma abordagem de primeiro contrato para o desenvolvimento de API. Os buffers de protocolo (protobuf) são usados como a IDL (linguagem de definição de interface) por padrão. O arquivo * \* . proto* contém:
+o gRPC usa uma abordagem de primeiro contrato para o desenvolvimento de API. Os buffers de protocolo (protobuf) são usados como a IDL (linguagem de definição de interface) por padrão. O arquivo *\* . proto* contém:
 
 * A definição do serviço gRPC.
 * As mensagens enviadas entre clientes e servidores.
@@ -50,7 +51,7 @@ Por exemplo, considere o arquivo *Greet. proto* usado em [introdução ao servi�
 
 ## <a name="add-a-proto-file-to-a-c-app"></a>Adicionar um arquivo. proto a um \# aplicativo C
 
-O arquivo * \* . proto* está incluído em um projeto adicionando-o ao `<Protobuf>` grupo de itens:
+O arquivo *\* . proto* está incluído em um projeto adicionando-o ao `<Protobuf>` grupo de itens:
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
@@ -63,7 +64,7 @@ Por padrão, uma `<Protobuf>` referência gera um cliente concreto e uma classe 
 
 ## <a name="c-tooling-support-for-proto-files"></a>Suporte de ferramentas C# para arquivos. proto
 
-O pacote de ferramentas [Grpc. Tools](https://www.nuget.org/packages/Grpc.Tools/) é necessário para gerar os ativos do C# a partir de arquivos * \* . proto* . Os ativos gerados (arquivos):
+O pacote de ferramentas [Grpc. Tools](https://www.nuget.org/packages/Grpc.Tools/) é necessário para gerar os ativos do C# a partir de arquivos *\* . proto* . Os ativos gerados (arquivos):
 
 * São gerados conforme necessário sempre que o projeto é compilado.
 * Não são adicionados ao projeto ou verificados no controle do código-fonte.
@@ -79,7 +80,7 @@ Projetos de cliente devem fazer referência direta ao `Grpc.Tools` lado dos outr
 
 ## <a name="generated-c-assets"></a>Ativos do C# gerados
 
-O pacote de ferramentas gera os tipos de C# que representam as mensagens definidas nos arquivos * \* . proto* incluídos.
+O pacote de ferramentas gera os tipos de C# que representam as mensagens definidas nos arquivos *\* . proto* incluídos.
 
 Para ativos do lado do servidor, um tipo de base de serviço abstrato é gerado. O tipo base contém as definições de todas as chamadas gRPC contidas no arquivo *. proto* . Crie uma implementação de serviço concreto que derive desse tipo base e implemente a lógica para as chamadas gRPC. Para o `greet.proto` , o exemplo descrito anteriormente, um `GreeterBase` tipo abstrato que contém um `SayHello` método virtual é gerado. Uma implementação concreta `GreeterService` substitui o método e implementa a lógica que manipula a chamada gRPC.
 
@@ -89,7 +90,7 @@ Para ativos do lado do cliente, um tipo de cliente concreto é gerado. As chamad
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet)]
 
-Por padrão, os ativos do cliente e do servidor são gerados para cada arquivo * \* . proto* incluído no `<Protobuf>` grupo de itens. Para garantir que apenas os ativos do servidor sejam gerados em um projeto de servidor, o `GrpcServices` atributo é definido como `Server` .
+Por padrão, os ativos do cliente e do servidor são gerados para cada arquivo *\* . proto* incluído no `<Protobuf>` grupo de itens. Para garantir que apenas os ativos do servidor sejam gerados em um projeto de servidor, o `GrpcServices` atributo é definido como `Server` .
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 

@@ -5,6 +5,7 @@ description: Parte 7 de Razor páginas e Entity Framework série de tutoriais.
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 17b200f0ba90035c417c96689798263af16551de
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 3ec88a862697c540a1a98e733c31d76922f81f7c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722813"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060528"
 ---
 # <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>Parte 7, Razor páginas com EF Core no ASP.NET Core dados relacionados à atualização
 
@@ -76,7 +77,7 @@ Atualize *Pages/Courses/Create.cshtml* com o seguinte código:
 
 O código anterior faz as seguintes alterações:
 
-* Altera a legenda de **DepartmentID** para **Departamento**.
+* Altera a legenda de **DepartmentID** para **Departamento** .
 * Substitui `"ViewBag.DepartmentID"` por `DepartmentNameSL` (da classe base).
 * Adiciona a opção "Selecionar Departamento". Essa alteração renderiza "Selecionar Departamento" na lista suspensa quando nenhum departamento foi selecionado ainda, em vez do primeiro departamento.
 * Adiciona uma mensagem de validação quando o departamento não está selecionado.
@@ -104,10 +105,10 @@ Atualize *Pages/Courses/Edit.cshtml* com o seguinte código:
 O código anterior faz as seguintes alterações:
 
 * Exibe a ID do curso. Geralmente, a PK (chave primária) de uma entidade não é exibida. Em geral, PKs não têm sentido para os usuários. Nesse caso, o PK é o número do curso.
-* Altera a legenda da lista suspensa Departamento de **DepartmentID** para **Departamento**.
+* Altera a legenda da lista suspensa Departamento de **DepartmentID** para **Departamento** .
 * Substitui `"ViewBag.DepartmentID"` por `DepartmentNameSL` (da classe base).
 
-A página contém um campo oculto (`<input type="hidden">`) para o número do curso. A adição de um auxiliar de marcação `<label>` com `asp-for="Course.CourseID"` não elimina a necessidade do campo oculto. `<input type="hidden">` é necessário para que o número seja incluído nos dados postados quando o usuário clicar em **Salvar**.
+A página contém um campo oculto (`<input type="hidden">`) para o número do curso. A adição de um auxiliar de marcação `<label>` com `asp-for="Course.CourseID"` não elimina a necessidade do campo oculto. `<input type="hidden">` é necessário para que o número seja incluído nos dados postados quando o usuário clicar em **Salvar** .
 
 ## <a name="update-the-course-details-and-delete-pages"></a>Atualizar as páginas Excluir e Detalhes do Curso
 
@@ -119,7 +120,7 @@ Atualize *Pages/Courses/Delete.cshtml* com o seguinte código para adicionar `As
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Delete.cshtml.cs?highlight=29)]
 
-Faça a mesma alteração no arquivo *Pages/Courses/details.cshtml.cs*:
+Faça a mesma alteração no arquivo *Pages/Courses/details.cshtml.cs* :
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Details.cshtml.cs?highlight=28)]
 
@@ -155,7 +156,7 @@ A classe `AssignedCourseData` contém dados para criar as caixas de seleção pa
 
 ### <a name="create-an-instructor-page-model-base-class"></a>Criar uma classe base de modelo de página do Instrutor
 
-Crie a classe base *Pages/Instructors/InstructorCoursesPageModel.cs*:
+Crie a classe base *Pages/Instructors/InstructorCoursesPageModel.cs* :
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_All)]
 
@@ -293,7 +294,7 @@ Atualize *Pages/Courses/Create.cshtml* com o seguinte código:
 
 A marcação anterior faz as seguintes alterações:
 
-* Altera a legenda de **DepartmentID** para **Departamento**.
+* Altera a legenda de **DepartmentID** para **Departamento** .
 * Substitui `"ViewBag.DepartmentID"` por `DepartmentNameSL` (da classe base).
 * Adiciona a opção "Selecionar Departamento". Essa alteração renderiza "Selecionar Departamento", em vez do departamento primeiro.
 * Adiciona uma mensagem de validação quando o departamento não está selecionado.
@@ -319,10 +320,10 @@ Atualize *Pages/Courses/Edit.cshtml* com a seguinte marcação:
 A marcação anterior faz as seguintes alterações:
 
 * Exibe a ID do curso. Geralmente, a PK (chave primária) de uma entidade não é exibida. Em geral, PKs não têm sentido para os usuários. Nesse caso, o PK é o número do curso.
-* Altera a legenda de **DepartmentID** para **Departamento**.
+* Altera a legenda de **DepartmentID** para **Departamento** .
 * Substitui `"ViewBag.DepartmentID"` por `DepartmentNameSL` (da classe base).
 
-A página contém um campo oculto (`<input type="hidden">`) para o número do curso. A adição de um auxiliar de marcação `<label>` com `asp-for="Course.CourseID"` não elimina a necessidade do campo oculto. `<input type="hidden">` é necessário para que o número seja incluído nos dados postados quando o usuário clicar em **Salvar**.
+A página contém um campo oculto (`<input type="hidden">`) para o número do curso. A adição de um auxiliar de marcação `<label>` com `asp-for="Course.CourseID"` não elimina a necessidade do campo oculto. `<input type="hidden">` é necessário para que o número seja incluído nos dados postados quando o usuário clicar em **Salvar** .
 
 Teste o código atualizado. Crie, edite e exclua um curso.
 
@@ -332,7 +333,7 @@ Teste o código atualizado. Crie, edite e exclua um curso.
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
-Atualize o método `OnGetAsync` no arquivo *Pages/Courses/Details.cshtml.cs*:
+Atualize o método `OnGetAsync` no arquivo *Pages/Courses/Details.cshtml.cs* :
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
@@ -399,7 +400,7 @@ Crie *SchoolViewModels/AssignedCourseData.cs* com o seguinte código:
 
 A classe `AssignedCourseData` contém dados para criar as caixas de seleção para os cursos atribuídos por um instrutor.
 
-Crie a classe base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs*:
+Crie a classe base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs* :
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 
@@ -435,7 +436,7 @@ Atualize o modelo de página Criar instrutor com o seguinte código:
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
-O código anterior é semelhante ao código de *Pages/Instructors/Edit.cshtml.cs*.
+O código anterior é semelhante ao código de *Pages/Instructors/Edit.cshtml.cs* .
 
 Atualize a página Criar do instrutor Razor com a seguinte marcação:
 

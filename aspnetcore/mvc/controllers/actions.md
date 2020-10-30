@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/actions
-ms.openlocfilehash: 9542a7c0fd16c00f46ee69c5873878a7c70ef626
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a9319e74d0213b178c2a71be69a0332270d9446c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630322"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061451"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Tratar solicitações com controladores no ASP.NET Core MVC
 
@@ -31,7 +32,7 @@ Controladores, ações e resultados da ação são uma parte fundamental de como
 
 ## <a name="what-is-a-controller"></a>O que é um controlador?
 
-Um controlador é usado para definir e agrupar um conjunto de ações. Uma ação (ou *método de ação*) é um método em um controlador que manipula solicitações. Os controladores agrupam ações semelhantes de forma lógica. Essa agregação de ações permite que conjuntos de regras comuns, como roteamento, cache e autorização, sejam aplicados em conjunto. As solicitações são mapeadas para ações por meio de [roteamento](xref:mvc/controllers/routing).
+Um controlador é usado para definir e agrupar um conjunto de ações. Uma ação (ou *método de ação* ) é um método em um controlador que manipula solicitações. Os controladores agrupam ações semelhantes de forma lógica. Essa agregação de ações permite que conjuntos de regras comuns, como roteamento, cache e autorização, sejam aplicados em conjunto. As solicitações são mapeadas para ações por meio de [roteamento](xref:mvc/controllers/routing).
 
 Por convenção, as classes do controlador:
 
@@ -48,11 +49,11 @@ Uma classe de controlador não deve ter um atributo `[NonController]` associado.
 
 Os controladores devem seguir o [Princípio de Dependências Explícitas](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies). Há duas abordagens para implementar esse princípio. Se várias ações do controlador exigem o mesmo serviço, considere o uso da [injeção de construtor](xref:mvc/controllers/dependency-injection#constructor-injection) para solicitar essas dependências. Se o serviço é necessário para um único método de ação, considere o uso da [Injeção de Ação](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) para solicitar a dependência.
 
-Dentro do padrão **M**odel-**V**iew-**C**ontroller, um controlador é responsável pelo processamento inicial da solicitação e criação de uma instância do modelo. Em geral, as decisões de negócios devem ser tomadas dentro do modelo.
+Dentro do padrão **M** odel- **V** iew- **C** ontroller, um controlador é responsável pelo processamento inicial da solicitação e criação de uma instância do modelo. Em geral, as decisões de negócios devem ser tomadas dentro do modelo.
 
 O controlador usa o resultado do processamento do modelo (se houver) e retorna a exibição correta e seus dados da exibição associada ou o resultado da chamada à API. Saiba mais em [Visão geral do ASP.NET Core MVC](xref:mvc/overview) e em [Introdução ao ASP.NET Core MVC e ao Visual Studio](xref:tutorials/first-mvc-app/start-mvc).
 
-O controlador é uma abstração no *nível da interface do usuário*. Suas responsabilidades são garantir que os dados de solicitação sejam válidos e escolher qual exibição (ou resultado de uma API) deve ser retornada. Em aplicativos bem fatorados, ele não inclui diretamente o acesso a dados ou a lógica de negócios. Em vez disso, o controlador delega essas responsabilidades a serviços.
+O controlador é uma abstração no *nível da interface do usuário* . Suas responsabilidades são garantir que os dados de solicitação sejam válidos e escolher qual exibição (ou resultado de uma API) deve ser retornada. Em aplicativos bem fatorados, ele não inclui diretamente o acesso a dados ou a lógica de negócios. Em vez disso, o controlador delega essas responsabilidades a serviços.
 
 ## <a name="defining-actions"></a>Como definir ações
 
@@ -60,7 +61,7 @@ Os métodos públicos em um controlador, exceto aqueles com o `[NonAction]` atri
 
 Métodos de ação devem conter uma lógica para mapear uma solicitação para um interesse de negócios. Normalmente, interesses de negócios devem ser representados como serviços acessados pelo controlador por meio da [injeção de dependência](xref:mvc/controllers/dependency-injection). Em seguida, as ações mapeiam o resultado da ação de negócios para um estado do aplicativo.
 
-As ações podem retornar qualquer coisa, mas frequentemente retornam uma instância de `IActionResult` (ou `Task<IActionResult>` para métodos assíncronos) que produz uma resposta. O método de ação é responsável por escolher *o tipo de resposta*. O resultado da ação *é responsável pela resposta*.
+As ações podem retornar qualquer coisa, mas frequentemente retornam uma instância de `IActionResult` (ou `Task<IActionResult>` para métodos assíncronos) que produz uma resposta. O método de ação é responsável por escolher *o tipo de resposta* . O resultado da ação *é responsável pela resposta* .
 
 ### <a name="controller-helper-methods"></a>Métodos auxiliares do controlador
 
@@ -100,13 +101,13 @@ Há dois tipos de resultado nessa categoria: [Exibição](xref:mvc/views/overvie
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. métodos que resultam em um corpo de resposta não vazio formatado em um tipo de conteúdo negociado com o cliente
 
-Essa categoria é mais conhecida como **Negociação de Conteúdo**. A [Negociação de conteúdo](xref:web-api/advanced/formatting#content-negotiation) aplica-se sempre que uma ação retorna um tipo [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) ou algo diferente de uma implementação [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Uma ação que retorna uma implementação não `IActionResult` (por exemplo, `object`) também retorna uma Resposta Formatada.
+Essa categoria é mais conhecida como **Negociação de Conteúdo** . A [Negociação de conteúdo](xref:web-api/advanced/formatting#content-negotiation) aplica-se sempre que uma ação retorna um tipo [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) ou algo diferente de uma implementação [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Uma ação que retorna uma implementação não `IActionResult` (por exemplo, `object`) também retorna uma Resposta Formatada.
 
 Alguns métodos auxiliares desse tipo incluem `BadRequest`, `CreatedAtRoute` e `Ok`. Exemplos desses métodos incluem `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);` e `return Ok(value);`, respectivamente. Observe que `BadRequest` e `Ok` fazem a negociação de conteúdo apenas quando um valor é passado; sem que um valor seja passado, eles atuam como tipos de resultado do Código de Status HTTP. Por outro lado, o método `CreatedAtRoute` sempre faz a negociação de conteúdo, pois todas as suas sobrecargas exigem que um valor seja passado.
 
 ### <a name="cross-cutting-concerns"></a>Interesses paralelos
 
-Normalmente, os aplicativos compartilham partes de seu fluxo de trabalho. Exemplos incluem um aplicativo que exige autenticação para acessar o carrinho de compras ou um aplicativo que armazena dados em cache em algumas páginas. Para executar a lógica antes ou depois de um método de ação, use um *filtro*. A utilização de [filtros](xref:mvc/controllers/filters) em interesses paralelos pode reduzir a duplicação.
+Normalmente, os aplicativos compartilham partes de seu fluxo de trabalho. Exemplos incluem um aplicativo que exige autenticação para acessar o carrinho de compras ou um aplicativo que armazena dados em cache em algumas páginas. Para executar a lógica antes ou depois de um método de ação, use um *filtro* . A utilização de [filtros](xref:mvc/controllers/filters) em interesses paralelos pode reduzir a duplicação.
 
 A maioria dos atributos de filtro, como `[Authorize]`, pode ser aplicada no nível do controlador ou da ação, dependendo do nível desejado de granularidade.
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 345d20494111b808dac9678637de060169730a53
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 781365d99c6d36d8abaec9681128ba712db8cb88
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865350"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060658"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Auxiliares de Marca no ASP.NET Core
 
@@ -75,13 +76,13 @@ O escopo dos Auxiliares de Marca é controlado por uma combinação de `@addTagH
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper` disponibiliza os Auxiliares de Marca
 
-Se você criar um novo aplicativo Web ASP.NET Core chamado *AuthoringTagHelpers*, o seguinte arquivo *Views/_ViewImports.cshtml* será adicionado ao projeto:
+Se você criar um novo aplicativo Web ASP.NET Core chamado *AuthoringTagHelpers* , o seguinte arquivo *Views/_ViewImports.cshtml* será adicionado ao projeto:
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-A diretiva `@addTagHelper` disponibiliza os Auxiliares de Marca para a exibição. Nesse caso, o arquivo de exibição é *pages/_ViewImports. cshtml*, que por padrão é herdado por todos os arquivos na pasta *pages* e subpastas; tornando os auxiliares de marca disponíveis. O código acima usa a sintaxe curinga (" \* ") para especificar que todos os auxiliares de marca no assembly especificado (*Microsoft. AspNetCore. Mvc. TagHelpers*) estarão disponíveis para cada arquivo de exibição no diretório ou subdiretório de *exibições* . O primeiro parâmetro após `@addTagHelper` especifica os Auxiliares de Marca a serem carregados (estamos usando "\*" para todos os Auxiliares de Marca) e o segundo parâmetro "Microsoft.AspNetCore.Mvc.TagHelpers" especifica o assembly que contém os Auxiliares de Marca. *Microsoft.AspNetCore.Mvc.TagHelpers* é o assembly para os Auxiliares de Marca internos do ASP.NET Core.
+A diretiva `@addTagHelper` disponibiliza os Auxiliares de Marca para a exibição. Nesse caso, o arquivo de exibição é *pages/_ViewImports. cshtml* , que por padrão é herdado por todos os arquivos na pasta *pages* e subpastas; tornando os auxiliares de marca disponíveis. O código acima usa a sintaxe curinga (" \* ") para especificar que todos os auxiliares de marca no assembly especificado ( *Microsoft. AspNetCore. Mvc. TagHelpers* ) estarão disponíveis para cada arquivo de exibição no diretório ou subdiretório de *exibições* . O primeiro parâmetro após `@addTagHelper` especifica os Auxiliares de Marca a serem carregados (estamos usando "\*" para todos os Auxiliares de Marca) e o segundo parâmetro "Microsoft.AspNetCore.Mvc.TagHelpers" especifica o assembly que contém os Auxiliares de Marca. *Microsoft.AspNetCore.Mvc.TagHelpers* é o assembly para os Auxiliares de Marca internos do ASP.NET Core.
 
-Para expor todos os Auxiliares de Marca neste projeto (que cria um assembly chamado *AuthoringTagHelpers*), você usará o seguinte:
+Para expor todos os Auxiliares de Marca neste projeto (que cria um assembly chamado *AuthoringTagHelpers* ), você usará o seguinte:
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
@@ -93,7 +94,7 @@ Se o projeto contém um `EmailTagHelper` com o namespace padrão (`AuthoringTagH
 @addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
 ```
 
-Para adicionar um Auxiliar de Marca a uma exibição usando um FQN, primeiro adicione o FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) e, em seguida, o nome do assembly (*AuthoringTagHelpers*). A maioria dos desenvolvedores prefere usar a sintaxe de curinga "\*". A sintaxe de curinga permite que você insira o caractere curinga "\*" como o sufixo de um FQN. Por exemplo, uma das seguintes diretivas exibirá o `EmailTagHelper`:
+Para adicionar um Auxiliar de Marca a uma exibição usando um FQN, primeiro adicione o FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) e, em seguida, o nome do assembly ( *AuthoringTagHelpers* ). A maioria dos desenvolvedores prefere usar a sintaxe de curinga "\*". A sintaxe de curinga permite que você insira o caractere curinga "\*" como o sufixo de um FQN. Por exemplo, uma das seguintes diretivas exibirá o `EmailTagHelper`:
 
 ```cshtml
 @addTagHelper AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers
@@ -106,11 +107,11 @@ Como mencionado anteriormente, adicionar a `@addTagHelper` diretiva ao arquivo *
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper` remove os Auxiliares de Marca
 
-O `@removeTagHelper` tem os mesmos dois parâmetros `@addTagHelper` e remove um Auxiliar de Marca adicionado anteriormente. Por exemplo, `@removeTagHelper` aplicado a uma exibição específica remove o Auxiliar de Marca especificado da exibição. O uso de `@removeTagHelper` em um arquivo *Views/Folder/_ViewImports.cshtml* remove o Auxiliar de Marca especificado de todas as exibições em *Folder*.
+O `@removeTagHelper` tem os mesmos dois parâmetros `@addTagHelper` e remove um Auxiliar de Marca adicionado anteriormente. Por exemplo, `@removeTagHelper` aplicado a uma exibição específica remove o Auxiliar de Marca especificado da exibição. O uso de `@removeTagHelper` em um arquivo *Views/Folder/_ViewImports.cshtml* remove o Auxiliar de Marca especificado de todas as exibições em *Folder* .
 
 ### <a name="controlling-tag-helper-scope-with-the-_viewimportscshtml-file"></a>Controlando o escopo do Auxiliar de Marca com o arquivo *_ViewImports.cshtml*
 
-Adicione um *_ViewImports.cshtml* a qualquer pasta de exibição e o mecanismo de exibição aplicará as diretivas desse arquivo e do arquivo *Views/_ViewImports.cshtml*. Se você adicionou um arquivo *Views/Home/_ViewImports.cshtml* vazio às exibições *Home*, não haverá nenhuma alteração porque o arquivo *_ViewImports.cshtml* é aditivo. As diretivas `@addTagHelper` que você adicionar ao arquivo *Views/Home/_ViewImports.cshtml* (que não estão no arquivo *Views/_ViewImports.cshtml* padrão) exporão os Auxiliares de Marca às exibições somente na pasta *Home*.
+Adicione um *_ViewImports.cshtml* a qualquer pasta de exibição e o mecanismo de exibição aplicará as diretivas desse arquivo e do arquivo *Views/_ViewImports.cshtml* . Se você adicionou um arquivo *Views/Home/_ViewImports.cshtml* vazio às exibições *Home* , não haverá nenhuma alteração porque o arquivo *_ViewImports.cshtml* é aditivo. As diretivas `@addTagHelper` que você adicionar ao arquivo *Views/Home/_ViewImports.cshtml* (que não estão no arquivo *Views/_ViewImports.cshtml* padrão) exporão os Auxiliares de Marca às exibições somente na pasta *Home* .
 
 <a name="opt-out"></a>
 
@@ -128,7 +129,7 @@ Desabilite um Auxiliar de Marca no nível do elemento com o caractere de recusa 
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>Usando `@tagHelperPrefix` para tornar explícito o uso do Auxiliar de Marca
 
-A diretiva `@tagHelperPrefix` permite que você especifique uma cadeia de caracteres de prefixo de marca para habilitar o suporte do Auxiliar de Marca e tornar explícito o uso do Auxiliar de Marca. Por exemplo, você pode adicionar a seguinte marcação ao arquivo *Views/_ViewImports.cshtml*:
+A diretiva `@tagHelperPrefix` permite que você especifique uma cadeia de caracteres de prefixo de marca para habilitar o suporte do Auxiliar de Marca e tornar explícito o uso do Auxiliar de Marca. Por exemplo, você pode adicionar a seguinte marcação ao arquivo *Views/_ViewImports.cshtml* :
 
 ```cshtml
 @tagHelperPrefix th:
@@ -244,7 +245,7 @@ O editor do Visual Studio exibe o código C# com uma tela de fundo cinza. Por ex
 
 A marcação é muito mias limpa e fácil de ler, editar e manter que a abordagem dos Auxiliares HTML. O código C# é reduzido ao mínimo que o servidor precisa conhecer. O editor do Visual Studio exibe a marcação direcionada por um Auxiliar de Marca em uma fonte diferenciada.
 
-Considere o grupo *Email*:
+Considere o grupo *Email* :
 
 [!code-cshtml[](intro/sample/Register.cshtml?range=12-18)]
 
@@ -272,7 +273,7 @@ O editor do Visual Studio ajuda você a escrever **toda** a marcação na aborda
 
 ## <a name="customizing-the-tag-helper-element-font"></a>Personalizando a fonte de elemento do Auxiliar de Marca
 
-Você pode personalizar a fonte e a colorização em **ferramentas**  >  **Opções**  >  **Environment**  >  **fontes e cores**do ambiente:
+Você pode personalizar a fonte e a colorização em **ferramentas**  >  **Opções**  >  **Environment**  >  **fontes e cores** do ambiente:
 
 ![image](intro/_static/fontoptions2.png)
 

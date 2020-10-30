@@ -5,6 +5,7 @@ description: Compartilhar controladores, exibir, Razor páginas e muito mais com
 ms.author: riande
 ms.date: 11/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 2e86025eaf98c4e2cbbd86a5a353664204c35594
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33deb5ff794982e0c074186bb2abb88344e8a116
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630413"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061178"
 ---
 # <a name="share-controllers-views-no-locrazor-pages-and-more-with-application-parts"></a>Compartilhar controladores, exibições, Razor páginas e muito mais com partes do aplicativo
 

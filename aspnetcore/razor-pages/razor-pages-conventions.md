@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: fc639178fc29438e16ad0989e61bd8dd32cf7590
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2947bf0b697ca01f17d260b9f31aa3cc79d457b6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625486"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059865"
 ---
 # <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>Razor Direcionamento de páginas e convenções de aplicativo no ASP.NET Core
 
@@ -127,7 +128,7 @@ O aplicativo de exemplo usa a classe `AddHeaderAttribute` para adicionar um cabe
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -141,7 +142,7 @@ Use <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> par
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -153,7 +154,7 @@ O provedor de modelo de rota padrão que deriva de <xref:Microsoft.AspNetCore.Mv
 
 Use <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para criar e adicionar um <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> que invoque uma ação no <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> para todas as páginas na pasta especificada.
 
-O aplicativo de exemplo usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para adicionar um modelo de rota `{otherPagesTemplate?}` às páginas da pasta *OtherPages*:
+O aplicativo de exemplo usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para adicionar um modelo de rota `{otherPagesTemplate?}` às páginas da pasta *OtherPages* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -211,7 +212,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Use <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> para configurar uma rota para uma página no caminho de página especificado. Os links gerados para a página usam a rota especificada. `AddPageRoute` usa `AddPageRouteModelConvention` para estabelecer a rota.
 
-O aplicativo de exemplo cria uma rota para `/TheContactPage` para *Contact.cshtml*:
+O aplicativo de exemplo cria uma rota para `/TheContactPage` para *Contact.cshtml* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -271,7 +272,7 @@ Solicite a página About da amostra em `localhost:5000/About` e inspecione os ca
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet8)]
 
-O modelo de aplicativo de página é usado para verificar o caminho relativo para segmentos que levam à página Page2 na pasta *OtherPages*. Se a condição é aprovada, um cabeçalho é adicionado. Caso contrário, o `EmptyFilter` é aplicado.
+O modelo de aplicativo de página é usado para verificar o caminho relativo para segmentos que levam à página Page2 na pasta *OtherPages* . Se a condição é aprovada, um cabeçalho é adicionado. Caso contrário, o `EmptyFilter` é aplicado.
 
 `EmptyFilter` é um [filtro de Ação](xref:mvc/controllers/filters#action-filters). Como os filtros de ação são ignorados por Razor páginas, o `EmptyFilter` não tem nenhum efeito como pretendido se o caminho não contiver `OtherPages/Page2` .
 
@@ -287,7 +288,7 @@ O aplicativo de exemplo fornece um exemplo de como usar um [alocador de filtro](
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -409,7 +410,7 @@ O aplicativo de exemplo usa a classe `AddHeaderAttribute` para adicionar um cabe
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -423,7 +424,7 @@ Use <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> par
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -435,7 +436,7 @@ O provedor de modelo de rota padrão que deriva de <xref:Microsoft.AspNetCore.Mv
 
 Use <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para criar e adicionar um <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> que invoque uma ação no <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> para todas as páginas na pasta especificada.
 
-O aplicativo de exemplo usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para adicionar um modelo de rota `{otherPagesTemplate?}` às páginas da pasta *OtherPages*:
+O aplicativo de exemplo usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para adicionar um modelo de rota `{otherPagesTemplate?}` às páginas da pasta *OtherPages* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -501,7 +502,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 Use <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> para configurar uma rota para uma página no caminho de página especificado. Os links gerados para a página usam a rota especificada. `AddPageRoute` usa `AddPageRouteModelConvention` para estabelecer a rota.
 
-O aplicativo de exemplo cria uma rota para `/TheContactPage` para *Contact.cshtml*:
+O aplicativo de exemplo cria uma rota para `/TheContactPage` para *Contact.cshtml* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -561,7 +562,7 @@ Solicite a página About da amostra em `localhost:5000/About` e inspecione os ca
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet8)]
 
-O modelo de aplicativo de página é usado para verificar o caminho relativo para segmentos que levam à página Page2 na pasta *OtherPages*. Se a condição é aprovada, um cabeçalho é adicionado. Caso contrário, o `EmptyFilter` é aplicado.
+O modelo de aplicativo de página é usado para verificar o caminho relativo para segmentos que levam à página Page2 na pasta *OtherPages* . Se a condição é aprovada, um cabeçalho é adicionado. Caso contrário, o `EmptyFilter` é aplicado.
 
 `EmptyFilter` é um [filtro de Ação](xref:mvc/controllers/filters#action-filters). Como os filtros de ação são ignorados por Razor páginas, o `EmptyFilter` não tem nenhum efeito como pretendido se o caminho não contiver `OtherPages/Page2` .
 
@@ -577,7 +578,7 @@ O aplicativo de exemplo fornece um exemplo de como usar um [alocador de filtro](
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -699,7 +700,7 @@ O aplicativo de exemplo usa a classe `AddHeaderAttribute` para adicionar um cabe
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -713,7 +714,7 @@ Use <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> par
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -725,7 +726,7 @@ O provedor de modelo de rota padrão que deriva de <xref:Microsoft.AspNetCore.Mv
 
 Use <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para criar e adicionar um <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> que invoque uma ação no <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> para todas as páginas na pasta especificada.
 
-O aplicativo de exemplo usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para adicionar um modelo de rota `{otherPagesTemplate?}` às páginas da pasta *OtherPages*:
+O aplicativo de exemplo usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para adicionar um modelo de rota `{otherPagesTemplate?}` às páginas da pasta *OtherPages* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -757,7 +758,7 @@ Solicite a página About da amostra em `localhost:5000/About/GlobalRouteValue/Ab
 
 Use <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> para configurar uma rota para uma página no caminho de página especificado. Os links gerados para a página usam a rota especificada. `AddPageRoute` usa `AddPageRouteModelConvention` para estabelecer a rota.
 
-O aplicativo de exemplo cria uma rota para `/TheContactPage` para *Contact.cshtml*:
+O aplicativo de exemplo cria uma rota para `/TheContactPage` para *Contact.cshtml* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -817,7 +818,7 @@ Solicite a página About da amostra em `localhost:5000/About` e inspecione os ca
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet8)]
 
-O modelo de aplicativo de página é usado para verificar o caminho relativo para segmentos que levam à página Page2 na pasta *OtherPages*. Se a condição é aprovada, um cabeçalho é adicionado. Caso contrário, o `EmptyFilter` é aplicado.
+O modelo de aplicativo de página é usado para verificar o caminho relativo para segmentos que levam à página Page2 na pasta *OtherPages* . Se a condição é aprovada, um cabeçalho é adicionado. Caso contrário, o `EmptyFilter` é aplicado.
 
 `EmptyFilter` é um [filtro de Ação](xref:mvc/controllers/filters#action-filters). Como os filtros de ação são ignorados por Razor páginas, o `EmptyFilter` não tem nenhum efeito como pretendido se o caminho não contiver `OtherPages/Page2` .
 
@@ -833,7 +834,7 @@ O aplicativo de exemplo fornece um exemplo de como usar um [alocador de filtro](
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 

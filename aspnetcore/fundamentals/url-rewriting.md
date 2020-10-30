@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: a1d31428945adade6748185c17d42ef60a61b5dc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631691"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061295"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Middleware de Reconfiguração de URL no ASP.NET Core
 
@@ -117,31 +118,31 @@ Três opções permitem que o aplicativo redirecione solicitações não `www`pa
 
 ### <a name="url-redirect"></a>Redirecionamento de URL
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirecionar as solicitações. O primeiro parâmetro contém o regex para correspondência no caminho da URL de entrada. O segundo parâmetro é a cadeia de caracteres de substituição. O terceiro parâmetro, se presente, especifica o código de status. Se você não especificar o código de status, ele usará como padrão *302 – Encontrado*, que indica que o recurso foi substituído ou movido temporariamente.
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirecionar as solicitações. O primeiro parâmetro contém o regex para correspondência no caminho da URL de entrada. O segundo parâmetro é a cadeia de caracteres de substituição. O terceiro parâmetro, se presente, especifica o código de status. Se você não especificar o código de status, ele usará como padrão *302 – Encontrado* , que indica que o recurso foi substituído ou movido temporariamente.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
-Em um navegador com as ferramentas para desenvolvedores habilitadas, faça uma solicitação para o aplicativo de exemplo com o caminho `/redirect-rule/1234/5678`. O regex corresponde ao caminho de solicitação em `redirect-rule/(.*)` e o caminho é substituído por `/redirected/1234/5678`. A URL de redirecionamento é enviada novamente ao cliente com um código de status *302 – Encontrado*. O navegador faz uma nova solicitação na URL de redirecionamento, que é exibida na barra de endereços do navegador. Como não há nenhuma correspondência de regras no aplicativo de exemplo na URL de redirecionamento:
+Em um navegador com as ferramentas para desenvolvedores habilitadas, faça uma solicitação para o aplicativo de exemplo com o caminho `/redirect-rule/1234/5678`. O regex corresponde ao caminho de solicitação em `redirect-rule/(.*)` e o caminho é substituído por `/redirected/1234/5678`. A URL de redirecionamento é enviada novamente ao cliente com um código de status *302 – Encontrado* . O navegador faz uma nova solicitação na URL de redirecionamento, que é exibida na barra de endereços do navegador. Como não há nenhuma correspondência de regras no aplicativo de exemplo na URL de redirecionamento:
 
 * A segunda solicitação recebe uma resposta *200 – OK* do aplicativo.
 * O corpo da resposta mostra a URL de redirecionamento.
 
-Uma viagem de ida e volta é feita para o servidor quando uma URL é *redirecionada*.
+Uma viagem de ida e volta é feita para o servidor quando uma URL é *redirecionada* .
 
 > [!WARNING]
-> Tenha cuidado ao estabelecer regras de redirecionamento. As regras de redirecionamento são avaliadas em cada solicitação para o aplicativo, incluindo após um redirecionamento. É fácil criar acidentalmente um *loop de redirecionamentos infinitos*.
+> Tenha cuidado ao estabelecer regras de redirecionamento. As regras de redirecionamento são avaliadas em cada solicitação para o aplicativo, incluindo após um redirecionamento. É fácil criar acidentalmente um *loop de redirecionamentos infinitos* .
 
 Solicitação original: `/redirect-rule/1234/5678`
 
 ![Janela do navegador com as Ferramentas para Desenvolvedores acompanhando as solicitações e respostas](url-rewriting/_static/add_redirect.png)
 
-A parte da expressão contida nos parênteses é chamada um *grupo de captura*. O ponto (`.`) da expressão significa *corresponder a qualquer caractere*. O asterisco (`*`) indica *corresponder ao caractere zero precedente ou mais vezes*. Portanto, os dois últimos segmentos de caminho da URL, `1234/5678`, são capturados pelo grupo de captura `(.*)`. Qualquer valor que você fornecer na URL de solicitação após `redirect-rule/` é capturado por esse único grupo de captura.
+A parte da expressão contida nos parênteses é chamada um *grupo de captura* . O ponto (`.`) da expressão significa *corresponder a qualquer caractere* . O asterisco (`*`) indica *corresponder ao caractere zero precedente ou mais vezes* . Portanto, os dois últimos segmentos de caminho da URL, `1234/5678`, são capturados pelo grupo de captura `(.*)`. Qualquer valor que você fornecer na URL de solicitação após `redirect-rule/` é capturado por esse único grupo de captura.
 
 Na cadeia de caracteres de substituição, os grupos capturados são injetados na cadeia de caracteres com o cifrão (`$`) seguido do número de sequência da captura. O primeiro valor de grupo de captura é obtido com `$1`, o segundo com `$2` e eles continuam em sequência para os grupos de captura no regex. Há apenas um grupo capturado no regex da regra de redirecionamento no aplicativo de exemplo, para que haja apenas um grupo injetado na cadeia de caracteres de substituição, que é `$1`. Quando a regra é aplicada, a URL se torna `/redirected/1234/5678`.
 
 ### <a name="url-redirect-to-a-secure-endpoint"></a>Redirecionamento de URL para um ponto de extremidade seguro
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> para redirecionar solicitações HTTP para o mesmo host e caminho usando o protocolo HTTPS. Se o código de status não for fornecido, o middleware usará como padrão *302 – Encontrado*. Se a porta não for fornecida:
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> para redirecionar solicitações HTTP para o mesmo host e caminho usando o protocolo HTTPS. Se o código de status não for fornecido, o middleware usará como padrão *302 – Encontrado* . Se a porta não for fornecida:
 
 * O middleware usará como padrão `null`.
 * O esquema será alterado para `https` (protocolo HTTPS), e o cliente acessará o recurso na porta 443.
@@ -158,7 +159,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> para redirecionar solicitações não seguras para o mesmo host e caminho com o protocolo HTTPS seguro na porta 443. O middleware define o código de status como *301 – Movido Permanentemente*.
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> para redirecionar solicitações não seguras para o mesmo host e caminho com o protocolo HTTPS seguro na porta 443. O middleware define o código de status como *301 – Movido Permanentemente* .
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -197,7 +198,7 @@ O acento circunflexo (`^`) no início da expressão significa que a correspondê
 
 No exemplo anterior com a regra de redirecionamento, `redirect-rule/(.*)`, não há nenhum acento circunflexo (`^`) no início do regex. Portanto, qualquer caractere pode preceder `redirect-rule/` no caminho para uma correspondência com êxito.
 
-| Caminho                               | Correspondência |
+| Caminho                               | Corresponder a |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | Sim   |
 | `/my-cool-redirect-rule/1234/5678` | Sim   |
@@ -205,15 +206,15 @@ No exemplo anterior com a regra de redirecionamento, `redirect-rule/(.*)`, não 
 
 A regra de reconfiguração, `^rewrite-rule/(\d+)/(\d+)`, corresponde apenas a caminhos se eles são iniciados com `rewrite-rule/`. Na tabela a seguir, observe a diferença na correspondência.
 
-| Caminho                              | Correspondência |
+| Caminho                              | Corresponder a |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | Sim   |
 | `/my-cool-rewrite-rule/1234/5678` | Não    |
 | `/anotherrewrite-rule/1234/5678`  | Não    |
 
-Após a parte `^rewrite-rule/` da expressão, há dois grupos de captura, `(\d+)/(\d+)`. O `\d` significa *corresponder a um dígito (número)*. O sinal de adição (`+`) significa *corresponder a um ou mais caracteres anteriores*. Portanto, a URL precisa conter um número seguido de uma barra "/" seguida de outro número. Esses grupos de captura são injetados na URL reconfigurada como `$1` e `$2`. A cadeia de caracteres de substituição da regra de reconfiguração coloca os grupos capturados na cadeia de consulta. O caminho solicitado de `/rewrite-rule/1234/5678` foi reconfigurado para obter o recurso em `/rewritten?var1=1234&var2=5678`. Se uma cadeia de consulta estiver presente na solicitação original, ela será preservada quando a URL for reconfigurada.
+Após a parte `^rewrite-rule/` da expressão, há dois grupos de captura, `(\d+)/(\d+)`. O `\d` significa *corresponder a um dígito (número)* . O sinal de adição (`+`) significa *corresponder a um ou mais caracteres anteriores* . Portanto, a URL precisa conter um número seguido de uma barra "/" seguida de outro número. Esses grupos de captura são injetados na URL reconfigurada como `$1` e `$2`. A cadeia de caracteres de substituição da regra de reconfiguração coloca os grupos capturados na cadeia de consulta. O caminho solicitado de `/rewrite-rule/1234/5678` foi reconfigurado para obter o recurso em `/rewritten?var1=1234&var2=5678`. Se uma cadeia de consulta estiver presente na solicitação original, ela será preservada quando a URL for reconfigurada.
 
-Não há nenhuma viagem de ida e volta para o servidor para obtenção do recurso. Se o recurso existir, ele será buscado e retornado para o cliente com um código de status *200 – OK*. Como o cliente não é redirecionado, a URL na barra de endereços do navegador não é alterada. Os clientes não conseguem detectar que uma operação de reconfiguração de URL ocorreu no servidor.
+Não há nenhuma viagem de ida e volta para o servidor para obtenção do recurso. Se o recurso existir, ele será buscado e retornado para o cliente com um código de status *200 – OK* . Como o cliente não é redirecionado, a URL na barra de endereços do navegador não é alterada. Os clientes não conseguem detectar que uma operação de reconfiguração de URL ocorreu no servidor.
 
 > [!NOTE]
 > Use `skipRemainingRules: true` sempre que possível, porque as regras de correspondência são computacionalmente caras e aumentam o tempo de resposta do aplicativo. Para a resposta mais rápida do aplicativo:
@@ -225,11 +226,11 @@ Não há nenhuma viagem de ida e volta para o servidor para obtenção do recurs
 
 Aplique as regras do mod_rewrite do Apache com <xref:Microsoft.AspNetCore.Rewrite.ApacheModRewriteOptionsExtensions.AddApacheModRewrite*>. Verifique se o arquivo de regras foi implantado com o aplicativo. Para obter mais informações e exemplos de regras de mod_rewrite, consulte [mod_rewrite do Apache](https://httpd.apache.org/docs/2.4/rewrite/).
 
-Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *ApacheModRewrite.txt*:
+Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *ApacheModRewrite.txt* :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-O aplicativo de exemplo redireciona solicitações de `/apache-mod-rules-redirect/(.\*)` para `/redirected?id=$1`. O código de status da resposta é *302 – Encontrado*.
+O aplicativo de exemplo redireciona solicitações de `/apache-mod-rules-redirect/(.\*)` para `/redirected?id=$1`. O código de status da resposta é *302 – Encontrado* .
 
 [!code[](url-rewriting/samples/3.x/SampleApp/ApacheModRewrite.txt)]
 
@@ -273,11 +274,11 @@ O middleware dá suporte às seguintes variáveis de servidor do mod_rewrite do 
 
 Para usar o mesmo conjunto de regras que se aplica ao Módulo de Reconfiguração de URL do IIS, use <xref:Microsoft.AspNetCore.Rewrite.IISUrlRewriteOptionsExtensions.AddIISUrlRewrite*>. Verifique se o arquivo de regras foi implantado com o aplicativo. Não instrua o middleware a usar o arquivo *web.config* do aplicativo quando ele estiver em execução no IIS do Windows Server. Com o IIS, essas regras devem ser armazenadas fora do arquivo *web.config* do aplicativo para evitar conflitos com o módulo de Reconfiguração do IIS. Para obter mais informações e exemplos de regras do Módulo de Reconfiguração de URL do IIS, consulte [Usando o Módulo de Reconfiguração de URL 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) e [Referência de configuração do Módulo de Reconfiguração de URL](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
-Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *IISUrlRewrite.xml*:
+Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *IISUrlRewrite.xml* :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-O aplicativo de exemplo reconfigura as solicitações de `/iis-rules-rewrite/(.*)` para `/rewritten?id=$1`. A resposta é enviada ao cliente com um código de status *200 – OK*.
+O aplicativo de exemplo reconfigura as solicitações de `/iis-rules-rewrite/(.*)` para `/rewritten?id=$1`. A resposta é enviada ao cliente com um código de status *200 – OK* .
 
 [!code-xml[](url-rewriting/samples/3.x/SampleApp/IISUrlRewrite.xml)]
 
@@ -336,17 +337,17 @@ Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para imple
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-O aplicativo de exemplo demonstra um método que redireciona as solicitações para caminhos que terminam com *.xml*. Se uma solicitação for feita para `/file.xml`, ela será redirecionada para `/xmlfiles/file.xml`. O código de status é definido como *301 – Movido Permanentemente*. Quando o navegador faz uma nova solicitação para */xmlfiles/file.xml*, o Middleware de Arquivo Estático fornece o arquivo para o cliente por meio da pasta *wwwroot/xmlfiles*. Para um redirecionamento, defina explicitamente o código de status da resposta. Caso contrário, um código de status *200 – OK* será retornado e o redirecionamento não ocorrerá no cliente.
+O aplicativo de exemplo demonstra um método que redireciona as solicitações para caminhos que terminam com *.xml* . Se uma solicitação for feita para `/file.xml`, ela será redirecionada para `/xmlfiles/file.xml`. O código de status é definido como *301 – Movido Permanentemente* . Quando o navegador faz uma nova solicitação para */xmlfiles/file.xml* , o Middleware de Arquivo Estático fornece o arquivo para o cliente por meio da pasta *wwwroot/xmlfiles* . Para um redirecionamento, defina explicitamente o código de status da resposta. Caso contrário, um código de status *200 – OK* será retornado e o redirecionamento não ocorrerá no cliente.
 
-*RewriteRules.cs*:
+*RewriteRules.cs* :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
-Essa abordagem também pode reconfigurar as solicitações. O aplicativo de exemplo demonstra a reconfiguração do caminho de qualquer solicitação de arquivo de texto para fornecer o arquivo de texto *file.txt* por meio da pasta *wwwroot*. O Middleware de Arquivo Estático fornece o arquivo com base no caminho de solicitação atualizado:
+Essa abordagem também pode reconfigurar as solicitações. O aplicativo de exemplo demonstra a reconfiguração do caminho de qualquer solicitação de arquivo de texto para fornecer o arquivo de texto *file.txt* por meio da pasta *wwwroot* . O Middleware de Arquivo Estático fornece o arquivo com base no caminho de solicitação atualizado:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs*:
+*RewriteRules.cs* :
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -356,7 +357,7 @@ Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para usar 
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-Os valores dos parâmetros no aplicativo de exemplo para a `extension` e o `newPath` são verificados para atender a várias condições. A `extension` precisa conter um valor que precisa ser *.png*, *.jpg* ou *.gif*. Se o `newPath` não é válido, uma <xref:System.ArgumentException> é gerada. Se uma solicitação é feita para *image.png*, a solicitação é redirecionada para `/png-images/image.png`. Se uma solicitação é feita para *image.jpg*, a solicitação é redirecionada para `/jpg-images/image.jpg`. O código de status é definido como *301 – Movido Permanentemente* e o `context.Result` é definida para parar o processamento de regras e enviar a resposta.
+Os valores dos parâmetros no aplicativo de exemplo para a `extension` e o `newPath` são verificados para atender a várias condições. A `extension` precisa conter um valor que precisa ser *.png* , *.jpg* ou *.gif* . Se o `newPath` não é válido, uma <xref:System.ArgumentException> é gerada. Se uma solicitação é feita para *image.png* , a solicitação é redirecionada para `/png-images/image.png`. Se uma solicitação é feita para *image.jpg* , a solicitação é redirecionada para `/jpg-images/image.jpg`. O código de status é definido como *301 – Movido Permanentemente* e o `context.Result` é definida para parar o processamento de regras e enviar a resposta.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 
@@ -471,31 +472,31 @@ Três opções permitem que o aplicativo redirecione solicitações não `www`pa
 
 ### <a name="url-redirect"></a>Redirecionamento de URL
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirecionar as solicitações. O primeiro parâmetro contém o regex para correspondência no caminho da URL de entrada. O segundo parâmetro é a cadeia de caracteres de substituição. O terceiro parâmetro, se presente, especifica o código de status. Se você não especificar o código de status, ele usará como padrão *302 – Encontrado*, que indica que o recurso foi substituído ou movido temporariamente.
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirecionar as solicitações. O primeiro parâmetro contém o regex para correspondência no caminho da URL de entrada. O segundo parâmetro é a cadeia de caracteres de substituição. O terceiro parâmetro, se presente, especifica o código de status. Se você não especificar o código de status, ele usará como padrão *302 – Encontrado* , que indica que o recurso foi substituído ou movido temporariamente.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
-Em um navegador com as ferramentas para desenvolvedores habilitadas, faça uma solicitação para o aplicativo de exemplo com o caminho `/redirect-rule/1234/5678`. O regex corresponde ao caminho de solicitação em `redirect-rule/(.*)` e o caminho é substituído por `/redirected/1234/5678`. A URL de redirecionamento é enviada novamente ao cliente com um código de status *302 – Encontrado*. O navegador faz uma nova solicitação na URL de redirecionamento, que é exibida na barra de endereços do navegador. Como não há nenhuma correspondência de regras no aplicativo de exemplo na URL de redirecionamento:
+Em um navegador com as ferramentas para desenvolvedores habilitadas, faça uma solicitação para o aplicativo de exemplo com o caminho `/redirect-rule/1234/5678`. O regex corresponde ao caminho de solicitação em `redirect-rule/(.*)` e o caminho é substituído por `/redirected/1234/5678`. A URL de redirecionamento é enviada novamente ao cliente com um código de status *302 – Encontrado* . O navegador faz uma nova solicitação na URL de redirecionamento, que é exibida na barra de endereços do navegador. Como não há nenhuma correspondência de regras no aplicativo de exemplo na URL de redirecionamento:
 
 * A segunda solicitação recebe uma resposta *200 – OK* do aplicativo.
 * O corpo da resposta mostra a URL de redirecionamento.
 
-Uma viagem de ida e volta é feita para o servidor quando uma URL é *redirecionada*.
+Uma viagem de ida e volta é feita para o servidor quando uma URL é *redirecionada* .
 
 > [!WARNING]
-> Tenha cuidado ao estabelecer regras de redirecionamento. As regras de redirecionamento são avaliadas em cada solicitação para o aplicativo, incluindo após um redirecionamento. É fácil criar acidentalmente um *loop de redirecionamentos infinitos*.
+> Tenha cuidado ao estabelecer regras de redirecionamento. As regras de redirecionamento são avaliadas em cada solicitação para o aplicativo, incluindo após um redirecionamento. É fácil criar acidentalmente um *loop de redirecionamentos infinitos* .
 
 Solicitação original: `/redirect-rule/1234/5678`
 
 ![Janela do navegador com as Ferramentas para Desenvolvedores acompanhando as solicitações e respostas](url-rewriting/_static/add_redirect.png)
 
-A parte da expressão contida nos parênteses é chamada um *grupo de captura*. O ponto (`.`) da expressão significa *corresponder a qualquer caractere*. O asterisco (`*`) indica *corresponder ao caractere zero precedente ou mais vezes*. Portanto, os dois últimos segmentos de caminho da URL, `1234/5678`, são capturados pelo grupo de captura `(.*)`. Qualquer valor que você fornecer na URL de solicitação após `redirect-rule/` é capturado por esse único grupo de captura.
+A parte da expressão contida nos parênteses é chamada um *grupo de captura* . O ponto (`.`) da expressão significa *corresponder a qualquer caractere* . O asterisco (`*`) indica *corresponder ao caractere zero precedente ou mais vezes* . Portanto, os dois últimos segmentos de caminho da URL, `1234/5678`, são capturados pelo grupo de captura `(.*)`. Qualquer valor que você fornecer na URL de solicitação após `redirect-rule/` é capturado por esse único grupo de captura.
 
 Na cadeia de caracteres de substituição, os grupos capturados são injetados na cadeia de caracteres com o cifrão (`$`) seguido do número de sequência da captura. O primeiro valor de grupo de captura é obtido com `$1`, o segundo com `$2` e eles continuam em sequência para os grupos de captura no regex. Há apenas um grupo capturado no regex da regra de redirecionamento no aplicativo de exemplo, para que haja apenas um grupo injetado na cadeia de caracteres de substituição, que é `$1`. Quando a regra é aplicada, a URL se torna `/redirected/1234/5678`.
 
 ### <a name="url-redirect-to-a-secure-endpoint"></a>Redirecionamento de URL para um ponto de extremidade seguro
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> para redirecionar solicitações HTTP para o mesmo host e caminho usando o protocolo HTTPS. Se o código de status não for fornecido, o middleware usará como padrão *302 – Encontrado*. Se a porta não for fornecida:
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttps*> para redirecionar solicitações HTTP para o mesmo host e caminho usando o protocolo HTTPS. Se o código de status não for fornecido, o middleware usará como padrão *302 – Encontrado* . Se a porta não for fornecida:
 
 * O middleware usará como padrão `null`.
 * O esquema será alterado para `https` (protocolo HTTPS), e o cliente acessará o recurso na porta 443.
@@ -512,7 +513,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> para redirecionar solicitações não seguras para o mesmo host e caminho com o protocolo HTTPS seguro na porta 443. O middleware define o código de status como *301 – Movido Permanentemente*.
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToHttpsPermanent*> para redirecionar solicitações não seguras para o mesmo host e caminho com o protocolo HTTPS seguro na porta 443. O middleware define o código de status como *301 – Movido Permanentemente* .
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -551,7 +552,7 @@ O acento circunflexo (`^`) no início da expressão significa que a correspondê
 
 No exemplo anterior com a regra de redirecionamento, `redirect-rule/(.*)`, não há nenhum acento circunflexo (`^`) no início do regex. Portanto, qualquer caractere pode preceder `redirect-rule/` no caminho para uma correspondência com êxito.
 
-| Caminho                               | Correspondência |
+| Caminho                               | Corresponder a |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | Sim   |
 | `/my-cool-redirect-rule/1234/5678` | Sim   |
@@ -559,15 +560,15 @@ No exemplo anterior com a regra de redirecionamento, `redirect-rule/(.*)`, não 
 
 A regra de reconfiguração, `^rewrite-rule/(\d+)/(\d+)`, corresponde apenas a caminhos se eles são iniciados com `rewrite-rule/`. Na tabela a seguir, observe a diferença na correspondência.
 
-| Caminho                              | Correspondência |
+| Caminho                              | Corresponder a |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | Sim   |
 | `/my-cool-rewrite-rule/1234/5678` | Não    |
 | `/anotherrewrite-rule/1234/5678`  | Não    |
 
-Após a parte `^rewrite-rule/` da expressão, há dois grupos de captura, `(\d+)/(\d+)`. O `\d` significa *corresponder a um dígito (número)*. O sinal de adição (`+`) significa *corresponder a um ou mais caracteres anteriores*. Portanto, a URL precisa conter um número seguido de uma barra "/" seguida de outro número. Esses grupos de captura são injetados na URL reconfigurada como `$1` e `$2`. A cadeia de caracteres de substituição da regra de reconfiguração coloca os grupos capturados na cadeia de consulta. O caminho solicitado de `/rewrite-rule/1234/5678` foi reconfigurado para obter o recurso em `/rewritten?var1=1234&var2=5678`. Se uma cadeia de consulta estiver presente na solicitação original, ela será preservada quando a URL for reconfigurada.
+Após a parte `^rewrite-rule/` da expressão, há dois grupos de captura, `(\d+)/(\d+)`. O `\d` significa *corresponder a um dígito (número)* . O sinal de adição (`+`) significa *corresponder a um ou mais caracteres anteriores* . Portanto, a URL precisa conter um número seguido de uma barra "/" seguida de outro número. Esses grupos de captura são injetados na URL reconfigurada como `$1` e `$2`. A cadeia de caracteres de substituição da regra de reconfiguração coloca os grupos capturados na cadeia de consulta. O caminho solicitado de `/rewrite-rule/1234/5678` foi reconfigurado para obter o recurso em `/rewritten?var1=1234&var2=5678`. Se uma cadeia de consulta estiver presente na solicitação original, ela será preservada quando a URL for reconfigurada.
 
-Não há nenhuma viagem de ida e volta para o servidor para obtenção do recurso. Se o recurso existir, ele será buscado e retornado para o cliente com um código de status *200 – OK*. Como o cliente não é redirecionado, a URL na barra de endereços do navegador não é alterada. Os clientes não conseguem detectar que uma operação de reconfiguração de URL ocorreu no servidor.
+Não há nenhuma viagem de ida e volta para o servidor para obtenção do recurso. Se o recurso existir, ele será buscado e retornado para o cliente com um código de status *200 – OK* . Como o cliente não é redirecionado, a URL na barra de endereços do navegador não é alterada. Os clientes não conseguem detectar que uma operação de reconfiguração de URL ocorreu no servidor.
 
 > [!NOTE]
 > Use `skipRemainingRules: true` sempre que possível, porque as regras de correspondência são computacionalmente caras e aumentam o tempo de resposta do aplicativo. Para a resposta mais rápida do aplicativo:
@@ -579,11 +580,11 @@ Não há nenhuma viagem de ida e volta para o servidor para obtenção do recurs
 
 Aplique as regras do mod_rewrite do Apache com <xref:Microsoft.AspNetCore.Rewrite.ApacheModRewriteOptionsExtensions.AddApacheModRewrite*>. Verifique se o arquivo de regras foi implantado com o aplicativo. Para obter mais informações e exemplos de regras de mod_rewrite, consulte [mod_rewrite do Apache](https://httpd.apache.org/docs/2.4/rewrite/).
 
-Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *ApacheModRewrite.txt*:
+Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *ApacheModRewrite.txt* :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-O aplicativo de exemplo redireciona solicitações de `/apache-mod-rules-redirect/(.\*)` para `/redirected?id=$1`. O código de status da resposta é *302 – Encontrado*.
+O aplicativo de exemplo redireciona solicitações de `/apache-mod-rules-redirect/(.\*)` para `/redirected?id=$1`. O código de status da resposta é *302 – Encontrado* .
 
 [!code[](url-rewriting/samples/2.x/SampleApp/ApacheModRewrite.txt)]
 
@@ -627,11 +628,11 @@ O middleware dá suporte às seguintes variáveis de servidor do mod_rewrite do 
 
 Para usar o mesmo conjunto de regras que se aplica ao Módulo de Reconfiguração de URL do IIS, use <xref:Microsoft.AspNetCore.Rewrite.IISUrlRewriteOptionsExtensions.AddIISUrlRewrite*>. Verifique se o arquivo de regras foi implantado com o aplicativo. Não instrua o middleware a usar o arquivo *web.config* do aplicativo quando ele estiver em execução no IIS do Windows Server. Com o IIS, essas regras devem ser armazenadas fora do arquivo *web.config* do aplicativo para evitar conflitos com o módulo de Reconfiguração do IIS. Para obter mais informações e exemplos de regras do Módulo de Reconfiguração de URL do IIS, consulte [Usando o Módulo de Reconfiguração de URL 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) e [Referência de configuração do Módulo de Reconfiguração de URL](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
-Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *IISUrlRewrite.xml*:
+Um <xref:System.IO.StreamReader> é usado para ler as regras do arquivo de regras *IISUrlRewrite.xml* :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-O aplicativo de exemplo reconfigura as solicitações de `/iis-rules-rewrite/(.*)` para `/rewritten?id=$1`. A resposta é enviada ao cliente com um código de status *200 – OK*.
+O aplicativo de exemplo reconfigura as solicitações de `/iis-rules-rewrite/(.*)` para `/rewritten?id=$1`. A resposta é enviada ao cliente com um código de status *200 – OK* .
 
 [!code-xml[](url-rewriting/samples/2.x/SampleApp/IISUrlRewrite.xml)]
 
@@ -690,17 +691,17 @@ Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para imple
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-O aplicativo de exemplo demonstra um método que redireciona as solicitações para caminhos que terminam com *.xml*. Se uma solicitação for feita para `/file.xml`, ela será redirecionada para `/xmlfiles/file.xml`. O código de status é definido como *301 – Movido Permanentemente*. Quando o navegador faz uma nova solicitação para */xmlfiles/file.xml*, o Middleware de Arquivo Estático fornece o arquivo para o cliente por meio da pasta *wwwroot/xmlfiles*. Para um redirecionamento, defina explicitamente o código de status da resposta. Caso contrário, um código de status *200 – OK* será retornado e o redirecionamento não ocorrerá no cliente.
+O aplicativo de exemplo demonstra um método que redireciona as solicitações para caminhos que terminam com *.xml* . Se uma solicitação for feita para `/file.xml`, ela será redirecionada para `/xmlfiles/file.xml`. O código de status é definido como *301 – Movido Permanentemente* . Quando o navegador faz uma nova solicitação para */xmlfiles/file.xml* , o Middleware de Arquivo Estático fornece o arquivo para o cliente por meio da pasta *wwwroot/xmlfiles* . Para um redirecionamento, defina explicitamente o código de status da resposta. Caso contrário, um código de status *200 – OK* será retornado e o redirecionamento não ocorrerá no cliente.
 
-*RewriteRules.cs*:
+*RewriteRules.cs* :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
-Essa abordagem também pode reconfigurar as solicitações. O aplicativo de exemplo demonstra a reconfiguração do caminho de qualquer solicitação de arquivo de texto para fornecer o arquivo de texto *file.txt* por meio da pasta *wwwroot*. O Middleware de Arquivo Estático fornece o arquivo com base no caminho de solicitação atualizado:
+Essa abordagem também pode reconfigurar as solicitações. O aplicativo de exemplo demonstra a reconfiguração do caminho de qualquer solicitação de arquivo de texto para fornecer o arquivo de texto *file.txt* por meio da pasta *wwwroot* . O Middleware de Arquivo Estático fornece o arquivo com base no caminho de solicitação atualizado:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs*:
+*RewriteRules.cs* :
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -710,7 +711,7 @@ Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para usar 
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-Os valores dos parâmetros no aplicativo de exemplo para a `extension` e o `newPath` são verificados para atender a várias condições. A `extension` precisa conter um valor que precisa ser *.png*, *.jpg* ou *.gif*. Se o `newPath` não é válido, uma <xref:System.ArgumentException> é gerada. Se uma solicitação é feita para *image.png*, a solicitação é redirecionada para `/png-images/image.png`. Se uma solicitação é feita para *image.jpg*, a solicitação é redirecionada para `/jpg-images/image.jpg`. O código de status é definido como *301 – Movido Permanentemente* e o `context.Result` é definida para parar o processamento de regras e enviar a resposta.
+Os valores dos parâmetros no aplicativo de exemplo para a `extension` e o `newPath` são verificados para atender a várias condições. A `extension` precisa conter um valor que precisa ser *.png* , *.jpg* ou *.gif* . Se o `newPath` não é válido, uma <xref:System.ArgumentException> é gerada. Se uma solicitação é feita para *image.png* , a solicitação é redirecionada para `/png-images/image.png`. Se uma solicitação é feita para *image.jpg* , a solicitação é redirecionada para `/jpg-images/image.jpg`. O código de status é definido como *301 – Movido Permanentemente* e o `context.Result` é definida para parar o processamento de regras e enviar a resposta.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 

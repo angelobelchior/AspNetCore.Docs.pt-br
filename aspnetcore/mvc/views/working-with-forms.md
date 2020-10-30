@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: c337e727a4683b0b3c67307af93ef8efa246e2ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a568ad481eb09587e2ddce8e84d0ac3eff01e990
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631011"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060892"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Auxiliares de marca em formulários no ASP.NET Core
 
@@ -67,7 +68,7 @@ O atributo do Auxiliar de Marca `asp-route` também pode gerar a marcação para
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-Muitas das exibições na pasta *Modos de Exibição/Conta* (gerada quando você cria um novo aplicativo Web com *Contas de usuário individuais*) contêm o atributo [asp-route-returnurl](xref:mvc/views/working-with-forms):
+Muitas das exibições na pasta *Modos de Exibição/Conta* (gerada quando você cria um novo aplicativo Web com *Contas de usuário individuais* ) contêm o atributo [asp-route-returnurl](xref:mvc/views/working-with-forms):
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -213,8 +214,8 @@ O Auxiliar de marca `Input` define o atributo HTML `type` com base no tipo .NET.
 |String|type="text"|
 |Datetime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
 |Byte|type="number"|
-|Int|type="number"|
-|Single, Double|type="number"|
+|int|type="number"|
+|Single e Double|type="number"|
 
 A tabela a seguir mostra alguns atributos de [anotações de dados](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) comuns que o auxiliar de marca de entrada mapeará para tipos de entrada específicos (não são listados todos os atributos de validação):
 
@@ -330,7 +331,7 @@ O seguinte Razor mostra como você acessa um `Color` elemento específico:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
-O modelo *Views/Shared/EditorTemplates/String.cshtml*:
+O modelo *Views/Shared/EditorTemplates/String.cshtml* :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
@@ -342,7 +343,7 @@ Veja a seguir Razor como iterar em uma coleção:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
-O modelo *Views/Shared/EditorTemplates/ToDoItem.cshtml*:
+O modelo *Views/Shared/EditorTemplates/ToDoItem.cshtml* :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
@@ -646,7 +647,7 @@ Se acabar usando a opção "não especificado" em várias páginas, você poder�
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
-O modelo *Views/Shared/EditorTemplates/CountryViewModel.cshtml*:
+O modelo *Views/Shared/EditorTemplates/CountryViewModel.cshtml* :
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: e57c5185323305ccbef7960653c9174931e45d75
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: da507974b88c21de22e2c7a56950943207565138
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635392"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060541"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch na API Web do ASP.NET Core
 
@@ -67,7 +68,7 @@ Os métodos PUT e [PATCH](https://tools.ietf.org/html/rfc5789) são usados para 
 
 ## <a name="json-patch"></a>JSON Patch
 
-[JSON Patch](https://tools.ietf.org/html/rfc6902) é um formato para especificar as atualizações a serem aplicadas a um recurso. Um documento de JSON Patch tem uma matriz de *operações*. Cada operação identifica um tipo específico de alteração. Exemplos de tais alterações incluem adicionar um elemento de matriz ou substituir um valor de propriedade.
+[JSON Patch](https://tools.ietf.org/html/rfc6902) é um formato para especificar as atualizações a serem aplicadas a um recurso. Um documento de JSON Patch tem uma matriz de *operações* . Cada operação identifica um tipo específico de alteração. Exemplos de tais alterações incluem adicionar um elemento de matriz ou substituir um valor de propriedade.
 
 Por exemplo, os documentos JSON a seguir representam um recurso, um documento de patch JSON para o recurso e o resultado da aplicação das operações de patch.
 
@@ -117,7 +118,7 @@ A propriedade [path](https://tools.ietf.org/html/rfc6901) de um objeto de opera�
 
 Índices baseados em zero são usados para especificar os elementos da matriz. O primeiro elemento da matriz `addresses` estaria em `/addresses/0`. Para `add` o final de uma matriz, use um hífen ( `-` ) em vez de um número de índice: `/addresses/-` .
 
-### <a name="operations"></a>Operações
+### <a name="operations"></a>Operations
 
 A tabela a seguir mostra operações compatíveis conforme definido na [especificação de JSON Patch](https://tools.ietf.org/html/rfc6902):
 
@@ -142,7 +143,7 @@ Em um controlador de API, um método de ação para JSON Patch:
 * Aceita um `JsonPatchDocument<T>` , normalmente com `[FromBody]` .
 * Chama `ApplyTo` no documento de patch para aplicar as alterações.
 
-Este é um exemplo:
+Veja um exemplo:
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
@@ -279,7 +280,7 @@ Os métodos PUT e [PATCH](https://tools.ietf.org/html/rfc5789) são usados para 
 
 ## <a name="json-patch"></a>JSON Patch
 
-[JSON Patch](https://tools.ietf.org/html/rfc6902) é um formato para especificar as atualizações a serem aplicadas a um recurso. Um documento de JSON Patch tem uma matriz de *operações*. Cada operação identifica um tipo específico de alteração, como adicionar um elemento de matriz ou substituir um valor de propriedade.
+[JSON Patch](https://tools.ietf.org/html/rfc6902) é um formato para especificar as atualizações a serem aplicadas a um recurso. Um documento de JSON Patch tem uma matriz de *operações* . Cada operação identifica um tipo específico de alteração, como adicionar um elemento de matriz ou substituir um valor de propriedade.
 
 Por exemplo, os documentos JSON a seguir representam um recurso, um documento de JSON Patch para o recurso e o resultado da aplicação de operações patch.
 
@@ -329,7 +330,7 @@ A propriedade [path](https://tools.ietf.org/html/rfc6901) de um objeto de opera�
 
 Índices baseados em zero são usados para especificar os elementos da matriz. O primeiro elemento da matriz `addresses` estaria em `/addresses/0`. Para `add` ao final de uma matriz, use um hífen (-) ao invés de um número de índice: `/addresses/-`.
 
-### <a name="operations"></a>Operações
+### <a name="operations"></a>Operations
 
 A tabela a seguir mostra operações compatíveis conforme definido na [especificação de JSON Patch](https://tools.ietf.org/html/rfc6902):
 
@@ -354,7 +355,7 @@ Em um controlador de API, um método de ação para JSON Patch:
 * Aceita um `JsonPatchDocument<T>` , normalmente com `[FromBody]` .
 * Chama `ApplyTo` no documento de patch para aplicar as alterações.
 
-Este é um exemplo:
+Veja um exemplo:
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 

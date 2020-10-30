@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/policies
-ms.openlocfilehash: 140969c80191c9549bc19507b9c4818b88fed0d1
-ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
+ms.openlocfilehash: 286dc3bcc66b86a2a6b7d3cb7b6052bf7b474aff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91636797"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060203"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorização baseada em políticas no ASP.NET Core
 
@@ -132,7 +133,7 @@ As políticas são aplicadas às Razor páginas usando o `[Authorize]` atributo 
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-As políticas ***não*** podem ser aplicadas no Razor nível do manipulador de páginas, elas devem ser aplicadas à página.
+As políticas podem * **não** ser aplicadas no Razor nível do manipulador de páginas, elas devem ser aplicadas à página.
 
 As políticas podem ser aplicadas a Razor páginas usando uma [Convenção de autorização](xref:security/authorization/razor-pages-authorization).
 
@@ -142,7 +143,7 @@ Um requisito de autorização é uma coleção de parâmetros de dados que uma p
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
-Se uma política de autorização contiver vários requisitos de autorização, todos os requisitos deverão ser aprovados para que a avaliação da política seja realizada com êxito. Em outras palavras, vários requisitos de autorização adicionados a uma única política de autorização são tratados em uma base **e** .
+Se uma política de autorização contiver vários requisitos de autorização, todos os requisitos deverão ser aprovados para que a avaliação da política seja realizada com êxito. Em outras palavras, vários requisitos de autorização adicionados a uma única política de autorização são tratados em uma base _ *e* *.
 
 > [!NOTE]
 > Um requisito não precisa ter dados ou propriedades.
@@ -202,7 +203,7 @@ Se um manipulador chamar `context.Succeed` ou `context.Fail` , todos os outros m
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>Por que desejo vários manipuladores para um requisito?
 
-Nos casos em que você deseja que a avaliação seja em um **ou** base, implemente vários manipuladores para um único requisito. Por exemplo, a Microsoft tem portas que só são abertas com cartões-chave. Se você deixar o cartão-chave em casa, o recepcionista imprime um adesivo temporário e abre a porta para você. Nesse cenário, você teria um único requisito, *BuildingEntry*, mas vários manipuladores, cada um examinando um único requisito.
+Nos casos em que você deseja que a avaliação seja em um **ou** base, implemente vários manipuladores para um único requisito. Por exemplo, a Microsoft tem portas que só são abertas com cartões-chave. Se você deixar o cartão-chave em casa, o recepcionista imprime um adesivo temporário e abre a porta para você. Nesse cenário, você teria um único requisito, *BuildingEntry* , mas vários manipuladores, cada um examinando um único requisito.
 
 *BuildingEntryRequirement.cs*
 
@@ -436,7 +437,7 @@ Se um manipulador chamar `context.Succeed` ou `context.Fail` , todos os outros m
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>Por que desejo vários manipuladores para um requisito?
 
-Nos casos em que você deseja que a avaliação seja em um **ou** base, implemente vários manipuladores para um único requisito. Por exemplo, a Microsoft tem portas que só são abertas com cartões-chave. Se você deixar o cartão-chave em casa, o recepcionista imprime um adesivo temporário e abre a porta para você. Nesse cenário, você teria um único requisito, *BuildingEntry*, mas vários manipuladores, cada um examinando um único requisito.
+Nos casos em que você deseja que a avaliação seja em um **ou** base, implemente vários manipuladores para um único requisito. Por exemplo, a Microsoft tem portas que só são abertas com cartões-chave. Se você deixar o cartão-chave em casa, o recepcionista imprime um adesivo temporário e abre a porta para você. Nesse cenário, você teria um único requisito, *BuildingEntry* , mas vários manipuladores, cada um examinando um único requisito.
 
 *BuildingEntryRequirement.cs*
 

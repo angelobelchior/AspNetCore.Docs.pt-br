@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: da7f50b27e447b86bd8a06851b767488d51b7050
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: c8174c7e253a596d02dbc6cec183453b3723bc24
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592885"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060463"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Tratar erros no ASP.NET Core
 
@@ -45,11 +46,11 @@ O código realçado anterior habilita a página de exceção do desenvolvedor qu
 
 Os modelos colocam no <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage%2A> início do pipeline de middleware para que ele possa detectar exceções lançadas no middleware a seguir.
 
-O código anterior habilita a página de exceção do desenvolvedor ***somente*** quando o aplicativo é executado no ambiente de desenvolvimento. As informações detalhadas de exceção não devem ser exibidas publicamente quando o aplicativo é executado no ambiente de produção. Para saber mais sobre a configuração de ambientes, confira <xref:fundamentals/environments>.
+O código anterior habilita a página de exceção do desenvolvedor * **apenas** _ quando o aplicativo é executado no ambiente de desenvolvimento. As informações detalhadas de exceção não devem ser exibidas publicamente quando o aplicativo é executado no ambiente de produção. Para saber mais sobre a configuração de ambientes, confira <xref:fundamentals/environments>.
 
 A página de exceção do desenvolvedor inclui as seguintes informações sobre a exceção e a solicitação:
 
-* Rastreamento de pilha
+_ Rastreamento de pilha
 * Parâmetros de cadeia de caracteres de consulta, se houver
 * Cookies se houver
 * Cabeçalhos
@@ -65,7 +66,7 @@ No exemplo a seguir, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensio
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-O Razor modelo de aplicativo pages fornece uma página de erro (*. cshtml*) e uma <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> classe ( `ErrorModel` ) na pasta *páginas* . Para um aplicativo MVC, o modelo de projeto inclui um `Error` método de ação e uma exibição de erro para o controlador inicial.
+O Razor modelo de aplicativo pages fornece uma página de erro ( *. cshtml* ) e uma <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> classe ( `ErrorModel` ) na pasta *páginas* . Para um aplicativo MVC, o modelo de projeto inclui um `Error` método de ação e uma exibição de erro para o controlador inicial.
 
 Não marque o método de ação do manipulador de erros com atributos do método HTTP, como `HttpGet` . Os verbos explícitos impedem que algumas solicitações atinjam o método de ação. Permitir acesso anônimo ao método se usuários não autenticados devem ver o modo de exibição de erro.
 
@@ -81,7 +82,7 @@ Use <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature> para ac
 Para testar a exceção no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x):
 
 * Defina o ambiente como produção.
-* Remova os comentários de `webBuilder.UseStartup<Startup>();` em *Program.cs*.
+* Remova os comentários de `webBuilder.UseStartup<Startup>();` em *Program.cs* .
 * Selecione **disparar uma exceção** no Home Page.
 
 ## <a name="exception-handler-lambda"></a>Lambda do Manipulador de exceção
@@ -102,12 +103,12 @@ In the preceding code, `await context.Response.WriteAsync(new string(' ', 512));
 Para testar o lambda de manipulação de exceção no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x):
 
 * Defina o ambiente como produção.
-* Remova os comentários de `webBuilder.UseStartup<StartupLambda>();` em *Program.cs*.
+* Remova os comentários de `webBuilder.UseStartup<StartupLambda>();` em *Program.cs* .
 * Selecione **disparar uma exceção** no Home Page.
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
-Por padrão, um aplicativo ASP.NET Core não fornece uma página de código de status para códigos de status de erro HTTP, como *404-não encontrado*. Quando o aplicativo encontra uma condição de erro HTTP 400-499 que não tem um corpo, ele retorna o código de status e um corpo de resposta vazio. Para fornecer páginas de código de status, use o middleware de páginas de código de status. Para habilitar os manipuladores padrão somente texto para os códigos de status de erros comuns, chame <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> no método `Startup.Configure`:
+Por padrão, um aplicativo ASP.NET Core não fornece uma página de código de status para códigos de status de erro HTTP, como *404-não encontrado* . Quando o aplicativo encontra uma condição de erro HTTP 400-499 que não tem um corpo, ele retorna o código de status e um corpo de resposta vazio. Para fornecer páginas de código de status, use o middleware de páginas de código de status. Para habilitar os manipuladores padrão somente texto para os códigos de status de erros comuns, chame <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> no método `Startup.Configure`:
 
 [!code-csharp[](error-handling/samples/5.x/ErrorHandlingSample/StartupUseStatusCodePages.cs?name=snippet&highlight=13)]
 
@@ -130,7 +131,7 @@ Status Code: 404; Not Found
 Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x):
 
 * Defina o ambiente como produção.
-* Remova os comentários de `webBuilder.UseStartup<StartupUseStatusCodePages>();` em *Program.cs*.
+* Remova os comentários de `webBuilder.UseStartup<StartupUseStatusCodePages>();` em *Program.cs* .
 * Selecione os links no home page na home page.
 
 ### <a name="usestatuscodepages-with-format-string"></a>UseStatusCodePages com cadeia de caracteres de formato
@@ -143,7 +144,7 @@ No código anterior, `{0}` é um espaço reservado para o código de erro.
 
 `UseStatusCodePages` com uma cadeia de caracteres de formato geralmente não é usada na produção porque ela retorna uma mensagem que não é útil para os usuários.
 
-Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupFormat>();` em *Program.cs*.
+Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupFormat>();` em *Program.cs* .
 
 ### <a name="usestatuscodepages-with-lambda"></a>UseStatusCodePages com lambda
 
@@ -153,7 +154,7 @@ Para especificar a manipulação de erro personalizada e o código de gravação
 
 `UseStatusCodePages` com um lambda normalmente não é usado em produção porque retorna uma mensagem que não é útil para os usuários.
 
-Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupStatusLambda>();` em *Program.cs*.
+Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupStatusLambda>();` em *Program.cs* .
 
 ### <a name="usestatuscodepageswithredirects"></a>UseStatusCodePagesWithRedirects
 
@@ -171,7 +172,7 @@ Este método normalmente é usado quando o aplicativo:
 * Deveria redirecionar o cliente para um terminal diferente, geralmente em situações nas quais um aplicativo diferente processa o erro. Para aplicativos Web, a barra de endereços do navegador do cliente reflete o ponto de extremidade redirecionado.
 * Não deveria preservar e retornar o código de status original com a resposta de redirecionamento inicial.
 
-Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupSCredirect>();` em *Program.cs*.
+Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupSCredirect>();` em *Program.cs* .
 
 ### <a name="usestatuscodepageswithreexecute"></a>UseStatusCodePagesWithReExecute
 
@@ -208,7 +209,7 @@ O ponto de extremidade que processa o erro pode obter a URL original que gerou o
 
 Para obter um Razor exemplo de páginas, consulte [pages/MyStatusCode2. cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x/ErrorHandlingSample/Pages) no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x).
 
-Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupSCreX>();` em *Program.cs*.
+Para testar `UseStatusCodePages` no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/5.x), remova os comentários de `webBuilder.UseStartup<StartupSCreX>();` em *Program.cs* .
 
 ## <a name="disable-status-code-pages"></a>Desabilitar páginas de código de status
 
@@ -293,7 +294,7 @@ O código anterior habilita a página de exceção do desenvolvedor quando o apl
 
 Os modelos <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage%2A> são colocados antes de qualquer middleware, portanto, as exceções são capturadas no middleware a seguir.
 
-O código anterior habilita a página de exceção do desenvolvedor **somente quando o aplicativo está em execução no ambiente de desenvolvimento**. As informações detalhadas de exceção não devem ser exibidas publicamente quando o aplicativo é executado na produção. Para saber mais sobre a configuração de ambientes, confira <xref:fundamentals/environments>.
+O código anterior habilita a página de exceção do desenvolvedor **somente quando o aplicativo está em execução no ambiente de desenvolvimento** . As informações detalhadas de exceção não devem ser exibidas publicamente quando o aplicativo é executado na produção. Para saber mais sobre a configuração de ambientes, confira <xref:fundamentals/environments>.
 
 A página de exceção do desenvolvedor inclui as seguintes informações sobre a exceção e a solicitação:
 
@@ -313,7 +314,7 @@ No exemplo a seguir, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensio
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-O Razor modelo de aplicativo pages fornece uma página de erro (*. cshtml*) e uma <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> classe ( `ErrorModel` ) na pasta *páginas* . Para um aplicativo MVC, o modelo de projeto inclui um método de ação de erro e uma exibição de erro no controlador inicial.
+O Razor modelo de aplicativo pages fornece uma página de erro ( *. cshtml* ) e uma <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> classe ( `ErrorModel` ) na pasta *páginas* . Para um aplicativo MVC, o modelo de projeto inclui um método de ação de erro e uma exibição de erro no controlador inicial.
 
 Não marque o método de ação do manipulador de erros com atributos do método HTTP, como `HttpGet` . Verbos explícitos impedem algumas solicitações de chegar ao método. Permitir acesso anônimo ao método se usuários não autenticados devem ver o modo de exibição de erro.
 
@@ -345,7 +346,7 @@ Para ver o resultado do lambda de tratamento de exceções no [aplicativo de exe
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
-Por padrão, o aplicativo ASP.NET Core não fornece uma página de código de status para códigos de status HTTP, como *404 - Não Encontrado*. O aplicativo retornar um código de status e um corpo de resposta vazio. Use o middleware das Páginas de código de status para fornecer páginas de código de status.
+Por padrão, o aplicativo ASP.NET Core não fornece uma página de código de status para códigos de status HTTP, como *404 - Não Encontrado* . O aplicativo retornar um código de status e um corpo de resposta vazio. Use o middleware das Páginas de código de status para fornecer páginas de código de status.
 
 O middleware é disponibilizado pelo pacote [Microsoft. AspNetCore. Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) .
 

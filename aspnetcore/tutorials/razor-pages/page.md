@@ -5,6 +5,7 @@ description: Parte 3 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 03febbd71df19cd3524d26e229a8bd8798a874b5
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 7d0085e1d444de30ca124ef544668122ab350c93
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865119"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060047"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3, com Scaffold Razor páginas em ASP.NET Core
 
@@ -35,7 +36,7 @@ Este tutorial examina as Razor páginas criadas por scaffolding no [tutorial ant
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>As páginas Create, Delete, Details e Edit
 
-Examine o Modelo de Página, *Pages/Movies/Index.cshtml.cs*:
+Examine o Modelo de Página, *Pages/Movies/Index.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs)]
 
@@ -75,7 +76,7 @@ A `@model` diretiva especifica o tipo do modelo passado para a Razor página. No
 
 ### <a name="the-layout-page"></a>A página de layout
 
-Selecione os links de menu (** Razor PagesMovie**, **Home**e **Privacy**). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml*. Abra o arquivo *Pages/Shared/_Layout.cshtml*.
+Selecione os links de menu ( **Razor PagesMovie** , **Home** e **Privacy** ). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml* . Abra o arquivo *Pages/Shared/_Layout.cshtml* .
 
 Os modelos de [layout](xref:mvc/views/layout) permitem que o layout do contêiner HTML seja:
 
@@ -96,7 +97,7 @@ A marcação realçada anterior é um exemplo de Razor transição para C#. Os c
 
 A `PageModel` classe base contém uma `ViewData` Propriedade Dictionary que pode ser usada para passar dados para uma exibição. Adicione objetos ao dicionário `ViewData` usando um padrão de chave/valor. No exemplo anterior, a propriedade `"Title"` é adicionada ao dicionário `ViewData`.
 
-A propriedade `"Title"` é usada no arquivo *Pages/Shared/_Layout.cshtml*. A marcação a seguir mostra as primeiras linhas do arquivo *Pages/_Layout.cshtml*.
+A propriedade `"Title"` é usada no arquivo *Pages/Shared/_Layout.cshtml* . A marcação a seguir mostra as primeiras linhas do arquivo *Pages/_Layout.cshtml* .
 
 <!-- We need a snapshot copy of layout because we are changing in the next step. -->
 
@@ -106,11 +107,11 @@ A linha `@*Markup removed for brevity.*@` é um Razor comentário. Ao contrário
 
 ### <a name="update-the-layout"></a>Atualizar o layout
 
-Altere o `<title>` elemento no arquivo *pages/Shared/_Layout. cshtml* para exibir o **filme** em vez de ** Razor PagesMovie**.
+Altere o `<title>` elemento no arquivo *pages/Shared/_Layout. cshtml* para exibir o **filme** em vez de **Razor PagesMovie** .
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
-Localizar o elemento de âncora a seguir no arquivo *Pages/Shared/_Layout.cshtml*.
+Localizar o elemento de âncora a seguir no arquivo *Pages/Shared/_Layout.cshtml* .
 
 ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesMovie</a>
@@ -124,14 +125,14 @@ Substitua o elemento anterior pela marcação a seguir:
 
 O elemento de âncora anterior é um [Auxiliar de Marcas](xref:mvc/views/tag-helpers/intro). Nesse caso, ele é o [Auxiliar de Marcas de Âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper). O `asp-page="/Movies/Index"` atributo e o valor da marca auxiliar cria um link para a `/Movies/Index` Razor página. O valor do atributo `asp-area` está vazio e, portanto, a área não é usada no link. Confira [Áreas](xref:mvc/controllers/areas) para obter mais informações.
 
-Salve suas alterações e teste o aplicativo clicando no link **RpMovie**. Confira o arquivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) no GitHub caso tenha problemas.
+Salve suas alterações e teste o aplicativo clicando no link **RpMovie** . Confira o arquivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) no GitHub caso tenha problemas.
 
-Teste os outros links (**Home**, **RpMovie**, **Create**, **Edit** e **Delete**). Cada página define o título, que você pode ver na guia navegador. Quando você marcar uma página, o título será usado para o indicador.
+Teste os outros links ( **Home** , **RpMovie** , **Create** , **Edit** e **Delete** ). Cada página define o título, que você pode ver na guia navegador. Quando você marcar uma página, o título será usado para o indicador.
 
 > [!NOTE]
 > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades de idiomas diferentes do inglês que usam uma vírgula (“,”) para um ponto decimal e formatos de data diferentes do inglês dos EUA, você deve tomar medidas para globalizar o aplicativo. Confira [Problema 4076 do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) para obter instruções sobre como adicionar casas decimais.
 
-A propriedade `Layout` é definida no arquivo *Pages/_ViewStart.cshtml*:
+A propriedade `Layout` é definida no arquivo *Pages/_ViewStart.cshtml* :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/_ViewStart.cshtml)]
 
@@ -139,11 +140,11 @@ A marcação anterior define o arquivo de layout para *pages/Shared/_Layout. csh
 
 ### <a name="the-create-page-model"></a>O modelo Criar página
 
-Examine o modelo de página *Pages/Movies/Create.cshtml.cs*:
+Examine o modelo de página *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-O método `OnGet` inicializa qualquer estado necessário para a página. A página Criar não tem nenhum estado para inicializar, assim, `Page` é retornado. Apresentamos um exemplo de inicialização de estado `OnGet` posteriormente no tutorial. O método `Page` cria um objeto `PageResult` que renderiza a página *Create.cshtml*.
+O método `OnGet` inicializa qualquer estado necessário para a página. A página Criar não tem nenhum estado para inicializar, assim, `Page` é retornado. Apresentamos um exemplo de inicialização de estado `OnGet` posteriormente no tutorial. O método `Page` cria um objeto `PageResult` que renderiza a página *Create.cshtml* .
 
 A propriedade `Movie` usa o atributo `[BindProperty]` para aceitar o [model binding](xref:mvc/models/model-binding). Quando o formulário Criar posta os valores de formulário, o runtime do ASP.NET Core associa os valores postados ao modelo `Movie`.
 
@@ -227,7 +228,7 @@ Este tutorial examina as Razor páginas criadas por scaffolding no [tutorial ant
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>As páginas Create, Delete, Details e Edit
 
-Examine o Modelo de Página, *Pages/Movies/Index.cshtml.cs*:
+Examine o Modelo de Página, *Pages/Movies/Index.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
 
@@ -265,15 +266,15 @@ A `@model` diretiva especifica o tipo do modelo passado para a Razor página. No
 
 ### <a name="the-layout-page"></a>A página de layout
 
-Selecione os links de menu (** Razor PagesMovie**, **Home**e **Privacy**). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml*. Abra o arquivo *Pages/Shared/_Layout.cshtml*.
+Selecione os links de menu ( **Razor PagesMovie** , **Home** e **Privacy** ). Cada página mostra o mesmo layout de menu. O layout de menu é implementado no arquivo *Pages/Shared/_Layout.cshtml* . Abra o arquivo *Pages/Shared/_Layout.cshtml* .
 
-Os modelos de [layout](xref:mvc/views/layout) permitem especificar o layout de contêiner HTML do site em um lugar e, em seguida, aplicá-lo a várias páginas do site. Localize a linha `@RenderBody()`. `RenderBody` é um espaço reservado em que todas as visualizações específicas da página criadas são mostradas, *encapsuladas* na página de layout. Por exemplo, se você selecionar o link **Privacidade**, a exibição **Pages/Privacy.cshtml** será renderizada dentro do método `RenderBody`.
+Os modelos de [layout](xref:mvc/views/layout) permitem especificar o layout de contêiner HTML do site em um lugar e, em seguida, aplicá-lo a várias páginas do site. Localize a linha `@RenderBody()`. `RenderBody` é um espaço reservado em que todas as visualizações específicas da página criadas são mostradas, *encapsuladas* na página de layout. Por exemplo, se você selecionar o link **Privacidade** , a exibição **Pages/Privacy.cshtml** será renderizada dentro do método `RenderBody`.
 
 <a name="vd"></a>
 
 ### <a name="viewdata-and-layout"></a>ViewData e layout
 
-Considere o seguinte código do arquivo *Pages/Movies/Index.cshtml*:
+Considere o seguinte código do arquivo *Pages/Movies/Index.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
 
@@ -281,7 +282,7 @@ O código realçado anterior é um exemplo de Razor transição para o C#. Os ca
 
 A classe base `PageModel` tem uma propriedade de dicionário `ViewData` que pode ser usada para adicionar os dados que você deseja passar para uma exibição. Você adiciona objetos ao dicionário `ViewData` usando um padrão de chave/valor. No exemplo anterior, a propriedade "Title" é adicionada ao dicionário `ViewData`.
 
-A propriedade "Título" é usada no arquivo *Pages/_Layout.cshtml*. A marcação a seguir mostra as primeiras linhas do arquivo *Pages/_Layout.cshtml*.
+A propriedade "Título" é usada no arquivo *Pages/_Layout.cshtml* . A marcação a seguir mostra as primeiras linhas do arquivo *Pages/_Layout.cshtml* .
 
 <!-- We need a snapshot copy of layout because we are changing in the next step. -->
 
@@ -291,11 +292,11 @@ A linha `@*Markup removed for brevity.*@` é um Razor comentário que não apare
 
 ### <a name="update-the-layout"></a>Atualizar o layout
 
-Altere o `<title>` elemento no arquivo *pages/Shared/_Layout. cshtml* para exibir o **filme** em vez de ** Razor PagesMovie**.
+Altere o `<title>` elemento no arquivo *pages/Shared/_Layout. cshtml* para exibir o **filme** em vez de **Razor PagesMovie** .
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml?range=1-6&highlight=6)]
 
-Localizar o elemento de âncora a seguir no arquivo *Pages/Shared/_Layout.cshtml*.
+Localizar o elemento de âncora a seguir no arquivo *Pages/Shared/_Layout.cshtml* .
 
 ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesMovie</a>
@@ -309,14 +310,14 @@ Substitua o elemento anterior pela marcação a seguir.
 
 O elemento de âncora anterior é um [Auxiliar de Marcas](xref:mvc/views/tag-helpers/intro). Nesse caso, ele é o [Auxiliar de Marcas de Âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper). O `asp-page="/Movies/Index"` atributo e o valor da marca auxiliar cria um link para a `/Movies/Index` Razor página. O valor do atributo `asp-area` está vazio e, portanto, a área não é usada no link. Confira [Áreas](xref:mvc/controllers/areas) para obter mais informações.
 
-Salve suas alterações e teste o aplicativo clicando no link **RpMovie**. Confira o arquivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) no GitHub caso tenha problemas.
+Salve suas alterações e teste o aplicativo clicando no link **RpMovie** . Confira o arquivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) no GitHub caso tenha problemas.
 
-Teste os outros links (**Home**, **RpMovie**, **Create**, **Edit** e **Delete**). Cada página define o título, que você pode ver na guia navegador. Quando você marcar uma página, o título será usado para o indicador.
+Teste os outros links ( **Home** , **RpMovie** , **Create** , **Edit** e **Delete** ). Cada página define o título, que você pode ver na guia navegador. Quando você marcar uma página, o título será usado para o indicador.
 
 > [!NOTE]
 > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades de idiomas diferentes do inglês que usam uma vírgula (“,”) para um ponto decimal e formatos de data diferentes do inglês dos EUA, você deve tomar medidas para globalizar o aplicativo. Veja [Problema 4076 do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) para obter instruções sobre como adicionar casas decimais.
 
-A propriedade `Layout` é definida no arquivo *Pages/_ViewStart.cshtml*:
+A propriedade `Layout` é definida no arquivo *Pages/_ViewStart.cshtml* :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/_ViewStart.cshtml)]
 
@@ -324,11 +325,11 @@ A marcação anterior define o arquivo de layout para *pages/Shared/_Layout. csh
 
 ### <a name="the-create-page-model"></a>O modelo Criar página
 
-Examine o modelo de página *Pages/Movies/Create.cshtml.cs*:
+Examine o modelo de página *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-O método `OnGet` inicializa qualquer estado necessário para a página. A página Criar não tem nenhum estado para inicializar, assim, `Page` é retornado. Mais adiante no tutorial, você verá o estado de inicialização do método `OnGet`. O método `Page` cria um objeto `PageResult` que renderiza a página *Create.cshtml*.
+O método `OnGet` inicializa qualquer estado necessário para a página. A página Criar não tem nenhum estado para inicializar, assim, `Page` é retornado. Mais adiante no tutorial, você verá o estado de inicialização do método `OnGet`. O método `Page` cria um objeto `PageResult` que renderiza a página *Create.cshtml* .
 
 A propriedade `Movie` usa o atributo `[BindProperty]` para aceitar o [model binding](xref:mvc/models/model-binding). Quando o formulário Criar posta os valores de formulário, o runtime do ASP.NET Core associa os valores postados ao modelo `Movie`.
 

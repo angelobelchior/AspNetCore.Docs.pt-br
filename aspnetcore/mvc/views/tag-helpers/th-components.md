@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: d3bae9cd5b4a5c7315c795229c7eafbf1e44e22d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 15bddd8ce18546bef7ee7e6ec2e32e369d0858a3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627579"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060554"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Componentes do Auxiliar de Marca no ASP.NET Core
 
@@ -30,7 +31,7 @@ Por [Scott Addie](https://twitter.com/Scott_Addie) e [Fiyaz Bin Hasan](https://g
 
 Um Componente do Auxiliar de Marca é um Auxiliar de Marca que permite que você modifique ou adicione condicionalmente elementos HTML de código do lado do servidor. Esse recurso está disponível no ASP.NET Core 2.0 ou posterior.
 
-O ASP.NET Core inclui dois Componentes de Auxiliar de Marca internos: `head` e `body`. Eles estão localizados no <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> namespace e podem ser usados no MVC e Razor nas páginas. Componentes do Auxiliar de Marca não requerem registro com o aplicativo em *_ViewImports.cshtml*.
+O ASP.NET Core inclui dois Componentes de Auxiliar de Marca internos: `head` e `body`. Eles estão localizados no <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> namespace e podem ser usados no MVC e Razor nas páginas. Componentes do Auxiliar de Marca não requerem registro com o aplicativo em *_ViewImports.cshtml* .
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([como baixar](xref:index#how-to-download-a-sample))
 
@@ -123,7 +124,7 @@ Para criar um Componente do Auxiliar de Marca personalizado:
 
 * Crie uma classe pública derivada de <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>.
 * Aplique um [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) atributo à classe. Especifique o nome do elemento HTML de destino.
-* *Opcional*: aplique um [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) atributo à classe para suprimir a exibição do tipo no IntelliSense.
+* *Opcional* : aplique um [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) atributo à classe para suprimir a exibição do tipo no IntelliSense.
 
 O código a seguir cria um Componente do Auxiliar de Marca personalizado que tem como destino o elemento HTML `<address>`:
 

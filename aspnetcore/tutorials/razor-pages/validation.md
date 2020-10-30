@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 86c523c69d3ee85f56bf1a51719a0bd93cbe97fc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 991a0f29c0edc5a220dfde69bd22dc4ed758394d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633546"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060723"
 ---
 # <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a>Parte 8, adicionar validação a uma página de ASP.NET Core Razor
 
@@ -32,7 +33,7 @@ Nesta seção, a lógica de validação é adicionada para o modelo `Movie`. As 
 
 ## <a name="validation"></a>Validação
 
-Um princípio-chave do desenvolvimento de software é chamado [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (“**D**on't **R**epeat **Y**ourself”). Razor As páginas incentivam o desenvolvimento onde a funcionalidade é especificada uma vez e é refletida em todo o aplicativo. O DRY pode ajudar a:
+Um princípio-chave do desenvolvimento de software é chamado [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (“ **D** on't **R** epeat **Y** ourself”). Razor As páginas incentivam o desenvolvimento onde a funcionalidade é especificada uma vez e é refletida em todo o aplicativo. O DRY pode ajudar a:
 
 * Reduzir a quantidade de código em um aplicativo.
 * Fazer com que o código seja menos propenso a erros e mais fácil de ser testado e mantido.
@@ -70,7 +71,7 @@ Ter as regras de validação automaticamente impostas pelo ASP.NET Core ajuda a 
 
 Execute o aplicativo e navegue para Pages/Movies.
 
-Selecione o link **Criar Novo**. Preencha o formulário com alguns valores inválidos. Quando a validação do lado do cliente do jQuery detecta o erro, ela exibe uma mensagem de erro.
+Selecione o link **Criar Novo** . Preencha o formulário com alguns valores inválidos. Quando a validação do lado do cliente do jQuery detecta o erro, ela exibe uma mensagem de erro.
 
 ![Formulário da exibição de filmes com vários erros de validação do lado do cliente do jQuery](validation/_static/val.png)
 
@@ -82,7 +83,7 @@ Uma vantagem significativa é que **nenhuma** alteração de código foi necess�
 
 Os dados de formulário não serão postados no servidor enquanto houver erros de validação do lado do cliente. Verifique se os dados de formulário não são postados por uma ou mais das seguintes abordagens:
 
-* Coloque um ponto de interrupção no método `OnPostAsync`. Envie o formulário (selecione **Criar** ou **Salvar**). O ponto de interrupção nunca é atingido.
+* Coloque um ponto de interrupção no método `OnPostAsync`. Envie o formulário (selecione **Criar** ou **Salvar** ). O ponto de interrupção nunca é atingido.
 * Use a [ferramenta Fiddler](https://www.telerik.com/fiddler).
 * Use as ferramentas do desenvolvedor do navegador para monitorar o tráfego de rede.
 
@@ -186,7 +187,7 @@ CREATE TABLE [dbo].[Movie] (
 
 As alterações do esquema anterior não fazem com que o EF lance uma exceção. No entanto, crie uma migração de forma que o esquema seja consistente com o modelo.
 
- No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes** .
 No PMC, insira os seguintes comandos:
 
 ```powershell

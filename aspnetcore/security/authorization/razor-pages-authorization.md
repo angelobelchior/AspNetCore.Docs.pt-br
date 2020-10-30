@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: b17717e7b3cbaa64d4ff00661f15439728f161d3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634885"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060177"
 ---
 # <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor Páginas convenções de autorização no ASP.NET Core
 
@@ -74,7 +75,7 @@ Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExt
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada. Por exemplo, o nome da página para o arquivo *areas/ Identity /pages/Manage/accounts.cshtml* é */Manage/accounts*.
+O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada. Por exemplo, o nome da página para o arquivo *areas/ Identity /pages/Manage/accounts.cshtml* é */Manage/accounts* .
 
 Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -90,7 +91,7 @@ Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExt
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada. Por exemplo, o caminho da pasta para os arquivos em *áreas/ Identity /pages/Manage/* é */Manage*.
+O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada. Por exemplo, o caminho da pasta para os arquivos em *áreas/ Identity /pages/Manage/* é */Manage* .
 
 Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
@@ -186,7 +187,7 @@ Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExt
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada. Por exemplo, o nome da página para o arquivo *areas/ Identity /pages/Manage/accounts.cshtml* é */Manage/accounts*.
+O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada. Por exemplo, o nome da página para o arquivo *areas/ Identity /pages/Manage/accounts.cshtml* é */Manage/accounts* .
 
 Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -202,7 +203,7 @@ Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExt
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada. Por exemplo, o caminho da pasta para os arquivos em *áreas/ Identity /pages/Manage/* é */Manage*.
+O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada. Por exemplo, o caminho da pasta para os arquivos em *áreas/ Identity /pages/Manage/* é */Manage* .
 
 Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
