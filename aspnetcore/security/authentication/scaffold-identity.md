@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: c79dfc64d4311088c3f9ea03aad7570189000e2a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 813dd7837c265c78c584d66dd51bc23399d12fbe
+ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053313"
+ms.lasthandoff: 10/31/2020
+ms.locfileid: "93141489"
 ---
 # <a name="scaffold-no-locidentity-in-aspnet-core-projects"></a>Scaffold Identity em projetos de ASP.NET Core
 
@@ -372,6 +372,14 @@ No arquivo *pages/Shared/layout. cshtml* , faça as seguintes alterações:
 
 Algumas Identity opções são configuradas em *áreas/ Identity / Identity HostingStartup.cs* . Para obter mais informações, consulte [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
+## <a name="standalone-or-hosted-no-locblazor-webassembly-apps"></a>Aplicativos autônomos ou hospedados Blazor WebAssembly
+
+Blazor WebAssemblyOs aplicativos do lado do cliente usam suas próprias Identity abordagens de interface do usuário e não podem usar ASP.NET Core Identity scaffolding. Os aplicativos de ASP.NET Core do lado do servidor de soluções hospedadas Blazor podem seguir as Razor orientações das páginas/MVC deste artigo e são configurados como qualquer outro tipo de aplicativo ASP.NET Core que ofereça suporte ao Identity .
+
+A Blazor estrutura não inclui Razor versões de componentes de Identity páginas da interface do usuário. Identity Os componentes da interface do usuário Razor podem ser personalizados criados ou obtidos de fontes de terceiros sem suporte.
+
+Para obter mais informações, consulte a [ Blazor segurança e os Identity artigos](xref:blazor/security/index).
+
 <a name="full"></a>
 
 ## <a name="create-full-no-locidentity-ui-source"></a>Criar Identity origem da interface do usuário completa
@@ -418,7 +426,7 @@ Estas seções mostram como desabilitar a página de registro, mas a abordagem p
 
 Para desabilitar o registro do usuário:
 
-* Scaffold Identity . Inclua conta. Register, Account. login e Account. RegisterConfirmation. Por exemplo:
+* Scaffold Identity . Inclua conta. Register, Account. login e Account. RegisterConfirmation. Por exemplo: 
 
   ```dotnetcli
    dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
@@ -550,7 +558,7 @@ Identityé configurado em *áreas/ Identity / Identity HostingStartup.cs* . Para
 
 ### <a name="enable-authentication"></a>Habilitar autenticação
 
-No `Configure` método da `Startup` classe, chame [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) após `UseStaticFiles` :
+No `Configure` método da `Startup` classe, chame <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> após `UseStaticFiles` :
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
@@ -607,7 +615,7 @@ Identityé configurado em *áreas/ Identity / Identity HostingStartup.cs* . Para
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-Chamar [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) após `UseStaticFiles` :
+Chamar <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> após `UseStaticFiles` :
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 
@@ -671,7 +679,7 @@ Se <xref:Microsoft.AspNetCore.Identity.PasswordOptions> o estiver configurado no
 
 Para desabilitar o registro do usuário:
 
-* Scaffold Identity . Inclua conta. Register, Account. login e Account. RegisterConfirmation. Por exemplo:
+* Scaffold Identity . Inclua conta. Register, Account. login e Account. RegisterConfirmation. Por exemplo: 
 
   ```dotnetcli
    dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
