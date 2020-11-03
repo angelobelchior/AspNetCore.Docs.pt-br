@@ -5,7 +5,7 @@ description: Saiba como publicar um SignalR aplicativo de ASP.NET Core no servi�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/02/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: e00eea81788c9b335691b7e5ffe6a46534c3c492
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8e6d36fe0b38486f94078b8f9cf12b852da7e0d9
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058214"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234498"
 ---
 # <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>Publicar um SignalR aplicativo de ASP.NET Core no serviço Azure app
 
@@ -54,7 +54,7 @@ Este artigo aborda a publicação usando as ferramentas do Visual Studio. Visual
    | **Grupo de Recursos** | Grupo de recursos relacionados aos quais o aplicativo pertence. |
    | **Plano de hospedagem**   | Plano de preços para o aplicativo Web. |
 
-1. Selecione o **SignalR serviço do Azure** na lista suspensa **dependências**  >  **Adicionar** :
+1. Selecione **SignalR serviço do Azure** na seção **dependências de serviço** . Selecione o **+** botão:
 
    ![Área de dependências mostrando a seleção de Azure::: no-Loc (Signalr)::: Service na lista suspensa adicionar](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 

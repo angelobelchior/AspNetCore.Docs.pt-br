@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 22c8ab52a93e7ea7df6be608501bebf33764b711
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 88970b0e53b456467bdc2218a3a6b943bbbf0df5
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055328"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234381"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly cenários de segurança adicionais
 
@@ -65,7 +65,7 @@ O configurado <xref:System.Net.Http.HttpClient> é usado para fazer solicitaçõ
 
 ```razor
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@inject HttpClient Client
+@inject HttpClient Http
 
 ...
 
@@ -76,7 +76,7 @@ protected override async Task OnInitializedAsync()
     try
     {
         examples = 
-            await Client.GetFromJsonAsync<ExampleType[]>("ExampleAPIMethod");
+            await Http.GetFromJsonAsync<ExampleType[]>("ExampleAPIMethod");
 
         ...
     }
@@ -191,11 +191,11 @@ using static {APP ASSEMBLY}.Data;
 
 public class WeatherForecastClient
 {
-    private readonly HttpClient client;
+    private readonly HttpClient http;
  
-    public WeatherForecastClient(HttpClient client)
+    public WeatherForecastClient(HttpClient http)
     {
-        this.client = client;
+        this.http = http;
     }
  
     public async Task<WeatherForecast[]> GetForecastAsync()
@@ -204,7 +204,7 @@ public class WeatherForecastClient
 
         try
         {
-            forecasts = await client.GetFromJsonAsync<WeatherForecast[]>(
+            forecasts = await http.GetFromJsonAsync<WeatherForecast[]>(
                 "WeatherForecast");
         }
         catch (AccessTokenNotAvailableException exception)
@@ -356,7 +356,7 @@ Os `{CUSTOM SCOPE 1}` `{CUSTOM SCOPE 2}` espaços reservados e no exemplo anteri
 * `true` com o `token` para uso.
 * `false` Se o token não for recuperado.
 
-## <a name="cross-origin-resource-sharing-cors"></a>CORS (compartilhamento de recursos entre origens)
+## <a name="cross-origin-resource-sharing-cors"></a>CORS (Compartilhamento de Recursos entre Origens)
 
 Ao enviar credenciais ( cookie s/cabeçalhos de autorização) em solicitações CORS, o `Authorization` cabeçalho deve ser permitido pela política CORS.
 
@@ -411,6 +411,11 @@ O exemplo a seguir mostra como:
 * Recupere o estado anterior depois da autenticação usando o parâmetro de cadeia de caracteres de consulta.
 
 ```razor
+...
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject IAccessTokenProvider TokenProvider
+...
+
 <EditForm Model="User" @onsubmit="OnSaveAsync">
     <label>User
         <InputText @bind-Value="User.Name" />
@@ -442,12 +447,12 @@ O exemplo a seguir mostra como:
 
     public async Task OnSaveAsync()
     {
-        var httpClient = new HttpClient();
-        httpClient.BaseAddress = new Uri(Navigation.BaseUri);
+        var http = new HttpClient();
+        http.BaseAddress = new Uri(Navigation.BaseUri);
 
         var resumeUri = Navigation.Uri + $"?state=resumeSavingProfile";
 
-        var tokenResult = await AuthenticationService.RequestAccessToken(
+        var tokenResult = await TokenProvider.RequestAccessToken(
             new AccessTokenRequestOptions
             {
                 ReturnUrl = resumeUri
@@ -455,9 +460,9 @@ O exemplo a seguir mostra como:
 
         if (tokenResult.TryGetToken(out var token))
         {
-            httpClient.DefaultRequestHeaders.Add("Authorization", 
+            http.DefaultRequestHeaders.Add("Authorization", 
                 $"Bearer {token.Value}");
-            await httpClient.PostAsJsonAsync("Save", User);
+            await http.PostAsJsonAsync("Save", User);
         }
         else
         {
