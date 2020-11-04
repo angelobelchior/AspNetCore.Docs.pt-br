@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/hosting-bundle
-ms.openlocfilehash: ecf3dd45575390eee263a275e7f1fb9ec50011bb
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a580c70d3141177be2508a0513f612eee56dbbf9
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058435"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343631"
 ---
 # <a name="the-net-core-hosting-bundle"></a>O pacote de hospedagem do .NET Core
 
@@ -37,13 +37,20 @@ O pacote de hospedagem do .NET Core é um instalador para o tempo de execução 
 >
 > Se o pacote de hospedagem for instalado após a instalação da versão de 64 bits (x64) do .NET Core, os SDKs poderão parecer estar ausentes ([Nenhum SDK do .NET Core foi detectado](xref:test/troubleshoot#no-net-core-sdks-were-detected)). Para resolver o problema, consulte <xref:test/troubleshoot#missing-sdk-after-installing-the-net-core-hosting-bundle>.
 
-### <a name="direct-download-current-version"></a>Download direto (versão atual)
+## <a name="direct-download-current-version"></a>Download direto (versão atual)
 
 Baixe o instalador usando o seguinte link:
 
 [Instalador de pacote de hospedagem do .NET Core atual (download direto)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
-### <a name="earlier-versions-of-the-installer"></a>Versões anteriores do instalador
+## <a name="visual-c-redistributable-requirement"></a>ReVisual C++ requisito redistribuível
+
+Em versões mais antigas do Windows, por exemplo, Windows Server 2012 R2, instale o Visual Studio C++ 2015, 2017, 2019 redistribuível. Caso contrário, uma mensagem de erro confusa no log de eventos do Windows relata que `The data is the error.`
+
+Redistribuível x64 versus [C++ atual](https://aka.ms/vs/16/release/vc_redist.x64.exe) 
+ [Redistribuível x86 vs C++ atual](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+
+## <a name="earlier-versions-of-the-installer"></a>Versões anteriores do instalador
 
 Para obter uma versão anterior do instalador:
 
@@ -55,32 +62,29 @@ Para obter uma versão anterior do instalador:
 > [!WARNING]
 > Alguns instaladores contêm versões de lançamento que atingiram o EOL (fim da vida útil) e não têm mais suporte da Microsoft. Para saber mais, confira a [política de suporte](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
-### <a name="install-the-hosting-bundle"></a>Instalar o pacote de hospedagem
+## <a name="options"></a>Opções
 
-1. Execute o instalador no servidor. Os parâmetros a seguir estão disponíveis ao executar o instalador por meio de um shell de comando do administrador:
+1. Os parâmetros a seguir estão disponíveis ao executar o instalador por meio de um shell de comando do administrador:
 
    * `OPT_NO_ANCM=1`: Ignorar a instalação do módulo ASP.NET Core.
    * `OPT_NO_RUNTIME=1`: Ignorar a instalação do tempo de execução do .NET Core. Usado quando o servidor hospeda apenas [implantações independentes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_SHAREDFX=1`: Ignorar a instalação da estrutura compartilhada ASP.NET (ASP.NET Runtime). Usado quando o servidor hospeda apenas [implantações independentes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_X86=1`: Ignorar a instalação de tempos de execução x86. Use esse parâmetro quando você souber que não hospedará aplicativos de 32 bits. Se houver uma possibilidade de hospedar aplicativos de 32 bits e 64 bits no futuro, não use esse parâmetro e instale ambos os runtimes.
    * `OPT_NO_SHARED_CONFIG_CHECK=1`: Desabilite a verificação para usar uma configuração compartilhada do IIS quando a configuração compartilhada ( `applicationHost.config` ) estiver no mesmo computador que a instalação do IIS. *Disponível somente para instaladores do ASP.NET Core 2.2 ou Hosting Bundler posterior.* Para obter mais informações, consulte <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
-1. Reinicie o sistema ou execute os seguintes comandos em um shell de comando:
 
-   ```console
-   net stop was /y
-   net start w3svc
-   ```
-   A reinicialização do IIS identifica uma alteração no CAMINHO do sistema, que é uma variável de ambiente, realizada pelo instalador.
+> [!NOTE]
+> Para obter informações sobre a Configuração Compartilhada do IIS, consulte [Módulo do ASP.NET Core com a Configuração Compartilhada do IIS](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration).
 
-ASP.NET Core não adota o comportamento de roll-forward para versões de patch de pacotes de estrutura compartilhados. Depois de atualizar a estrutura compartilhada instalando um novo pacote de hospedagem, reinicie o sistema ou execute os seguintes comandos em um shell de comando:
+## <a name="restart-iis"></a>Reiniciar o IIS
+
+Depois que o grupo de hospedagem é instalado, uma reinicialização manual do IIS pode ser necessária. Por exemplo, as `dotnet` ferramentas da CLI (comando) podem não existir no caminho para executar processos de trabalho do IIS.
+
+Para parar e iniciar o IIS manualmente, execute os seguintes comandos em um shell de comandos com privilégios elevados:
 
 ```console
 net stop was /y
 net start w3svc
 ```
-
-> [!NOTE]
-> Para obter informações sobre a Configuração Compartilhada do IIS, consulte [Módulo do ASP.NET Core com a Configuração Compartilhada do IIS](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration).
 
 ## <a name="module-version-and-hosting-bundle-installer-logs"></a>Versão do módulo e logs do instalador do pacote de hospedagem
 
