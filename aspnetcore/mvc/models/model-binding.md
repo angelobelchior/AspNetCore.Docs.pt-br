@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: a3be22134246c76b0a809ddb97b33ff97ace9a5b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 49300d32096e577db9b13a0510cc310b91ddb51d
+ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93365347"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Model binding no ASP.NET Core
 
@@ -159,7 +159,7 @@ Não aplique `[FromBody]` a mais de um parâmetro por método de ação. Depois 
 
 ### <a name="additional-sources"></a>Fontes adicionais
 
-Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor* . Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados do cookie estado da sessão ou do. Para obter dados de uma nova fonte:
+Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor*. Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados do cookie estado da sessão ou do. Para obter dados de uma nova fonte:
 
 * Crie uma classe que implementa `IValueProvider`.
 * Crie uma classe que implementa `IValueProviderFactory`.
@@ -224,7 +224,7 @@ Os tipos simples em que o associador de modelos pode converter cadeias de caract
 
 Um tipo complexo deve ter um construtor padrão público e propriedades públicas graváveis para associar. Quando ocorre model binding, a classe é instanciada usando o construtor padrão público. 
 
-Para cada propriedade do tipo complexo, o model binding examina as fontes em busca do nome padrão *prefix.property_name* . Se nada for encontrado, ela procurará apenas *property_name* sem o prefixo.
+Para cada propriedade do tipo complexo, o model binding examina as fontes em busca do nome padrão *prefix.property_name*. Se nada for encontrado, ela procurará apenas *property_name* sem o prefixo.
 
 Para associação a um parâmetro, o prefixo é o nome do parâmetro. Para associação a uma propriedade pública `PageModel`, o prefixo é o nome da propriedade pública. Alguns atributos têm uma propriedade `Prefix` que permite substituir o uso padrão do nome da propriedade ou do parâmetro.
 
@@ -302,9 +302,30 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 
 O `[Bind]` atributo pode ser usado para proteger contra sobrepostos em cenários _create *. Ele não funciona bem em cenários de edição, pois as propriedades excluídas são definidas como nulas ou um valor padrão, em vez de serem deixadas inalteradas. Para defesa contra o excesso de postagem, são recomendados modelos de exibição, em vez do atributo `[Bind]`. Para obter mais informações, veja [Observação de segurança sobre o excesso de postagem](xref:data/ef-mvc/crud#security-note-about-overposting).
 
+### <a name="modelbinder-attribute"></a>Atributo [ModelBinder]
+
+<xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute> pode ser aplicado a tipos, propriedades ou parâmetros. Ele permite especificar o tipo de associador de modelo usado para associar a instância ou o tipo específico. Por exemplo:
+
+```C#
+[HttpPost]
+public IActionResult OnPost([ModelBinder(typeof(MyInstructorModelBinder))] Instructor instructor)
+```
+
+O `[ModelBinder]` atributo também pode ser usado para alterar o nome de uma propriedade ou parâmetro quando ele está sendo associado a um modelo:
+
+```C#
+public class Instructor
+{
+    [ModelBinder(Name = "instructor_id")]
+    public string Id { get; set; }
+    
+    public string Name { get; set; }
+}
+```
+
 ### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Veja um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Aqui está um exemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
@@ -312,13 +333,13 @@ Veja também a discussão sobre o atributo `[Required]` em [Validação do model
 
 ### <a name="bindnever-attribute"></a>Atributo [BindNever]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Veja um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Aqui está um exemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
 ## <a name="collections"></a>Coleções
 
-Para destinos que são coleções de tipos simples, o model binding procura correspondências para *parameter_name* ou *property_name* . Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
+Para destinos que são coleções de tipos simples, o model binding procura correspondências para *parameter_name* ou *property_name*. Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
 
 * Suponha que o parâmetro a ser associado seja uma matriz chamada `selectedCourses`:
 
@@ -363,7 +384,7 @@ Para destinos que são coleções de tipos simples, o model binding procura corr
 
 ## <a name="dictionaries"></a>Dicionários
 
-Para destinos `Dictionary`, o model binding procura correspondências para *parameter_name* ou *property_name* . Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
+Para destinos `Dictionary`, o model binding procura correspondências para *parameter_name* ou *property_name*. Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
 
 * Suponha que o parâmetro de destino seja um `Dictionary<int, string>` chamado `selectedCourses`:
 
@@ -533,7 +554,7 @@ Você pode estender o model binding escrevendo um associador de modelos personal
 
 ## <a name="manual-model-binding"></a>Model binding manual 
 
-O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Veja um exemplo:
+O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Aqui está um exemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
@@ -687,7 +708,7 @@ Não aplique `[FromBody]` a mais de um parâmetro por método de ação. Depois 
 
 ### <a name="additional-sources"></a>Fontes adicionais
 
-Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor* . Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados do cookie estado da sessão ou do. Para obter dados de uma nova fonte:
+Os dados de origem são fornecidos ao sistema de model binding pelos *provedores de valor*. Você pode escrever e registrar provedores de valor personalizados que obtêm dados para model binding de outras fontes. Por exemplo, talvez você queira dados do cookie estado da sessão ou do. Para obter dados de uma nova fonte:
 
 * Crie uma classe que implementa `IValueProvider`.
 * Crie uma classe que implementa `IValueProviderFactory`.
@@ -752,7 +773,7 @@ Os tipos simples em que o associador de modelos pode converter cadeias de caract
 
 Um tipo complexo deve ter um construtor padrão público e propriedades públicas graváveis para associar. Quando ocorre model binding, a classe é instanciada usando o construtor padrão público. 
 
-Para cada propriedade do tipo complexo, o model binding examina as fontes em busca do nome padrão *prefix.property_name* . Se nada for encontrado, ela procurará apenas *property_name* sem o prefixo.
+Para cada propriedade do tipo complexo, o model binding examina as fontes em busca do nome padrão *prefix.property_name*. Se nada for encontrado, ela procurará apenas *property_name* sem o prefixo.
 
 Para associação a um parâmetro, o prefixo é o nome do parâmetro. Para associação a uma propriedade pública `PageModel`, o prefixo é o nome da propriedade pública. Alguns atributos têm uma propriedade `Prefix` que permite substituir o uso padrão do nome da propriedade ou do parâmetro.
 
@@ -814,13 +835,13 @@ Vários atributos internos estão disponíveis para controlar o model binding de
 
 ### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Veja um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Faz com que o model binding adicione um erro de estado de modelo se a associação não puder ocorrer para a propriedade de um modelo. Aqui está um exemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Atributo [BindNever]
 
-Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Veja um exemplo:
+Somente pode ser aplicado às propriedades de modelo, não aos parâmetros do método. Impede que o model binding configure a propriedade de um modelo. Aqui está um exemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -842,11 +863,11 @@ No exemplo a seguir, somente as propriedades especificadas do modelo `Instructor
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-O atributo `[Bind]` pode ser usado para proteção contra o excesso de postagem cenários de *criar* . Ele não funciona bem em cenários de edição, pois as propriedades excluídas são definidas como nulas ou um valor padrão, em vez de serem deixadas inalteradas. Para defesa contra o excesso de postagem, são recomendados modelos de exibição, em vez do atributo `[Bind]`. Para obter mais informações, veja [Observação de segurança sobre o excesso de postagem](xref:data/ef-mvc/crud#security-note-about-overposting).
+O atributo `[Bind]` pode ser usado para proteção contra o excesso de postagem cenários de *criar*. Ele não funciona bem em cenários de edição, pois as propriedades excluídas são definidas como nulas ou um valor padrão, em vez de serem deixadas inalteradas. Para defesa contra o excesso de postagem, são recomendados modelos de exibição, em vez do atributo `[Bind]`. Para obter mais informações, veja [Observação de segurança sobre o excesso de postagem](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ## <a name="collections"></a>Coleções
 
-Para destinos que são coleções de tipos simples, o model binding procura correspondências para *parameter_name* ou *property_name* . Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
+Para destinos que são coleções de tipos simples, o model binding procura correspondências para *parameter_name* ou *property_name*. Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
 
 * Suponha que o parâmetro a ser associado seja uma matriz chamada `selectedCourses`:
 
@@ -891,7 +912,7 @@ Para destinos que são coleções de tipos simples, o model binding procura corr
 
 ## <a name="dictionaries"></a>Dicionários
 
-Para destinos `Dictionary`, o model binding procura correspondências para *parameter_name* ou *property_name* . Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
+Para destinos `Dictionary`, o model binding procura correspondências para *parameter_name* ou *property_name*. Se nenhuma correspondência for encontrada, procurará um dos formatos compatíveis sem o prefixo. Por exemplo:
 
 * Suponha que o parâmetro de destino seja um `Dictionary<int, string>` chamado `selectedCourses`:
 
@@ -1002,7 +1023,7 @@ Você pode estender o model binding escrevendo um associador de modelos personal
 
 ## <a name="manual-model-binding"></a>Model binding manual
 
-O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Veja um exemplo:
+O model binding pode ser invocado manualmente usando o método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. O método é definido nas classes `ControllerBase` e `PageModel`. Sobrecargas de método permitem que você especifique o provedor de valor e prefixo a ser usado. O método retornará `false` se o model binding falhar. Aqui está um exemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
