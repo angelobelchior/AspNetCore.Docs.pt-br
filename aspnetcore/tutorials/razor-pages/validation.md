@@ -1,11 +1,14 @@
 ---
-title: Parte 8, adicionar validação a uma página de ASP.NET Core Razor
+title: Parte 8, adicionar validação
 author: rick-anderson
 description: Parte 8 da série de tutoriais em Razor páginas.
 ms.author: riande
 ms.custom: mvc
-ms.date: 7/23/2019
+ms.date: 09/29/2020
 no-loc:
+- Index
+- Create
+- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +21,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 991a0f29c0edc5a220dfde69bd22dc4ed758394d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 960e248d6f83b031004e354c98d8637674a403e1
+ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060723"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94360679"
 ---
 # <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a>Parte 8, adicionar validação a uma página de ASP.NET Core Razor
 
@@ -38,52 +41,63 @@ Um princípio-chave do desenvolvimento de software é chamado [DRY](https://wiki
 * Reduzir a quantidade de código em um aplicativo.
 * Fazer com que o código seja menos propenso a erros e mais fácil de ser testado e mantido.
 
-O suporte de validação fornecido por Razor páginas e Entity Framework é um bom exemplo do princípio seco. As regras de validação são especificadas de forma declarativa em um único lugar (na classe de modelo) e as regras são impostas em qualquer lugar no aplicativo.
+O suporte de validação fornecido por Razor páginas e Entity Framework é um bom exemplo do princípio seco:
+
+* As regras de validação são especificadas declarativamente em um único lugar, na classe de modelo.
+* As regras são impostas em todos os lugares no aplicativo.
 
 ## <a name="add-validation-rules-to-the-movie-model"></a>Adicionar regras de validação ao modelo de filme
 
-O namespace DataAnnotations fornece um conjunto de atributos de validação internos aplicados de forma declarativa a uma classe ou propriedade. DataAnnotations também contém atributos de formatação como `DataType`, que ajudam com a formatação e não fornecem validação.
+O `DataAnnotations` namespace fornece:
 
-Atualize a classe `Movie` para aproveitar os atributos de validação `Required`, `StringLength`, `RegularExpression` e `Range` internos.
+* Um conjunto de atributos de validação internos que são aplicados declarativamente a uma classe ou propriedade.
+* Formatação de atributos como `[DataType]` essa ajuda com a formatação e não fornecem nenhuma validação.
+
+Atualize a classe `Movie` para aproveitar os atributos de validação `[Required]`, `[StringLength]`, `[RegularExpression]` e `[Range]` internos.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet1)]
 
-Os atributos de validação especificam o comportamento que você deseja impor nas propriedades de modelo às quais eles são aplicados:
+Os atributos de validação especificam o comportamento a ser aplicado nas propriedades de modelo às quais eles são aplicados:
 
-* Os atributos `Required` e `MinimumLength` indicam que uma propriedade deve ter um valor; porém, nada impede que um usuário insira um espaço em branco para atender a essa validação.
-* O atributo `RegularExpression` é usado para limitar quais caracteres podem ser inseridos. No código anterior, "Gênero":
+* Os atributos `[Required]` e `[MinimumLength]` indicam que uma propriedade deve ter um valor. Nada impede que um usuário insira espaço em branco para atender a essa validação.
+* O atributo `[RegularExpression]` é usado para limitar quais caracteres podem ser inseridos. No código anterior, `Genre` :
 
   * Deve usar apenas letras.
   * A primeira letra deve ser maiúscula. Espaços em branco, números e caracteres especiais não são permitidos.
 
-* A "Classificação" `RegularExpression`:
+* O `RegularExpression` `Rating` :
 
   * Exige que o primeiro caractere seja uma letra maiúscula.
-  * Permite caracteres especiais e números nos espaços subsequentes. "PG-13" é válido para uma classificação, mas é um erro em "Gênero".
+  * Permite caracteres especiais e números em espaços subsequentes. "PG-13" é válido para uma classificação, mas falha para um `Genre` .
 
-* O atributo `Range` restringe um valor a um intervalo especificado.
-* O atributo `StringLength` permite definir o tamanho máximo de uma propriedade de cadeia de caracteres e, opcionalmente, seu tamanho mínimo.
-* Os tipos de valor (como `decimal`, `int`, `float`, `DateTime`) são inerentemente necessários e não precisam do atributo `[Required]`.
+* O atributo `[Range]` restringe um valor a um intervalo especificado.
+* O `[StringLength]` atributo pode definir um comprimento máximo de uma propriedade de cadeia de caracteres e, opcionalmente, seu comprimento mínimo.
+* Tipos de valor, como `decimal` ,,, `int` `float` `DateTime` , são inerentemente necessários e não precisam do `[Required]` atributo.
 
-Ter as regras de validação automaticamente impostas pelo ASP.NET Core ajuda a tornar seu aplicativo mais robusto. Também garante que você não se esqueça de validar algo e inadvertidamente permita dados incorretos no banco de dados.
+As regras de validação anteriores são usadas para demonstração, elas não são ideais para um sistema de produção. Por exemplo, o anterior impede a inserção de um filme com apenas dois caracteres e não permite caracteres especiais no `Genre` .
+
+Ter regras de validação automaticamente impostas pelo ASP.NET Core ajuda a:
+
+* Ajuda a tornar o aplicativo mais robusto.
+* Reduza as chances de salvar dados inválidos no banco de dado.
 
 ### <a name="validation-error-ui-in-no-locrazor-pages"></a>IU de erro de validação em Razor páginas
 
 Execute o aplicativo e navegue para Pages/Movies.
 
-Selecione o link **Criar Novo** . Preencha o formulário com alguns valores inválidos. Quando a validação do lado do cliente do jQuery detecta o erro, ela exibe uma mensagem de erro.
+Selecione o link **Create novo** . Preencha o formulário com alguns valores inválidos. Quando a validação do lado do cliente do jQuery detecta o erro, ela exibe uma mensagem de erro.
 
 ![Formulário da exibição de filmes com vários erros de validação do lado do cliente do jQuery](validation/_static/val.png)
 
 [!INCLUDE[](~/includes/localization/currency.md)]
 
-Observe como o formulário renderizou automaticamente uma mensagem de erro de validação em cada campo que contém um valor inválido. Os erros são impostos no lado do cliente (usando o JavaScript e o jQuery) e no lado do servidor (quando um usuário tem o JavaScript desabilitado).
+Observe como o formulário renderizou automaticamente uma mensagem de erro de validação em cada campo que contém um valor inválido. Os erros são impostos no lado do cliente, usando JavaScript e jQuery, e no lado do servidor, quando um usuário tem o JavaScript desabilitado.
 
-Uma vantagem significativa é que **nenhuma** alteração de código foi necessária nas páginas Criar ou Editar. Depois que DataAnnotations foi aplicado ao modelo, a interface do usuário de validação foi habilitada. As Razor páginas criadas neste tutorial captam automaticamente as regras de validação (usando atributos de validação nas propriedades da `Movie` classe de modelo). Validação do teste usando a página Editar: a mesma validação é aplicada.
+Um benefício significativo é que **nenhuma** alteração de código era necessária nas Create páginas ou editar. Depois que as anotações de dados forem aplicadas ao modelo, a interface do usuário de validação foi habilitada. As Razor páginas criadas neste tutorial captam automaticamente as regras de validação, usando atributos de validação nas propriedades da `Movie` classe de modelo. Validação do teste usando a página Editar: a mesma validação é aplicada.
 
 Os dados de formulário não serão postados no servidor enquanto houver erros de validação do lado do cliente. Verifique se os dados de formulário não são postados por uma ou mais das seguintes abordagens:
 
-* Coloque um ponto de interrupção no método `OnPostAsync`. Envie o formulário (selecione **Criar** ou **Salvar** ). O ponto de interrupção nunca é atingido.
+* Coloque um ponto de interrupção no método `OnPostAsync`. Envie o formulário selecionando **Create** ou **salvando**. O ponto de interrupção nunca é atingido.
 * Use a [ferramenta Fiddler](https://www.telerik.com/fiddler).
 * Use as ferramentas do desenvolvedor do navegador para monitorar o tráfego de rede.
 
@@ -93,66 +107,81 @@ Quando o JavaScript está desabilitado no navegador, o envio do formulário com 
 
 (Opcional) Teste a validação do servidor:
 
-* Desabilite o JavaScript no navegador. É possível desabilitar o JavaScript usando as ferramentas de desenvolvedor do navegador. Se você não conseguir desabilitar o JavaScript no navegador, tente outro navegador.
-* Defina um ponto de interrupção no método `OnPostAsync` da página Criar ou Editar.
-* Envie um formulário com dados inválidos.
-* Verifique se o estado do modelo é inválido:
+1. Desabilite o JavaScript no navegador. O JavaScript pode ser desabilitado usando as ferramentas de desenvolvedor do navegador. Se o JavaScript não puder ser desabilitado no navegador, tente outro navegador.
+1. Defina um ponto de interrupção no `OnPostAsync` método da Create página ou edição.
+1. Envie um formulário com dados inválidos.
+1. Verifique se o estado do modelo é inválido:
 
-  ```csharp
-   if (!ModelState.IsValid)
-   {
-      return Page();
-   }
-  ```
+   ```csharp
+    if (!ModelState.IsValid)
+    {
+       return Page();
+    }
+   ```
   
-Como alternativa, você pode [desabilitar a validação do lado do cliente no servidor](xref:mvc/models/validation#disable-client-side-validation).
+Como alternativa, [desabilite a validação do lado do cliente no servidor](xref:mvc/models/validation#disable-client-side-validation).
 
-O código a seguir mostra uma parte da página *Create.cshtml* gerada anteriormente com scaffold no tutorial. Ele é usado pelas páginas Criar e Editar para exibir o formulário inicial e exibir o formulário novamente, em caso de erro.
+O código a seguir mostra uma parte da página *Create . cshtml* com Scaffold anteriormente no tutorial. Ele é usado pelas Create páginas e editar para:
+
+* Exibir o formulário inicial.
+* Reexiba o formulário no caso de um erro.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
 O [Auxiliar de Marcação de Entrada](xref:mvc/views/working-with-forms) usa os atributos de [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) e produz os atributos HTML necessários para a Validação do jQuery no lado do cliente. O [Auxiliar de Marcação de Validação](xref:mvc/views/working-with-forms#the-validation-tag-helpers) exibe erros de validação. Consulte [Validação](xref:mvc/models/validation) para obter mais informações.
 
-As páginas Criar e Editar não têm nenhuma regra de validação. As regras de validação e as cadeias de caracteres de erro são especificadas somente na classe `Movie`. Essas regras de validação são aplicadas automaticamente a Razor páginas que editam o `Movie` modelo.
+As Create páginas e editar não têm nenhuma regra de validação. As regras de validação e as cadeias de caracteres de erro são especificadas somente na classe `Movie`. Essas regras de validação são aplicadas automaticamente a Razor páginas que editam o `Movie` modelo.
 
-Quando a lógica de validação precisa ser alterada, ela é feita apenas no modelo. A validação é aplicada de forma consistente em todo o aplicativo (a lógica de validação é definida em um único lugar). A validação em um único lugar ajuda a manter o código limpo e facilita sua manutenção e atualização.
+Quando a lógica de validação precisa ser alterada, ela é feita apenas no modelo. A validação é aplicada consistentemente em todo o aplicativo, a lógica de validação é definida em um único local. A validação em um único lugar ajuda a manter o código limpo e facilita sua manutenção e atualização.
 
-## <a name="using-datatype-attributes"></a>Usando atributos DataType
+## <a name="use-datatype-attributes"></a>Usar atributos de tipo de dados
 
-Examine a classe `Movie`. O namespace `System.ComponentModel.DataAnnotations` fornece atributos de formatação, além do conjunto interno de atributos de validação. O atributo `DataType` é aplicado às propriedades `ReleaseDate` e `Price`.
+Examine a classe `Movie`. O namespace `System.ComponentModel.DataAnnotations` fornece atributos de formatação, além do conjunto interno de atributos de validação. O atributo `[DataType]` é aplicado às propriedades `ReleaseDate` e `Price`.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
-Os atributos `DataType` fornecem apenas dicas para que o mecanismo de exibição formate os dados (e fornece atributos como `<a>` para as URLs e `<a href="mailto:EmailAddress.com">` para o email). Use o atributo `RegularExpression` para validar o formato dos dados. O atributo `DataType` é usado para especificar um tipo de dados mais específico do que o tipo intrínseco de banco de dados. Os atributos `DataType` não são atributos de validação. No aplicativo de exemplo, apenas a data é exibida, sem a hora.
+Os `[DataType]` atributos fornecem:
 
-A Enumeração `DataType` fornece muitos tipos de dados, como Date, Time, PhoneNumber, Currency, EmailAddress e muito mais. O atributo `DataType` também pode permitir que o aplicativo forneça automaticamente recursos específicos a um tipo. Por exemplo, um link `mailto:` pode ser criado para `DataType.EmailAddress`. Um seletor de data pode ser fornecido para `DataType.Date` em navegadores que dão suporte a HTML5. Os `DataType` atributos emitem HTML 5 `data-` (pronunciado dados Dash) os atributos que os navegadores HTML 5 consomem. Os atributos `DataType`**não** fornecem nenhuma validação.
+* Dicas para que o mecanismo de exibição formate os dados.
+* Fornece atributos como `<a>` para URL e `<a href="mailto:EmailAddress.com">` para email.
+
+Use o atributo `[RegularExpression]` para validar o formato dos dados. O atributo `[DataType]` é usado para especificar um tipo de dados mais específico do que o tipo intrínseco de banco de dados. `[DataType]` atributos não são atributos de validação. No aplicativo de exemplo, apenas a data é exibida, sem a hora.
+
+A `DataType` enumeração fornece muitos tipos de dados, como `Date` ,,, `Time` `PhoneNumber` `Currency` , `EmailAddress` e muito mais. 
+
+Os `[DataType]` atributos:
+
+* Pode permitir que o aplicativo forneça automaticamente recursos específicos de tipo. Por exemplo, um link `mailto:` pode ser criado para `DataType.EmailAddress`.
+* Pode fornecer um seletor `DataType.Date` de data em navegadores que dão suporte a HTML5.
+* Emitir HTML 5 `data-` , pronunciado "Dash de dados", atributos que o HTML 5 navegadores consomem.
+* **Não** forneça nenhuma validação.
 
 `DataType.Date` não especifica o formato da data exibida. Por padrão, o campo de dados é exibido de acordo com os formatos padrão com base nas `CultureInfo` do servidor.
 
 A anotação de dados `[Column(TypeName = "decimal(18, 2)")]` é necessária para que o Entity Framework Core possa mapear corretamente o `Price` para a moeda no banco de dados. Para obter mais informações, veja [Tipos de Dados](/ef/core/modeling/relational/data-types).
 
-O atributo `DisplayFormat` é usado para especificar explicitamente o formato de data:
+O atributo `[DisplayFormat]` é usado para especificar explicitamente o formato de data:
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 public DateTime ReleaseDate { get; set; }
 ```
 
-A configuração `ApplyFormatInEditMode` especifica que a formatação deve ser aplicada quando o valor é exibido para edição. Não é recomendável ter esse comportamento em alguns campos. Por exemplo, em valores de moeda, você provavelmente não deseja que o símbolo de moeda seja exibido na interface do usuário de edição.
+A `ApplyFormatInEditMode` configuração especifica que a formatação será aplicada quando o valor for exibido para edição. Esse comportamento pode não ser desejado para alguns campos. Por exemplo, em valores de moeda, o símbolo de moeda normalmente não é desejado na interface do usuário de edição.
 
-O atributo `DisplayFormat` pode ser usado por si só, mas geralmente é uma boa ideia usar o atributo `DataType`. O atributo `DataType` transmite a semântica dos dados, ao invés de apresentar como renderizá-lo em uma tela e oferece os seguintes benefícios que você não obtém com DisplayFormat:
+O atributo `[DisplayFormat]` pode ser usado por si só, mas geralmente é uma boa ideia usar o atributo `[DataType]`. O atributo `[DataType]` transmite a semântica dos dados em vez de como renderizá-los em uma tela. O `[DataType]` atributo fornece os seguintes benefícios que não estão disponíveis com `[DisplayFormat]` :
 
-* O navegador pode habilitar os recursos do HTML5 (por exemplo, mostrar um controle de calendário, o símbolo de moeda apropriado à localidade, links de email, etc.)
-* Por padrão, o navegador renderizará os dados usando o formato correto de acordo com a localidade.
-* O atributo `DataType` pode permitir que a estrutura ASP.NET Core escolha o modelo de campo correto para renderizar os dados. O `DisplayFormat` , se usado por si só, usa o modelo de cadeia de caracteres.
+* O navegador pode habilitar recursos do HTML5, por exemplo, para mostrar um controle de calendário, o símbolo de moeda apropriado da localidade, links de email, etc.
+* Por padrão, o navegador renderiza dados usando o formato correto com base em sua localidade.
+* O atributo `[DataType]` pode permitir que a estrutura ASP.NET Core escolha o modelo de campo correto para renderizar os dados. O `DisplayFormat` , se usado por si só, usa o modelo de cadeia de caracteres.
 
-**Observação:** a validação do jQuery não funciona com o `Range` atributo e `DateTime` . Por exemplo, o seguinte código sempre exibirá um erro de validação do lado do cliente, mesmo quando a data estiver no intervalo especificado:
+**Observação:** a validação do jQuery não funciona com o `[Range]` atributo e `DateTime` . Por exemplo, o seguinte código sempre exibirá um erro de validação do lado do cliente, mesmo quando a data estiver no intervalo especificado:
 
 ```csharp
 [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
    ```
 
-Geralmente, não é uma boa prática compilar datas rígidas nos modelos e, portanto, o uso do atributo `Range` e de `DateTime` não é recomendado.
+É uma prática recomendada evitar a compilação de datas rígidas em modelos, portanto, usando o `[Range]` atributo e `DateTime` não é recomendado. Use a [configuração](xref:fundamentals/configuration/index) para intervalos de datas e outros valores sujeitos a alterações frequentes em vez de especificá-los no código.
 
 O seguinte código mostra como combinar atributos em uma linha:
 
@@ -187,7 +216,7 @@ CREATE TABLE [dbo].[Movie] (
 
 As alterações do esquema anterior não fazem com que o EF lance uma exceção. No entanto, crie uma migração de forma que o esquema seja consistente com o modelo.
 
- No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes** .
+ No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 No PMC, insira os seguintes comandos:
 
 ```powershell
@@ -231,7 +260,6 @@ Obrigado por concluir esta introdução às Razor páginas. [Introdução ao Raz
 * <xref:fundamentals/localization>
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/authoring>
-* [Versão do YouTube deste tutorial](https://youtu.be/b63m66eu7us)
 
 > [!div class="step-by-step"]
-> [Anterior: Adicionando um novo campo](xref:tutorials/razor-pages/new-field)
+> [Anterior: adicionar um novo campo](xref:tutorials/razor-pages/new-field)
