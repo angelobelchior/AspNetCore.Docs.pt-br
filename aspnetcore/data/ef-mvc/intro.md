@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 77cf1e9ad51b7044a35e1a9b2c125b0fdd91435e
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: ef1d94ce7a0aa853336260b8d73b9d4036c907ac
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365361"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340004"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutorial: introdução ao EF Core em um aplicativo Web ASP.NET MVC
 
@@ -73,11 +73,15 @@ Os usuários podem exibir e atualizar informações de alunos, cursos e instruto
 
 ## <a name="create-web-app"></a>Criar um aplicativo Web
 
-* Inicie o Visual Studio e selecione **ASP.NET Core aplicativo Web** > **Avançar**.
-* Dê ao projeto o nome de `ContosoUniversity`. É importante usar esse nome exato, incluindo maiúsculas e minúsculas, para que os namespaces correspondam quando o código é copiado.
-* Selecione **Criar**.
-* Selecione **.NET Core** e **ASP.NET Core 5,0** nos menus suspensos e, em seguida, selecione modelo de **aplicativo Web (Model-View-Controller)** .
-  ![Caixa de diálogo Novo projeto ASP.NET Core](intro/_static/new-aspnet5.png)
+1. Inicie o Visual Studio e selecione **Criar um projeto**.
+1. Na caixa de diálogo **criar um novo projeto** , selecione **ASP.NET Core aplicativo Web** > **Avançar**.
+1. Na caixa de diálogo **configurar seu novo projeto** , digite `ContosoUniversity` para **nome do projeto**. É importante usar esse nome exato, incluindo a capitalização, para que cada `namespace` correspondência seja feita quando o código for copiado.
+1. Selecione **Criar**.
+1. Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , selecione:
+    1. **.NET Core** e **ASP.NET Core 5,0** nos menus suspensos.
+    1. **ASP.NET Core aplicativo Web (Model-View-Controller)**.
+    1. **Create** 
+       Criar ![ Caixa de diálogo novo projeto de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
 
 ## <a name="set-up-the-site-style"></a>Configurar o estilo do site
 
@@ -388,11 +392,13 @@ Vá para o próximo tutorial para aprender a executar operações CRUD (criar, l
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-3.0"
+::: moniker range="<= aspnetcore-3.1"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
 O aplicativo Web de exemplo Contoso University demonstra como criar aplicativos Web em ASP.NET Core 2.2 MVC usando o EF (Entity Framework) Core 2.2 e o Visual Studio 2017 ou 2019.
+
+Este tutorial não foi atualizado para o ASP.NET Core 3,1. Ele foi atualizado para o [ASP.NET Core 5,0](xref:data/ef-mvc/intro?view=aspnetcore-5.0).
 
 O aplicativo de exemplo é um site de uma Contoso University fictícia. Ele inclui funcionalidades como admissão de alunos, criação de cursos e atribuições de instrutor. Este é o primeiro de uma série de tutoriais que explica como criar o aplicativo de exemplo Contoso University do zero.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 0912b3fbcd0b891deb4985eaa18841c22f4f3264
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7ae462ff9abd06fe4ab4b3e00a71515b76b0ee7d
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055744"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94339978"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -523,7 +523,16 @@ A remoção do manipulador ou a desabilitação da herança é executada além d
 
 #### <a name="brotli-and-gzip-compression"></a>Compactação Brotli e gzip
 
-O IIS pode ser configurado via `web.config` para servir ativos compactados Brotli ou gzip Blazor . Para obter um exemplo de configuração, consulte [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true) .
+*Esta seção se aplica somente a Blazor WebAssembly aplicativos autônomos. Blazor os aplicativos hospedados usam um arquivo de aplicativo ASP.NET Core padrão `web.config` , não o arquivo vinculado nesta seção.*
+
+O IIS pode ser configurado via `web.config` para servir ativos compactados Brotli ou gzip Blazor para aplicativos autônomos Blazor WebAssembly . Para obter um exemplo de arquivo de configuração, consulte [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true) .
+
+A configuração adicional do arquivo de exemplo `web.config` pode ser necessária nos seguintes cenários:
+
+* A especificação do aplicativo chama um dos seguintes:
+  * Servindo arquivos compactados que não estão configurados pelo arquivo de exemplo `web.config` .
+  * Servindo arquivos compactados configurados pelo arquivo de exemplo `web.config` em um formato descompactado.
+* A configuração do IIS do servidor (por exemplo, `applicationHost.config` ) fornece padrões do IIS no nível do servidor. Dependendo da configuração no nível do servidor, o aplicativo pode exigir uma configuração diferente do IIS do que o arquivo de exemplo `web.config` contém.
 
 #### <a name="troubleshooting"></a>Solução de problemas
 
@@ -538,7 +547,7 @@ A hospedagem de arquivos estáticos de [armazenamento do Azure](/azure/storage/)
 Quando o serviço de blob está habilitado para hospedagem de site estático em uma conta de armazenamento:
 
 * Defina o **Nome do documento de índice** como `index.html`.
-* Defina o **Caminho do documento de erro** como `index.html`. Razor os componentes e outros pontos de extremidade que não são de arquivo não residem em caminhos físicos no conteúdo estático armazenado pelo serviço BLOB. Quando uma solicitação para um desses recursos é recebida e o Blazor roteador deve lidar, o erro *404-não encontrado* gerado pelo serviço blob roteia a solicitação para o caminho do **documento de erro** . O `index.html` blob é retornado e o Blazor roteador carrega e processa o caminho.
+* Defina o **Caminho do documento de erro** como `index.html`. Razor os componentes e outros pontos de extremidade que não são de arquivo não residem em caminhos físicos no conteúdo estático armazenado pelo serviço BLOB. Quando uma solicitação para um desses recursos é recebida e o Blazor roteador deve lidar, o erro *404-não encontrado* gerado pelo serviço blob roteia a solicitação para o caminho do **documento de erro**. O `index.html` blob é retornado e o Blazor roteador carrega e processa o caminho.
 
 Se os arquivos não forem carregados no tempo de execução devido a tipos MIME inadequados nos cabeçalhos dos arquivos `Content-Type` , execute uma das seguintes ações:
 
@@ -547,7 +556,7 @@ Se os arquivos não forem carregados no tempo de execução devido a tipos MIME 
 
   Em Gerenciador de Armazenamento (portal do Azure) para cada arquivo:
   
-  1. Clique com o botão direito do mouse no arquivo e selecione **Propriedades** .
+  1. Clique com o botão direito do mouse no arquivo e selecione **Propriedades**.
   1. Defina o **ContentType** e selecione o botão **salvar** .
 
 Para mais informações, confira [Hospedagem de site estático no Armazenamento do Azure](/azure/storage/blobs/storage-blob-static-website).
@@ -682,7 +691,7 @@ O `--contentroot` argumento define o caminho absoluto para o diretório que cont
   "commandLineArgs": "--contentroot=/content-root-path"
   ```
 
-* No Visual Studio, especifique o argumento em **Propriedades**  >  **depurar**  >  **argumentos do aplicativo** . Definir o argumento na página de propriedades do Visual Studio adiciona o argumento ao `launchSettings.json` arquivo.
+* No Visual Studio, especifique o argumento em **Propriedades**  >  **depurar**  >  **argumentos do aplicativo**. Definir o argumento na página de propriedades do Visual Studio adiciona o argumento ao `launchSettings.json` arquivo.
 
   ```console
   --contentroot=/content-root-path
@@ -707,7 +716,7 @@ O `--pathbase` argumento define o caminho base do aplicativo para um aplicativo 
   "commandLineArgs": "--pathbase=/relative-URL-path"
   ```
 
-* No Visual Studio, especifique o argumento em **Propriedades**  >  **depurar**  >  **argumentos do aplicativo** . Definir o argumento na página de propriedades do Visual Studio adiciona o argumento ao `launchSettings.json` arquivo.
+* No Visual Studio, especifique o argumento em **Propriedades**  >  **depurar**  >  **argumentos do aplicativo**. Definir o argumento na página de propriedades do Visual Studio adiciona o argumento ao `launchSettings.json` arquivo.
 
   ```console
   --pathbase=/relative-URL-path
@@ -729,7 +738,7 @@ O argumento `--urls` define os endereços IP ou os endereços de host com portas
   "commandLineArgs": "--urls=http://127.0.0.1:0"
   ```
 
-* No Visual Studio, especifique o argumento em **Propriedades**  >  **depurar**  >  **argumentos do aplicativo** . Definir o argumento na página de propriedades do Visual Studio adiciona o argumento ao `launchSettings.json` arquivo.
+* No Visual Studio, especifique o argumento em **Propriedades**  >  **depurar**  >  **argumentos do aplicativo**. Definir o argumento na página de propriedades do Visual Studio adiciona o argumento ao `launchSettings.json` arquivo.
 
   ```console
   --urls=http://127.0.0.1:0

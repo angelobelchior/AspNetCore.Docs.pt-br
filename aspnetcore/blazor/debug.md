@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 669ebaf6dcd05561340aefda4a75b6fe1068d207
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b7e246c20bf12f8ddf07cff54864836cb535aa60
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056186"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94339991"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -56,6 +56,8 @@ A depuração requer um dos seguintes navegadores:
 
 * Google Chrome (versão 70 ou posterior) (padrão)
 * Microsoft Edge (versão 80 ou posterior)
+
+Verifique se os firewalls ou proxies não bloqueiam a comunicação com o proxy de depuração ( `NodeJS` processo). Para obter mais informações, consulte a seção [configuração do firewall](#firewall-configuration) .
 
 Visual Studio para Mac requer a versão 8,8 (Build 1532) ou posterior:
 
@@ -339,16 +341,34 @@ Blazor fornece um proxy de depuração que implementa o [protocolo devtools do C
 
 Os mapas de origem do navegador permitem que o navegador mapeie arquivos compilados de volta para seus arquivos de origem originais e normalmente são usados para depuração do lado do cliente. No entanto, o Blazor atualmente não mapeia C# diretamente para JavaScript/WASM. Em vez disso, a Blazor interpretação de Il no navegador, portanto, os mapas de origem não são relevantes.
 
+## <a name="firewall-configuration"></a>Configuração do firewall
+
+Se um firewall bloquear a comunicação com o proxy de depuração, crie uma regra de exceção de firewall que permita a comunicação entre o navegador e o `NodeJS` processo.
+
+> [!WARNING]
+> A modificação de uma configuração de firewall deve ser feita com cuidado para evitar a criação de vulnerablities de segurança. Aplique cuidadosamente as diretrizes de segurança, siga as melhores práticas de segurança e respeite os avisos emitidos pelo fabricante do firewall.
+>
+> Permitindo a comunicação aberta com o `NodeJS` processo:
+>
+> * Abre o servidor de nó para qualquer conexão, dependendo dos recursos e da configuração do firewall.
+> * Pode ser arriscado dependendo da sua rede.
+> * **É recomendado apenas em máquinas de desenvolvedor.**
+>
+> Se possível, permita apenas a comunicação aberta com o `NodeJS` processo **em redes confiáveis ou privadas**.
+
+Para obter diretrizes de configuração do [Firewall do Windows](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) , consulte [criar um programa de entrada ou regra de serviço](/windows/security/threat-protection/windows-firewall/create-an-inbound-program-or-service-rule). Para obter mais informações, consulte [Windows Defender firewall com segurança avançada](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) e artigos relacionados no conjunto de documentação do firewall do Windows.
+
 ## <a name="troubleshoot"></a>Solucionar problemas
 
 Se você estiver executando erros, as dicas a seguir podem ajudar:
 
 * Na guia **depurador** , abra as ferramentas de desenvolvedor em seu navegador. No console do, execute `localStorage.clear()` para remover qualquer ponto de interrupção.
 * Confirme que você instalou e confia no certificado de desenvolvimento ASP.NET Core HTTPS. Para obter mais informações, consulte <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
-* O Visual Studio requer a opção **Habilitar depuração JavaScript para ASP.net (Chrome, Edge e IE)** em **ferramentas**  >  **Opções**  >  **depuração**  >  **geral** . Essa é a configuração padrão para o Visual Studio. Se a depuração não estiver funcionando, confirme se a opção está selecionada.
+* O Visual Studio requer a opção **Habilitar depuração JavaScript para ASP.net (Chrome, Edge e IE)** em **ferramentas**  >  **Opções**  >  **depuração**  >  **geral**. Essa é a configuração padrão para o Visual Studio. Se a depuração não estiver funcionando, confirme se a opção está selecionada.
 * Se o seu ambiente usa um proxy HTTP, certifique-se de que `localhost` está incluído nas configurações de bypass de proxy. Isso pode ser feito definindo a `NO_PROXY` variável de ambiente em:
   * O `launchSettings.json` arquivo para o projeto.
   * No nível de variáveis de ambiente do usuário ou do sistema para que ele se aplique a todos os aplicativos. Ao usar uma variável de ambiente, reinicie o Visual Studio para que a alteração entre em vigor.
+* Verifique se os firewalls ou proxies não bloqueiam a comunicação com o proxy de depuração ( `NodeJS` processo). Para obter mais informações, consulte a seção [configuração do firewall](#firewall-configuration) .
 
 ### <a name="breakpoints-in-oninitializedasync-not-hit"></a>Pontos de interrupção em `OnInitialized{Async}` não atingido
 

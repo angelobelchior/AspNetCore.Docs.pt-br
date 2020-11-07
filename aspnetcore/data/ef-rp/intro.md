@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 74f65b916c2d5b7de61ec29f4259a51584ee5989
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 5849f4bfb9d0355177ceb5c2f4236c6d39dd9e92
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365412"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340030"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Páginas com Entity Framework Core no ASP.NET Core-tutorial 1 de 8
 
@@ -119,12 +119,16 @@ To run the app after downloading the completed project:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Inicie o Visual Studio e selecione **Criar um projeto**.
-* Selecione **ASP.NET Core aplicativo Web** a > **seguir**.
-* Nomeie o projeto *ContosoUniversity*. É importante usar esse nome exato, incluindo maiúsculas e minúsculas, para que os namespaces correspondam quando o código for copiado e colado.
-* Selecione **Criar**.
-* Selecione **.NET Core** e **ASP.NET Core 5,0** nos menus suspensos e, em seguida, selecione **aplicativo Web**.
-
+1. Inicie o Visual Studio e selecione **Criar um projeto**.
+1. Na caixa de diálogo **criar um novo projeto** , selecione **ASP.NET Core aplicativo Web** > **Avançar**.
+1. Na caixa de diálogo **configurar seu novo projeto** , digite `ContosoUniversity` para **nome do projeto**. É importante usar esse nome exato, incluindo a capitalização, para que cada `namespace` correspondência seja feita quando o código for copiado.
+1. Selecione **Criar**.
+1. Na caixa de diálogo **criar um novo ASP.NET Core aplicativo Web** , selecione:
+    1. **.NET Core** e **ASP.NET Core 5,0** nos menus suspensos.
+    1. **ASP.NET Core aplicativo Web (Model-View-Controller)**.
+    1. **Create** 
+       Criar ![ Caixa de diálogo novo projeto de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
+    
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Em um terminal, navegue até a pasta na qual a pasta do projeto deve ser criada.
