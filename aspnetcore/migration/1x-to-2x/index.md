@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: migration/1x-to-2x/index
 ms.openlocfilehash: 6d67924d87cdbe72cb08c5305dfe45c5b22b31bc
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -130,7 +130,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
 
-<span data-ttu-id="d7ad7-143">O exemplo anterior carrega o `Configuration` membro com definições de configuração de *:::no-loc(appsettings.json):::* , bem como quaisquer *appSettings. \<EnvironmentName\> arquivo JSON* correspondente à `IHostingEnvironment.EnvironmentName` propriedade.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-143">The preceding example loads the `Configuration` member with configuration settings from *:::no-loc(appsettings.json):::* as well as any *appsettings.\<EnvironmentName\>.json* file matching the `IHostingEnvironment.EnvironmentName` property.</span></span> <span data-ttu-id="d7ad7-144">Estes arquivos estão localizados no mesmo caminho que *Startup.cs* .</span><span class="sxs-lookup"><span data-stu-id="d7ad7-144">The location of these files is at the same path as *Startup.cs* .</span></span>
+<span data-ttu-id="d7ad7-143">O exemplo anterior carrega o `Configuration` membro com definições de configuração de *appsettings.json* , bem como quaisquer *appSettings. \<EnvironmentName\> arquivo JSON* correspondente à `IHostingEnvironment.EnvironmentName` propriedade.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-143">The preceding example loads the `Configuration` member with configuration settings from *appsettings.json* as well as any *appsettings.\<EnvironmentName\>.json* file matching the `IHostingEnvironment.EnvironmentName` property.</span></span> <span data-ttu-id="d7ad7-144">Estes arquivos estão localizados no mesmo caminho que *Startup.cs* .</span><span class="sxs-lookup"><span data-stu-id="d7ad7-144">The location of these files is at the same path as *Startup.cs* .</span></span>
 
 <span data-ttu-id="d7ad7-145">Nos projetos 2.0, o código de configuração clichê inerente aos projetos 1.x é executado de modo oculto.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-145">In 2.0 projects, the boilerplate configuration code inherent to 1.x projects runs behind-the-scenes.</span></span> <span data-ttu-id="d7ad7-146">Por exemplo, as variáveis de ambiente e as configurações do aplicativo são carregadas na inicialização.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-146">For example, environment variables and app settings are loaded at startup.</span></span> <span data-ttu-id="d7ad7-147">O código *Startup.cs* equivalente é reduzido à inicialização `IConfiguration` com a instância injetada:</span><span class="sxs-lookup"><span data-stu-id="d7ad7-147">The equivalent *Startup.cs* code is reduced to `IConfiguration` initialization with the injected instance:</span></span>
 
@@ -168,13 +168,13 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="view-compilation"></a>
 
-## <a name="review-no-locrazor-view-compilation-setting"></a><span data-ttu-id="d7ad7-166">Examinar :::no-loc(Razor)::: Exibir configuração de compilação</span><span class="sxs-lookup"><span data-stu-id="d7ad7-166">Review :::no-loc(Razor)::: view compilation setting</span></span>
+## <a name="review-no-locrazor-view-compilation-setting"></a><span data-ttu-id="d7ad7-166">Examinar Razor Exibir configuração de compilação</span><span class="sxs-lookup"><span data-stu-id="d7ad7-166">Review Razor view compilation setting</span></span>
 
-<span data-ttu-id="d7ad7-167">Um tempo de inicialização mais rápido do aplicativo e pacotes publicados menores são de extrema importância para você.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-167">Faster application startup time and smaller published bundles are of utmost importance to you.</span></span> <span data-ttu-id="d7ad7-168">Por esses motivos, a [ :::no-loc(Razor)::: compilação de exibição](xref:mvc/views/view-compilation) é habilitada por padrão no ASP.NET Core 2,0.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-168">For these reasons, [:::no-loc(Razor)::: view compilation](xref:mvc/views/view-compilation) is enabled by default in ASP.NET Core 2.0.</span></span>
+<span data-ttu-id="d7ad7-167">Um tempo de inicialização mais rápido do aplicativo e pacotes publicados menores são de extrema importância para você.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-167">Faster application startup time and smaller published bundles are of utmost importance to you.</span></span> <span data-ttu-id="d7ad7-168">Por esses motivos, a [ Razor compilação de exibição](xref:mvc/views/view-compilation) é habilitada por padrão no ASP.NET Core 2,0.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-168">For these reasons, [Razor view compilation](xref:mvc/views/view-compilation) is enabled by default in ASP.NET Core 2.0.</span></span>
 
-<span data-ttu-id="d7ad7-169">A configuração da propriedade `Mvc:::no-loc(Razor):::CompileOnPublish` como verdadeiro não é mais necessária.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-169">Setting the `Mvc:::no-loc(Razor):::CompileOnPublish` property to true is no longer required.</span></span> <span data-ttu-id="d7ad7-170">A menos que você esteja desabilitando a compilação de exibição, a propriedade poderá ser removida do arquivo *.csproj* .</span><span class="sxs-lookup"><span data-stu-id="d7ad7-170">Unless you're disabling view compilation, the property may be removed from the *.csproj* file.</span></span>
+<span data-ttu-id="d7ad7-169">A configuração da propriedade `MvcRazorCompileOnPublish` como verdadeiro não é mais necessária.</span><span class="sxs-lookup"><span data-stu-id="d7ad7-169">Setting the `MvcRazorCompileOnPublish` property to true is no longer required.</span></span> <span data-ttu-id="d7ad7-170">A menos que você esteja desabilitando a compilação de exibição, a propriedade poderá ser removida do arquivo *.csproj* .</span><span class="sxs-lookup"><span data-stu-id="d7ad7-170">Unless you're disabling view compilation, the property may be removed from the *.csproj* file.</span></span>
 
-<span data-ttu-id="d7ad7-171">Ao direcionar .NET Framework, você ainda precisa referenciar explicitamente o [Microsoft. AspNetCore. Mvc. :::no-loc(Razor)::: . ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.ViewCompilation) pacote NuGet em seu arquivo *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="d7ad7-171">When targeting .NET Framework, you still need to explicitly reference the [Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.ViewCompilation) NuGet package in your *.csproj* file:</span></span>
+<span data-ttu-id="d7ad7-171">Ao direcionar .NET Framework, você ainda precisa referenciar explicitamente o [Microsoft. AspNetCore. Mvc. Razor . ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) pacote NuGet em seu arquivo *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="d7ad7-171">When targeting .NET Framework, you still need to explicitly reference the [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) NuGet package in your *.csproj* file:</span></span>
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=15)]
 
@@ -202,9 +202,9 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="auth-and-identity"></a>
 
-## <a name="adopt-authenticationno-locidentity-improvements"></a><span data-ttu-id="d7ad7-183">Adote a autenticação/ :::no-loc(Identity)::: aprimoramentos</span><span class="sxs-lookup"><span data-stu-id="d7ad7-183">Adopt authentication/:::no-loc(Identity)::: improvements</span></span>
+## <a name="adopt-authenticationno-locidentity-improvements"></a><span data-ttu-id="d7ad7-183">Adote a autenticação/ Identity aprimoramentos</span><span class="sxs-lookup"><span data-stu-id="d7ad7-183">Adopt authentication/Identity improvements</span></span>
 
-<span data-ttu-id="d7ad7-184">ASP.NET Core 2,0 tem um novo modelo de autenticação e várias alterações significativas no :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="d7ad7-184">ASP.NET Core 2.0 has a new authentication model and a number of significant changes to :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="d7ad7-185">Se você criou seu projeto com as contas de usuário individuais habilitadas ou se tiver adicionado a autenticação manualmente ou :::no-loc(Identity)::: , consulte [migrar autenticação e :::no-loc(Identity)::: para ASP.NET Core 2,0](xref:migration/1x-to-2x/identity-2x).</span><span class="sxs-lookup"><span data-stu-id="d7ad7-185">If you created your project with Individual User Accounts enabled, or if you have manually added authentication or :::no-loc(Identity):::, see [Migrate Authentication and :::no-loc(Identity)::: to ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x).</span></span>
+<span data-ttu-id="d7ad7-184">ASP.NET Core 2,0 tem um novo modelo de autenticação e várias alterações significativas no ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="d7ad7-184">ASP.NET Core 2.0 has a new authentication model and a number of significant changes to ASP.NET Core Identity.</span></span> <span data-ttu-id="d7ad7-185">Se você criou seu projeto com as contas de usuário individuais habilitadas ou se tiver adicionado a autenticação manualmente ou Identity , consulte [migrar autenticação e Identity para ASP.NET Core 2,0](xref:migration/1x-to-2x/identity-2x).</span><span class="sxs-lookup"><span data-stu-id="d7ad7-185">If you created your project with Individual User Accounts enabled, or if you have manually added authentication or Identity, see [Migrate Authentication and Identity to ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x).</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="d7ad7-186">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="d7ad7-186">Additional resources</span></span>
 

@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/ip-safelist
 ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,7 +34,7 @@ ms.locfileid: "93059657"
 
 * <span data-ttu-id="07622-108">Middleware para verificar o endereço IP remoto de cada solicitação.</span><span class="sxs-lookup"><span data-stu-id="07622-108">Middleware to check the remote IP address of every request.</span></span>
 * <span data-ttu-id="07622-109">Filtros de ação MVC para verificar o endereço IP remoto de solicitações para controladores ou métodos de ação específicos.</span><span class="sxs-lookup"><span data-stu-id="07622-109">MVC action filters to check the remote IP address of requests for specific controllers or action methods.</span></span>
-* <span data-ttu-id="07622-110">:::no-loc(Razor)::: Páginas filtra para verificar o endereço IP remoto de solicitações de :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="07622-110">:::no-loc(Razor)::: Pages filters to check the remote IP address of requests for :::no-loc(Razor)::: pages.</span></span>
+* <span data-ttu-id="07622-110">Razor Páginas filtra para verificar o endereço IP remoto de solicitações de Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="07622-110">Razor Pages filters to check the remote IP address of requests for Razor pages.</span></span>
 
 <span data-ttu-id="07622-111">Em cada caso, uma cadeia de caracteres contendo endereços IP de cliente aprovados é armazenada em uma configuração de aplicativo.</span><span class="sxs-lookup"><span data-stu-id="07622-111">In each case, a string containing approved client IP addresses is stored in an app setting.</span></span> <span data-ttu-id="07622-112">O middleware ou o filtro:</span><span class="sxs-lookup"><span data-stu-id="07622-112">The middleware or filter:</span></span>
 
@@ -49,10 +49,10 @@ ms.locfileid: "93059657"
 
 <span data-ttu-id="07622-119">No aplicativo de exemplo, a SafeList de endereço IP é:</span><span class="sxs-lookup"><span data-stu-id="07622-119">In the sample app, the IP address safelist is:</span></span>
 
-* <span data-ttu-id="07622-120">Definido pela `AdminSafeList` propriedade no *:::no-loc(appsettings.json):::* arquivo.</span><span class="sxs-lookup"><span data-stu-id="07622-120">Defined by the `AdminSafeList` property in the *:::no-loc(appsettings.json):::* file.</span></span>
+* <span data-ttu-id="07622-120">Definido pela `AdminSafeList` propriedade no *appsettings.json* arquivo.</span><span class="sxs-lookup"><span data-stu-id="07622-120">Defined by the `AdminSafeList` property in the *appsettings.json* file.</span></span>
 * <span data-ttu-id="07622-121">Uma cadeia de caracteres delimitada por ponto-e-vírgula que pode conter endereços IP [versão 4 (IPv4)](https://wikipedia.org/wiki/IPv4) e [protocolo IP versão 6 (IPv6)](https://wikipedia.org/wiki/IPv6) .</span><span class="sxs-lookup"><span data-stu-id="07622-121">A semicolon-delimited string that may contain both [Internet Protocol version 4 (IPv4)](https://wikipedia.org/wiki/IPv4) and [Internet Protocol version 6 (IPv6)](https://wikipedia.org/wiki/IPv6) addresses.</span></span>
 
-[!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/:::no-loc(appsettings.json):::?range=1-3&highlight=2)]
+[!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/appsettings.json?range=1-3&highlight=2)]
 
 <span data-ttu-id="07622-122">No exemplo anterior, os endereços IPv4 de `127.0.0.1` e `192.168.1.5` e o endereço de loopback IPv6 de `::1` (formato compactado `0:0:0:0:0:0:0:1` ) são permitidos.</span><span class="sxs-lookup"><span data-stu-id="07622-122">In the preceding example, the IPv4 addresses of `127.0.0.1` and `192.168.1.5` and the IPv6 loopback address of `::1` (compressed format for `0:0:0:0:0:0:0:1`) are allowed.</span></span>
 
@@ -103,13 +103,13 @@ ms.locfileid: "93059657"
 
 * <span data-ttu-id="07622-140">Um verbo de solicitação HTTP diferente de GET, o `AdminSafeListMiddleware` middleware valida o endereço IP do cliente.</span><span class="sxs-lookup"><span data-stu-id="07622-140">An HTTP request verb other than GET, the `AdminSafeListMiddleware` middleware validates the client IP address.</span></span>
 
-## <a name="no-locrazor-pages-filter"></a><span data-ttu-id="07622-141">:::no-loc(Razor)::: Filtro de páginas</span><span class="sxs-lookup"><span data-stu-id="07622-141">:::no-loc(Razor)::: Pages filter</span></span>
+## <a name="no-locrazor-pages-filter"></a><span data-ttu-id="07622-141">Razor Filtro de páginas</span><span class="sxs-lookup"><span data-stu-id="07622-141">Razor Pages filter</span></span>
 
-<span data-ttu-id="07622-142">Se você quiser o controle de acesso controlado por seguração para um :::no-loc(Razor)::: aplicativo de páginas, use um :::no-loc(Razor)::: filtro de páginas.</span><span class="sxs-lookup"><span data-stu-id="07622-142">If you want safelist-driven access control for a :::no-loc(Razor)::: Pages app, use a :::no-loc(Razor)::: Pages filter.</span></span> <span data-ttu-id="07622-143">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="07622-143">For example:</span></span>
+<span data-ttu-id="07622-142">Se você quiser o controle de acesso controlado por seguração para um Razor aplicativo de páginas, use um Razor filtro de páginas.</span><span class="sxs-lookup"><span data-stu-id="07622-142">If you want safelist-driven access control for a Razor Pages app, use a Razor Pages filter.</span></span> <span data-ttu-id="07622-143">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="07622-143">For example:</span></span>
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckPageFilter.cs?name=snippet_ClassOnly)]
 
-<span data-ttu-id="07622-144">No `Startup.ConfigureServices` , habilite o :::no-loc(Razor)::: filtro páginas adicionando-o à coleção de filtros MVC.</span><span class="sxs-lookup"><span data-stu-id="07622-144">In `Startup.ConfigureServices`, enable the :::no-loc(Razor)::: Pages filter by adding it to the MVC filters collection.</span></span> <span data-ttu-id="07622-145">No exemplo a seguir, um `ClientIpCheckPageFilter` :::no-loc(Razor)::: filtro de páginas é adicionado.</span><span class="sxs-lookup"><span data-stu-id="07622-145">In the following example, a `ClientIpCheckPageFilter` :::no-loc(Razor)::: Pages filter is added.</span></span> <span data-ttu-id="07622-146">Uma lista de imsafe e uma instância de agente de console são passadas como parâmetros de construtor.</span><span class="sxs-lookup"><span data-stu-id="07622-146">A safelist and a console logger instance are passed as constructor parameters.</span></span>
+<span data-ttu-id="07622-144">No `Startup.ConfigureServices` , habilite o Razor filtro páginas adicionando-o à coleção de filtros MVC.</span><span class="sxs-lookup"><span data-stu-id="07622-144">In `Startup.ConfigureServices`, enable the Razor Pages filter by adding it to the MVC filters collection.</span></span> <span data-ttu-id="07622-145">No exemplo a seguir, um `ClientIpCheckPageFilter` Razor filtro de páginas é adicionado.</span><span class="sxs-lookup"><span data-stu-id="07622-145">In the following example, a `ClientIpCheckPageFilter` Razor Pages filter is added.</span></span> <span data-ttu-id="07622-146">Uma lista de imsafe e uma instância de agente de console são passadas como parâmetros de construtor.</span><span class="sxs-lookup"><span data-stu-id="07622-146">A safelist and a console logger instance are passed as constructor parameters.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -123,7 +123,7 @@ ms.locfileid: "93059657"
 
 ::: moniker-end
 
-<span data-ttu-id="07622-147">Quando a página de *índice* do aplicativo de exemplo :::no-loc(Razor)::: é solicitada, o :::no-loc(Razor)::: filtro de páginas valida o endereço IP do cliente.</span><span class="sxs-lookup"><span data-stu-id="07622-147">When the sample app's *Index* :::no-loc(Razor)::: page is requested, the :::no-loc(Razor)::: Pages filter validates the client IP address.</span></span> <span data-ttu-id="07622-148">O filtro produz uma variação da seguinte saída do console:</span><span class="sxs-lookup"><span data-stu-id="07622-148">The filter produces a variation of the following console output:</span></span>
+<span data-ttu-id="07622-147">Quando a página de *índice* do aplicativo de exemplo Razor é solicitada, o Razor filtro de páginas valida o endereço IP do cliente.</span><span class="sxs-lookup"><span data-stu-id="07622-147">When the sample app's *Index* Razor page is requested, the Razor Pages filter validates the client IP address.</span></span> <span data-ttu-id="07622-148">O filtro produz uma variação da seguinte saída do console:</span><span class="sxs-lookup"><span data-stu-id="07622-148">The filter produces a variation of the following console output:</span></span>
 
 ```
 dbug: ClientIpSafelistComponents.Filters.ClientIpCheckPageFilter[0]

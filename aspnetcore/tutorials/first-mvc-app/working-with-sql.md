@@ -5,17 +5,17 @@ description: Parte 5, adicionar um modelo a um aplicativo ASP.NET Core MVC
 ms.author: riande
 ms.date: 8/16/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/first-mvc-app/working-with-sql
 ms.openlocfilehash: f893aa1041a42c12514b825fb3c8e96a6104358d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -36,15 +36,15 @@ ms.locfileid: "93051571"
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-<span data-ttu-id="a3568-108">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-108">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-109">Para o desenvolvimento local, ele obtém a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-109">For local development, it gets the connection string from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="a3568-108">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-108">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-109">Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-109">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
-[!code-json[](start-mvc/sample/MvcMovie/:::no-loc(appsettings.json):::?highlight=2&range=8-10)]
+[!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="a3568-110">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="a3568-110">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=5-6)]
 
-<span data-ttu-id="a3568-111">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-111">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-112">Para o desenvolvimento local, ele obtém a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-112">For local development, it gets the connection string from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="a3568-111">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-111">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-112">Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-112">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 
@@ -149,15 +149,15 @@ if (context.Movie.Any())
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=13-99)]
 
-<span data-ttu-id="a3568-159">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-159">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-160">Para o desenvolvimento local, ele obtém a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-160">For local development, it gets the connection string from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="a3568-159">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-159">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-160">Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-160">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
-[!code-json[](start-mvc/sample/MvcMovie/:::no-loc(appsettings.json):::?highlight=2&range=8-10)]
+[!code-json[](start-mvc/sample/MvcMovie/appsettings.json?highlight=2&range=8-10)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="a3568-161">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="a3568-161">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
-<span data-ttu-id="a3568-162">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-162">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-163">Para o desenvolvimento local, ele obtém a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-163">For local development, it gets the connection string from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="a3568-162">O sistema de [Configuração](xref:fundamentals/configuration/index) do ASP.NET Core lê a `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="a3568-162">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString`.</span></span> <span data-ttu-id="a3568-163">Para o desenvolvimento local, ele obtém a cadeia de conexão do *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="a3568-163">For local development, it gets the connection string from the *appsettings.json* file:</span></span>
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/appsettingsSQLite.json?highlight=2&range=8-10)]
 

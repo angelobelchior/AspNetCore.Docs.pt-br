@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
 ms.openlocfilehash: 2cfd200c44290a0931cdeb2f68e99b90c11aa612
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -201,7 +201,7 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   21 seconds 
 
 ## <a name="edit-and-continue"></a><span data-ttu-id="e8502-217">Editar e continuar</span><span class="sxs-lookup"><span data-stu-id="e8502-217">Edit and continue</span></span>
 
-<span data-ttu-id="e8502-218">As alterações em arquivos estáticos e :::no-loc(Razor)::: exibições são atualizadas automaticamente sem a necessidade de uma etapa de compilação.</span><span class="sxs-lookup"><span data-stu-id="e8502-218">Changes to static files and :::no-loc(Razor)::: views are automatically updated without the need for a compilation step.</span></span> <span data-ttu-id="e8502-219">Faça a alteração, salve e atualize o navegador para exibir a atualização.</span><span class="sxs-lookup"><span data-stu-id="e8502-219">Make the change, save, and refresh the browser to view the update.</span></span>
+<span data-ttu-id="e8502-218">As alterações em arquivos estáticos e Razor exibições são atualizadas automaticamente sem a necessidade de uma etapa de compilação.</span><span class="sxs-lookup"><span data-stu-id="e8502-218">Changes to static files and Razor views are automatically updated without the need for a compilation step.</span></span> <span data-ttu-id="e8502-219">Faça a alteração, salve e atualize o navegador para exibir a atualização.</span><span class="sxs-lookup"><span data-stu-id="e8502-219">Make the change, save, and refresh the browser to view the update.</span></span>
 
 <span data-ttu-id="e8502-220">As modificações nos arquivos de código exigem a compilação e a reinicialização do Kestrel dentro do contêiner.</span><span class="sxs-lookup"><span data-stu-id="e8502-220">Code file modifications require compilation and a restart of Kestrel within the container.</span></span> <span data-ttu-id="e8502-221">Depois de fazer a alteração, use `CTRL+F5` para executar o processo e iniciar o aplicativo dentro do contêiner.</span><span class="sxs-lookup"><span data-stu-id="e8502-221">After making the change, use `CTRL+F5` to perform the process and start the app within the container.</span></span> <span data-ttu-id="e8502-222">O contêiner do Docker não é recompilado nem interrompido.</span><span class="sxs-lookup"><span data-stu-id="e8502-222">The Docker container isn't rebuilt or stopped.</span></span> <span data-ttu-id="e8502-223">Execute o comando `docker ps` no PMC.</span><span class="sxs-lookup"><span data-stu-id="e8502-223">Run the `docker ps` command in PMC.</span></span> <span data-ttu-id="e8502-224">Observe que o contêiner original ainda está em execução como há 10 minutos:</span><span class="sxs-lookup"><span data-stu-id="e8502-224">Notice the original container is still running as of 10 minutes ago:</span></span>
 

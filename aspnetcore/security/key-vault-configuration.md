@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc, devx-track-azurecli
 ms.date: 02/07/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/key-vault-configuration
 ms.openlocfilehash: 10a949831c180f51bc6bb9b8294150a558f9343c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -135,7 +135,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    1. <span data-ttu-id="5fecf-167">Selecione o aplicativo no Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5fecf-167">Select the app in Azure AD.</span></span>
    1. <span data-ttu-id="5fecf-168">Navegue até **certificados & segredos** .</span><span class="sxs-lookup"><span data-stu-id="5fecf-168">Navigate to **Certificates & secrets** .</span></span>
    1. <span data-ttu-id="5fecf-169">Selecione **carregar certificado** para carregar o certificado, que contém a chave pública.</span><span class="sxs-lookup"><span data-stu-id="5fecf-169">Select **Upload certificate** to upload the certificate, which contains the public key.</span></span> <span data-ttu-id="5fecf-170">Um certificado *. cer* , *. pem* ou *. CRT* é aceitável.</span><span class="sxs-lookup"><span data-stu-id="5fecf-170">A *.cer* , *.pem* , or *.crt* certificate is acceptable.</span></span>
-1. <span data-ttu-id="5fecf-171">Armazene o nome do cofre de chaves, a ID do aplicativo e a impressão digital do certificado no arquivo do aplicativo *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-171">Store the key vault name, Application ID, and certificate thumbprint in the app's *:::no-loc(appsettings.json):::* file.</span></span>
+1. <span data-ttu-id="5fecf-171">Armazene o nome do cofre de chaves, a ID do aplicativo e a impressão digital do certificado no arquivo do aplicativo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-171">Store the key vault name, Application ID, and certificate thumbprint in the app's *appsettings.json* file.</span></span>
 1. <span data-ttu-id="5fecf-172">Navegue até **cofres de chaves** na portal do Azure.</span><span class="sxs-lookup"><span data-stu-id="5fecf-172">Navigate to **Key vaults** in the Azure portal.</span></span>
 1. <span data-ttu-id="5fecf-173">Selecione o cofre de chaves que você criou no [armazenamento de segredo no ambiente de produção com Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) seção.</span><span class="sxs-lookup"><span data-stu-id="5fecf-173">Select the key vault that you created in the [Secret storage in the Production environment with Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section.</span></span>
 1. <span data-ttu-id="5fecf-174">Selecione **Políticas de acesso** .</span><span class="sxs-lookup"><span data-stu-id="5fecf-174">Select **Access policies** .</span></span>
@@ -153,7 +153,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-<span data-ttu-id="5fecf-186">O certificado X. 509 é gerenciado pelo sistema operacional.</span><span class="sxs-lookup"><span data-stu-id="5fecf-186">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="5fecf-187">O aplicativo chama <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> com valores fornecidos pelo *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="5fecf-187">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="5fecf-186">O certificado X. 509 é gerenciado pelo sistema operacional.</span><span class="sxs-lookup"><span data-stu-id="5fecf-186">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="5fecf-187">O aplicativo chama <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> com valores fornecidos pelo *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="5fecf-187">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *appsettings.json* file:</span></span>
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -163,9 +163,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 * <span data-ttu-id="5fecf-190">ID do aplicativo: `627e911e-43cc-61d4-992e-12db9c81b413`</span><span class="sxs-lookup"><span data-stu-id="5fecf-190">Application ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span></span>
 * <span data-ttu-id="5fecf-191">Impressão digital do certificado: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span><span class="sxs-lookup"><span data-stu-id="5fecf-191">Certificate thumbprint: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span></span>
 
-<span data-ttu-id="5fecf-192">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-192">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="5fecf-192">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-192">*appsettings.json* :</span></span>
 
-[!code-json[](key-vault-configuration/samples/3.x/SampleApp/:::no-loc(appsettings.json):::?highlight=10-12)]
+[!code-json[](key-vault-configuration/samples/3.x/SampleApp/appsettings.json?highlight=10-12)]
 
 <span data-ttu-id="5fecf-193">Quando você executa o aplicativo, uma página da Web mostra os valores secretos carregados.</span><span class="sxs-lookup"><span data-stu-id="5fecf-193">When you run the app, a webpage shows the loaded secret values.</span></span> <span data-ttu-id="5fecf-194">No ambiente de desenvolvimento, os valores secretos são carregados com o `_dev` sufixo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-194">In the Development environment, secret values load with the `_dev` suffix.</span></span> <span data-ttu-id="5fecf-195">No ambiente de produção, os valores são carregados com o `_prod` sufixo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-195">In the Production environment, the values load with the `_prod` suffix.</span></span>
 
@@ -175,11 +175,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 <span data-ttu-id="5fecf-198">O aplicativo de exemplo usa identidades gerenciadas para recursos do Azure quando a `#define` instrução na parte superior do arquivo *Program.cs* é definida como `Managed` .</span><span class="sxs-lookup"><span data-stu-id="5fecf-198">The sample app uses Managed identities for Azure resources when the `#define` statement at the top of the *Program.cs* file is set to `Managed`.</span></span>
 
-<span data-ttu-id="5fecf-199">Insira o nome do cofre no arquivo do aplicativo *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-199">Enter the vault name into the app's *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="5fecf-200">O aplicativo de exemplo não requer uma ID de aplicativo e uma senha (segredo do cliente) quando definido para a `Managed` versão, para que você possa ignorar essas entradas de configuração.</span><span class="sxs-lookup"><span data-stu-id="5fecf-200">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="5fecf-201">O aplicativo é implantado no Azure e o Azure autentica o aplicativo para acessar Azure Key Vault apenas usando o nome do cofre armazenado no *:::no-loc(appsettings.json):::* arquivo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-201">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="5fecf-199">Insira o nome do cofre no arquivo do aplicativo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-199">Enter the vault name into the app's *appsettings.json* file.</span></span> <span data-ttu-id="5fecf-200">O aplicativo de exemplo não requer uma ID de aplicativo e uma senha (segredo do cliente) quando definido para a `Managed` versão, para que você possa ignorar essas entradas de configuração.</span><span class="sxs-lookup"><span data-stu-id="5fecf-200">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="5fecf-201">O aplicativo é implantado no Azure e o Azure autentica o aplicativo para acessar Azure Key Vault apenas usando o nome do cofre armazenado no *appsettings.json* arquivo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-201">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *appsettings.json* file.</span></span>
 
 <span data-ttu-id="5fecf-202">Implante o aplicativo de exemplo no serviço Azure App.</span><span class="sxs-lookup"><span data-stu-id="5fecf-202">Deploy the sample app to Azure App Service.</span></span>
 
-<span data-ttu-id="5fecf-203">Um aplicativo implantado no serviço Azure App é registrado automaticamente com o Azure AD quando o serviço é criado.</span><span class="sxs-lookup"><span data-stu-id="5fecf-203">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="5fecf-204">Obtenha a ID de objeto da implantação para uso no comando a seguir.</span><span class="sxs-lookup"><span data-stu-id="5fecf-204">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="5fecf-205">A ID de objeto é mostrada no portal do Azure no **:::no-loc(Identity):::** painel do serviço de aplicativo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-205">The Object ID is shown in the Azure portal on the **:::no-loc(Identity):::** panel of the App Service.</span></span>
+<span data-ttu-id="5fecf-203">Um aplicativo implantado no serviço Azure App é registrado automaticamente com o Azure AD quando o serviço é criado.</span><span class="sxs-lookup"><span data-stu-id="5fecf-203">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="5fecf-204">Obtenha a ID de objeto da implantação para uso no comando a seguir.</span><span class="sxs-lookup"><span data-stu-id="5fecf-204">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="5fecf-205">A ID de objeto é mostrada no portal do Azure no **Identity** painel do serviço de aplicativo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-205">The Object ID is shown in the Azure portal on the **Identity** panel of the App Service.</span></span>
 
 <span data-ttu-id="5fecf-206">Usando CLI do Azure e a ID de objeto do aplicativo, forneça ao aplicativo `list` e `get` permissões para acessar o cofre de chaves:</span><span class="sxs-lookup"><span data-stu-id="5fecf-206">Using Azure CLI and the app's Object ID, provide the app with `list` and `get` permissions to access the key vault:</span></span>
 
@@ -199,7 +199,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 <span data-ttu-id="5fecf-213">Valor de exemplo do nome do cofre de chaves: `contosovault`</span><span class="sxs-lookup"><span data-stu-id="5fecf-213">Key vault name example value: `contosovault`</span></span>
     
-<span data-ttu-id="5fecf-214">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-214">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="5fecf-214">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-214">*appsettings.json* :</span></span>
 
 ```json
 {
@@ -481,7 +481,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    1. <span data-ttu-id="5fecf-362">Selecione o aplicativo no Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5fecf-362">Select the app in Azure AD.</span></span>
    1. <span data-ttu-id="5fecf-363">Navegue até **certificados & segredos** .</span><span class="sxs-lookup"><span data-stu-id="5fecf-363">Navigate to **Certificates & secrets** .</span></span>
    1. <span data-ttu-id="5fecf-364">Selecione **carregar certificado** para carregar o certificado, que contém a chave pública.</span><span class="sxs-lookup"><span data-stu-id="5fecf-364">Select **Upload certificate** to upload the certificate, which contains the public key.</span></span> <span data-ttu-id="5fecf-365">Um certificado *. cer* , *. pem* ou *. CRT* é aceitável.</span><span class="sxs-lookup"><span data-stu-id="5fecf-365">A *.cer* , *.pem* , or *.crt* certificate is acceptable.</span></span>
-1. <span data-ttu-id="5fecf-366">Armazene o nome do cofre de chaves, a ID do aplicativo e a impressão digital do certificado no arquivo do aplicativo *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-366">Store the key vault name, Application ID, and certificate thumbprint in the app's *:::no-loc(appsettings.json):::* file.</span></span>
+1. <span data-ttu-id="5fecf-366">Armazene o nome do cofre de chaves, a ID do aplicativo e a impressão digital do certificado no arquivo do aplicativo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-366">Store the key vault name, Application ID, and certificate thumbprint in the app's *appsettings.json* file.</span></span>
 1. <span data-ttu-id="5fecf-367">Navegue até **cofres de chaves** na portal do Azure.</span><span class="sxs-lookup"><span data-stu-id="5fecf-367">Navigate to **Key vaults** in the Azure portal.</span></span>
 1. <span data-ttu-id="5fecf-368">Selecione o cofre de chaves que você criou no [armazenamento de segredo no ambiente de produção com Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) seção.</span><span class="sxs-lookup"><span data-stu-id="5fecf-368">Select the key vault that you created in the [Secret storage in the Production environment with Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section.</span></span>
 1. <span data-ttu-id="5fecf-369">Selecione **Políticas de acesso** .</span><span class="sxs-lookup"><span data-stu-id="5fecf-369">Select **Access policies** .</span></span>
@@ -499,7 +499,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-<span data-ttu-id="5fecf-381">O certificado X. 509 é gerenciado pelo sistema operacional.</span><span class="sxs-lookup"><span data-stu-id="5fecf-381">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="5fecf-382">O aplicativo chama <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> com valores fornecidos pelo *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="5fecf-382">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="5fecf-381">O certificado X. 509 é gerenciado pelo sistema operacional.</span><span class="sxs-lookup"><span data-stu-id="5fecf-381">The X.509 certificate is managed by the OS.</span></span> <span data-ttu-id="5fecf-382">O aplicativo chama <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> com valores fornecidos pelo *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="5fecf-382">The app calls <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> with values supplied by the *appsettings.json* file:</span></span>
 
 [!code-csharp[](key-vault-configuration/samples/2.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -509,9 +509,9 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 * <span data-ttu-id="5fecf-385">ID do aplicativo: `627e911e-43cc-61d4-992e-12db9c81b413`</span><span class="sxs-lookup"><span data-stu-id="5fecf-385">Application ID: `627e911e-43cc-61d4-992e-12db9c81b413`</span></span>
 * <span data-ttu-id="5fecf-386">Impressão digital do certificado: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span><span class="sxs-lookup"><span data-stu-id="5fecf-386">Certificate thumbprint: `fe14593dd66b2406c5269d742d04b6e1ab03adb1`</span></span>
 
-<span data-ttu-id="5fecf-387">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-387">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="5fecf-387">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-387">*appsettings.json* :</span></span>
 
-[!code-json[](key-vault-configuration/samples/2.x/SampleApp/:::no-loc(appsettings.json):::?highlight=10-12)]
+[!code-json[](key-vault-configuration/samples/2.x/SampleApp/appsettings.json?highlight=10-12)]
 
 <span data-ttu-id="5fecf-388">Quando você executa o aplicativo, uma página da Web mostra os valores secretos carregados.</span><span class="sxs-lookup"><span data-stu-id="5fecf-388">When you run the app, a webpage shows the loaded secret values.</span></span> <span data-ttu-id="5fecf-389">No ambiente de desenvolvimento, os valores secretos são carregados com o `_dev` sufixo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-389">In the Development environment, secret values load with the `_dev` suffix.</span></span> <span data-ttu-id="5fecf-390">No ambiente de produção, os valores são carregados com o `_prod` sufixo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-390">In the Production environment, the values load with the `_prod` suffix.</span></span>
 
@@ -521,11 +521,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 <span data-ttu-id="5fecf-393">O aplicativo de exemplo usa identidades gerenciadas para recursos do Azure quando a `#define` instrução na parte superior do arquivo *Program.cs* é definida como `Managed` .</span><span class="sxs-lookup"><span data-stu-id="5fecf-393">The sample app uses Managed identities for Azure resources when the `#define` statement at the top of the *Program.cs* file is set to `Managed`.</span></span>
 
-<span data-ttu-id="5fecf-394">Insira o nome do cofre no arquivo do aplicativo *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-394">Enter the vault name into the app's *:::no-loc(appsettings.json):::* file.</span></span> <span data-ttu-id="5fecf-395">O aplicativo de exemplo não requer uma ID de aplicativo e uma senha (segredo do cliente) quando definido para a `Managed` versão, para que você possa ignorar essas entradas de configuração.</span><span class="sxs-lookup"><span data-stu-id="5fecf-395">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="5fecf-396">O aplicativo é implantado no Azure e o Azure autentica o aplicativo para acessar Azure Key Vault apenas usando o nome do cofre armazenado no *:::no-loc(appsettings.json):::* arquivo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-396">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="5fecf-394">Insira o nome do cofre no arquivo do aplicativo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="5fecf-394">Enter the vault name into the app's *appsettings.json* file.</span></span> <span data-ttu-id="5fecf-395">O aplicativo de exemplo não requer uma ID de aplicativo e uma senha (segredo do cliente) quando definido para a `Managed` versão, para que você possa ignorar essas entradas de configuração.</span><span class="sxs-lookup"><span data-stu-id="5fecf-395">The sample app doesn't require an Application ID and Password (Client Secret) when set to the `Managed` version, so you can ignore those configuration entries.</span></span> <span data-ttu-id="5fecf-396">O aplicativo é implantado no Azure e o Azure autentica o aplicativo para acessar Azure Key Vault apenas usando o nome do cofre armazenado no *appsettings.json* arquivo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-396">The app is deployed to Azure, and Azure authenticates the app to access Azure Key Vault only using the vault name stored in the *appsettings.json* file.</span></span>
 
 <span data-ttu-id="5fecf-397">Implante o aplicativo de exemplo no serviço Azure App.</span><span class="sxs-lookup"><span data-stu-id="5fecf-397">Deploy the sample app to Azure App Service.</span></span>
 
-<span data-ttu-id="5fecf-398">Um aplicativo implantado no serviço Azure App é registrado automaticamente com o Azure AD quando o serviço é criado.</span><span class="sxs-lookup"><span data-stu-id="5fecf-398">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="5fecf-399">Obtenha a ID de objeto da implantação para uso no comando a seguir.</span><span class="sxs-lookup"><span data-stu-id="5fecf-399">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="5fecf-400">A ID de objeto é mostrada no portal do Azure no **:::no-loc(Identity):::** painel do serviço de aplicativo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-400">The Object ID is shown in the Azure portal on the **:::no-loc(Identity):::** panel of the App Service.</span></span>
+<span data-ttu-id="5fecf-398">Um aplicativo implantado no serviço Azure App é registrado automaticamente com o Azure AD quando o serviço é criado.</span><span class="sxs-lookup"><span data-stu-id="5fecf-398">An app deployed to Azure App Service is automatically registered with Azure AD when the service is created.</span></span> <span data-ttu-id="5fecf-399">Obtenha a ID de objeto da implantação para uso no comando a seguir.</span><span class="sxs-lookup"><span data-stu-id="5fecf-399">Obtain the Object ID from the deployment for use in the following command.</span></span> <span data-ttu-id="5fecf-400">A ID de objeto é mostrada no portal do Azure no **Identity** painel do serviço de aplicativo.</span><span class="sxs-lookup"><span data-stu-id="5fecf-400">The Object ID is shown in the Azure portal on the **Identity** panel of the App Service.</span></span>
 
 <span data-ttu-id="5fecf-401">Usando CLI do Azure e a ID de objeto do aplicativo, forneça ao aplicativo `list` e `get` permissões para acessar o cofre de chaves:</span><span class="sxs-lookup"><span data-stu-id="5fecf-401">Using Azure CLI and the app's Object ID, provide the app with `list` and `get` permissions to access the key vault:</span></span>
 
@@ -545,7 +545,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 <span data-ttu-id="5fecf-408">Valor de exemplo do nome do cofre de chaves: `contosovault`</span><span class="sxs-lookup"><span data-stu-id="5fecf-408">Key vault name example value: `contosovault`</span></span>
     
-<span data-ttu-id="5fecf-409">*:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-409">*:::no-loc(appsettings.json):::* :</span></span>
+<span data-ttu-id="5fecf-409">*appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="5fecf-409">*appsettings.json* :</span></span>
 
 ```json
 {

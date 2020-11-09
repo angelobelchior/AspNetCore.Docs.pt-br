@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: c012658a6f48247af60c8bfd56a7d987f6aa8a68
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -44,7 +44,7 @@ ms.locfileid: "93061503"
 
 <span data-ttu-id="f410a-116">Com o lançamento do .NET Core 3,0, muitos ASP.NET Core assemblies não são mais publicados no NuGet como pacotes.</span><span class="sxs-lookup"><span data-stu-id="f410a-116">With the release of .NET Core 3.0, many ASP.NET Core assemblies are no longer published to NuGet as packages.</span></span> <span data-ttu-id="f410a-117">Em vez disso, os assemblies são incluídos na `Microsoft.AspNetCore.App` estrutura compartilhada, que é instalada com os instaladores de SDK do .NET Core e tempo de execução.</span><span class="sxs-lookup"><span data-stu-id="f410a-117">Instead, the assemblies are included in the `Microsoft.AspNetCore.App` shared framework, which is installed with the .NET Core SDK and runtime installers.</span></span> <span data-ttu-id="f410a-118">Para obter uma lista de pacotes que não estão mais sendo publicados, consulte [remover referências de pacotes obsoletos](xref:migration/22-to-30#remove-obsolete-package-references).</span><span class="sxs-lookup"><span data-stu-id="f410a-118">For a list of packages no longer being published, see [Remove obsolete package references](xref:migration/22-to-30#remove-obsolete-package-references).</span></span>
 
-<span data-ttu-id="f410a-119">A partir do .NET Core 3,0, os projetos que usam o `Microsoft.NET.Sdk.Web` SDK do MSBuild referenciam implicitamente a estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-119">As of .NET Core 3.0, projects using the `Microsoft.NET.Sdk.Web` MSBuild SDK implicitly reference the shared framework.</span></span> <span data-ttu-id="f410a-120">Os projetos que usam o `Microsoft.NET.Sdk` SDK do ou do `Microsoft.NET.Sdk.:::no-loc(Razor):::` devem referenciar ASP.NET Core usar ASP.NET Core APIs na estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-120">Projects using the `Microsoft.NET.Sdk` or `Microsoft.NET.Sdk.:::no-loc(Razor):::` SDK must reference ASP.NET Core to use ASP.NET Core APIs in the shared framework.</span></span>
+<span data-ttu-id="f410a-119">A partir do .NET Core 3,0, os projetos que usam o `Microsoft.NET.Sdk.Web` SDK do MSBuild referenciam implicitamente a estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-119">As of .NET Core 3.0, projects using the `Microsoft.NET.Sdk.Web` MSBuild SDK implicitly reference the shared framework.</span></span> <span data-ttu-id="f410a-120">Os projetos que usam o `Microsoft.NET.Sdk` SDK do ou do `Microsoft.NET.Sdk.Razor` devem referenciar ASP.NET Core usar ASP.NET Core APIs na estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-120">Projects using the `Microsoft.NET.Sdk` or `Microsoft.NET.Sdk.Razor` SDK must reference ASP.NET Core to use ASP.NET Core APIs in the shared framework.</span></span>
 
 <span data-ttu-id="f410a-121">Para fazer referência a ASP.NET Core, adicione o seguinte `<FrameworkReference>` elemento ao seu arquivo de projeto:</span><span class="sxs-lookup"><span data-stu-id="f410a-121">To reference ASP.NET Core, add the following `<FrameworkReference>` element to your project file:</span></span>
 
@@ -52,17 +52,17 @@ ms.locfileid: "93061503"
 
 <span data-ttu-id="f410a-122">A referência a ASP.NET Core dessa maneira só tem suporte em projetos destinados ao .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-122">Referencing ASP.NET Core in this manner is only supported for projects targeting .NET Core 3.x.</span></span>
 
-## <a name="include-no-locblazor-extensibility"></a><span data-ttu-id="f410a-123">Incluir :::no-loc(Blazor)::: extensibilidade</span><span class="sxs-lookup"><span data-stu-id="f410a-123">Include :::no-loc(Blazor)::: extensibility</span></span>
+## <a name="include-no-locblazor-extensibility"></a><span data-ttu-id="f410a-123">Incluir Blazor extensibilidade</span><span class="sxs-lookup"><span data-stu-id="f410a-123">Include Blazor extensibility</span></span>
 
-<span data-ttu-id="f410a-124">:::no-loc(Blazor)::: dá suporte ao Webassembly (WASM) e [modelos de hospedagem](xref:blazor/hosting-models)de servidor.</span><span class="sxs-lookup"><span data-stu-id="f410a-124">:::no-loc(Blazor)::: supports WebAssembly (WASM) and Server [hosting models](xref:blazor/hosting-models).</span></span> <span data-ttu-id="f410a-125">A menos que haja um motivo específico para não, uma biblioteca de [ :::no-loc(Razor)::: componentes](xref:blazor/components/index) deve dar suporte a ambos os modelos de hospedagem.</span><span class="sxs-lookup"><span data-stu-id="f410a-125">Unless there's a specific reason not to, a [:::no-loc(Razor)::: components](xref:blazor/components/index) library should support both hosting models.</span></span> <span data-ttu-id="f410a-126">Uma :::no-loc(Razor)::: biblioteca de componentes deve usar o [Microsoft. net. Sdk. :::no-loc(Razor)::: SDK](xref:razor-pages/sdk).</span><span class="sxs-lookup"><span data-stu-id="f410a-126">A :::no-loc(Razor)::: components library must use the [Microsoft.NET.Sdk.:::no-loc(Razor)::: SDK](xref:razor-pages/sdk).</span></span>
+<span data-ttu-id="f410a-124">Blazor dá suporte ao Webassembly (WASM) e [modelos de hospedagem](xref:blazor/hosting-models)de servidor.</span><span class="sxs-lookup"><span data-stu-id="f410a-124">Blazor supports WebAssembly (WASM) and Server [hosting models](xref:blazor/hosting-models).</span></span> <span data-ttu-id="f410a-125">A menos que haja um motivo específico para não, uma biblioteca de [ Razor componentes](xref:blazor/components/index) deve dar suporte a ambos os modelos de hospedagem.</span><span class="sxs-lookup"><span data-stu-id="f410a-125">Unless there's a specific reason not to, a [Razor components](xref:blazor/components/index) library should support both hosting models.</span></span> <span data-ttu-id="f410a-126">Uma Razor biblioteca de componentes deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).</span><span class="sxs-lookup"><span data-stu-id="f410a-126">A Razor components library must use the [Microsoft.NET.Sdk.Razor SDK](xref:razor-pages/sdk).</span></span>
 
 ### <a name="support-both-hosting-models"></a><span data-ttu-id="f410a-127">Suporte para ambos os modelos de hospedagem</span><span class="sxs-lookup"><span data-stu-id="f410a-127">Support both hosting models</span></span>
 
-<span data-ttu-id="f410a-128">Para dar suporte ao :::no-loc(Razor)::: consumo de componentes de [:::no-loc(Blazor Server):::](xref:blazor/hosting-models#blazor-server) projetos e [ :::no-loc(Blazor)::: WASM](xref:blazor/hosting-models#blazor-webassembly) , use as instruções a seguir para o seu editor.</span><span class="sxs-lookup"><span data-stu-id="f410a-128">To support :::no-loc(Razor)::: component consumption from both [:::no-loc(Blazor Server):::](xref:blazor/hosting-models#blazor-server) and [:::no-loc(Blazor)::: WASM](xref:blazor/hosting-models#blazor-webassembly) projects, use the following instructions for your editor.</span></span>
+<span data-ttu-id="f410a-128">Para dar suporte ao Razor consumo de componentes de [Blazor Server](xref:blazor/hosting-models#blazor-server) projetos e [ Blazor WASM](xref:blazor/hosting-models#blazor-webassembly) , use as instruções a seguir para o seu editor.</span><span class="sxs-lookup"><span data-stu-id="f410a-128">To support Razor component consumption from both [Blazor Server](xref:blazor/hosting-models#blazor-server) and [Blazor WASM](xref:blazor/hosting-models#blazor-webassembly) projects, use the following instructions for your editor.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="f410a-129">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="f410a-129">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="f410a-130">Use o modelo de projeto de **:::no-loc(Razor)::: biblioteca de classes** .</span><span class="sxs-lookup"><span data-stu-id="f410a-130">Use the **:::no-loc(Razor)::: Class Library** project template.</span></span> <span data-ttu-id="f410a-131">A caixa de seleção páginas de suporte do modelo **e exibições** deve ser desmarcada.</span><span class="sxs-lookup"><span data-stu-id="f410a-131">The template's **Support pages and views** checkbox should be deselected.</span></span>
+<span data-ttu-id="f410a-130">Use o modelo de projeto de **Razor biblioteca de classes** .</span><span class="sxs-lookup"><span data-stu-id="f410a-130">Use the **Razor Class Library** project template.</span></span> <span data-ttu-id="f410a-131">A caixa de seleção páginas de suporte do modelo **e exibições** deve ser desmarcada.</span><span class="sxs-lookup"><span data-stu-id="f410a-131">The template's **Support pages and views** checkbox should be deselected.</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="f410a-132">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="f410a-132">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
@@ -74,14 +74,14 @@ dotnet new razorclasslib
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="f410a-134">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="f410a-134">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="f410a-135">Use o modelo de projeto de **:::no-loc(Razor)::: biblioteca de classes** .</span><span class="sxs-lookup"><span data-stu-id="f410a-135">Use the **:::no-loc(Razor)::: Class Library** project template.</span></span>
+<span data-ttu-id="f410a-135">Use o modelo de projeto de **Razor biblioteca de classes** .</span><span class="sxs-lookup"><span data-stu-id="f410a-135">Use the **Razor Class Library** project template.</span></span>
 
 ---
 
 <span data-ttu-id="f410a-136">O projeto gerado a partir do modelo faz o seguinte:</span><span class="sxs-lookup"><span data-stu-id="f410a-136">The project generated from the template does the following things:</span></span>
 
 * <span data-ttu-id="f410a-137">Destinos .NET Standard 2,0.</span><span class="sxs-lookup"><span data-stu-id="f410a-137">Targets .NET Standard 2.0.</span></span>
-* <span data-ttu-id="f410a-138">Define a propriedade `:::no-loc(Razor):::LangVersion` como `3.0`.</span><span class="sxs-lookup"><span data-stu-id="f410a-138">Sets the `:::no-loc(Razor):::LangVersion` property to `3.0`.</span></span> <span data-ttu-id="f410a-139">`3.0` é o valor padrão para o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-139">`3.0` is the default value for .NET Core 3.x.</span></span>
+* <span data-ttu-id="f410a-138">Define a propriedade `RazorLangVersion` como `3.0`.</span><span class="sxs-lookup"><span data-stu-id="f410a-138">Sets the `RazorLangVersion` property to `3.0`.</span></span> <span data-ttu-id="f410a-139">`3.0` é o valor padrão para o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-139">`3.0` is the default value for .NET Core 3.x.</span></span>
 * <span data-ttu-id="f410a-140">Adiciona as seguintes referências de pacote:</span><span class="sxs-lookup"><span data-stu-id="f410a-140">Adds the following package references:</span></span>
   * [<span data-ttu-id="f410a-141">Microsoft. AspNetCore. Components</span><span class="sxs-lookup"><span data-stu-id="f410a-141">Microsoft.AspNetCore.Components</span></span>](https://www.nuget.org/packages/Microsoft.AspNetCore.Components)
   * [<span data-ttu-id="f410a-142">Microsoft. AspNetCore. Components. Web</span><span class="sxs-lookup"><span data-stu-id="f410a-142">Microsoft.AspNetCore.Components.Web</span></span>](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Web)
@@ -92,7 +92,7 @@ dotnet new razorclasslib
 
 ### <a name="support-a-specific-hosting-model"></a><span data-ttu-id="f410a-144">Suporte a um modelo de hospedagem específico</span><span class="sxs-lookup"><span data-stu-id="f410a-144">Support a specific hosting model</span></span>
 
-<span data-ttu-id="f410a-145">É muito menos comum oferecer suporte a um único :::no-loc(Blazor)::: modelo de hospedagem.</span><span class="sxs-lookup"><span data-stu-id="f410a-145">It's far less common to support a single :::no-loc(Blazor)::: hosting model.</span></span> <span data-ttu-id="f410a-146">Por exemplo, para dar suporte ao :::no-loc(Razor)::: consumo de componentes [:::no-loc(Blazor Server):::](xref:blazor/hosting-models#blazor-server) somente de projetos:</span><span class="sxs-lookup"><span data-stu-id="f410a-146">As an example, to support :::no-loc(Razor)::: component consumption from [:::no-loc(Blazor Server):::](xref:blazor/hosting-models#blazor-server) projects only:</span></span>
+<span data-ttu-id="f410a-145">É muito menos comum oferecer suporte a um único Blazor modelo de hospedagem.</span><span class="sxs-lookup"><span data-stu-id="f410a-145">It's far less common to support a single Blazor hosting model.</span></span> <span data-ttu-id="f410a-146">Por exemplo, para dar suporte ao Razor consumo de componentes [Blazor Server](xref:blazor/hosting-models#blazor-server) somente de projetos:</span><span class="sxs-lookup"><span data-stu-id="f410a-146">As an example, to support Razor component consumption from [Blazor Server](xref:blazor/hosting-models#blazor-server) projects only:</span></span>
 
 * <span data-ttu-id="f410a-147">Direcione o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-147">Target .NET Core 3.x.</span></span>
 * <span data-ttu-id="f410a-148">Adicione um `<FrameworkReference>` elemento para a estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-148">Add a `<FrameworkReference>` element for the shared framework.</span></span>
@@ -101,32 +101,32 @@ dotnet new razorclasslib
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-razor-components-library.csproj)]
 
-<span data-ttu-id="f410a-150">Para obter mais informações sobre bibliotecas que contêm :::no-loc(Razor)::: componentes, consulte [bibliotecas de classes de :::no-loc(Razor)::: componentes de ASP.NET Core](xref:blazor/components/class-libraries).</span><span class="sxs-lookup"><span data-stu-id="f410a-150">For more information on libraries containing :::no-loc(Razor)::: components, see [ASP.NET Core :::no-loc(Razor)::: components class libraries](xref:blazor/components/class-libraries).</span></span>
+<span data-ttu-id="f410a-150">Para obter mais informações sobre bibliotecas que contêm Razor componentes, consulte [bibliotecas de classes de Razor componentes de ASP.NET Core](xref:blazor/components/class-libraries).</span><span class="sxs-lookup"><span data-stu-id="f410a-150">For more information on libraries containing Razor components, see [ASP.NET Core Razor components class libraries](xref:blazor/components/class-libraries).</span></span>
 
 ## <a name="include-mvc-extensibility"></a><span data-ttu-id="f410a-151">Incluir extensibilidade MVC</span><span class="sxs-lookup"><span data-stu-id="f410a-151">Include MVC extensibility</span></span>
 
 <span data-ttu-id="f410a-152">Esta seção descreve as recomendações para bibliotecas que incluem:</span><span class="sxs-lookup"><span data-stu-id="f410a-152">This section outlines recommendations for libraries that include:</span></span>
 
-* [<span data-ttu-id="f410a-153">:::no-loc(Razor)::: exibições ou :::no-loc(Razor)::: páginas</span><span class="sxs-lookup"><span data-stu-id="f410a-153">:::no-loc(Razor)::: views or :::no-loc(Razor)::: Pages</span></span>](#razor-views-or-razor-pages)
+* [<span data-ttu-id="f410a-153">Razor exibições ou Razor páginas</span><span class="sxs-lookup"><span data-stu-id="f410a-153">Razor views or Razor Pages</span></span>](#razor-views-or-razor-pages)
 * [<span data-ttu-id="f410a-154">Auxiliares de Marcas</span><span class="sxs-lookup"><span data-stu-id="f410a-154">Tag Helpers</span></span>](#tag-helpers)
 * [<span data-ttu-id="f410a-155">Componentes da exibição</span><span class="sxs-lookup"><span data-stu-id="f410a-155">View components</span></span>](#view-components)
 
 <span data-ttu-id="f410a-156">Esta seção não aborda vários destinos para dar suporte a várias versões do MVC.</span><span class="sxs-lookup"><span data-stu-id="f410a-156">This section doesn't discuss multi-targeting to support multiple versions of MVC.</span></span> <span data-ttu-id="f410a-157">Para obter orientação sobre como dar suporte a várias versões de ASP.NET Core, consulte [suporte para várias versões de ASP.NET Core](#support-multiple-aspnet-core-versions).</span><span class="sxs-lookup"><span data-stu-id="f410a-157">For guidance on supporting multiple ASP.NET Core versions, see [Support multiple ASP.NET Core versions](#support-multiple-aspnet-core-versions).</span></span>
 
-### <a name="no-locrazor-views-or-no-locrazor-pages"></a><span data-ttu-id="f410a-158">:::no-loc(Razor)::: exibições ou :::no-loc(Razor)::: páginas</span><span class="sxs-lookup"><span data-stu-id="f410a-158">:::no-loc(Razor)::: views or :::no-loc(Razor)::: Pages</span></span>
+### <a name="no-locrazor-views-or-no-locrazor-pages"></a><span data-ttu-id="f410a-158">Razor exibições ou Razor páginas</span><span class="sxs-lookup"><span data-stu-id="f410a-158">Razor views or Razor Pages</span></span>
 
-<span data-ttu-id="f410a-159">Um projeto que inclui [ :::no-loc(Razor)::: exibições](xref:mvc/views/overview) ou [ :::no-loc(Razor)::: páginas](xref:razor-pages/index) deve usar o [Microsoft. net. Sdk. :::no-loc(Razor)::: SDK](xref:razor-pages/sdk).</span><span class="sxs-lookup"><span data-stu-id="f410a-159">A project that includes [:::no-loc(Razor)::: views](xref:mvc/views/overview) or [:::no-loc(Razor)::: Pages](xref:razor-pages/index) must use the [Microsoft.NET.Sdk.:::no-loc(Razor)::: SDK](xref:razor-pages/sdk).</span></span>
+<span data-ttu-id="f410a-159">Um projeto que inclui [ Razor exibições](xref:mvc/views/overview) ou [ Razor páginas](xref:razor-pages/index) deve usar o [Microsoft. net. Sdk. Razor SDK](xref:razor-pages/sdk).</span><span class="sxs-lookup"><span data-stu-id="f410a-159">A project that includes [Razor views](xref:mvc/views/overview) or [Razor Pages](xref:razor-pages/index) must use the [Microsoft.NET.Sdk.Razor SDK](xref:razor-pages/sdk).</span></span>
 
 <span data-ttu-id="f410a-160">Se o projeto for destinado ao .NET Core 3. x, ele exigirá:</span><span class="sxs-lookup"><span data-stu-id="f410a-160">If the project targets .NET Core 3.x, it requires:</span></span>
 
-* <span data-ttu-id="f410a-161">Uma `Add:::no-loc(Razor):::SupportForMvc` Propriedade do MSBuild definida como `true` .</span><span class="sxs-lookup"><span data-stu-id="f410a-161">An `Add:::no-loc(Razor):::SupportForMvc` MSBuild property set to `true`.</span></span>
+* <span data-ttu-id="f410a-161">Uma `AddRazorSupportForMvc` Propriedade do MSBuild definida como `true` .</span><span class="sxs-lookup"><span data-stu-id="f410a-161">An `AddRazorSupportForMvc` MSBuild property set to `true`.</span></span>
 * <span data-ttu-id="f410a-162">Um `<FrameworkReference>` elemento para a estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-162">A `<FrameworkReference>` element for the shared framework.</span></span>
 
-<span data-ttu-id="f410a-163">O modelo de projeto de **:::no-loc(Razor)::: biblioteca de classes** atende aos requisitos anteriores para projetos que visam o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-163">The **:::no-loc(Razor)::: Class Library** project template satisfies the preceding requirements for projects targeting .NET Core 3.x.</span></span> <span data-ttu-id="f410a-164">Use as instruções a seguir para o seu editor.</span><span class="sxs-lookup"><span data-stu-id="f410a-164">Use the following instructions for your editor.</span></span>
+<span data-ttu-id="f410a-163">O modelo de projeto de **Razor biblioteca de classes** atende aos requisitos anteriores para projetos que visam o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-163">The **Razor Class Library** project template satisfies the preceding requirements for projects targeting .NET Core 3.x.</span></span> <span data-ttu-id="f410a-164">Use as instruções a seguir para o seu editor.</span><span class="sxs-lookup"><span data-stu-id="f410a-164">Use the following instructions for your editor.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="f410a-165">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="f410a-165">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="f410a-166">Use o modelo de projeto de **:::no-loc(Razor)::: biblioteca de classes** .</span><span class="sxs-lookup"><span data-stu-id="f410a-166">Use the **:::no-loc(Razor)::: Class Library** project template.</span></span> <span data-ttu-id="f410a-167">A caixa de seleção páginas de suporte do modelo **e exibições** deve ser selecionada.</span><span class="sxs-lookup"><span data-stu-id="f410a-167">The template's **Support pages and views** checkbox should be selected.</span></span>
+<span data-ttu-id="f410a-166">Use o modelo de projeto de **Razor biblioteca de classes** .</span><span class="sxs-lookup"><span data-stu-id="f410a-166">Use the **Razor Class Library** project template.</span></span> <span data-ttu-id="f410a-167">A caixa de seleção páginas de suporte do modelo **e exibições** deve ser selecionada.</span><span class="sxs-lookup"><span data-stu-id="f410a-167">The template's **Support pages and views** checkbox should be selected.</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="f410a-168">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="f410a-168">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
@@ -156,7 +156,7 @@ dotnet new razorclasslib -s
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj)]
 
-<span data-ttu-id="f410a-180">Se estiver direcionando .NET Standard (para dar suporte a versões anteriores a ASP.NET Core 3. x), adicione uma referência de pacote a [Microsoft :::no-loc(Razor)::: . AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::)</span><span class="sxs-lookup"><span data-stu-id="f410a-180">If targeting .NET Standard (to support versions earlier than ASP.NET Core 3.x), add a package reference to [Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::).</span></span> <span data-ttu-id="f410a-181">O `Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::` pacote foi movido para a estrutura compartilhada e, portanto, não é mais publicado.</span><span class="sxs-lookup"><span data-stu-id="f410a-181">The `Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::` package moved into the shared framework and is therefore no longer published.</span></span> <span data-ttu-id="f410a-182">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="f410a-182">For example:</span></span>
+<span data-ttu-id="f410a-180">Se estiver direcionando .NET Standard (para dar suporte a versões anteriores a ASP.NET Core 3. x), adicione uma referência de pacote a [Microsoft Razor . AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)</span><span class="sxs-lookup"><span data-stu-id="f410a-180">If targeting .NET Standard (to support versions earlier than ASP.NET Core 3.x), add a package reference to [Microsoft.AspNetCore.Mvc.Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor).</span></span> <span data-ttu-id="f410a-181">O `Microsoft.AspNetCore.Mvc.Razor` pacote foi movido para a estrutura compartilhada e, portanto, não é mais publicado.</span><span class="sxs-lookup"><span data-stu-id="f410a-181">The `Microsoft.AspNetCore.Mvc.Razor` package moved into the shared framework and is therefore no longer published.</span></span> <span data-ttu-id="f410a-182">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="f410a-182">For example:</span></span>
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-tag-helpers-library.csproj)]
 
@@ -185,8 +185,8 @@ dotnet new razorclasslib -s
 <span data-ttu-id="f410a-197">Com o arquivo de projeto anterior:</span><span class="sxs-lookup"><span data-stu-id="f410a-197">With the preceding project file:</span></span>
 
 * <span data-ttu-id="f410a-198">O `Markdig` pacote é adicionado para todos os consumidores.</span><span class="sxs-lookup"><span data-stu-id="f410a-198">The `Markdig` package is added for all consumers.</span></span>
-* <span data-ttu-id="f410a-199">Uma referência a [Microsoft. AspNetCore. Mvc. :::no-loc(Razor)::: ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::)</span><span class="sxs-lookup"><span data-stu-id="f410a-199">A reference to [Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::)</span></span> <span data-ttu-id="f410a-200">é adicionado para consumidores que visam .NET Framework 4.6.1 ou posterior ou o .NET Core 2. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-200">is added for consumers targeting .NET Framework 4.6.1 or later or .NET Core 2.x.</span></span> <span data-ttu-id="f410a-201">A versão 2.1.0 do pacote funciona com o ASP.NET Core 2,2 devido à compatibilidade com versões anteriores.</span><span class="sxs-lookup"><span data-stu-id="f410a-201">Version 2.1.0 of the package works with ASP.NET Core 2.2 because of backwards compatibility.</span></span>
-* <span data-ttu-id="f410a-202">A estrutura compartilhada é referenciada para os consumidores que visam o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-202">The shared framework is referenced for consumers targeting .NET Core 3.x.</span></span> <span data-ttu-id="f410a-203">O `Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::` pacote está incluído na estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-203">The `Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::` package is included in the shared framework.</span></span>
+* <span data-ttu-id="f410a-199">Uma referência a [Microsoft. AspNetCore. Mvc. Razor ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)</span><span class="sxs-lookup"><span data-stu-id="f410a-199">A reference to [Microsoft.AspNetCore.Mvc.Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor)</span></span> <span data-ttu-id="f410a-200">é adicionado para consumidores que visam .NET Framework 4.6.1 ou posterior ou o .NET Core 2. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-200">is added for consumers targeting .NET Framework 4.6.1 or later or .NET Core 2.x.</span></span> <span data-ttu-id="f410a-201">A versão 2.1.0 do pacote funciona com o ASP.NET Core 2,2 devido à compatibilidade com versões anteriores.</span><span class="sxs-lookup"><span data-stu-id="f410a-201">Version 2.1.0 of the package works with ASP.NET Core 2.2 because of backwards compatibility.</span></span>
+* <span data-ttu-id="f410a-202">A estrutura compartilhada é referenciada para os consumidores que visam o .NET Core 3. x.</span><span class="sxs-lookup"><span data-stu-id="f410a-202">The shared framework is referenced for consumers targeting .NET Core 3.x.</span></span> <span data-ttu-id="f410a-203">O `Microsoft.AspNetCore.Mvc.Razor` pacote está incluído na estrutura compartilhada.</span><span class="sxs-lookup"><span data-stu-id="f410a-203">The `Microsoft.AspNetCore.Mvc.Razor` package is included in the shared framework.</span></span>
 
 <span data-ttu-id="f410a-204">Como alternativa, .NET Standard 2,0 poderia ser direcionado em vez de direcionar o .NET Core 2,1 e .NET Framework 4.6.1:</span><span class="sxs-lookup"><span data-stu-id="f410a-204">Alternatively, .NET Standard 2.0 could be targeted instead of targeting both .NET Core 2.1 and .NET Framework 4.6.1:</span></span>
 

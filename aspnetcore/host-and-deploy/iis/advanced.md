@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/7/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/iis/advanced
 ms.openlocfilehash: 9f14929a7d298d6f4d66abcc88665db34fc072bf
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -79,9 +79,9 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 <span data-ttu-id="4f3cc-134">Se o anel da chave de proteção de dados for armazenado na memória quando o aplicativo for reiniciado:</span><span class="sxs-lookup"><span data-stu-id="4f3cc-134">If the Data Protection key ring is stored in memory when the app restarts:</span></span>
 
-* <span data-ttu-id="4f3cc-135">Os :::no-loc(cookie)::: tokens de autenticação baseados em todos os são invalidados.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-135">All :::no-loc(cookie):::-based authentication tokens are invalidated.</span></span> 
+* <span data-ttu-id="4f3cc-135">Os cookie tokens de autenticação baseados em todos os são invalidados.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-135">All cookie-based authentication tokens are invalidated.</span></span> 
 * <span data-ttu-id="4f3cc-136">Os usuários precisam entrar novamente na próxima solicitação deles.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-136">Users are required to sign in again on their next request.</span></span> 
-* <span data-ttu-id="4f3cc-137">Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-137">Any data protected with the key ring can no longer be decrypted.</span></span> <span data-ttu-id="4f3cc-138">Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core :::no-loc(cookie)::: s de TempData do MVC](xref:fundamentals/app-state#tempdata).</span><span class="sxs-lookup"><span data-stu-id="4f3cc-138">This may include [CSRF tokens](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) and [ASP.NET Core MVC TempData :::no-loc(cookie):::s](xref:fundamentals/app-state#tempdata).</span></span>
+* <span data-ttu-id="4f3cc-137">Todos os dados protegidos com o token de autenticação não poderão mais ser descriptografados.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-137">Any data protected with the key ring can no longer be decrypted.</span></span> <span data-ttu-id="4f3cc-138">Isso pode incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) e [ASP.NET Core cookie s de TempData do MVC](xref:fundamentals/app-state#tempdata).</span><span class="sxs-lookup"><span data-stu-id="4f3cc-138">This may include [CSRF tokens](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) and [ASP.NET Core MVC TempData cookies](xref:fundamentals/app-state#tempdata).</span></span>
 
 <span data-ttu-id="4f3cc-139">Para configurar a proteção de dados no IIS para persistir o token de autenticação, use **uma** das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="4f3cc-139">To configure data protection under IIS to persist the key ring, use **one** of the following approaches:</span></span>
 
@@ -198,9 +198,9 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 <span data-ttu-id="4f3cc-242">A caixa de diálogo **Adicionar Site** do IIS usa como padrão um único pool de aplicativos por aplicativo.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-242">The IIS **Add Website** dialog defaults to a single app pool per app.</span></span> <span data-ttu-id="4f3cc-243">Quando um **Nome de site** é fornecido, o texto é transferido automaticamente para a caixa de texto **Pool de aplicativos** .</span><span class="sxs-lookup"><span data-stu-id="4f3cc-243">When a **Site name** is provided, the text is automatically transferred to the **Application pool** textbox.</span></span> <span data-ttu-id="4f3cc-244">Um novo pool de aplicativos é criado usando o nome do site quando você adicionar o site.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-244">A new app pool is created using the site name when the site is added.</span></span>
 
-## <a name="application-pool-no-locidentity"></a><span data-ttu-id="4f3cc-245">Pool de aplicativos :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="4f3cc-245">Application Pool :::no-loc(Identity):::</span></span>
+## <a name="application-pool-no-locidentity"></a><span data-ttu-id="4f3cc-245">Pool de aplicativos Identity</span><span class="sxs-lookup"><span data-stu-id="4f3cc-245">Application Pool Identity</span></span>
 
-<span data-ttu-id="4f3cc-246">Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-246">An app pool identity account allows an app to run under a unique account without having to create and manage domains or local accounts.</span></span> <span data-ttu-id="4f3cc-247">No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-247">On IIS 8.0 or later, the IIS Admin Worker Process (WAS) creates a virtual account with the name of the new app pool and runs the app pool's worker processes under this account by default.</span></span> <span data-ttu-id="4f3cc-248">No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **:::no-loc(Identity):::** está configurado para usar `ApplicationPool:::no-loc(Identity):::` :</span><span class="sxs-lookup"><span data-stu-id="4f3cc-248">In the IIS Management Console under **Advanced Settings** for the app pool, ensure that the **:::no-loc(Identity):::** is set to use `ApplicationPool:::no-loc(Identity):::`:</span></span>
+<span data-ttu-id="4f3cc-246">Uma conta de identidade do pool de aplicativos permite executar um aplicativo em uma conta exclusiva sem a necessidade de criar e gerenciar domínios ou contas locais.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-246">An app pool identity account allows an app to run under a unique account without having to create and manage domains or local accounts.</span></span> <span data-ttu-id="4f3cc-247">No IIS 8.0 ou posterior, o WAS (Processo de trabalho do administrador) do IIS cria uma conta virtual com o nome do novo pool de aplicativos e executa os processos de trabalho do pool de aplicativos nesta conta por padrão.</span><span class="sxs-lookup"><span data-stu-id="4f3cc-247">On IIS 8.0 or later, the IIS Admin Worker Process (WAS) creates a virtual account with the name of the new app pool and runs the app pool's worker processes under this account by default.</span></span> <span data-ttu-id="4f3cc-248">No console de gerenciamento do IIS, em **Configurações avançadas** para o pool de aplicativos, verifique se o **Identity** está configurado para usar `ApplicationPoolIdentity` :</span><span class="sxs-lookup"><span data-stu-id="4f3cc-248">In the IIS Management Console under **Advanced Settings** for the app pool, ensure that the **Identity** is set to use `ApplicationPoolIdentity`:</span></span>
 
 ![Caixa de diálogo Configurações avançadas do pool de aplicativos](index/_static/apppool-identity.png)
 

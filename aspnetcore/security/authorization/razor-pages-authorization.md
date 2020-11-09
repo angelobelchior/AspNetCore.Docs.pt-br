@@ -1,5 +1,5 @@
 ---
-title: ':::no-loc(Razor)::: Páginas convenções de autorização no ASP.NET Core'
+title: 'Razor Páginas convenções de autorização no ASP.NET Core'
 author: rick-anderson
 description: Saiba como controlar o acesso a páginas com convenções que autorizam usuários e permitem que usuários anônimos acessem páginas ou pastas de páginas.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authorization/razor-pages-authorization
 ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,15 +26,15 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93060177"
 ---
-# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a><span data-ttu-id="55556-103">:::no-loc(Razor)::: Páginas convenções de autorização no ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="55556-103">:::no-loc(Razor)::: Pages authorization conventions in ASP.NET Core</span></span>
+# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a><span data-ttu-id="55556-103">Razor Páginas convenções de autorização no ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="55556-103">Razor Pages authorization conventions in ASP.NET Core</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="55556-104">Uma maneira de controlar o acesso em seu :::no-loc(Razor)::: aplicativo de páginas é usar as convenções de autorização na inicialização.</span><span class="sxs-lookup"><span data-stu-id="55556-104">One way to control access in your :::no-loc(Razor)::: Pages app is to use authorization conventions at startup.</span></span> <span data-ttu-id="55556-105">Essas convenções permitem autorizar usuários e permitir que usuários anônimos acessem páginas ou pastas individuais de páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-105">These conventions allow you to authorize users and allow anonymous users to access individual pages or folders of pages.</span></span> <span data-ttu-id="55556-106">As convenções descritas neste tópico aplicam automaticamente [filtros de autorização](xref:mvc/controllers/filters#authorization-filters) para controlar o acesso.</span><span class="sxs-lookup"><span data-stu-id="55556-106">The conventions described in this topic automatically apply [authorization filters](xref:mvc/controllers/filters#authorization-filters) to control access.</span></span>
+<span data-ttu-id="55556-104">Uma maneira de controlar o acesso em seu Razor aplicativo de páginas é usar as convenções de autorização na inicialização.</span><span class="sxs-lookup"><span data-stu-id="55556-104">One way to control access in your Razor Pages app is to use authorization conventions at startup.</span></span> <span data-ttu-id="55556-105">Essas convenções permitem autorizar usuários e permitir que usuários anônimos acessem páginas ou pastas individuais de páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-105">These conventions allow you to authorize users and allow anonymous users to access individual pages or folders of pages.</span></span> <span data-ttu-id="55556-106">As convenções descritas neste tópico aplicam automaticamente [filtros de autorização](xref:mvc/controllers/filters#authorization-filters) para controlar o acesso.</span><span class="sxs-lookup"><span data-stu-id="55556-106">The conventions described in this topic automatically apply [authorization filters](xref:mvc/controllers/filters#authorization-filters) to control access.</span></span>
 
 <span data-ttu-id="55556-107">[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([como baixar](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="55556-107">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="55556-108">O aplicativo de exemplo usa a [ :::no-loc(cookie)::: autenticação sem :::no-loc(ASP.NET Core Identity)::: ](xref:security/authentication/:::no-loc(cookie):::)o.</span><span class="sxs-lookup"><span data-stu-id="55556-108">The sample app uses [:::no-loc(cookie)::: authentication without :::no-loc(ASP.NET Core Identity):::](xref:security/authentication/:::no-loc(cookie):::).</span></span> <span data-ttu-id="55556-109">Os conceitos e exemplos mostrados neste tópico se aplicam igualmente a aplicativos que usam o :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="55556-109">The concepts and examples shown in this topic apply equally to apps that use :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="55556-110">Para usar :::no-loc(ASP.NET Core Identity)::: o, siga as orientações em <xref:security/authentication/identity> .</span><span class="sxs-lookup"><span data-stu-id="55556-110">To use :::no-loc(ASP.NET Core Identity):::, follow the guidance in <xref:security/authentication/identity>.</span></span>
+<span data-ttu-id="55556-108">O aplicativo de exemplo usa a [ cookie autenticação sem ASP.NET Core Identity ](xref:security/authentication/cookie)o.</span><span class="sxs-lookup"><span data-stu-id="55556-108">The sample app uses [cookie authentication without ASP.NET Core Identity](xref:security/authentication/cookie).</span></span> <span data-ttu-id="55556-109">Os conceitos e exemplos mostrados neste tópico se aplicam igualmente a aplicativos que usam o ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="55556-109">The concepts and examples shown in this topic apply equally to apps that use ASP.NET Core Identity.</span></span> <span data-ttu-id="55556-110">Para usar ASP.NET Core Identity o, siga as orientações em <xref:security/authentication/identity> .</span><span class="sxs-lookup"><span data-stu-id="55556-110">To use ASP.NET Core Identity, follow the guidance in <xref:security/authentication/identity>.</span></span>
 
 ## <a name="require-authorization-to-access-a-page"></a><span data-ttu-id="55556-111">Exigir autorização para acessar uma página</span><span class="sxs-lookup"><span data-stu-id="55556-111">Require authorization to access a page</span></span>
 
@@ -42,7 +42,7 @@ ms.locfileid: "93060177"
 
 [!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=3)]
 
-<span data-ttu-id="55556-113">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-113">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path without an extension and containing only forward slashes.</span></span>
+<span data-ttu-id="55556-113">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-113">The specified path is the View Engine path, which is the Razor Pages root relative path without an extension and containing only forward slashes.</span></span>
 
 <span data-ttu-id="55556-114">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizePage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*):</span><span class="sxs-lookup"><span data-stu-id="55556-114">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizePage overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*):</span></span>
 
@@ -59,7 +59,7 @@ options.Conventions.AuthorizePage("/Contact", "AtLeast21");
 
 [!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=4)]
 
-<span data-ttu-id="55556-119">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-119">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path.</span></span>
+<span data-ttu-id="55556-119">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-119">The specified path is the View Engine path, which is the Razor Pages root relative path.</span></span>
 
 <span data-ttu-id="55556-120">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*):</span><span class="sxs-lookup"><span data-stu-id="55556-120">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizeFolder overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*):</span></span>
 
@@ -72,15 +72,15 @@ options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
 <span data-ttu-id="55556-122">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> Convenção para adicionar uma <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> à página de área no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-122">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> convention to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to the area page at the specified path:</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaPage(":::no-loc(Identity):::", "/Manage/Accounts");
+options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-<span data-ttu-id="55556-123">O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-123">The page name is the path of the file without an extension relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-124">Por exemplo, o nome da página para o arquivo *areas/ :::no-loc(Identity)::: /pages/Manage/accounts.cshtml* é */Manage/accounts* .</span><span class="sxs-lookup"><span data-stu-id="55556-124">For example, the page name for the file *Areas/:::no-loc(Identity):::/Pages/Manage/Accounts.cshtml* is */Manage/Accounts* .</span></span>
+<span data-ttu-id="55556-123">O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-123">The page name is the path of the file without an extension relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-124">Por exemplo, o nome da página para o arquivo *areas/ Identity /pages/Manage/accounts.cshtml* é */Manage/accounts* .</span><span class="sxs-lookup"><span data-stu-id="55556-124">For example, the page name for the file *Areas/Identity/Pages/Manage/Accounts.cshtml* is */Manage/Accounts* .</span></span>
 
 <span data-ttu-id="55556-125">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):</span><span class="sxs-lookup"><span data-stu-id="55556-125">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizeAreaPage overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaPage(":::no-loc(Identity):::", "/Manage/Accounts", "AtLeast21");
+options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21");
 ```
 
 ## <a name="require-authorization-to-access-a-folder-of-areas"></a><span data-ttu-id="55556-126">Exigir autorização para acessar uma pasta de áreas</span><span class="sxs-lookup"><span data-stu-id="55556-126">Require authorization to access a folder of areas</span></span>
@@ -88,15 +88,15 @@ options.Conventions.AuthorizeAreaPage(":::no-loc(Identity):::", "/Manage/Account
 <span data-ttu-id="55556-127">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> Convenção para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> a todas as áreas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-127">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> convention to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to all of the areas in a folder at the specified path:</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage");
+options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-<span data-ttu-id="55556-128">O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-128">The folder path is the path of the folder relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-129">Por exemplo, o caminho da pasta para os arquivos em *áreas/ :::no-loc(Identity)::: /pages/Manage/* é */Manage* .</span><span class="sxs-lookup"><span data-stu-id="55556-129">For example, the folder path for the files under *Areas/:::no-loc(Identity):::/Pages/Manage/* is */Manage* .</span></span>
+<span data-ttu-id="55556-128">O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-128">The folder path is the path of the folder relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-129">Por exemplo, o caminho da pasta para os arquivos em *áreas/ Identity /pages/Manage/* é */Manage* .</span><span class="sxs-lookup"><span data-stu-id="55556-129">For example, the folder path for the files under *Areas/Identity/Pages/Manage/* is */Manage* .</span></span>
 
 <span data-ttu-id="55556-130">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):</span><span class="sxs-lookup"><span data-stu-id="55556-130">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizeAreaFolder overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage", "AtLeast21");
+options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
 ```
 
 ## <a name="allow-anonymous-access-to-a-page"></a><span data-ttu-id="55556-131">Permitir acesso anônimo a uma página</span><span class="sxs-lookup"><span data-stu-id="55556-131">Allow anonymous access to a page</span></span>
@@ -105,7 +105,7 @@ options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage", "At
 
 [!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=5)]
 
-<span data-ttu-id="55556-133">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-133">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path without an extension and containing only forward slashes.</span></span>
+<span data-ttu-id="55556-133">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-133">The specified path is the View Engine path, which is the Razor Pages root relative path without an extension and containing only forward slashes.</span></span>
 
 ## <a name="allow-anonymous-access-to-a-folder-of-pages"></a><span data-ttu-id="55556-134">Permitir acesso anônimo a uma pasta de páginas</span><span class="sxs-lookup"><span data-stu-id="55556-134">Allow anonymous access to a folder of pages</span></span>
 
@@ -113,7 +113,7 @@ options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage", "At
 
 [!code-csharp[](razor-pages-authorization/samples/3.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=6)]
 
-<span data-ttu-id="55556-136">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-136">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path.</span></span>
+<span data-ttu-id="55556-136">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-136">The specified path is the View Engine path, which is the Razor Pages root relative path.</span></span>
 
 ## <a name="note-on-combining-authorized-and-anonymous-access"></a><span data-ttu-id="55556-137">Observação sobre a combinação de acesso autorizado e anônimo</span><span class="sxs-lookup"><span data-stu-id="55556-137">Note on combining authorized and anonymous access</span></span>
 
@@ -142,19 +142,19 @@ options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage", "At
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="55556-144">Uma maneira de controlar o acesso em seu :::no-loc(Razor)::: aplicativo de páginas é usar as convenções de autorização na inicialização.</span><span class="sxs-lookup"><span data-stu-id="55556-144">One way to control access in your :::no-loc(Razor)::: Pages app is to use authorization conventions at startup.</span></span> <span data-ttu-id="55556-145">Essas convenções permitem autorizar usuários e permitir que usuários anônimos acessem páginas ou pastas individuais de páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-145">These conventions allow you to authorize users and allow anonymous users to access individual pages or folders of pages.</span></span> <span data-ttu-id="55556-146">As convenções descritas neste tópico aplicam automaticamente [filtros de autorização](xref:mvc/controllers/filters#authorization-filters) para controlar o acesso.</span><span class="sxs-lookup"><span data-stu-id="55556-146">The conventions described in this topic automatically apply [authorization filters](xref:mvc/controllers/filters#authorization-filters) to control access.</span></span>
+<span data-ttu-id="55556-144">Uma maneira de controlar o acesso em seu Razor aplicativo de páginas é usar as convenções de autorização na inicialização.</span><span class="sxs-lookup"><span data-stu-id="55556-144">One way to control access in your Razor Pages app is to use authorization conventions at startup.</span></span> <span data-ttu-id="55556-145">Essas convenções permitem autorizar usuários e permitir que usuários anônimos acessem páginas ou pastas individuais de páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-145">These conventions allow you to authorize users and allow anonymous users to access individual pages or folders of pages.</span></span> <span data-ttu-id="55556-146">As convenções descritas neste tópico aplicam automaticamente [filtros de autorização](xref:mvc/controllers/filters#authorization-filters) para controlar o acesso.</span><span class="sxs-lookup"><span data-stu-id="55556-146">The conventions described in this topic automatically apply [authorization filters](xref:mvc/controllers/filters#authorization-filters) to control access.</span></span>
 
 <span data-ttu-id="55556-147">[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([como baixar](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="55556-147">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="55556-148">O aplicativo de exemplo usa a [ :::no-loc(cookie)::: autenticação sem :::no-loc(ASP.NET Core Identity)::: ](xref:security/authentication/:::no-loc(cookie):::)o.</span><span class="sxs-lookup"><span data-stu-id="55556-148">The sample app uses [:::no-loc(cookie)::: authentication without :::no-loc(ASP.NET Core Identity):::](xref:security/authentication/:::no-loc(cookie):::).</span></span> <span data-ttu-id="55556-149">Os conceitos e exemplos mostrados neste tópico se aplicam igualmente a aplicativos que usam o :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="55556-149">The concepts and examples shown in this topic apply equally to apps that use :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="55556-150">Para usar :::no-loc(ASP.NET Core Identity)::: o, siga as orientações em <xref:security/authentication/identity> .</span><span class="sxs-lookup"><span data-stu-id="55556-150">To use :::no-loc(ASP.NET Core Identity):::, follow the guidance in <xref:security/authentication/identity>.</span></span>
+<span data-ttu-id="55556-148">O aplicativo de exemplo usa a [ cookie autenticação sem ASP.NET Core Identity ](xref:security/authentication/cookie)o.</span><span class="sxs-lookup"><span data-stu-id="55556-148">The sample app uses [cookie authentication without ASP.NET Core Identity](xref:security/authentication/cookie).</span></span> <span data-ttu-id="55556-149">Os conceitos e exemplos mostrados neste tópico se aplicam igualmente a aplicativos que usam o ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="55556-149">The concepts and examples shown in this topic apply equally to apps that use ASP.NET Core Identity.</span></span> <span data-ttu-id="55556-150">Para usar ASP.NET Core Identity o, siga as orientações em <xref:security/authentication/identity> .</span><span class="sxs-lookup"><span data-stu-id="55556-150">To use ASP.NET Core Identity, follow the guidance in <xref:security/authentication/identity>.</span></span>
 
 ## <a name="require-authorization-to-access-a-page"></a><span data-ttu-id="55556-151">Exigir autorização para acessar uma página</span><span class="sxs-lookup"><span data-stu-id="55556-151">Require authorization to access a page</span></span>
 
-<span data-ttu-id="55556-152">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> para adicionar uma <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> à página no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-152">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> convention via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to the page at the specified path:</span></span>
+<span data-ttu-id="55556-152">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> para adicionar uma <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> à página no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-152">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*> convention via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to the page at the specified path:</span></span>
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,4)]
 
-<span data-ttu-id="55556-153">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-153">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path without an extension and containing only forward slashes.</span></span>
+<span data-ttu-id="55556-153">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-153">The specified path is the View Engine path, which is the Razor Pages root relative path without an extension and containing only forward slashes.</span></span>
 
 <span data-ttu-id="55556-154">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizePage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*):</span><span class="sxs-lookup"><span data-stu-id="55556-154">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizePage overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizePage*):</span></span>
 
@@ -167,11 +167,11 @@ options.Conventions.AuthorizePage("/Contact", "AtLeast21");
 
 ## <a name="require-authorization-to-access-a-folder-of-pages"></a><span data-ttu-id="55556-157">Exigir autorização para acessar uma pasta de páginas</span><span class="sxs-lookup"><span data-stu-id="55556-157">Require authorization to access a folder of pages</span></span>
 
-<span data-ttu-id="55556-158">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> a todas as páginas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-158">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> convention via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to all of the pages in a folder at the specified path:</span></span>
+<span data-ttu-id="55556-158">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> a todas as páginas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-158">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*> convention via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to all of the pages in a folder at the specified path:</span></span>
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,5)]
 
-<span data-ttu-id="55556-159">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-159">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path.</span></span>
+<span data-ttu-id="55556-159">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-159">The specified path is the View Engine path, which is the Razor Pages root relative path.</span></span>
 
 <span data-ttu-id="55556-160">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*):</span><span class="sxs-lookup"><span data-stu-id="55556-160">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizeFolder overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeFolder*):</span></span>
 
@@ -181,51 +181,51 @@ options.Conventions.AuthorizeFolder("/Private", "AtLeast21");
 
 ## <a name="require-authorization-to-access-an-area-page"></a><span data-ttu-id="55556-161">Exigir autorização para acessar uma página de área</span><span class="sxs-lookup"><span data-stu-id="55556-161">Require authorization to access an area page</span></span>
 
-<span data-ttu-id="55556-162">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> para adicionar uma <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> à página de área no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-162">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> convention via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to the area page at the specified path:</span></span>
+<span data-ttu-id="55556-162">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> para adicionar uma <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> à página de área no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-162">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*> convention via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to the area page at the specified path:</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaPage(":::no-loc(Identity):::", "/Manage/Accounts");
+options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-<span data-ttu-id="55556-163">O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-163">The page name is the path of the file without an extension relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-164">Por exemplo, o nome da página para o arquivo *areas/ :::no-loc(Identity)::: /pages/Manage/accounts.cshtml* é */Manage/accounts* .</span><span class="sxs-lookup"><span data-stu-id="55556-164">For example, the page name for the file *Areas/:::no-loc(Identity):::/Pages/Manage/Accounts.cshtml* is */Manage/Accounts* .</span></span>
+<span data-ttu-id="55556-163">O nome da página é o caminho do arquivo sem uma extensão relativa ao diretório raiz de páginas para a área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-163">The page name is the path of the file without an extension relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-164">Por exemplo, o nome da página para o arquivo *areas/ Identity /pages/Manage/accounts.cshtml* é */Manage/accounts* .</span><span class="sxs-lookup"><span data-stu-id="55556-164">For example, the page name for the file *Areas/Identity/Pages/Manage/Accounts.cshtml* is */Manage/Accounts* .</span></span>
 
 <span data-ttu-id="55556-165">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):</span><span class="sxs-lookup"><span data-stu-id="55556-165">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizeAreaPage overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaPage(":::no-loc(Identity):::", "/Manage/Accounts", "AtLeast21");
+options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts", "AtLeast21");
 ```
 
 ## <a name="require-authorization-to-access-a-folder-of-areas"></a><span data-ttu-id="55556-166">Exigir autorização para acessar uma pasta de áreas</span><span class="sxs-lookup"><span data-stu-id="55556-166">Require authorization to access a folder of areas</span></span>
 
-<span data-ttu-id="55556-167">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> a todas as áreas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-167">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> convention via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to all of the areas in a folder at the specified path:</span></span>
+<span data-ttu-id="55556-167">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> a todas as áreas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-167">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*> convention via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter> to all of the areas in a folder at the specified path:</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage");
+options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-<span data-ttu-id="55556-168">O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-168">The folder path is the path of the folder relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-169">Por exemplo, o caminho da pasta para os arquivos em *áreas/ :::no-loc(Identity)::: /pages/Manage/* é */Manage* .</span><span class="sxs-lookup"><span data-stu-id="55556-169">For example, the folder path for the files under *Areas/:::no-loc(Identity):::/Pages/Manage/* is */Manage* .</span></span>
+<span data-ttu-id="55556-168">O caminho da pasta é o caminho da pasta em relação ao diretório raiz de páginas da área especificada.</span><span class="sxs-lookup"><span data-stu-id="55556-168">The folder path is the path of the folder relative to the pages root directory for the specified area.</span></span> <span data-ttu-id="55556-169">Por exemplo, o caminho da pasta para os arquivos em *áreas/ Identity /pages/Manage/* é */Manage* .</span><span class="sxs-lookup"><span data-stu-id="55556-169">For example, the folder path for the files under *Areas/Identity/Pages/Manage/* is */Manage* .</span></span>
 
 <span data-ttu-id="55556-170">Para especificar uma [política de autorização](xref:security/authorization/policies), use uma [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):</span><span class="sxs-lookup"><span data-stu-id="55556-170">To specify an [authorization policy](xref:security/authorization/policies), use an [AuthorizeAreaFolder overload](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):</span></span>
 
 ```csharp
-options.Conventions.AuthorizeAreaFolder(":::no-loc(Identity):::", "/Manage", "AtLeast21");
+options.Conventions.AuthorizeAreaFolder("Identity", "/Manage", "AtLeast21");
 ```
 
 ## <a name="allow-anonymous-access-to-a-page"></a><span data-ttu-id="55556-171">Permitir acesso anônimo a uma página</span><span class="sxs-lookup"><span data-stu-id="55556-171">Allow anonymous access to a page</span></span>
 
-<span data-ttu-id="55556-172">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> a uma página no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-172">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> convention via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> to a page at the specified path:</span></span>
+<span data-ttu-id="55556-172">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> a uma página no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-172">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToPage*> convention via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> to a page at the specified path:</span></span>
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,6)]
 
-<span data-ttu-id="55556-173">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-173">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path without an extension and containing only forward slashes.</span></span>
+<span data-ttu-id="55556-173">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz de páginas sem uma extensão e que contém apenas barras.</span><span class="sxs-lookup"><span data-stu-id="55556-173">The specified path is the View Engine path, which is the Razor Pages root relative path without an extension and containing only forward slashes.</span></span>
 
 ## <a name="allow-anonymous-access-to-a-folder-of-pages"></a><span data-ttu-id="55556-174">Permitir acesso anônimo a uma pasta de páginas</span><span class="sxs-lookup"><span data-stu-id="55556-174">Allow anonymous access to a folder of pages</span></span>
 
-<span data-ttu-id="55556-175">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> a todas as páginas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-175">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> convention via <xref:Microsoft.Extensions.DependencyInjection.Mvc:::no-loc(Razor):::PagesMvcBuilderExtensions.Add:::no-loc(Razor):::PagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> to all of the pages in a folder at the specified path:</span></span>
+<span data-ttu-id="55556-175">Use a <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> Convenção via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> para adicionar um <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> a todas as páginas em uma pasta no caminho especificado:</span><span class="sxs-lookup"><span data-stu-id="55556-175">Use the <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AllowAnonymousToFolder*> convention via <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> to add an <xref:Microsoft.AspNetCore.Mvc.Authorization.AllowAnonymousFilter> to all of the pages in a folder at the specified path:</span></span>
 
 [!code-csharp[](razor-pages-authorization/samples/2.x/AuthorizationSample/Startup.cs?name=snippet1&highlight=2,7)]
 
-<span data-ttu-id="55556-176">O caminho especificado é o caminho do mecanismo de exibição, que é o :::no-loc(Razor)::: caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-176">The specified path is the View Engine path, which is the :::no-loc(Razor)::: Pages root relative path.</span></span>
+<span data-ttu-id="55556-176">O caminho especificado é o caminho do mecanismo de exibição, que é o Razor caminho relativo raiz das páginas.</span><span class="sxs-lookup"><span data-stu-id="55556-176">The specified path is the View Engine path, which is the Razor Pages root relative path.</span></span>
 
 ## <a name="note-on-combining-authorized-and-anonymous-access"></a><span data-ttu-id="55556-177">Observação sobre a combinação de acesso autorizado e anônimo</span><span class="sxs-lookup"><span data-stu-id="55556-177">Note on combining authorized and anonymous access</span></span>
 

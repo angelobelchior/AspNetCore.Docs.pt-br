@@ -1,23 +1,23 @@
 ---
-title: 'Hospedar e implantar ASP.NET Core :::no-loc(Blazor Server):::'
+title: 'Hospedar e implantar ASP.NET Core Blazor Server'
 author: guardrex
-description: 'Saiba como hospedar e implantar um :::no-loc(Blazor Server)::: aplicativo usando o ASP.NET Core.'
+description: 'Saiba como hospedar e implantar um Blazor Server aplicativo usando o ASP.NET Core.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/host-and-deploy/server
 ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,25 +26,25 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93055757"
 ---
-# <a name="host-and-deploy-no-locblazor-server"></a><span data-ttu-id="a5c48-103">Hospedar e implantar :::no-loc(Blazor Server):::</span><span class="sxs-lookup"><span data-stu-id="a5c48-103">Host and deploy :::no-loc(Blazor Server):::</span></span>
+# <a name="host-and-deploy-no-locblazor-server"></a><span data-ttu-id="a5c48-103">Hospedar e implantar Blazor Server</span><span class="sxs-lookup"><span data-stu-id="a5c48-103">Host and deploy Blazor Server</span></span>
 
 <span data-ttu-id="a5c48-104">Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) e [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="a5c48-104">By [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), and [Daniel Roth](https://github.com/danroth27)</span></span>
 
 ## <a name="host-configuration-values"></a><span data-ttu-id="a5c48-105">Valores de configuração do host</span><span class="sxs-lookup"><span data-stu-id="a5c48-105">Host configuration values</span></span>
 
-<span data-ttu-id="a5c48-106">os [ :::no-loc(Blazor Server)::: aplicativos](xref:blazor/hosting-models#blazor-server) podem aceitar [valores de configuração de host genéricos](xref:fundamentals/host/generic-host#host-configuration).</span><span class="sxs-lookup"><span data-stu-id="a5c48-106">[:::no-loc(Blazor Server)::: apps](xref:blazor/hosting-models#blazor-server) can accept [Generic Host configuration values](xref:fundamentals/host/generic-host#host-configuration).</span></span>
+<span data-ttu-id="a5c48-106">os [ Blazor Server aplicativos](xref:blazor/hosting-models#blazor-server) podem aceitar [valores de configuração de host genéricos](xref:fundamentals/host/generic-host#host-configuration).</span><span class="sxs-lookup"><span data-stu-id="a5c48-106">[Blazor Server apps](xref:blazor/hosting-models#blazor-server) can accept [Generic Host configuration values](xref:fundamentals/host/generic-host#host-configuration).</span></span>
 
 ## <a name="deployment"></a><span data-ttu-id="a5c48-107">Implantação</span><span class="sxs-lookup"><span data-stu-id="a5c48-107">Deployment</span></span>
 
-<span data-ttu-id="a5c48-108">Usando o [ :::no-loc(Blazor Server)::: modelo de hospedagem](xref:blazor/hosting-models#blazor-server), o :::no-loc(Blazor)::: é executado no servidor de dentro de um aplicativo ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="a5c48-108">Using the [:::no-loc(Blazor Server)::: hosting model](xref:blazor/hosting-models#blazor-server), :::no-loc(Blazor)::: is executed on the server from within an ASP.NET Core app.</span></span> <span data-ttu-id="a5c48-109">As atualizações de interface do usuário, manipulação de eventos e chamadas JavaScript são manipuladas por uma [:::no-loc(SignalR):::](xref:signalr/introduction) conexão.</span><span class="sxs-lookup"><span data-stu-id="a5c48-109">UI updates, event handling, and JavaScript calls are handled over a [:::no-loc(SignalR):::](xref:signalr/introduction) connection.</span></span>
+<span data-ttu-id="a5c48-108">Usando o [ Blazor Server modelo de hospedagem](xref:blazor/hosting-models#blazor-server), o Blazor é executado no servidor de dentro de um aplicativo ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="a5c48-108">Using the [Blazor Server hosting model](xref:blazor/hosting-models#blazor-server), Blazor is executed on the server from within an ASP.NET Core app.</span></span> <span data-ttu-id="a5c48-109">As atualizações de interface do usuário, manipulação de eventos e chamadas JavaScript são manipuladas por uma [SignalR](xref:signalr/introduction) conexão.</span><span class="sxs-lookup"><span data-stu-id="a5c48-109">UI updates, event handling, and JavaScript calls are handled over a [SignalR](xref:signalr/introduction) connection.</span></span>
 
-<span data-ttu-id="a5c48-110">É necessário um servidor Web capaz de hospedar um aplicativo ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="a5c48-110">A web server capable of hosting an ASP.NET Core app is required.</span></span> <span data-ttu-id="a5c48-111">O Visual Studio inclui o modelo de projeto de **:::no-loc(Blazor Server)::: aplicativo** ( `blazorserverside` modelo ao usar o [`dotnet new`](/dotnet/core/tools/dotnet-new) comando).</span><span class="sxs-lookup"><span data-stu-id="a5c48-111">Visual Studio includes the **:::no-loc(Blazor Server)::: App** project template (`blazorserverside` template when using the [`dotnet new`](/dotnet/core/tools/dotnet-new) command).</span></span>
+<span data-ttu-id="a5c48-110">É necessário um servidor Web capaz de hospedar um aplicativo ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="a5c48-110">A web server capable of hosting an ASP.NET Core app is required.</span></span> <span data-ttu-id="a5c48-111">O Visual Studio inclui o modelo de projeto de **Blazor Server aplicativo** ( `blazorserverside` modelo ao usar o [`dotnet new`](/dotnet/core/tools/dotnet-new) comando).</span><span class="sxs-lookup"><span data-stu-id="a5c48-111">Visual Studio includes the **Blazor Server App** project template (`blazorserverside` template when using the [`dotnet new`](/dotnet/core/tools/dotnet-new) command).</span></span>
 
 ## <a name="scalability"></a><span data-ttu-id="a5c48-112">Escalabilidade</span><span class="sxs-lookup"><span data-stu-id="a5c48-112">Scalability</span></span>
 
-<span data-ttu-id="a5c48-113">Planeje uma implantação para fazer o melhor uso da infraestrutura disponível para um :::no-loc(Blazor Server)::: aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a5c48-113">Plan a deployment to make the best use of the available infrastructure for a :::no-loc(Blazor Server)::: app.</span></span> <span data-ttu-id="a5c48-114">Consulte os seguintes recursos para abordar a :::no-loc(Blazor Server)::: escalabilidade do aplicativo:</span><span class="sxs-lookup"><span data-stu-id="a5c48-114">See the following resources to address :::no-loc(Blazor Server)::: app scalability:</span></span>
+<span data-ttu-id="a5c48-113">Planeje uma implantação para fazer o melhor uso da infraestrutura disponível para um Blazor Server aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a5c48-113">Plan a deployment to make the best use of the available infrastructure for a Blazor Server app.</span></span> <span data-ttu-id="a5c48-114">Consulte os seguintes recursos para abordar a Blazor Server escalabilidade do aplicativo:</span><span class="sxs-lookup"><span data-stu-id="a5c48-114">See the following resources to address Blazor Server app scalability:</span></span>
 
-* [<span data-ttu-id="a5c48-115">Conceitos básicos de :::no-loc(Blazor Server)::: aplicativos</span><span class="sxs-lookup"><span data-stu-id="a5c48-115">Fundamentals of :::no-loc(Blazor Server)::: apps</span></span>](xref:blazor/hosting-models#blazor-server)
+* [<span data-ttu-id="a5c48-115">Conceitos básicos de Blazor Server aplicativos</span><span class="sxs-lookup"><span data-stu-id="a5c48-115">Fundamentals of Blazor Server apps</span></span>](xref:blazor/hosting-models#blazor-server)
 * <xref:blazor/security/server/threat-mitigation>
 
 ### <a name="deployment-server"></a><span data-ttu-id="a5c48-116">Servidor de implantação</span><span class="sxs-lookup"><span data-stu-id="a5c48-116">Deployment server</span></span>
@@ -54,56 +54,56 @@ ms.locfileid: "93055757"
 * <span data-ttu-id="a5c48-119">Número de circuitos ativos aos quais um servidor pode dar suporte.</span><span class="sxs-lookup"><span data-stu-id="a5c48-119">Number of active circuits that a server can support.</span></span>
 * <span data-ttu-id="a5c48-120">Latência da interface do usuário no cliente.</span><span class="sxs-lookup"><span data-stu-id="a5c48-120">UI latency on the client.</span></span>
 
-<span data-ttu-id="a5c48-121">Para obter orientação sobre a criação de :::no-loc(Blazor)::: aplicativos de servidor seguros e escalonáveis, consulte <xref:blazor/security/server/threat-mitigation> .</span><span class="sxs-lookup"><span data-stu-id="a5c48-121">For guidance on building secure and scalable :::no-loc(Blazor)::: server apps, see <xref:blazor/security/server/threat-mitigation>.</span></span>
+<span data-ttu-id="a5c48-121">Para obter orientação sobre a criação de Blazor aplicativos de servidor seguros e escalonáveis, consulte <xref:blazor/security/server/threat-mitigation> .</span><span class="sxs-lookup"><span data-stu-id="a5c48-121">For guidance on building secure and scalable Blazor server apps, see <xref:blazor/security/server/threat-mitigation>.</span></span>
 
 <span data-ttu-id="a5c48-122">Cada circuito usa aproximadamente 250 KB de memória para um aplicativo estilo mínimo de *Olá, mundo* .</span><span class="sxs-lookup"><span data-stu-id="a5c48-122">Each circuit uses approximately 250 KB of memory for a minimal *Hello World* -style app.</span></span> <span data-ttu-id="a5c48-123">O tamanho de um circuito depende do código do aplicativo e dos requisitos de manutenção de estado associados a cada componente.</span><span class="sxs-lookup"><span data-stu-id="a5c48-123">The size of a circuit depends on the app's code and the state maintenance requirements associated with each component.</span></span> <span data-ttu-id="a5c48-124">Recomendamos que você meça as demandas de recursos durante o desenvolvimento para seu aplicativo e infraestrutura, mas a linha de base a seguir pode ser um ponto de partida para planejar seu destino de implantação: se você espera que seu aplicativo ofereça suporte a 5.000 usuários simultâneos, considere o orçamento de pelo menos 1,3 GB de memória do servidor para o aplicativo (ou ~ 273 KB por usuário).</span><span class="sxs-lookup"><span data-stu-id="a5c48-124">We recommend that you measure resource demands during development for your app and infrastructure, but the following baseline can be a starting point in planning your deployment target: If you expect your app to support 5,000 concurrent users, consider budgeting at least 1.3 GB of server memory to the app (or ~273 KB per user).</span></span>
 
-### <a name="no-locsignalr-configuration"></a><span data-ttu-id="a5c48-125">:::no-loc(SignalR)::: configuração</span><span class="sxs-lookup"><span data-stu-id="a5c48-125">:::no-loc(SignalR)::: configuration</span></span>
+### <a name="no-locsignalr-configuration"></a><span data-ttu-id="a5c48-125">SignalR configuração</span><span class="sxs-lookup"><span data-stu-id="a5c48-125">SignalR configuration</span></span>
 
-<span data-ttu-id="a5c48-126">:::no-loc(Blazor Server)::: os aplicativos usam ASP.NET Core :::no-loc(SignalR)::: para se comunicar com o navegador.</span><span class="sxs-lookup"><span data-stu-id="a5c48-126">:::no-loc(Blazor Server)::: apps use ASP.NET Core :::no-loc(SignalR)::: to communicate with the browser.</span></span> <span data-ttu-id="a5c48-127">as [ :::no-loc(SignalR)::: condições de hospedagem e dimensionamento do](xref:signalr/publish-to-azure-web-app) se aplicam aos :::no-loc(Blazor Server)::: aplicativos.</span><span class="sxs-lookup"><span data-stu-id="a5c48-127">[:::no-loc(SignalR):::'s hosting and scaling conditions](xref:signalr/publish-to-azure-web-app) apply to :::no-loc(Blazor Server)::: apps.</span></span>
+<span data-ttu-id="a5c48-126">Blazor Server os aplicativos usam ASP.NET Core SignalR para se comunicar com o navegador.</span><span class="sxs-lookup"><span data-stu-id="a5c48-126">Blazor Server apps use ASP.NET Core SignalR to communicate with the browser.</span></span> <span data-ttu-id="a5c48-127">as [ SignalR condições de hospedagem e dimensionamento do](xref:signalr/publish-to-azure-web-app) se aplicam aos Blazor Server aplicativos.</span><span class="sxs-lookup"><span data-stu-id="a5c48-127">[SignalR's hosting and scaling conditions](xref:signalr/publish-to-azure-web-app) apply to Blazor Server apps.</span></span>
 
-<span data-ttu-id="a5c48-128">:::no-loc(Blazor)::: funciona melhor ao usar o WebSocket como :::no-loc(SignalR)::: transporte devido à latência, confiabilidade e [segurança](xref:signalr/security)menores.</span><span class="sxs-lookup"><span data-stu-id="a5c48-128">:::no-loc(Blazor)::: works best when using WebSockets as the :::no-loc(SignalR)::: transport due to lower latency, reliability, and [security](xref:signalr/security).</span></span> <span data-ttu-id="a5c48-129">A sondagem longa é usada pelo :::no-loc(SignalR)::: quando o WebSockets não está disponível ou quando o aplicativo é explicitamente configurado para usar sondagem longa.</span><span class="sxs-lookup"><span data-stu-id="a5c48-129">Long Polling is used by :::no-loc(SignalR)::: when WebSockets isn't available or when the app is explicitly configured to use Long Polling.</span></span> <span data-ttu-id="a5c48-130">Ao implantar no serviço Azure App, configure o aplicativo para usar Websockets nas configurações de portal do Azure para o serviço.</span><span class="sxs-lookup"><span data-stu-id="a5c48-130">When deploying to Azure App Service, configure the app to use WebSockets in the Azure portal settings for the service.</span></span> <span data-ttu-id="a5c48-131">Para obter detalhes sobre como configurar o aplicativo para Azure App serviço, consulte as [ :::no-loc(SignalR)::: diretrizes de publicação](xref:signalr/publish-to-azure-web-app).</span><span class="sxs-lookup"><span data-stu-id="a5c48-131">For details on configuring the app for Azure App Service, see the [:::no-loc(SignalR)::: publishing guidelines](xref:signalr/publish-to-azure-web-app).</span></span>
+<span data-ttu-id="a5c48-128">Blazor funciona melhor ao usar o WebSocket como SignalR transporte devido à latência, confiabilidade e [segurança](xref:signalr/security)menores.</span><span class="sxs-lookup"><span data-stu-id="a5c48-128">Blazor works best when using WebSockets as the SignalR transport due to lower latency, reliability, and [security](xref:signalr/security).</span></span> <span data-ttu-id="a5c48-129">A sondagem longa é usada pelo SignalR quando o WebSockets não está disponível ou quando o aplicativo é explicitamente configurado para usar sondagem longa.</span><span class="sxs-lookup"><span data-stu-id="a5c48-129">Long Polling is used by SignalR when WebSockets isn't available or when the app is explicitly configured to use Long Polling.</span></span> <span data-ttu-id="a5c48-130">Ao implantar no serviço Azure App, configure o aplicativo para usar Websockets nas configurações de portal do Azure para o serviço.</span><span class="sxs-lookup"><span data-stu-id="a5c48-130">When deploying to Azure App Service, configure the app to use WebSockets in the Azure portal settings for the service.</span></span> <span data-ttu-id="a5c48-131">Para obter detalhes sobre como configurar o aplicativo para Azure App serviço, consulte as [ SignalR diretrizes de publicação](xref:signalr/publish-to-azure-web-app).</span><span class="sxs-lookup"><span data-stu-id="a5c48-131">For details on configuring the app for Azure App Service, see the [SignalR publishing guidelines](xref:signalr/publish-to-azure-web-app).</span></span>
 
-#### <a name="azure-no-locsignalr-service"></a><span data-ttu-id="a5c48-132">Serviço do Azure :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="a5c48-132">Azure :::no-loc(SignalR)::: Service</span></span>
+#### <a name="azure-no-locsignalr-service"></a><span data-ttu-id="a5c48-132">Serviço do Azure SignalR</span><span class="sxs-lookup"><span data-stu-id="a5c48-132">Azure SignalR Service</span></span>
 
-<span data-ttu-id="a5c48-133">É recomendável usar [o :::no-loc(SignalR)::: serviço do Azure](xref:signalr/scale#azure-signalr-service) para :::no-loc(Blazor Server)::: aplicativos.</span><span class="sxs-lookup"><span data-stu-id="a5c48-133">We recommend using the [Azure :::no-loc(SignalR)::: Service](xref:signalr/scale#azure-signalr-service) for :::no-loc(Blazor Server)::: apps.</span></span> <span data-ttu-id="a5c48-134">O serviço permite escalar verticalmente um :::no-loc(Blazor Server)::: aplicativo para um grande número de conexões simultâneas :::no-loc(SignalR)::: .</span><span class="sxs-lookup"><span data-stu-id="a5c48-134">The service allows for scaling up a :::no-loc(Blazor Server)::: app to a large number of concurrent :::no-loc(SignalR)::: connections.</span></span> <span data-ttu-id="a5c48-135">Além disso, o :::no-loc(SignalR)::: alcance global do serviço e os data centers de alto desempenho auxiliam significativamente na redução da latência devido à geografia.</span><span class="sxs-lookup"><span data-stu-id="a5c48-135">In addition, the :::no-loc(SignalR)::: service's global reach and high-performance data centers significantly aid in reducing latency due to geography.</span></span>
+<span data-ttu-id="a5c48-133">É recomendável usar [o SignalR serviço do Azure](xref:signalr/scale#azure-signalr-service) para Blazor Server aplicativos.</span><span class="sxs-lookup"><span data-stu-id="a5c48-133">We recommend using the [Azure SignalR Service](xref:signalr/scale#azure-signalr-service) for Blazor Server apps.</span></span> <span data-ttu-id="a5c48-134">O serviço permite escalar verticalmente um Blazor Server aplicativo para um grande número de conexões simultâneas SignalR .</span><span class="sxs-lookup"><span data-stu-id="a5c48-134">The service allows for scaling up a Blazor Server app to a large number of concurrent SignalR connections.</span></span> <span data-ttu-id="a5c48-135">Além disso, o SignalR alcance global do serviço e os data centers de alto desempenho auxiliam significativamente na redução da latência devido à geografia.</span><span class="sxs-lookup"><span data-stu-id="a5c48-135">In addition, the SignalR service's global reach and high-performance data centers significantly aid in reducing latency due to geography.</span></span>
 
 > [!IMPORTANT]
 > <span data-ttu-id="a5c48-136">Quando os [WebSockets](https://wikipedia.org/wiki/WebSocket) estão desabilitados, Azure app serviço simula uma conexão em tempo real usando a sondagem longa http.</span><span class="sxs-lookup"><span data-stu-id="a5c48-136">When [WebSockets](https://wikipedia.org/wiki/WebSocket) are disabled, Azure App Service simulates a real-time connection using HTTP long-polling.</span></span> <span data-ttu-id="a5c48-137">A sondagem longa HTTP é visivelmente mais lenta do que a execução com WebSockets habilitados, o que não usa a sondagem para simular uma conexão cliente-servidor.</span><span class="sxs-lookup"><span data-stu-id="a5c48-137">HTTP long-polling is noticeably slower than running with WebSockets enabled, which doesn't use polling to simulate a client-server connection.</span></span>
 >
-> <span data-ttu-id="a5c48-138">É recomendável usar Websockets para :::no-loc(Blazor Server)::: aplicativos implantados no serviço Azure app.</span><span class="sxs-lookup"><span data-stu-id="a5c48-138">We recommend using WebSockets for :::no-loc(Blazor Server)::: apps deployed to Azure App Service.</span></span> <span data-ttu-id="a5c48-139">O [ :::no-loc(SignalR)::: serviço do Azure](xref:signalr/scale#azure-signalr-service) usa o WebSocket por padrão.</span><span class="sxs-lookup"><span data-stu-id="a5c48-139">The [Azure :::no-loc(SignalR)::: Service](xref:signalr/scale#azure-signalr-service) uses WebSockets by default.</span></span> <span data-ttu-id="a5c48-140">Se o aplicativo não usar o serviço do Azure :::no-loc(SignalR)::: , consulte <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service> .</span><span class="sxs-lookup"><span data-stu-id="a5c48-140">If the app doesn't use the Azure :::no-loc(SignalR)::: Service, see <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service>.</span></span>
+> <span data-ttu-id="a5c48-138">É recomendável usar Websockets para Blazor Server aplicativos implantados no serviço Azure app.</span><span class="sxs-lookup"><span data-stu-id="a5c48-138">We recommend using WebSockets for Blazor Server apps deployed to Azure App Service.</span></span> <span data-ttu-id="a5c48-139">O [ SignalR serviço do Azure](xref:signalr/scale#azure-signalr-service) usa o WebSocket por padrão.</span><span class="sxs-lookup"><span data-stu-id="a5c48-139">The [Azure SignalR Service](xref:signalr/scale#azure-signalr-service) uses WebSockets by default.</span></span> <span data-ttu-id="a5c48-140">Se o aplicativo não usar o serviço do Azure SignalR , consulte <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service> .</span><span class="sxs-lookup"><span data-stu-id="a5c48-140">If the app doesn't use the Azure SignalR Service, see <xref:signalr/publish-to-azure-web-app#configure-the-app-in-azure-app-service>.</span></span>
 >
 > <span data-ttu-id="a5c48-141">Para obter mais informações, consulte:</span><span class="sxs-lookup"><span data-stu-id="a5c48-141">For more information, see:</span></span>
 >
-> * [<span data-ttu-id="a5c48-142">O que é o serviço do Azure :::no-loc(SignalR)::: ?</span><span class="sxs-lookup"><span data-stu-id="a5c48-142">What is Azure :::no-loc(SignalR)::: Service?</span></span>](/azure/azure-signalr/signalr-overview)
-> * [<span data-ttu-id="a5c48-143">Guia de desempenho do :::no-loc(SignalR)::: serviço do Azure</span><span class="sxs-lookup"><span data-stu-id="a5c48-143">Performance guide for Azure :::no-loc(SignalR)::: Service</span></span>](/azure-signalr/signalr-concept-performance#performance-factors)
+> * [<span data-ttu-id="a5c48-142">O que é o serviço do Azure SignalR ?</span><span class="sxs-lookup"><span data-stu-id="a5c48-142">What is Azure SignalR Service?</span></span>](/azure/azure-signalr/signalr-overview)
+> * [<span data-ttu-id="a5c48-143">Guia de desempenho do SignalR serviço do Azure</span><span class="sxs-lookup"><span data-stu-id="a5c48-143">Performance guide for Azure SignalR Service</span></span>](/azure-signalr/signalr-concept-performance#performance-factors)
 
-<span data-ttu-id="a5c48-144">Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azure :::no-loc(SignalR)::: :</span><span class="sxs-lookup"><span data-stu-id="a5c48-144">To configure an app (and optionally provision) the Azure :::no-loc(SignalR)::: Service:</span></span>
+<span data-ttu-id="a5c48-144">Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azure SignalR :</span><span class="sxs-lookup"><span data-stu-id="a5c48-144">To configure an app (and optionally provision) the Azure SignalR Service:</span></span>
 
 1. <span data-ttu-id="a5c48-145">Habilite o serviço para dar suporte a *sessões adesivas* , em que os clientes são [redirecionados de volta para o mesmo servidor ao renderizar](xref:blazor/hosting-models#connection-to-the-server).</span><span class="sxs-lookup"><span data-stu-id="a5c48-145">Enable the service to support *sticky sessions* , where clients are [redirected back to the same server when prerendering](xref:blazor/hosting-models#connection-to-the-server).</span></span> <span data-ttu-id="a5c48-146">Defina a `ServerStickyMode` opção ou o valor de configuração como `Required` .</span><span class="sxs-lookup"><span data-stu-id="a5c48-146">Set the `ServerStickyMode` option or configuration value to `Required`.</span></span> <span data-ttu-id="a5c48-147">Normalmente, um aplicativo cria a configuração usando **uma** das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="a5c48-147">Typically, an app creates the configuration using **one** of the following approaches:</span></span>
 
    * <span data-ttu-id="a5c48-148">`Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="a5c48-148">`Startup.ConfigureServices`:</span></span>
   
      ```csharp
-     services.Add:::no-loc(SignalR):::().AddAzure:::no-loc(SignalR):::(options =>
+     services.AddSignalR().AddAzureSignalR(options =>
      {
          options.ServerStickyMode = 
-             Microsoft.Azure.:::no-loc(SignalR):::.ServerStickyMode.Required;
+             Microsoft.Azure.SignalR.ServerStickyMode.Required;
      });
      ```
 
    * <span data-ttu-id="a5c48-149">Configuração (use **uma** das seguintes abordagens):</span><span class="sxs-lookup"><span data-stu-id="a5c48-149">Configuration (use **one** of the following approaches):</span></span>
   
-     * <span data-ttu-id="a5c48-150">`:::no-loc(appsettings.json):::`:</span><span class="sxs-lookup"><span data-stu-id="a5c48-150">`:::no-loc(appsettings.json):::`:</span></span>
+     * <span data-ttu-id="a5c48-150">`appsettings.json`:</span><span class="sxs-lookup"><span data-stu-id="a5c48-150">`appsettings.json`:</span></span>
 
        ```json
-       "Azure::::no-loc(SignalR)::::ServerStickyMode": "Required"
+       "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * <span data-ttu-id="a5c48-151">As configurações do aplicativo de **configuração** do serviço de aplicativo  >  **Application settings** na portal do Azure ( **nome** : `Azure::::no-loc(SignalR)::::ServerStickyMode` , **valor** : `Required` ).</span><span class="sxs-lookup"><span data-stu-id="a5c48-151">The app service's **Configuration** > **Application settings** in the Azure portal ( **Name** : `Azure::::no-loc(SignalR)::::ServerStickyMode`, **Value** : `Required`).</span></span>
+     * <span data-ttu-id="a5c48-151">As configurações do aplicativo de **configuração** do serviço de aplicativo  >  **Application settings** na portal do Azure ( **nome** : `Azure:SignalR:ServerStickyMode` , **valor** : `Required` ).</span><span class="sxs-lookup"><span data-stu-id="a5c48-151">The app service's **Configuration** > **Application settings** in the Azure portal ( **Name** : `Azure:SignalR:ServerStickyMode`, **Value** : `Required`).</span></span>
 
-1. <span data-ttu-id="a5c48-152">Crie um perfil de publicação de aplicativos do Azure no Visual Studio para o :::no-loc(Blazor Server)::: aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a5c48-152">Create an Azure Apps publish profile in Visual Studio for the :::no-loc(Blazor Server)::: app.</span></span>
-1. <span data-ttu-id="a5c48-153">Adicione a dependência de **:::no-loc(SignalR)::: serviço do Azure** ao perfil.</span><span class="sxs-lookup"><span data-stu-id="a5c48-153">Add the **Azure :::no-loc(SignalR)::: Service** dependency to the profile.</span></span> <span data-ttu-id="a5c48-154">Se a assinatura do Azure não tiver uma instância de serviço do Azure já existente :::no-loc(SignalR)::: para atribuir ao aplicativo, selecione **criar uma nova :::no-loc(SignalR)::: instância de serviço do Azure** para provisionar uma nova instância de serviço.</span><span class="sxs-lookup"><span data-stu-id="a5c48-154">If the Azure subscription doesn't have a pre-existing Azure :::no-loc(SignalR)::: Service instance to assign to the app, select **Create a new Azure :::no-loc(SignalR)::: Service instance** to provision a new service instance.</span></span>
+1. <span data-ttu-id="a5c48-152">Crie um perfil de publicação de aplicativos do Azure no Visual Studio para o Blazor Server aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a5c48-152">Create an Azure Apps publish profile in Visual Studio for the Blazor Server app.</span></span>
+1. <span data-ttu-id="a5c48-153">Adicione a dependência de **SignalR serviço do Azure** ao perfil.</span><span class="sxs-lookup"><span data-stu-id="a5c48-153">Add the **Azure SignalR Service** dependency to the profile.</span></span> <span data-ttu-id="a5c48-154">Se a assinatura do Azure não tiver uma instância de serviço do Azure já existente SignalR para atribuir ao aplicativo, selecione **criar uma nova SignalR instância de serviço do Azure** para provisionar uma nova instância de serviço.</span><span class="sxs-lookup"><span data-stu-id="a5c48-154">If the Azure subscription doesn't have a pre-existing Azure SignalR Service instance to assign to the app, select **Create a new Azure SignalR Service instance** to provision a new service instance.</span></span>
 1. <span data-ttu-id="a5c48-155">Publicar o aplicativo no Azure.</span><span class="sxs-lookup"><span data-stu-id="a5c48-155">Publish the app to Azure.</span></span>
 
 #### <a name="iis"></a><span data-ttu-id="a5c48-156">IIS</span><span class="sxs-lookup"><span data-stu-id="a5c48-156">IIS</span></span>
@@ -115,7 +115,7 @@ ms.locfileid: "93055757"
 
 #### <a name="kubernetes"></a><span data-ttu-id="a5c48-160">Kubernetes</span><span class="sxs-lookup"><span data-stu-id="a5c48-160">Kubernetes</span></span>
 
-<span data-ttu-id="a5c48-161">Crie uma definição de entrada com as seguintes [anotações de kubernetes para sessões adesivas](https://kubernetes.github.io/ingress-nginx/examples/affinity/:::no-loc(cookie):::/):</span><span class="sxs-lookup"><span data-stu-id="a5c48-161">Create an ingress definition with the following [Kubernetes annotations for sticky sessions](https://kubernetes.github.io/ingress-nginx/examples/affinity/:::no-loc(cookie):::/):</span></span>
+<span data-ttu-id="a5c48-161">Crie uma definição de entrada com as seguintes [anotações de kubernetes para sessões adesivas](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):</span><span class="sxs-lookup"><span data-stu-id="a5c48-161">Create an ingress definition with the following [Kubernetes annotations for sticky sessions](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):</span></span>
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -123,15 +123,15 @@ kind: Ingress
 metadata:
   name: <ingress-name>
   annotations:
-    nginx.ingress.kubernetes.io/affinity: ":::no-loc(cookie):::"
-    nginx.ingress.kubernetes.io/session-:::no-loc(cookie):::-name: "affinity"
-    nginx.ingress.kubernetes.io/session-:::no-loc(cookie):::-expires: "14400"
-    nginx.ingress.kubernetes.io/session-:::no-loc(cookie):::-max-age: "14400"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "affinity"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
 ```
 
 #### <a name="linux-with-nginx"></a><span data-ttu-id="a5c48-162">Linux com o Nginx</span><span class="sxs-lookup"><span data-stu-id="a5c48-162">Linux with Nginx</span></span>
 
-<span data-ttu-id="a5c48-163">Para :::no-loc(SignalR)::: que o WebSockets funcione corretamente, confirme se os `Upgrade` cabeçalhos e o proxy `Connection` estão definidos com os seguintes valores e se estão `$connection_upgrade` mapeados para:</span><span class="sxs-lookup"><span data-stu-id="a5c48-163">For :::no-loc(SignalR)::: WebSockets to function properly, confirm that the proxy's `Upgrade` and `Connection` headers are set to the following values and that `$connection_upgrade` is mapped to either:</span></span>
+<span data-ttu-id="a5c48-163">Para SignalR que o WebSockets funcione corretamente, confirme se os `Upgrade` cabeçalhos e o proxy `Connection` estão definidos com os seguintes valores e se estão `$connection_upgrade` mapeados para:</span><span class="sxs-lookup"><span data-stu-id="a5c48-163">For SignalR WebSockets to function properly, confirm that the proxy's `Upgrade` and `Connection` headers are set to the following values and that `$connection_upgrade` is mapped to either:</span></span>
 
 * <span data-ttu-id="a5c48-164">O valor do cabeçalho de atualização por padrão.</span><span class="sxs-lookup"><span data-stu-id="a5c48-164">The Upgrade header value by default.</span></span>
 * <span data-ttu-id="a5c48-165">`close` Quando o cabeçalho de atualização está ausente ou vazio.</span><span class="sxs-lookup"><span data-stu-id="a5c48-165">`close` when the Upgrade header is missing or empty.</span></span>
@@ -168,7 +168,7 @@ http {
 
 ## <a name="linux-with-apache"></a><span data-ttu-id="a5c48-169">Linux com o Apache</span><span class="sxs-lookup"><span data-stu-id="a5c48-169">Linux with Apache</span></span>
 
-<span data-ttu-id="a5c48-170">Para hospedar um :::no-loc(Blazor)::: aplicativo por trás do Apache no Linux, configure `ProxyPass` para tráfego HTTP e WebSockets.</span><span class="sxs-lookup"><span data-stu-id="a5c48-170">To host a :::no-loc(Blazor)::: app behind Apache on Linux, configure `ProxyPass` for HTTP and WebSockets traffic.</span></span>
+<span data-ttu-id="a5c48-170">Para hospedar um Blazor aplicativo por trás do Apache no Linux, configure `ProxyPass` para tráfego HTTP e WebSockets.</span><span class="sxs-lookup"><span data-stu-id="a5c48-170">To host a Blazor app behind Apache on Linux, configure `ProxyPass` for HTTP and WebSockets traffic.</span></span>
 
 <span data-ttu-id="a5c48-171">No exemplo a seguir:</span><span class="sxs-lookup"><span data-stu-id="a5c48-171">In the following example:</span></span>
 

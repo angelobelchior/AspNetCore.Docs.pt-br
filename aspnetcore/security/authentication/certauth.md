@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 07/16/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/certauth
 ms.openlocfilehash: 83525a4c1e87a60b57130c1bba14360c7d03f552
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -175,7 +175,7 @@ services.AddAuthentication(
                 };
 
                 context.Principal = new ClaimsPrincipal(
-                    new Claims:::no-loc(Identity):::(claims, context.Scheme.Name));
+                    new ClaimsIdentity(claims, context.Scheme.Name));
                 context.Success();
 
                 return Task.CompletedTask;
@@ -219,7 +219,7 @@ services.AddAuthentication(
                     };
 
                     context.Principal = new ClaimsPrincipal(
-                        new Claims:::no-loc(Identity):::(claims, context.Scheme.Name));
+                        new ClaimsIdentity(claims, context.Scheme.Name));
                     context.Success();
                 }                     
 
@@ -624,7 +624,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="optional-client-certificates"></a><span data-ttu-id="a675b-244">Certificados de cliente opcionais</span><span class="sxs-lookup"><span data-stu-id="a675b-244">Optional client certificates</span></span>
 
-<span data-ttu-id="a675b-245">Esta seção fornece informações para aplicativos que devem proteger um subconjunto do aplicativo com um certificado.</span><span class="sxs-lookup"><span data-stu-id="a675b-245">This section provides information for apps that must protect a subset of the app with a certificate.</span></span> <span data-ttu-id="a675b-246">Por exemplo, uma :::no-loc(Razor)::: página ou controlador no aplicativo pode exigir certificados de cliente.</span><span class="sxs-lookup"><span data-stu-id="a675b-246">For example, a :::no-loc(Razor)::: Page or controller in the app might require client certificates.</span></span> <span data-ttu-id="a675b-247">Isso apresenta desafios como certificados de cliente:</span><span class="sxs-lookup"><span data-stu-id="a675b-247">This presents challenges as client certificates:</span></span>
+<span data-ttu-id="a675b-245">Esta seção fornece informações para aplicativos que devem proteger um subconjunto do aplicativo com um certificado.</span><span class="sxs-lookup"><span data-stu-id="a675b-245">This section provides information for apps that must protect a subset of the app with a certificate.</span></span> <span data-ttu-id="a675b-246">Por exemplo, uma Razor página ou controlador no aplicativo pode exigir certificados de cliente.</span><span class="sxs-lookup"><span data-stu-id="a675b-246">For example, a Razor Page or controller in the app might require client certificates.</span></span> <span data-ttu-id="a675b-247">Isso apresenta desafios como certificados de cliente:</span><span class="sxs-lookup"><span data-stu-id="a675b-247">This presents challenges as client certificates:</span></span>
   
 * <span data-ttu-id="a675b-248">É um recurso TLS, não um recurso HTTP.</span><span class="sxs-lookup"><span data-stu-id="a675b-248">Are a TLS feature, not an HTTP feature.</span></span>
 * <span data-ttu-id="a675b-249">São negociadas por conexão e devem ser negociadas no início da conexão antes que quaisquer dados HTTP estejam disponíveis.</span><span class="sxs-lookup"><span data-stu-id="a675b-249">Are negotiated per-connection and must be be negotiated at the start of the connection before any HTTP data is available.</span></span> <span data-ttu-id="a675b-250">No início da conexão, somente o Indicação de Nome de Servidor (SNI) &dagger; é conhecido.</span><span class="sxs-lookup"><span data-stu-id="a675b-250">At the start of the connection, only the Server Name Indication (SNI)&dagger; is known.</span></span> <span data-ttu-id="a675b-251">Os certificados do cliente e do servidor são negociados antes da primeira solicitação em uma conexão e as solicitações geralmente não são capazes de renegociar.</span><span class="sxs-lookup"><span data-stu-id="a675b-251">The client and server certificates are negotiated prior to the first request on a connection and requests generally aren't able to renegotiate.</span></span>

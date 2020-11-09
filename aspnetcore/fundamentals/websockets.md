@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/1/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/websockets
 ms.openlocfilehash: 83a41d503b2d56bca3f1bac14eeb9d54a8257642
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,11 +34,11 @@ ms.locfileid: "93057772"
 
 <span data-ttu-id="11aa7-108">[Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([como baixar](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="11aa7-108">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span> <span data-ttu-id="11aa7-109">[Como executar](#sample-app).</span><span class="sxs-lookup"><span data-stu-id="11aa7-109">[How to run](#sample-app).</span></span>
 
-## :::no-loc(SignalR):::
+## SignalR
 
-<span data-ttu-id="11aa7-110">[ASP.NET Core :::no-loc(SignalR)::: ](xref:signalr/introduction) é uma biblioteca que simplifica a adição de funcionalidades da Web em tempo real a aplicativos.</span><span class="sxs-lookup"><span data-stu-id="11aa7-110">[ASP.NET Core :::no-loc(SignalR):::](xref:signalr/introduction) is a library that simplifies adding real-time web functionality to apps.</span></span> <span data-ttu-id="11aa7-111">Ele usa WebSockets sempre que possível.</span><span class="sxs-lookup"><span data-stu-id="11aa7-111">It uses WebSockets whenever possible.</span></span>
+<span data-ttu-id="11aa7-110">[ASP.NET Core SignalR ](xref:signalr/introduction) é uma biblioteca que simplifica a adição de funcionalidades da Web em tempo real a aplicativos.</span><span class="sxs-lookup"><span data-stu-id="11aa7-110">[ASP.NET Core SignalR](xref:signalr/introduction) is a library that simplifies adding real-time web functionality to apps.</span></span> <span data-ttu-id="11aa7-111">Ele usa WebSockets sempre que possível.</span><span class="sxs-lookup"><span data-stu-id="11aa7-111">It uses WebSockets whenever possible.</span></span>
 
-<span data-ttu-id="11aa7-112">Para a maioria dos aplicativos, recomendamos :::no-loc(SignalR)::: sobre WebSockets brutos.</span><span class="sxs-lookup"><span data-stu-id="11aa7-112">For most applications, we recommend :::no-loc(SignalR)::: over raw WebSockets.</span></span> <span data-ttu-id="11aa7-113">:::no-loc(SignalR)::: fornece fallback de transporte para ambientes em que o WebSockets não está disponível.</span><span class="sxs-lookup"><span data-stu-id="11aa7-113">:::no-loc(SignalR)::: provides transport fallback for environments where WebSockets is not available.</span></span> <span data-ttu-id="11aa7-114">Ele também fornece um modelo básico de aplicativo de chamada de procedimento remoto.</span><span class="sxs-lookup"><span data-stu-id="11aa7-114">It also provides a basic remote procedure call app model.</span></span> <span data-ttu-id="11aa7-115">E na maioria dos cenários, :::no-loc(SignalR)::: não há uma desvantagem significativa no desempenho em comparação com o uso de WebSockets brutos.</span><span class="sxs-lookup"><span data-stu-id="11aa7-115">And in most scenarios, :::no-loc(SignalR)::: has no significant performance disadvantage compared to using raw WebSockets.</span></span>
+<span data-ttu-id="11aa7-112">Para a maioria dos aplicativos, recomendamos SignalR sobre WebSockets brutos.</span><span class="sxs-lookup"><span data-stu-id="11aa7-112">For most applications, we recommend SignalR over raw WebSockets.</span></span> <span data-ttu-id="11aa7-113">SignalR fornece fallback de transporte para ambientes em que o WebSockets não está disponível.</span><span class="sxs-lookup"><span data-stu-id="11aa7-113">SignalR provides transport fallback for environments where WebSockets is not available.</span></span> <span data-ttu-id="11aa7-114">Ele também fornece um modelo básico de aplicativo de chamada de procedimento remoto.</span><span class="sxs-lookup"><span data-stu-id="11aa7-114">It also provides a basic remote procedure call app model.</span></span> <span data-ttu-id="11aa7-115">E na maioria dos cenários, SignalR não há uma desvantagem significativa no desempenho em comparação com o uso de WebSockets brutos.</span><span class="sxs-lookup"><span data-stu-id="11aa7-115">And in most scenarios, SignalR has no significant performance disadvantage compared to using raw WebSockets.</span></span>
 
 <span data-ttu-id="11aa7-116">Para alguns aplicativos, o [gRPC no .net](xref:grpc/index) fornece uma alternativa para WebSockets.</span><span class="sxs-lookup"><span data-stu-id="11aa7-116">For some apps, [gRPC on .NET](xref:grpc/index) provides an alternative to WebSockets.</span></span>
 

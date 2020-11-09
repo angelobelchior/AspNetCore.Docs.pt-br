@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/controllers/filters
 ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -40,7 +40,7 @@ ms.locfileid: "93058500"
 
 <span data-ttu-id="9c2b4-109">É possível criar filtros personalizados para lidar com interesses paralelos.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-109">Custom filters can be created to handle cross-cutting concerns.</span></span> <span data-ttu-id="9c2b4-110">Entre os exemplos de interesses paralelos estão o tratamento de erros, cache, configuração, autorização e registro em log.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-110">Examples of cross-cutting concerns include error handling, caching, configuration, authorization, and logging.</span></span>  <span data-ttu-id="9c2b4-111">Filtros evitam a duplicação do código.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-111">Filters avoid duplicating code.</span></span> <span data-ttu-id="9c2b4-112">Por exemplo, um filtro de exceção de tratamento de erro poderia consolidar o tratamento de erro.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-112">For example, an error handling exception filter could consolidate error handling.</span></span>
 
-<span data-ttu-id="9c2b4-113">Este documento se aplica a :::no-loc(Razor)::: páginas, controladores de API e controladores com exibições.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-113">This document applies to :::no-loc(Razor)::: Pages, API controllers, and controllers with views.</span></span> <span data-ttu-id="9c2b4-114">Os filtros não funcionam diretamente com os [ :::no-loc(Razor)::: componentes](xref:blazor/components/index)do.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-114">Filters don't work directly with [:::no-loc(Razor)::: components](xref:blazor/components/index).</span></span> <span data-ttu-id="9c2b4-115">Um filtro só pode afetar indiretamente um componente quando:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-115">A filter can only indirectly affect a component when:</span></span>
+<span data-ttu-id="9c2b4-113">Este documento se aplica a Razor páginas, controladores de API e controladores com exibições.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-113">This document applies to Razor Pages, API controllers, and controllers with views.</span></span> <span data-ttu-id="9c2b4-114">Os filtros não funcionam diretamente com os [ Razor componentes](xref:blazor/components/index)do.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-114">Filters don't work directly with [Razor components](xref:blazor/components/index).</span></span> <span data-ttu-id="9c2b4-115">Um filtro só pode afetar indiretamente um componente quando:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-115">A filter can only indirectly affect a component when:</span></span>
 
 * <span data-ttu-id="9c2b4-116">O componente é inserido em uma página ou exibição.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-116">The component is embedded in a page or view.</span></span>
 * <span data-ttu-id="9c2b4-117">A página ou o controlador/modo de exibição usa o filtro.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-117">The page or controller/view uses the filter.</span></span>
@@ -70,7 +70,7 @@ ms.locfileid: "93058500"
   * <span data-ttu-id="9c2b4-134">Execute o código imediatamente antes e depois que um método de ação for chamado.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-134">Run code immediately before and after an action method is called.</span></span>
   * <span data-ttu-id="9c2b4-135">Pode alterar os argumentos passados para uma ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-135">Can change the arguments passed into an action.</span></span>
   * <span data-ttu-id="9c2b4-136">Pode alterar o resultado retornado da ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-136">Can change the result returned from the action.</span></span>
-  * <span data-ttu-id="9c2b4-137">**Não** têm suporte em :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-137">Are **not** supported in :::no-loc(Razor)::: Pages.</span></span>
+  * <span data-ttu-id="9c2b4-137">**Não** têm suporte em Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-137">Are **not** supported in Razor Pages.</span></span>
 
 * <span data-ttu-id="9c2b4-138">Os [filtros de exceção](#exception-filters) aplicam políticas globais a exceções sem tratamento que ocorrem antes da gravação do corpo da resposta.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-138">[Exception filters](#exception-filters) apply global policies to unhandled exceptions that occur before the response body has been written to.</span></span>
 
@@ -127,9 +127,9 @@ ms.locfileid: "93058500"
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MyActionFilterAttribute.cs?name=snippet)]
 
-<span data-ttu-id="9c2b4-175">As opções de configuração são fornecidas no [sistema de configuração](xref:fundamentals/configuration/index) usando o [padrão de opções](xref:fundamentals/configuration/options).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-175">The configuration options are provided from the [configuration system](xref:fundamentals/configuration/index) using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="9c2b4-176">Por exemplo, no *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-176">For example, from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="9c2b4-175">As opções de configuração são fornecidas no [sistema de configuração](xref:fundamentals/configuration/index) usando o [padrão de opções](xref:fundamentals/configuration/options).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-175">The configuration options are provided from the [configuration system](xref:fundamentals/configuration/index) using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="9c2b4-176">Por exemplo, no *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-176">For example, from the *appsettings.json* file:</span></span>
 
-[!code-json[](filters/3.1sample/FiltersSample/:::no-loc(appsettings.json):::)]
+[!code-json[](filters/3.1sample/FiltersSample/appsettings.json)]
 
 <span data-ttu-id="9c2b4-177">No `StartUp.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-177">In the `StartUp.ConfigureServices`:</span></span>
 
@@ -148,11 +148,11 @@ ms.locfileid: "93058500"
 
 <span data-ttu-id="9c2b4-182">Em **cabeçalhos de resposta** , `author: Rick Anderson` e `Editor: Joe Smith` é exibido quando o `Sample/Index2` ponto de extremidade é chamado.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-182">Under **Response Headers** , `author: Rick Anderson`, and `Editor: Joe Smith` is displayed when the `Sample/Index2` endpoint is called.</span></span>
 
-<span data-ttu-id="9c2b4-183">O código a seguir aplica o `MyActionFilterAttribute` e o `AddHeaderAttribute` à :::no-loc(Razor)::: página:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-183">The following code applies the `MyActionFilterAttribute` and the `AddHeaderAttribute` to the :::no-loc(Razor)::: Page:</span></span>
+<span data-ttu-id="9c2b4-183">O código a seguir aplica o `MyActionFilterAttribute` e o `AddHeaderAttribute` à Razor página:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-183">The following code applies the `MyActionFilterAttribute` and the `AddHeaderAttribute` to the Razor Page:</span></span>
 
 [!code-csharp[](filters/3.1sample/FiltersSample/Pages/Movies/Index.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="9c2b4-184">Os filtros não podem ser aplicados aos :::no-loc(Razor)::: métodos do manipulador de páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-184">Filters cannot be applied to :::no-loc(Razor)::: Page handler methods.</span></span> <span data-ttu-id="9c2b4-185">Eles podem ser aplicados ao modelo de :::no-loc(Razor)::: página ou globalmente.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-185">They can be applied either to the :::no-loc(Razor)::: Page model or globally.</span></span>
+<span data-ttu-id="9c2b4-184">Os filtros não podem ser aplicados aos Razor métodos do manipulador de páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-184">Filters cannot be applied to Razor Page handler methods.</span></span> <span data-ttu-id="9c2b4-185">Eles podem ser aplicados ao modelo de Razor página ou globalmente.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-185">They can be applied either to the Razor Page model or globally.</span></span>
 
 <span data-ttu-id="9c2b4-186">Várias interfaces de filtro têm atributos correspondentes que podem ser usados como classes base para implementações personalizadas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-186">Several of the filter interfaces have corresponding attributes that can be used as base classes for custom implementations.</span></span>
 
@@ -169,9 +169,9 @@ ms.locfileid: "93058500"
 
 <span data-ttu-id="9c2b4-189">Um filtro pode ser adicionado ao pipeline com um de três *escopos* :</span><span class="sxs-lookup"><span data-stu-id="9c2b4-189">A filter can be added to the pipeline at one of three *scopes* :</span></span>
 
-* <span data-ttu-id="9c2b4-190">Usando um atributo em uma ação do controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-190">Using an attribute on a controller action.</span></span> <span data-ttu-id="9c2b4-191">Atributos de filtro não podem ser aplicados a :::no-loc(Razor)::: métodos de manipulador de páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-191">Filter attributes cannot be applied to :::no-loc(Razor)::: Pages handler methods.</span></span>
-* <span data-ttu-id="9c2b4-192">Usando um atributo em um controlador ou uma :::no-loc(Razor)::: página.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-192">Using an attribute on a controller or :::no-loc(Razor)::: Page.</span></span>
-* <span data-ttu-id="9c2b4-193">Globalmente para todos os controladores, ações e :::no-loc(Razor)::: páginas, conforme mostrado no código a seguir:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-193">Globally for all controllers, actions, and :::no-loc(Razor)::: Pages as shown in the following code:</span></span>
+* <span data-ttu-id="9c2b4-190">Usando um atributo em uma ação do controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-190">Using an attribute on a controller action.</span></span> <span data-ttu-id="9c2b4-191">Atributos de filtro não podem ser aplicados a Razor métodos de manipulador de páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-191">Filter attributes cannot be applied to Razor Pages handler methods.</span></span>
+* <span data-ttu-id="9c2b4-192">Usando um atributo em um controlador ou uma Razor página.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-192">Using an attribute on a controller or Razor Page.</span></span>
+* <span data-ttu-id="9c2b4-193">Globalmente para todos os controladores, ações e Razor páginas, conforme mostrado no código a seguir:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-193">Globally for all controllers, actions, and Razor Pages as shown in the following code:</span></span>
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/StartupOrder.cs?name=snippet)]
 
@@ -182,10 +182,10 @@ ms.locfileid: "93058500"
 <span data-ttu-id="9c2b4-197">Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior* .</span><span class="sxs-lookup"><span data-stu-id="9c2b4-197">As a result of filter nesting, the *after* code of filters runs in the reverse order of the *before* code.</span></span> <span data-ttu-id="9c2b4-198">A sequência de filtro:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-198">The filter sequence:</span></span>
 
 * <span data-ttu-id="9c2b4-199">O código *anterior* dos filtros globais.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-199">The *before* code of global filters.</span></span>
-  * <span data-ttu-id="9c2b4-200">O código *anterior* de filtros de :::no-loc(Razor)::: página e controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-200">The *before* code of controller and :::no-loc(Razor)::: Page filters.</span></span>
+  * <span data-ttu-id="9c2b4-200">O código *anterior* de filtros de Razor página e controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-200">The *before* code of controller and Razor Page filters.</span></span>
     * <span data-ttu-id="9c2b4-201">O código *anterior* dos filtros de método de ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-201">The *before* code of action method filters.</span></span>
     * <span data-ttu-id="9c2b4-202">O código *posterior* dos filtros de método de ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-202">The *after* code of action method filters.</span></span>
-  * <span data-ttu-id="9c2b4-203">O código *After* de filtros de :::no-loc(Razor)::: página e controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-203">The *after* code of controller and :::no-loc(Razor)::: Page filters.</span></span>
+  * <span data-ttu-id="9c2b4-203">O código *After* de filtros de Razor página e controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-203">The *after* code of controller and Razor Page filters.</span></span>
 * <span data-ttu-id="9c2b4-204">O código *posterior* dos filtros globais.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-204">The *after* code of global filters.</span></span>
   
 <span data-ttu-id="9c2b4-205">O exemplo a seguir ilustra a ordem na qual os métodos de filtro são chamados para filtros de ação síncrona.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-205">The following example that illustrates the order in which filter methods are called for synchronous action filters.</span></span>
@@ -193,10 +193,10 @@ ms.locfileid: "93058500"
 | <span data-ttu-id="9c2b4-206">Sequência</span><span class="sxs-lookup"><span data-stu-id="9c2b4-206">Sequence</span></span> | <span data-ttu-id="9c2b4-207">Escopo do filtro</span><span class="sxs-lookup"><span data-stu-id="9c2b4-207">Filter scope</span></span> | <span data-ttu-id="9c2b4-208">Método do filtro</span><span class="sxs-lookup"><span data-stu-id="9c2b4-208">Filter method</span></span> |
 |:--------:|:------------:|:-------------:|
 | <span data-ttu-id="9c2b4-209">1</span><span class="sxs-lookup"><span data-stu-id="9c2b4-209">1</span></span> | <span data-ttu-id="9c2b4-210">Global</span><span class="sxs-lookup"><span data-stu-id="9c2b4-210">Global</span></span> | `OnActionExecuting` |
-| <span data-ttu-id="9c2b4-211">2</span><span class="sxs-lookup"><span data-stu-id="9c2b4-211">2</span></span> | <span data-ttu-id="9c2b4-212">Controlador ou :::no-loc(Razor)::: página</span><span class="sxs-lookup"><span data-stu-id="9c2b4-212">Controller or :::no-loc(Razor)::: Page</span></span>| `OnActionExecuting` |
+| <span data-ttu-id="9c2b4-211">2</span><span class="sxs-lookup"><span data-stu-id="9c2b4-211">2</span></span> | <span data-ttu-id="9c2b4-212">Controlador ou Razor página</span><span class="sxs-lookup"><span data-stu-id="9c2b4-212">Controller or Razor Page</span></span>| `OnActionExecuting` |
 | <span data-ttu-id="9c2b4-213">3</span><span class="sxs-lookup"><span data-stu-id="9c2b4-213">3</span></span> | <span data-ttu-id="9c2b4-214">Método</span><span class="sxs-lookup"><span data-stu-id="9c2b4-214">Method</span></span> | `OnActionExecuting` |
 | <span data-ttu-id="9c2b4-215">4</span><span class="sxs-lookup"><span data-stu-id="9c2b4-215">4</span></span> | <span data-ttu-id="9c2b4-216">Método</span><span class="sxs-lookup"><span data-stu-id="9c2b4-216">Method</span></span> | `OnActionExecuted` |
-| <span data-ttu-id="9c2b4-217">5</span><span class="sxs-lookup"><span data-stu-id="9c2b4-217">5</span></span> | <span data-ttu-id="9c2b4-218">Controlador ou :::no-loc(Razor)::: página</span><span class="sxs-lookup"><span data-stu-id="9c2b4-218">Controller or :::no-loc(Razor)::: Page</span></span> | `OnActionExecuted` |
+| <span data-ttu-id="9c2b4-217">5</span><span class="sxs-lookup"><span data-stu-id="9c2b4-217">5</span></span> | <span data-ttu-id="9c2b4-218">Controlador ou Razor página</span><span class="sxs-lookup"><span data-stu-id="9c2b4-218">Controller or Razor Page</span></span> | `OnActionExecuted` |
 | <span data-ttu-id="9c2b4-219">6</span><span class="sxs-lookup"><span data-stu-id="9c2b4-219">6</span></span> | <span data-ttu-id="9c2b4-220">Global</span><span class="sxs-lookup"><span data-stu-id="9c2b4-220">Global</span></span> | `OnActionExecuted` |
 
 ### <a name="controller-level-filters"></a><span data-ttu-id="9c2b4-221">Filtros de nível de controlador</span><span class="sxs-lookup"><span data-stu-id="9c2b4-221">Controller level filters</span></span>
@@ -235,7 +235,7 @@ ms.locfileid: "93058500"
 
 <span data-ttu-id="9c2b4-234">Filtros de nível de controlador definem a propriedade [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) como `int.MinValue` .</span><span class="sxs-lookup"><span data-stu-id="9c2b4-234">Controller level filters set the [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) property to `int.MinValue`.</span></span> <span data-ttu-id="9c2b4-235">Os filtros de nível de controlador **não** podem ser definidos para execução após os filtros aplicados aos métodos.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-235">Controller level filters can **not** be set to run after filters applied to methods.</span></span> <span data-ttu-id="9c2b4-236">A ordem é explicada na próxima seção.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-236">Order is explained in the next section.</span></span>
 
-<span data-ttu-id="9c2b4-237">Para :::no-loc(Razor)::: páginas, consulte [implementar :::no-loc(Razor)::: filtros de página substituindo métodos de filtro](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-237">For :::no-loc(Razor)::: Pages, see [Implement :::no-loc(Razor)::: Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
+<span data-ttu-id="9c2b4-237">Para Razor páginas, consulte [implementar Razor filtros de página substituindo métodos de filtro](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-237">For Razor Pages, see [Implement Razor Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
 
 ### <a name="overriding-the-default-order"></a><span data-ttu-id="9c2b4-238">Substituindo a ordem padrão</span><span class="sxs-lookup"><span data-stu-id="9c2b4-238">Overriding the default order</span></span>
 
@@ -411,7 +411,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 ## <a name="action-filters"></a><span data-ttu-id="9c2b4-340">Filtros de ação</span><span class="sxs-lookup"><span data-stu-id="9c2b4-340">Action filters</span></span>
 
-<span data-ttu-id="9c2b4-341">Os filtros de ação **não** se aplicam a :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-341">Action filters do **not** apply to :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="9c2b4-342">:::no-loc(Razor)::: Páginas dão suporte a <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> e <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span><span class="sxs-lookup"><span data-stu-id="9c2b4-342">:::no-loc(Razor)::: Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="9c2b4-343">Para obter mais informações, consulte [métodos de filtro para :::no-loc(Razor)::: páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-343">For more information, see [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+<span data-ttu-id="9c2b4-341">Os filtros de ação **não** se aplicam a Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-341">Action filters do **not** apply to Razor Pages.</span></span> <span data-ttu-id="9c2b4-342">Razor Páginas dão suporte a <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> e <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span><span class="sxs-lookup"><span data-stu-id="9c2b4-342">Razor Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="9c2b4-343">Para obter mais informações, consulte [métodos de filtro para Razor páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-343">For more information, see [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 
 <span data-ttu-id="9c2b4-344">Filtros de ação:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-344">Action filters:</span></span>
 
@@ -490,7 +490,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 * <span data-ttu-id="9c2b4-385">Não têm eventos anteriores nem posteriores.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-385">Don't have before and after events.</span></span>
 * <span data-ttu-id="9c2b4-386">Implementam <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> ou <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-386">Implement <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> or <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>.</span></span>
-* <span data-ttu-id="9c2b4-387">Manipule exceções sem tratamento que ocorrem em :::no-loc(Razor)::: criação de página ou controlador, [Associação de modelo](xref:mvc/models/model-binding), filtros de ação ou métodos de ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-387">Handle unhandled exceptions that occur in :::no-loc(Razor)::: Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
+* <span data-ttu-id="9c2b4-387">Manipule exceções sem tratamento que ocorrem em Razor criação de página ou controlador, [Associação de modelo](xref:mvc/models/model-binding), filtros de ação ou métodos de ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-387">Handle unhandled exceptions that occur in Razor Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
 * <span data-ttu-id="9c2b4-388">**Não** capturam as exceções que ocorrem em filtros de recurso, em filtros de resultado ou na execução do resultado de MVC.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-388">Do **not** catch exceptions that occur in resource filters, result filters, or MVC result execution.</span></span>
 
 <span data-ttu-id="9c2b4-389">Para tratar uma exceção, defina a propriedade <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> como `true` ou grave uma resposta.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-389">To handle an exception, set the <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> property to `true` or write a response.</span></span> <span data-ttu-id="9c2b4-390">Isso interrompe a propagação da exceção.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-390">This stops propagation of the exception.</span></span> <span data-ttu-id="9c2b4-391">Um filtro de exceção não pode transformar uma exceção em "êxito".</span><span class="sxs-lookup"><span data-stu-id="9c2b4-391">An exception filter can't turn an exception into a "success".</span></span> <span data-ttu-id="9c2b4-392">Somente um filtro de ação pode fazer isso.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-392">Only an action filter can do that.</span></span>
@@ -615,7 +615,7 @@ What's a non-named attribute?
 
 ## <a name="next-actions"></a><span data-ttu-id="9c2b4-470">Próximas ações</span><span class="sxs-lookup"><span data-stu-id="9c2b4-470">Next actions</span></span>
 
-* <span data-ttu-id="9c2b4-471">Consulte [métodos de filtro para :::no-loc(Razor)::: páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-471">See [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+* <span data-ttu-id="9c2b4-471">Consulte [métodos de filtro para Razor páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-471">See [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 * <span data-ttu-id="9c2b4-472">Para fazer experiências com filtros, [baixe, teste e modifique o exemplo do GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-472">To experiment with filters, [download, test, and modify the GitHub sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).</span></span>
 
 ::: moniker-end
@@ -633,7 +633,7 @@ What's a non-named attribute?
 
 <span data-ttu-id="9c2b4-478">É possível criar filtros personalizados para lidar com interesses paralelos.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-478">Custom filters can be created to handle cross-cutting concerns.</span></span> <span data-ttu-id="9c2b4-479">Entre os exemplos de interesses paralelos estão o tratamento de erros, cache, configuração, autorização e registro em log.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-479">Examples of cross-cutting concerns include error handling, caching, configuration, authorization, and logging.</span></span>  <span data-ttu-id="9c2b4-480">Filtros evitam a duplicação do código.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-480">Filters avoid duplicating code.</span></span> <span data-ttu-id="9c2b4-481">Por exemplo, um filtro de exceção de tratamento de erro poderia consolidar o tratamento de erro.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-481">For example, an error handling exception filter could consolidate error handling.</span></span>
 
-<span data-ttu-id="9c2b4-482">Este documento se aplica a :::no-loc(Razor)::: páginas, controladores de API e controladores com exibições.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-482">This document applies to :::no-loc(Razor)::: Pages, API controllers, and controllers with views.</span></span>
+<span data-ttu-id="9c2b4-482">Este documento se aplica a Razor páginas, controladores de API e controladores com exibições.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-482">This document applies to Razor Pages, API controllers, and controllers with views.</span></span>
 
 <span data-ttu-id="9c2b4-483">[Exibir ou baixar exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([como baixar](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-483">[View or download sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -655,7 +655,7 @@ What's a non-named attribute?
   * <span data-ttu-id="9c2b4-495"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuting*> pode executar o código antes do restante do pipeline de filtros.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-495"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuting*> can run code before the rest of the filter pipeline.</span></span> <span data-ttu-id="9c2b4-496">Por exemplo, `OnResourceExecuting` pode executar o código antes do model binding.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-496">For example, `OnResourceExecuting` can run code before model binding.</span></span>
   * <span data-ttu-id="9c2b4-497"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuted*> pode executar o código após a conclusão do restante do pipeline.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-497"><xref:Microsoft.AspNetCore.Mvc.Filters.IResourceFilter.OnResourceExecuted*> can run code after the rest of the pipeline has completed.</span></span>
 
-* <span data-ttu-id="9c2b4-498">[Filtros de ação](#action-filters) podem executar código imediatamente antes e depois de um método de ação individual ser chamado.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-498">[Action filters](#action-filters) can run code immediately before and after an individual action method is called.</span></span> <span data-ttu-id="9c2b4-499">Eles podem ser usados para manipular os argumentos passados para uma ação, bem como o resultado da ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-499">They can be used to manipulate the arguments passed into an action and the result returned from the action.</span></span> <span data-ttu-id="9c2b4-500">**Não** há suporte para filtros de ação em :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-500">Action filters are **not** supported in :::no-loc(Razor)::: Pages.</span></span>
+* <span data-ttu-id="9c2b4-498">[Filtros de ação](#action-filters) podem executar código imediatamente antes e depois de um método de ação individual ser chamado.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-498">[Action filters](#action-filters) can run code immediately before and after an individual action method is called.</span></span> <span data-ttu-id="9c2b4-499">Eles podem ser usados para manipular os argumentos passados para uma ação, bem como o resultado da ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-499">They can be used to manipulate the arguments passed into an action and the result returned from the action.</span></span> <span data-ttu-id="9c2b4-500">**Não** há suporte para filtros de ação em Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-500">Action filters are **not** supported in Razor Pages.</span></span>
 
 * <span data-ttu-id="9c2b4-501">[Filtros de exceção](#exception-filters) são usados para aplicar políticas globais para exceções sem tratamento que ocorrem antes que qualquer coisa tenha sido gravada no corpo da resposta.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-501">[Exception filters](#exception-filters) are used to apply global policies to unhandled exceptions that occur before anything has been written to the response body.</span></span>
 
@@ -751,7 +751,7 @@ What's a non-named attribute?
 * <span data-ttu-id="9c2b4-566">O filtro de método está aninhado no filtro de controlador.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-566">The method filter is nested within the controller filter.</span></span>
 * <span data-ttu-id="9c2b4-567">O filtro de controlador está aninhado no filtro global.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-567">The controller filter is nested within the global filter.</span></span>
 
-### <a name="controller-and-no-locrazor-page-level-filters"></a><span data-ttu-id="9c2b4-568">Filtros de nível de página e de controlador :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="9c2b4-568">Controller and :::no-loc(Razor)::: Page level filters</span></span>
+### <a name="controller-and-no-locrazor-page-level-filters"></a><span data-ttu-id="9c2b4-568">Filtros de nível de página e de controlador Razor</span><span class="sxs-lookup"><span data-stu-id="9c2b4-568">Controller and Razor Page level filters</span></span>
 
 <span data-ttu-id="9c2b4-569">Cada controlador que herda da classe base <xref:Microsoft.AspNetCore.Mvc.Controller> inclui os métodos [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*),  [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*) e [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
 `OnActionExecuted`.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-569">Every controller that inherits from the <xref:Microsoft.AspNetCore.Mvc.Controller> base class includes [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*),  [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*), and [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
@@ -781,7 +781,7 @@ What's a non-named attribute?
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-<span data-ttu-id="9c2b4-581">Para :::no-loc(Razor)::: páginas, consulte [implementar :::no-loc(Razor)::: filtros de página substituindo métodos de filtro](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-581">For :::no-loc(Razor)::: Pages, see [Implement :::no-loc(Razor)::: Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
+<span data-ttu-id="9c2b4-581">Para Razor páginas, consulte [implementar Razor filtros de página substituindo métodos de filtro](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-581">For Razor Pages, see [Implement Razor Page filters by overriding filter methods](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).</span></span>
 
 ### <a name="overriding-the-default-order"></a><span data-ttu-id="9c2b4-582">Substituindo a ordem padrão</span><span class="sxs-lookup"><span data-stu-id="9c2b4-582">Overriding the default order</span></span>
 
@@ -946,7 +946,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 ## <a name="action-filters"></a><span data-ttu-id="9c2b4-702">Filtros de ação</span><span class="sxs-lookup"><span data-stu-id="9c2b4-702">Action filters</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="9c2b4-703">Os filtros de ação **não** se aplicam a :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-703">Action filters do **not** apply to :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="9c2b4-704">:::no-loc(Razor)::: Páginas dão suporte a <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> e <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span><span class="sxs-lookup"><span data-stu-id="9c2b4-704">:::no-loc(Razor)::: Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="9c2b4-705">Para obter mais informações, consulte [métodos de filtro para :::no-loc(Razor)::: páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-705">For more information, see [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+> <span data-ttu-id="9c2b4-703">Os filtros de ação **não** se aplicam a Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-703">Action filters do **not** apply to Razor Pages.</span></span> <span data-ttu-id="9c2b4-704">Razor Páginas dão suporte a <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> e <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span><span class="sxs-lookup"><span data-stu-id="9c2b4-704">Razor Pages supports <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> and <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> .</span></span> <span data-ttu-id="9c2b4-705">Para obter mais informações, consulte [métodos de filtro para Razor páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-705">For more information, see [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 
 <span data-ttu-id="9c2b4-706">Filtros de ação:</span><span class="sxs-lookup"><span data-stu-id="9c2b4-706">Action filters:</span></span>
 
@@ -1018,7 +1018,7 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 
 * <span data-ttu-id="9c2b4-744">Não têm eventos anteriores nem posteriores.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-744">Don't have before and after events.</span></span>
 * <span data-ttu-id="9c2b4-745">Implementam <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> ou <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-745">Implement <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter.OnException*> or <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter.OnExceptionAsync*>.</span></span>
-* <span data-ttu-id="9c2b4-746">Manipule exceções sem tratamento que ocorrem em :::no-loc(Razor)::: criação de página ou controlador, [Associação de modelo](xref:mvc/models/model-binding), filtros de ação ou métodos de ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-746">Handle unhandled exceptions that occur in :::no-loc(Razor)::: Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
+* <span data-ttu-id="9c2b4-746">Manipule exceções sem tratamento que ocorrem em Razor criação de página ou controlador, [Associação de modelo](xref:mvc/models/model-binding), filtros de ação ou métodos de ação.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-746">Handle unhandled exceptions that occur in Razor Page or controller creation, [model binding](xref:mvc/models/model-binding), action filters, or action methods.</span></span>
 * <span data-ttu-id="9c2b4-747">**Não** capturam as exceções que ocorrem em filtros de recurso, em filtros de resultado ou na execução do resultado de MVC.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-747">Do **not** catch exceptions that occur in resource filters, result filters, or MVC result execution.</span></span>
 
 <span data-ttu-id="9c2b4-748">Para tratar uma exceção, defina a propriedade <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> como `true` ou grave uma resposta.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-748">To handle an exception, set the <xref:System.Web.Mvc.ExceptionContext.ExceptionHandled> property to `true` or write a response.</span></span> <span data-ttu-id="9c2b4-749">Isso interrompe a propagação da exceção.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-749">This stops propagation of the exception.</span></span> <span data-ttu-id="9c2b4-750">Um filtro de exceção não pode transformar uma exceção em "êxito".</span><span class="sxs-lookup"><span data-stu-id="9c2b4-750">An exception filter can't turn an exception into a "success".</span></span> <span data-ttu-id="9c2b4-751">Somente um filtro de ação pode fazer isso.</span><span class="sxs-lookup"><span data-stu-id="9c2b4-751">Only an action filter can do that.</span></span>
@@ -1139,7 +1139,7 @@ What's a non-named attribute?
 
 ## <a name="next-actions"></a><span data-ttu-id="9c2b4-828">Próximas ações</span><span class="sxs-lookup"><span data-stu-id="9c2b4-828">Next actions</span></span>
 
-* <span data-ttu-id="9c2b4-829">Consulte [métodos de filtro para :::no-loc(Razor)::: páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-829">See [Filter methods for :::no-loc(Razor)::: Pages](xref:razor-pages/filter).</span></span>
+* <span data-ttu-id="9c2b4-829">Consulte [métodos de filtro para Razor páginas](xref:razor-pages/filter).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-829">See [Filter methods for Razor Pages](xref:razor-pages/filter).</span></span>
 * <span data-ttu-id="9c2b4-830">Para fazer experiências com filtros, [baixe, teste e modifique o exemplo do GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).</span><span class="sxs-lookup"><span data-stu-id="9c2b4-830">To experiment with filters, [download, test, and modify the GitHub sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).</span></span>
 
 ::: moniker-end

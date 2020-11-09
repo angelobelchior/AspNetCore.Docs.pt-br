@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/twitter-logins
 ms.openlocfilehash: 47926d12ac5f922f2937df164d38ff6eb63cacf1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -42,7 +42,7 @@ ms.locfileid: "93053274"
 
 * <span data-ttu-id="68dd8-112">Marque a caixa ao lado de **Habilitar entrada com o Twitter**</span><span class="sxs-lookup"><span data-stu-id="68dd8-112">Check the box next to **Enable Sign in with Twitter**</span></span>
 
-* <span data-ttu-id="68dd8-113">Microsoft. AspNetCore.:::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="68dd8-113">Microsoft.AspNetCore.:::no-loc(Identity):::</span></span> <span data-ttu-id="68dd8-114">exige que os usuários tenham um endereço de email por padrão.</span><span class="sxs-lookup"><span data-stu-id="68dd8-114">requires users to have an email address by default.</span></span> <span data-ttu-id="68dd8-115">Vá para a guia **permissões** , clique no botão **Editar** e marque a caixa ao lado de **solicitar endereço de email dos usuários** .</span><span class="sxs-lookup"><span data-stu-id="68dd8-115">Go to the **Permissions** tab, click the **Edit** button and check the box next to **Request email address from users** .</span></span>
+* <span data-ttu-id="68dd8-113">Microsoft. AspNetCore.Identity</span><span class="sxs-lookup"><span data-stu-id="68dd8-113">Microsoft.AspNetCore.Identity</span></span> <span data-ttu-id="68dd8-114">exige que os usuários tenham um endereço de email por padrão.</span><span class="sxs-lookup"><span data-stu-id="68dd8-114">requires users to have an email address by default.</span></span> <span data-ttu-id="68dd8-115">Vá para a guia **permissões** , clique no botão **Editar** e marque a caixa ao lado de **solicitar endereço de email dos usuários** .</span><span class="sxs-lookup"><span data-stu-id="68dd8-115">Go to the **Permissions** tab, click the **Edit** button and check the box next to **Request email address from users** .</span></span>
 
 * <span data-ttu-id="68dd8-116">Insira seu URI de desenvolvimento com `/signin-twitter` anexado no campo **URLs de retorno de chamada** (por exemplo: `https://webapp128.azurewebsites.net/signin-twitter` ).</span><span class="sxs-lookup"><span data-stu-id="68dd8-116">Enter your development URI with `/signin-twitter` appended into the **Callback URLs** field (for example: `https://webapp128.azurewebsites.net/signin-twitter`).</span></span> <span data-ttu-id="68dd8-117">O esquema de autenticação do Twitter configurado mais adiante neste exemplo tratará automaticamente as solicitações na `/signin-twitter` rota para implementar o fluxo OAuth.</span><span class="sxs-lookup"><span data-stu-id="68dd8-117">The Twitter authentication scheme configured later in this sample will automatically handle requests at `/signin-twitter` route to implement the OAuth flow.</span></span>
 
@@ -99,7 +99,7 @@ Rather in the twitter setup, you can provide an External sign-in homepage. The e
 
 ## <a name="troubleshooting"></a><span data-ttu-id="68dd8-138">Solução de problemas</span><span class="sxs-lookup"><span data-stu-id="68dd8-138">Troubleshooting</span></span>
 
-* <span data-ttu-id="68dd8-139">**Somente ASP.NET Core 2. x:** Se :::no-loc(Identity)::: não estiver configurado chamando `services.Add:::no-loc(Identity):::` em `ConfigureServices` , a tentativa de autenticar resultará em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida* .</span><span class="sxs-lookup"><span data-stu-id="68dd8-139">**ASP.NET Core 2.x only:** If :::no-loc(Identity)::: isn't configured by calling `services.Add:::no-loc(Identity):::` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="68dd8-140">O modelo de projeto usado neste exemplo garante que isso seja feito.</span><span class="sxs-lookup"><span data-stu-id="68dd8-140">The project template used in this sample ensures that this is done.</span></span>
+* <span data-ttu-id="68dd8-139">**Somente ASP.NET Core 2. x:** Se Identity não estiver configurado chamando `services.AddIdentity` em `ConfigureServices` , a tentativa de autenticar resultará em *ArgumentException: a opção ' SignInScheme ' deve ser fornecida* .</span><span class="sxs-lookup"><span data-stu-id="68dd8-139">**ASP.NET Core 2.x only:** If Identity isn't configured by calling `services.AddIdentity` in `ConfigureServices`, attempting to authenticate will result in *ArgumentException: The 'SignInScheme' option must be provided* .</span></span> <span data-ttu-id="68dd8-140">O modelo de projeto usado neste exemplo garante que isso seja feito.</span><span class="sxs-lookup"><span data-stu-id="68dd8-140">The project template used in this sample ensures that this is done.</span></span>
 * <span data-ttu-id="68dd8-141">Se o banco de dados do site não tiver sido criado aplicando a migração inicial, você obterá *uma operação de banco de dados com falha ao processar o erro de solicitação* .</span><span class="sxs-lookup"><span data-stu-id="68dd8-141">If the site database has not been created by applying the initial migration, you will get *A database operation failed while processing the request* error.</span></span> <span data-ttu-id="68dd8-142">Toque em **aplicar migrações** para criar o banco de dados e atualizar para continuar após o erro.</span><span class="sxs-lookup"><span data-stu-id="68dd8-142">Tap **Apply Migrations** to create the database and refresh to continue past the error.</span></span>
 
 ## <a name="next-steps"></a><span data-ttu-id="68dd8-143">Próximas etapas</span><span class="sxs-lookup"><span data-stu-id="68dd8-143">Next steps</span></span>

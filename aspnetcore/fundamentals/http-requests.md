@@ -7,17 +7,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/09/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/http-requests
 ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -363,14 +363,14 @@ public class ValuesController : ControllerBase
 - <span data-ttu-id="6c060-301">O `SocketsHttpHandler` compartilha conexões entre `HttpClient` instâncias.</span><span class="sxs-lookup"><span data-stu-id="6c060-301">The `SocketsHttpHandler` shares connections across `HttpClient` instances.</span></span> <span data-ttu-id="6c060-302">Esse compartilhamento impede o esgotamento de soquete.</span><span class="sxs-lookup"><span data-stu-id="6c060-302">This sharing prevents socket exhaustion.</span></span>
 - <span data-ttu-id="6c060-303">O `SocketsHttpHandler` ciclos se conexões de acordo com o `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.</span><span class="sxs-lookup"><span data-stu-id="6c060-303">The `SocketsHttpHandler` cycles connections according to `PooledConnectionLifetime` to avoid stale DNS problems.</span></span>
 
-### <a name="no-loccookies"></a><span data-ttu-id="6c060-304">:::no-loc(Cookie):::s</span><span class="sxs-lookup"><span data-stu-id="6c060-304">:::no-loc(Cookie):::s</span></span>
+### <a name="no-loccookies"></a><span data-ttu-id="6c060-304">Cookies</span><span class="sxs-lookup"><span data-stu-id="6c060-304">Cookies</span></span>
 
-<span data-ttu-id="6c060-305">As `HttpMessageHandler` instâncias em pool resultam em `:::no-loc(Cookie):::Container` objetos que estão sendo compartilhados.</span><span class="sxs-lookup"><span data-stu-id="6c060-305">The pooled `HttpMessageHandler` instances results in `:::no-loc(Cookie):::Container` objects being shared.</span></span> <span data-ttu-id="6c060-306">O `:::no-loc(Cookie):::Container` compartilhamento de objeto inesperado geralmente resulta em código incorreto.</span><span class="sxs-lookup"><span data-stu-id="6c060-306">Unanticipated `:::no-loc(Cookie):::Container` object sharing often results in incorrect code.</span></span> <span data-ttu-id="6c060-307">Para aplicativos que exigem :::no-loc(cookie)::: s, considere o:</span><span class="sxs-lookup"><span data-stu-id="6c060-307">For apps that require :::no-loc(cookie):::s, consider either:</span></span>
+<span data-ttu-id="6c060-305">As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados.</span><span class="sxs-lookup"><span data-stu-id="6c060-305">The pooled `HttpMessageHandler` instances results in `CookieContainer` objects being shared.</span></span> <span data-ttu-id="6c060-306">O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto.</span><span class="sxs-lookup"><span data-stu-id="6c060-306">Unanticipated `CookieContainer` object sharing often results in incorrect code.</span></span> <span data-ttu-id="6c060-307">Para aplicativos que exigem cookie s, considere o:</span><span class="sxs-lookup"><span data-stu-id="6c060-307">For apps that require cookies, consider either:</span></span>
 
- - <span data-ttu-id="6c060-308">Desabilitando a :::no-loc(cookie)::: manipulação automática</span><span class="sxs-lookup"><span data-stu-id="6c060-308">Disabling automatic :::no-loc(cookie)::: handling</span></span>
+ - <span data-ttu-id="6c060-308">Desabilitando a cookie manipulação automática</span><span class="sxs-lookup"><span data-stu-id="6c060-308">Disabling automatic cookie handling</span></span>
  - <span data-ttu-id="6c060-309">Evitá `IHttpClientFactory`</span><span class="sxs-lookup"><span data-stu-id="6c060-309">Avoiding `IHttpClientFactory`</span></span>
 
-<span data-ttu-id="6c060-310">Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a :::no-loc(cookie)::: manipulação automática:</span><span class="sxs-lookup"><span data-stu-id="6c060-310">Call <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> to disable automatic :::no-loc(cookie)::: handling:</span></span>
+<span data-ttu-id="6c060-310">Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a cookie manipulação automática:</span><span class="sxs-lookup"><span data-stu-id="6c060-310">Call <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> to disable automatic cookie handling:</span></span>
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
@@ -681,14 +681,14 @@ public class ValuesController : ControllerBase
 - <span data-ttu-id="6c060-505">O `SocketsHttpHandler` compartilha conexões entre `HttpClient` instâncias.</span><span class="sxs-lookup"><span data-stu-id="6c060-505">The `SocketsHttpHandler` shares connections across `HttpClient` instances.</span></span> <span data-ttu-id="6c060-506">Esse compartilhamento impede o esgotamento de soquete.</span><span class="sxs-lookup"><span data-stu-id="6c060-506">This sharing prevents socket exhaustion.</span></span>
 - <span data-ttu-id="6c060-507">O `SocketsHttpHandler` ciclos se conexões de acordo com o `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.</span><span class="sxs-lookup"><span data-stu-id="6c060-507">The `SocketsHttpHandler` cycles connections according to `PooledConnectionLifetime` to avoid stale DNS problems.</span></span>
 
-### <a name="no-loccookies"></a><span data-ttu-id="6c060-508">:::no-loc(Cookie):::s</span><span class="sxs-lookup"><span data-stu-id="6c060-508">:::no-loc(Cookie):::s</span></span>
+### <a name="no-loccookies"></a><span data-ttu-id="6c060-508">Cookies</span><span class="sxs-lookup"><span data-stu-id="6c060-508">Cookies</span></span>
 
-<span data-ttu-id="6c060-509">As `HttpMessageHandler` instâncias em pool resultam em `:::no-loc(Cookie):::Container` objetos que estão sendo compartilhados.</span><span class="sxs-lookup"><span data-stu-id="6c060-509">The pooled `HttpMessageHandler` instances results in `:::no-loc(Cookie):::Container` objects being shared.</span></span> <span data-ttu-id="6c060-510">O `:::no-loc(Cookie):::Container` compartilhamento de objeto inesperado geralmente resulta em código incorreto.</span><span class="sxs-lookup"><span data-stu-id="6c060-510">Unanticipated `:::no-loc(Cookie):::Container` object sharing often results in incorrect code.</span></span> <span data-ttu-id="6c060-511">Para aplicativos que exigem :::no-loc(cookie)::: s, considere o:</span><span class="sxs-lookup"><span data-stu-id="6c060-511">For apps that require :::no-loc(cookie):::s, consider either:</span></span>
+<span data-ttu-id="6c060-509">As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados.</span><span class="sxs-lookup"><span data-stu-id="6c060-509">The pooled `HttpMessageHandler` instances results in `CookieContainer` objects being shared.</span></span> <span data-ttu-id="6c060-510">O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto.</span><span class="sxs-lookup"><span data-stu-id="6c060-510">Unanticipated `CookieContainer` object sharing often results in incorrect code.</span></span> <span data-ttu-id="6c060-511">Para aplicativos que exigem cookie s, considere o:</span><span class="sxs-lookup"><span data-stu-id="6c060-511">For apps that require cookies, consider either:</span></span>
 
- - <span data-ttu-id="6c060-512">Desabilitando a :::no-loc(cookie)::: manipulação automática</span><span class="sxs-lookup"><span data-stu-id="6c060-512">Disabling automatic :::no-loc(cookie)::: handling</span></span>
+ - <span data-ttu-id="6c060-512">Desabilitando a cookie manipulação automática</span><span class="sxs-lookup"><span data-stu-id="6c060-512">Disabling automatic cookie handling</span></span>
  - <span data-ttu-id="6c060-513">Evitá `IHttpClientFactory`</span><span class="sxs-lookup"><span data-stu-id="6c060-513">Avoiding `IHttpClientFactory`</span></span>
 
-<span data-ttu-id="6c060-514">Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a :::no-loc(cookie)::: manipulação automática:</span><span class="sxs-lookup"><span data-stu-id="6c060-514">Call <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> to disable automatic :::no-loc(cookie)::: handling:</span></span>
+<span data-ttu-id="6c060-514">Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a cookie manipulação automática:</span><span class="sxs-lookup"><span data-stu-id="6c060-514">Call <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> to disable automatic cookie handling:</span></span>
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
@@ -989,14 +989,14 @@ public class ValuesController : ControllerBase
 - <span data-ttu-id="6c060-706">O `SocketsHttpHandler` compartilha conexões entre `HttpClient` instâncias.</span><span class="sxs-lookup"><span data-stu-id="6c060-706">The `SocketsHttpHandler` shares connections across `HttpClient` instances.</span></span> <span data-ttu-id="6c060-707">Esse compartilhamento impede o esgotamento de soquete.</span><span class="sxs-lookup"><span data-stu-id="6c060-707">This sharing prevents socket exhaustion.</span></span>
 - <span data-ttu-id="6c060-708">O `SocketsHttpHandler` ciclos se conexões de acordo com o `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.</span><span class="sxs-lookup"><span data-stu-id="6c060-708">The `SocketsHttpHandler` cycles connections according to `PooledConnectionLifetime` to avoid stale DNS problems.</span></span>
 
-### <a name="no-loccookies"></a><span data-ttu-id="6c060-709">:::no-loc(Cookie):::s</span><span class="sxs-lookup"><span data-stu-id="6c060-709">:::no-loc(Cookie):::s</span></span>
+### <a name="no-loccookies"></a><span data-ttu-id="6c060-709">Cookies</span><span class="sxs-lookup"><span data-stu-id="6c060-709">Cookies</span></span>
 
-<span data-ttu-id="6c060-710">As `HttpMessageHandler` instâncias em pool resultam em `:::no-loc(Cookie):::Container` objetos que estão sendo compartilhados.</span><span class="sxs-lookup"><span data-stu-id="6c060-710">The pooled `HttpMessageHandler` instances results in `:::no-loc(Cookie):::Container` objects being shared.</span></span> <span data-ttu-id="6c060-711">O `:::no-loc(Cookie):::Container` compartilhamento de objeto inesperado geralmente resulta em código incorreto.</span><span class="sxs-lookup"><span data-stu-id="6c060-711">Unanticipated `:::no-loc(Cookie):::Container` object sharing often results in incorrect code.</span></span> <span data-ttu-id="6c060-712">Para aplicativos que exigem :::no-loc(cookie)::: s, considere o:</span><span class="sxs-lookup"><span data-stu-id="6c060-712">For apps that require :::no-loc(cookie):::s, consider either:</span></span>
+<span data-ttu-id="6c060-710">As `HttpMessageHandler` instâncias em pool resultam em `CookieContainer` objetos que estão sendo compartilhados.</span><span class="sxs-lookup"><span data-stu-id="6c060-710">The pooled `HttpMessageHandler` instances results in `CookieContainer` objects being shared.</span></span> <span data-ttu-id="6c060-711">O `CookieContainer` compartilhamento de objeto inesperado geralmente resulta em código incorreto.</span><span class="sxs-lookup"><span data-stu-id="6c060-711">Unanticipated `CookieContainer` object sharing often results in incorrect code.</span></span> <span data-ttu-id="6c060-712">Para aplicativos que exigem cookie s, considere o:</span><span class="sxs-lookup"><span data-stu-id="6c060-712">For apps that require cookies, consider either:</span></span>
 
- - <span data-ttu-id="6c060-713">Desabilitando a :::no-loc(cookie)::: manipulação automática</span><span class="sxs-lookup"><span data-stu-id="6c060-713">Disabling automatic :::no-loc(cookie)::: handling</span></span>
+ - <span data-ttu-id="6c060-713">Desabilitando a cookie manipulação automática</span><span class="sxs-lookup"><span data-stu-id="6c060-713">Disabling automatic cookie handling</span></span>
  - <span data-ttu-id="6c060-714">Evitá `IHttpClientFactory`</span><span class="sxs-lookup"><span data-stu-id="6c060-714">Avoiding `IHttpClientFactory`</span></span>
 
-<span data-ttu-id="6c060-715">Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a :::no-loc(cookie)::: manipulação automática:</span><span class="sxs-lookup"><span data-stu-id="6c060-715">Call <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> to disable automatic :::no-loc(cookie)::: handling:</span></span>
+<span data-ttu-id="6c060-715">Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para desabilitar a cookie manipulação automática:</span><span class="sxs-lookup"><span data-stu-id="6c060-715">Call <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> to disable automatic cookie handling:</span></span>
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 

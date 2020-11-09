@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: grpc/comparison
 ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -127,7 +127,7 @@ ms.locfileid: "93059943"
 <span data-ttu-id="9c90f-212">Outras estruturas são recomendadas em relação ao gRPC nos seguintes cenários:</span><span class="sxs-lookup"><span data-stu-id="9c90f-212">Other frameworks are recommended over gRPC in the following scenarios:</span></span>
 
 * <span data-ttu-id="9c90f-213">**APIs acessíveis ao navegador** : o gRPC não tem suporte total no navegador.</span><span class="sxs-lookup"><span data-stu-id="9c90f-213">**Browser accessible APIs** : gRPC isn't fully supported in the browser.</span></span> <span data-ttu-id="9c90f-214">o gRPC-Web pode oferecer suporte a navegador, mas tem limitações e introduz um proxy de servidor.</span><span class="sxs-lookup"><span data-stu-id="9c90f-214">gRPC-Web can offer browser support, but it has limitations and introduces a server proxy.</span></span>
-* <span data-ttu-id="9c90f-215">**Transmitir comunicação em tempo real** : o gRPC dá suporte à comunicação em tempo real via streaming, mas o conceito de difusão de uma mensagem para conexões registradas não existe.</span><span class="sxs-lookup"><span data-stu-id="9c90f-215">**Broadcast real-time communication** : gRPC supports real-time communication via streaming, but the concept of broadcasting a message out to registered connections doesn't exist.</span></span> <span data-ttu-id="9c90f-216">Por exemplo, em um cenário de sala de chat em que novas mensagens de chat devem ser enviadas a todos os clientes na sala de chat, cada chamada de gRPC é necessária para transmitir individualmente novas mensagens de chat para o cliente.</span><span class="sxs-lookup"><span data-stu-id="9c90f-216">For example in a chat room scenario where new chat messages should be sent to all clients in the chat room, each gRPC call is required to individually stream new chat messages to the client.</span></span> <span data-ttu-id="9c90f-217">[:::no-loc(SignalR):::](xref:signalr/introduction) é uma estrutura útil para esse cenário.</span><span class="sxs-lookup"><span data-stu-id="9c90f-217">[:::no-loc(SignalR):::](xref:signalr/introduction) is a useful framework for this scenario.</span></span> <span data-ttu-id="9c90f-218">:::no-loc(SignalR)::: tem o conceito de conexões persistentes e suporte interno para mensagens de difusão.</span><span class="sxs-lookup"><span data-stu-id="9c90f-218">:::no-loc(SignalR)::: has the concept of persistent connections and built-in support for broadcasting messages.</span></span>
+* <span data-ttu-id="9c90f-215">**Transmitir comunicação em tempo real** : o gRPC dá suporte à comunicação em tempo real via streaming, mas o conceito de difusão de uma mensagem para conexões registradas não existe.</span><span class="sxs-lookup"><span data-stu-id="9c90f-215">**Broadcast real-time communication** : gRPC supports real-time communication via streaming, but the concept of broadcasting a message out to registered connections doesn't exist.</span></span> <span data-ttu-id="9c90f-216">Por exemplo, em um cenário de sala de chat em que novas mensagens de chat devem ser enviadas a todos os clientes na sala de chat, cada chamada de gRPC é necessária para transmitir individualmente novas mensagens de chat para o cliente.</span><span class="sxs-lookup"><span data-stu-id="9c90f-216">For example in a chat room scenario where new chat messages should be sent to all clients in the chat room, each gRPC call is required to individually stream new chat messages to the client.</span></span> <span data-ttu-id="9c90f-217">[SignalR](xref:signalr/introduction) é uma estrutura útil para esse cenário.</span><span class="sxs-lookup"><span data-stu-id="9c90f-217">[SignalR](xref:signalr/introduction) is a useful framework for this scenario.</span></span> <span data-ttu-id="9c90f-218">SignalR tem o conceito de conexões persistentes e suporte interno para mensagens de difusão.</span><span class="sxs-lookup"><span data-stu-id="9c90f-218">SignalR has the concept of persistent connections and built-in support for broadcasting messages.</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="9c90f-219">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="9c90f-219">Additional resources</span></span>
 

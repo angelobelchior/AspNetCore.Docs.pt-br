@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/app-secrets
 ms.openlocfilehash: 174f831583c2ef6cb7f122a22fe855acc8fe3047
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -39,7 +39,7 @@ ms.locfileid: "93056862"
 
 <span data-ttu-id="654bd-112">As variáveis de ambiente são usadas para evitar o armazenamento de segredos do aplicativo no código ou nos arquivos de configuração locais.</span><span class="sxs-lookup"><span data-stu-id="654bd-112">Environment variables are used to avoid storage of app secrets in code or in local configuration files.</span></span> <span data-ttu-id="654bd-113">Variáveis de ambiente substituem valores de configuração para todas as fontes de configuração especificadas anteriormente.</span><span class="sxs-lookup"><span data-stu-id="654bd-113">Environment variables override configuration values for all previously specified configuration sources.</span></span>
 
-<span data-ttu-id="654bd-114">Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada.</span><span class="sxs-lookup"><span data-stu-id="654bd-114">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="654bd-115">Uma cadeia de conexão de banco de dados padrão é incluída no arquivo do projeto *:::no-loc(appsettings.json):::* com a chave `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="654bd-115">A default database connection string is included in the project's *:::no-loc(appsettings.json):::* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="654bd-116">A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha.</span><span class="sxs-lookup"><span data-stu-id="654bd-116">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="654bd-117">Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente.</span><span class="sxs-lookup"><span data-stu-id="654bd-117">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="654bd-118">A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.</span><span class="sxs-lookup"><span data-stu-id="654bd-118">The environment variable may store the complete connection string with sensitive credentials.</span></span>
+<span data-ttu-id="654bd-114">Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada.</span><span class="sxs-lookup"><span data-stu-id="654bd-114">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="654bd-115">Uma cadeia de conexão de banco de dados padrão é incluída no arquivo do projeto *appsettings.json* com a chave `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="654bd-115">A default database connection string is included in the project's *appsettings.json* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="654bd-116">A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha.</span><span class="sxs-lookup"><span data-stu-id="654bd-116">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="654bd-117">Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente.</span><span class="sxs-lookup"><span data-stu-id="654bd-117">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="654bd-118">A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.</span><span class="sxs-lookup"><span data-stu-id="654bd-118">The environment variable may store the complete connection string with sensitive credentials.</span></span>
 
 > [!WARNING]
 > <span data-ttu-id="654bd-119">Variáveis de ambiente geralmente são armazenadas em texto simples e não criptografado.</span><span class="sxs-lookup"><span data-stu-id="654bd-119">Environment variables are generally stored in plain, unencrypted text.</span></span> <span data-ttu-id="654bd-120">Se o computador ou o processo estiver comprometido, as variáveis de ambiente poderão ser acessadas por partes não confiáveis.</span><span class="sxs-lookup"><span data-stu-id="654bd-120">If the machine or process is compromised, environment variables can be accessed by untrusted parties.</span></span> <span data-ttu-id="654bd-121">Outras medidas para evitar a divulgação de segredos do usuário podem ser necessárias.</span><span class="sxs-lookup"><span data-stu-id="654bd-121">Additional measures to prevent disclosure of user secrets may be required.</span></span>
@@ -182,7 +182,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="string-replacement-with-secrets"></a><span data-ttu-id="654bd-186">Substituição de cadeia de caracteres com segredos</span><span class="sxs-lookup"><span data-stu-id="654bd-186">String replacement with secrets</span></span>
 
-<span data-ttu-id="654bd-187">O armazenamento de senhas em texto sem formatação não é seguro.</span><span class="sxs-lookup"><span data-stu-id="654bd-187">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="654bd-188">Por exemplo, uma cadeia de conexão de banco de dados armazenada em *:::no-loc(appsettings.json):::* pode incluir uma senha para o usuário especificado:</span><span class="sxs-lookup"><span data-stu-id="654bd-188">For example, a database connection string stored in *:::no-loc(appsettings.json):::* may include a password for the specified user:</span></span>
+<span data-ttu-id="654bd-187">O armazenamento de senhas em texto sem formatação não é seguro.</span><span class="sxs-lookup"><span data-stu-id="654bd-187">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="654bd-188">Por exemplo, uma cadeia de conexão de banco de dados armazenada em *appsettings.json* pode incluir uma senha para o usuário especificado:</span><span class="sxs-lookup"><span data-stu-id="654bd-188">For example, a database connection string stored in *appsettings.json* may include a password for the specified user:</span></span>
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -192,9 +192,9 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-<span data-ttu-id="654bd-191">Remova o `Password` par chave-valor da cadeia de conexão no *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="654bd-191">Remove the `Password` key-value pair from the connection string in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="654bd-192">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="654bd-192">For example:</span></span>
+<span data-ttu-id="654bd-191">Remova o `Password` par chave-valor da cadeia de conexão no *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="654bd-191">Remove the `Password` key-value pair from the connection string in *appsettings.json* .</span></span> <span data-ttu-id="654bd-192">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="654bd-192">For example:</span></span>
 
-[!code-json[](app-secrets/samples/3.x/UserSecrets/:::no-loc(appsettings.json):::?highlight=3)]
+[!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
 <span data-ttu-id="654bd-193">O valor do segredo pode ser definido na propriedade de um <xref:System.Data.SqlClient.SqlConnectionStringBuilder> objeto <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> para concluir a cadeia de conexão:</span><span class="sxs-lookup"><span data-stu-id="654bd-193">The secret's value can be set on a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> property to complete the connection string:</span></span>
 
@@ -287,7 +287,7 @@ No secrets configured for this application.
 
 <span data-ttu-id="654bd-216">As variáveis de ambiente são usadas para evitar o armazenamento de segredos do aplicativo no código ou nos arquivos de configuração locais.</span><span class="sxs-lookup"><span data-stu-id="654bd-216">Environment variables are used to avoid storage of app secrets in code or in local configuration files.</span></span> <span data-ttu-id="654bd-217">Variáveis de ambiente substituem valores de configuração para todas as fontes de configuração especificadas anteriormente.</span><span class="sxs-lookup"><span data-stu-id="654bd-217">Environment variables override configuration values for all previously specified configuration sources.</span></span>
 
-<span data-ttu-id="654bd-218">Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada.</span><span class="sxs-lookup"><span data-stu-id="654bd-218">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="654bd-219">Uma cadeia de conexão de banco de dados padrão é incluída no arquivo do projeto *:::no-loc(appsettings.json):::* com a chave `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="654bd-219">A default database connection string is included in the project's *:::no-loc(appsettings.json):::* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="654bd-220">A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha.</span><span class="sxs-lookup"><span data-stu-id="654bd-220">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="654bd-221">Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente.</span><span class="sxs-lookup"><span data-stu-id="654bd-221">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="654bd-222">A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.</span><span class="sxs-lookup"><span data-stu-id="654bd-222">The environment variable may store the complete connection string with sensitive credentials.</span></span>
+<span data-ttu-id="654bd-218">Considere um aplicativo Web ASP.NET Core no qual a segurança **das contas de usuário individuais** está habilitada.</span><span class="sxs-lookup"><span data-stu-id="654bd-218">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="654bd-219">Uma cadeia de conexão de banco de dados padrão é incluída no arquivo do projeto *appsettings.json* com a chave `DefaultConnection` .</span><span class="sxs-lookup"><span data-stu-id="654bd-219">A default database connection string is included in the project's *appsettings.json* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="654bd-220">A cadeia de conexão padrão é para o LocalDB, que é executado no modo de usuário e não requer uma senha.</span><span class="sxs-lookup"><span data-stu-id="654bd-220">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="654bd-221">Durante a implantação do aplicativo, o `DefaultConnection` valor da chave pode ser substituído por um valor de variável de ambiente.</span><span class="sxs-lookup"><span data-stu-id="654bd-221">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="654bd-222">A variável de ambiente pode armazenar a cadeia de conexão completa com credenciais confidenciais.</span><span class="sxs-lookup"><span data-stu-id="654bd-222">The environment variable may store the complete connection string with sensitive credentials.</span></span>
 
 > [!WARNING]
 > <span data-ttu-id="654bd-223">Variáveis de ambiente geralmente são armazenadas em texto simples e não criptografado.</span><span class="sxs-lookup"><span data-stu-id="654bd-223">Environment variables are generally stored in plain, unencrypted text.</span></span> <span data-ttu-id="654bd-224">Se o computador ou o processo estiver comprometido, as variáveis de ambiente poderão ser acessadas por partes não confiáveis.</span><span class="sxs-lookup"><span data-stu-id="654bd-224">If the machine or process is compromised, environment variables can be accessed by untrusted parties.</span></span> <span data-ttu-id="654bd-225">Outras medidas para evitar a divulgação de segredos do usuário podem ser necessárias.</span><span class="sxs-lookup"><span data-stu-id="654bd-225">Additional measures to prevent disclosure of user secrets may be required.</span></span>
@@ -427,7 +427,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="string-replacement-with-secrets"></a><span data-ttu-id="654bd-289">Substituição de cadeia de caracteres com segredos</span><span class="sxs-lookup"><span data-stu-id="654bd-289">String replacement with secrets</span></span>
 
-<span data-ttu-id="654bd-290">O armazenamento de senhas em texto sem formatação não é seguro.</span><span class="sxs-lookup"><span data-stu-id="654bd-290">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="654bd-291">Por exemplo, uma cadeia de conexão de banco de dados armazenada em *:::no-loc(appsettings.json):::* pode incluir uma senha para o usuário especificado:</span><span class="sxs-lookup"><span data-stu-id="654bd-291">For example, a database connection string stored in *:::no-loc(appsettings.json):::* may include a password for the specified user:</span></span>
+<span data-ttu-id="654bd-290">O armazenamento de senhas em texto sem formatação não é seguro.</span><span class="sxs-lookup"><span data-stu-id="654bd-290">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="654bd-291">Por exemplo, uma cadeia de conexão de banco de dados armazenada em *appsettings.json* pode incluir uma senha para o usuário especificado:</span><span class="sxs-lookup"><span data-stu-id="654bd-291">For example, a database connection string stored in *appsettings.json* may include a password for the specified user:</span></span>
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -437,9 +437,9 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-<span data-ttu-id="654bd-294">Remova o `Password` par chave-valor da cadeia de conexão no *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="654bd-294">Remove the `Password` key-value pair from the connection string in *:::no-loc(appsettings.json):::* .</span></span> <span data-ttu-id="654bd-295">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="654bd-295">For example:</span></span>
+<span data-ttu-id="654bd-294">Remova o `Password` par chave-valor da cadeia de conexão no *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="654bd-294">Remove the `Password` key-value pair from the connection string in *appsettings.json* .</span></span> <span data-ttu-id="654bd-295">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="654bd-295">For example:</span></span>
 
-[!code-json[](app-secrets/samples/2.x/UserSecrets/:::no-loc(appsettings.json):::?highlight=3)]
+[!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
 <span data-ttu-id="654bd-296">O valor do segredo pode ser definido na propriedade de um <xref:System.Data.SqlClient.SqlConnectionStringBuilder> objeto <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> para concluir a cadeia de conexão:</span><span class="sxs-lookup"><span data-stu-id="654bd-296">The secret's value can be set on a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> property to complete the connection string:</span></span>
 

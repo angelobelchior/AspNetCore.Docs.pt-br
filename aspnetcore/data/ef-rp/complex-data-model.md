@@ -1,22 +1,22 @@
 ---
-title: 'Parte 5, :::no-loc(Razor)::: páginas com EF Core no modelo de dados ASP.NET Core'
+title: 'Parte 5, Razor páginas com EF Core no modelo de dados ASP.NET Core'
 author: rick-anderson
-description: 'Parte 5 de :::no-loc(Razor)::: páginas e Entity Framework série de tutoriais.'
+description: 'Parte 5 de Razor páginas e Entity Framework série de tutoriais.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054093"
 ---
-# <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a><span data-ttu-id="a4469-103">Parte 5, :::no-loc(Razor)::: páginas com EF Core no modelo de dados ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="a4469-103">Part 5, :::no-loc(Razor)::: Pages with EF Core in ASP.NET Core - Data Model</span></span>
+# <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a><span data-ttu-id="a4469-103">Parte 5, Razor páginas com EF Core no modelo de dados ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="a4469-103">Part 5, Razor Pages with EF Core in ASP.NET Core - Data Model</span></span>
 
 <span data-ttu-id="a4469-104">Por [Tom Dykstra](https://github.com/tdykstra) e [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="a4469-104">By [Tom Dykstra](https://github.com/tdykstra) and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 

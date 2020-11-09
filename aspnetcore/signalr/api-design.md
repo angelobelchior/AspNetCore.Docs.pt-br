@@ -1,23 +1,23 @@
 ---
-title: ':::no-loc(SignalR)::: Considerações de design de API'
+title: 'SignalR Considerações de design de API'
 author: anurse
-description: 'Saiba como criar :::no-loc(SignalR)::: APIs para compatibilidade entre versões do seu aplicativo.'
+description: 'Saiba como criar SignalR APIs para compatibilidade entre versões do seu aplicativo.'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/api-design
 ms.openlocfilehash: 87665a7950edbc70b664230d2f078598e9dbc0aa
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,15 +26,15 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93059644"
 ---
-# <a name="no-locsignalr-api-design-considerations"></a><span data-ttu-id="6e8cb-103">:::no-loc(SignalR)::: Considerações de design de API</span><span class="sxs-lookup"><span data-stu-id="6e8cb-103">:::no-loc(SignalR)::: API design considerations</span></span>
+# <a name="no-locsignalr-api-design-considerations"></a><span data-ttu-id="6e8cb-103">SignalR Considerações de design de API</span><span class="sxs-lookup"><span data-stu-id="6e8cb-103">SignalR API design considerations</span></span>
 
 <span data-ttu-id="6e8cb-104">Por [Andrew Stanton-enfermaria](https://twitter.com/anurse)</span><span class="sxs-lookup"><span data-stu-id="6e8cb-104">By [Andrew Stanton-Nurse](https://twitter.com/anurse)</span></span>
 
-<span data-ttu-id="6e8cb-105">Este artigo fornece diretrizes para a criação de :::no-loc(SignalR)::: APIs baseadas em compilação.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-105">This article provides guidance for building :::no-loc(SignalR):::-based APIs.</span></span>
+<span data-ttu-id="6e8cb-105">Este artigo fornece diretrizes para a criação de SignalR APIs baseadas em compilação.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-105">This article provides guidance for building SignalR-based APIs.</span></span>
 
 ## <a name="use-custom-object-parameters-to-ensure-backwards-compatibility"></a><span data-ttu-id="6e8cb-106">Usar parâmetros de objeto personalizados para garantir a compatibilidade com versões anteriores</span><span class="sxs-lookup"><span data-stu-id="6e8cb-106">Use custom object parameters to ensure backwards-compatibility</span></span>
 
-<span data-ttu-id="6e8cb-107">A adição de parâmetros a um :::no-loc(SignalR)::: método de Hub (no cliente ou no servidor) é uma *alteração significativa* .</span><span class="sxs-lookup"><span data-stu-id="6e8cb-107">Adding parameters to a :::no-loc(SignalR)::: hub method (on either the client or the server) is a *breaking change* .</span></span> <span data-ttu-id="6e8cb-108">Isso significa que clientes/servidores mais antigos receberão erros quando tentarem invocar o método sem o número apropriado de parâmetros.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-108">This means older clients/servers will get errors when they try to invoke the method without the appropriate number of parameters.</span></span> <span data-ttu-id="6e8cb-109">No entanto, a adição de propriedades a um parâmetro de objeto personalizado **não** é uma alteração significativa.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-109">However, adding properties to a custom object parameter is **not** a breaking change.</span></span> <span data-ttu-id="6e8cb-110">Isso pode ser usado para criar APIs compatíveis que são resilientes a alterações no cliente ou no servidor.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-110">This can be used to design compatible APIs that are resilient to changes on the client or the server.</span></span>
+<span data-ttu-id="6e8cb-107">A adição de parâmetros a um SignalR método de Hub (no cliente ou no servidor) é uma *alteração significativa* .</span><span class="sxs-lookup"><span data-stu-id="6e8cb-107">Adding parameters to a SignalR hub method (on either the client or the server) is a *breaking change* .</span></span> <span data-ttu-id="6e8cb-108">Isso significa que clientes/servidores mais antigos receberão erros quando tentarem invocar o método sem o número apropriado de parâmetros.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-108">This means older clients/servers will get errors when they try to invoke the method without the appropriate number of parameters.</span></span> <span data-ttu-id="6e8cb-109">No entanto, a adição de propriedades a um parâmetro de objeto personalizado **não** é uma alteração significativa.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-109">However, adding properties to a custom object parameter is **not** a breaking change.</span></span> <span data-ttu-id="6e8cb-110">Isso pode ser usado para criar APIs compatíveis que são resilientes a alterações no cliente ou no servidor.</span><span class="sxs-lookup"><span data-stu-id="6e8cb-110">This can be used to design compatible APIs that are resilient to changes on the client or the server.</span></span>
 
 <span data-ttu-id="6e8cb-111">Por exemplo, considere uma API do lado do servidor como a seguinte:</span><span class="sxs-lookup"><span data-stu-id="6e8cb-111">For example, consider a server-side API like the following:</span></span>
 
@@ -51,7 +51,7 @@ ms.locfileid: "93059644"
 <span data-ttu-id="6e8cb-115">Quando o cliente antigo tenta invocar esse método, ele receberá um erro como este:</span><span class="sxs-lookup"><span data-stu-id="6e8cb-115">When the old client tries to invoke this method, it will get an error like this:</span></span>
 
 ```
-Microsoft.AspNetCore.:::no-loc(SignalR):::.HubException: Failed to invoke 'GetTotalLength' due to an error on the server.
+Microsoft.AspNetCore.SignalR.HubException: Failed to invoke 'GetTotalLength' due to an error on the server.
 ```
 
 <span data-ttu-id="6e8cb-116">No servidor, você verá uma mensagem de log como esta:</span><span class="sxs-lookup"><span data-stu-id="6e8cb-116">On the server, you'll see a log message like this:</span></span>

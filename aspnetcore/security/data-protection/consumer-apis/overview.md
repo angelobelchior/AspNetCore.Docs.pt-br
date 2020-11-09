@@ -5,17 +5,17 @@ description: Receba uma breve visão geral das várias APIs de consumidor dispon
 ms.author: riande
 ms.date: 06/11/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/consumer-apis/overview
 ms.openlocfilehash: 485ea3f669b518f2979d04493b281bd116b05f65
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -64,4 +64,4 @@ ms.locfileid: "93051870"
 [!code-csharp[](./overview/samples/getdataprotector.cs?highlight=15)]
 
 >[!TIP]
-> <span data-ttu-id="31877-133">Instâncias do `IDataProtectionProvider` e `IDataProtector` são thread-safe para vários chamadores.</span><span class="sxs-lookup"><span data-stu-id="31877-133">Instances of `IDataProtectionProvider` and `IDataProtector` are thread-safe for multiple callers.</span></span> <span data-ttu-id="31877-134">É intencional que, uma vez que um componente obtenha uma referência a um `IDataProtector` por meio de uma chamada para `CreateProtector` , ele usará essa referência para várias chamadas para `Protect` e `Unprotect` .</span><span class="sxs-lookup"><span data-stu-id="31877-134">It's intended that once a component gets a reference to an `IDataProtector` via a call to `CreateProtector`, it will use that reference for multiple calls to `Protect` and `Unprotect`.</span></span> <span data-ttu-id="31877-135">Uma chamada para `Unprotect` emitirá CryptographicException se a carga protegida não puder ser verificada ou decifrada.</span><span class="sxs-lookup"><span data-stu-id="31877-135">A call to `Unprotect` will throw CryptographicException if the protected payload cannot be verified or deciphered.</span></span> <span data-ttu-id="31877-136">Alguns componentes podem querer ignorar erros durante operações de desproteção; um componente que lê :::no-loc(cookie)::: os s de autenticação pode lidar com esse erro e tratar a solicitação como se ela tivesse nenhuma, :::no-loc(cookie)::: em vez de falhar a solicitação imediatamente.</span><span class="sxs-lookup"><span data-stu-id="31877-136">Some components may wish to ignore errors during unprotect operations; a component which reads authentication :::no-loc(cookie):::s might handle this error and treat the request as if it had no :::no-loc(cookie)::: at all rather than fail the request outright.</span></span> <span data-ttu-id="31877-137">Os componentes que desejam esse comportamento devem capturar especificamente CryptographicException em vez de assimilar todas as exceções.</span><span class="sxs-lookup"><span data-stu-id="31877-137">Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.</span></span>
+> <span data-ttu-id="31877-133">Instâncias do `IDataProtectionProvider` e `IDataProtector` são thread-safe para vários chamadores.</span><span class="sxs-lookup"><span data-stu-id="31877-133">Instances of `IDataProtectionProvider` and `IDataProtector` are thread-safe for multiple callers.</span></span> <span data-ttu-id="31877-134">É intencional que, uma vez que um componente obtenha uma referência a um `IDataProtector` por meio de uma chamada para `CreateProtector` , ele usará essa referência para várias chamadas para `Protect` e `Unprotect` .</span><span class="sxs-lookup"><span data-stu-id="31877-134">It's intended that once a component gets a reference to an `IDataProtector` via a call to `CreateProtector`, it will use that reference for multiple calls to `Protect` and `Unprotect`.</span></span> <span data-ttu-id="31877-135">Uma chamada para `Unprotect` emitirá CryptographicException se a carga protegida não puder ser verificada ou decifrada.</span><span class="sxs-lookup"><span data-stu-id="31877-135">A call to `Unprotect` will throw CryptographicException if the protected payload cannot be verified or deciphered.</span></span> <span data-ttu-id="31877-136">Alguns componentes podem querer ignorar erros durante operações de desproteção; um componente que lê cookie os s de autenticação pode lidar com esse erro e tratar a solicitação como se ela tivesse nenhuma, cookie em vez de falhar a solicitação imediatamente.</span><span class="sxs-lookup"><span data-stu-id="31877-136">Some components may wish to ignore errors during unprotect operations; a component which reads authentication cookies might handle this error and treat the request as if it had no cookie at all rather than fail the request outright.</span></span> <span data-ttu-id="31877-137">Os componentes que desejam esse comportamento devem capturar especificamente CryptographicException em vez de assimilar todas as exceções.</span><span class="sxs-lookup"><span data-stu-id="31877-137">Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.</span></span>

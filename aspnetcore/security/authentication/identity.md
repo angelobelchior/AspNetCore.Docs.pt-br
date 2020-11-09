@@ -1,21 +1,21 @@
 ---
-title: 'Introdução ao :::no-loc(Identity)::: no ASP.NET Core'
+title: 'Introdução ao Identity no ASP.NET Core'
 author: rick-anderson
-description: 'Use :::no-loc(Identity)::: com um aplicativo ASP.NET Core. Saiba como definir os requisitos de senha (RequireDigit, RequiredLength, RequiredUniqueChars e mais).'
+description: 'Use Identity com um aplicativo ASP.NET Core. Saiba como definir os requisitos de senha (RequireDigit, RequiredLength, RequiredUniqueChars e mais).'
 ms.author: riande
 ms.date: 7/15/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/identity
 ms.openlocfilehash: bfcef860beb07ab81dda1a10a1648491ae187bef
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -24,33 +24,33 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93052013"
 ---
-# <a name="introduction-to-no-locidentity-on-aspnet-core"></a><span data-ttu-id="2cf27-104">Introdução ao :::no-loc(Identity)::: no ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="2cf27-104">Introduction to :::no-loc(Identity)::: on ASP.NET Core</span></span>
+# <a name="introduction-to-no-locidentity-on-aspnet-core"></a><span data-ttu-id="2cf27-104">Introdução ao Identity no ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="2cf27-104">Introduction to Identity on ASP.NET Core</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
 <span data-ttu-id="2cf27-105">De [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="2cf27-105">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="2cf27-106">:::no-loc(ASP.NET Core Identity)::::</span><span class="sxs-lookup"><span data-stu-id="2cf27-106">:::no-loc(ASP.NET Core Identity)::::</span></span>
+<span data-ttu-id="2cf27-106">ASP.NET Core Identity:</span><span class="sxs-lookup"><span data-stu-id="2cf27-106">ASP.NET Core Identity:</span></span>
 
 * <span data-ttu-id="2cf27-107">É uma API que dá suporte à funcionalidade de logon da interface do usuário.</span><span class="sxs-lookup"><span data-stu-id="2cf27-107">Is an API that supports user interface (UI) login functionality.</span></span>
 * <span data-ttu-id="2cf27-108">Gerencia usuários, senhas, dados de perfil, funções, declarações, tokens, confirmação por email e muito mais.</span><span class="sxs-lookup"><span data-stu-id="2cf27-108">Manages users, passwords, profile data, roles, claims, tokens, email confirmation, and more.</span></span>
 
-<span data-ttu-id="2cf27-109">Os usuários podem criar uma conta com as informações de logon armazenadas no :::no-loc(Identity)::: ou podem usar um provedor de logon externo.</span><span class="sxs-lookup"><span data-stu-id="2cf27-109">Users can create an account with the login information stored in :::no-loc(Identity)::: or they can use an external login provider.</span></span> <span data-ttu-id="2cf27-110">Os provedores de logon externo com suporte incluem [o Facebook, o Google, a conta da Microsoft e o Twitter](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="2cf27-110">Supported external login providers include [Facebook, Google, Microsoft Account, and Twitter](xref:security/authentication/social/index).</span></span>
+<span data-ttu-id="2cf27-109">Os usuários podem criar uma conta com as informações de logon armazenadas no Identity ou podem usar um provedor de logon externo.</span><span class="sxs-lookup"><span data-stu-id="2cf27-109">Users can create an account with the login information stored in Identity or they can use an external login provider.</span></span> <span data-ttu-id="2cf27-110">Os provedores de logon externo com suporte incluem [o Facebook, o Google, a conta da Microsoft e o Twitter](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="2cf27-110">Supported external login providers include [Facebook, Google, Microsoft Account, and Twitter](xref:security/authentication/social/index).</span></span>
 
 [!INCLUDE[](~/includes/requireAuth.md)]
 
-<span data-ttu-id="2cf27-111">O [ :::no-loc(Identity)::: código-fonte](https://github.com/dotnet/AspNetCore/tree/master/src/:::no-loc(Identity):::) está disponível no github.</span><span class="sxs-lookup"><span data-stu-id="2cf27-111">The [:::no-loc(Identity)::: source code](https://github.com/dotnet/AspNetCore/tree/master/src/:::no-loc(Identity):::) is available on GitHub.</span></span> <span data-ttu-id="2cf27-112">[Scaffold :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity) e exiba os arquivos gerados para revisar a interação do modelo com o :::no-loc(Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2cf27-112">[Scaffold :::no-loc(Identity):::](xref:security/authentication/scaffold-identity) and view the generated files to review the template interaction with :::no-loc(Identity):::.</span></span>
+<span data-ttu-id="2cf27-111">O [ Identity código-fonte](https://github.com/dotnet/AspNetCore/tree/master/src/Identity) está disponível no github.</span><span class="sxs-lookup"><span data-stu-id="2cf27-111">The [Identity source code](https://github.com/dotnet/AspNetCore/tree/master/src/Identity) is available on GitHub.</span></span> <span data-ttu-id="2cf27-112">[Scaffold Identity ](xref:security/authentication/scaffold-identity) e exiba os arquivos gerados para revisar a interação do modelo com o Identity .</span><span class="sxs-lookup"><span data-stu-id="2cf27-112">[Scaffold Identity](xref:security/authentication/scaffold-identity) and view the generated files to review the template interaction with Identity.</span></span>
 
-<span data-ttu-id="2cf27-113">:::no-loc(Identity)::: Normalmente, o é configurado usando um banco de dados SQL Server para armazenar nomes de usuário, senhas e de perfil.</span><span class="sxs-lookup"><span data-stu-id="2cf27-113">:::no-loc(Identity)::: is typically configured using a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="2cf27-114">Como alternativa, outro armazenamento persistente pode ser usado, por exemplo, o armazenamento de tabelas do Azure.</span><span class="sxs-lookup"><span data-stu-id="2cf27-114">Alternatively, another persistent store can be used, for example, Azure Table Storage.</span></span>
+<span data-ttu-id="2cf27-113">Identity Normalmente, o é configurado usando um banco de dados SQL Server para armazenar nomes de usuário, senhas e de perfil.</span><span class="sxs-lookup"><span data-stu-id="2cf27-113">Identity is typically configured using a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="2cf27-114">Como alternativa, outro armazenamento persistente pode ser usado, por exemplo, o armazenamento de tabelas do Azure.</span><span class="sxs-lookup"><span data-stu-id="2cf27-114">Alternatively, another persistent store can be used, for example, Azure Table Storage.</span></span>
 
-<span data-ttu-id="2cf27-115">Neste tópico, você aprenderá a usar o :::no-loc(Identity)::: para registrar, fazer logon e fazer logoff de um usuário.</span><span class="sxs-lookup"><span data-stu-id="2cf27-115">In this topic, you learn how to use :::no-loc(Identity)::: to register, log in, and log out a user.</span></span> <span data-ttu-id="2cf27-116">Observação: os modelos tratam o nome de usuário e o email como o mesmo para os usuários.</span><span class="sxs-lookup"><span data-stu-id="2cf27-116">Note: the templates treat username and email as the same for users.</span></span> <span data-ttu-id="2cf27-117">Para obter instruções mais detalhadas sobre como criar aplicativos que usam o :::no-loc(Identity)::: , consulte [próximas etapas](#next).</span><span class="sxs-lookup"><span data-stu-id="2cf27-117">For more detailed instructions about creating apps that use :::no-loc(Identity):::, see [Next Steps](#next).</span></span>
+<span data-ttu-id="2cf27-115">Neste tópico, você aprenderá a usar o Identity para registrar, fazer logon e fazer logoff de um usuário.</span><span class="sxs-lookup"><span data-stu-id="2cf27-115">In this topic, you learn how to use Identity to register, log in, and log out a user.</span></span> <span data-ttu-id="2cf27-116">Observação: os modelos tratam o nome de usuário e o email como o mesmo para os usuários.</span><span class="sxs-lookup"><span data-stu-id="2cf27-116">Note: the templates treat username and email as the same for users.</span></span> <span data-ttu-id="2cf27-117">Para obter instruções mais detalhadas sobre como criar aplicativos que usam o Identity , consulte [próximas etapas](#next).</span><span class="sxs-lookup"><span data-stu-id="2cf27-117">For more detailed instructions about creating apps that use Identity, see [Next Steps](#next).</span></span>
 
 <span data-ttu-id="2cf27-118">A [plataforma Microsoft Identity](/azure/active-directory/develop/) é:</span><span class="sxs-lookup"><span data-stu-id="2cf27-118">[Microsoft identity platform](/azure/active-directory/develop/) is:</span></span>
 
 * <span data-ttu-id="2cf27-119">Uma evolução da plataforma de desenvolvedor do Azure Active Directory (AD do Azure).</span><span class="sxs-lookup"><span data-stu-id="2cf27-119">An evolution of the Azure Active Directory (Azure AD) developer platform.</span></span>
-* <span data-ttu-id="2cf27-120">Não relacionado a :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="2cf27-120">Unrelated to :::no-loc(ASP.NET Core Identity):::.</span></span>
+* <span data-ttu-id="2cf27-120">Não relacionado a ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="2cf27-120">Unrelated to ASP.NET Core Identity.</span></span>
 
-[!INCLUDE[](~/includes/:::no-loc(Identity):::Server4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 <span data-ttu-id="2cf27-121">[Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([como baixar](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="2cf27-121">[View or download the sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -73,7 +73,7 @@ ms.locfileid: "93052013"
 dotnet new webapp --auth Individual -o WebApp1
 ```
 
-<span data-ttu-id="2cf27-132">O comando anterior cria um :::no-loc(Razor)::: aplicativo Web usando o SQLite.</span><span class="sxs-lookup"><span data-stu-id="2cf27-132">The preceding command creates a :::no-loc(Razor)::: web app using SQLite.</span></span> <span data-ttu-id="2cf27-133">Para criar o aplicativo Web com o LocalDB, execute o seguinte comando:</span><span class="sxs-lookup"><span data-stu-id="2cf27-133">To create the web app with LocalDB, run the following command:</span></span>
+<span data-ttu-id="2cf27-132">O comando anterior cria um Razor aplicativo Web usando o SQLite.</span><span class="sxs-lookup"><span data-stu-id="2cf27-132">The preceding command creates a Razor web app using SQLite.</span></span> <span data-ttu-id="2cf27-133">Para criar o aplicativo Web com o LocalDB, execute o seguinte comando:</span><span class="sxs-lookup"><span data-stu-id="2cf27-133">To create the web app with LocalDB, run the following command:</span></span>
 
 ```dotnetcli
 dotnet new webapp --auth Individual -uld -o WebApp1
@@ -81,11 +81,11 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 ---
 
-<span data-ttu-id="2cf27-134">O projeto gerado fornece [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity) como uma [ :::no-loc(Razor)::: biblioteca de classes](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="2cf27-134">The generated project provides [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity) as a [:::no-loc(Razor)::: Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="2cf27-135">A :::no-loc(Identity)::: :::no-loc(Razor)::: biblioteca de classes expõe pontos de extremidade com a `:::no-loc(Identity):::` área.</span><span class="sxs-lookup"><span data-stu-id="2cf27-135">The :::no-loc(Identity)::: :::no-loc(Razor)::: Class Library exposes endpoints with the `:::no-loc(Identity):::` area.</span></span> <span data-ttu-id="2cf27-136">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="2cf27-136">For example:</span></span>
+<span data-ttu-id="2cf27-134">O projeto gerado fornece [ASP.NET Core Identity](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="2cf27-134">The generated project provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="2cf27-135">A Identity Razor biblioteca de classes expõe pontos de extremidade com a `Identity` área.</span><span class="sxs-lookup"><span data-stu-id="2cf27-135">The Identity Razor Class Library exposes endpoints with the `Identity` area.</span></span> <span data-ttu-id="2cf27-136">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="2cf27-136">For example:</span></span>
 
-* <span data-ttu-id="2cf27-137">/:::no-loc(Identity):::/Account/Login</span><span class="sxs-lookup"><span data-stu-id="2cf27-137">/:::no-loc(Identity):::/Account/Login</span></span>
-* <span data-ttu-id="2cf27-138">/:::no-loc(Identity):::/Account/Logout</span><span class="sxs-lookup"><span data-stu-id="2cf27-138">/:::no-loc(Identity):::/Account/Logout</span></span>
-* <span data-ttu-id="2cf27-139">/:::no-loc(Identity):::/Account/Manage</span><span class="sxs-lookup"><span data-stu-id="2cf27-139">/:::no-loc(Identity):::/Account/Manage</span></span>
+* <span data-ttu-id="2cf27-137">/Identity/Account/Login</span><span class="sxs-lookup"><span data-stu-id="2cf27-137">/Identity/Account/Login</span></span>
+* <span data-ttu-id="2cf27-138">/Identity/Account/Logout</span><span class="sxs-lookup"><span data-stu-id="2cf27-138">/Identity/Account/Logout</span></span>
+* <span data-ttu-id="2cf27-139">/Identity/Account/Manage</span><span class="sxs-lookup"><span data-stu-id="2cf27-139">/Identity/Account/Manage</span></span>
 
 ### <a name="apply-migrations"></a><span data-ttu-id="2cf27-140">Aplicar migrações</span><span class="sxs-lookup"><span data-stu-id="2cf27-140">Apply migrations</span></span>
 
@@ -119,27 +119,27 @@ dotnet ef database update
 
 <a name="pw"></a>
 
-### <a name="configure-no-locidentity-services"></a><span data-ttu-id="2cf27-150">Configurar :::no-loc(Identity)::: serviços</span><span class="sxs-lookup"><span data-stu-id="2cf27-150">Configure :::no-loc(Identity)::: services</span></span>
+### <a name="configure-no-locidentity-services"></a><span data-ttu-id="2cf27-150">Configurar Identity serviços</span><span class="sxs-lookup"><span data-stu-id="2cf27-150">Configure Identity services</span></span>
 
 <span data-ttu-id="2cf27-151">Os serviços são adicionados no `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-151">Services are added in `ConfigureServices`.</span></span> <span data-ttu-id="2cf27-152">O padrão típico consiste em chamar todos os métodos `Add{Service}` e, em seguida, chamar todos os métodos `services.Configure{Service}`.</span><span class="sxs-lookup"><span data-stu-id="2cf27-152">The typical pattern is to call all the `Add{Service}` methods, and then call all the `services.Configure{Service}` methods.</span></span>
 
 [!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configureservices&highlight=11-99)]
 
-<span data-ttu-id="2cf27-153">O código realçado anterior :::no-loc(Identity)::: é configurado com valores de opção padrão.</span><span class="sxs-lookup"><span data-stu-id="2cf27-153">The preceding highlighted code configures :::no-loc(Identity)::: with default option values.</span></span> <span data-ttu-id="2cf27-154">Os serviços são disponibilizados para o aplicativo por meio de [injeção de dependência](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="2cf27-154">Services are made available to the app through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+<span data-ttu-id="2cf27-153">O código realçado anterior Identity é configurado com valores de opção padrão.</span><span class="sxs-lookup"><span data-stu-id="2cf27-153">The preceding highlighted code configures Identity with default option values.</span></span> <span data-ttu-id="2cf27-154">Os serviços são disponibilizados para o aplicativo por meio de [injeção de dependência](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="2cf27-154">Services are made available to the app through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-<span data-ttu-id="2cf27-155">:::no-loc(Identity)::: é habilitado chamando <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> .</span><span class="sxs-lookup"><span data-stu-id="2cf27-155">:::no-loc(Identity)::: is enabled by calling <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>.</span></span> <span data-ttu-id="2cf27-156">`UseAuthentication` Adiciona o [middleware](xref:fundamentals/middleware/index) de autenticação ao pipeline de solicitação.</span><span class="sxs-lookup"><span data-stu-id="2cf27-156">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+<span data-ttu-id="2cf27-155">Identity é habilitado chamando <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> .</span><span class="sxs-lookup"><span data-stu-id="2cf27-155">Identity is enabled by calling <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>.</span></span> <span data-ttu-id="2cf27-156">`UseAuthentication` Adiciona o [middleware](xref:fundamentals/middleware/index) de autenticação ao pipeline de solicitação.</span><span class="sxs-lookup"><span data-stu-id="2cf27-156">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
 
 [!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configure&highlight=19)]
 
 <span data-ttu-id="2cf27-157">O aplicativo gerado por modelo não usa [autorização](xref:security/authorization/secure-data).</span><span class="sxs-lookup"><span data-stu-id="2cf27-157">The template-generated app doesn't use [authorization](xref:security/authorization/secure-data).</span></span> <span data-ttu-id="2cf27-158">`app.UseAuthorization` está incluído para garantir que ele seja adicionado na ordem correta caso o aplicativo adicione autorização.</span><span class="sxs-lookup"><span data-stu-id="2cf27-158">`app.UseAuthorization` is included to ensure it's added in the correct order should the app add authorization.</span></span> <span data-ttu-id="2cf27-159">`UseRouting`, `UseAuthentication` , `UseAuthorization` e `UseEndpoints` devem ser chamados na ordem mostrada no código anterior.</span><span class="sxs-lookup"><span data-stu-id="2cf27-159">`UseRouting`, `UseAuthentication`, `UseAuthorization`, and `UseEndpoints` must be called in the order shown in the preceding code.</span></span>
 
-<span data-ttu-id="2cf27-160">Para obter mais informações sobre o `:::no-loc(Identity):::Options` e o `Startup` , consulte <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.:::no-loc(Identity):::Options> e [inicialização do aplicativo](xref:fundamentals/startup).</span><span class="sxs-lookup"><span data-stu-id="2cf27-160">For more information on `:::no-loc(Identity):::Options` and `Startup`, see <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.:::no-loc(Identity):::Options> and [Application Startup](xref:fundamentals/startup).</span></span>
+<span data-ttu-id="2cf27-160">Para obter mais informações sobre o `IdentityOptions` e o `Startup` , consulte <xref:Microsoft.AspNetCore.Identity.IdentityOptions> e [inicialização do aplicativo](xref:fundamentals/startup).</span><span class="sxs-lookup"><span data-stu-id="2cf27-160">For more information on `IdentityOptions` and `Startup`, see <xref:Microsoft.AspNetCore.Identity.IdentityOptions> and [Application Startup](xref:fundamentals/startup).</span></span>
 
 ## <a name="scaffold-register-login-logout-and-registerconfirmation"></a><span data-ttu-id="2cf27-161">Scaffold registro, logon, LogOut e RegisterConfirmation</span><span class="sxs-lookup"><span data-stu-id="2cf27-161">Scaffold Register, Login, LogOut, and RegisterConfirmation</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="2cf27-162">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="2cf27-162">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="2cf27-163">Adicione os `Register` `Login` arquivos,, `LogOut` e `RegisterConfirmation` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-163">Add the `Register`, `Login`, `LogOut`, and `RegisterConfirmation` files.</span></span> <span data-ttu-id="2cf27-164">Siga a [identidade do Scaffold em um :::no-loc(Razor)::: projeto com](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instruções de autorização para gerar o código mostrado nesta seção.</span><span class="sxs-lookup"><span data-stu-id="2cf27-164">Follow the [Scaffold identity into a :::no-loc(Razor)::: project with authorization](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instructions to generate the code shown in this section.</span></span>
+<span data-ttu-id="2cf27-163">Adicione os `Register` `Login` arquivos,, `LogOut` e `RegisterConfirmation` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-163">Add the `Register`, `Login`, `LogOut`, and `RegisterConfirmation` files.</span></span> <span data-ttu-id="2cf27-164">Siga a [identidade do Scaffold em um Razor projeto com](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instruções de autorização para gerar o código mostrado nesta seção.</span><span class="sxs-lookup"><span data-stu-id="2cf27-164">Follow the [Scaffold identity into a Razor project with authorization](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instructions to generate the code shown in this section.</span></span>
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="2cf27-165">CLI do .NET Core</span><span class="sxs-lookup"><span data-stu-id="2cf27-165">.NET Core CLI</span></span>](#tab/netcore-cli)
 
@@ -152,18 +152,18 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 <span data-ttu-id="2cf27-168">O PowerShell usa ponto e vírgula como um separador de comando.</span><span class="sxs-lookup"><span data-stu-id="2cf27-168">PowerShell uses semicolon as a command separator.</span></span> <span data-ttu-id="2cf27-169">Ao usar o PowerShell, escape os pontos-e-vírgulas na lista de arquivos ou coloque a lista de arquivos entre aspas duplas, como mostra o exemplo anterior.</span><span class="sxs-lookup"><span data-stu-id="2cf27-169">When using PowerShell, escape the semicolons in the file list or put the file list in double quotes, as the preceding example shows.</span></span>
 
-<span data-ttu-id="2cf27-170">Para obter mais informações sobre scaffolding :::no-loc(Identity)::: , consulte [identidade do Scaffold em um :::no-loc(Razor)::: projeto com autorização](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization).</span><span class="sxs-lookup"><span data-stu-id="2cf27-170">For more information on scaffolding :::no-loc(Identity):::, see [Scaffold identity into a :::no-loc(Razor)::: project with authorization](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization).</span></span>
+<span data-ttu-id="2cf27-170">Para obter mais informações sobre scaffolding Identity , consulte [identidade do Scaffold em um Razor projeto com autorização](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization).</span><span class="sxs-lookup"><span data-stu-id="2cf27-170">For more information on scaffolding Identity, see [Scaffold identity into a Razor project with authorization](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization).</span></span>
 
 ---
 
 ### <a name="examine-register"></a><span data-ttu-id="2cf27-171">Examinar registro</span><span class="sxs-lookup"><span data-stu-id="2cf27-171">Examine Register</span></span>
 
-<span data-ttu-id="2cf27-172">Quando um usuário clica no botão **registrar** na `Register` página, a `RegisterModel.OnPostAsync` ação é invocada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-172">When a user clicks the **Register** button on the `Register` page, the `RegisterModel.OnPostAsync` action is invoked.</span></span> <span data-ttu-id="2cf27-173">O usuário é criado por [createasync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_:::no-loc(Identity):::_UserManager_1_CreateAsync__0_System_String_) no `_userManager` objeto:</span><span class="sxs-lookup"><span data-stu-id="2cf27-173">The user is created by [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_:::no-loc(Identity):::_UserManager_1_CreateAsync__0_System_String_) on the `_userManager` object:</span></span>
+<span data-ttu-id="2cf27-172">Quando um usuário clica no botão **registrar** na `Register` página, a `RegisterModel.OnPostAsync` ação é invocada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-172">When a user clicks the **Register** button on the `Register` page, the `RegisterModel.OnPostAsync` action is invoked.</span></span> <span data-ttu-id="2cf27-173">O usuário é criado por [createasync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) no `_userManager` objeto:</span><span class="sxs-lookup"><span data-stu-id="2cf27-173">The user is created by [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) on the `_userManager` object:</span></span>
 
-[!code-csharp[](identity/sample/WebApp3/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
+[!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
 
 <!-- .NET 5 fixes this, see
-https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/src/Areas/:::no-loc(Identity):::/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
 -->
 [!INCLUDE[](~/includes/disableVer.md)]
 
@@ -176,7 +176,7 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 <span data-ttu-id="2cf27-178">Quando o formulário na página de logon é enviado, a `OnPostAsync` ação é chamada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-178">When the form on the Login page is submitted, the `OnPostAsync` action is called.</span></span> <span data-ttu-id="2cf27-179">`PasswordSignInAsync` é chamado no `_signInManager` objeto.</span><span class="sxs-lookup"><span data-stu-id="2cf27-179">`PasswordSignInAsync` is called on the `_signInManager` object.</span></span>
 
-[!code-csharp[](identity/sample/WebApp3/Areas/:::no-loc(Identity):::/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
+[!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
 <span data-ttu-id="2cf27-180">Para obter informações sobre como tomar decisões de autorização, consulte <xref:security/authorization/introduction> .</span><span class="sxs-lookup"><span data-stu-id="2cf27-180">For information on how to make authorization decisions, see <xref:security/authorization/introduction>.</span></span>
 
@@ -184,67 +184,67 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 <span data-ttu-id="2cf27-182">O link **fazer logoff** invoca a `LogoutModel.OnPost` ação.</span><span class="sxs-lookup"><span data-stu-id="2cf27-182">The **Log out** link invokes the `LogoutModel.OnPost` action.</span></span> 
 
-[!code-csharp[](identity/sample/WebApp3/Areas/:::no-loc(Identity):::/Pages/Account/Logout.cshtml.cs?highlight=36)]
+[!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Logout.cshtml.cs?highlight=36)]
 
 <span data-ttu-id="2cf27-183">No código anterior, o código `return RedirectToPage();` precisa ser um redirecionamento para que o navegador execute uma nova solicitação e a identidade do usuário seja atualizada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-183">In the preceding code, the code `return RedirectToPage();` needs to be a redirect so that the browser performs a new request and the identity for the user gets updated.</span></span>
 
-<span data-ttu-id="2cf27-184">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_SignOutAsync) limpa as declarações do usuário armazenadas em um :::no-loc(cookie)::: .</span><span class="sxs-lookup"><span data-stu-id="2cf27-184">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_SignOutAsync) clears the user's claims stored in a :::no-loc(cookie):::.</span></span>
+<span data-ttu-id="2cf27-184">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) limpa as declarações do usuário armazenadas em um cookie .</span><span class="sxs-lookup"><span data-stu-id="2cf27-184">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) clears the user's claims stored in a cookie.</span></span>
 
 <span data-ttu-id="2cf27-185">Post é especificado nas *páginas/Shared/_LoginPartial. cshtml* :</span><span class="sxs-lookup"><span data-stu-id="2cf27-185">Post is specified in the *Pages/Shared/_LoginPartial.cshtml* :</span></span>
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
-## <a name="test-no-locidentity"></a><span data-ttu-id="2cf27-186">Testar :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-186">Test :::no-loc(Identity):::</span></span>
+## <a name="test-no-locidentity"></a><span data-ttu-id="2cf27-186">Testar Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-186">Test Identity</span></span>
 
-<span data-ttu-id="2cf27-187">Os modelos de projeto Web padrão permitem acesso anônimo às home pages.</span><span class="sxs-lookup"><span data-stu-id="2cf27-187">The default web project templates allow anonymous access to the home pages.</span></span> <span data-ttu-id="2cf27-188">Para testar :::no-loc(Identity)::: , adicione [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) :</span><span class="sxs-lookup"><span data-stu-id="2cf27-188">To test :::no-loc(Identity):::, add [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute):</span></span>
+<span data-ttu-id="2cf27-187">Os modelos de projeto Web padrão permitem acesso anônimo às home pages.</span><span class="sxs-lookup"><span data-stu-id="2cf27-187">The default web project templates allow anonymous access to the home pages.</span></span> <span data-ttu-id="2cf27-188">Para testar Identity , adicione [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) :</span><span class="sxs-lookup"><span data-stu-id="2cf27-188">To test Identity, add [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute):</span></span>
 
 [!code-csharp[](identity/sample/WebApp3/Pages/Privacy.cshtml.cs?highlight=7)]
 
 <span data-ttu-id="2cf27-189">Se você estiver conectado, saia. Execute o aplicativo e selecione o link de **privacidade** .</span><span class="sxs-lookup"><span data-stu-id="2cf27-189">If you are signed in, sign out. Run the app and select the **Privacy** link.</span></span> <span data-ttu-id="2cf27-190">Você é redirecionado à página de logon.</span><span class="sxs-lookup"><span data-stu-id="2cf27-190">You are redirected to the login page.</span></span>
 
-### <a name="explore-no-locidentity"></a><span data-ttu-id="2cf27-191">Apresenta :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-191">Explore :::no-loc(Identity):::</span></span>
+### <a name="explore-no-locidentity"></a><span data-ttu-id="2cf27-191">Apresenta Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-191">Explore Identity</span></span>
 
-<span data-ttu-id="2cf27-192">Para explorar :::no-loc(Identity)::: mais detalhadamente:</span><span class="sxs-lookup"><span data-stu-id="2cf27-192">To explore :::no-loc(Identity)::: in more detail:</span></span>
+<span data-ttu-id="2cf27-192">Para explorar Identity mais detalhadamente:</span><span class="sxs-lookup"><span data-stu-id="2cf27-192">To explore Identity in more detail:</span></span>
 
 * [<span data-ttu-id="2cf27-193">Criar origem da interface do usuário de identidade completa</span><span class="sxs-lookup"><span data-stu-id="2cf27-193">Create full identity UI source</span></span>](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * <span data-ttu-id="2cf27-194">Examine a origem de cada página e percorra o depurador.</span><span class="sxs-lookup"><span data-stu-id="2cf27-194">Examine the source of each page and step through the debugger.</span></span>
 
-## <a name="no-locidentity-components"></a><span data-ttu-id="2cf27-195">:::no-loc(Identity)::: QC</span><span class="sxs-lookup"><span data-stu-id="2cf27-195">:::no-loc(Identity)::: Components</span></span>
+## <a name="no-locidentity-components"></a><span data-ttu-id="2cf27-195">Identity QC</span><span class="sxs-lookup"><span data-stu-id="2cf27-195">Identity Components</span></span>
 
-<span data-ttu-id="2cf27-196">Todos os :::no-loc(Identity)::: pacotes NuGet dependentes são incluídos na [estrutura compartilhada ASP.NET Core](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).</span><span class="sxs-lookup"><span data-stu-id="2cf27-196">All the :::no-loc(Identity):::-dependent NuGet packages are included in the [ASP.NET Core shared framework](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).</span></span>
+<span data-ttu-id="2cf27-196">Todos os Identity pacotes NuGet dependentes são incluídos na [estrutura compartilhada ASP.NET Core](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).</span><span class="sxs-lookup"><span data-stu-id="2cf27-196">All the Identity-dependent NuGet packages are included in the [ASP.NET Core shared framework](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).</span></span>
 
-<span data-ttu-id="2cf27-197">O pacote principal para o :::no-loc(Identity)::: é [Microsoft. AspNetCore :::no-loc(Identity)::: .](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(Identity):::/).</span><span class="sxs-lookup"><span data-stu-id="2cf27-197">The primary package for :::no-loc(Identity)::: is [Microsoft.AspNetCore.:::no-loc(Identity):::](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(Identity):::/).</span></span> <span data-ttu-id="2cf27-198">Esse pacote contém o conjunto principal de interfaces para o :::no-loc(ASP.NET Core Identity)::: e é incluído pelo `Microsoft.AspNetCore.:::no-loc(Identity):::.EntityFrameworkCore` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-198">This package contains the core set of interfaces for :::no-loc(ASP.NET Core Identity):::, and is included by `Microsoft.AspNetCore.:::no-loc(Identity):::.EntityFrameworkCore`.</span></span>
+<span data-ttu-id="2cf27-197">O pacote principal para o Identity é [Microsoft. AspNetCore Identity .](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span><span class="sxs-lookup"><span data-stu-id="2cf27-197">The primary package for Identity is [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span></span> <span data-ttu-id="2cf27-198">Esse pacote contém o conjunto principal de interfaces para o ASP.NET Core Identity e é incluído pelo `Microsoft.AspNetCore.Identity.EntityFrameworkCore` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-198">This package contains the core set of interfaces for ASP.NET Core Identity, and is included by `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span></span>
 
-## <a name="migrating-to-no-locaspnet-core-identity"></a><span data-ttu-id="2cf27-199">Migrando para o :::no-loc(ASP.NET Core Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-199">Migrating to :::no-loc(ASP.NET Core Identity):::</span></span>
+## <a name="migrating-to-no-locaspnet-core-identity"></a><span data-ttu-id="2cf27-199">Migrando para o ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-199">Migrating to ASP.NET Core Identity</span></span>
 
-<span data-ttu-id="2cf27-200">Para obter mais informações e diretrizes sobre como migrar seu :::no-loc(Identity)::: repositório existente, consulte [ :::no-loc(Identity)::: migrar autenticação e ](xref:migration/identity).</span><span class="sxs-lookup"><span data-stu-id="2cf27-200">For more information and guidance on migrating your existing :::no-loc(Identity)::: store, see [Migrate Authentication and :::no-loc(Identity):::](xref:migration/identity).</span></span>
+<span data-ttu-id="2cf27-200">Para obter mais informações e diretrizes sobre como migrar seu Identity repositório existente, consulte [ Identity migrar autenticação e ](xref:migration/identity).</span><span class="sxs-lookup"><span data-stu-id="2cf27-200">For more information and guidance on migrating your existing Identity store, see [Migrate Authentication and Identity](xref:migration/identity).</span></span>
 
 ## <a name="setting-password-strength"></a><span data-ttu-id="2cf27-201">Definindo a força da senha</span><span class="sxs-lookup"><span data-stu-id="2cf27-201">Setting password strength</span></span>
 
 <span data-ttu-id="2cf27-202">Consulte [configuração](#pw) para um exemplo que define os requisitos mínimos de senha.</span><span class="sxs-lookup"><span data-stu-id="2cf27-202">See [Configuration](#pw) for a sample that sets the minimum password requirements.</span></span>
 
-## <a name="adddefaultno-locidentity-and-addno-locidentity"></a><span data-ttu-id="2cf27-203">ADDDEFAULT :::no-loc(Identity)::: e Add:::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-203">AddDefault:::no-loc(Identity)::: and Add:::no-loc(Identity):::</span></span>
+## <a name="adddefaultno-locidentity-and-addno-locidentity"></a><span data-ttu-id="2cf27-203">ADDDEFAULT Identity e AddIdentity</span><span class="sxs-lookup"><span data-stu-id="2cf27-203">AddDefaultIdentity and AddIdentity</span></span>
 
-<span data-ttu-id="2cf27-204"><xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServiceCollectionUIExtensions.AddDefault:::no-loc(Identity):::*> foi introduzido no ASP.NET Core 2,1.</span><span class="sxs-lookup"><span data-stu-id="2cf27-204"><xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServiceCollectionUIExtensions.AddDefault:::no-loc(Identity):::*> was introduced in ASP.NET Core 2.1.</span></span> <span data-ttu-id="2cf27-205">Chamar `AddDefault:::no-loc(Identity):::` é semelhante a chamar o seguinte:</span><span class="sxs-lookup"><span data-stu-id="2cf27-205">Calling `AddDefault:::no-loc(Identity):::` is similar to calling the following:</span></span>
+<span data-ttu-id="2cf27-204"><xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> foi introduzido no ASP.NET Core 2,1.</span><span class="sxs-lookup"><span data-stu-id="2cf27-204"><xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> was introduced in ASP.NET Core 2.1.</span></span> <span data-ttu-id="2cf27-205">Chamar `AddDefaultIdentity` é semelhante a chamar o seguinte:</span><span class="sxs-lookup"><span data-stu-id="2cf27-205">Calling `AddDefaultIdentity` is similar to calling the following:</span></span>
 
-* <xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServiceCollectionExtensions.Add:::no-loc(Identity):::*>
-* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.:::no-loc(Identity):::BuilderUIExtensions.AddDefaultUI*>
-* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.:::no-loc(Identity):::BuilderExtensions.AddDefaultTokenProviders*>
+* <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentity*>
+* <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
+* <xref:Microsoft.AspNetCore.Identity.IdentityBuilderExtensions.AddDefaultTokenProviders*>
 
-<span data-ttu-id="2cf27-206">Consulte a [ :::no-loc(Identity)::: fonte padrão](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/:::no-loc(Identity):::/UI/src/:::no-loc(Identity):::ServiceCollectionUIExtensions.cs#L47-L63) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="2cf27-206">See [AddDefault:::no-loc(Identity)::: source](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/:::no-loc(Identity):::/UI/src/:::no-loc(Identity):::ServiceCollectionUIExtensions.cs#L47-L63) for more information.</span></span>
+<span data-ttu-id="2cf27-206">Consulte a [ Identity fonte padrão](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="2cf27-206">See [AddDefaultIdentity source](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) for more information.</span></span>
 
-## <a name="prevent-publish-of-static-no-locidentity-assets"></a><span data-ttu-id="2cf27-207">Impedir a publicação de :::no-loc(Identity)::: ativos estáticos</span><span class="sxs-lookup"><span data-stu-id="2cf27-207">Prevent publish of static :::no-loc(Identity)::: assets</span></span>
+## <a name="prevent-publish-of-static-no-locidentity-assets"></a><span data-ttu-id="2cf27-207">Impedir a publicação de Identity ativos estáticos</span><span class="sxs-lookup"><span data-stu-id="2cf27-207">Prevent publish of static Identity assets</span></span>
 
-<span data-ttu-id="2cf27-208">Para evitar a publicação de ativos estáticos :::no-loc(Identity)::: (folhas de estilo e arquivos JavaScript para :::no-loc(Identity)::: a interface do usuário) na raiz da Web, adicione a seguinte `ResolveStaticWebAssetsInputsDependsOn` propriedade e `Remove:::no-loc(Identity):::Assets` destino ao arquivo de projeto do aplicativo:</span><span class="sxs-lookup"><span data-stu-id="2cf27-208">To prevent publishing static :::no-loc(Identity)::: assets (stylesheets and JavaScript files for :::no-loc(Identity)::: UI) to the web root, add the following `ResolveStaticWebAssetsInputsDependsOn` property and `Remove:::no-loc(Identity):::Assets` target to the app's project file:</span></span>
+<span data-ttu-id="2cf27-208">Para evitar a publicação de ativos estáticos Identity (folhas de estilo e arquivos JavaScript para Identity a interface do usuário) na raiz da Web, adicione a seguinte `ResolveStaticWebAssetsInputsDependsOn` propriedade e `RemoveIdentityAssets` destino ao arquivo de projeto do aplicativo:</span><span class="sxs-lookup"><span data-stu-id="2cf27-208">To prevent publishing static Identity assets (stylesheets and JavaScript files for Identity UI) to the web root, add the following `ResolveStaticWebAssetsInputsDependsOn` property and `RemoveIdentityAssets` target to the app's project file:</span></span>
 
 ```xml
 <PropertyGroup>
-  <ResolveStaticWebAssetsInputsDependsOn>Remove:::no-loc(Identity):::Assets</ResolveStaticWebAssetsInputsDependsOn>
+  <ResolveStaticWebAssetsInputsDependsOn>RemoveIdentityAssets</ResolveStaticWebAssetsInputsDependsOn>
 </PropertyGroup>
 
-<Target Name="Remove:::no-loc(Identity):::Assets">
+<Target Name="RemoveIdentityAssets">
   <ItemGroup>
-    <StaticWebAsset Remove="@(StaticWebAsset)" Condition="%(SourceId) == 'Microsoft.AspNetCore.:::no-loc(Identity):::.UI'" />
+    <StaticWebAsset Remove="@(StaticWebAsset)" Condition="%(SourceId) == 'Microsoft.AspNetCore.Identity.UI'" />
   </ItemGroup>
 </Target>
 ```
@@ -253,9 +253,9 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 ## <a name="next-steps"></a><span data-ttu-id="2cf27-209">Próximas etapas</span><span class="sxs-lookup"><span data-stu-id="2cf27-209">Next Steps</span></span>
 
-* <span data-ttu-id="2cf27-210">[:::no-loc(ASP.NET Core Identity)::: código-fonte](https://github.com/dotnet/aspnetcore/tree/master/src/:::no-loc(Identity):::)</span><span class="sxs-lookup"><span data-stu-id="2cf27-210">[:::no-loc(ASP.NET Core Identity)::: source code](https://github.com/dotnet/aspnetcore/tree/master/src/:::no-loc(Identity):::)</span></span>
-* <span data-ttu-id="2cf27-211">Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) para obter informações sobre como configurar o :::no-loc(Identity)::: uso do SQLite.</span><span class="sxs-lookup"><span data-stu-id="2cf27-211">See [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/5131) for information on configuring :::no-loc(Identity)::: using SQLite.</span></span>
-* [<span data-ttu-id="2cf27-212">Configurar :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-212">Configure :::no-loc(Identity):::</span></span>](xref:security/authentication/identity-configuration)
+* <span data-ttu-id="2cf27-210">[ASP.NET Core Identity código-fonte](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)</span><span class="sxs-lookup"><span data-stu-id="2cf27-210">[ASP.NET Core Identity source code](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)</span></span>
+* <span data-ttu-id="2cf27-211">Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) para obter informações sobre como configurar o Identity uso do SQLite.</span><span class="sxs-lookup"><span data-stu-id="2cf27-211">See [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/5131) for information on configuring Identity using SQLite.</span></span>
+* [<span data-ttu-id="2cf27-212">Configurar Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-212">Configure Identity</span></span>](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
@@ -270,25 +270,25 @@ https://github.com/dotnet/aspnetcore/blob/master/src/:::no-loc(Identity):::/UI/s
 
 <span data-ttu-id="2cf27-213">De [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="2cf27-213">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="2cf27-214">:::no-loc(ASP.NET Core Identity)::: é um sistema de associação que adiciona a funcionalidade de logon a aplicativos ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="2cf27-214">:::no-loc(ASP.NET Core Identity)::: is a membership system that adds login functionality to ASP.NET Core apps.</span></span> <span data-ttu-id="2cf27-215">Os usuários podem criar uma conta com as informações de logon armazenadas no :::no-loc(Identity)::: ou podem usar um provedor de logon externo.</span><span class="sxs-lookup"><span data-stu-id="2cf27-215">Users can create an account with the login information stored in :::no-loc(Identity)::: or they can use an external login provider.</span></span> <span data-ttu-id="2cf27-216">Os provedores de logon externo com suporte incluem [o Facebook, o Google, a conta da Microsoft e o Twitter](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="2cf27-216">Supported external login providers include [Facebook, Google, Microsoft Account, and Twitter](xref:security/authentication/social/index).</span></span>
+<span data-ttu-id="2cf27-214">ASP.NET Core Identity é um sistema de associação que adiciona a funcionalidade de logon a aplicativos ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="2cf27-214">ASP.NET Core Identity is a membership system that adds login functionality to ASP.NET Core apps.</span></span> <span data-ttu-id="2cf27-215">Os usuários podem criar uma conta com as informações de logon armazenadas no Identity ou podem usar um provedor de logon externo.</span><span class="sxs-lookup"><span data-stu-id="2cf27-215">Users can create an account with the login information stored in Identity or they can use an external login provider.</span></span> <span data-ttu-id="2cf27-216">Os provedores de logon externo com suporte incluem [o Facebook, o Google, a conta da Microsoft e o Twitter](xref:security/authentication/social/index).</span><span class="sxs-lookup"><span data-stu-id="2cf27-216">Supported external login providers include [Facebook, Google, Microsoft Account, and Twitter](xref:security/authentication/social/index).</span></span>
 
-<span data-ttu-id="2cf27-217">:::no-loc(Identity)::: o pode ser configurado usando um banco de dados SQL Server para armazenar nomes de usuário, senhas e de perfil.</span><span class="sxs-lookup"><span data-stu-id="2cf27-217">:::no-loc(Identity)::: can be configured using a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="2cf27-218">Como alternativa, outro armazenamento persistente pode ser usado, por exemplo, o armazenamento de tabelas do Azure.</span><span class="sxs-lookup"><span data-stu-id="2cf27-218">Alternatively, another persistent store can be used, for example, Azure Table Storage.</span></span>
+<span data-ttu-id="2cf27-217">Identity o pode ser configurado usando um banco de dados SQL Server para armazenar nomes de usuário, senhas e de perfil.</span><span class="sxs-lookup"><span data-stu-id="2cf27-217">Identity can be configured using a SQL Server database to store user names, passwords, and profile data.</span></span> <span data-ttu-id="2cf27-218">Como alternativa, outro armazenamento persistente pode ser usado, por exemplo, o armazenamento de tabelas do Azure.</span><span class="sxs-lookup"><span data-stu-id="2cf27-218">Alternatively, another persistent store can be used, for example, Azure Table Storage.</span></span>
 
-<span data-ttu-id="2cf27-219">[Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-:::no-loc(Identity):::DemoComplete/) ([como baixar](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="2cf27-219">[View or download the sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-:::no-loc(Identity):::DemoComplete/) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="2cf27-219">[Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([como baixar](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="2cf27-219">[View or download the sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="2cf27-220">Neste tópico, você aprenderá a usar o :::no-loc(Identity)::: para registrar, fazer logon e fazer logoff de um usuário.</span><span class="sxs-lookup"><span data-stu-id="2cf27-220">In this topic, you learn how to use :::no-loc(Identity)::: to register, log in, and log out a user.</span></span> <span data-ttu-id="2cf27-221">Para obter instruções mais detalhadas sobre como criar aplicativos que usam :::no-loc(Identity)::: o, consulte a seção próximas etapas no final deste artigo.</span><span class="sxs-lookup"><span data-stu-id="2cf27-221">For more detailed instructions about creating apps that use :::no-loc(Identity):::, see the Next Steps section at the end of this article.</span></span>
+<span data-ttu-id="2cf27-220">Neste tópico, você aprenderá a usar o Identity para registrar, fazer logon e fazer logoff de um usuário.</span><span class="sxs-lookup"><span data-stu-id="2cf27-220">In this topic, you learn how to use Identity to register, log in, and log out a user.</span></span> <span data-ttu-id="2cf27-221">Para obter instruções mais detalhadas sobre como criar aplicativos que usam Identity o, consulte a seção próximas etapas no final deste artigo.</span><span class="sxs-lookup"><span data-stu-id="2cf27-221">For more detailed instructions about creating apps that use Identity, see the Next Steps section at the end of this article.</span></span>
 
 <a name="adi"></a>
 
-## <a name="adddefaultno-locidentity-and-addno-locidentity"></a><span data-ttu-id="2cf27-222">ADDDEFAULT :::no-loc(Identity)::: e Add:::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-222">AddDefault:::no-loc(Identity)::: and Add:::no-loc(Identity):::</span></span>
+## <a name="adddefaultno-locidentity-and-addno-locidentity"></a><span data-ttu-id="2cf27-222">ADDDEFAULT Identity e AddIdentity</span><span class="sxs-lookup"><span data-stu-id="2cf27-222">AddDefaultIdentity and AddIdentity</span></span>
 
-<span data-ttu-id="2cf27-223"><xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServiceCollectionUIExtensions.AddDefault:::no-loc(Identity):::*> foi introduzido no ASP.NET Core 2,1.</span><span class="sxs-lookup"><span data-stu-id="2cf27-223"><xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServiceCollectionUIExtensions.AddDefault:::no-loc(Identity):::*> was introduced in ASP.NET Core 2.1.</span></span> <span data-ttu-id="2cf27-224">Chamar `AddDefault:::no-loc(Identity):::` é semelhante a chamar o seguinte:</span><span class="sxs-lookup"><span data-stu-id="2cf27-224">Calling `AddDefault:::no-loc(Identity):::` is similar to calling the following:</span></span>
+<span data-ttu-id="2cf27-223"><xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> foi introduzido no ASP.NET Core 2,1.</span><span class="sxs-lookup"><span data-stu-id="2cf27-223"><xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> was introduced in ASP.NET Core 2.1.</span></span> <span data-ttu-id="2cf27-224">Chamar `AddDefaultIdentity` é semelhante a chamar o seguinte:</span><span class="sxs-lookup"><span data-stu-id="2cf27-224">Calling `AddDefaultIdentity` is similar to calling the following:</span></span>
 
-* <xref:Microsoft.Extensions.DependencyInjection.:::no-loc(Identity):::ServiceCollectionExtensions.Add:::no-loc(Identity):::*>
-* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.:::no-loc(Identity):::BuilderUIExtensions.AddDefaultUI*>
-* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.:::no-loc(Identity):::BuilderExtensions.AddDefaultTokenProviders*>
+* <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentity*>
+* <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
+* <xref:Microsoft.AspNetCore.Identity.IdentityBuilderExtensions.AddDefaultTokenProviders*>
 
-<span data-ttu-id="2cf27-225">Consulte a [ :::no-loc(Identity)::: fonte padrão](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/:::no-loc(Identity):::/UI/src/:::no-loc(Identity):::ServiceCollectionUIExtensions.cs#L47-L63) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="2cf27-225">See [AddDefault:::no-loc(Identity)::: source](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/:::no-loc(Identity):::/UI/src/:::no-loc(Identity):::ServiceCollectionUIExtensions.cs#L47-L63) for more information.</span></span>
+<span data-ttu-id="2cf27-225">Consulte a [ Identity fonte padrão](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) para obter mais informações.</span><span class="sxs-lookup"><span data-stu-id="2cf27-225">See [AddDefaultIdentity source](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) for more information.</span></span>
 
 ## <a name="create-a-web-app-with-authentication"></a><span data-ttu-id="2cf27-226">Criar um aplicativo Web com autenticação</span><span class="sxs-lookup"><span data-stu-id="2cf27-226">Create a Web app with authentication</span></span>
 
@@ -309,11 +309,11 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-<span data-ttu-id="2cf27-236">O projeto gerado fornece [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity) como uma [ :::no-loc(Razor)::: biblioteca de classes](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="2cf27-236">The generated project provides [:::no-loc(ASP.NET Core Identity):::](xref:security/authentication/identity) as a [:::no-loc(Razor)::: Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="2cf27-237">A :::no-loc(Identity)::: :::no-loc(Razor)::: biblioteca de classes expõe pontos de extremidade com a `:::no-loc(Identity):::` área.</span><span class="sxs-lookup"><span data-stu-id="2cf27-237">The :::no-loc(Identity)::: :::no-loc(Razor)::: Class Library exposes endpoints with the `:::no-loc(Identity):::` area.</span></span> <span data-ttu-id="2cf27-238">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="2cf27-238">For example:</span></span>
+<span data-ttu-id="2cf27-236">O projeto gerado fornece [ASP.NET Core Identity](xref:security/authentication/identity) como uma [ Razor biblioteca de classes](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="2cf27-236">The generated project provides [ASP.NET Core Identity](xref:security/authentication/identity) as a [Razor Class Library](xref:razor-pages/ui-class).</span></span> <span data-ttu-id="2cf27-237">A Identity Razor biblioteca de classes expõe pontos de extremidade com a `Identity` área.</span><span class="sxs-lookup"><span data-stu-id="2cf27-237">The Identity Razor Class Library exposes endpoints with the `Identity` area.</span></span> <span data-ttu-id="2cf27-238">Por exemplo:</span><span class="sxs-lookup"><span data-stu-id="2cf27-238">For example:</span></span>
 
-* <span data-ttu-id="2cf27-239">/:::no-loc(Identity):::/Account/Login</span><span class="sxs-lookup"><span data-stu-id="2cf27-239">/:::no-loc(Identity):::/Account/Login</span></span>
-* <span data-ttu-id="2cf27-240">/:::no-loc(Identity):::/Account/Logout</span><span class="sxs-lookup"><span data-stu-id="2cf27-240">/:::no-loc(Identity):::/Account/Logout</span></span>
-* <span data-ttu-id="2cf27-241">/:::no-loc(Identity):::/Account/Manage</span><span class="sxs-lookup"><span data-stu-id="2cf27-241">/:::no-loc(Identity):::/Account/Manage</span></span>
+* <span data-ttu-id="2cf27-239">/Identity/Account/Login</span><span class="sxs-lookup"><span data-stu-id="2cf27-239">/Identity/Account/Login</span></span>
+* <span data-ttu-id="2cf27-240">/Identity/Account/Logout</span><span class="sxs-lookup"><span data-stu-id="2cf27-240">/Identity/Account/Logout</span></span>
+* <span data-ttu-id="2cf27-241">/Identity/Account/Manage</span><span class="sxs-lookup"><span data-stu-id="2cf27-241">/Identity/Account/Manage</span></span>
 
 ### <a name="apply-migrations"></a><span data-ttu-id="2cf27-242">Aplicar migrações</span><span class="sxs-lookup"><span data-stu-id="2cf27-242">Apply migrations</span></span>
 
@@ -343,23 +343,23 @@ dotnet ef database update
 
 <a name="pw"></a>
 
-### <a name="configure-no-locidentity-services"></a><span data-ttu-id="2cf27-250">Configurar :::no-loc(Identity)::: serviços</span><span class="sxs-lookup"><span data-stu-id="2cf27-250">Configure :::no-loc(Identity)::: services</span></span>
+### <a name="configure-no-locidentity-services"></a><span data-ttu-id="2cf27-250">Configurar Identity serviços</span><span class="sxs-lookup"><span data-stu-id="2cf27-250">Configure Identity services</span></span>
 
 <span data-ttu-id="2cf27-251">Os serviços são adicionados no `ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-251">Services are added in `ConfigureServices`.</span></span> <span data-ttu-id="2cf27-252">O padrão típico consiste em chamar todos os métodos `Add{Service}` e, em seguida, chamar todos os métodos `services.Configure{Service}`.</span><span class="sxs-lookup"><span data-stu-id="2cf27-252">The typical pattern is to call all the `Add{Service}` methods, and then call all the `services.Configure{Service}` methods.</span></span>
 
 [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configureservices)]
 
-<span data-ttu-id="2cf27-253">O código anterior :::no-loc(Identity)::: é configurado com valores de opção padrão.</span><span class="sxs-lookup"><span data-stu-id="2cf27-253">The preceding code configures :::no-loc(Identity)::: with default option values.</span></span> <span data-ttu-id="2cf27-254">Os serviços são disponibilizados para o aplicativo por meio de [injeção de dependência](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="2cf27-254">Services are made available to the app through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
+<span data-ttu-id="2cf27-253">O código anterior Identity é configurado com valores de opção padrão.</span><span class="sxs-lookup"><span data-stu-id="2cf27-253">The preceding code configures Identity with default option values.</span></span> <span data-ttu-id="2cf27-254">Os serviços são disponibilizados para o aplicativo por meio de [injeção de dependência](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="2cf27-254">Services are made available to the app through [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-<span data-ttu-id="2cf27-255">:::no-loc(Identity)::: é habilitado chamando [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span><span class="sxs-lookup"><span data-stu-id="2cf27-255">:::no-loc(Identity)::: is enabled by calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span></span> <span data-ttu-id="2cf27-256">`UseAuthentication` Adiciona o [middleware](xref:fundamentals/middleware/index) de autenticação ao pipeline de solicitação.</span><span class="sxs-lookup"><span data-stu-id="2cf27-256">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
+<span data-ttu-id="2cf27-255">Identity é habilitado chamando [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span><span class="sxs-lookup"><span data-stu-id="2cf27-255">Identity is enabled by calling [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_).</span></span> <span data-ttu-id="2cf27-256">`UseAuthentication` Adiciona o [middleware](xref:fundamentals/middleware/index) de autenticação ao pipeline de solicitação.</span><span class="sxs-lookup"><span data-stu-id="2cf27-256">`UseAuthentication` adds authentication [middleware](xref:fundamentals/middleware/index) to the request pipeline.</span></span>
 
 [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configure&highlight=18)]
 
-<span data-ttu-id="2cf27-257">Para obter mais informações, consulte a [ :::no-loc(Identity)::: classe Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) e a [inicialização do aplicativo](xref:fundamentals/startup).</span><span class="sxs-lookup"><span data-stu-id="2cf27-257">For more information, see the [:::no-loc(Identity):::Options Class](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) and [Application Startup](xref:fundamentals/startup).</span></span>
+<span data-ttu-id="2cf27-257">Para obter mais informações, consulte a [ Identity classe Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) e a [inicialização do aplicativo](xref:fundamentals/startup).</span><span class="sxs-lookup"><span data-stu-id="2cf27-257">For more information, see the [IdentityOptions Class](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) and [Application Startup](xref:fundamentals/startup).</span></span>
 
 ## <a name="scaffold-register-login-and-logout"></a><span data-ttu-id="2cf27-258">Registro em Scaffold, logon e logoff</span><span class="sxs-lookup"><span data-stu-id="2cf27-258">Scaffold Register, Login, and LogOut</span></span>
 
-<span data-ttu-id="2cf27-259">Siga a [identidade do Scaffold em um :::no-loc(Razor)::: projeto com](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instruções de autorização para gerar o código mostrado nesta seção.</span><span class="sxs-lookup"><span data-stu-id="2cf27-259">Follow the [Scaffold identity into a :::no-loc(Razor)::: project with authorization](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instructions to generate the code shown in this section.</span></span>
+<span data-ttu-id="2cf27-259">Siga a [identidade do Scaffold em um Razor projeto com](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instruções de autorização para gerar o código mostrado nesta seção.</span><span class="sxs-lookup"><span data-stu-id="2cf27-259">Follow the [Scaffold identity into a Razor project with authorization](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) instructions to generate the code shown in this section.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="2cf27-260">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="2cf27-260">Visual Studio</span></span>](#tab/visual-studio)
 
@@ -380,9 +380,9 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ### <a name="examine-register"></a><span data-ttu-id="2cf27-267">Examinar registro</span><span class="sxs-lookup"><span data-stu-id="2cf27-267">Examine Register</span></span>
 
-<span data-ttu-id="2cf27-268">Quando um usuário clica no link **registrar** , a `RegisterModel.OnPostAsync` ação é invocada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-268">When a user clicks the **Register** link, the `RegisterModel.OnPostAsync` action is invoked.</span></span> <span data-ttu-id="2cf27-269">O usuário é criado por [createasync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_:::no-loc(Identity):::_UserManager_1_CreateAsync__0_System_String_) no `_userManager` objeto:</span><span class="sxs-lookup"><span data-stu-id="2cf27-269">The user is created by [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_:::no-loc(Identity):::_UserManager_1_CreateAsync__0_System_String_) on the `_userManager` object:</span></span>
+<span data-ttu-id="2cf27-268">Quando um usuário clica no link **registrar** , a `RegisterModel.OnPostAsync` ação é invocada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-268">When a user clicks the **Register** link, the `RegisterModel.OnPostAsync` action is invoked.</span></span> <span data-ttu-id="2cf27-269">O usuário é criado por [createasync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) no `_userManager` objeto:</span><span class="sxs-lookup"><span data-stu-id="2cf27-269">The user is created by [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) on the `_userManager` object:</span></span>
 
-[!code-csharp[](identity/sample/WebApp1/Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs?name=snippet&highlight=7)]
+[!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=7)]
 
 <span data-ttu-id="2cf27-270">Se o usuário tiver sido criado com êxito, o usuário será conectado pela chamada para `_signInManager.SignInAsync` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-270">If the user was created successfully, the user is logged in by the call to `_signInManager.SignInAsync`.</span></span>
 
@@ -397,7 +397,7 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 <span data-ttu-id="2cf27-276">Quando o formulário na página de logon é enviado, a `OnPostAsync` ação é chamada.</span><span class="sxs-lookup"><span data-stu-id="2cf27-276">When the form on the Login page is submitted, the `OnPostAsync` action is called.</span></span> <span data-ttu-id="2cf27-277">`PasswordSignInAsync` é chamado no `_signInManager` objeto.</span><span class="sxs-lookup"><span data-stu-id="2cf27-277">`PasswordSignInAsync` is called on the `_signInManager` object.</span></span>
 
-[!code-csharp[](identity/sample/WebApp1/Areas/:::no-loc(Identity):::/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
+[!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
 <span data-ttu-id="2cf27-278">Para obter informações sobre como tomar decisões de autorização, consulte <xref:security/authorization/introduction> .</span><span class="sxs-lookup"><span data-stu-id="2cf27-278">For information on how to make authorization decisions, see <xref:security/authorization/introduction>.</span></span>
 
@@ -405,38 +405,38 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 <span data-ttu-id="2cf27-280">O link **fazer logoff** invoca a `LogoutModel.OnPost` ação.</span><span class="sxs-lookup"><span data-stu-id="2cf27-280">The **Log out** link invokes the `LogoutModel.OnPost` action.</span></span> 
 
-[!code-csharp[](identity/sample/WebApp1/Areas/:::no-loc(Identity):::/Pages/Account/Logout.cshtml.cs)]
+[!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Logout.cshtml.cs)]
 
-<span data-ttu-id="2cf27-281">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_SignOutAsync) limpa as declarações do usuário armazenadas em um :::no-loc(cookie)::: .</span><span class="sxs-lookup"><span data-stu-id="2cf27-281">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_SignOutAsync) clears the user's claims stored in a :::no-loc(cookie):::.</span></span>
+<span data-ttu-id="2cf27-281">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) limpa as declarações do usuário armazenadas em um cookie .</span><span class="sxs-lookup"><span data-stu-id="2cf27-281">[SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) clears the user's claims stored in a cookie.</span></span>
 
 <span data-ttu-id="2cf27-282">Post é especificado nas *páginas/Shared/_LoginPartial. cshtml* :</span><span class="sxs-lookup"><span data-stu-id="2cf27-282">Post is specified in the *Pages/Shared/_LoginPartial.cshtml* :</span></span>
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
-## <a name="test-no-locidentity"></a><span data-ttu-id="2cf27-283">Testar :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-283">Test :::no-loc(Identity):::</span></span>
+## <a name="test-no-locidentity"></a><span data-ttu-id="2cf27-283">Testar Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-283">Test Identity</span></span>
 
-<span data-ttu-id="2cf27-284">Os modelos de projeto Web padrão permitem acesso anônimo às home pages.</span><span class="sxs-lookup"><span data-stu-id="2cf27-284">The default web project templates allow anonymous access to the home pages.</span></span> <span data-ttu-id="2cf27-285">Para testar :::no-loc(Identity)::: , adicione [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) à página de privacidade.</span><span class="sxs-lookup"><span data-stu-id="2cf27-285">To test :::no-loc(Identity):::, add [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) to the Privacy page.</span></span>
+<span data-ttu-id="2cf27-284">Os modelos de projeto Web padrão permitem acesso anônimo às home pages.</span><span class="sxs-lookup"><span data-stu-id="2cf27-284">The default web project templates allow anonymous access to the home pages.</span></span> <span data-ttu-id="2cf27-285">Para testar Identity , adicione [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) à página de privacidade.</span><span class="sxs-lookup"><span data-stu-id="2cf27-285">To test Identity, add [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) to the Privacy page.</span></span>
 
 [!code-csharp[](identity/sample/WebApp1/Pages/Privacy.cshtml.cs?highlight=7)]
 
 <span data-ttu-id="2cf27-286">Se você estiver conectado, saia. Execute o aplicativo e selecione o link de **privacidade** .</span><span class="sxs-lookup"><span data-stu-id="2cf27-286">If you are signed in, sign out. Run the app and select the **Privacy** link.</span></span> <span data-ttu-id="2cf27-287">Você é redirecionado à página de logon.</span><span class="sxs-lookup"><span data-stu-id="2cf27-287">You are redirected to the login page.</span></span>
 
-### <a name="explore-no-locidentity"></a><span data-ttu-id="2cf27-288">Apresenta :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-288">Explore :::no-loc(Identity):::</span></span>
+### <a name="explore-no-locidentity"></a><span data-ttu-id="2cf27-288">Apresenta Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-288">Explore Identity</span></span>
 
-<span data-ttu-id="2cf27-289">Para explorar :::no-loc(Identity)::: mais detalhadamente:</span><span class="sxs-lookup"><span data-stu-id="2cf27-289">To explore :::no-loc(Identity)::: in more detail:</span></span>
+<span data-ttu-id="2cf27-289">Para explorar Identity mais detalhadamente:</span><span class="sxs-lookup"><span data-stu-id="2cf27-289">To explore Identity in more detail:</span></span>
 
 * [<span data-ttu-id="2cf27-290">Criar origem da interface do usuário de identidade completa</span><span class="sxs-lookup"><span data-stu-id="2cf27-290">Create full identity UI source</span></span>](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * <span data-ttu-id="2cf27-291">Examine a origem de cada página e percorra o depurador.</span><span class="sxs-lookup"><span data-stu-id="2cf27-291">Examine the source of each page and step through the debugger.</span></span>
 
-## <a name="no-locidentity-components"></a><span data-ttu-id="2cf27-292">:::no-loc(Identity)::: QC</span><span class="sxs-lookup"><span data-stu-id="2cf27-292">:::no-loc(Identity)::: Components</span></span>
+## <a name="no-locidentity-components"></a><span data-ttu-id="2cf27-292">Identity QC</span><span class="sxs-lookup"><span data-stu-id="2cf27-292">Identity Components</span></span>
 
-<span data-ttu-id="2cf27-293">Todos os :::no-loc(Identity)::: pacotes NuGet dependentes estão incluídos no [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).</span><span class="sxs-lookup"><span data-stu-id="2cf27-293">All the :::no-loc(Identity)::: dependent NuGet packages are included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
+<span data-ttu-id="2cf27-293">Todos os Identity pacotes NuGet dependentes estão incluídos no [metapacote Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).</span><span class="sxs-lookup"><span data-stu-id="2cf27-293">All the Identity dependent NuGet packages are included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
 
-<span data-ttu-id="2cf27-294">O pacote principal para o :::no-loc(Identity)::: é [Microsoft. AspNetCore :::no-loc(Identity)::: .](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(Identity):::/).</span><span class="sxs-lookup"><span data-stu-id="2cf27-294">The primary package for :::no-loc(Identity)::: is [Microsoft.AspNetCore.:::no-loc(Identity):::](https://www.nuget.org/packages/Microsoft.AspNetCore.:::no-loc(Identity):::/).</span></span> <span data-ttu-id="2cf27-295">Esse pacote contém o conjunto principal de interfaces para o :::no-loc(ASP.NET Core Identity)::: e é incluído pelo `Microsoft.AspNetCore.:::no-loc(Identity):::.EntityFrameworkCore` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-295">This package contains the core set of interfaces for :::no-loc(ASP.NET Core Identity):::, and is included by `Microsoft.AspNetCore.:::no-loc(Identity):::.EntityFrameworkCore`.</span></span>
+<span data-ttu-id="2cf27-294">O pacote principal para o Identity é [Microsoft. AspNetCore Identity .](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span><span class="sxs-lookup"><span data-stu-id="2cf27-294">The primary package for Identity is [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/).</span></span> <span data-ttu-id="2cf27-295">Esse pacote contém o conjunto principal de interfaces para o ASP.NET Core Identity e é incluído pelo `Microsoft.AspNetCore.Identity.EntityFrameworkCore` .</span><span class="sxs-lookup"><span data-stu-id="2cf27-295">This package contains the core set of interfaces for ASP.NET Core Identity, and is included by `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span></span>
 
-## <a name="migrating-to-no-locaspnet-core-identity"></a><span data-ttu-id="2cf27-296">Migrando para o :::no-loc(ASP.NET Core Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-296">Migrating to :::no-loc(ASP.NET Core Identity):::</span></span>
+## <a name="migrating-to-no-locaspnet-core-identity"></a><span data-ttu-id="2cf27-296">Migrando para o ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-296">Migrating to ASP.NET Core Identity</span></span>
 
-<span data-ttu-id="2cf27-297">Para obter mais informações e diretrizes sobre como migrar seu :::no-loc(Identity)::: repositório existente, consulte [ :::no-loc(Identity)::: migrar autenticação e ](xref:migration/identity).</span><span class="sxs-lookup"><span data-stu-id="2cf27-297">For more information and guidance on migrating your existing :::no-loc(Identity)::: store, see [Migrate Authentication and :::no-loc(Identity):::](xref:migration/identity).</span></span>
+<span data-ttu-id="2cf27-297">Para obter mais informações e diretrizes sobre como migrar seu Identity repositório existente, consulte [ Identity migrar autenticação e ](xref:migration/identity).</span><span class="sxs-lookup"><span data-stu-id="2cf27-297">For more information and guidance on migrating your existing Identity store, see [Migrate Authentication and Identity](xref:migration/identity).</span></span>
 
 ## <a name="setting-password-strength"></a><span data-ttu-id="2cf27-298">Definindo a força da senha</span><span class="sxs-lookup"><span data-stu-id="2cf27-298">Setting password strength</span></span>
 
@@ -444,8 +444,8 @@ dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --fil
 
 ## <a name="next-steps"></a><span data-ttu-id="2cf27-300">Próximas etapas</span><span class="sxs-lookup"><span data-stu-id="2cf27-300">Next Steps</span></span>
 
-* <span data-ttu-id="2cf27-301">Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) para obter informações sobre como configurar o :::no-loc(Identity)::: uso do SQLite.</span><span class="sxs-lookup"><span data-stu-id="2cf27-301">See [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/5131) for information on configuring :::no-loc(Identity)::: using SQLite.</span></span>
-* [<span data-ttu-id="2cf27-302">Configurar :::no-loc(Identity):::</span><span class="sxs-lookup"><span data-stu-id="2cf27-302">Configure :::no-loc(Identity):::</span></span>](xref:security/authentication/identity-configuration)
+* <span data-ttu-id="2cf27-301">Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/5131) para obter informações sobre como configurar o Identity uso do SQLite.</span><span class="sxs-lookup"><span data-stu-id="2cf27-301">See [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/5131) for information on configuring Identity using SQLite.</span></span>
+* [<span data-ttu-id="2cf27-302">Configurar Identity</span><span class="sxs-lookup"><span data-stu-id="2cf27-302">Configure Identity</span></span>](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>

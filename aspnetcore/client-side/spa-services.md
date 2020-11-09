@@ -7,17 +7,17 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/spa-services
 ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -109,7 +109,7 @@ npm i -S aspnet-prerendering
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
 
-<span data-ttu-id="22731-149">Esses auxiliares de marcas abstrairam a complexidade da comunicação direta com APIs de nível baixo, aproveitando uma sintaxe semelhante a HTML dentro da :::no-loc(Razor)::: exibição:</span><span class="sxs-lookup"><span data-stu-id="22731-149">These Tag Helpers abstract away the intricacies of communicating directly with low-level APIs by leveraging an HTML-like syntax inside the :::no-loc(Razor)::: view:</span></span>
+<span data-ttu-id="22731-149">Esses auxiliares de marcas abstrairam a complexidade da comunicação direta com APIs de nível baixo, aproveitando uma sintaxe semelhante a HTML dentro da Razor exibição:</span><span class="sxs-lookup"><span data-stu-id="22731-149">These Tag Helpers abstract away the intricacies of communicating directly with low-level APIs by leveraging an HTML-like syntax inside the Razor view:</span></span>
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
 
@@ -125,7 +125,7 @@ npm i -S aspnet-prerendering
 
 ### <a name="asp-prerender-data-tag-helper"></a><span data-ttu-id="22731-157">ASP-PreRender-auxiliar de marca de dados</span><span class="sxs-lookup"><span data-stu-id="22731-157">asp-prerender-data Tag Helper</span></span>
 
-<span data-ttu-id="22731-158">Quando combinado com o `asp-prerender-module` auxiliar de marca, o `asp-prerender-data` auxiliar de marca pode ser usado para passar informações contextuais da :::no-loc(Razor)::: exibição para o JavaScript do lado do servidor.</span><span class="sxs-lookup"><span data-stu-id="22731-158">When coupled with the `asp-prerender-module` Tag Helper, the `asp-prerender-data` Tag Helper can be used to pass contextual information from the :::no-loc(Razor)::: view to the server-side JavaScript.</span></span> <span data-ttu-id="22731-159">Por exemplo, a marcação a seguir passa dados do usuário para o `main-server` módulo:</span><span class="sxs-lookup"><span data-stu-id="22731-159">For example, the following markup passes user data to the `main-server` module:</span></span>
+<span data-ttu-id="22731-158">Quando combinado com o `asp-prerender-module` auxiliar de marca, o `asp-prerender-data` auxiliar de marca pode ser usado para passar informações contextuais da Razor exibição para o JavaScript do lado do servidor.</span><span class="sxs-lookup"><span data-stu-id="22731-158">When coupled with the `asp-prerender-module` Tag Helper, the `asp-prerender-data` Tag Helper can be used to pass contextual information from the Razor view to the server-side JavaScript.</span></span> <span data-ttu-id="22731-159">Por exemplo, a marcação a seguir passa dados do usuário para o `main-server` módulo:</span><span class="sxs-lookup"><span data-stu-id="22731-159">For example, the following markup passes user data to the `main-server` module:</span></span>
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 

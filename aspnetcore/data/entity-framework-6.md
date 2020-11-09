@@ -6,15 +6,15 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/14/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/entity-framework-6
 ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -107,7 +107,7 @@ ms.locfileid: "93059449"
 
 * <span data-ttu-id="c437f-154">No projeto Core, em *Startup.cs* , registre o contexto para DI.</span><span class="sxs-lookup"><span data-stu-id="c437f-154">In the Core project, in *Startup.cs* , register the context for DI.</span></span>    
 
-* <span data-ttu-id="c437f-155">No projeto principal, no *:::no-loc(appsettings.json):::* , adicione a cadeia de conexão.</span><span class="sxs-lookup"><span data-stu-id="c437f-155">In the Core project, in *:::no-loc(appsettings.json):::* , add the connection string.</span></span>  
+* <span data-ttu-id="c437f-155">No projeto principal, no *appsettings.json* , adicione a cadeia de conexão.</span><span class="sxs-lookup"><span data-stu-id="c437f-155">In the Core project, in *appsettings.json* , add the connection string.</span></span>  
 
 * <span data-ttu-id="c437f-156">No projeto Core, adicione um controlador e exibições para verificar se é possível ler e gravar dados.</span><span class="sxs-lookup"><span data-stu-id="c437f-156">In the Core project, add a controller and view(s) to verify that you can read and write data.</span></span> <span data-ttu-id="c437f-157">(Observe que o scaffolding do ASP.NET Core MVC não funcionará com o contexto do EF6 referenciado da biblioteca de classes.)</span><span class="sxs-lookup"><span data-stu-id="c437f-157">(Note that ASP.NET Core MVC scaffolding won't work with the EF6 context referenced from the class library.)</span></span>
 

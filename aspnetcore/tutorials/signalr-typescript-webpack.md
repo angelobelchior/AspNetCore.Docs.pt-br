@@ -1,22 +1,22 @@
 ---
-title: 'Usar ASP.NET Core :::no-loc(SignalR)::: com TypeScript e webpack'
+title: 'Usar ASP.NET Core SignalR com TypeScript e webpack'
 author: ssougnez
-description: 'Neste tutorial, você configura o webpack para agrupar e criar um :::no-loc(SignalR)::: aplicativo web ASP.NET Core cujo cliente é escrito em TypeScript.'
+description: 'Neste tutorial, você configura o webpack para agrupar e criar um SignalR aplicativo web ASP.NET Core cujo cliente é escrito em TypeScript.'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 02/10/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/signalr-typescript-webpack
 ms.openlocfilehash: 949276bf4aae33c3af3fd1b8219a83868095f378
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,19 +25,19 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056836"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a><span data-ttu-id="8f6a5-103">Usar ASP.NET Core :::no-loc(SignalR)::: com TypeScript e webpack</span><span class="sxs-lookup"><span data-stu-id="8f6a5-103">Use ASP.NET Core :::no-loc(SignalR)::: with TypeScript and Webpack</span></span>
+# <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a><span data-ttu-id="8f6a5-103">Usar ASP.NET Core SignalR com TypeScript e webpack</span><span class="sxs-lookup"><span data-stu-id="8f6a5-103">Use ASP.NET Core SignalR with TypeScript and Webpack</span></span>
 
 <span data-ttu-id="8f6a5-104">Por [Sébastien Sougnez](https://twitter.com/ssougnez) e [Scott Addie](https://twitter.com/Scott_Addie)</span><span class="sxs-lookup"><span data-stu-id="8f6a5-104">By [Sébastien Sougnez](https://twitter.com/ssougnez) and [Scott Addie](https://twitter.com/Scott_Addie)</span></span>
 
-<span data-ttu-id="8f6a5-105">O [Webpack](https://webpack.js.org/) habilita os desenvolvedores a agrupar e criar recursos de um aplicativo Web do lado do cliente.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-105">[Webpack](https://webpack.js.org/) enables developers to bundle and build the client-side resources of a web app.</span></span> <span data-ttu-id="8f6a5-106">Este tutorial demonstra como usar o webpack em um ASP.NET Core :::no-loc(SignalR)::: aplicativo Web cujo cliente é escrito em [TypeScript](https://www.typescriptlang.org/).</span><span class="sxs-lookup"><span data-stu-id="8f6a5-106">This tutorial demonstrates using Webpack in an ASP.NET Core :::no-loc(SignalR)::: web app whose client is written in [TypeScript](https://www.typescriptlang.org/).</span></span>
+<span data-ttu-id="8f6a5-105">O [Webpack](https://webpack.js.org/) habilita os desenvolvedores a agrupar e criar recursos de um aplicativo Web do lado do cliente.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-105">[Webpack](https://webpack.js.org/) enables developers to bundle and build the client-side resources of a web app.</span></span> <span data-ttu-id="8f6a5-106">Este tutorial demonstra como usar o webpack em um ASP.NET Core SignalR aplicativo Web cujo cliente é escrito em [TypeScript](https://www.typescriptlang.org/).</span><span class="sxs-lookup"><span data-stu-id="8f6a5-106">This tutorial demonstrates using Webpack in an ASP.NET Core SignalR web app whose client is written in [TypeScript](https://www.typescriptlang.org/).</span></span>
 
 <span data-ttu-id="8f6a5-107">Neste tutorial, você aprenderá como:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-107">In this tutorial, you learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="8f6a5-108">Scaffold um aplicativo de início ASP.NET Core :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="8f6a5-108">Scaffold a starter ASP.NET Core :::no-loc(SignalR)::: app</span></span>
-> * <span data-ttu-id="8f6a5-109">Configurar o :::no-loc(SignalR)::: cliente TypeScript</span><span class="sxs-lookup"><span data-stu-id="8f6a5-109">Configure the :::no-loc(SignalR)::: TypeScript client</span></span>
+> * <span data-ttu-id="8f6a5-108">Scaffold um aplicativo de início ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="8f6a5-108">Scaffold a starter ASP.NET Core SignalR app</span></span>
+> * <span data-ttu-id="8f6a5-109">Configurar o SignalR cliente TypeScript</span><span class="sxs-lookup"><span data-stu-id="8f6a5-109">Configure the SignalR TypeScript client</span></span>
 > * <span data-ttu-id="8f6a5-110">Configurar um pipeline de build usando o Webpack</span><span class="sxs-lookup"><span data-stu-id="8f6a5-110">Configure a build pipeline using Webpack</span></span>
-> * <span data-ttu-id="8f6a5-111">Configurar o :::no-loc(SignalR)::: servidor</span><span class="sxs-lookup"><span data-stu-id="8f6a5-111">Configure the :::no-loc(SignalR)::: server</span></span>
+> * <span data-ttu-id="8f6a5-111">Configurar o SignalR servidor</span><span class="sxs-lookup"><span data-stu-id="8f6a5-111">Configure the SignalR server</span></span>
 > * <span data-ttu-id="8f6a5-112">Habilitar a comunicação entre o cliente e o servidor</span><span class="sxs-lookup"><span data-stu-id="8f6a5-112">Enable communication between client and server</span></span>
 
 <span data-ttu-id="8f6a5-113">[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([como baixar](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="8f6a5-113">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
@@ -76,7 +76,7 @@ ms.locfileid: "93056836"
 <span data-ttu-id="8f6a5-135">A configuração do Visual Studio foi concluída.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-135">Visual Studio configuration is complete.</span></span>
 
 1. <span data-ttu-id="8f6a5-136">Use a opção de menu **arquivo**  >  **novo**  >  **projeto** e escolha o modelo de **aplicativo Web ASP.NET Core** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-136">Use the **File** > **New** > **Project** menu option and choose the **ASP.NET Core Web Application** template.</span></span> <span data-ttu-id="8f6a5-137">Selecione **Avançar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-137">Select **Next** .</span></span>
-1. <span data-ttu-id="8f6a5-138">Nomeie o projeto *:::no-loc(SignalR)::: webpack* e selecione **criar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-138">Name the project *:::no-loc(SignalR):::WebPack* , and select **Create** .</span></span>
+1. <span data-ttu-id="8f6a5-138">Nomeie o projeto *SignalR webpack* e selecione **criar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-138">Name the project *SignalRWebPack* , and select **Create** .</span></span>
 1. <span data-ttu-id="8f6a5-139">Selecione *.NET Core* na lista suspensa estrutura de destino e selecione *ASP.NET Core 3,1* na lista suspensa seletor de estrutura.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-139">Select *.NET Core* from the target framework drop-down, and select *ASP.NET Core 3.1* from the framework selector drop-down.</span></span> <span data-ttu-id="8f6a5-140">Selecione o modelo **vazio** e selecione **criar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-140">Select the **Empty** template, and select **Create** .</span></span>
 
 <span data-ttu-id="8f6a5-141">Adicione o `Microsoft.TypeScript.MSBuild` pacote ao projeto:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-141">Add the `Microsoft.TypeScript.MSBuild` package to the project:</span></span>
@@ -90,12 +90,12 @@ ms.locfileid: "93056836"
 <span data-ttu-id="8f6a5-146">Execute o comando a seguir no **Terminal Integrado** :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-146">Run the following command in the **Integrated Terminal** :</span></span>
 
 ```dotnetcli
-dotnet new web -o :::no-loc(SignalR):::WebPack
-code -r :::no-loc(SignalR):::WebPack
+dotnet new web -o SignalRWebPack
+code -r SignalRWebPack
 ```
 
-* <span data-ttu-id="8f6a5-147">O `dotnet new` comando cria um aplicativo Web vazio ASP.NET Core em um diretório do *:::no-loc(SignalR)::: webpack* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-147">The `dotnet new` command creates an empty ASP.NET Core web app in a *:::no-loc(SignalR):::WebPack* directory.</span></span>
-* <span data-ttu-id="8f6a5-148">O `code` comando abre a pasta *:::no-loc(SignalR)::: webpack* na instância atual do Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-148">The `code` command opens the *:::no-loc(SignalR):::WebPack* folder in the current instance of Visual Studio Code.</span></span>
+* <span data-ttu-id="8f6a5-147">O `dotnet new` comando cria um aplicativo Web vazio ASP.NET Core em um diretório do *SignalR webpack* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-147">The `dotnet new` command creates an empty ASP.NET Core web app in a *SignalRWebPack* directory.</span></span>
+* <span data-ttu-id="8f6a5-148">O `code` comando abre a pasta *SignalR webpack* na instância atual do Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-148">The `code` command opens the *SignalRWebPack* folder in the current instance of Visual Studio Code.</span></span>
 
 <span data-ttu-id="8f6a5-149">Execute o seguinte comando CLI do .NET Core no **terminal integrado** :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-149">Run the following .NET Core CLI command in the **Integrated Terminal** :</span></span>
 
@@ -159,7 +159,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
     <span data-ttu-id="8f6a5-175">O arquivo precedente configura a compilação Webpack.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-175">The preceding file configures the Webpack compilation.</span></span> <span data-ttu-id="8f6a5-176">Detalhes de configuração a serem notados:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-176">Some configuration details to note:</span></span>
 
     * <span data-ttu-id="8f6a5-177">A propriedade `output` substitui o valor padrão do *dist* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-177">The `output` property overrides the default value of *dist* .</span></span> <span data-ttu-id="8f6a5-178">Em vez disso, o lote é emitido no diretório *wwwroot* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-178">The bundle is instead emitted in the *wwwroot* directory.</span></span>
-    * <span data-ttu-id="8f6a5-179">A `resolve.extensions` matriz inclui o *. js* para importar o :::no-loc(SignalR)::: JavaScript do cliente.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-179">The `resolve.extensions` array includes *.js* to import the :::no-loc(SignalR)::: client JavaScript.</span></span>
+    * <span data-ttu-id="8f6a5-179">A `resolve.extensions` matriz inclui o *. js* para importar o SignalR JavaScript do cliente.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-179">The `resolve.extensions` array includes *.js* to import the SignalR client JavaScript.</span></span>
 
 1. <span data-ttu-id="8f6a5-180">Crie um novo diretório *src* na raiz do projeto para armazenar os ativos do lado do cliente do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-180">Create a new *src* directory in the project root to store the project's client-side assets.</span></span>
 
@@ -202,13 +202,13 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 1. <span data-ttu-id="8f6a5-199">No final de `Startup.Configure` , mapeie uma rota */Hub* para o `ChatHub` Hub.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-199">At the end of `Startup.Configure`, map a */hub* route to the `ChatHub` hub.</span></span> <span data-ttu-id="8f6a5-200">Substitua o código que exibe *Olá, mundo!*</span><span class="sxs-lookup"><span data-stu-id="8f6a5-200">Replace the code that displays *Hello World!*</span></span> <span data-ttu-id="8f6a5-201">pela seguinte linha:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-201">with the following line:</span></span> 
 
-   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_Use:::no-loc(SignalR):::&highlight=3)]
+   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseSignalR&highlight=3)]
 
-1. <span data-ttu-id="8f6a5-202">Em `Startup.ConfigureServices` , chame [Adicionar :::no-loc(SignalR)::: ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_).</span><span class="sxs-lookup"><span data-stu-id="8f6a5-202">In `Startup.ConfigureServices`, call [Add:::no-loc(SignalR):::](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_).</span></span>
+1. <span data-ttu-id="8f6a5-202">Em `Startup.ConfigureServices` , chame [Adicionar SignalR ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_).</span><span class="sxs-lookup"><span data-stu-id="8f6a5-202">In `Startup.ConfigureServices`, call [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_).</span></span>
 
-   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_Add:::no-loc(SignalR):::)]
+   [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
-1. <span data-ttu-id="8f6a5-203">Crie um novo diretório chamado *hubs* na raiz do projeto *:::no-loc(SignalR)::: webpack/* para armazenar o :::no-loc(SignalR)::: Hub.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-203">Create a new directory named *Hubs* in the project root *:::no-loc(SignalR):::WebPack/* to store the :::no-loc(SignalR)::: hub.</span></span>
+1. <span data-ttu-id="8f6a5-203">Crie um novo diretório chamado *hubs* na raiz do projeto *SignalR webpack/* para armazenar o SignalR Hub.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-203">Create a new directory named *Hubs* in the project root *SignalRWebPack/* to store the SignalR hub.</span></span>
 
 1. <span data-ttu-id="8f6a5-204">Crie o hub *Hubs/ChatHub.cs* com o código a seguir:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-204">Create hub *Hubs/ChatHub.cs* with the following code:</span></span>
 
@@ -230,7 +230,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
     <span data-ttu-id="8f6a5-210">O comando anterior é instalado:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-210">The preceding command installs:</span></span>
 
-     * <span data-ttu-id="8f6a5-211">O [ :::no-loc(SignalR)::: cliente TypeScript](https://www.npmjs.com/package/@microsoft/signalr), que permite ao cliente enviar mensagens para o servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-211">The [:::no-loc(SignalR)::: TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
+     * <span data-ttu-id="8f6a5-211">O [ SignalR cliente TypeScript](https://www.npmjs.com/package/@microsoft/signalr), que permite ao cliente enviar mensagens para o servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-211">The [SignalR TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
      * <span data-ttu-id="8f6a5-212">As definições de tipo do TypeScript para Node.js, que habilita a verificação de tempo de compilação de tipos de Node.js.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-212">The TypeScript type definitions for Node.js, which enables compile-time checking of Node.js types.</span></span>
 
 1. <span data-ttu-id="8f6a5-213">Adicione o código destacado ao arquivo *src/index.ts* :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-213">Add the highlighted code to the *src/index.ts* file:</span></span>
@@ -239,7 +239,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
     <span data-ttu-id="8f6a5-214">O código precedente é compatível com o recebimento de mensagens do servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-214">The preceding code supports receiving messages from the server.</span></span> <span data-ttu-id="8f6a5-215">A classe `HubConnectionBuilder` cria um novo construtor para configurar a conexão do servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-215">The `HubConnectionBuilder` class creates a new builder for configuring the server connection.</span></span> <span data-ttu-id="8f6a5-216">A função `withUrl` configura a URL do hub.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-216">The `withUrl` function configures the hub URL.</span></span>
 
-    <span data-ttu-id="8f6a5-217">:::no-loc(SignalR)::: habilita a troca de mensagens entre um cliente e um servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-217">:::no-loc(SignalR)::: enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="8f6a5-218">Cada mensagem tem um nome específico.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-218">Each message has a specific name.</span></span> <span data-ttu-id="8f6a5-219">Por exemplo, mensagens com o nome `messageReceived` podem executar a lógica responsável por exibir a nova mensagem na zona de mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-219">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="8f6a5-220">É possível escutar uma mensagem específica por meio da função `on`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-220">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="8f6a5-221">Qualquer número de nomes de mensagem pode ser escutado.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-221">Any number of message names can be listened to.</span></span> <span data-ttu-id="8f6a5-222">Também é possível passar parâmetros para a mensagem, como o nome do autor e o conteúdo da mensagem recebida.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-222">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="8f6a5-223">Quando o cliente recebe a mensagem, um novo elemento `div` é criado com o nome do autor e o conteúdo da mensagem em seu atributo `innerHTML`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-223">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="8f6a5-224">Ele é adicionado ao elemento principal `div` que exibe as mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-224">It's added to the main `div` element displaying the messages.</span></span>
+    <span data-ttu-id="8f6a5-217">SignalR habilita a troca de mensagens entre um cliente e um servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-217">SignalR enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="8f6a5-218">Cada mensagem tem um nome específico.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-218">Each message has a specific name.</span></span> <span data-ttu-id="8f6a5-219">Por exemplo, mensagens com o nome `messageReceived` podem executar a lógica responsável por exibir a nova mensagem na zona de mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-219">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="8f6a5-220">É possível escutar uma mensagem específica por meio da função `on`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-220">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="8f6a5-221">Qualquer número de nomes de mensagem pode ser escutado.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-221">Any number of message names can be listened to.</span></span> <span data-ttu-id="8f6a5-222">Também é possível passar parâmetros para a mensagem, como o nome do autor e o conteúdo da mensagem recebida.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-222">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="8f6a5-223">Quando o cliente recebe a mensagem, um novo elemento `div` é criado com o nome do autor e o conteúdo da mensagem em seu atributo `innerHTML`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-223">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="8f6a5-224">Ele é adicionado ao elemento principal `div` que exibe as mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-224">It's added to the main `div` element displaying the messages.</span></span>
 
 1. <span data-ttu-id="8f6a5-225">Agora que o cliente pode receber mensagens, configure-o para enviá-las.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-225">Now that the client can receive a message, configure it to send messages.</span></span> <span data-ttu-id="8f6a5-226">Adicione o código destacado ao arquivo *src/index.ts* :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-226">Add the highlighted code to the *src/index.ts* file:</span></span>
 
@@ -261,7 +261,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 # <a name="visual-studio"></a>[<span data-ttu-id="8f6a5-243">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8f6a5-243">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="8f6a5-244">Execute o Webpack no modo de *versão* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-244">Run Webpack in *release* mode.</span></span> <span data-ttu-id="8f6a5-245">Usando a janela do **console do Gerenciador de pacotes** , execute o seguinte comando na raiz do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-245">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="8f6a5-246">Se você não estiver na raiz do projeto, insira `cd :::no-loc(SignalR):::WebPack` antes de inserir o comando.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-246">If you are not in the project root, enter `cd :::no-loc(SignalR):::WebPack` before entering the command.</span></span>
+1. <span data-ttu-id="8f6a5-244">Execute o Webpack no modo de *versão* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-244">Run Webpack in *release* mode.</span></span> <span data-ttu-id="8f6a5-245">Usando a janela do **console do Gerenciador de pacotes** , execute o seguinte comando na raiz do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-245">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="8f6a5-246">Se você não estiver na raiz do projeto, insira `cd SignalRWebPack` antes de inserir o comando.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-246">If you are not in the project root, enter `cd SignalRWebPack` before entering the command.</span></span>
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
@@ -332,7 +332,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 <span data-ttu-id="8f6a5-285">A configuração do Visual Studio foi concluída.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-285">Visual Studio configuration is completed.</span></span> <span data-ttu-id="8f6a5-286">É hora de criar o projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-286">It's time to create the project.</span></span>
 
 1. <span data-ttu-id="8f6a5-287">Use a opção do menu **Arquivo** > **Novo** > **Projeto** e escolha o modelo **Aplicativo Web do ASP.NET Core** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-287">Use the **File** > **New** > **Project** menu option and choose the **ASP.NET Core Web Application** template.</span></span>
-1. <span data-ttu-id="8f6a5-288">Nomeie o projeto *:::no-loc(SignalR)::: webpack* e selecione **criar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-288">Name the project *:::no-loc(SignalR):::WebPack* , and select **Create** .</span></span>
+1. <span data-ttu-id="8f6a5-288">Nomeie o projeto *SignalR webpack* e selecione **criar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-288">Name the project *SignalRWebPack* , and select **Create** .</span></span>
 1. <span data-ttu-id="8f6a5-289">Selecione *.NET Core* no menu suspenso da estrutura de destino e selecione *ASP.NET Core 2.2* no menu suspenso do seletor de estrutura.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-289">Select *.NET Core* from the target framework drop-down, and select *ASP.NET Core 2.2* from the framework selector drop-down.</span></span> <span data-ttu-id="8f6a5-290">Selecione o modelo **vazio** e selecione **criar** .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-290">Select the **Empty** template, and select **Create** .</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="8f6a5-291">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="8f6a5-291">Visual Studio Code</span></span>](#tab/visual-studio-code)
@@ -340,10 +340,10 @@ dotnet add package Microsoft.TypeScript.MSBuild
 <span data-ttu-id="8f6a5-292">Execute o comando a seguir no **Terminal Integrado** :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-292">Run the following command in the **Integrated Terminal** :</span></span>
 
 ```dotnetcli
-dotnet new web -o :::no-loc(SignalR):::WebPack
+dotnet new web -o SignalRWebPack
 ```
 
-<span data-ttu-id="8f6a5-293">Um aplicativo Web ASP.NET Core vazio, destinado ao .NET Core, é criado em um diretório do *:::no-loc(SignalR)::: webpack* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-293">An empty ASP.NET Core web app, targeting .NET Core, is created in a *:::no-loc(SignalR):::WebPack* directory.</span></span>
+<span data-ttu-id="8f6a5-293">Um aplicativo Web ASP.NET Core vazio, destinado ao .NET Core, é criado em um diretório do *SignalR webpack* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-293">An empty ASP.NET Core web app, targeting .NET Core, is created in a *SignalRWebPack* directory.</span></span>
 
 ---
 
@@ -399,7 +399,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
     <span data-ttu-id="8f6a5-318">O arquivo precedente configura a compilação Webpack.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-318">The preceding file configures the Webpack compilation.</span></span> <span data-ttu-id="8f6a5-319">Detalhes de configuração a serem notados:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-319">Some configuration details to note:</span></span>
 
     * <span data-ttu-id="8f6a5-320">A propriedade `output` substitui o valor padrão do *dist* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-320">The `output` property overrides the default value of *dist* .</span></span> <span data-ttu-id="8f6a5-321">Em vez disso, o lote é emitido no diretório *wwwroot* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-321">The bundle is instead emitted in the *wwwroot* directory.</span></span>
-    * <span data-ttu-id="8f6a5-322">A `resolve.extensions` matriz inclui o *. js* para importar o :::no-loc(SignalR)::: JavaScript do cliente.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-322">The `resolve.extensions` array includes *.js* to import the :::no-loc(SignalR)::: client JavaScript.</span></span>
+    * <span data-ttu-id="8f6a5-322">A `resolve.extensions` matriz inclui o *. js* para importar o SignalR JavaScript do cliente.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-322">The `resolve.extensions` array includes *.js* to import the SignalR client JavaScript.</span></span>
 
 1. <span data-ttu-id="8f6a5-323">Crie um novo diretório *src* na raiz do projeto para armazenar os ativos do lado do cliente do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-323">Create a new *src* directory in the project root to store the project's client-side assets.</span></span>
 
@@ -440,15 +440,15 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
 
     <span data-ttu-id="8f6a5-341">O código precedente permite que o servidor localize e forneça o arquivo *index.html* , se o usuário inserir a URL completa ou a URL raiz do aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-341">The preceding code allows the server to locate and serve the *index.html* file, whether the user enters its full URL or the root URL of the web app.</span></span>
 
-1. <span data-ttu-id="8f6a5-342">Chame [Adicionar :::no-loc(SignalR)::: ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_) em `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-342">Call [Add:::no-loc(SignalR):::](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_:::no-loc(SignalR):::DependencyInjectionExtensions_Add:::no-loc(SignalR):::_Microsoft_Extensions_DependencyInjection_IServiceCollection_) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="8f6a5-343">Ele adiciona os :::no-loc(SignalR)::: serviços ao projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-343">It adds the :::no-loc(SignalR)::: services to the project.</span></span>
+1. <span data-ttu-id="8f6a5-342">Chame [Adicionar SignalR ](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) em `Startup.ConfigureServices` .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-342">Call [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="8f6a5-343">Ele adiciona os SignalR serviços ao projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-343">It adds the SignalR services to the project.</span></span>
 
-    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_Add:::no-loc(SignalR):::)]
+    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_AddSignalR)]
 
 1. <span data-ttu-id="8f6a5-344">Mapeie uma rota */hub* para o hub `ChatHub`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-344">Map a */hub* route to the `ChatHub` hub.</span></span> <span data-ttu-id="8f6a5-345">Adicione as seguintes linhas ao final de `Startup.Configure` :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-345">Add the following lines at the end of `Startup.Configure`:</span></span>
 
-    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_Use:::no-loc(SignalR):::)]
+    [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
 
-1. <span data-ttu-id="8f6a5-346">Crie um novo diretório, chamado *Hubs* , na raiz do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-346">Create a new directory, called *Hubs* , in the project root.</span></span> <span data-ttu-id="8f6a5-347">Sua finalidade é armazenar o :::no-loc(SignalR)::: Hub, que é criado na próxima etapa.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-347">Its purpose is to store the :::no-loc(SignalR)::: hub, which is created in the next step.</span></span>
+1. <span data-ttu-id="8f6a5-346">Crie um novo diretório, chamado *Hubs* , na raiz do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-346">Create a new directory, called *Hubs* , in the project root.</span></span> <span data-ttu-id="8f6a5-347">Sua finalidade é armazenar o SignalR Hub, que é criado na próxima etapa.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-347">Its purpose is to store the SignalR hub, which is created in the next step.</span></span>
 
 1. <span data-ttu-id="8f6a5-348">Crie o hub *Hubs/ChatHub.cs* com o código a seguir:</span><span class="sxs-lookup"><span data-stu-id="8f6a5-348">Create hub *Hubs/ChatHub.cs* with the following code:</span></span>
 
@@ -468,7 +468,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
     npm install @aspnet/signalr
     ```
 
-    <span data-ttu-id="8f6a5-355">O comando anterior instala o [ :::no-loc(SignalR)::: cliente TypeScript](https://www.npmjs.com/package/@microsoft/signalr), que permite ao cliente enviar mensagens para o servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-355">The preceding command installs the [:::no-loc(SignalR)::: TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
+    <span data-ttu-id="8f6a5-355">O comando anterior instala o [ SignalR cliente TypeScript](https://www.npmjs.com/package/@microsoft/signalr), que permite ao cliente enviar mensagens para o servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-355">The preceding command installs the [SignalR TypeScript client](https://www.npmjs.com/package/@microsoft/signalr), which allows the client to send messages to the server.</span></span>
 
 1. <span data-ttu-id="8f6a5-356">Adicione o código destacado ao arquivo *src/index.ts* :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-356">Add the highlighted code to the *src/index.ts* file:</span></span>
 
@@ -476,7 +476,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
 
     <span data-ttu-id="8f6a5-357">O código precedente é compatível com o recebimento de mensagens do servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-357">The preceding code supports receiving messages from the server.</span></span> <span data-ttu-id="8f6a5-358">A classe `HubConnectionBuilder` cria um novo construtor para configurar a conexão do servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-358">The `HubConnectionBuilder` class creates a new builder for configuring the server connection.</span></span> <span data-ttu-id="8f6a5-359">A função `withUrl` configura a URL do hub.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-359">The `withUrl` function configures the hub URL.</span></span>
 
-    <span data-ttu-id="8f6a5-360">:::no-loc(SignalR)::: habilita a troca de mensagens entre um cliente e um servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-360">:::no-loc(SignalR)::: enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="8f6a5-361">Cada mensagem tem um nome específico.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-361">Each message has a specific name.</span></span> <span data-ttu-id="8f6a5-362">Por exemplo, mensagens com o nome `messageReceived` podem executar a lógica responsável por exibir a nova mensagem na zona de mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-362">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="8f6a5-363">É possível escutar uma mensagem específica por meio da função `on`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-363">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="8f6a5-364">Você pode escutar qualquer número de nomes de mensagem.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-364">You can listen to any number of message names.</span></span> <span data-ttu-id="8f6a5-365">Também é possível passar parâmetros para a mensagem, como o nome do autor e o conteúdo da mensagem recebida.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-365">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="8f6a5-366">Quando o cliente recebe a mensagem, um novo elemento `div` é criado com o nome do autor e o conteúdo da mensagem em seu atributo `innerHTML`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-366">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="8f6a5-367">A nova mensagem é adicionada ao elemento principal que `div` exibe as mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-367">The new message is added to the main `div` element displaying the messages.</span></span>
+    <span data-ttu-id="8f6a5-360">SignalR habilita a troca de mensagens entre um cliente e um servidor.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-360">SignalR enables the exchange of messages between a client and a server.</span></span> <span data-ttu-id="8f6a5-361">Cada mensagem tem um nome específico.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-361">Each message has a specific name.</span></span> <span data-ttu-id="8f6a5-362">Por exemplo, mensagens com o nome `messageReceived` podem executar a lógica responsável por exibir a nova mensagem na zona de mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-362">For example, messages with the name `messageReceived` can run the logic responsible for displaying the new message in the messages zone.</span></span> <span data-ttu-id="8f6a5-363">É possível escutar uma mensagem específica por meio da função `on`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-363">Listening to a specific message can be done via the `on` function.</span></span> <span data-ttu-id="8f6a5-364">Você pode escutar qualquer número de nomes de mensagem.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-364">You can listen to any number of message names.</span></span> <span data-ttu-id="8f6a5-365">Também é possível passar parâmetros para a mensagem, como o nome do autor e o conteúdo da mensagem recebida.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-365">It's also possible to pass parameters to the message, such as the author's name and the content of the message received.</span></span> <span data-ttu-id="8f6a5-366">Quando o cliente recebe a mensagem, um novo elemento `div` é criado com o nome do autor e o conteúdo da mensagem em seu atributo `innerHTML`.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-366">Once the client receives a message, a new `div` element is created with the author's name and the message content in its `innerHTML` attribute.</span></span> <span data-ttu-id="8f6a5-367">A nova mensagem é adicionada ao elemento principal que `div` exibe as mensagens.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-367">The new message is added to the main `div` element displaying the messages.</span></span>
 
 1. <span data-ttu-id="8f6a5-368">Agora que o cliente pode receber mensagens, configure-o para enviá-las.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-368">Now that the client can receive a message, configure it to send messages.</span></span> <span data-ttu-id="8f6a5-369">Adicione o código destacado ao arquivo *src/index.ts* :</span><span class="sxs-lookup"><span data-stu-id="8f6a5-369">Add the highlighted code to the *src/index.ts* file:</span></span>
 
@@ -498,7 +498,7 @@ dotnet new web -o :::no-loc(SignalR):::WebPack
 
 # <a name="visual-studio"></a>[<span data-ttu-id="8f6a5-386">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8f6a5-386">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="8f6a5-387">Execute o Webpack no modo de *versão* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-387">Run Webpack in *release* mode.</span></span> <span data-ttu-id="8f6a5-388">Usando a janela do **console do Gerenciador de pacotes** , execute o seguinte comando na raiz do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-388">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="8f6a5-389">Se você não estiver na raiz do projeto, insira `cd :::no-loc(SignalR):::WebPack` antes de inserir o comando.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-389">If you are not in the project root, enter `cd :::no-loc(SignalR):::WebPack` before entering the command.</span></span>
+1. <span data-ttu-id="8f6a5-387">Execute o Webpack no modo de *versão* .</span><span class="sxs-lookup"><span data-stu-id="8f6a5-387">Run Webpack in *release* mode.</span></span> <span data-ttu-id="8f6a5-388">Usando a janela do **console do Gerenciador de pacotes** , execute o seguinte comando na raiz do projeto.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-388">Using the **Package Manager Console** window, run the following command in the project root.</span></span> <span data-ttu-id="8f6a5-389">Se você não estiver na raiz do projeto, insira `cd SignalRWebPack` antes de inserir o comando.</span><span class="sxs-lookup"><span data-stu-id="8f6a5-389">If you are not in the project root, enter `cd SignalRWebPack` before entering the command.</span></span>
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 

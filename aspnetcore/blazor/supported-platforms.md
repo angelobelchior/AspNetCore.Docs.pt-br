@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: plataformas com suporte'
+title: 'ASP.NET Core Blazor plataformas com suporte'
 author: guardrex
-description: 'Saiba mais sobre as plataformas com suporte para ASP.NET Core :::no-loc(Blazor)::: .'
+description: 'Saiba mais sobre as plataformas com suporte para ASP.NET Core Blazor .'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/supported-platforms
 ms.openlocfilehash: fe0734dbf6eb2647fa6c9b6f336063b9ec091139
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,13 +26,13 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054951"
 ---
-# <a name="aspnet-core-no-locblazor-supported-platforms"></a><span data-ttu-id="18b0a-103">ASP.NET Core :::no-loc(Blazor)::: plataformas com suporte</span><span class="sxs-lookup"><span data-stu-id="18b0a-103">ASP.NET Core :::no-loc(Blazor)::: supported platforms</span></span>
+# <a name="aspnet-core-no-locblazor-supported-platforms"></a><span data-ttu-id="18b0a-103">ASP.NET Core Blazor plataformas com suporte</span><span class="sxs-lookup"><span data-stu-id="18b0a-103">ASP.NET Core Blazor supported platforms</span></span>
 
 <span data-ttu-id="18b0a-104">Por [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="18b0a-104">By [Luke Latham](https://github.com/guardrex)</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="18b0a-105">:::no-loc(Blazor WebAssembly)::: e :::no-loc(Blazor Server)::: têm suporte nos navegadores mostrados na tabela a seguir.</span><span class="sxs-lookup"><span data-stu-id="18b0a-105">:::no-loc(Blazor WebAssembly)::: and :::no-loc(Blazor Server)::: are supported in the browsers shown in the following table.</span></span>
+<span data-ttu-id="18b0a-105">Blazor WebAssembly e Blazor Server têm suporte nos navegadores mostrados na tabela a seguir.</span><span class="sxs-lookup"><span data-stu-id="18b0a-105">Blazor WebAssembly and Blazor Server are supported in the browsers shown in the following table.</span></span>
 
 | <span data-ttu-id="18b0a-106">Navegador</span><span class="sxs-lookup"><span data-stu-id="18b0a-106">Browser</span></span>                          | <span data-ttu-id="18b0a-107">Versão</span><span class="sxs-lookup"><span data-stu-id="18b0a-107">Version</span></span>         |
 | -------------------------------- | --------------- |
@@ -47,7 +47,7 @@ ms.locfileid: "93054951"
 
 ::: moniker range="< aspnetcore-5.0"
 
-## :::no-loc(Blazor WebAssembly):::
+## Blazor WebAssembly
 
 | <span data-ttu-id="18b0a-117">Navegador</span><span class="sxs-lookup"><span data-stu-id="18b0a-117">Browser</span></span>                          | <span data-ttu-id="18b0a-118">Versão</span><span class="sxs-lookup"><span data-stu-id="18b0a-118">Version</span></span>               |
 | -------------------------------- | --------------------- |
@@ -60,7 +60,7 @@ ms.locfileid: "93054951"
 <span data-ttu-id="18b0a-129">&dagger;*Atual* refere-se à versão mais recente do navegador.</span><span class="sxs-lookup"><span data-stu-id="18b0a-129">&dagger;*Current* refers to the latest version of the browser.</span></span>  
 <span data-ttu-id="18b0a-130">&Dagger;O Microsoft Internet Explorer não dá suporte ao [Webassembly](https://webassembly.org).</span><span class="sxs-lookup"><span data-stu-id="18b0a-130">&Dagger;Microsoft Internet Explorer doesn't support [WebAssembly](https://webassembly.org).</span></span>
 
-## :::no-loc(Blazor Server):::
+## Blazor Server
 
 | <span data-ttu-id="18b0a-131">Navegador</span><span class="sxs-lookup"><span data-stu-id="18b0a-131">Browser</span></span>                          | <span data-ttu-id="18b0a-132">Versão</span><span class="sxs-lookup"><span data-stu-id="18b0a-132">Version</span></span>         |
 | -------------------------------- | --------------- |

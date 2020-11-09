@@ -5,17 +5,17 @@ description: Saiba como usar o ASP.NET Core APIs de proteção de dados para pro
 ms.author: riande
 ms.date: 11/12/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/using-data-protection
 ms.openlocfilehash: 1f0d42a7b12edb870481024372d75cdc9e57be21
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -36,7 +36,7 @@ ms.locfileid: "93051649"
 
 3. <span data-ttu-id="c23da-107">Chame o `Unprotect` método com os dados que você deseja voltar para o texto sem formatação.</span><span class="sxs-lookup"><span data-stu-id="c23da-107">Call the `Unprotect` method with the data you want to turn back into plain text.</span></span>
 
-<span data-ttu-id="c23da-108">A maioria das estruturas e modelos de aplicativos, como ASP.NET Core ou :::no-loc(SignalR)::: , já configura o sistema de proteção de dados e o adiciona a um contêiner de serviço que você acessa por meio de injeção de dependência.</span><span class="sxs-lookup"><span data-stu-id="c23da-108">Most frameworks and app models, such as ASP.NET Core or :::no-loc(SignalR):::, already configure the data protection system and add it to a service container you access via dependency injection.</span></span> <span data-ttu-id="c23da-109">O exemplo a seguir demonstra a configuração de um contêiner de serviço para injeção de dependência e o registro da pilha de proteção de dados, o recebimento do provedor de proteção de dados por meio de DI, a criação de um protetor e a proteção e desproteção de dados.</span><span class="sxs-lookup"><span data-stu-id="c23da-109">The following sample demonstrates configuring a service container for dependency injection and registering the data protection stack, receiving the data protection provider via DI, creating a protector and protecting then unprotecting data.</span></span>
+<span data-ttu-id="c23da-108">A maioria das estruturas e modelos de aplicativos, como ASP.NET Core ou SignalR , já configura o sistema de proteção de dados e o adiciona a um contêiner de serviço que você acessa por meio de injeção de dependência.</span><span class="sxs-lookup"><span data-stu-id="c23da-108">Most frameworks and app models, such as ASP.NET Core or SignalR, already configure the data protection system and add it to a service container you access via dependency injection.</span></span> <span data-ttu-id="c23da-109">O exemplo a seguir demonstra a configuração de um contêiner de serviço para injeção de dependência e o registro da pilha de proteção de dados, o recebimento do provedor de proteção de dados por meio de DI, a criação de um protetor e a proteção e desproteção de dados.</span><span class="sxs-lookup"><span data-stu-id="c23da-109">The following sample demonstrates configuring a service container for dependency injection and registering the data protection stack, receiving the data protection provider via DI, creating a protector and protecting then unprotecting data.</span></span>
 
 [!code-csharp[](../../security/data-protection/using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
@@ -45,4 +45,4 @@ ms.locfileid: "93051649"
 >[!TIP]
 > <span data-ttu-id="c23da-113">Instâncias do `IDataProtectionProvider` e `IDataProtector` são thread-safe para vários chamadores.</span><span class="sxs-lookup"><span data-stu-id="c23da-113">Instances of `IDataProtectionProvider` and `IDataProtector` are thread-safe for multiple callers.</span></span> <span data-ttu-id="c23da-114">É intencional que, uma vez que um componente obtenha uma referência a um `IDataProtector` por meio de uma chamada para `CreateProtector` , ele usará essa referência para várias chamadas para `Protect` e `Unprotect` .</span><span class="sxs-lookup"><span data-stu-id="c23da-114">It's intended that once a component gets a reference to an `IDataProtector` via a call to `CreateProtector`, it will use that reference for multiple calls to `Protect` and `Unprotect`.</span></span>
 >
-><span data-ttu-id="c23da-115">Uma chamada para `Unprotect` emitirá CryptographicException se a carga protegida não puder ser verificada ou decifrada.</span><span class="sxs-lookup"><span data-stu-id="c23da-115">A call to `Unprotect` will throw CryptographicException if the protected payload cannot be verified or deciphered.</span></span> <span data-ttu-id="c23da-116">Alguns componentes podem querer ignorar erros durante operações de desproteção; um componente que lê :::no-loc(cookie)::: os s de autenticação pode lidar com esse erro e tratar a solicitação como se ela tivesse nenhuma, :::no-loc(cookie)::: em vez de falhar a solicitação imediatamente.</span><span class="sxs-lookup"><span data-stu-id="c23da-116">Some components may wish to ignore errors during unprotect operations; a component which reads authentication :::no-loc(cookie):::s might handle this error and treat the request as if it had no :::no-loc(cookie)::: at all rather than fail the request outright.</span></span> <span data-ttu-id="c23da-117">Os componentes que desejam esse comportamento devem capturar especificamente CryptographicException em vez de assimilar todas as exceções.</span><span class="sxs-lookup"><span data-stu-id="c23da-117">Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.</span></span>
+><span data-ttu-id="c23da-115">Uma chamada para `Unprotect` emitirá CryptographicException se a carga protegida não puder ser verificada ou decifrada.</span><span class="sxs-lookup"><span data-stu-id="c23da-115">A call to `Unprotect` will throw CryptographicException if the protected payload cannot be verified or deciphered.</span></span> <span data-ttu-id="c23da-116">Alguns componentes podem querer ignorar erros durante operações de desproteção; um componente que lê cookie os s de autenticação pode lidar com esse erro e tratar a solicitação como se ela tivesse nenhuma, cookie em vez de falhar a solicitação imediatamente.</span><span class="sxs-lookup"><span data-stu-id="c23da-116">Some components may wish to ignore errors during unprotect operations; a component which reads authentication cookies might handle this error and treat the request as if it had no cookie at all rather than fail the request outright.</span></span> <span data-ttu-id="c23da-117">Os componentes que desejam esse comportamento devem capturar especificamente CryptographicException em vez de assimilar todas as exceções.</span><span class="sxs-lookup"><span data-stu-id="c23da-117">Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.</span></span>

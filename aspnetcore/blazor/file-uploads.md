@@ -1,22 +1,22 @@
 ---
-title: 'ASP.NET Core :::no-loc(Blazor)::: carregamentos de arquivos'
+title: 'ASP.NET Core Blazor carregamentos de arquivos'
 author: guardrex
-description: 'Saiba como carregar arquivos no :::no-loc(Blazor)::: com o componente InputFile.'
+description: 'Saiba como carregar arquivos no Blazor com o componente InputFile.'
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 ms.date: 10/27/2020
 uid: blazor/file-uploads
 ms.openlocfilehash: c0806c3a68a4d9e698925f6ec955dd2f53d7818f
@@ -26,7 +26,7 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056121"
 ---
-# <a name="aspnet-core-no-locblazor-file-uploads"></a><span data-ttu-id="46609-103">ASP.NET Core :::no-loc(Blazor)::: carregamentos de arquivos</span><span class="sxs-lookup"><span data-stu-id="46609-103">ASP.NET Core :::no-loc(Blazor)::: file uploads</span></span>
+# <a name="aspnet-core-no-locblazor-file-uploads"></a><span data-ttu-id="46609-103">ASP.NET Core Blazor carregamentos de arquivos</span><span class="sxs-lookup"><span data-stu-id="46609-103">ASP.NET Core Blazor file uploads</span></span>
 
 <span data-ttu-id="46609-104">Por [Daniel Roth](https://github.com/danroth27) e [Pranav Krishnamoorthy](https://github.com/pranavkm)</span><span class="sxs-lookup"><span data-stu-id="46609-104">By [Daniel Roth](https://github.com/danroth27) and [Pranav Krishnamoorthy](https://github.com/pranavkm)</span></span>
 
@@ -47,7 +47,7 @@ ms.locfileid: "93056121"
 
 * <span data-ttu-id="46609-115">Chame `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` no arquivo e leia a partir do fluxo retornado.</span><span class="sxs-lookup"><span data-stu-id="46609-115">Call `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` on the file and read from the returned stream.</span></span> <span data-ttu-id="46609-116">Para obter mais informações, consulte a seção [fluxos de arquivos](#file-streams) .</span><span class="sxs-lookup"><span data-stu-id="46609-116">For more information, see the [File streams](#file-streams) section.</span></span>
 * <span data-ttu-id="46609-117">O <xref:System.IO.Stream> retornado por `OpenReadStream` impõe um tamanho máximo em bytes do `Stream` que está sendo lido.</span><span class="sxs-lookup"><span data-stu-id="46609-117">The <xref:System.IO.Stream> returned by `OpenReadStream` enforces a maximum size in bytes of the `Stream` being read.</span></span> <span data-ttu-id="46609-118">Por padrão, somente arquivos menores que 524.288 KB (512 KB) de tamanho podem ser lidos antes que qualquer outra leitura resulte em uma exceção.</span><span class="sxs-lookup"><span data-stu-id="46609-118">By default, only files smaller than 524,288 KB (512 KB) in size are allowed to be read before any further reads would result in an exception.</span></span> <span data-ttu-id="46609-119">Esse limite está presente para impedir que os desenvolvedores leiam acidentalmente arquivos grandes na memória.</span><span class="sxs-lookup"><span data-stu-id="46609-119">This limit is present to prevent developers from accidentally reading large files in to memory.</span></span> <span data-ttu-id="46609-120">O `maxAllowedSize` parâmetro on `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` pode ser usado para especificar um tamanho maior, se necessário.</span><span class="sxs-lookup"><span data-stu-id="46609-120">The `maxAllowedSize` parameter on `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` can be used to specify a larger size if required.</span></span>
-* <span data-ttu-id="46609-121">Evite ler o fluxo de arquivos de entrada diretamente na memória.</span><span class="sxs-lookup"><span data-stu-id="46609-121">Avoid reading the incoming file stream directly into memory.</span></span> <span data-ttu-id="46609-122">Por exemplo, não copie bytes de arquivo em um <xref:System.IO.MemoryStream> ou leia como uma matriz de bytes.</span><span class="sxs-lookup"><span data-stu-id="46609-122">For example, don't copy file bytes into a <xref:System.IO.MemoryStream> or read as a byte array.</span></span> <span data-ttu-id="46609-123">Essas abordagens podem resultar em problemas de desempenho e segurança, especialmente no :::no-loc(Blazor Server)::: .</span><span class="sxs-lookup"><span data-stu-id="46609-123">These approaches can result in performance and security problems, especially in :::no-loc(Blazor Server):::.</span></span> <span data-ttu-id="46609-124">Em vez disso, considere copiar bytes de arquivo para um repositório externo, como um BLOB ou um arquivo no disco.</span><span class="sxs-lookup"><span data-stu-id="46609-124">Instead, consider copying file bytes to an external store, such as a a blob or a file on disk.</span></span>
+* <span data-ttu-id="46609-121">Evite ler o fluxo de arquivos de entrada diretamente na memória.</span><span class="sxs-lookup"><span data-stu-id="46609-121">Avoid reading the incoming file stream directly into memory.</span></span> <span data-ttu-id="46609-122">Por exemplo, não copie bytes de arquivo em um <xref:System.IO.MemoryStream> ou leia como uma matriz de bytes.</span><span class="sxs-lookup"><span data-stu-id="46609-122">For example, don't copy file bytes into a <xref:System.IO.MemoryStream> or read as a byte array.</span></span> <span data-ttu-id="46609-123">Essas abordagens podem resultar em problemas de desempenho e segurança, especialmente no Blazor Server .</span><span class="sxs-lookup"><span data-stu-id="46609-123">These approaches can result in performance and security problems, especially in Blazor Server.</span></span> <span data-ttu-id="46609-124">Em vez disso, considere copiar bytes de arquivo para um repositório externo, como um BLOB ou um arquivo no disco.</span><span class="sxs-lookup"><span data-stu-id="46609-124">Instead, consider copying file bytes to an external store, such as a a blob or a file on disk.</span></span>
 
 <span data-ttu-id="46609-125">Um componente que recebe um arquivo de imagem pode chamar o `RequestImageFileAsync` método de conveniência no arquivo para redimensionar os dados da imagem dentro do tempo de execução do JavaScript do navegador antes que a imagem seja transmitida para o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="46609-125">A component that receives an image file can call the `RequestImageFileAsync` convenience method on the file to resize the image data within the browser's JavaScript runtime before the image is streamed into the app.</span></span>
 
@@ -100,9 +100,9 @@ ms.locfileid: "93056121"
 
 ## <a name="file-streams"></a><span data-ttu-id="46609-133">Fluxos de arquivos</span><span class="sxs-lookup"><span data-stu-id="46609-133">File streams</span></span>
 
-<span data-ttu-id="46609-134">Em um :::no-loc(Blazor WebAssembly)::: aplicativo, os dados são transmitidos diretamente para o código .net dentro do navegador.</span><span class="sxs-lookup"><span data-stu-id="46609-134">In a :::no-loc(Blazor WebAssembly)::: app, the data is streamed directly into the .NET code within the browser.</span></span>
+<span data-ttu-id="46609-134">Em um Blazor WebAssembly aplicativo, os dados são transmitidos diretamente para o código .net dentro do navegador.</span><span class="sxs-lookup"><span data-stu-id="46609-134">In a Blazor WebAssembly app, the data is streamed directly into the .NET code within the browser.</span></span>
 
-<span data-ttu-id="46609-135">Em um :::no-loc(Blazor Server)::: aplicativo, os dados de arquivo são transmitidos pela :::no-loc(SignalR)::: conexão no código .net no servidor, pois o arquivo é lido no fluxo.</span><span class="sxs-lookup"><span data-stu-id="46609-135">In a :::no-loc(Blazor Server)::: app, the file data is streamed over the :::no-loc(SignalR)::: connection into .NET code on the server as the file is read from the stream.</span></span> <span data-ttu-id="46609-136">[`Forms.RemoteBrowserFileStreamOptions`](https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputFile/RemoteBrowserFileStreamOptions.cs) permite configurar características de upload de arquivo para :::no-loc(Blazor Server)::: .</span><span class="sxs-lookup"><span data-stu-id="46609-136">[`Forms.RemoteBrowserFileStreamOptions`](https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputFile/RemoteBrowserFileStreamOptions.cs) allows configuring file upload characteristics for :::no-loc(Blazor Server):::.</span></span>
+<span data-ttu-id="46609-135">Em um Blazor Server aplicativo, os dados de arquivo são transmitidos pela SignalR conexão no código .net no servidor, pois o arquivo é lido no fluxo.</span><span class="sxs-lookup"><span data-stu-id="46609-135">In a Blazor Server app, the file data is streamed over the SignalR connection into .NET code on the server as the file is read from the stream.</span></span> <span data-ttu-id="46609-136">[`Forms.RemoteBrowserFileStreamOptions`](https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputFile/RemoteBrowserFileStreamOptions.cs) permite configurar características de upload de arquivo para Blazor Server .</span><span class="sxs-lookup"><span data-stu-id="46609-136">[`Forms.RemoteBrowserFileStreamOptions`](https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputFile/RemoteBrowserFileStreamOptions.cs) allows configuring file upload characteristics for Blazor Server.</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="46609-137">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="46609-137">Additional resources</span></span>
 
