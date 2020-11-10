@@ -5,7 +5,7 @@ description: Saiba como criar e usar Razor componentes, incluindo como associar 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f02bc3a92b9f62eb0e3efea0cd780ad6d09bef5
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056264"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430998"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -32,11 +32,11 @@ Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
-Blazor os aplicativos são criados usando *componentes* . Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário. Os componentes são flexíveis e leves. Eles podem ser aninhados, reutilizados e compartilhados entre projetos.
+Blazor os aplicativos são criados usando *componentes*. Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário. Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário. Os componentes são flexíveis e leves. Eles podem ser aninhados, reutilizados e compartilhados entre projetos.
 
 ## <a name="component-classes"></a>Classes de componente
 
-Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML. Um componente no Blazor é conhecido formalmente como um *Razor componente* .
+Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML. Um componente no Blazor é conhecido formalmente como um *Razor componente*.
 
 ### <a name="no-locrazor-syntax"></a>Sintaxe de Razor
 
@@ -556,7 +556,7 @@ No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify`
 
 Ao renderizar uma lista de elementos ou componentes e os elementos ou componentes subsequentemente mudam, o Blazor algoritmo de diferenciação do deve decidir quais elementos ou componentes anteriores podem ser retidos e como os objetos de modelo devem ser mapeados para eles. Normalmente, esse processo é automático e pode ser ignorado, mas há casos em que você talvez queira controlar o processo.
 
-Considere o seguinte exemplo:
+Considere o exemplo a seguir:
 
 ```csharp
 @foreach (var person in People)
@@ -628,12 +628,26 @@ Verifique se os valores usados para [`@key`][5] não conflitam. Se valores confl
 
 ## <a name="overwritten-parameters"></a>Parâmetros substituídos
 
-Novos valores de parâmetro são fornecidos, normalmente substituindo os existentes, quando o componente pai é rerenderizado.
+A Blazor estrutura geralmente impõe uma atribuição de parâmetro pai-para-filho segura:
 
-Considere o seguinte `Expander` componente que:
+* Os parâmetros não são substituídos inesperadamente.
+* Os efeitos colaterais são minimizados. Por exemplo, renderizações adicionais são evitadas porque podem criar loops de renderização infinitos.
+
+Um componente filho recebe novos valores de parâmetro que possivelmente substituem os valores existentes quando o componente pai é rerenderizado. Accidentially substituir valores de parâmetro em um componente filho geralmente ocorre ao desenvolver o componente com um ou mais parâmetros associados a dados e o desenvolvedor grava diretamente em um parâmetro no filho:
+
+* O componente filho é renderizado com um ou mais valores de parâmetro do componente pai.
+* O filho grava diretamente no valor de um parâmetro.
+* O componente pai rerenderiza e substitui o valor do parâmetro do filho.
+
+O potencial para substituir valores de parâmetros também se estende aos setters de Propriedade do componente filho.
+
+**Nossas diretrizes gerais não criam componentes que gravam diretamente em seus próprios parâmetros.**
+
+Considere o seguinte componente com falha `Expander` que:
 
 * Renderiza conteúdo filho.
-* Alterna a exibição de conteúdo filho com um parâmetro de componente.
+* Alterna a exibição de conteúdo filho com um parâmetro de componente ( `Expanded` ).
+* O componente grava diretamente no `Expanded` parâmetro, que demonstra o problema com parâmetros substituídos e deve ser evitado.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -685,7 +699,7 @@ O seguinte componente revisado `Expander` :
 
 * Aceita o `Expanded` valor do parâmetro de componente do pai.
 * Atribui o valor do parâmetro de componente a um *campo privado* ( `expanded` ) no [evento OnInitialized](xref:blazor/components/lifecycle#component-initialization-methods).
-* Usa o campo particular para manter seu estado de alternância interno.
+* Usa o campo particular para manter seu estado de alternância interno, que demonstra como evitar gravar diretamente em um parâmetro.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -719,6 +733,8 @@ O seguinte componente revisado `Expander` :
     }
 }
 ```
+
+Para obter informações adicionais, consulte [ Blazor erro de associação bidirecional (dotNet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599). 
 
 ## <a name="apply-an-attribute"></a>Aplicar um atributo
 

@@ -5,7 +5,7 @@ description: Saiba como reduzir as ameaças à segurança para os Blazor Server 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/05/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 5c3a002a8e3df030d53c8625597342a68ca0d4b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0e8b26110a970526b5f6306da236a92f52e64604
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055406"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430946"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Diretrizes de mitigação de ameaças para ASP.NET Core Blazor Server
 
@@ -61,7 +61,7 @@ Recursos externos à Blazor estrutura, como bancos de dados e identificadores de
 
 O esgotamento de CPU pode ocorrer quando um ou mais clientes forçam o servidor a executar um trabalho intensivo de CPU.
 
-Por exemplo, considere um Blazor Server aplicativo que calcula um *número Fibonnacci* . Um número Fibonnacci é produzido de uma sequência Fibonnacci, em que cada número na sequência é a soma dos dois números anteriores. A quantidade de trabalho necessária para alcançar a resposta depende do comprimento da sequência e do tamanho do valor inicial. Se o aplicativo não coloca limites na solicitação de um cliente, os cálculos com uso intensivo de CPU podem dominar o tempo da CPU e diminuir o desempenho de outras tarefas. O consumo excessivo de recursos é uma preocupação de segurança que afeta a disponibilidade.
+Por exemplo, considere um Blazor Server aplicativo que calcula um *número Fibonnacci*. Um número Fibonnacci é produzido de uma sequência Fibonnacci, em que cada número na sequência é a soma dos dois números anteriores. A quantidade de trabalho necessária para alcançar a resposta depende do comprimento da sequência e do tamanho do valor inicial. Se o aplicativo não coloca limites na solicitação de um cliente, os cálculos com uso intensivo de CPU podem dominar o tempo da CPU e diminuir o desempenho de outras tarefas. O consumo excessivo de recursos é uma preocupação de segurança que afeta a disponibilidade.
 
 O esgotamento da CPU é uma preocupação para todos os aplicativos voltados ao público. Em aplicativos Web regulares, solicitações e conexões atingiram o tempo limite como uma proteção, mas Blazor Server os aplicativos não fornecem as mesmas garantias. Blazor Server os aplicativos devem incluir verificações e limites apropriados antes de executar um trabalho potencialmente intensivo de CPU.
 
@@ -77,7 +77,7 @@ Considere o cenário a seguir para manter e exibir uma lista de itens que perten
 * Se um esquema de paginação não for usado para renderização, o servidor usará memória adicional para objetos que não estão visíveis na interface do usuário. Sem um limite para o número de itens, as demandas de memória podem esgotar a memória disponível do servidor. Para evitar esse cenário, use uma das seguintes abordagens:
   * Use listas paginadas ao renderizar.
   * Exiba apenas os primeiros 100 a 1.000 itens e exija que o usuário insira critérios de pesquisa para localizar itens além dos itens exibidos.
-  * Para um cenário de renderização mais avançado, implemente listas ou grades que dão suporte à *virtualização* . Usando a virtualização, as listas só renderizam um subconjunto de itens visíveis no momento para o usuário. Quando o usuário interage com a barra de rolagem na interface do usuário, o componente renderiza somente os itens necessários para exibição. Os itens que atualmente não são necessários para exibição podem ser mantidos no armazenamento secundário, que é a abordagem ideal. Itens não exibidos também podem ser mantidos na memória, o que é menos ideal.
+  * Para um cenário de renderização mais avançado, implemente listas ou grades que dão suporte à *virtualização*. Usando a virtualização, as listas só renderizam um subconjunto de itens visíveis no momento para o usuário. Quando o usuário interage com a barra de rolagem na interface do usuário, o componente renderiza somente os itens necessários para exibição. Os itens que atualmente não são necessários para exibição podem ser mantidos no armazenamento secundário, que é a abordagem ideal. Itens não exibidos também podem ser mantidos na memória, o que é menos ideal.
 
 Blazor Server os aplicativos oferecem um modelo de programação semelhante a outras estruturas de interface do usuário para aplicativos com estado, como WPF, Windows Forms ou Blazor WebAssembly . A principal diferença é que, em várias das estruturas da interface do usuário, a memória consumida pelo aplicativo pertence ao cliente e afeta apenas esse cliente individual. Por exemplo, um Blazor WebAssembly aplicativo é executado inteiramente no cliente e usa apenas recursos de memória do cliente. No Blazor Server cenário, a memória consumida pelo aplicativo pertence ao servidor e é compartilhada entre clientes na instância do servidor.
 
@@ -101,9 +101,12 @@ Por padrão, não há limite para o número de conexões por usuário para um Bl
     * Exigir autenticação para se conectar ao aplicativo e controlar as sessões ativas por usuário.
     * Rejeite novas sessões após atingir um limite.
     * Conexões de WebSocket de proxy para um aplicativo por meio do uso de um proxy, como o [ SignalR serviço do Azure](/azure/azure-signalr/signalr-overview) que multiplexa conexões de clientes para um aplicativo. Isso fornece um aplicativo com maior capacidade de conexão do que um único cliente pode estabelecer, impedindo que um cliente esgotasse as conexões com o servidor.
-  * No nível do servidor: Use um proxy/gateway na frente do aplicativo. Por exemplo, a [porta frontal do Azure](/azure/frontdoor/front-door-overview) permite que você defina, gerencie e monitore o roteamento global do tráfego da Web para um aplicativo.
+  * No nível do servidor: Use um proxy/gateway na frente do aplicativo. Por exemplo, a [porta frontal do Azure](/azure/frontdoor/front-door-overview) permite que você defina, gerencie e monitore o roteamento global do tráfego da Web para um aplicativo e funciona quando os Blazor Server aplicativos são configurados para usar a sondagem longa.
+  
+    > [!NOTE]
+    > Embora a sondagem longa tenha suporte para Blazor Server aplicativos, [o WebSocket é o protocolo de transporte recomendado](xref:blazor/host-and-deploy/server#azure-signalr-service). A [porta frontal do Azure](/azure/frontdoor/front-door-overview) não dá suporte a WebSockets no momento, mas o suporte para WebSocket está em consideração para uma versão futura do serviço.
 
-## <a name="denial-of-service-dos-attacks"></a>Ataques de negação de serviço (DoS)
+## <a name="denial-of-service-dos-attacks"></a>Ataques de DoS (negação de serviço)
 
 Ataques de DoS (negação de serviço) envolvem um cliente que está fazendo com que o servidor esgotasse um ou mais de seus recursos, tornando o aplicativo indisponível. Blazor Server os aplicativos incluem alguns limites padrão e contam com outros ASP.NET Core e SignalR limites para proteger contra ataques de dos que estão definidos no <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions> .
 

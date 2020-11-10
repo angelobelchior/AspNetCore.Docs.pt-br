@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 5898059d83576cd0d2af15ad61bc399cbfbe0e99
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f0aa80d092b6678131a2b7152f21ecb8e168257
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055848"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430985"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
@@ -223,7 +223,7 @@ As barras e os segmentos do caminho capturado são decodificados. Para um modelo
 
 ::: moniker range="< aspnetcore-5.0"
 
-Catch-todos os parâmetros de rota têm suporte no ASP.NET Core no .NET 5 Release Candidate 1 (RC1) ou posterior. *
+Catch-todos os parâmetros de rota têm suporte no ASP.NET Core 5,0 ou posterior.
 
 ::: moniker-end
 

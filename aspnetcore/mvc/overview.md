@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: c55421efa1fd559f462549bfaceb794d4a9c35b8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4f0e98057c03769a672ef350cc3ec724a4f7e721
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059306"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431050"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Visão geral sobre o ASP.NET Core MVC
 
@@ -270,4 +270,4 @@ Para obter mais informações, consulte <xref:mvc/compatibility-version>.
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. ( *Não é mantido ou não tem suporte da Microsoft.* )
-* <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>
+* <xref:blazor/components/prerendering-and-integration>
