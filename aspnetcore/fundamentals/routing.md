@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 5b07a2839daf190d99b2787db70998373d34cd44
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059995"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422555"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -81,7 +81,7 @@ O exemplo anterior inclui uma única *rota para* o ponto de extremidade de códi
 
 <a name="endpoint"></a>
 
-O `MapGet` método é usado para definir um **ponto de extremidade** . Um ponto de extremidade é algo que pode ser:
+O `MapGet` método é usado para definir um **ponto de extremidade**. Um ponto de extremidade é algo que pode ser:
 
 * Selecionado, correspondendo à URL e ao método HTTP.
 * Executado, executando o delegado.
@@ -97,7 +97,7 @@ O exemplo a seguir mostra o roteamento com um modelo de rota mais sofisticado:
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/RouteTemplateStartup.cs?name=snippet)]
 
-A cadeia de caracteres `/hello/{name:alpha}` é um **modelo de rota** . Ele é usado para configurar como o ponto de extremidade é correspondido. Nesse caso, o modelo corresponde a:
+A cadeia de caracteres `/hello/{name:alpha}` é um **modelo de rota**. Ele é usado para configurar como o ponto de extremidade é correspondido. Nesse caso, o modelo corresponde a:
 
 * Uma URL como `/hello/Ryan`
 * Qualquer caminho de URL que comece com `/hello/` seguido por uma sequência de caracteres alfabéticos.  `:alpha` aplica uma restrição de rota que corresponde apenas a caracteres alfabéticos. As [restrições de rota](#route-constraint-reference) são explicadas posteriormente neste documento.
@@ -210,7 +210,7 @@ O exemplo anterior demonstra dois conceitos importantes:
 
 O código anterior mostra um exemplo de um middleware personalizado que dá suporte a políticas por ponto de extremidade. O middleware grava um *log de auditoria* de acesso a dados confidenciais no console. O middleware pode ser configurado para *auditar* um ponto de extremidade com os `AuditPolicyAttribute` metadados. Este exemplo demonstra um padrão *de aceitação* em que somente os pontos de extremidade marcados como confidenciais são auditados. É possível definir essa lógica na ordem inversa, auditar tudo que não está marcado como seguro, por exemplo. O sistema de metadados do ponto de extremidade é flexível. Essa lógica poderia ser projetada de qualquer forma adequada ao caso de uso.
 
-O código de exemplo anterior destina-se a demonstrar os conceitos básicos dos pontos de extremidade. **O exemplo não se destina ao uso em produção** . Uma versão mais completa de um middleware de *log de auditoria* seria:
+O código de exemplo anterior destina-se a demonstrar os conceitos básicos dos pontos de extremidade. **O exemplo não se destina ao uso em produção**. Uma versão mais completa de um middleware de *log de auditoria* seria:
 
 * Faça logon em um arquivo ou banco de dados.
 * Inclua detalhes como o usuário, o endereço IP, o nome do ponto de extremidade confidencial e muito mais.
@@ -230,7 +230,7 @@ O exemplo de código a seguir contrasta usando o middleware com o uso de roteame
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/TerminalMiddlewareStartup.cs?name=snippet)]
 
-O estilo de middleware mostrado com o `Approach 1:` é **middleware de terminal** . Ele é chamado de middleware de terminal porque faz uma operação de correspondência:
+O estilo de middleware mostrado com o `Approach 1:` é **middleware de terminal**. Ele é chamado de middleware de terminal porque faz uma operação de correspondência:
 
 * A operação de correspondência no exemplo anterior é `Path == "/"` para o middleware e `Path == "/Movie"` para o roteamento.
 * Quando uma correspondência é bem-sucedida, ela executa algumas funcionalidades e retorna, em vez de invocar o `next` middleware.
@@ -350,7 +350,7 @@ A [precedência de modelo de rota](https://github.com/dotnet/aspnetcore/blob/mas
 * Evita a necessidade de ajustar a ordem dos pontos de extremidade em casos comuns.
 * Tenta corresponder às expectativas de senso comum de comportamento de roteamento.
 
-Por exemplo, considere modelos `/Products/List` e `/Products/{id}` . Seria razoável pressupor que `/Products/List` seja uma correspondência melhor do que `/Products/{id}` para o caminho da URL `/Products/List` . O funciona porque o segmento literal `/List` é considerado com precedência melhor do que o segmento de parâmetro `/{id}` .
+Por exemplo, considere modelos `/Products/List` e `/Products/{id}` . Seria razoável pressupor que `/Products/List` seja uma correspondência melhor do que `/Products/{id}` para o caminho da URL `/Products/List` . Isso funciona porque o segmento literal `/List` é considerado com precedência melhor do que o segmento de parâmetro `/{id}` .
 
 Os detalhes de como a precedência funcionam são acoplados a como os modelos de rota são definidos:
 
@@ -373,7 +373,7 @@ Geração de URL:
 
 O roteamento de ponto de extremidade inclui a <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API. `LinkGenerator` é um serviço singleton disponível de [di](xref:fundamentals/dependency-injection). A `LinkGenerator` API pode ser usada fora do contexto de uma solicitação em execução. [MVC. IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper) e cenários que dependem <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> , como [auxiliares de marca](xref:mvc/views/tag-helpers/intro), auxiliares de HTML e resultados de [ação](xref:mvc/controllers/actions), usam a `LinkGenerator` API internamente para fornecer recursos de geração de link.
 
-O gerador de link é respaldado pelo conceito de um **endereço** e **esquemas de endereço** . Um esquema de endereço é uma maneira de determinar os pontos de extremidade que devem ser considerados para a geração de link. Por exemplo, os valores de rota e de nome da rota muitos usuários estão familiarizados com os controladores e Razor as páginas são implementados como um esquema de endereço.
+O gerador de link é respaldado pelo conceito de um **endereço** e **esquemas de endereço**. Um esquema de endereço é uma maneira de determinar os pontos de extremidade que devem ser considerados para a geração de link. Por exemplo, os valores de rota e de nome da rota muitos usuários estão familiarizados com os controladores e Razor as páginas são implementados como um esquema de endereço.
 
 O gerador de link pode vincular a controladores e Razor páginas por meio dos seguintes métodos de extensão:
 
@@ -393,7 +393,7 @@ Os `GetPath*` métodos são mais semelhantes a `Url.Action` e `Url.Page` , no qu
 
 Os métodos fornecidos pelo <xref:Microsoft.AspNetCore.Routing.LinkGenerator> dão suporte a funcionalidades de geração de link padrão para qualquer tipo de endereço. A maneira mais conveniente de usar o link Generator é por meio de métodos de extensão que executam operações para um tipo de endereço específico:
 
-| Método de extensão | Descrição |
+| Método de extensão | DESCRIÇÃO |
 | ---------------- | ----------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | Gera um URI com um caminho absoluto com base nos valores fornecidos. |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | Gera um URI absoluto com base nos valores fornecidos.             |
@@ -569,12 +569,12 @@ As expressões regulares usadas no roteamento geralmente começam com o `^` cara
 
 | Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
-| `^[a-z]{2}$` | hello     | No    | Confira `^` e `$` acima |
-| `^[a-z]{2}$` | 123abc456 | No    | Confira `^` e `$` acima |
+| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
+| `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
+| `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
 Para saber mais sobre a sintaxe de expressões regulares, confira [Expressões regulares do .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -697,7 +697,7 @@ A função do esquema de endereço é fazer a associação entre o endereço e o
 
 ### <a name="ambient-values-and-explicit-values"></a>Valores de ambiente e valores explícitos
 
-Da solicitação atual, o roteamento acessa os valores de rota da solicitação atual `HttpContext.Request.RouteValues` . Os valores associados à solicitação atual são chamados de **valores de ambiente** . Para fins de clareza, a documentação refere-se aos valores de rota passados para métodos como **valores explícitos** .
+Da solicitação atual, o roteamento acessa os valores de rota da solicitação atual `HttpContext.Request.RouteValues` . Os valores associados à solicitação atual são chamados de **valores de ambiente**. Para fins de clareza, a documentação refere-se aos valores de rota passados para métodos como **valores explícitos**.
 
 O exemplo a seguir mostra valores de ambiente e valores explícitos. Ele fornece valores de ambiente da solicitação atual e valores explícitos: `{ id = 17, }` :
 
@@ -757,7 +757,7 @@ Depois que o conjunto de pontos de extremidade candidatos for encontrado, o algo
 * Processa os pontos de extremidade iterativamente.
 * Retorna o primeiro resultado bem-sucedido.
 
-A primeira etapa nesse processo é chamada de **invalidação de valor de rota** .  Invalidação de valor de rota é o processo pelo qual o roteamento decide quais valores de rota dos valores de ambiente devem ser usados e quais devem ser ignorados. Cada valor de ambiente é considerado e combinado com os valores explícitos ou ignorado.
+A primeira etapa nesse processo é chamada de **invalidação de valor de rota**.  Invalidação de valor de rota é o processo pelo qual o roteamento decide quais valores de rota dos valores de ambiente devem ser usados e quais devem ser ignorados. Cada valor de ambiente é considerado e combinado com os valores explícitos ou ignorado.
 
 A melhor maneira de pensar sobre a função de valores de ambiente é que eles tentam salvar os desenvolvedores de aplicativos digitando, em alguns casos comuns. Tradicionalmente, os cenários em que os valores de ambiente são úteis estão relacionados ao MVC:
 
@@ -808,7 +808,7 @@ Em seguida, os **valores aceitos** podem ser usados para expandir o modelo de ro
 
 Valores explicitamente fornecidos que não correspondem a um segmento da rota são adicionados à cadeia de caracteres de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
+| Valores de ambiente                     | Valores explícitos                        | Result                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |
@@ -1072,7 +1072,7 @@ O roteamento está conectado ao pipeline do [middleware](xref:fundamentals/middl
 
 ### <a name="url-matching"></a>Correspondência de URL
 
-A correspondência de URL é o processo pelo qual o roteamento expede uma solicitação de entrada para um *ponto de extremidade* . Esse processo se baseia nos dados do caminho da URL, mas pode ser estendido para considerar qualquer dado na solicitação. A capacidade de expedir solicitações para manipuladores separados é fundamental para dimensionar o tamanho e a complexidade de um aplicativo.
+A correspondência de URL é o processo pelo qual o roteamento expede uma solicitação de entrada para um *ponto de extremidade*. Esse processo se baseia nos dados do caminho da URL, mas pode ser estendido para considerar qualquer dado na solicitação. A capacidade de expedir solicitações para manipuladores separados é fundamental para dimensionar o tamanho e a complexidade de um aplicativo.
 
 O sistema de roteamento no roteamento de ponto de extremidade é responsável por todas as decisões de expedição. Como o middleware aplica políticas com base no ponto de extremidade selecionado, é importante que qualquer decisão que possa afetar a expedição ou a aplicação de políticas de segurança seja feita dentro do sistema de roteamento.
 
@@ -1092,7 +1092,7 @@ Geração de URL é o processo pelo qual o roteamento pode criar um caminho de U
 
 O roteamento de ponto de extremidade inclui a API de Gerador de Link (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>). <xref:Microsoft.AspNetCore.Routing.LinkGenerator> é um serviço singleton que pode ser recuperado de [di](xref:fundamentals/dependency-injection). A API pode ser usada fora do contexto de uma solicitação em execução. <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> do MVC e cenários que dependem de <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, como [Auxiliares de Marcação](xref:mvc/views/tag-helpers/intro), Auxiliares de HTML e [Resultados da Ação](xref:mvc/controllers/actions), usam o gerador de link para fornecer funcionalidades de geração de link.
 
-O gerador de link é respaldado pelo conceito de um *endereço* e *esquemas de endereço* . Um esquema de endereço é uma maneira de determinar os pontos de extremidade que devem ser considerados para a geração de link. Por exemplo, os valores de rota e de nome da rota muitos usuários estão familiarizados com o MVC/ Razor páginas são implementados como um esquema de endereço.
+O gerador de link é respaldado pelo conceito de um *endereço* e *esquemas de endereço*. Um esquema de endereço é uma maneira de determinar os pontos de extremidade que devem ser considerados para a geração de link. Por exemplo, os valores de rota e de nome da rota muitos usuários estão familiarizados com o MVC/ Razor páginas são implementados como um esquema de endereço.
 
 O gerador de link pode vincular as Razor ações e as páginas do MVC/páginas por meio dos seguintes métodos de extensão:
 
@@ -1112,7 +1112,7 @@ Os métodos `GetPath*` são mais semelhantes a `Url.Action` e `Url.Page`, pois g
 
 Os métodos fornecidos pelo <xref:Microsoft.AspNetCore.Routing.LinkGenerator> dão suporte a funcionalidades de geração de link padrão para qualquer tipo de endereço. A maneira mais conveniente usar o gerador de link é por meio de métodos de extensão que executam operações para um tipo de endereço específico.
 
-| Método de extensão   | Descrição                                                         |
+| Método de extensão   | DESCRIÇÃO                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | Gera um URI com um caminho absoluto com base nos valores fornecidos. |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | Gera um URI absoluto com base nos valores fornecidos.             |
@@ -1391,7 +1391,7 @@ Padrões de URL que tentam capturar um nome de arquivo com uma extensão de arqu
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Você pode usar um asterisco (`*`) ou um asterisco duplo (`**`) como um prefixo para um parâmetro de rota para associá-lo ao restante do URI. Eles são chamados de parâmetros *catch-all* . Por exemplo, `blog/{**slug}` corresponde a qualquer URI que começa com `/blog` e tem qualquer valor depois dele, que é atribuído ao valor de rota `slug`. Os parâmetros catch-all também podem corresponder à cadeia de caracteres vazia.
+Você pode usar um asterisco (`*`) ou um asterisco duplo (`**`) como um prefixo para um parâmetro de rota para associá-lo ao restante do URI. Eles são chamados de parâmetros *catch-all*. Por exemplo, `blog/{**slug}` corresponde a qualquer URI que começa com `/blog` e tem qualquer valor depois dele, que é atribuído ao valor de rota `slug`. Os parâmetros catch-all também podem corresponder à cadeia de caracteres vazia.
 
 O parâmetro catch-all faz o escape dos caracteres corretos quando a rota é usada para gerar uma URL, incluindo os caracteres separadores de caminho (`/`). Por exemplo, a rota `foo/{*path}` com valores de rota `{ path = "my/path" }` gera `foo/my%2Fpath`. Observe o escape da barra invertida. Para fazer a viagem de ida e volta dos caracteres separadores de caminho, use o prefixo do parâmetro da rota `**`. A rota `foo/{**path}` com `{ path = "my/path" }` gera `foo/my/path`.
 
@@ -1434,7 +1434,7 @@ As seguintes palavras-chave são nomes reservados e não podem ser usadas como n
 As restrições de rota são executadas quando ocorre uma correspondência com a URL de entrada e é criado um token do caminho da URL em valores de rota. Em geral, as restrições da rota inspecionam o valor de rota associado por meio do modelo de rota e tomam uma decisão do tipo "sim/não" sobre se o valor é aceitável ou não. Algumas restrições da rota usam dados fora do valor de rota para considerar se a solicitação pode ser encaminhada. Por exemplo, a <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> pode aceitar ou rejeitar uma solicitação de acordo com o verbo HTTP. As restrições são usadas em solicitações de roteamento e na geração de link.
 
 > [!WARNING]
-> Não use restrições para a **validação de entrada** . Se as restrições forem usadas para a **validação de entrada** , uma entrada inválida resultará em uma resposta *404 – Não Encontrado* , em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
+> Não use restrições para a **validação de entrada**. Se as restrições forem usadas para a **validação de entrada** , uma entrada inválida resultará em uma resposta *404 – Não Encontrado* , em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
 
 A tabela a seguir demonstra restrições de rota de exemplo e seu comportamento esperado.
 
@@ -1490,12 +1490,12 @@ As expressões regulares usadas no roteamento geralmente começam com o `^` cara
 
 | Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
-| `^[a-z]{2}$` | hello     | No    | Confira `^` e `$` acima |
-| `^[a-z]{2}$` | 123abc456 | No    | Confira `^` e `$` acima |
+| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
+| `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
+| `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
 Para saber mais sobre a sintaxe de expressões regulares, confira [Expressões regulares do .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -1567,13 +1567,13 @@ O exemplo a seguir mostra como gerar um link para uma rota com base em um dicion
 
 O <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> gerado no final do exemplo anterior é `/package/create/123`. O dicionário fornece os valores de rota `operation` e `id` do modelo "Rastrear rota do pacote", `package/{operation}/{id}`. Para obter detalhes, consulte o código de exemplo na seção [Usar o middleware de roteamento](#use-routing-middleware) ou no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-O segundo parâmetro para o construtor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> é uma coleção de *valores de ambiente* . Os valores de ambiente são convenientes de serem usados porque limitam o número de valores que um desenvolvedor precisa especificar em um contexto de solicitação. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Na ação `About` de um aplicativo ASP.NET Core MVC do `HomeController`, não é necessário especificar o valor de rota do controlador a ser vinculado à ação `Index` – o valor de ambiente `Home` é usado.
+O segundo parâmetro para o construtor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> é uma coleção de *valores de ambiente*. Os valores de ambiente são convenientes de serem usados porque limitam o número de valores que um desenvolvedor precisa especificar em um contexto de solicitação. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Na ação `About` de um aplicativo ASP.NET Core MVC do `HomeController`, não é necessário especificar o valor de rota do controlador a ser vinculado à ação `Index` – o valor de ambiente `Home` é usado.
 
 Os valores de ambiente que não correspondem a um parâmetro são ignorados. Os valores de ambiente também são ignorados quando um valor fornecido explicitamente substitui o valor de ambiente. A correspondência ocorre da esquerda para a direita na URL.
 
 Valores fornecidos explicitamente, mas que não correspondem a um segmento da rota, são adicionados à cadeia de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
+| Valores de ambiente                     | Valores explícitos                        | Result                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |
@@ -1630,7 +1630,7 @@ O suporte à geração de URL permite que o aplicativo seja desenvolvido sem har
 
 O roteamento usa implementações de rotas do <xref:Microsoft.AspNetCore.Routing.IRouter> para:
 
-* Mapear solicitações de entrada para *manipuladores de rotas* .
+* Mapear solicitações de entrada para *manipuladores de rotas*.
 * Gerar as URLs usadas nas respostas.
 
 Por padrão, um aplicativo tem uma única coleção de rotas. Quando uma solicitação é recebida, as rotas na coleção são processadas na ordem em que existem na coleção. A estrutura tenta corresponder uma URL de solicitação de entrada a uma rota na coleção chamando o método <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> em cada rota da coleção. Uma resposta pode usar o roteamento para gerar URLs (por exemplo, para redirecionamento ou links) com base nas informações de rotas e evitar URLs embutidas em código, o que ajuda na facilidade de manutenção.
@@ -1648,7 +1648,7 @@ O roteamento está conectado ao pipeline do [middleware](xref:fundamentals/middl
 
 ### <a name="url-matching"></a>Correspondência de URL
 
-Correspondência de URL é o processo pelo qual o roteamento expede uma solicitação de entrada para um *manipulador* . Esse processo se baseia nos dados do caminho da URL, mas pode ser estendido para considerar qualquer dado na solicitação. A capacidade de expedir solicitações para manipuladores separados é fundamental para dimensionar o tamanho e a complexidade de um aplicativo.
+Correspondência de URL é o processo pelo qual o roteamento expede uma solicitação de entrada para um *manipulador*. Esse processo se baseia nos dados do caminho da URL, mas pode ser estendido para considerar qualquer dado na solicitação. A capacidade de expedir solicitações para manipuladores separados é fundamental para dimensionar o tamanho e a complexidade de um aplicativo.
 
 As solicitações de entrada entram no <xref:Microsoft.AspNetCore.Builder.RouterMiddleware>, que chama o método <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> em cada rota na sequência. A instância <xref:Microsoft.AspNetCore.Routing.IRouter> escolhe se deseja *manipular* a solicitação definindo o [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) como um <xref:Microsoft.AspNetCore.Http.RequestDelegate> não nulo. Se uma rota definir um manipulador para a solicitação, o processamento de rotas será interrompido e o manipulador será invocado para processar a solicitação. Se nenhum manipulador de rotas é encontrado para processar a solicitação, o middleware transmite a solicitação para o próximo middleware no pipeline de solicitação.
 
@@ -1853,7 +1853,7 @@ Padrões de URL que tentam capturar um nome de arquivo com uma extensão de arqu
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Você pode usar o asterisco (`*`) como um prefixo para um parâmetro de rota a ser associado ao restante do URI. Isso é chamado de parâmetro *catch-all* . Por exemplo, `blog/{*slug}` corresponde a qualquer URI que começa com `/blog` e tem qualquer valor depois dele, que é atribuído ao valor de rota `slug`. Os parâmetros catch-all também podem corresponder à cadeia de caracteres vazia.
+Você pode usar o asterisco (`*`) como um prefixo para um parâmetro de rota a ser associado ao restante do URI. Isso é chamado de parâmetro *catch-all*. Por exemplo, `blog/{*slug}` corresponde a qualquer URI que começa com `/blog` e tem qualquer valor depois dele, que é atribuído ao valor de rota `slug`. Os parâmetros catch-all também podem corresponder à cadeia de caracteres vazia.
 
 O parâmetro catch-all faz o escape dos caracteres corretos quando a rota é usada para gerar uma URL, incluindo os caracteres separadores de caminho (`/`). Por exemplo, a rota `foo/{*path}` com valores de rota `{ path = "my/path" }` gera `foo/my%2Fpath`. Observe o escape da barra invertida.
 
@@ -1884,7 +1884,7 @@ Em geral, o uso de um modelo é a abordagem mais simples para o roteamento. Rest
 As restrições de rota são executadas quando ocorre uma correspondência com a URL de entrada e é criado um token do caminho da URL em valores de rota. Em geral, as restrições da rota inspecionam o valor de rota associado por meio do modelo de rota e tomam uma decisão do tipo "sim/não" sobre se o valor é aceitável ou não. Algumas restrições da rota usam dados fora do valor de rota para considerar se a solicitação pode ser encaminhada. Por exemplo, a <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> pode aceitar ou rejeitar uma solicitação de acordo com o verbo HTTP. As restrições são usadas em solicitações de roteamento e na geração de link.
 
 > [!WARNING]
-> Não use restrições para a **validação de entrada** . Se as restrições forem usadas para a **validação de entrada** , uma entrada inválida resultará em uma resposta *404 – Não Encontrado* , em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
+> Não use restrições para a **validação de entrada**. Se as restrições forem usadas para a **validação de entrada** , uma entrada inválida resultará em uma resposta *404 – Não Encontrado* , em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
 
 A tabela a seguir demonstra restrições de rota de exemplo e seu comportamento esperado.
 
@@ -1934,12 +1934,12 @@ As expressões regulares usadas no roteamento geralmente começam com o caracter
 
 | Expression   | String    | Corresponder a | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
-| `^[a-z]{2}$` | hello     | No    | Confira `^` e `$` acima |
-| `^[a-z]{2}$` | 123abc456 | No    | Confira `^` e `$` acima |
+| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
+| `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
+| `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
 
 Para saber mais sobre a sintaxe de expressões regulares, confira [Expressões regulares do .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -1973,13 +1973,13 @@ O exemplo a seguir mostra como gerar um link para uma rota com base em um dicion
 
 O <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> gerado no final do exemplo anterior é `/package/create/123`. O dicionário fornece os valores de rota `operation` e `id` do modelo "Rastrear rota do pacote", `package/{operation}/{id}`. Para obter detalhes, consulte o código de exemplo na seção [Usar o middleware de roteamento](#use-routing-middleware) ou no [aplicativo de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-O segundo parâmetro para o construtor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> é uma coleção de *valores de ambiente* . Os valores de ambiente são convenientes de serem usados porque limitam o número de valores que um desenvolvedor precisa especificar em um contexto de solicitação. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Na ação `About` de um aplicativo ASP.NET Core MVC do `HomeController`, não é necessário especificar o valor de rota do controlador a ser vinculado à ação `Index` – o valor de ambiente `Home` é usado.
+O segundo parâmetro para o construtor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> é uma coleção de *valores de ambiente*. Os valores de ambiente são convenientes de serem usados porque limitam o número de valores que um desenvolvedor precisa especificar em um contexto de solicitação. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Na ação `About` de um aplicativo ASP.NET Core MVC do `HomeController`, não é necessário especificar o valor de rota do controlador a ser vinculado à ação `Index` – o valor de ambiente `Home` é usado.
 
 Os valores de ambiente que não correspondem a um parâmetro são ignorados. Os valores de ambiente também são ignorados quando um valor fornecido explicitamente substitui o valor de ambiente. A correspondência ocorre da esquerda para a direita na URL.
 
 Valores fornecidos explicitamente, mas que não correspondem a um segmento da rota, são adicionados à cadeia de consulta. A tabela a seguir mostra o resultado do uso do modelo de rota `{controller}/{action}/{id?}`.
 
-| Valores de ambiente                     | Valores explícitos                        | Resultado                  |
+| Valores de ambiente                     | Valores explícitos                        | Result                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controlador = "Home"                | ação = "About"                       | `/Home/About`           |
 | controlador = "Home"                | controlador = "Order", ação = "About" | `/Order/About`          |

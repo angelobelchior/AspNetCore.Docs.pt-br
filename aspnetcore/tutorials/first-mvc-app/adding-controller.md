@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1851a61441ed351442f86939022319ad59d10006
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061282"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422607"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2, adicionar um controlador a um aplicativo ASP.NET Core MVC
 
@@ -40,35 +40,35 @@ O padrão de arquitetura MVC (Model-View-Controller) separa um aplicativo em tr�
 
 O padrão MVC ajuda a criar aplicativos que separam os diferentes aspectos do aplicativo (lógica de entrada, lógica de negócios e lógica da interface do usuário), ao mesmo tempo que fornece um acoplamento flexível entre esses elementos. O padrão especifica o local em que cada tipo de lógica deve estar localizado no aplicativo. A lógica da interface do usuário pertence à exibição. A lógica de entrada pertence ao controlador. A lógica de negócios pertence ao modelo. Essa separação ajuda a gerenciar a complexidade ao criar um aplicativo, porque permite que você trabalhe em um aspecto da implementação por vez, sem afetar o código de outro. Por exemplo, você pode trabalhar no código de exibição sem depender do código da lógica de negócios.
 
-Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições* .
+Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições*.
 
 ## <a name="add-a-controller"></a>Adicionar um controlador
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções** , clique com o botão direito do mouse em **controladores >** 
-   ![ menu contextual adicionar > controlador](adding-controller/_static/add_controller.png)
+* No **Gerenciador de soluções** , clique com o botão direito do mouse em **controladores > adicionar > controlador** 
+   ![ Gerenciador de soluções, clique com o botão direito do mouse em controladores > adicionar > controlador](~/tutorials/first-mvc-app/adding-controller/_static/add_controllerCopy.png)
 
-* Na caixa de diálogo **Adicionar Scaffold** , selecione **classe de controlador-vazia**
+* Na caixa de diálogo **Adicionar Scaffold** , selecione **Controlador MVC – Vazio**
 
-  ![Adicionar o controlador MVC e nomeá-lo](adding-controller/_static/ac.png)
+  ![Adicionar o controlador MVC e nomeá-lo](~/tutorials/first-mvc-app/adding-controller/_static/acCopy.png)
 
-* Na **caixa de diálogo Adicionar Controlador MVC Vazio** , insira **HelloWorldController** e selecione **ADICIONAR** .
+* Na **caixa de diálogo Adicionar Controlador MVC Vazio** , insira **HelloWorldController** e selecione **ADICIONAR**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs* .
+Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs*.
 
   ![Menu contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-No **Gerenciador de Soluções** , clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo** .
+No **Gerenciador de Soluções** , clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo**.
 ![Menu contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Selecione **ASP.NET Core** e **classe de controlador** .
+Selecione **ASP.NET Core** e **classe de controlador**.
 
-Nomeie o controlador **HelloWorldController** .
+Nomeie o controlador **HelloWorldController**.
 
 ![Adicionar o controlador MVC e nomeá-lo](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
@@ -92,7 +92,7 @@ O MVC invoca as classes do controlador (e os métodos de ação dentro delas), d
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs* .
+O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs*.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -154,35 +154,35 @@ O padrão de arquitetura MVC (Model-View-Controller) separa um aplicativo em tr�
 
 O padrão MVC ajuda a criar aplicativos que separam os diferentes aspectos do aplicativo (lógica de entrada, lógica de negócios e lógica da interface do usuário), ao mesmo tempo que fornece um acoplamento flexível entre esses elementos. O padrão especifica o local em que cada tipo de lógica deve estar localizado no aplicativo. A lógica da interface do usuário pertence à exibição. A lógica de entrada pertence ao controlador. A lógica de negócios pertence ao modelo. Essa separação ajuda a gerenciar a complexidade ao criar um aplicativo, porque permite que você trabalhe em um aspecto da implementação por vez, sem afetar o código de outro. Por exemplo, você pode trabalhar no código de exibição sem depender do código da lógica de negócios.
 
-Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições* .
+Abrangemos esses conceitos nesta série de tutoriais e mostraremos como usá-los para criar um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições*.
 
 ## <a name="add-a-controller"></a>Adicionar um controlador
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Em **Gerenciador de soluções** , clique com o botão direito do mouse em **controladores >** 
-   ![ menu contextual adicionar > controlador](adding-controller/_static/add_controller.png)
+   ![ menu contextual adicionar > controlador](~/tutorials/first-mvc-app/adding-controller/_static/add_controller.png)
 
 * Na caixa de diálogo **Adicionar Scaffold** , selecione **Controlador MVC – Vazio**
 
-  ![Adicionar o controlador MVC e nomeá-lo](adding-controller/_static/ac.png)
+  ![Adicionar o controlador MVC e nomeá-lo](~/tutorials/first-mvc-app/adding-controller/_static/ac.png)
 
-* Na **caixa de diálogo Adicionar Controlador MVC Vazio** , insira **HelloWorldController** e selecione **ADICIONAR** .
+* Na **caixa de diálogo Adicionar Controlador MVC Vazio** , insira **HelloWorldController** e selecione **ADICIONAR**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs* .
+Selecione o ícone **EXPLORER** e, em seguida, pressione Control (clique com o botão direito do mouse) **Controladores > Novo Arquivo** e nomeie o novo arquivo *HelloWorldController.cs*.
 
   ![Menu contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-No **Gerenciador de Soluções** , clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo** .
+No **Gerenciador de Soluções** , clique com o botão direito do mouse em **Controladores > Adicionar > Novo Arquivo**.
 ![Menu contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Selecione **ASP.NET Core** e **Classe do Controlador MVC** .
+Selecione **ASP.NET Core** e **Classe do Controlador MVC**.
 
-Nomeie o controlador **HelloWorldController** .
+Nomeie o controlador **HelloWorldController**.
 
 ![Adicionar o controlador MVC e nomeá-lo](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
@@ -206,7 +206,7 @@ O MVC invoca as classes do controlador (e os métodos de ação dentro delas), d
 
 `/[Controller]/[ActionName]/[Parameters]`
 
-O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs* .
+O formato de roteamento é definido no método `Configure` no arquivo *Startup.cs*.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 

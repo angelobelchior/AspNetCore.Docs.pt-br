@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: d2b3b22a94e3119712e331565cc74ffa60ada726
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 84e344aabc9171020c0117d55eaf1a95e6b768db
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050700"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422529"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Parte 8, adicionar um novo campo a um aplicativo ASP.NET Core MVC
 
@@ -43,9 +43,9 @@ Ao usar o Code First do EF para criar automaticamente um banco de dados, o Code 
 
 Adicionar uma propriedade `Rating` a *Models/Movie.cs* :
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?name=snippet)]
 
-Compilar o aplicativo
+Criar o aplicativo
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -73,7 +73,17 @@ Atualize os modelos de exibição para exibir, criar e editar a nova propriedade
 
 Edite o arquivo */Views/Movies/Index.cshtml* e adicione um campo `Rating`:
 
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Views/Movies/Index.cshtml?highlight=28-49&range=12-51)]
+
+::: moniker-end
 
 Atualize */Views/Movies/Create.cshtml* com um campo `Rating`.
 
@@ -113,7 +123,7 @@ Para este tutorial, as Migrações do Code First são usadas.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
- No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes** .
+ No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 
   ![Menu do PMC](adding-model/_static/pmc.png)
 
