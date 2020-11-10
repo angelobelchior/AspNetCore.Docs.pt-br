@@ -5,17 +5,17 @@ description: Parte 4 da série de tutoriais no ASP.NET Core MVC.
 ms.author: riande
 ms.date: 01/13/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/first-mvc-app/adding-model
 ms.openlocfilehash: fa1d79bed56f17afe69697a7e24ec200e6a0ab22
 ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
@@ -125,7 +125,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 ## <a name="register-the-database-context"></a><span data-ttu-id="37bed-155">Registrar o contexto do banco de dados</span><span class="sxs-lookup"><span data-stu-id="37bed-155">Register the database context</span></span>
 
-<span data-ttu-id="37bed-156">O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="37bed-156">ASP.NET Core is built with [dependency injection (DI)](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="37bed-157">Os serviços (como o contexto de BD do EF Core) devem ser registrados com a DI durante a inicialização do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="37bed-157">Services (such as the EF Core DB context) must be registered with DI during application startup.</span></span> <span data-ttu-id="37bed-158">Os componentes que exigem esses serviços (como :::no-loc(Razor)::: páginas) são fornecidos a esses serviços por meio de parâmetros do construtor.</span><span class="sxs-lookup"><span data-stu-id="37bed-158">Components that require these services (such as :::no-loc(Razor)::: Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="37bed-159">O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial.</span><span class="sxs-lookup"><span data-stu-id="37bed-159">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span> <span data-ttu-id="37bed-160">Nesta seção, você registra o contexto do banco de dados com o contêiner DI.</span><span class="sxs-lookup"><span data-stu-id="37bed-160">In this section, you register the database context with the DI container.</span></span>
+<span data-ttu-id="37bed-156">O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="37bed-156">ASP.NET Core is built with [dependency injection (DI)](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="37bed-157">Os serviços (como o contexto de BD do EF Core) devem ser registrados com a DI durante a inicialização do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="37bed-157">Services (such as the EF Core DB context) must be registered with DI during application startup.</span></span> <span data-ttu-id="37bed-158">Os componentes que exigem esses serviços (como Razor páginas) são fornecidos a esses serviços por meio de parâmetros do construtor.</span><span class="sxs-lookup"><span data-stu-id="37bed-158">Components that require these services (such as Razor Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="37bed-159">O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial.</span><span class="sxs-lookup"><span data-stu-id="37bed-159">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span> <span data-ttu-id="37bed-160">Nesta seção, você registra o contexto do banco de dados com o contêiner DI.</span><span class="sxs-lookup"><span data-stu-id="37bed-160">In this section, you register the database context with the DI container.</span></span>
 
 <span data-ttu-id="37bed-161">Adicione os demonstrativos do `using` a seguir à parte superior do *Startup.cs* :</span><span class="sxs-lookup"><span data-stu-id="37bed-161">Add the following `using` statements at the top of *Startup.cs* :</span></span>
 
@@ -146,17 +146,17 @@ using Microsoft.EntityFrameworkCore;
 
 ---
 
-<span data-ttu-id="37bed-165">O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="37bed-165">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="37bed-166">Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo.</span><span class="sxs-lookup"><span data-stu-id="37bed-166">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="37bed-165">O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="37bed-165">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="37bed-166">Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *appsettings.json* arquivo.</span><span class="sxs-lookup"><span data-stu-id="37bed-166">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
 
 <a name="cs"></a>
 
 ## <a name="add-a-database-connection-string"></a><span data-ttu-id="37bed-167">Adicionar uma cadeia de conexão de banco de dados</span><span class="sxs-lookup"><span data-stu-id="37bed-167">Add a database connection string</span></span>
 
-<span data-ttu-id="37bed-168">Adicione uma cadeia de conexão ao *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="37bed-168">Add a connection string to the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="37bed-168">Adicione uma cadeia de conexão ao *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="37bed-168">Add a connection string to the *appsettings.json* file:</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="37bed-169">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="37bed-169">Visual Studio</span></span>](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/:::no-loc(appsettings.json):::?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="37bed-170">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="37bed-170">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
@@ -194,7 +194,7 @@ using Microsoft.EntityFrameworkCore;
 <span data-ttu-id="37bed-186">O Visual Studio cria:</span><span class="sxs-lookup"><span data-stu-id="37bed-186">Visual Studio creates:</span></span>
 
 * <span data-ttu-id="37bed-187">Um controlador de filmes ( *Controllers/MoviesController.cs* )</span><span class="sxs-lookup"><span data-stu-id="37bed-187">A movies controller ( *Controllers/MoviesController.cs* )</span></span>
-* <span data-ttu-id="37bed-188">:::no-loc(Razor)::: exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )</span><span class="sxs-lookup"><span data-stu-id="37bed-188">:::no-loc(Razor)::: view files for Create, Delete, Details, Edit, and Index pages ( *Views/Movies/\*.cshtml* )</span></span>
+* <span data-ttu-id="37bed-188">Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )</span><span class="sxs-lookup"><span data-stu-id="37bed-188">Razor view files for Create, Delete, Details, Edit, and Index pages ( *Views/Movies/\*.cshtml* )</span></span>
 
 <span data-ttu-id="37bed-189">A criação automática desses arquivos é conhecida como *scaffolding*.</span><span class="sxs-lookup"><span data-stu-id="37bed-189">The automatic creation of these files is known as *scaffolding*.</span></span>
 
@@ -512,7 +512,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 ## <a name="register-the-database-context"></a><span data-ttu-id="37bed-332">Registrar o contexto do banco de dados</span><span class="sxs-lookup"><span data-stu-id="37bed-332">Register the database context</span></span>
 
-<span data-ttu-id="37bed-333">O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="37bed-333">ASP.NET Core is built with [dependency injection (DI)](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="37bed-334">Os serviços (como o contexto de BD do EF Core) devem ser registrados com a DI durante a inicialização do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="37bed-334">Services (such as the EF Core DB context) must be registered with DI during application startup.</span></span> <span data-ttu-id="37bed-335">Os componentes que exigem esses serviços (como :::no-loc(Razor)::: páginas) são fornecidos a esses serviços por meio de parâmetros do construtor.</span><span class="sxs-lookup"><span data-stu-id="37bed-335">Components that require these services (such as :::no-loc(Razor)::: Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="37bed-336">O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial.</span><span class="sxs-lookup"><span data-stu-id="37bed-336">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span> <span data-ttu-id="37bed-337">Nesta seção, você registra o contexto do banco de dados com o contêiner DI.</span><span class="sxs-lookup"><span data-stu-id="37bed-337">In this section, you register the database context with the DI container.</span></span>
+<span data-ttu-id="37bed-333">O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="37bed-333">ASP.NET Core is built with [dependency injection (DI)](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="37bed-334">Os serviços (como o contexto de BD do EF Core) devem ser registrados com a DI durante a inicialização do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="37bed-334">Services (such as the EF Core DB context) must be registered with DI during application startup.</span></span> <span data-ttu-id="37bed-335">Os componentes que exigem esses serviços (como Razor páginas) são fornecidos a esses serviços por meio de parâmetros do construtor.</span><span class="sxs-lookup"><span data-stu-id="37bed-335">Components that require these services (such as Razor Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="37bed-336">O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial.</span><span class="sxs-lookup"><span data-stu-id="37bed-336">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span> <span data-ttu-id="37bed-337">Nesta seção, você registra o contexto do banco de dados com o contêiner DI.</span><span class="sxs-lookup"><span data-stu-id="37bed-337">In this section, you register the database context with the DI container.</span></span>
 
 <span data-ttu-id="37bed-338">Adicione os demonstrativos do `using` a seguir à parte superior do *Startup.cs* :</span><span class="sxs-lookup"><span data-stu-id="37bed-338">Add the following `using` statements at the top of *Startup.cs* :</span></span>
 
@@ -533,17 +533,17 @@ using Microsoft.EntityFrameworkCore;
 
 ---
 
-<span data-ttu-id="37bed-342">O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="37bed-342">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="37bed-343">Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo.</span><span class="sxs-lookup"><span data-stu-id="37bed-343">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="37bed-342">O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="37bed-342">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="37bed-343">Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *appsettings.json* arquivo.</span><span class="sxs-lookup"><span data-stu-id="37bed-343">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
 
 <a name="cs"></a>
 
 ## <a name="add-a-database-connection-string"></a><span data-ttu-id="37bed-344">Adicionar uma cadeia de conexão de banco de dados</span><span class="sxs-lookup"><span data-stu-id="37bed-344">Add a database connection string</span></span>
 
-<span data-ttu-id="37bed-345">Adicione uma cadeia de conexão ao *:::no-loc(appsettings.json):::* arquivo:</span><span class="sxs-lookup"><span data-stu-id="37bed-345">Add a connection string to the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="37bed-345">Adicione uma cadeia de conexão ao *appsettings.json* arquivo:</span><span class="sxs-lookup"><span data-stu-id="37bed-345">Add a connection string to the *appsettings.json* file:</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="37bed-346">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="37bed-346">Visual Studio</span></span>](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/:::no-loc(appsettings.json):::?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="37bed-347">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="37bed-347">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
@@ -581,7 +581,7 @@ using Microsoft.EntityFrameworkCore;
 <span data-ttu-id="37bed-363">O Visual Studio cria:</span><span class="sxs-lookup"><span data-stu-id="37bed-363">Visual Studio creates:</span></span>
 
 * <span data-ttu-id="37bed-364">Um controlador de filmes ( *Controllers/MoviesController.cs* )</span><span class="sxs-lookup"><span data-stu-id="37bed-364">A movies controller ( *Controllers/MoviesController.cs* )</span></span>
-* <span data-ttu-id="37bed-365">:::no-loc(Razor)::: exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )</span><span class="sxs-lookup"><span data-stu-id="37bed-365">:::no-loc(Razor)::: view files for Create, Delete, Details, Edit, and Index pages ( *Views/Movies/\*.cshtml* )</span></span>
+* <span data-ttu-id="37bed-365">Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )</span><span class="sxs-lookup"><span data-stu-id="37bed-365">Razor view files for Create, Delete, Details, Edit, and Index pages ( *Views/Movies/\*.cshtml* )</span></span>
 
 <span data-ttu-id="37bed-366">A criação automática desses arquivos é conhecida como *scaffolding*.</span><span class="sxs-lookup"><span data-stu-id="37bed-366">The automatic creation of these files is known as *scaffolding*.</span></span>
 
@@ -860,13 +860,13 @@ return View(movie);
 
 * <span data-ttu-id="37bed-489">Uma [classe de contexto de banco de dados](xref:data/ef-mvc/intro#create-the-database-context) do Entity Framework Core ( *Data/MvcMovieContext.cs* )</span><span class="sxs-lookup"><span data-stu-id="37bed-489">An Entity Framework Core [database context class](xref:data/ef-mvc/intro#create-the-database-context) ( *Data/MvcMovieContext.cs* )</span></span>
 * <span data-ttu-id="37bed-490">Um controlador de filmes ( *Controllers/MoviesController.cs* )</span><span class="sxs-lookup"><span data-stu-id="37bed-490">A movies controller ( *Controllers/MoviesController.cs* )</span></span>
-* <span data-ttu-id="37bed-491">:::no-loc(Razor)::: exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )</span><span class="sxs-lookup"><span data-stu-id="37bed-491">:::no-loc(Razor)::: view files for Create, Delete, Details, Edit, and Index pages ( *Views/Movies/\*.cshtml* )</span></span>
+* <span data-ttu-id="37bed-491">Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )</span><span class="sxs-lookup"><span data-stu-id="37bed-491">Razor view files for Create, Delete, Details, Edit, and Index pages ( *Views/Movies/\*.cshtml* )</span></span>
 
 <span data-ttu-id="37bed-492">A criação automática do contexto de banco de dados e das exibições e métodos de ação [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (criar, ler, atualizar e excluir) é conhecida como *scaffolding*.</span><span class="sxs-lookup"><span data-stu-id="37bed-492">The automatic creation of the database context and [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (create, read, update, and delete) action methods and views is known as *scaffolding*.</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="37bed-493">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="37bed-493">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace :::no-loc(Razor):::PagesMovie.Pages_Movies rather than namespace :::no-loc(Razor):::PagesMovie.Pages.Movies
+<!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
 * <span data-ttu-id="37bed-494">Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).</span><span class="sxs-lookup"><span data-stu-id="37bed-494">Open a command window in the project directory (The directory that contains the *Program.cs* , *Startup.cs* , and *.csproj* files).</span></span>
@@ -923,7 +923,7 @@ An unhandled exception occurred while processing the request.
 SqlException: Cannot open database "MvcMovieContext-<GUID removed>" requested by the login. The login failed.
 Login failed for user 'Rick'.
 
-System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPool:::no-loc(Identity)::: identity, SqlConnectionString
+System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString
 ```
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="37bed-504">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="37bed-504">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
@@ -979,7 +979,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a><span data-ttu-id="37bed-526">Examinar o contexto registrado com a injeção de dependência</span><span class="sxs-lookup"><span data-stu-id="37bed-526">Examine the context registered with dependency injection</span></span>
 
-<span data-ttu-id="37bed-527">O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="37bed-527">ASP.NET Core is built with [dependency injection (DI)](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="37bed-528">Os serviços (como o contexto de BD do EF Core) são registrados com a DI durante a inicialização do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="37bed-528">Services (such as the EF Core DB context) are registered with DI during application startup.</span></span> <span data-ttu-id="37bed-529">Os componentes que exigem esses serviços (como :::no-loc(Razor)::: páginas) são fornecidos a esses serviços por meio de parâmetros do construtor.</span><span class="sxs-lookup"><span data-stu-id="37bed-529">Components that require these services (such as :::no-loc(Razor)::: Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="37bed-530">O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial.</span><span class="sxs-lookup"><span data-stu-id="37bed-530">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span>
+<span data-ttu-id="37bed-527">O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="37bed-527">ASP.NET Core is built with [dependency injection (DI)](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="37bed-528">Os serviços (como o contexto de BD do EF Core) são registrados com a DI durante a inicialização do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="37bed-528">Services (such as the EF Core DB context) are registered with DI during application startup.</span></span> <span data-ttu-id="37bed-529">Os componentes que exigem esses serviços (como Razor páginas) são fornecidos a esses serviços por meio de parâmetros do construtor.</span><span class="sxs-lookup"><span data-stu-id="37bed-529">Components that require these services (such as Razor Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="37bed-530">O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial.</span><span class="sxs-lookup"><span data-stu-id="37bed-530">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="37bed-531">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="37bed-531">Visual Studio</span></span>](#tab/visual-studio)
 
@@ -995,7 +995,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
 <span data-ttu-id="37bed-538">O código anterior cria uma [propriedade \<Movie> DbSet](/dotnet/api/microsoft.entityframeworkcore.dbset-1) para o conjunto de entidades.</span><span class="sxs-lookup"><span data-stu-id="37bed-538">The preceding code creates a [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) property for the entity set.</span></span> <span data-ttu-id="37bed-539">Na terminologia do Entity Framework, um conjunto de entidades normalmente corresponde a uma tabela de banco de dados.</span><span class="sxs-lookup"><span data-stu-id="37bed-539">In Entity Framework terminology, an entity set typically corresponds to a database table.</span></span> <span data-ttu-id="37bed-540">Uma entidade corresponde a uma linha da tabela.</span><span class="sxs-lookup"><span data-stu-id="37bed-540">An entity corresponds to a row in the table.</span></span>
 
-<span data-ttu-id="37bed-541">O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="37bed-541">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="37bed-542">Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *:::no-loc(appsettings.json):::* arquivo.</span><span class="sxs-lookup"><span data-stu-id="37bed-542">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *:::no-loc(appsettings.json):::* file.</span></span>
+<span data-ttu-id="37bed-541">O nome da cadeia de conexão é passado para o contexto com a chamada de um método em um objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="37bed-541">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="37bed-542">Para o desenvolvimento local, o [sistema de configuração ASP.NET Core](xref:fundamentals/configuration/index) lê a cadeia de conexão do *appsettings.json* arquivo.</span><span class="sxs-lookup"><span data-stu-id="37bed-542">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="37bed-543">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="37bed-543">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
