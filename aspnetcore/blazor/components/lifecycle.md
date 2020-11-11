@@ -5,7 +5,7 @@ description: Saiba como usar Razor métodos de ciclo de vida do componente em AS
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2020
+ms.date: 11/06/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 30dfd9e821490d016d1d2be5c4cfd56818d46655
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 08fc393160e0a7396963901e2add3b44fc7b02b9
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056368"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507989"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCiclo de vida ASP.NET Core
 
@@ -40,7 +40,7 @@ Eventos de ciclo de vida do componente:
    * Crie a instância do componente.
    * Execute a injeção de propriedade. Executar [`SetParametersAsync`](#before-parameters-are-set) .
    * Chame [`OnInitialized{Async}`](#component-initialization-methods) . Se um <xref:System.Threading.Tasks.Task> for retornado, o <xref:System.Threading.Tasks.Task> será esperado e, em seguida, o componente será renderizado. Se um <xref:System.Threading.Tasks.Task> não for retornado, processe o componente.
-1. Chame [`OnParametersSet{Async}`](#after-parameters-are-set) . Se um <xref:System.Threading.Tasks.Task> for retornado, o <xref:System.Threading.Tasks.Task> será esperado e, em seguida, o componente será renderizado. Se um <xref:System.Threading.Tasks.Task> não for retornado, processe o componente.
+1. Chame [`OnParametersSet{Async}`](#after-parameters-are-set) e processe o componente. Se um <xref:System.Threading.Tasks.Task> for retornado de `OnParametersSetAsync` , o <xref:System.Threading.Tasks.Task> será aguardado e, em seguida, o componente será renderizado novamente.
 
 ![Eventos de ciclo de vida do componente de um::: no-Loc (Razor)::: componente em::: no-Loc (mais alto):::](lifecycle/_static/lifecycle1.png)
 
@@ -182,7 +182,7 @@ protected override void OnAfterRender(bool firstRender)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> e <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> *não são chamados durante o processo de pré-processamento no servidor* . Os métodos são chamados quando o componente é renderizado interativamente após a conclusão do pré-processamento. Quando o aplicativo é renderizado:
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> e <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> *não são chamados durante o processo de pré-processamento no servidor*. Os métodos são chamados quando o componente é renderizado interativamente após a conclusão do pré-processamento. Quando o aplicativo é renderizado:
 
 1. O componente é executado no servidor para produzir alguma marcação HTML estática na resposta HTTP. Durante essa fase, <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> e <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> não são chamados.
 1. Quando `blazor.server.js` ou `blazor.webassembly.js` inicia no navegador, o componente é reiniciado em um modo de renderização interativo. Depois que um componente é reiniciado, <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> e <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> **são** chamados porque o aplicativo não está dentro da fase de pré-processamento mais.

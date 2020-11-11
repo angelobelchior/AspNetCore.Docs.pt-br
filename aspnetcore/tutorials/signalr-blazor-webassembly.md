@@ -5,7 +5,7 @@ description: Crie um aplicativo de chat que usa ASP.NET Core SignalR com Blazor 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 81cbfb692ffbd0bb6335ccef6dd10ad6c20fb334
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: afbfc44db8cb833df7a79061f9bd73052859fec2
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052689"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508169"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Usar ASP.NET Core SignalR com Blazor WebAssembly
 
@@ -49,8 +49,7 @@ No final deste tutorial, você terá um aplicativo de chat em funcionamento.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-<!-- * [Visual Studio 2019 16.8 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload -->
-* [Visual Studio 2019 16,8 ou posterior (em versão prévia)](https://visualstudio.microsoft.com/vs/preview/) com a **ASP.net e** a carga de trabalho de desenvolvimento Web
+* [Visual Studio 2019 16,8 ou posterior](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) com a **ASP.net e** a carga de trabalho de desenvolvimento Web
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -59,8 +58,7 @@ No final deste tutorial, você terá um aplicativo de chat em funcionamento.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-<!-- * [Visual Studio for Mac version 8.8 or later (in preview)](https://visualstudio.microsoft.com/vs/mac/) -->
-* [Visual Studio para Mac versão 8,8 ou posterior (em visualização)](/visualstudio/releasenotes/vs2019-mac-preview-relnotes)
+* [Visual Studio para Mac versão 8,8 ou posterior](https://visualstudio.microsoft.com/vs/mac/)
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli/)
@@ -117,15 +115,15 @@ Siga as orientações para sua escolha de ferramentas:
 
 1. Criar um novo projeto.
 
-1. Selecione **Blazor aplicativo** e selecione **Avançar** .
+1. Selecione **Blazor aplicativo** e selecione **Avançar**.
 
-1. Digite `BlazorSignalRApp` o campo **nome do projeto** . Confirme se a entrada de **local** está correta ou forneça um local para o projeto. Selecione **Criar** .
+1. Digite `BlazorSignalRApp` o campo **nome do projeto** . Confirme se a entrada de **local** está correta ou forneça um local para o projeto. Selecione **Criar**.
 
 1. Escolha o modelo de **Blazor WebAssembly aplicativo** .
 
 1. Em **avançado** , marque a caixa de seleção **ASP.NET Core hospedado** .
 
-1. Selecione **Criar** .
+1. Selecione **Criar**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -137,21 +135,21 @@ Siga as orientações para sua escolha de ferramentas:
 
 1. Em Visual Studio Code, abra a pasta do projeto do aplicativo.
 
-1. Quando a caixa de diálogo aparecer para adicionar ativos para compilar e depurar o aplicativo, selecione **Sim** . Visual Studio Code adiciona automaticamente a `.vscode` pasta com `launch.json` arquivos gerados e `tasks.json` .
+1. Quando a caixa de diálogo aparecer para adicionar ativos para compilar e depurar o aplicativo, selecione **Sim**. Visual Studio Code adiciona automaticamente a `.vscode` pasta com `launch.json` arquivos gerados e `tasks.json` .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
 1. Instale a versão mais recente do [Visual Studio para Mac](https://visualstudio.microsoft.com/vs/mac/) e execute as seguintes etapas:
 
-1. Selecione **arquivo**  >  **nova solução** ou crie um **novo** projeto na **janela iniciar** .
+1. Selecione **arquivo**  >  **nova solução** ou crie um **novo** projeto na **janela iniciar**.
 
-1. Na barra lateral, selecione **aplicativo Web e de console**  >  **App** .
+1. Na barra lateral, selecione **aplicativo Web e de console**  >  **App**.
 
-1. Escolha o modelo de **Blazor WebAssembly aplicativo** . Selecione **Avançar** .
+1. Escolha o modelo de **Blazor WebAssembly aplicativo** . Selecione **Avançar**.
 
-1. Confirme se a **autenticação** está definida como **sem autenticação** . Marque a caixa de seleção **ASP.NET Core hospedado** . Selecione **Avançar** .
+1. Confirme se a **autenticação** está definida como **sem autenticação**. Marque a caixa de seleção **ASP.NET Core hospedado** . Selecione **Avançar**.
 
-1. No campo **nome do projeto** , nomeie o aplicativo `BlazorSignalRApp` . Selecione **Criar** .
+1. No campo **nome do projeto** , nomeie o aplicativo `BlazorSignalRApp` . Selecione **Criar**.
 
    Se aparecer um prompt para confiar no certificado de desenvolvimento, confie no certificado e continue. As senhas de usuário e de conjunto de chaves são necessárias para confiar no certificado.
 
@@ -171,15 +169,15 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. Em **Gerenciador de soluções** , clique com o botão direito do mouse no `BlazorSignalRApp.Client` projeto e selecione **gerenciar pacotes NuGet** .
+1. Em **Gerenciador de soluções** , clique com o botão direito do mouse no `BlazorSignalRApp.Client` projeto e selecione **gerenciar pacotes NuGet**.
 
 1. Na caixa de diálogo **gerenciar pacotes NuGet** , confirme se a **origem do pacote** está definida como `nuget.org` .
 
 1. Com **procurar** selecionado, digite `Microsoft.AspNetCore.SignalR.Client` na caixa de pesquisa.
 
-1. Nos resultados da pesquisa, selecione o [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) pacote e selecione **instalar** .
+1. Nos resultados da pesquisa, selecione o [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) pacote e selecione **instalar**.
 
-1. Se a caixa de diálogo **Visualizar alterações** for exibida, selecione **OK** .
+1. Se a caixa de diálogo **Visualizar alterações** for exibida, selecione **OK**.
 
 1. Se a caixa de diálogo de **aceitação da licença** for exibida **, selecione aceito** se você concordar com os termos de licença.
 
@@ -193,13 +191,13 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. Na barra lateral da **solução** , clique com o botão direito do mouse no `BlazorSignalRApp.Client` projeto e selecione **gerenciar pacotes NuGet** .
+1. Na barra lateral da **solução** , clique com o botão direito do mouse no `BlazorSignalRApp.Client` projeto e selecione **gerenciar pacotes NuGet**.
 
 1. Na caixa de diálogo **gerenciar pacotes NuGet** , confirme se a lista suspensa origem está definida como `nuget.org` .
 
 1. Com **procurar** selecionado, digite `Microsoft.AspNetCore.SignalR.Client` na caixa de pesquisa.
 
-1. Nos resultados da pesquisa, marque a caixa de seleção ao lado do [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) pacote e selecione **Adicionar pacote** .
+1. Nos resultados da pesquisa, marque a caixa de seleção ao lado do [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) pacote e selecione **Adicionar pacote**.
 
 1. Se a caixa de diálogo de **aceitação da licença** for exibida, selecione **aceitar** se você concordar com os termos de licença.
 

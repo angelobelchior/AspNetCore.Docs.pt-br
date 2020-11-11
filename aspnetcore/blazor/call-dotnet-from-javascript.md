@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: 456339d46cf2991baaa27ae2a3a97a5c221fd3b0
-ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
+ms.openlocfilehash: 1de4996b18642b7a17c696a51a0d7f909179d5f1
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234394"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507779"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>Chamar métodos .NET de funções JavaScript no ASP.NET Core Blazor
 
@@ -63,7 +63,7 @@ O JavaScript servido para o cliente invoca o método .NET do C#.
 
 `wwwroot/exampleJsInterop.js`:
 
-[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
+[!code-javascript[](./common/samples/5.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
 
 Quando o **`Trigger .NET static method ReturnArrayAsync`** botão estiver selecionado, examine a saída do console nas ferramentas de desenvolvedor da Web do navegador.
 
@@ -135,17 +135,17 @@ Quando o **`Trigger .NET instance method HelloHelper.SayHello`** botão é selec
 
 `JsInteropClasses/ExampleJsInterop.cs`:
 
-[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
+[!code-csharp[](./common/samples/5.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
 
 `wwwroot/exampleJsInterop.js`:
 
-[!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
+[!code-javascript[](./common/samples/5.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
 
 O nome é passado para o `HelloHelper` Construtor de, que define a `HelloHelper.Name` propriedade. Quando a função JavaScript `sayHello` é executada, `HelloHelper.SayHello` retorna a `Hello, {Name}!` mensagem, que é gravada no console pela função JavaScript.
 
 `JsInteropClasses/HelloHelper.cs`:
 
-[!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
+[!code-csharp[](./common/samples/5.x/BlazorWebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
 
 Saída do console nas ferramentas de desenvolvedor da Web do navegador:
 
@@ -461,4 +461,3 @@ Para obter mais informações, consulte os seguintes problemas:
 
 * <xref:blazor/call-javascript-from-dotnet>
 * [`InteropComponent.razor` exemplo (dotNet/AspNetCore do repositório GitHub, Branch de lançamento 3,1)](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* [Executar grandes transferências de dados em Blazor Server aplicativos](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)

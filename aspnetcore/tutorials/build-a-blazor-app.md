@@ -5,7 +5,7 @@ description: Crie um Blazor aplicativo passo a passo.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/22/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 68a38b82f5a89365e4f345a60f1f34b697c027ed
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4d5bd977b52dd20ffb62519720106ef0a4560914
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060086"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508130"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
@@ -42,7 +42,17 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
+::: moniker range=">= aspnetcore-5.0"
+
+[!INCLUDE[](~/includes/5.0-SDK.md)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 [!INCLUDE[](~/includes/3.1-SDK.md)]
+
+::: moniker-end
 
 ## <a name="create-a-todo-list-no-locblazor-app"></a>Criar um aplicativo de lista de tarefas pendentes Blazor
 
@@ -89,32 +99,32 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    </li>
    ```
 
-1. Compile e execute o aplicativo executando o `dotnet run` comando no Shell de comando da `TodoList` pasta. Visite a nova página de Tarefas Pendentes para confirmar se o link para o componente `Todo` está funcionando.
+1. Compile e execute o aplicativo executando o `dotnet run` comando no Shell de comando da `TodoList` pasta. Visite a nova página todo em `https://localhost:5001/todo` para confirmar que o link para o `Todo` componente funciona.
 
 1. Adicione um `TodoItem.cs` arquivo à raiz do projeto (a `TodoList` pasta) para manter uma classe que representa um item de tarefas pendentes. Use o seguinte código C# para a classe `TodoItem`:
 
-   [!code-csharp[](build-a-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
+   [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
 
 1. Retornar ao `Todo` componente ( `Pages/Todo.razor` ):
 
    * Adicione um campo para os itens de tarefas pendentes em um bloco `@code`. O componente `Todo` usa esse campo para manter o estado da lista de tarefas pendentes.
    * Adicione marcação da lista não ordenada e um loop `foreach` para renderizar cada item de tarefa pendente como um item de lista (`<li>`).
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo2.razor?highlight=5-10,12-14)]
 
 1. O aplicativo requer elementos de interface do usuário para adicionar itens de tarefas à lista. Adicione uma entrada de texto (`<input>`) e um botão (`<button>`) abaixo da lista não ordenada (`<ul>...</ul>`):
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo3.razor?highlight=12-13)]
 
 1. Pare o aplicativo em execução no Shell de comando. Muitos shells de comando aceitam o comando de teclado <kbd>Ctrl</kbd> + <kbd>c</kbd> para interromper um aplicativo. Recompile e execute o aplicativo com o `dotnet run` comando. Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está conectado ao botão.
 
 1. Adicione um método `AddTodo` ao componente `Todo` e registre-o para seleções de botão usando o atributo `@onclick`. O método C# `AddTodo` é chamado quando o botão é selecionado:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo4.razor?highlight=2,7-10)]
 
 1. Para obter o título do novo item de tarefas pendentes, adicione um campo de cadeia de caracteres `newTodo` na parte superior de `@code`, bloqueie e associe-o ao valor da próxima entrada de texto usando o atributo `bind` no elemento `<input>`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo5.razor?highlight=2)]
 
    ```razor
    <input placeholder="Something todo" @bind="newTodo" />
@@ -122,13 +132,13 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
 1. Atualize o método `AddTodo` para adicionar o `TodoItem` com o título especificado à lista. Limpe o valor da entrada de texto configurando `newTodo` para uma cadeia de caracteres vazia:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo6.razor?highlight=19-26)]
 
 1. Pare o aplicativo em execução no Shell de comando. Recompile e execute o aplicativo com o `dotnet run` comando. Adicione alguns itens de tarefas à lista de tarefas para testar o novo código.
 
 1. O texto do título de cada item de tarefa pode ser editável, e uma caixa de seleção pode ajudar o usuário a manter o controle dos itens concluídos. Adicione uma entrada de caixa de seleção para cada item de tarefa pendente e associe seu valor à propriedade `IsDone`. Altere `@todo.Title` para um elemento `<input>` associado a `@todo.Title`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo9.razor?highlight=5-6)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo7.razor?highlight=5-6)]
 
 1. Para verificar se esses valores estão associados, atualize o cabeçalho `<h3>` para mostrar uma contagem do número de itens de tarefa pendente que não estão concluídos (`IsDone` é `false`).
 
@@ -138,7 +148,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
 1. O `Todo` componente concluído ( `Pages/Todo.razor` ):
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/Todo.razor)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
 
 1. Pare o aplicativo em execução no Shell de comando. Recompile e execute o aplicativo com o `dotnet run` comando. Adicione itens de tarefa pendente para testar o novo código.
 

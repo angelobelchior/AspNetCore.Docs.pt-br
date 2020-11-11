@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: ee38040a1edc8db43b8d5bf0202fd519b153ea04
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f818a0b7f1ba6d4dd6affeeba785c5e288568dd8
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056238"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507948"
 ---
 # <a name="aspnet-core-no-locblazor-templated-components"></a>ASP.NET Core Blazor componentes modelados
 
@@ -43,7 +43,7 @@ Um componente modelo é definido especificando um ou mais parâmetros de compone
 
 `TableTemplate` componente ( `TableTemplate.razor` ):
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
 Ao usar um componente modelo, os parâmetros do modelo podem ser especificados usando elementos filho que correspondem aos nomes dos parâmetros ( `TableHeader` e `RowTemplate` no exemplo a seguir):
 
@@ -122,7 +122,7 @@ Como alternativa, você pode especificar o `Context` atributo no elemento Compon
 
 Os componentes modelo são geralmente digitados genericamente. Por exemplo, um `ListViewTemplate` componente genérico ( `ListViewTemplate.razor` ) pode ser usado para renderizar `IEnumerable<T>` valores. Para definir um componente genérico, use a [`@typeparam`](xref:mvc/views/razor#typeparam) diretiva para especificar parâmetros de tipo:
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
 Ao usar componentes de tipos genéricos, o parâmetro de tipo é inferido, se possível:
 

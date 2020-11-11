@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 1f377f3be54ed8837d2857aed64c2d055ed9f582
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422581"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508117"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>O que há de novo no ASP.NET Core 5,0
 
@@ -130,7 +130,7 @@ Com o OpenAPI habilitado por padrão, a experiência de inicialização do aplic
 
 ## Blazor
 
-### <a name="performance-improvements"></a>Aprimoramentos de desempenho
+### <a name="performance-improvements"></a>Melhorias de desempenho
 
 Para o .NET 5, fizemos melhorias significativas Blazor WebAssembly no desempenho do tempo de execução com um foco específico em processamento de interface do usuário e SERIALIZAÇÃO JSON complexos. Em nossos testes de desempenho, Blazor WebAssembly no .NET 5 é de duas a três vezes mais rápida para a maioria dos cenários. Para obter mais informações, consulte [blog do ASP.net: atualizações do ASP.NET Core no .NET 5 Release Candidate 1](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-5-release-candidate-1/#blazor-webassembly-performance-improvements).
 
@@ -328,7 +328,7 @@ O exemplo a seguir mostra como especificar o ponto de extremidade específico us
 
 Indicação de Nome de Servidor (SNI) é uma extensão de TLS para incluir um domínio virtual como parte da negociação SSL. O que isso significa efetivamente é que o nome de domínio virtual ou um nome de host pode ser usado para identificar o ponto de extremidade de rede.
 
-## <a name="performance-improvements"></a>Aprimoramentos de desempenho
+## <a name="performance-improvements"></a>Melhorias de desempenho
 
 ### <a name="http2"></a>HTTP/2
 
@@ -410,13 +410,14 @@ O formato padrão para <xref:System.Diagnostics.Activity?displayProperty=fullNam
 
 ### <a name="frombodyattribute"></a>FromBodyAttribute
 
-<xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute> o tem suporte para configurar uma opção que permite que esses parâmetros ou propriedades sejam considerados opcionais:
+<xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute> Agora dá suporte à configuração de uma opção que permite que esses parâmetros ou propriedades sejam considerados opcionais:
 
 ```csharp
 public IActionResult Post([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)]
-                           MyModel model) {
-     ...
-     }
+                          MyModel model)
+{
+    ...
+}
 ```
 
 ## <a name="miscellaneous-improvements"></a>Aprimoramentos diversos

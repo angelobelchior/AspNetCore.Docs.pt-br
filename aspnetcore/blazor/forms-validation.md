@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: cd613b2b76b8e876786988fdcefc0e7275d3bf53
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: fe232b40a2255732dd375cc266937576d5b2d5d9
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056056"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507818"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor formulários e validação
 
@@ -71,7 +71,7 @@ No exemplo anterior:
 
 * O formulário valida a entrada do usuário no `name` campo usando a validação definida no `ExampleModel` tipo. O modelo é criado no bloco do componente `@code` e mantido em um campo privado ( `exampleModel` ). O campo é atribuído ao `Model` atributo do `<EditForm>` elemento.
 * As <xref:Microsoft.AspNetCore.Components.Forms.InputText> ligações do componente `@bind-Value` :
-  * A propriedade do modelo ( `exampleModel.Name` ) para a <xref:Microsoft.AspNetCore.Components.Forms.InputText> Propriedade do componente `Value` . Para obter mais informações sobre associação de propriedades, consulte <xref:blazor/components/data-binding#parent-to-child-binding-with-component-parameters> .
+  * A propriedade do modelo ( `exampleModel.Name` ) para a <xref:Microsoft.AspNetCore.Components.Forms.InputText> Propriedade do componente `Value` . Para obter mais informações sobre associação de propriedades, consulte <xref:blazor/components/data-binding#binding-with-component-parameters> .
   * Um delegado de evento de alteração para a <xref:Microsoft.AspNetCore.Components.Forms.InputText> Propriedade do componente `ValueChanged` .
 * O <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> [componente do validador](#validator-components) anexa o suporte à validação usando anotações de dados.
 * O <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> componente resume as mensagens de validação.
@@ -225,7 +225,7 @@ O formulário a seguir valida a entrada do usuário usando a validação definid
 
 O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> cria um <xref:Microsoft.AspNetCore.Components.Forms.EditContext> como um [valor em cascata](xref:blazor/components/cascading-values-and-parameters) que controla os metadados sobre o processo de edição, incluindo quais campos foram modificados e as mensagens de validação atuais.
 
-Atribua **um** <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **ou** um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a um <xref:Microsoft.AspNetCore.Components.Forms.EditForm> . A atribuição de ambos não tem suporte e gera um **erro de tempo de execução** .
+Atribua **um** <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **ou** um <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a um <xref:Microsoft.AspNetCore.Components.Forms.EditForm> . A atribuição de ambos não tem suporte e gera um **erro de tempo de execução**.
 
 O <xref:Microsoft.AspNetCore.Components.Forms.EditForm> fornece eventos convenientes para envio de formulário válido e inválido:
 
