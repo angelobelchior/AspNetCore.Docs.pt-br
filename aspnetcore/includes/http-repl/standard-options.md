@@ -9,10 +9,6 @@
   * `{header}={value}`
   * `{header}:{value}`
 
-* `--response`
-
-  Especifica um arquivo em que toda a resposta HTTP (incluindo cabeçalhos e corpo) deve ser gravada. Por exemplo, `--response "C:\response.txt"`. Se ainda não existir, o arquivo será criado.
-
 * `--response:body`
 
   Especifica um arquivo em que o corpo da resposta HTTP deve ser gravado. Por exemplo, `--response:body "C:\response.json"`. Se ainda não existir, o arquivo será criado.
