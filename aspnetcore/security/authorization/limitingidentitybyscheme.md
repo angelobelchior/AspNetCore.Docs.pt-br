@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 4dc86480d40d8ee40b3c03aa7fd2994e6c15b105
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a5f2dff7b0e0d4f209ba445b2efb6fb261cbaab1
+ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053118"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94464010"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Autorizar com um esquema específico no ASP.NET Core
 
@@ -152,3 +152,5 @@ public void ConfigureServices(IServiceCollection services)
 Como a política de autorização padrão é substituída, é possível usar o `[Authorize]` atributo em controladores. Em seguida, o controlador aceita solicitações com JWT emitido pelo primeiro ou segundo emissor.
 
 ::: moniker-end
+
+Consulte [este problema do GitHub](https://github.com/dotnet/aspnetcore/issues/26002) sobre como usar vários esquemas de autenticação.
