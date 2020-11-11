@@ -1,73 +1,83 @@
 ---
-title: 'Compilar um Blazor aplicativo de lista de tarefas pendentes'
+title: 'Compilar um :::no-loc(Blazor)::: aplicativo de lista de tarefas pendentes'
 author: guardrex
-description: 'Crie um Blazor aplicativo passo a passo.'
+description: 'Crie um :::no-loc(Blazor)::: aplicativo passo a passo.'
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/22/2020
+ms.date: 11/11/2020
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 68a38b82f5a89365e4f345a60f1f34b697c027ed
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4d5bd977b52dd20ffb62519720106ef0a4560914
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060086"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508130"
 ---
-# <a name="build-a-no-locblazor-todo-list-app"></a><span data-ttu-id="7d24a-103">Compilar um Blazor aplicativo de lista de tarefas pendentes</span><span class="sxs-lookup"><span data-stu-id="7d24a-103">Build a Blazor todo list app</span></span>
+# <a name="build-a-no-locblazor-todo-list-app"></a><span data-ttu-id="353f0-103">Compilar um :::no-loc(Blazor)::: aplicativo de lista de tarefas pendentes</span><span class="sxs-lookup"><span data-stu-id="353f0-103">Build a :::no-loc(Blazor)::: todo list app</span></span>
 
-<span data-ttu-id="7d24a-104">Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="7d24a-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="353f0-104">Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="353f0-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="7d24a-105">Este tutorial mostra como criar e modificar um Blazor aplicativo.</span><span class="sxs-lookup"><span data-stu-id="7d24a-105">This tutorial shows you how to build and modify a Blazor app.</span></span> <span data-ttu-id="7d24a-106">Você aprenderá como:</span><span class="sxs-lookup"><span data-stu-id="7d24a-106">You learn how to:</span></span>
+<span data-ttu-id="353f0-105">Este tutorial mostra como criar e modificar um :::no-loc(Blazor)::: aplicativo.</span><span class="sxs-lookup"><span data-stu-id="353f0-105">This tutorial shows you how to build and modify a :::no-loc(Blazor)::: app.</span></span> <span data-ttu-id="353f0-106">Você aprenderá como:</span><span class="sxs-lookup"><span data-stu-id="353f0-106">You learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="7d24a-107">Criar um projeto de aplicativo de lista de tarefas Blazor</span><span class="sxs-lookup"><span data-stu-id="7d24a-107">Create a todo list Blazor app project</span></span>
-> * <span data-ttu-id="7d24a-108">Modificar Razor componentes</span><span class="sxs-lookup"><span data-stu-id="7d24a-108">Modify Razor components</span></span>
-> * <span data-ttu-id="7d24a-109">Usar manipulação de eventos e vinculação de dados em componentes</span><span class="sxs-lookup"><span data-stu-id="7d24a-109">Use event handling and data binding in components</span></span>
-> * <span data-ttu-id="7d24a-110">Usar o roteamento em um Blazor aplicativo</span><span class="sxs-lookup"><span data-stu-id="7d24a-110">Use routing in a Blazor app</span></span>
+> * <span data-ttu-id="353f0-107">Criar um projeto de aplicativo de lista de tarefas :::no-loc(Blazor):::</span><span class="sxs-lookup"><span data-stu-id="353f0-107">Create a todo list :::no-loc(Blazor)::: app project</span></span>
+> * <span data-ttu-id="353f0-108">Modificar :::no-loc(Razor)::: componentes</span><span class="sxs-lookup"><span data-stu-id="353f0-108">Modify :::no-loc(Razor)::: components</span></span>
+> * <span data-ttu-id="353f0-109">Usar manipulação de eventos e vinculação de dados em componentes</span><span class="sxs-lookup"><span data-stu-id="353f0-109">Use event handling and data binding in components</span></span>
+> * <span data-ttu-id="353f0-110">Usar o roteamento em um :::no-loc(Blazor)::: aplicativo</span><span class="sxs-lookup"><span data-stu-id="353f0-110">Use routing in a :::no-loc(Blazor)::: app</span></span>
 
-<span data-ttu-id="7d24a-111">No final deste tutorial, você terá um aplicativo de lista de tarefas em funcionamento.</span><span class="sxs-lookup"><span data-stu-id="7d24a-111">At the end of this tutorial, you'll have a working todo list app.</span></span>
+<span data-ttu-id="353f0-111">No final deste tutorial, você terá um aplicativo de lista de tarefas em funcionamento.</span><span class="sxs-lookup"><span data-stu-id="353f0-111">At the end of this tutorial, you'll have a working todo list app.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="7d24a-112">Pré-requisitos</span><span class="sxs-lookup"><span data-stu-id="7d24a-112">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="353f0-112">Pré-requisitos</span><span class="sxs-lookup"><span data-stu-id="353f0-112">Prerequisites</span></span>
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!INCLUDE[](~/includes/5.0-SDK.md)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
-## <a name="create-a-todo-list-no-locblazor-app"></a><span data-ttu-id="7d24a-113">Criar um aplicativo de lista de tarefas pendentes Blazor</span><span class="sxs-lookup"><span data-stu-id="7d24a-113">Create a todo list Blazor app</span></span>
+::: moniker-end
 
-1. <span data-ttu-id="7d24a-114">Crie um novo Blazor aplicativo chamado `TodoList` em um shell de comando:</span><span class="sxs-lookup"><span data-stu-id="7d24a-114">Create a new Blazor app named `TodoList` in a command shell:</span></span>
+## <a name="create-a-todo-list-no-locblazor-app"></a><span data-ttu-id="353f0-113">Criar um aplicativo de lista de tarefas pendentes :::no-loc(Blazor):::</span><span class="sxs-lookup"><span data-stu-id="353f0-113">Create a todo list :::no-loc(Blazor)::: app</span></span>
+
+1. <span data-ttu-id="353f0-114">Crie um novo :::no-loc(Blazor)::: aplicativo chamado `TodoList` em um shell de comando:</span><span class="sxs-lookup"><span data-stu-id="353f0-114">Create a new :::no-loc(Blazor)::: app named `TodoList` in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorserver -o TodoList
    ```
 
-   <span data-ttu-id="7d24a-115">O comando anterior cria uma pasta chamada `TodoList` para manter o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="7d24a-115">The preceding command creates a folder named `TodoList` to hold the app.</span></span> <span data-ttu-id="7d24a-116">A `TodoList` pasta é a *pasta raiz* do projeto.</span><span class="sxs-lookup"><span data-stu-id="7d24a-116">The `TodoList` folder is the *root folder* of the project.</span></span> <span data-ttu-id="7d24a-117">Altere os diretórios para a `TodoList` pasta com o seguinte comando:</span><span class="sxs-lookup"><span data-stu-id="7d24a-117">Change directories to the `TodoList` folder with the following command:</span></span>
+   <span data-ttu-id="353f0-115">O comando anterior cria uma pasta chamada `TodoList` para manter o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="353f0-115">The preceding command creates a folder named `TodoList` to hold the app.</span></span> <span data-ttu-id="353f0-116">A `TodoList` pasta é a *pasta raiz* do projeto.</span><span class="sxs-lookup"><span data-stu-id="353f0-116">The `TodoList` folder is the *root folder* of the project.</span></span> <span data-ttu-id="353f0-117">Altere os diretórios para a `TodoList` pasta com o seguinte comando:</span><span class="sxs-lookup"><span data-stu-id="353f0-117">Change directories to the `TodoList` folder with the following command:</span></span>
 
    ```dotnetcli
    cd TodoList
    ```
 
-1. <span data-ttu-id="7d24a-118">Adicione um novo `Todo` Razor componente ao aplicativo na `Pages` pasta usando o seguinte comando:</span><span class="sxs-lookup"><span data-stu-id="7d24a-118">Add a new `Todo` Razor component to the app in the `Pages` folder using the following command:</span></span>
+1. <span data-ttu-id="353f0-118">Adicione um novo `Todo` :::no-loc(Razor)::: componente ao aplicativo na `Pages` pasta usando o seguinte comando:</span><span class="sxs-lookup"><span data-stu-id="353f0-118">Add a new `Todo` :::no-loc(Razor)::: component to the app in the `Pages` folder using the following command:</span></span>
 
    ```dotnetcli
    dotnet new razorcomponent -n Todo -o Pages
    ```
 
    > [!IMPORTANT]
-   > <span data-ttu-id="7d24a-119">Razor os nomes de arquivo de componente exigem uma primeira letra em maiúscula.</span><span class="sxs-lookup"><span data-stu-id="7d24a-119">Razor component file names require a capitalized first letter.</span></span> <span data-ttu-id="7d24a-120">Abra a `Pages` pasta e confirme se o `Todo` nome do arquivo de componente começa com uma letra maiúscula `T` .</span><span class="sxs-lookup"><span data-stu-id="7d24a-120">Open the `Pages` folder and confirm that the `Todo` component file name starts with a capital letter `T`.</span></span> <span data-ttu-id="7d24a-121">O nome do arquivo deve ser `Todo.razor` .</span><span class="sxs-lookup"><span data-stu-id="7d24a-121">The file name should be `Todo.razor`.</span></span>
+   > <span data-ttu-id="353f0-119">:::no-loc(Razor)::: os nomes de arquivo de componente exigem uma primeira letra em maiúscula.</span><span class="sxs-lookup"><span data-stu-id="353f0-119">:::no-loc(Razor)::: component file names require a capitalized first letter.</span></span> <span data-ttu-id="353f0-120">Abra a `Pages` pasta e confirme se o `Todo` nome do arquivo de componente começa com uma letra maiúscula `T` .</span><span class="sxs-lookup"><span data-stu-id="353f0-120">Open the `Pages` folder and confirm that the `Todo` component file name starts with a capital letter `T`.</span></span> <span data-ttu-id="353f0-121">O nome do arquivo deve ser `Todo.razor` .</span><span class="sxs-lookup"><span data-stu-id="353f0-121">The file name should be `Todo.razor`.</span></span>
 
-1. <span data-ttu-id="7d24a-122">No, `Pages/Todo.razor` forneça a marcação inicial para o componente:</span><span class="sxs-lookup"><span data-stu-id="7d24a-122">In `Pages/Todo.razor` provide the initial markup for the component:</span></span>
+1. <span data-ttu-id="353f0-122">No, `Pages/Todo.razor` forneça a marcação inicial para o componente:</span><span class="sxs-lookup"><span data-stu-id="353f0-122">In `Pages/Todo.razor` provide the initial markup for the component:</span></span>
 
    ```razor
    @page "/todo"
@@ -75,11 +85,11 @@ ms.locfileid: "93060086"
    <h3>Todo</h3>
    ```
 
-1. <span data-ttu-id="7d24a-123">Adicione o componente `Todo` à barra de navegação.</span><span class="sxs-lookup"><span data-stu-id="7d24a-123">Add the `Todo` component to the navigation bar.</span></span>
+1. <span data-ttu-id="353f0-123">Adicione o componente `Todo` à barra de navegação.</span><span class="sxs-lookup"><span data-stu-id="353f0-123">Add the `Todo` component to the navigation bar.</span></span>
 
-   <span data-ttu-id="7d24a-124">O `NavMenu` componente ( `Shared/NavMenu.razor` ) é usado no layout do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="7d24a-124">The `NavMenu` component (`Shared/NavMenu.razor`) is used in the app's layout.</span></span> <span data-ttu-id="7d24a-125">Layouts são componentes que permitem que você evite a duplicação de conteúdo no aplicativo.</span><span class="sxs-lookup"><span data-stu-id="7d24a-125">Layouts are components that allow you to avoid duplication of content in the app.</span></span>
+   <span data-ttu-id="353f0-124">O `NavMenu` componente ( `Shared/NavMenu.razor` ) é usado no layout do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="353f0-124">The `NavMenu` component (`Shared/NavMenu.razor`) is used in the app's layout.</span></span> <span data-ttu-id="353f0-125">Layouts são componentes que permitem que você evite a duplicação de conteúdo no aplicativo.</span><span class="sxs-lookup"><span data-stu-id="353f0-125">Layouts are components that allow you to avoid duplication of content in the app.</span></span>
 
-   <span data-ttu-id="7d24a-126">Adicione um `<NavLink>` elemento para o `Todo` componente adicionando a seguinte marcação de item de lista abaixo dos itens de lista existentes no `Shared/NavMenu.razor` arquivo:</span><span class="sxs-lookup"><span data-stu-id="7d24a-126">Add a `<NavLink>` element for the `Todo` component by adding the following list item markup below the existing list items in the `Shared/NavMenu.razor` file:</span></span>
+   <span data-ttu-id="353f0-126">Adicione um `<NavLink>` elemento para o `Todo` componente adicionando a seguinte marcação de item de lista abaixo dos itens de lista existentes no `Shared/NavMenu.razor` arquivo:</span><span class="sxs-lookup"><span data-stu-id="353f0-126">Add a `<NavLink>` element for the `Todo` component by adding the following list item markup below the existing list items in the `Shared/NavMenu.razor` file:</span></span>
 
    ```razor
    <li class="nav-item px-3">
@@ -89,70 +99,70 @@ ms.locfileid: "93060086"
    </li>
    ```
 
-1. <span data-ttu-id="7d24a-127">Compile e execute o aplicativo executando o `dotnet run` comando no Shell de comando da `TodoList` pasta.</span><span class="sxs-lookup"><span data-stu-id="7d24a-127">Build and run the app by executing the `dotnet run` command in the command shell from the `TodoList` folder.</span></span> <span data-ttu-id="7d24a-128">Visite a nova página de Tarefas Pendentes para confirmar se o link para o componente `Todo` está funcionando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-128">Visit the new Todo page to confirm that the link to the `Todo` component works.</span></span>
+1. <span data-ttu-id="353f0-127">Compile e execute o aplicativo executando o `dotnet run` comando no Shell de comando da `TodoList` pasta.</span><span class="sxs-lookup"><span data-stu-id="353f0-127">Build and run the app by executing the `dotnet run` command in the command shell from the `TodoList` folder.</span></span> <span data-ttu-id="353f0-128">Visite a nova página todo em `https://localhost:5001/todo` para confirmar que o link para o `Todo` componente funciona.</span><span class="sxs-lookup"><span data-stu-id="353f0-128">Visit the new Todo page at `https://localhost:5001/todo` to confirm that the link to the `Todo` component works.</span></span>
 
-1. <span data-ttu-id="7d24a-129">Adicione um `TodoItem.cs` arquivo à raiz do projeto (a `TodoList` pasta) para manter uma classe que representa um item de tarefas pendentes.</span><span class="sxs-lookup"><span data-stu-id="7d24a-129">Add a `TodoItem.cs` file to the root of the project (the `TodoList` folder) to hold a class that represents a todo item.</span></span> <span data-ttu-id="7d24a-130">Use o seguinte código C# para a classe `TodoItem`:</span><span class="sxs-lookup"><span data-stu-id="7d24a-130">Use the following C# code for the `TodoItem` class:</span></span>
+1. <span data-ttu-id="353f0-129">Adicione um `TodoItem.cs` arquivo à raiz do projeto (a `TodoList` pasta) para manter uma classe que representa um item de tarefas pendentes.</span><span class="sxs-lookup"><span data-stu-id="353f0-129">Add a `TodoItem.cs` file to the root of the project (the `TodoList` folder) to hold a class that represents a todo item.</span></span> <span data-ttu-id="353f0-130">Use o seguinte código C# para a classe `TodoItem`:</span><span class="sxs-lookup"><span data-stu-id="353f0-130">Use the following C# code for the `TodoItem` class:</span></span>
 
-   [!code-csharp[](build-a-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
+   [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
 
-1. <span data-ttu-id="7d24a-131">Retornar ao `Todo` componente ( `Pages/Todo.razor` ):</span><span class="sxs-lookup"><span data-stu-id="7d24a-131">Return to the `Todo` component (`Pages/Todo.razor`):</span></span>
+1. <span data-ttu-id="353f0-131">Retornar ao `Todo` componente ( `Pages/Todo.razor` ):</span><span class="sxs-lookup"><span data-stu-id="353f0-131">Return to the `Todo` component (`Pages/Todo.razor`):</span></span>
 
-   * <span data-ttu-id="7d24a-132">Adicione um campo para os itens de tarefas pendentes em um bloco `@code`.</span><span class="sxs-lookup"><span data-stu-id="7d24a-132">Add a field for the todo items in an `@code` block.</span></span> <span data-ttu-id="7d24a-133">O componente `Todo` usa esse campo para manter o estado da lista de tarefas pendentes.</span><span class="sxs-lookup"><span data-stu-id="7d24a-133">The `Todo` component uses this field to maintain the state of the todo list.</span></span>
-   * <span data-ttu-id="7d24a-134">Adicione marcação da lista não ordenada e um loop `foreach` para renderizar cada item de tarefa pendente como um item de lista (`<li>`).</span><span class="sxs-lookup"><span data-stu-id="7d24a-134">Add unordered list markup and a `foreach` loop to render each todo item as a list item (`<li>`).</span></span>
+   * <span data-ttu-id="353f0-132">Adicione um campo para os itens de tarefas pendentes em um bloco `@code`.</span><span class="sxs-lookup"><span data-stu-id="353f0-132">Add a field for the todo items in an `@code` block.</span></span> <span data-ttu-id="353f0-133">O componente `Todo` usa esse campo para manter o estado da lista de tarefas pendentes.</span><span class="sxs-lookup"><span data-stu-id="353f0-133">The `Todo` component uses this field to maintain the state of the todo list.</span></span>
+   * <span data-ttu-id="353f0-134">Adicione marcação da lista não ordenada e um loop `foreach` para renderizar cada item de tarefa pendente como um item de lista (`<li>`).</span><span class="sxs-lookup"><span data-stu-id="353f0-134">Add unordered list markup and a `foreach` loop to render each todo item as a list item (`<li>`).</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo2.razor?highlight=5-10,12-14)]
 
-1. <span data-ttu-id="7d24a-135">O aplicativo requer elementos de interface do usuário para adicionar itens de tarefas à lista.</span><span class="sxs-lookup"><span data-stu-id="7d24a-135">The app requires UI elements for adding todo items to the list.</span></span> <span data-ttu-id="7d24a-136">Adicione uma entrada de texto (`<input>`) e um botão (`<button>`) abaixo da lista não ordenada (`<ul>...</ul>`):</span><span class="sxs-lookup"><span data-stu-id="7d24a-136">Add a text input (`<input>`) and a button (`<button>`) below the unordered list (`<ul>...</ul>`):</span></span>
+1. <span data-ttu-id="353f0-135">O aplicativo requer elementos de interface do usuário para adicionar itens de tarefas à lista.</span><span class="sxs-lookup"><span data-stu-id="353f0-135">The app requires UI elements for adding todo items to the list.</span></span> <span data-ttu-id="353f0-136">Adicione uma entrada de texto (`<input>`) e um botão (`<button>`) abaixo da lista não ordenada (`<ul>...</ul>`):</span><span class="sxs-lookup"><span data-stu-id="353f0-136">Add a text input (`<input>`) and a button (`<button>`) below the unordered list (`<ul>...</ul>`):</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo3.razor?highlight=12-13)]
 
-1. <span data-ttu-id="7d24a-137">Pare o aplicativo em execução no Shell de comando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-137">Stop the running app in the command shell.</span></span> <span data-ttu-id="7d24a-138">Muitos shells de comando aceitam o comando de teclado <kbd>Ctrl</kbd> + <kbd>c</kbd> para interromper um aplicativo.</span><span class="sxs-lookup"><span data-stu-id="7d24a-138">Many command shells accept the keyboard command <kbd>Ctrl</kbd>+<kbd>c</kbd> to stop an app.</span></span> <span data-ttu-id="7d24a-139">Recompile e execute o aplicativo com o `dotnet run` comando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-139">Rebuild and run the app with the `dotnet run` command.</span></span> <span data-ttu-id="7d24a-140">Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está conectado ao botão.</span><span class="sxs-lookup"><span data-stu-id="7d24a-140">When the **`Add todo`** button is selected, nothing happens because an event handler isn't wired up to the button.</span></span>
+1. <span data-ttu-id="353f0-137">Pare o aplicativo em execução no Shell de comando.</span><span class="sxs-lookup"><span data-stu-id="353f0-137">Stop the running app in the command shell.</span></span> <span data-ttu-id="353f0-138">Muitos shells de comando aceitam o comando de teclado <kbd>Ctrl</kbd> + <kbd>c</kbd> para interromper um aplicativo.</span><span class="sxs-lookup"><span data-stu-id="353f0-138">Many command shells accept the keyboard command <kbd>Ctrl</kbd>+<kbd>c</kbd> to stop an app.</span></span> <span data-ttu-id="353f0-139">Recompile e execute o aplicativo com o `dotnet run` comando.</span><span class="sxs-lookup"><span data-stu-id="353f0-139">Rebuild and run the app with the `dotnet run` command.</span></span> <span data-ttu-id="353f0-140">Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está conectado ao botão.</span><span class="sxs-lookup"><span data-stu-id="353f0-140">When the **`Add todo`** button is selected, nothing happens because an event handler isn't wired up to the button.</span></span>
 
-1. <span data-ttu-id="7d24a-141">Adicione um método `AddTodo` ao componente `Todo` e registre-o para seleções de botão usando o atributo `@onclick`.</span><span class="sxs-lookup"><span data-stu-id="7d24a-141">Add an `AddTodo` method to the `Todo` component and register it for button selections using the `@onclick` attribute.</span></span> <span data-ttu-id="7d24a-142">O método C# `AddTodo` é chamado quando o botão é selecionado:</span><span class="sxs-lookup"><span data-stu-id="7d24a-142">The `AddTodo` C# method is called when the button is selected:</span></span>
+1. <span data-ttu-id="353f0-141">Adicione um método `AddTodo` ao componente `Todo` e registre-o para seleções de botão usando o atributo `@onclick`.</span><span class="sxs-lookup"><span data-stu-id="353f0-141">Add an `AddTodo` method to the `Todo` component and register it for button selections using the `@onclick` attribute.</span></span> <span data-ttu-id="353f0-142">O método C# `AddTodo` é chamado quando o botão é selecionado:</span><span class="sxs-lookup"><span data-stu-id="353f0-142">The `AddTodo` C# method is called when the button is selected:</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo4.razor?highlight=2,7-10)]
 
-1. <span data-ttu-id="7d24a-143">Para obter o título do novo item de tarefas pendentes, adicione um campo de cadeia de caracteres `newTodo` na parte superior de `@code`, bloqueie e associe-o ao valor da próxima entrada de texto usando o atributo `bind` no elemento `<input>`:</span><span class="sxs-lookup"><span data-stu-id="7d24a-143">To get the title of the new todo item, add a `newTodo` string field at the top of the `@code` block and bind it to the value of the text input using the `bind` attribute in the `<input>` element:</span></span>
+1. <span data-ttu-id="353f0-143">Para obter o título do novo item de tarefas pendentes, adicione um campo de cadeia de caracteres `newTodo` na parte superior de `@code`, bloqueie e associe-o ao valor da próxima entrada de texto usando o atributo `bind` no elemento `<input>`:</span><span class="sxs-lookup"><span data-stu-id="353f0-143">To get the title of the new todo item, add a `newTodo` string field at the top of the `@code` block and bind it to the value of the text input using the `bind` attribute in the `<input>` element:</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo5.razor?highlight=2)]
 
    ```razor
    <input placeholder="Something todo" @bind="newTodo" />
    ```
 
-1. <span data-ttu-id="7d24a-144">Atualize o método `AddTodo` para adicionar o `TodoItem` com o título especificado à lista.</span><span class="sxs-lookup"><span data-stu-id="7d24a-144">Update the `AddTodo` method to add the `TodoItem` with the specified title to the list.</span></span> <span data-ttu-id="7d24a-145">Limpe o valor da entrada de texto configurando `newTodo` para uma cadeia de caracteres vazia:</span><span class="sxs-lookup"><span data-stu-id="7d24a-145">Clear the value of the text input by setting `newTodo` to an empty string:</span></span>
+1. <span data-ttu-id="353f0-144">Atualize o método `AddTodo` para adicionar o `TodoItem` com o título especificado à lista.</span><span class="sxs-lookup"><span data-stu-id="353f0-144">Update the `AddTodo` method to add the `TodoItem` with the specified title to the list.</span></span> <span data-ttu-id="353f0-145">Limpe o valor da entrada de texto configurando `newTodo` para uma cadeia de caracteres vazia:</span><span class="sxs-lookup"><span data-stu-id="353f0-145">Clear the value of the text input by setting `newTodo` to an empty string:</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo6.razor?highlight=19-26)]
 
-1. <span data-ttu-id="7d24a-146">Pare o aplicativo em execução no Shell de comando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-146">Stop the running app in the command shell.</span></span> <span data-ttu-id="7d24a-147">Recompile e execute o aplicativo com o `dotnet run` comando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-147">Rebuild and run the app with the `dotnet run` command.</span></span> <span data-ttu-id="7d24a-148">Adicione alguns itens de tarefas à lista de tarefas para testar o novo código.</span><span class="sxs-lookup"><span data-stu-id="7d24a-148">Add some todo items to the todo list to test the new code.</span></span>
+1. <span data-ttu-id="353f0-146">Pare o aplicativo em execução no Shell de comando.</span><span class="sxs-lookup"><span data-stu-id="353f0-146">Stop the running app in the command shell.</span></span> <span data-ttu-id="353f0-147">Recompile e execute o aplicativo com o `dotnet run` comando.</span><span class="sxs-lookup"><span data-stu-id="353f0-147">Rebuild and run the app with the `dotnet run` command.</span></span> <span data-ttu-id="353f0-148">Adicione alguns itens de tarefas à lista de tarefas para testar o novo código.</span><span class="sxs-lookup"><span data-stu-id="353f0-148">Add some todo items to the todo list to test the new code.</span></span>
 
-1. <span data-ttu-id="7d24a-149">O texto do título de cada item de tarefa pode ser editável, e uma caixa de seleção pode ajudar o usuário a manter o controle dos itens concluídos.</span><span class="sxs-lookup"><span data-stu-id="7d24a-149">The title text for each todo item can be made editable, and a check box can help the user keep track of completed items.</span></span> <span data-ttu-id="7d24a-150">Adicione uma entrada de caixa de seleção para cada item de tarefa pendente e associe seu valor à propriedade `IsDone`.</span><span class="sxs-lookup"><span data-stu-id="7d24a-150">Add a check box input for each todo item and bind its value to the `IsDone` property.</span></span> <span data-ttu-id="7d24a-151">Altere `@todo.Title` para um elemento `<input>` associado a `@todo.Title`:</span><span class="sxs-lookup"><span data-stu-id="7d24a-151">Change `@todo.Title` to an `<input>` element bound to `@todo.Title`:</span></span>
+1. <span data-ttu-id="353f0-149">O texto do título de cada item de tarefa pode ser editável, e uma caixa de seleção pode ajudar o usuário a manter o controle dos itens concluídos.</span><span class="sxs-lookup"><span data-stu-id="353f0-149">The title text for each todo item can be made editable, and a check box can help the user keep track of completed items.</span></span> <span data-ttu-id="353f0-150">Adicione uma entrada de caixa de seleção para cada item de tarefa pendente e associe seu valor à propriedade `IsDone`.</span><span class="sxs-lookup"><span data-stu-id="353f0-150">Add a check box input for each todo item and bind its value to the `IsDone` property.</span></span> <span data-ttu-id="353f0-151">Altere `@todo.Title` para um elemento `<input>` associado a `@todo.Title`:</span><span class="sxs-lookup"><span data-stu-id="353f0-151">Change `@todo.Title` to an `<input>` element bound to `@todo.Title`:</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo9.razor?highlight=5-6)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo7.razor?highlight=5-6)]
 
-1. <span data-ttu-id="7d24a-152">Para verificar se esses valores estão associados, atualize o cabeçalho `<h3>` para mostrar uma contagem do número de itens de tarefa pendente que não estão concluídos (`IsDone` é `false`).</span><span class="sxs-lookup"><span data-stu-id="7d24a-152">To verify that these values are bound, update the `<h3>` header to show a count of the number of todo items that aren't complete (`IsDone` is `false`).</span></span>
+1. <span data-ttu-id="353f0-152">Para verificar se esses valores estão associados, atualize o cabeçalho `<h3>` para mostrar uma contagem do número de itens de tarefa pendente que não estão concluídos (`IsDone` é `false`).</span><span class="sxs-lookup"><span data-stu-id="353f0-152">To verify that these values are bound, update the `<h3>` header to show a count of the number of todo items that aren't complete (`IsDone` is `false`).</span></span>
 
    ```razor
    <h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
    ```
 
-1. <span data-ttu-id="7d24a-153">O `Todo` componente concluído ( `Pages/Todo.razor` ):</span><span class="sxs-lookup"><span data-stu-id="7d24a-153">The completed `Todo` component (`Pages/Todo.razor`):</span></span>
+1. <span data-ttu-id="353f0-153">O `Todo` componente concluído ( `Pages/Todo.razor` ):</span><span class="sxs-lookup"><span data-stu-id="353f0-153">The completed `Todo` component (`Pages/Todo.razor`):</span></span>
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/Todo.razor)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
 
-1. <span data-ttu-id="7d24a-154">Pare o aplicativo em execução no Shell de comando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-154">Stop the running app in the command shell.</span></span> <span data-ttu-id="7d24a-155">Recompile e execute o aplicativo com o `dotnet run` comando.</span><span class="sxs-lookup"><span data-stu-id="7d24a-155">Rebuild and run the app with the `dotnet run` command.</span></span> <span data-ttu-id="7d24a-156">Adicione itens de tarefa pendente para testar o novo código.</span><span class="sxs-lookup"><span data-stu-id="7d24a-156">Add todo items to test the new code.</span></span>
+1. <span data-ttu-id="353f0-154">Pare o aplicativo em execução no Shell de comando.</span><span class="sxs-lookup"><span data-stu-id="353f0-154">Stop the running app in the command shell.</span></span> <span data-ttu-id="353f0-155">Recompile e execute o aplicativo com o `dotnet run` comando.</span><span class="sxs-lookup"><span data-stu-id="353f0-155">Rebuild and run the app with the `dotnet run` command.</span></span> <span data-ttu-id="353f0-156">Adicione itens de tarefa pendente para testar o novo código.</span><span class="sxs-lookup"><span data-stu-id="353f0-156">Add todo items to test the new code.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="7d24a-157">Próximas etapas</span><span class="sxs-lookup"><span data-stu-id="7d24a-157">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="353f0-157">Próximas etapas</span><span class="sxs-lookup"><span data-stu-id="353f0-157">Next steps</span></span>
 
-<span data-ttu-id="7d24a-158">Neste tutorial, você aprendeu a:</span><span class="sxs-lookup"><span data-stu-id="7d24a-158">In this tutorial, you learned how to:</span></span>
+<span data-ttu-id="353f0-158">Neste tutorial, você aprendeu a:</span><span class="sxs-lookup"><span data-stu-id="353f0-158">In this tutorial, you learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="7d24a-159">Criar um projeto de aplicativo de lista de tarefas Blazor</span><span class="sxs-lookup"><span data-stu-id="7d24a-159">Create a todo list Blazor app project</span></span>
-> * <span data-ttu-id="7d24a-160">Modificar Razor componentes</span><span class="sxs-lookup"><span data-stu-id="7d24a-160">Modify Razor components</span></span>
-> * <span data-ttu-id="7d24a-161">Usar manipulação de eventos e vinculação de dados em componentes</span><span class="sxs-lookup"><span data-stu-id="7d24a-161">Use event handling and data binding in components</span></span>
-> * <span data-ttu-id="7d24a-162">Usar o roteamento em um Blazor aplicativo</span><span class="sxs-lookup"><span data-stu-id="7d24a-162">Use routing in a Blazor app</span></span>
+> * <span data-ttu-id="353f0-159">Criar um projeto de aplicativo de lista de tarefas :::no-loc(Blazor):::</span><span class="sxs-lookup"><span data-stu-id="353f0-159">Create a todo list :::no-loc(Blazor)::: app project</span></span>
+> * <span data-ttu-id="353f0-160">Modificar :::no-loc(Razor)::: componentes</span><span class="sxs-lookup"><span data-stu-id="353f0-160">Modify :::no-loc(Razor)::: components</span></span>
+> * <span data-ttu-id="353f0-161">Usar manipulação de eventos e vinculação de dados em componentes</span><span class="sxs-lookup"><span data-stu-id="353f0-161">Use event handling and data binding in components</span></span>
+> * <span data-ttu-id="353f0-162">Usar o roteamento em um :::no-loc(Blazor)::: aplicativo</span><span class="sxs-lookup"><span data-stu-id="353f0-162">Use routing in a :::no-loc(Blazor)::: app</span></span>
 
-<span data-ttu-id="7d24a-163">Saiba mais sobre as ferramentas para ASP.NET Core Blazor :</span><span class="sxs-lookup"><span data-stu-id="7d24a-163">Learn about tooling for ASP.NET Core Blazor:</span></span>
+<span data-ttu-id="353f0-163">Saiba mais sobre as ferramentas para ASP.NET Core :::no-loc(Blazor)::: :</span><span class="sxs-lookup"><span data-stu-id="353f0-163">Learn about tooling for ASP.NET Core :::no-loc(Blazor)::::</span></span>
 
 > [!div class="nextstepaction"]
 > <xref:blazor/tooling>
