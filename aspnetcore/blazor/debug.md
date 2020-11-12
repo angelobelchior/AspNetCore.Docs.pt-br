@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: b7e246c20bf12f8ddf07cff54864836cb535aa60
-ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
+ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94339991"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550511"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -49,6 +49,7 @@ Por enquanto, você *não pode* :
 
 * Interromper em exceções sem tratamento.
 * Acerte os pontos de interrupção durante a inicialização do aplicativo antes da execução do proxy de depuração. Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.
+* Depure em cenários não locais (por exemplo, [subsistema do Windows para Linux (WSL)](/windows/wsl/) ou [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline)).
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
@@ -194,7 +195,7 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
 
 1. Abra a Blazor WebAssembly pasta de solução do aplicativo hospedado no vs Code.
 
-1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim** na barra superior.
+1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim**.
 
    > Os ativos necessários para compilar e depurar estão ausentes em ' {nome do aplicativo} '. Deseja adicioná-los?
 

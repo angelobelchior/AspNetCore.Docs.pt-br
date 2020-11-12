@@ -1,11 +1,11 @@
 ---
-title: Testar APIs Web com o HTTP REPL
+title: Testar APIs da Web com o HttpRepl
 author: scottaddie
-description: Saiba como usar a ferramenta global HTTP REPL do .NET Core para navegar e testar uma API Web do ASP.NET Core.
+description: Saiba como usar a ferramenta global do HttpRepl .NET Core para navegar e testar uma API da Web do ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 81174b551c5b6d81e6ac80975f7f77ee6664059d
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: df2d4e63a18471b4c5f4f1c9434921303bb1da8a
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94502016"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550615"
 ---
-# <a name="test-web-apis-with-the-http-repl"></a>Testar APIs Web com o HTTP REPL
+# <a name="test-web-apis-with-the-httprepl"></a>Testar APIs da Web com o HttpRepl
 
 Por [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -54,7 +54,7 @@ Para acompanhar, [exiba ou baixe a API Web de exemplo do ASP.NET Core](https://g
 
 ## <a name="installation"></a>Instalação
 
-Para instalar o HTTP REPL, execute o seguinte comando:
+Para instalar o HttpRepl, execute o seguinte comando:
 
 ```dotnetcli
 dotnet tool install -g Microsoft.dotnet-httprepl
@@ -64,13 +64,13 @@ Uma [ferramenta global do .NET Core](/dotnet/core/tools/global-tools#install-a-g
 
 ## <a name="usage"></a>Uso
 
-Após a instalação da ferramenta, execute o seguinte comando para iniciar o HTTP REPL:
+Após a instalação bem-sucedida da ferramenta, execute o seguinte comando para iniciar o HttpRepl:
 
 ```console
 httprepl
 ```
 
-Para exibir os comandos HTTP REPL disponíveis, execute um dos seguintes comandos:
+Para exibir os comandos HttpRepl disponíveis, execute um dos seguintes comandos:
 
 ```console
 httprepl -h
@@ -135,7 +135,7 @@ Use `help <COMMAND>` for more detail on an individual command. e.g. `help get`.
 For detailed tool info, see https://aka.ms/http-repl-doc.
 ```
 
-O HTTP REPL oferece conclusão de comando. Pressionar a tecla <kbd>Tab</kbd> itera na lista de comandos que completam os caracteres ou o ponto de extremidade da API que você digitou. As seções a seguir descrevem os comandos da CLI disponíveis.
+O HttpRepl oferece a conclusão do comando. Pressionar a tecla <kbd>Tab</kbd> itera na lista de comandos que completam os caracteres ou o ponto de extremidade da API que você digitou. As seções a seguir descrevem os comandos da CLI disponíveis.
 
 ## <a name="connect-to-the-web-api"></a>Conectar-se à API Web
 
@@ -151,7 +151,7 @@ httprepl <ROOT URI>
 httprepl https://localhost:5001
 ```
 
-Outra opção é executar o seguinte comando a qualquer momento quando o HTTP REPL estiver em execução:
+Como alternativa, execute o seguinte comando a qualquer momento enquanto o HttpRepl estiver em execução:
 
 ```console
 connect <ROOT URI>
@@ -252,9 +252,9 @@ O caminho após o comando `cd` não diferencia maiúsculas de minúsculas. O seg
 https://localhost:5001/people>
 ```
 
-## <a name="customize-the-http-repl"></a>Personalizar o HTTP REPL
+## <a name="customize-the-httprepl"></a>Personalizar o HttpRepl
 
-As [cores](#set-color-preferences) padrão do HTTP REPL podem ser personalizadas. Além disso, um [editor de texto padrão](#set-the-default-text-editor) pode ser definido. As preferências de HTTP REPL são persistidas em toda a sessão atual e serão respeitadas nas sessões futuras. Depois de modificadas, as preferências são armazenadas no seguinte arquivo:
+As [cores](#set-color-preferences) padrão do HttpRepl podem ser personalizadas. Além disso, um [editor de texto padrão](#set-the-default-text-editor) pode ser definido. As preferências de HttpRepl são mantidas na sessão atual e são respeitadas em sessões futuras. Depois de modificadas, as preferências são armazenadas no seguinte arquivo:
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -295,7 +295,7 @@ colors.status=BoldYellow
 
 ### <a name="set-color-preferences"></a>Definir preferências de cores
 
-No momento, as cores das respostas só são compatíveis com JSON. Para personalizar a cor padrão da ferramenta HTTP REPL, localize a chave correspondente à cor a ser alterada. Para ver instruções sobre como localizar as chaves, confira a seção [Exibir as configurações](#view-the-settings). Por exemplo, altere o valor da chave `colors.json` de `Green` para `White`, desta forma:
+No momento, as cores das respostas só são compatíveis com JSON. Para personalizar a coloração padrão da ferramenta HttpRepl, localize a chave correspondente à cor a ser alterada. Para ver instruções sobre como localizar as chaves, confira a seção [Exibir as configurações](#view-the-settings). Por exemplo, altere o valor da chave `colors.json` de `Green` para `White`, desta forma:
 
 ```console
 https://localhost:5001/people> pref set colors.json White
@@ -358,7 +358,7 @@ As respostas subsequentes respeitarão a configuração de quatro espaços:
 
 ### <a name="set-the-default-text-editor"></a>Definir o editor de texto padrão
 
-Por padrão, o HTTP REPL não tem um editor de texto configurado para uso. Para testar os métodos de API Web que exigem o corpo da solicitação HTTP, é preciso definir um editor de texto padrão. A ferramenta HTTP REPL inicia o editor de texto configurado somente para escrever o corpo da solicitação. Execute o seguinte comando para definir o editor de texto preferido como padrão:
+Por padrão, o HttpRepl não tem nenhum editor de texto configurado para uso. Para testar os métodos de API Web que exigem o corpo da solicitação HTTP, é preciso definir um editor de texto padrão. A ferramenta HttpRepl inicia o editor de texto configurado para o único propósito de compor o corpo da solicitação. Execute o seguinte comando para definir o editor de texto preferido como padrão:
 
 ```console
 pref set editor.command.default "<EXECUTABLE>"
@@ -386,7 +386,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Para iniciar o editor de texto padrão com argumentos específicos da CLI, defina a chave `editor.command.default.arguments`. Por exemplo, imagine que o Visual Studio Code é o editor de texto padrão e que você quer que o HTTP REPL sempre o abra em uma nova sessão com as extensões desabilitadas. Execute o seguinte comando:
+Para iniciar o editor de texto padrão com argumentos específicos da CLI, defina a chave `editor.command.default.arguments`. Por exemplo, suponha que Visual Studio Code seja o editor de texto padrão e que você sempre queira que o HttpRepl abra Visual Studio Code em uma nova sessão com as extensões desabilitadas. Execute o seguinte comando:
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -397,7 +397,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 
 ### <a name="set-the-openapi-description-search-paths"></a>Definir os caminhos de pesquisa de descrição do OpenAPI
 
-Por padrão, o HTTP REPL tem um conjunto de caminhos relativos que ele usa para localizar a descrição de OpenAPI ao executar o `connect` comando sem a `--openapi` opção. Esses caminhos relativos são combinados com os caminhos raiz e base especificados no comando `connect`. Os caminhos relativos padrão são:
+Por padrão, o HttpRepl tem um conjunto de caminhos relativos que ele usa para localizar a descrição de OpenAPI ao executar o `connect` comando sem a `--openapi` opção. Esses caminhos relativos são combinados com os caminhos raiz e base especificados no comando `connect`. Os caminhos relativos padrão são:
 
 - *swagger.jsem*
 - *Swagger/v1/swagger.jsem*
@@ -864,7 +864,7 @@ Para configurar um cabeçalho de solicitação HTTP, use uma das seguintes abord
 
 ## <a name="test-secured-endpoints"></a>Pontos de extremidade protegidos de teste
 
-O HTTP REPL dá suporte ao teste de pontos de extremidade protegidos das seguintes maneiras:
+O HttpRepl dá suporte ao teste de pontos de extremidade protegidos das seguintes maneiras:
 
 * Por meio das credenciais padrão do usuário conectado.
 * Por meio do uso de cabeçalhos de solicitação HTTP.
@@ -907,7 +907,7 @@ Por exemplo, você pode enviar um token de portador para um ponto de extremidade
 set header Authorization "bearer <TOKEN VALUE>"
 ```
 
-Para acessar um ponto de extremidade hospedado no Azure ou usar a [API REST do Azure](/rest/api/azure/), você precisa de um token de portador. Use as etapas a seguir para obter um token de portador para sua assinatura do Azure por meio do [CLI do Azure](/cli/azure/). O HTTP REPL define o token de portador em um cabeçalho de solicitação HTTP. Uma lista de aplicativos Web do serviço de Azure App é recuperada.
+Para acessar um ponto de extremidade hospedado no Azure ou usar a [API REST do Azure](/rest/api/azure/), você precisa de um token de portador. Use as etapas a seguir para obter um token de portador para sua assinatura do Azure por meio do [CLI do Azure](/cli/azure/). O HttpRepl define o token de portador em um cabeçalho de solicitação HTTP. Uma lista de aplicativos Web do serviço de Azure App é recuperada.
 
 1. Entrar no Azure:
 
@@ -933,7 +933,7 @@ Para acessar um ponto de extremidade hospedado no Azure ou usar a [API REST do A
     az account get-access-token --query accessToken
     ```
 
-1. Conecte-se à API REST do Azure por meio do HTTP REPL:
+1. Conecte-se à API REST do Azure por meio do HttpRepl:
 
     ```console
     httprepl https://management.azure.com
@@ -1041,7 +1041,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>Executar um script
 
-Se você executar com frequência o mesmo conjunto de comandos HTTP REPL, considere armazená-los em um arquivo de texto. Os comandos no arquivo assumem a mesma forma como comandos executados manualmente na linha de comando. Os comandos podem ser executados em um modo em lote usando o comando `run`. Por exemplo:
+Se você executar com frequência o mesmo conjunto de comandos HttpRepl, considere armazená-los em um arquivo de texto. Os comandos no arquivo assumem a mesma forma como comandos executados manualmente na linha de comando. Os comandos podem ser executados em um modo em lote usando o comando `run`. Por exemplo:
 
 1. Crie um arquivo de texto com um conjunto de comandos delimitados por nova linha. Para ilustrar, considere um arquivo *people-script.txt* com os seguintes comandos:
 
@@ -1096,7 +1096,7 @@ Se você executar com frequência o mesmo conjunto de comandos HTTP REPL, consid
 
 ## <a name="clear-the-output"></a>Limpar a saída
 
-Para remover toda a saída gravada no shell de comando pela ferramenta HTTP REPL, execute os comandos `clear` ou `cls`. Para ilustrar, imagine que o shell de comando contém a seguinte saída:
+Para remover toda a saída gravada no Shell de comando pela ferramenta HttpRepl, execute `clear` o `cls` comando ou. Para ilustrar, imagine que o shell de comando contém a seguinte saída:
 
 ```console
 httprepl https://localhost:5001
@@ -1126,4 +1126,4 @@ https://localhost:5001/>
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * [Solicitações da API REST](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
-* [Repositório do GitHub do HTTP REPL](https://github.com/dotnet/HttpRepl)
+* [Repositório GitHub do HttpRepl](https://github.com/dotnet/HttpRepl)

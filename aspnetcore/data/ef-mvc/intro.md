@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a815502bb8aa97c137ea8940c7e5f1dde79e9999
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 428320f9d706b0dd16ced68d183ec4b331451965
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430881"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550641"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutorial: introdução ao EF Core em um aplicativo Web ASP.NET MVC
 
@@ -34,7 +34,7 @@ Por [Tom Dykstra](https://github.com/tdykstra) e [Rick Anderson](https://twitter
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
-O AP da Web de exemplo da Contoso University demonstra como criar um aplicativo Web ASP.NET Core MVC usando o Entity Framework (EF) Core e o Visual Studio.
+O aplicativo Web de exemplo Contoso University demonstra como criar um aplicativo Web ASP.NET Core MVC usando o Entity Framework (EF) Core e o Visual Studio.
 
 O aplicativo de exemplo é um site de uma Contoso University fictícia. Ele inclui funcionalidades como admissão de alunos, criação de cursos e atribuições de instrutor. Este é o primeiro de uma série de tutoriais que explicam como criar o aplicativo de exemplo da Contoso University.
 
