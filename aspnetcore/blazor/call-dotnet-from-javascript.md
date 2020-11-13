@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: 1de4996b18642b7a17c696a51a0d7f909179d5f1
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c4ab82490a2b16cdb5fef691cfb1ca038f1dca00
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507779"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570062"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>Chamar métodos .NET de funções JavaScript no ASP.NET Core Blazor
 
@@ -456,6 +456,10 @@ Para obter mais informações, consulte os seguintes problemas:
 
 * [Não há suporte para referências circulares, use duas (dotNet/aspnetcore #20525)](https://github.com/dotnet/aspnetcore/issues/20525)
 * [Proposta: Adicionar mecanismo para lidar com referências circulares ao serializar (dotNet/tempo de execução #30820)](https://github.com/dotnet/runtime/issues/30820)
+
+## <a name="js-modules"></a>Módulos JS
+
+Para isolamento de JS, o JS Interop funciona com o suporte padrão do navegador para [módulos ECMAScript (ESM)](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) ([especificação ECMAScript](https://tc39.es/ecma262/#sec-modules)).
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

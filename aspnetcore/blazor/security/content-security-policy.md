@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 66fd41abe4f85071797bacc0a5531bbab35bd227
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055588"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570114"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Impor uma política de segurança de conteúdo para ASP.NET Core Blazor
 
@@ -57,12 +57,9 @@ No mínimo, especifique as seguintes diretivas e fontes para Blazor aplicativos.
   * Especifique a `https://stackpath.bootstrapcdn.com/` origem do host para scripts de bootstrap.
   * Especifique `self` para indicar que a origem do aplicativo, incluindo o esquema e o número da porta, é uma origem válida.
   * Em um Blazor WebAssembly aplicativo:
-    * Especifique os seguintes hashes para permitir que os Blazor WebAssembly scripts embutidos necessários sejam carregados:
-      * `sha256-v8ZC9OgMhcnEQ/Me77/R9TlJfzOBqrMTW8e1KuqLaqc=`
-      * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
-      * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
+    * Especifique os hashes para permitir que os scripts necessários sejam carregados.
     * Especifique `unsafe-eval` para usar os `eval()` métodos e para a criação de código a partir de cadeias de caracteres.
-  * Em um Blazor Server aplicativo, especifique o `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` hash para o script embutido que executa a detecção de fallback para folhas de estilo.
+  * Em um Blazor Server aplicativo, especifique hashes para permitir que os scripts necessários sejam carregados.
 * [Style-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src): indica fontes válidas para folhas de estilo.
   * Especifique a `https://stackpath.bootstrapcdn.com/` origem do host para as folhas de estilo de inicialização.
   * Especifique `self` para indicar que a origem do aplicativo, incluindo o esquema e o número da porta, é uma origem válida.
@@ -93,6 +90,29 @@ As seções a seguir mostram as políticas de exemplo para o Blazor WebAssembly 
 
 Na `<head>` página conteúdo do `wwwroot/index.html` host, aplique as diretivas descritas na seção [diretivas de política](#policy-directives) :
 
+::: moniker range=">= aspnetcore-5.0"
+
+```html
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self' 
+                          'sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=' 
+                          'unsafe-eval';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self'
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ```html
 <meta http-equiv="Content-Security-Policy" 
       content="base-uri 'self';
@@ -112,9 +132,38 @@ Na `<head>` página conteúdo do `wwwroot/index.html` host, aplique as diretivas
                upgrade-insecure-requests;">
 ```
 
+::: moniker-end
+
+Adicione `script-src` `style-src` hashes adicionais, conforme exigido pelo aplicativo. Durante o desenvolvimento, use uma ferramenta online ou ferramentas de desenvolvedor de navegador para que os hashes sejam calculados para você. Por exemplo, o erro do console de ferramentas do navegador a seguir relata o hash para um script necessário não coberto pela política:
+
+> Você se recusou a executar o script embutido porque ele viola a seguinte diretiva de política de segurança de conteúdo: "... ". A palavra-chave ' unsafe-inline ', um hash (' SHA256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA = ') ou um nonce (' nonce-... ') é necessário para habilitar a execução embutida.
+
+O script específico associado ao erro é exibido no console do próximo ao erro.
+
 ### Blazor Server
 
 Na `<head>` página conteúdo do `Pages/_Host.cshtml` host, aplique as diretivas descritas na seção [diretivas de política](#policy-directives) :
+
+::: moniker range=">= aspnetcore-5.0"
+
+```cshtml
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self' 
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ```cshtml
 <meta http-equiv="Content-Security-Policy" 
@@ -131,6 +180,14 @@ Na `<head>` página conteúdo do `Pages/_Host.cshtml` host, aplique as diretivas
                          'unsafe-inline';
                upgrade-insecure-requests;">
 ```
+
+::: moniker-end
+
+Adicione `script-src` `style-src` hashes adicionais, conforme exigido pelo aplicativo. Durante o desenvolvimento, use uma ferramenta online ou ferramentas de desenvolvedor de navegador para que os hashes sejam calculados para você. Por exemplo, o erro do console de ferramentas do navegador a seguir relata o hash para um script necessário não coberto pela política:
+
+> Você se recusou a executar o script embutido porque ele viola a seguinte diretiva de política de segurança de conteúdo: "... ". A palavra-chave ' unsafe-inline ', um hash (' SHA256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA = ') ou um nonce (' nonce-... ') é necessário para habilitar a execução embutida.
+
+O script específico associado ao erro é exibido no console do próximo ao erro.
 
 ## <a name="meta-tag-limitations"></a>Limitações da marca meta
 

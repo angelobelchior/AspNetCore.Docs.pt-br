@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 628e7dc897912beaae0df792b82958517ac70ca4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4fec0fa750b9209849030d0d6b7de8f4e163d62f
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056316"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570127"
 ---
 # <a name="aspnet-core-no-locblazor-css-isolation"></a>BlazorIsolamento ASP.NET Core CSS
 
@@ -34,9 +34,9 @@ O isolamento CSS simplifica a superfície CSS de um aplicativo, impedindo depend
 
 ## <a name="enable-css-isolation"></a>Habilitar isolamento de CSS 
 
-Para definir estilos específicos do componente, crie um `razor.css` arquivo correspondente ao nome do `.razor` arquivo para o componente. Este `razor.css` arquivo é um *arquivo CSS com escopo definido* . 
+Para definir estilos específicos do componente, crie um `.razor.css` arquivo correspondente ao nome do `.razor` arquivo para o componente. Este `.razor.css` arquivo é um *arquivo CSS com escopo definido*. 
 
-Para um `MyComponent` componente que tenha um `MyComponent.razor` arquivo, crie um arquivo junto com o componente chamado `MyComponent.razor.css` . O `MyComponent` valor no `razor.css` nome do arquivo **não** diferencia maiúsculas de minúsculas.
+Para um `MyComponent` componente que tenha um `MyComponent.razor` arquivo, crie um arquivo junto com o componente chamado `MyComponent.razor.css` . O `MyComponent` valor no `.razor.css` nome do arquivo **não** diferencia maiúsculas de minúsculas.
 
 Por exemplo, para adicionar o isolamento de CSS ao `Counter` componente no Blazor modelo de projeto padrão, adicione um novo arquivo chamado `Counter.razor.css` junto com o `Counter.razor` arquivo e, em seguida, adicione o seguinte CSS:
 
@@ -86,7 +86,7 @@ Se outros projetos forem utilizados, como pacotes NuGet ou bibliotecas de [ Razo
 
 ## <a name="child-component-support"></a>Suporte a componentes filho
 
-Por padrão, o isolamento de CSS só se aplica ao componente que você associa ao formato `{COMPONENT NAME}.razor.css` , em que o espaço reservado `{COMPONENT NAME}` é geralmente o nome do componente. Para aplicar as alterações a um componente filho, use o `::deep` combinador para quaisquer elementos descendentes no arquivo do componente pai `razor.css` . O `::deep` combinador seleciona elementos que são *descendentes* do identificador de escopo gerado de um elemento. 
+Por padrão, o isolamento de CSS só se aplica ao componente que você associa ao formato `{COMPONENT NAME}.razor.css` , em que o espaço reservado `{COMPONENT NAME}` é geralmente o nome do componente. Para aplicar as alterações a um componente filho, use o `::deep` combinador para quaisquer elementos descendentes no arquivo do componente pai `.razor.css` . O `::deep` combinador seleciona elementos que são *descendentes* do identificador de escopo gerado de um elemento. 
 
 O exemplo a seguir mostra um componente pai chamado `Parent` com um componente filho chamado `Child` .
 
@@ -180,3 +180,24 @@ Para recusar a forma como Blazor o publica e carrega arquivos com escopo em temp
   <DisableScopedCssBundling>true</DisableScopedCssBundling>
 </PropertyGroup>
 ```
+
+## <a name="no-locrazor-class-library-rcl-support"></a>Razor suporte à biblioteca de classes (RCL)
+
+Quando uma [ Razor biblioteca de classes (RCL)](xref:razor-pages/ui-class) fornece estilos isolados, o `<link>` atributo da marca `href` aponta para `{STATIC WEB ASSET BASE PATH}/{ASSEMBLY NAME}.bundle.scp.css` , onde os espaços reservados são:
+
+* `{STATIC WEB ASSET BASE PATH}`: O caminho base do ativo da Web estático.
+* `{ASSEMBLY NAME}`: O nome do assembly da biblioteca de classes.
+
+No exemplo a seguir:
+
+* O caminho base do ativo da Web estático é `_content/ClassLib` .
+* O nome do assembly da biblioteca de classes é `ClassLib` .
+
+```html
+<link href="_content/ClassLib/ClassLib.bundle.scp.css" rel="stylesheet">
+```
+
+Para obter mais informações sobre RCLs e bibliotecas de componentes, consulte:
+
+* <xref:razor-pages/ui-class>
+* <xref:blazor/components/class-libraries>.

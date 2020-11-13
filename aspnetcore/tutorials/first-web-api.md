@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ab06f2d347d7f05e9c72a85e0c6e0fbc67fe48a7
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: 569744b2cbec062ec9abab9db1c94960f1f912e7
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550706"
+ms.locfileid: "94570244"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -536,7 +536,7 @@ Um DTO pode ser usado para:
 
 Para demonstrar a abordagem do DTO, atualize a `TodoItem` classe para incluir um campo secreto:
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=8)]
 
 O campo segredo precisa ser ocultado deste aplicativo, mas um aplicativo administrativo pode optar por expô-lo.
 
@@ -1364,7 +1364,7 @@ O método `CreatedAtAction`:
 
 * Compile o projeto.
 * No Postman, defina o método HTTP como `POST`.
-* Defina o URI como `https://localhost:<port>/api/TodoItem` . Por exemplo, `https://localhost:5001/api/TodoItem`.
+* Defina o URI como `https://localhost:<port>/api/Todo` . Por exemplo, `https://localhost:5001/api/Todo`.
 * Selecione a guia **Corpo**.
 * Selecione o botão de opção **bruto**.
 * Defina o tipo como **JSON (aplicativo/json)**.

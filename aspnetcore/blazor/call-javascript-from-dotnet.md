@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 5d9934c8bebbe994489380faf55140fce6beec95
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: f5373f1905958ee5c51ee76bd07690d079fb50f5
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507792"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570010"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
 
@@ -703,6 +703,10 @@ Considere as seguintes diretrizes ao desenvolver código que transfere uma grand
 * Depois que os dados são recebidos pelo servidor, os dados podem ser:
   * Temporariamente armazenados em um buffer de memória até que todos os segmentos sejam coletados.
   * Consumido imediatamente. Por exemplo, os dados podem ser armazenados imediatamente em um banco de dado ou gravados no disco à medida que cada segmento é recebido.
+  
+## <a name="js-modules"></a>Módulos JS
+
+Para isolamento de JS, o JS Interop funciona com o suporte padrão do navegador para [módulos ECMAScript (ESM)](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) ([especificação ECMAScript](https://tc39.es/ecma262/#sec-modules)).
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 31db9aea9e0b7ed21cae2f87fbb9e2e649782697
-ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
+ms.openlocfilehash: 9f9f41f4d25867c43cd49640bc76ef63f9415eb2
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234459"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570192"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -113,7 +113,7 @@ O `ConfigureServices` método atualizado registra a nova `IMyDependency` impleme
 
 `MyDependency2` depende de <xref:Microsoft.Extensions.Logging.ILogger%601> , que ele solicita no construtor. `ILogger<TCategoryName>` é um [serviço fornecido pelo Framework](#framework-provided-services).
 
-Não é incomum usar a injeção de dependência de uma maneira encadeada. Por sua vez, cada dependência solicitada solicita suas próprias dependências. O contêiner resolve as dependências no grafo e retorna o serviço totalmente resolvido. O conjunto de dependências que precisa ser resolvido normalmente é chamado de *árvore de dependência* , *grafo de dependência* ou *grafo de objeto* .
+Não é incomum usar a injeção de dependência de uma maneira encadeada. Por sua vez, cada dependência solicitada solicita suas próprias dependências. O contêiner resolve as dependências no grafo e retorna o serviço totalmente resolvido. O conjunto de dependências que precisa ser resolvido normalmente é chamado de *árvore de dependência* , *grafo de dependência* ou *grafo de objeto*.
 
 O contêiner resolve aproveitando `ILogger<TCategoryName>` os [tipos abertos (genéricos)](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types), eliminando a necessidade de registrar cada [tipo construído (genérico)](/dotnet/csharp/language-reference/language-specification/types#constructed-types).
 
@@ -151,7 +151,7 @@ Para obter mais informações, consulte <xref:fundamentals/startup> e [acessar a
 
 ## <a name="register-groups-of-services-with-extension-methods"></a>Registrar grupos de serviços com métodos de extensão
 
-O ASP.NET Core Framework usa uma Convenção para registrar um grupo de serviços relacionados. A Convenção é usar um método de `Add{GROUP_NAME}` extensão único para registrar todos os serviços exigidos por um recurso de estrutura. Por exemplo, o <Microsoft. Extensions. DependencyInjection. MvcServiceCollectionExtensions. addcontrollers> método de extensão registra os serviços necessários para controladores MVC.
+O ASP.NET Core Framework usa uma Convenção para registrar um grupo de serviços relacionados. A Convenção é usar um método de `Add{GROUP_NAME}` extensão único para registrar todos os serviços exigidos por um recurso de estrutura. Por exemplo, o <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllers%2A> método de extensão registra os serviços necessários para controladores MVC.
 
 O código a seguir é gerado pelo Razor modelo de páginas usando contas de usuário individuais e mostra como adicionar serviços adicionais ao contêiner usando os métodos de extensão <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> e <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity%2A> :
 
@@ -322,7 +322,7 @@ Consulte [substituição do contêiner de serviço padrão](/dotnet/core/extensi
 
 Consulte as [recomendações](/dotnet/core/extensions/dependency-injection-guidelines#recommendations) em [injeção de dependência no .net](/dotnet/core/extensions/dependency-injection)
 
-* Evite usar o *padrão do localizador de serviço* . Por exemplo, não invoque <xref:System.IServiceProvider.GetService%2A> para obter uma instância de serviço quando for possível usar a DI:
+* Evite usar o *padrão do localizador de serviço*. Por exemplo, não invoque <xref:System.IServiceProvider.GetService%2A> para obter uma instância de serviço quando for possível usar a DI:
 
   **Incorreto:**
 
@@ -485,7 +485,7 @@ Essa interface é implementada por um tipo concreto, `MyDependency`:
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
 
-`MyDependency` solicita um <xref:Microsoft.Extensions.Logging.ILogger`1> em seu construtor. Não é incomum usar a injeção de dependência de uma maneira encadeada. Por sua vez, cada dependência solicitada solicita suas próprias dependências. O contêiner resolve as dependências no grafo e retorna o serviço totalmente resolvido. O conjunto de dependências que precisa ser resolvido normalmente é chamado de *árvore de dependência* , *grafo de dependência* ou *grafo de objeto* .
+`MyDependency` solicita um <xref:Microsoft.Extensions.Logging.ILogger`1> em seu construtor. Não é incomum usar a injeção de dependência de uma maneira encadeada. Por sua vez, cada dependência solicitada solicita suas próprias dependências. O contêiner resolve as dependências no grafo e retorna o serviço totalmente resolvido. O conjunto de dependências que precisa ser resolvido normalmente é chamado de *árvore de dependência* , *grafo de dependência* ou *grafo de objeto*.
 
 `IMyDependency` e `ILogger<TCategoryName>` devem ser registrados no contêiner do serviço. `IMyDependency` está registrado em `Startup.ConfigureServices`. `ILogger<TCategoryName>` é registrado pela infraestrutura de abstrações de registro em log, portanto, é um [serviço fornecido por estrutura](#framework-provided-services) registrado por padrão pela estrutura.
 
@@ -677,7 +677,7 @@ Para obter mais informações, consulte:
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton*>
 
-Métodos [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) apenas registrarão o serviço se ainda não houver uma implementação *do mesmo tipo* . Vários serviços são resolvidos via `IEnumerable<{SERVICE}>`. Ao registrar os serviços, só convém ao desenvolvedor adicionar uma instância se até o momento nenhuma do mesmo tipo foi adicionada. Em geral, esse método é usado por autores de biblioteca para evitar registrar duas cópias de uma instância no contêiner.
+Métodos [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) apenas registrarão o serviço se ainda não houver uma implementação *do mesmo tipo*. Vários serviços são resolvidos via `IEnumerable<{SERVICE}>`. Ao registrar os serviços, só convém ao desenvolvedor adicionar uma instância se até o momento nenhuma do mesmo tipo foi adicionada. Em geral, esse método é usado por autores de biblioteca para evitar registrar duas cópias de uma instância no contêiner.
 
 No exemplo a seguir, a primeira linha registra `MyDep` para `IMyDep1`. A segunda linha registra `MyDep` para `IMyDep2`. A terceira linha não tem nenhum efeito porque `IMyDep1` já tem uma implementação registrada de `MyDep`:
 
