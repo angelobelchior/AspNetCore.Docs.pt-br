@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: a333c189e81a9f44e94deb6b37097f1a8b19a0f9
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 6435a7c9ce2a30873f0d3475a38270d3dea1b300
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430920"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595461"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>BlazorAutenticação e autorização do ASP.NET Core
 
@@ -255,7 +255,7 @@ Cada um desses conceitos é o mesmo de um aplicativo ASP.NET Core MVC ou de Razo
 
 ## <a name="authorizeview-component"></a>Componente AuthorizeView
 
-O componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> exibe de forma seletiva a interface do usuário, caso o usuário esteja autorizado a vê-la. Essa abordagem é útil quando você precisa apenas *exibir* dados para o usuário e não precisa usar a identidade dele na lógica de procedimento.
+O <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> componente exibe seletivamente o conteúdo da interface de usuário dependendo se o usuário está autorizado. Essa abordagem é útil quando você precisa apenas *exibir* dados para o usuário e não precisa usar a identidade dele na lógica de procedimento.
 
 O componente expõe uma variável `context` do tipo <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>, que pode ser usada para acessar informações sobre o usuário conectado:
 
@@ -266,24 +266,29 @@ O componente expõe uma variável `context` do tipo <xref:Microsoft.AspNetCore.C
 </AuthorizeView>
 ```
 
-Também é possível fornecer um conteúdo diferente para ser exibido caso o usuário não esteja autenticado:
+Você também pode fornecer conteúdo diferente para exibição se o usuário não estiver autorizado:
 
 ```razor
 <AuthorizeView>
     <Authorized>
         <h1>Hello, @context.User.Identity.Name!</h1>
-        <p>You can only see this content if you're authenticated.</p>
+        <p>You can only see this content if you're authorized.</p>
+        <button @onclick="SecureMethod">Authorized Only Button</button>
     </Authorized>
     <NotAuthorized>
         <h1>Authentication Failure!</h1>
         <p>You're not signed in.</p>
     </NotAuthorized>
 </AuthorizeView>
+
+@code {
+    private void SecureMethod() { ... }
+}
 ```
 
-O <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> componente pode ser usado no `NavMenu` componente ( `Shared/NavMenu.razor` ) para exibir um item de lista ( `<li>...</li>` ) para um [ `NavLink` componente](xref:blazor/fundamentals/routing#navlink-component) () <xref:Microsoft.AspNetCore.Components.Routing.NavLink> , mas observe que essa abordagem apenas remove o item de lista da saída renderizada. Ele não impede que o usuário navegue até o componente.
-
 O conteúdo de `<Authorized>` `<NotAuthorized>` marcas e pode incluir itens arbitrários, como outros componentes interativos.
+
+Um manipulador de eventos padrão para um elemento autorizado, como o `SecureMethod` método para o `<button>` elemento no exemplo anterior, só pode ser invocado por um usuário autorizado.
 
 As condições de autorização, como funções ou políticas que controlam o acesso ou as opções da interface do usuário, são abordadas na seção [Autorização](#authorization).
 
@@ -291,6 +296,8 @@ Se as condições de autorização não forem especificadas, o <xref:Microsoft.A
 
 * Usuários autenticados (conectados) como autorizados.
 * Usuários não autenticados (não conectados) como não autorizados.
+
+O <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> componente pode ser usado no `NavMenu` componente ( `Shared/NavMenu.razor` ) para exibir um item de lista ( `<li>...</li>` ) para um [ `NavLink` componente](xref:blazor/fundamentals/routing#navlink-component) () <xref:Microsoft.AspNetCore.Components.Routing.NavLink> , mas observe que essa abordagem apenas remove o item de lista da saída renderizada. Ele não impede que o usuário navegue até o componente.
 
 ### <a name="role-based-and-policy-based-authorization"></a>Autorização baseada em funções e em políticas
 

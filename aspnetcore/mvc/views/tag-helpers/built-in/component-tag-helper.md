@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 8e780de2367f66ad1f5197077d5243e0b85a41dd
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 761c125e3c5f94157cf7bf4524374db2545610b1
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431037"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595448"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>Auxiliar de marca de componente no ASP.NET Core
 
@@ -31,10 +31,20 @@ Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.c
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
+::: moniker range=">= aspnetcore-5.0"
+
 Siga as orientações na seção de *configuração* para:
 
 * [Blazor WebAssembly](xref:blazor/components/prerendering-and-integration?pivots=webassembly)
 * [Blazor Server](xref:blazor/components/prerendering-and-integration?pivots=server)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Siga as orientações na seção *configuração* do <xref:blazor/components/prerendering-and-integration?pivots=server> artigo.
+
+::: moniker-end
 
 ## <a name="component-tag-helper"></a>Auxiliar de marca de componente
 
@@ -52,14 +62,14 @@ Para renderizar um componente de uma página ou exibição, use o [auxiliar de m
 
 Blazor WebAssembly os modos de renderização do aplicativo são mostrados na tabela a seguir.
 
-| Modo de renderização | Descrição |
+| Modo de renderização | Description |
 | ----------- | ----------- |
 | `WebAssembly` | Renderiza um marcador para um Blazor WebAssembly aplicativo para ser usado para incluir um componente interativo quando carregado no navegador. O componente não é renderizado. Essa opção torna mais fácil renderizar diferentes Blazor WebAssembly componentes em páginas diferentes. |
 | `WebAssemblyPrerendered` | Coloca o componente em HTML estático e inclui um marcador para um Blazor WebAssembly aplicativo para uso posterior para tornar o componente interativo quando carregado no navegador. |
 
 Blazor Server os modos de renderização do aplicativo são mostrados na tabela a seguir.
 
-| Modo de renderização | Descrição |
+| Modo de renderização | Description |
 | ----------- | ----------- |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | Renderiza o componente em HTML estático e inclui um marcador para um Blazor Server aplicativo. Quando o agente do usuário é iniciado, esse marcador é usado para inicializar um Blazor aplicativo. |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | Renderiza um marcador para um Blazor Server aplicativo. A saída do componente não está incluída. Quando o agente do usuário é iniciado, esse marcador é usado para inicializar um Blazor aplicativo. |
@@ -71,7 +81,7 @@ Blazor Server os modos de renderização do aplicativo são mostrados na tabela 
 
 Blazor Server os modos de renderização do aplicativo são mostrados na tabela a seguir.
 
-| Modo de renderização | Descrição |
+| Modo de renderização | Description |
 | ----------- | ----------- |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | Renderiza o componente em HTML estático e inclui um marcador para um Blazor Server aplicativo. Quando o agente do usuário é iniciado, esse marcador é usado para inicializar um Blazor aplicativo. |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | Renderiza um marcador para um Blazor Server aplicativo. A saída do componente não está incluída. Quando o agente do usuário é iniciado, esse marcador é usado para inicializar um Blazor aplicativo. |

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 9f9f41f4d25867c43cd49640bc76ef63f9415eb2
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 3f7cce475b5c7b0fcbb93644b2c39acd637a6f9d
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570192"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595474"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injeção de dependência no ASP.NET Core
 
@@ -500,7 +500,10 @@ No exemplo de aplicativo, o serviço `IMyDependency` está registrado com o tipo
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> Cada método de extensão `services.Add{SERVICE_NAME}` adiciona (e possivelmente configura) serviços. Por exemplo, `services.AddMvc()` adiciona as páginas de serviços Razor e a MVC necessária. Recomendamos que os aplicativos sigam essa convenção. Coloque os métodos de extensão no namespace [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) para encapsular grupos de registros de serviço.
+> Cada `services.Add{SERVICE_NAME}` método de extensão adiciona e potencialmente configura os serviços do. Por exemplo, `services.AddControllersWithViews` , `services.AddRazorPages` e `services.AddControllers` adiciona os serviços ASP.NET Core aplicativos exigem. Recomendamos que os aplicativos sigam essa convenção. Coloque os métodos de extensão no namespace <xref:Microsoft.Extensions.DependencyInjection?displayProperty=fullName> para encapsular grupos de registros de serviço. Incluir a porção `Microsoft.Extensions.DependencyInjection` de namespace para métodos de extensão de di também:
+>
+> * Permite que eles sejam exibidos no [IntelliSense](/visualstudio/ide/using-intellisense) sem adicionar `using` blocos adicionais.
+> * Impede que `using` instruções excessivas na `Startup` classe em que esses métodos de extensão são normalmente chamados.
 
 Se o construtor do serviço exigir um [tipo interno](/dotnet/csharp/language-reference/keywords/built-in-types-table), como `string`, o tipo poderá ser injetado usando a [configuração](xref:fundamentals/configuration/index) ou o [padrão de opções](xref:fundamentals/configuration/options):
 

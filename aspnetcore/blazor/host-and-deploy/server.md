@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
+ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055757"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94595435"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Hospedar e implantar Blazor Server
 
@@ -56,7 +56,7 @@ Ao considerar a escalabilidade de um único servidor (escalar verticalmente), a 
 
 Para obter orientação sobre a criação de Blazor aplicativos de servidor seguros e escalonáveis, consulte <xref:blazor/security/server/threat-mitigation> .
 
-Cada circuito usa aproximadamente 250 KB de memória para um aplicativo estilo mínimo de *Olá, mundo* . O tamanho de um circuito depende do código do aplicativo e dos requisitos de manutenção de estado associados a cada componente. Recomendamos que você meça as demandas de recursos durante o desenvolvimento para seu aplicativo e infraestrutura, mas a linha de base a seguir pode ser um ponto de partida para planejar seu destino de implantação: se você espera que seu aplicativo ofereça suporte a 5.000 usuários simultâneos, considere o orçamento de pelo menos 1,3 GB de memória do servidor para o aplicativo (ou ~ 273 KB por usuário).
+Cada circuito usa aproximadamente 250 KB de memória para um aplicativo estilo mínimo de *Olá, mundo*. O tamanho de um circuito depende do código do aplicativo e dos requisitos de manutenção de estado associados a cada componente. Recomendamos que você meça as demandas de recursos durante o desenvolvimento para seu aplicativo e infraestrutura, mas a linha de base a seguir pode ser um ponto de partida para planejar seu destino de implantação: se você espera que seu aplicativo ofereça suporte a 5.000 usuários simultâneos, considere o orçamento de pelo menos 1,3 GB de memória do servidor para o aplicativo (ou ~ 273 KB por usuário).
 
 ### <a name="no-locsignalr-configuration"></a>SignalR configuração
 
@@ -78,9 +78,9 @@ Blazor funciona melhor ao usar o WebSocket como SignalR transporte devido à lat
 > * [O que é o serviço do Azure SignalR ?](/azure/azure-signalr/signalr-overview)
 > * [Guia de desempenho do SignalR serviço do Azure](/azure-signalr/signalr-concept-performance#performance-factors)
 
-Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azure SignalR :
+### <a name="configuration"></a>Configuração
 
-1. Habilite o serviço para dar suporte a *sessões adesivas* , em que os clientes são [redirecionados de volta para o mesmo servidor ao renderizar](xref:blazor/hosting-models#connection-to-the-server). Defina a `ServerStickyMode` opção ou o valor de configuração como `Required` . Normalmente, um aplicativo cria a configuração usando **uma** das seguintes abordagens:
+Para configurar um aplicativo para o serviço do Azure SignalR , o aplicativo deve dar suporte a *sessões adesivas* , em que os clientes são [redirecionados de volta para o mesmo servidor durante o pré-processamento](xref:blazor/hosting-models#connection-to-the-server). A `ServerStickyMode` opção ou o valor de configuração é definido como `Required` . Normalmente, um aplicativo cria a configuração usando **_uma_** das seguintes abordagens:
 
    * `Startup.ConfigureServices`:
   
@@ -92,19 +92,25 @@ Para configurar um aplicativo (e, opcionalmente, provisionar) o serviço do Azur
      });
      ```
 
-   * Configuração (use **uma** das seguintes abordagens):
+   * Configuração (use **_uma_** das seguintes abordagens):
   
-     * `appsettings.json`:
+     * Em `appsettings.json`:
 
        ```json
-       "Azure:SignalR:ServerStickyMode": "Required"
+       "Azure:SignalR:StickyServerMode": "Required"
        ```
 
-     * As configurações do aplicativo de **configuração** do serviço de aplicativo  >  **Application settings** na portal do Azure ( **nome** : `Azure:SignalR:ServerStickyMode` , **valor** : `Required` ).
+     * As configurações do aplicativo de **configuração** do serviço de aplicativo  >  **Application settings** na portal do Azure ( **nome** : `Azure__SignalR__StickyServerMode` , **valor** : `Required` ). Essa abordagem será adotada para o aplicativo automaticamente se você [provisionar o SignalR serviço do Azure](#provision-the-azure-signalr-service).
+
+### <a name="provision-the-azure-no-locsignalr-service"></a>Provisionar o serviço do Azure SignalR
+
+Para provisionar o serviço do Azure SignalR para um aplicativo no Visual Studio:
 
 1. Crie um perfil de publicação de aplicativos do Azure no Visual Studio para o Blazor Server aplicativo.
 1. Adicione a dependência de **SignalR serviço do Azure** ao perfil. Se a assinatura do Azure não tiver uma instância de serviço do Azure já existente SignalR para atribuir ao aplicativo, selecione **criar uma nova SignalR instância de serviço do Azure** para provisionar uma nova instância de serviço.
 1. Publicar o aplicativo no Azure.
+
+O provisionamento do serviço do Azure SignalR no Visual Studio habilita automaticamente as [ *sessões adesivas*](#configuration) e adiciona a SignalR cadeia de conexão à configuração do serviço de aplicativo.
 
 #### <a name="iis"></a>IIS
 
