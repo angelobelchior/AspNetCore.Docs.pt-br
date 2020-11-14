@@ -5,17 +5,17 @@ description: Saiba mais sobre os principais provedores de armazenamento no ASP.N
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/implementation/key-storage-providers
 ms.openlocfilehash: 6a70183ce4b1a129ef213300473b233a5ef822f9
 ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="azure-storage"></a><span data-ttu-id="8820b-114">Armazenamento do Azure</span><span class="sxs-lookup"><span data-stu-id="8820b-114">Azure Storage</span></span>
 
-<span data-ttu-id="8820b-115">O pacote [Azure. Extensions. AspNetCore. Dataprotegetion. BLOBs](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) permite armazenar chaves de proteção de dados no armazenamento de BLOBs do Azure.</span><span class="sxs-lookup"><span data-stu-id="8820b-115">The [Azure.Extensions.AspNetCore.DataProtection.Blobs](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) package allows storing data protection keys in Azure Blob Storage.</span></span> <span data-ttu-id="8820b-116">As chaves podem ser compartilhadas entre várias instâncias de um aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8820b-116">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="8820b-117">Os aplicativos podem compartilhar autenticação :::no-loc(cookie)::: s ou proteção de CSRF em vários servidores.</span><span class="sxs-lookup"><span data-stu-id="8820b-117">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="8820b-115">O pacote [Azure. Extensions. AspNetCore. Dataprotegetion. BLOBs](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) permite armazenar chaves de proteção de dados no armazenamento de BLOBs do Azure.</span><span class="sxs-lookup"><span data-stu-id="8820b-115">The [Azure.Extensions.AspNetCore.DataProtection.Blobs](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) package allows storing data protection keys in Azure Blob Storage.</span></span> <span data-ttu-id="8820b-116">As chaves podem ser compartilhadas entre várias instâncias de um aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8820b-116">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="8820b-117">Os aplicativos podem compartilhar autenticação cookie s ou proteção de CSRF em vários servidores.</span><span class="sxs-lookup"><span data-stu-id="8820b-117">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 <span data-ttu-id="8820b-118">Para configurar o provedor de armazenamento de BLOBs do Azure, chame uma das sobrecargas de [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) .</span><span class="sxs-lookup"><span data-stu-id="8820b-118">To configure the Azure Blob Storage provider, call one of the [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) overloads.</span></span>
 
@@ -83,13 +83,13 @@ services.AddDataProtection()
 
 ::: moniker range=">= aspnetcore-2.2"
 
-<span data-ttu-id="8820b-122">O pacote [Microsoft. AspNetCore. dataprotection. StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) permite armazenar chaves de proteção de dados em um cache Redis.</span><span class="sxs-lookup"><span data-stu-id="8820b-122">The [Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="8820b-123">As chaves podem ser compartilhadas entre várias instâncias de um aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8820b-123">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="8820b-124">Os aplicativos podem compartilhar autenticação :::no-loc(cookie)::: s ou proteção de CSRF em vários servidores.</span><span class="sxs-lookup"><span data-stu-id="8820b-124">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="8820b-122">O pacote [Microsoft. AspNetCore. dataprotection. StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) permite armazenar chaves de proteção de dados em um cache Redis.</span><span class="sxs-lookup"><span data-stu-id="8820b-122">The [Microsoft.AspNetCore.DataProtection.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.StackExchangeRedis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="8820b-123">As chaves podem ser compartilhadas entre várias instâncias de um aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8820b-123">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="8820b-124">Os aplicativos podem compartilhar autenticação cookie s ou proteção de CSRF em vários servidores.</span><span class="sxs-lookup"><span data-stu-id="8820b-124">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-<span data-ttu-id="8820b-125">O pacote [Microsoft. AspNetCore. dataprotection. Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) permite armazenar chaves de proteção de dados em um cache Redis.</span><span class="sxs-lookup"><span data-stu-id="8820b-125">The [Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="8820b-126">As chaves podem ser compartilhadas entre várias instâncias de um aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8820b-126">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="8820b-127">Os aplicativos podem compartilhar autenticação :::no-loc(cookie)::: s ou proteção de CSRF em vários servidores.</span><span class="sxs-lookup"><span data-stu-id="8820b-127">Apps can share authentication :::no-loc(cookie):::s or CSRF protection across multiple servers.</span></span>
+<span data-ttu-id="8820b-125">O pacote [Microsoft. AspNetCore. dataprotection. Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) permite armazenar chaves de proteção de dados em um cache Redis.</span><span class="sxs-lookup"><span data-stu-id="8820b-125">The [Microsoft.AspNetCore.DataProtection.Redis](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Redis/) package allows storing data protection keys in a Redis cache.</span></span> <span data-ttu-id="8820b-126">As chaves podem ser compartilhadas entre várias instâncias de um aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="8820b-126">Keys can be shared across several instances of a web app.</span></span> <span data-ttu-id="8820b-127">Os aplicativos podem compartilhar autenticação cookie s ou proteção de CSRF em vários servidores.</span><span class="sxs-lookup"><span data-stu-id="8820b-127">Apps can share authentication cookies or CSRF protection across multiple servers.</span></span>
 
 ::: moniker-end
 

@@ -1,23 +1,23 @@
 ---
-title: 'Criar e usar componentes de ASP.NET Core :::no-loc(Razor):::'
+title: 'Criar e usar componentes de ASP.NET Core Razor'
 author: guardrex
-description: 'Saiba como criar e usar :::no-loc(Razor)::: componentes, incluindo como associar dados, manipular eventos e gerenciar ciclos de vida do componente.'
+description: 'Saiba como criar e usar Razor componentes, incluindo como associar dados, manipular eventos e gerenciar ciclos de vida do componente.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/09/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/index
 ms.openlocfilehash: d78076eb29d6d09756e408b388fcf12b4b6460f6
 ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
@@ -26,23 +26,23 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 11/11/2020
 ms.locfileid: "94507933"
 ---
-# <a name="create-and-use-aspnet-core-no-locrazor-components"></a><span data-ttu-id="1751f-103">Criar e usar componentes de ASP.NET Core :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="1751f-103">Create and use ASP.NET Core :::no-loc(Razor)::: components</span></span>
+# <a name="create-and-use-aspnet-core-no-locrazor-components"></a><span data-ttu-id="1751f-103">Criar e usar componentes de ASP.NET Core Razor</span><span class="sxs-lookup"><span data-stu-id="1751f-103">Create and use ASP.NET Core Razor components</span></span>
 
 <span data-ttu-id="1751f-104">Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)e [Tobias Bartsch](https://www.aveo-solutions.com/)</span><span class="sxs-lookup"><span data-stu-id="1751f-104">By [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), and [Tobias Bartsch](https://www.aveo-solutions.com/)</span></span>
 
 <span data-ttu-id="1751f-105">[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="1751f-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="1751f-106">:::no-loc(Blazor)::: os aplicativos são criados usando *componentes*.</span><span class="sxs-lookup"><span data-stu-id="1751f-106">:::no-loc(Blazor)::: apps are built using *components*.</span></span> <span data-ttu-id="1751f-107">Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário.</span><span class="sxs-lookup"><span data-stu-id="1751f-107">A component is a self-contained chunk of user interface (UI), such as a page, dialog, or form.</span></span> <span data-ttu-id="1751f-108">Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário.</span><span class="sxs-lookup"><span data-stu-id="1751f-108">A component includes HTML markup and the processing logic required to inject data or respond to UI events.</span></span> <span data-ttu-id="1751f-109">Os componentes são flexíveis e leves.</span><span class="sxs-lookup"><span data-stu-id="1751f-109">Components are flexible and lightweight.</span></span> <span data-ttu-id="1751f-110">Eles podem ser aninhados, reutilizados e compartilhados entre projetos.</span><span class="sxs-lookup"><span data-stu-id="1751f-110">They can be nested, reused, and shared among projects.</span></span>
+<span data-ttu-id="1751f-106">Blazor os aplicativos são criados usando *componentes*.</span><span class="sxs-lookup"><span data-stu-id="1751f-106">Blazor apps are built using *components*.</span></span> <span data-ttu-id="1751f-107">Um componente é uma parte independente da interface do usuário (IU), como uma página, uma caixa de diálogo ou um formulário.</span><span class="sxs-lookup"><span data-stu-id="1751f-107">A component is a self-contained chunk of user interface (UI), such as a page, dialog, or form.</span></span> <span data-ttu-id="1751f-108">Um componente inclui marcação HTML e a lógica de processamento necessária para injetar dados ou responder a eventos da interface do usuário.</span><span class="sxs-lookup"><span data-stu-id="1751f-108">A component includes HTML markup and the processing logic required to inject data or respond to UI events.</span></span> <span data-ttu-id="1751f-109">Os componentes são flexíveis e leves.</span><span class="sxs-lookup"><span data-stu-id="1751f-109">Components are flexible and lightweight.</span></span> <span data-ttu-id="1751f-110">Eles podem ser aninhados, reutilizados e compartilhados entre projetos.</span><span class="sxs-lookup"><span data-stu-id="1751f-110">They can be nested, reused, and shared among projects.</span></span>
 
 ## <a name="component-classes"></a><span data-ttu-id="1751f-111">Classes de componente</span><span class="sxs-lookup"><span data-stu-id="1751f-111">Component classes</span></span>
 
-<span data-ttu-id="1751f-112">Os componentes são implementados em [:::no-loc(Razor):::](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML.</span><span class="sxs-lookup"><span data-stu-id="1751f-112">Components are implemented in [:::no-loc(Razor):::](xref:mvc/views/razor) component files (`.razor`) using a combination of C# and HTML markup.</span></span> <span data-ttu-id="1751f-113">Um componente no :::no-loc(Blazor)::: é conhecido formalmente como um *:::no-loc(Razor)::: componente*.</span><span class="sxs-lookup"><span data-stu-id="1751f-113">A component in :::no-loc(Blazor)::: is formally referred to as a *:::no-loc(Razor)::: component*.</span></span>
+<span data-ttu-id="1751f-112">Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML.</span><span class="sxs-lookup"><span data-stu-id="1751f-112">Components are implemented in [Razor](xref:mvc/views/razor) component files (`.razor`) using a combination of C# and HTML markup.</span></span> <span data-ttu-id="1751f-113">Um componente no Blazor é conhecido formalmente como um *Razor componente*.</span><span class="sxs-lookup"><span data-stu-id="1751f-113">A component in Blazor is formally referred to as a *Razor component*.</span></span>
 
-### <a name="no-locrazor-syntax"></a><span data-ttu-id="1751f-114">Sintaxe de :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="1751f-114">:::no-loc(Razor)::: syntax</span></span>
+### <a name="no-locrazor-syntax"></a><span data-ttu-id="1751f-114">Sintaxe de Razor</span><span class="sxs-lookup"><span data-stu-id="1751f-114">Razor syntax</span></span>
 
-<span data-ttu-id="1751f-115">:::no-loc(Razor)::: os componentes em :::no-loc(Blazor)::: aplicativos usam extensivamente a :::no-loc(Razor)::: sintaxe.</span><span class="sxs-lookup"><span data-stu-id="1751f-115">:::no-loc(Razor)::: components in :::no-loc(Blazor)::: apps extensively use :::no-loc(Razor)::: syntax.</span></span> <span data-ttu-id="1751f-116">Se você não estiver familiarizado com a :::no-loc(Razor)::: linguagem de marcação, recomendamos a leitura <xref:mvc/views/razor> antes de continuar.</span><span class="sxs-lookup"><span data-stu-id="1751f-116">If you aren't familiar with the :::no-loc(Razor)::: markup language, we recommend reading <xref:mvc/views/razor> before proceeding.</span></span>
+<span data-ttu-id="1751f-115">Razor os componentes em Blazor aplicativos usam extensivamente a Razor sintaxe.</span><span class="sxs-lookup"><span data-stu-id="1751f-115">Razor components in Blazor apps extensively use Razor syntax.</span></span> <span data-ttu-id="1751f-116">Se você não estiver familiarizado com a Razor linguagem de marcação, recomendamos a leitura <xref:mvc/views/razor> antes de continuar.</span><span class="sxs-lookup"><span data-stu-id="1751f-116">If you aren't familiar with the Razor markup language, we recommend reading <xref:mvc/views/razor> before proceeding.</span></span>
 
-<span data-ttu-id="1751f-117">Ao acessar o conteúdo em :::no-loc(Razor)::: sintaxe, preste atenção especial às seguintes seções:</span><span class="sxs-lookup"><span data-stu-id="1751f-117">When accessing the content on :::no-loc(Razor)::: syntax, pay special attention to the following sections:</span></span>
+<span data-ttu-id="1751f-117">Ao acessar o conteúdo em Razor sintaxe, preste atenção especial às seguintes seções:</span><span class="sxs-lookup"><span data-stu-id="1751f-117">When accessing the content on Razor syntax, pay special attention to the following sections:</span></span>
 
 * <span data-ttu-id="1751f-118">[Diretivas](xref:mvc/views/razor#directives): `@` -palavras-chave reservadas prefixadas que normalmente alteram a maneira como a marcação de componente é analisada ou funciona.</span><span class="sxs-lookup"><span data-stu-id="1751f-118">[Directives](xref:mvc/views/razor#directives): `@`-prefixed reserved keywords that typically change the way component markup is parsed or function.</span></span>
 * <span data-ttu-id="1751f-119">[Atributos de diretiva](xref:mvc/views/razor#directive-attributes): `@` -palavras-chave reservadas prefixadas que normalmente alteram a maneira como os elementos de componente são analisados ou funcionam.</span><span class="sxs-lookup"><span data-stu-id="1751f-119">[Directive attributes](xref:mvc/views/razor#directive-attributes): `@`-prefixed reserved keywords that typically change the way component elements are parsed or function.</span></span>
@@ -53,7 +53,7 @@ ms.locfileid: "94507933"
 
 ### <a name="routing"></a><span data-ttu-id="1751f-123">Roteamento</span><span class="sxs-lookup"><span data-stu-id="1751f-123">Routing</span></span>
 
-<span data-ttu-id="1751f-124">O roteamento no :::no-loc(Blazor)::: é obtido fornecendo um modelo de rota para cada componente acessível no aplicativo.</span><span class="sxs-lookup"><span data-stu-id="1751f-124">Routing in :::no-loc(Blazor)::: is achieved by providing a route template to each accessible component in the app.</span></span> <span data-ttu-id="1751f-125">Quando um :::no-loc(Razor)::: arquivo com uma [`@page`][9] diretiva é compilado, a classe gerada recebe um <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> especificando o modelo de rota.</span><span class="sxs-lookup"><span data-stu-id="1751f-125">When a :::no-loc(Razor)::: file with an [`@page`][9] directive is compiled, the generated class is given a <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> specifying the route template.</span></span> <span data-ttu-id="1751f-126">Em tempo de execução, o roteador procura classes de componentes com um <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> e renderiza qualquer componente que tenha um modelo de rota que corresponda à URL solicitada.</span><span class="sxs-lookup"><span data-stu-id="1751f-126">At runtime, the router looks for component classes with a <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> and renders whichever component has a route template that matches the requested URL.</span></span> <span data-ttu-id="1751f-127">Para obter mais informações, consulte <xref:blazor/fundamentals/routing>.</span><span class="sxs-lookup"><span data-stu-id="1751f-127">For more information, see <xref:blazor/fundamentals/routing>.</span></span>
+<span data-ttu-id="1751f-124">O roteamento no Blazor é obtido fornecendo um modelo de rota para cada componente acessível no aplicativo.</span><span class="sxs-lookup"><span data-stu-id="1751f-124">Routing in Blazor is achieved by providing a route template to each accessible component in the app.</span></span> <span data-ttu-id="1751f-125">Quando um Razor arquivo com uma [`@page`][9] diretiva é compilado, a classe gerada recebe um <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> especificando o modelo de rota.</span><span class="sxs-lookup"><span data-stu-id="1751f-125">When a Razor file with an [`@page`][9] directive is compiled, the generated class is given a <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> specifying the route template.</span></span> <span data-ttu-id="1751f-126">Em tempo de execução, o roteador procura classes de componentes com um <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> e renderiza qualquer componente que tenha um modelo de rota que corresponda à URL solicitada.</span><span class="sxs-lookup"><span data-stu-id="1751f-126">At runtime, the router looks for component classes with a <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> and renders whichever component has a route template that matches the requested URL.</span></span> <span data-ttu-id="1751f-127">Para obter mais informações, consulte <xref:blazor/fundamentals/routing>.</span><span class="sxs-lookup"><span data-stu-id="1751f-127">For more information, see <xref:blazor/fundamentals/routing>.</span></span>
 
 ```razor
 @page "/ParentComponent"
@@ -63,7 +63,7 @@ ms.locfileid: "94507933"
 
 ### <a name="markup"></a><span data-ttu-id="1751f-128">Marcação</span><span class="sxs-lookup"><span data-stu-id="1751f-128">Markup</span></span>
 
-<span data-ttu-id="1751f-129">A interface do usuário para um componente é definida usando HTML.</span><span class="sxs-lookup"><span data-stu-id="1751f-129">The UI for a component is defined using HTML.</span></span> <span data-ttu-id="1751f-130">A lógica de renderização dinâmica (por exemplo, loops, condicionais, expressões) é adicionada usando uma sintaxe C# inserida chamada *:::no-loc(Razor):::* .</span><span class="sxs-lookup"><span data-stu-id="1751f-130">Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called *:::no-loc(Razor):::*.</span></span> <span data-ttu-id="1751f-131">Quando um aplicativo é compilado, a marcação HTML e a lógica de renderização C# são convertidas em uma classe de componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-131">When an app is compiled, the HTML markup and C# rendering logic are converted into a component class.</span></span> <span data-ttu-id="1751f-132">O nome da classe gerada corresponde ao nome do arquivo.</span><span class="sxs-lookup"><span data-stu-id="1751f-132">The name of the generated class matches the name of the file.</span></span>
+<span data-ttu-id="1751f-129">A interface do usuário para um componente é definida usando HTML.</span><span class="sxs-lookup"><span data-stu-id="1751f-129">The UI for a component is defined using HTML.</span></span> <span data-ttu-id="1751f-130">A lógica de renderização dinâmica (por exemplo, loops, condicionais, expressões) é adicionada usando uma sintaxe C# inserida chamada *Razor* .</span><span class="sxs-lookup"><span data-stu-id="1751f-130">Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called *Razor*.</span></span> <span data-ttu-id="1751f-131">Quando um aplicativo é compilado, a marcação HTML e a lógica de renderização C# são convertidas em uma classe de componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-131">When an app is compiled, the HTML markup and C# rendering logic are converted into a component class.</span></span> <span data-ttu-id="1751f-132">O nome da classe gerada corresponde ao nome do arquivo.</span><span class="sxs-lookup"><span data-stu-id="1751f-132">The name of the generated class matches the name of the file.</span></span>
 
 <span data-ttu-id="1751f-133">Os membros da classe de componente são definidos em um [`@code`][1] bloco.</span><span class="sxs-lookup"><span data-stu-id="1751f-133">Members of the component class are defined in an [`@code`][1] block.</span></span> <span data-ttu-id="1751f-134">No [`@code`][1] bloco, estado do componente (Propriedades, campos) é especificado com métodos para manipulação de eventos ou para definir outra lógica de componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-134">In the [`@code`][1] block, component state (properties, fields) is specified with methods for event handling or for defining other component logic.</span></span> <span data-ttu-id="1751f-135">Mais de um [`@code`][1] bloco é permitido.</span><span class="sxs-lookup"><span data-stu-id="1751f-135">More than one [`@code`][1] block is permissible.</span></span>
 
@@ -77,38 +77,38 @@ ms.locfileid: "94507933"
 
 @code {
     private string headingFontStyle = "italic";
-    private string headingText = "Put on your new :::no-loc(Blazor):::!";
+    private string headingText = "Put on your new Blazor!";
 }
 ```
 
-<span data-ttu-id="1751f-141">Depois que o componente é processado inicialmente, o componente regenera sua árvore de renderização em resposta a eventos.</span><span class="sxs-lookup"><span data-stu-id="1751f-141">After the component is initially rendered, the component regenerates its render tree in response to events.</span></span> <span data-ttu-id="1751f-142">:::no-loc(Blazor)::: em seguida, compara a nova árvore de renderização com a anterior e aplica quaisquer modificações ao Modelo de Objeto do Documento do navegador (DOM).</span><span class="sxs-lookup"><span data-stu-id="1751f-142">:::no-loc(Blazor)::: then compares the new render tree against the previous one and applies any modifications to the browser's Document Object Model (DOM).</span></span>
+<span data-ttu-id="1751f-141">Depois que o componente é processado inicialmente, o componente regenera sua árvore de renderização em resposta a eventos.</span><span class="sxs-lookup"><span data-stu-id="1751f-141">After the component is initially rendered, the component regenerates its render tree in response to events.</span></span> <span data-ttu-id="1751f-142">Blazor em seguida, compara a nova árvore de renderização com a anterior e aplica quaisquer modificações ao Modelo de Objeto do Documento do navegador (DOM).</span><span class="sxs-lookup"><span data-stu-id="1751f-142">Blazor then compares the new render tree against the previous one and applies any modifications to the browser's Document Object Model (DOM).</span></span>
 
 <span data-ttu-id="1751f-143">Os componentes são classes C# comuns e podem ser colocados em qualquer lugar dentro de um projeto.</span><span class="sxs-lookup"><span data-stu-id="1751f-143">Components are ordinary C# classes and can be placed anywhere within a project.</span></span> <span data-ttu-id="1751f-144">Os componentes que produzem páginas da Web geralmente residem na `Pages` pasta.</span><span class="sxs-lookup"><span data-stu-id="1751f-144">Components that produce webpages usually reside in the `Pages` folder.</span></span> <span data-ttu-id="1751f-145">Os componentes que não são de página são frequentemente colocados na `Shared` pasta ou em uma pasta personalizada adicionada ao projeto.</span><span class="sxs-lookup"><span data-stu-id="1751f-145">Non-page components are frequently placed in the `Shared` folder or a custom folder added to the project.</span></span>
 
 ### <a name="namespaces"></a><span data-ttu-id="1751f-146">Namespaces</span><span class="sxs-lookup"><span data-stu-id="1751f-146">Namespaces</span></span>
 
-<span data-ttu-id="1751f-147">Normalmente, o namespace de um componente é derivado do namespace raiz do aplicativo e do local do componente (pasta) no aplicativo.</span><span class="sxs-lookup"><span data-stu-id="1751f-147">Typically, a component's namespace is derived from the app's root namespace and the component's location (folder) within the app.</span></span> <span data-ttu-id="1751f-148">Se o namespace raiz do aplicativo for `:::no-loc(Blazor):::Sample` e o `Counter` componente residir na `Pages` pasta:</span><span class="sxs-lookup"><span data-stu-id="1751f-148">If the app's root namespace is `:::no-loc(Blazor):::Sample` and the `Counter` component resides in the `Pages` folder:</span></span>
+<span data-ttu-id="1751f-147">Normalmente, o namespace de um componente é derivado do namespace raiz do aplicativo e do local do componente (pasta) no aplicativo.</span><span class="sxs-lookup"><span data-stu-id="1751f-147">Typically, a component's namespace is derived from the app's root namespace and the component's location (folder) within the app.</span></span> <span data-ttu-id="1751f-148">Se o namespace raiz do aplicativo for `BlazorSample` e o `Counter` componente residir na `Pages` pasta:</span><span class="sxs-lookup"><span data-stu-id="1751f-148">If the app's root namespace is `BlazorSample` and the `Counter` component resides in the `Pages` folder:</span></span>
 
-* <span data-ttu-id="1751f-149">O `Counter` namespace do componente é `:::no-loc(Blazor):::Sample.Pages` .</span><span class="sxs-lookup"><span data-stu-id="1751f-149">The `Counter` component's namespace is `:::no-loc(Blazor):::Sample.Pages`.</span></span>
-* <span data-ttu-id="1751f-150">O nome do tipo totalmente qualificado do componente é `:::no-loc(Blazor):::Sample.Pages.Counter` .</span><span class="sxs-lookup"><span data-stu-id="1751f-150">The fully qualified type name of the component is `:::no-loc(Blazor):::Sample.Pages.Counter`.</span></span>
+* <span data-ttu-id="1751f-149">O `Counter` namespace do componente é `BlazorSample.Pages` .</span><span class="sxs-lookup"><span data-stu-id="1751f-149">The `Counter` component's namespace is `BlazorSample.Pages`.</span></span>
+* <span data-ttu-id="1751f-150">O nome do tipo totalmente qualificado do componente é `BlazorSample.Pages.Counter` .</span><span class="sxs-lookup"><span data-stu-id="1751f-150">The fully qualified type name of the component is `BlazorSample.Pages.Counter`.</span></span>
 
 <span data-ttu-id="1751f-151">Para pastas personalizadas que contêm componentes, adicione uma [`@using`][2] diretiva ao componente pai ou ao arquivo do aplicativo `_Imports.razor` .</span><span class="sxs-lookup"><span data-stu-id="1751f-151">For custom folders that hold components, add a [`@using`][2] directive to the parent component or to the app's `_Imports.razor` file.</span></span> <span data-ttu-id="1751f-152">O exemplo a seguir torna os componentes na `Components` pasta disponíveis:</span><span class="sxs-lookup"><span data-stu-id="1751f-152">The following example makes components in the `Components` folder available:</span></span>
 
 ```razor
-@using :::no-loc(Blazor):::Sample.Components
+@using BlazorSample.Components
 ```
 
 <span data-ttu-id="1751f-153">Os componentes também podem ser referenciados usando seus nomes totalmente qualificados, o que não exige a [`@using`][2] diretiva:</span><span class="sxs-lookup"><span data-stu-id="1751f-153">Components can also be referenced using their fully qualified names, which doesn't require the [`@using`][2] directive:</span></span>
 
 ```razor
-<:::no-loc(Blazor):::Sample.Components.MyComponent />
+<BlazorSample.Components.MyComponent />
 ```
 
-<span data-ttu-id="1751f-154">O namespace de um componente criado com o :::no-loc(Razor)::: é baseado em (em ordem de prioridade):</span><span class="sxs-lookup"><span data-stu-id="1751f-154">The namespace of a component authored with :::no-loc(Razor)::: is based on (in priority order):</span></span>
+<span data-ttu-id="1751f-154">O namespace de um componente criado com o Razor é baseado em (em ordem de prioridade):</span><span class="sxs-lookup"><span data-stu-id="1751f-154">The namespace of a component authored with Razor is based on (in priority order):</span></span>
 
-* <span data-ttu-id="1751f-155">[`@namespace`][8] designação na :::no-loc(Razor)::: marcação File ( `.razor` ) ( `@namespace :::no-loc(Blazor):::Sample.MyNamespace` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-155">[`@namespace`][8] designation in :::no-loc(Razor)::: file (`.razor`) markup (`@namespace :::no-loc(Blazor):::Sample.MyNamespace`).</span></span>
-* <span data-ttu-id="1751f-156">O projeto `RootNamespace` no arquivo de projeto ( `<RootNamespace>:::no-loc(Blazor):::Sample</RootNamespace>` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-156">The project's `RootNamespace` in the project file (`<RootNamespace>:::no-loc(Blazor):::Sample</RootNamespace>`).</span></span>
-* <span data-ttu-id="1751f-157">O nome do projeto, extraído do nome de arquivo do arquivo de projeto ( `.csproj` ) e o caminho da raiz do projeto para o componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-157">The project name, taken from the project file's file name (`.csproj`), and the path from the project root to the component.</span></span> <span data-ttu-id="1751f-158">Por exemplo, a estrutura resolve `{PROJECT ROOT}/Pages/Index.razor` ( `:::no-loc(Blazor):::Sample.csproj` ) para o namespace `:::no-loc(Blazor):::Sample.Pages` .</span><span class="sxs-lookup"><span data-stu-id="1751f-158">For example, the framework resolves `{PROJECT ROOT}/Pages/Index.razor` (`:::no-loc(Blazor):::Sample.csproj`) to the namespace `:::no-loc(Blazor):::Sample.Pages`.</span></span> <span data-ttu-id="1751f-159">Os componentes seguem regras de associação de nome C#.</span><span class="sxs-lookup"><span data-stu-id="1751f-159">Components follow C# name binding rules.</span></span> <span data-ttu-id="1751f-160">Para o `Index` componente neste exemplo, os componentes no escopo são todos os componentes:</span><span class="sxs-lookup"><span data-stu-id="1751f-160">For the `Index` component in this example, the components in scope are all of the components:</span></span>
+* <span data-ttu-id="1751f-155">[`@namespace`][8] designação na Razor marcação File ( `.razor` ) ( `@namespace BlazorSample.MyNamespace` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-155">[`@namespace`][8] designation in Razor file (`.razor`) markup (`@namespace BlazorSample.MyNamespace`).</span></span>
+* <span data-ttu-id="1751f-156">O projeto `RootNamespace` no arquivo de projeto ( `<RootNamespace>BlazorSample</RootNamespace>` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-156">The project's `RootNamespace` in the project file (`<RootNamespace>BlazorSample</RootNamespace>`).</span></span>
+* <span data-ttu-id="1751f-157">O nome do projeto, extraído do nome de arquivo do arquivo de projeto ( `.csproj` ) e o caminho da raiz do projeto para o componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-157">The project name, taken from the project file's file name (`.csproj`), and the path from the project root to the component.</span></span> <span data-ttu-id="1751f-158">Por exemplo, a estrutura resolve `{PROJECT ROOT}/Pages/Index.razor` ( `BlazorSample.csproj` ) para o namespace `BlazorSample.Pages` .</span><span class="sxs-lookup"><span data-stu-id="1751f-158">For example, the framework resolves `{PROJECT ROOT}/Pages/Index.razor` (`BlazorSample.csproj`) to the namespace `BlazorSample.Pages`.</span></span> <span data-ttu-id="1751f-159">Os componentes seguem regras de associação de nome C#.</span><span class="sxs-lookup"><span data-stu-id="1751f-159">Components follow C# name binding rules.</span></span> <span data-ttu-id="1751f-160">Para o `Index` componente neste exemplo, os componentes no escopo são todos os componentes:</span><span class="sxs-lookup"><span data-stu-id="1751f-160">For the `Index` component in this example, the components in scope are all of the components:</span></span>
   * <span data-ttu-id="1751f-161">Na mesma pasta, `Pages` .</span><span class="sxs-lookup"><span data-stu-id="1751f-161">In the same folder, `Pages`.</span></span>
   * <span data-ttu-id="1751f-162">Os componentes na raiz do projeto que não especificam explicitamente um namespace diferente.</span><span class="sxs-lookup"><span data-stu-id="1751f-162">The components in the project's root that don't explicitly specify a different namespace.</span></span>
 
@@ -117,16 +117,16 @@ ms.locfileid: "94507933"
 >
 > <span data-ttu-id="1751f-164">[`using`](/dotnet/csharp/language-reference/keywords/using-statement)Não há suporte para a importação de componentes com instruções com alias (por exemplo, `@using Foo = Bar` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-164">Importing components with aliased [`using`](/dotnet/csharp/language-reference/keywords/using-statement) statements (for example, `@using Foo = Bar`) isn't supported.</span></span>
 >
-> <span data-ttu-id="1751f-165">Não há suporte para nomes parcialmente qualificados.</span><span class="sxs-lookup"><span data-stu-id="1751f-165">Partially qualified names aren't supported.</span></span> <span data-ttu-id="1751f-166">Por exemplo, `@using :::no-loc(Blazor):::Sample` não há suporte para adicionar e referenciar o `NavMenu` componente ( `NavMenu.razor` ) com `<Shared.NavMenu></Shared.NavMenu>` .</span><span class="sxs-lookup"><span data-stu-id="1751f-166">For example, adding `@using :::no-loc(Blazor):::Sample` and referencing the `NavMenu` component (`NavMenu.razor`) with `<Shared.NavMenu></Shared.NavMenu>` isn't supported.</span></span>
+> <span data-ttu-id="1751f-165">Não há suporte para nomes parcialmente qualificados.</span><span class="sxs-lookup"><span data-stu-id="1751f-165">Partially qualified names aren't supported.</span></span> <span data-ttu-id="1751f-166">Por exemplo, `@using BlazorSample` não há suporte para adicionar e referenciar o `NavMenu` componente ( `NavMenu.razor` ) com `<Shared.NavMenu></Shared.NavMenu>` .</span><span class="sxs-lookup"><span data-stu-id="1751f-166">For example, adding `@using BlazorSample` and referencing the `NavMenu` component (`NavMenu.razor`) with `<Shared.NavMenu></Shared.NavMenu>` isn't supported.</span></span>
 
 ### <a name="partial-class-support"></a><span data-ttu-id="1751f-167">Suporte de classe parcial</span><span class="sxs-lookup"><span data-stu-id="1751f-167">Partial class support</span></span>
 
-<span data-ttu-id="1751f-168">:::no-loc(Razor)::: os componentes são gerados como classes parciais.</span><span class="sxs-lookup"><span data-stu-id="1751f-168">:::no-loc(Razor)::: components are generated as partial classes.</span></span> <span data-ttu-id="1751f-169">:::no-loc(Razor)::: os componentes são criados usando uma das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="1751f-169">:::no-loc(Razor)::: components are authored using either of the following approaches:</span></span>
+<span data-ttu-id="1751f-168">Razor os componentes são gerados como classes parciais.</span><span class="sxs-lookup"><span data-stu-id="1751f-168">Razor components are generated as partial classes.</span></span> <span data-ttu-id="1751f-169">Razor os componentes são criados usando uma das seguintes abordagens:</span><span class="sxs-lookup"><span data-stu-id="1751f-169">Razor components are authored using either of the following approaches:</span></span>
 
-* <span data-ttu-id="1751f-170">O código C# é definido em um [`@code`][1] bloco com marcação e :::no-loc(Razor)::: código HTML em um único arquivo.</span><span class="sxs-lookup"><span data-stu-id="1751f-170">C# code is defined in an [`@code`][1] block with HTML markup and :::no-loc(Razor)::: code in a single file.</span></span> <span data-ttu-id="1751f-171">:::no-loc(Blazor)::: os modelos definem seus :::no-loc(Razor)::: componentes usando essa abordagem.</span><span class="sxs-lookup"><span data-stu-id="1751f-171">:::no-loc(Blazor)::: templates define their :::no-loc(Razor)::: components using this approach.</span></span>
+* <span data-ttu-id="1751f-170">O código C# é definido em um [`@code`][1] bloco com marcação e Razor código HTML em um único arquivo.</span><span class="sxs-lookup"><span data-stu-id="1751f-170">C# code is defined in an [`@code`][1] block with HTML markup and Razor code in a single file.</span></span> <span data-ttu-id="1751f-171">Blazor os modelos definem seus Razor componentes usando essa abordagem.</span><span class="sxs-lookup"><span data-stu-id="1751f-171">Blazor templates define their Razor components using this approach.</span></span>
 * <span data-ttu-id="1751f-172">O código C# é colocado em um arquivo code-behind definido como uma classe parcial.</span><span class="sxs-lookup"><span data-stu-id="1751f-172">C# code is placed in a code-behind file defined as a partial class.</span></span>
 
-<span data-ttu-id="1751f-173">O exemplo a seguir mostra o `Counter` componente padrão com um [`@code`][1] bloco em um aplicativo gerado a partir de um :::no-loc(Blazor)::: modelo.</span><span class="sxs-lookup"><span data-stu-id="1751f-173">The following example shows the default `Counter` component with an [`@code`][1] block in an app generated from a :::no-loc(Blazor)::: template.</span></span> <span data-ttu-id="1751f-174">A marcação HTML, o :::no-loc(Razor)::: código e o código C# estão no mesmo arquivo:</span><span class="sxs-lookup"><span data-stu-id="1751f-174">HTML markup, :::no-loc(Razor)::: code, and C# code are in the same file:</span></span>
+<span data-ttu-id="1751f-173">O exemplo a seguir mostra o `Counter` componente padrão com um [`@code`][1] bloco em um aplicativo gerado a partir de um Blazor modelo.</span><span class="sxs-lookup"><span data-stu-id="1751f-173">The following example shows the default `Counter` component with an [`@code`][1] block in an app generated from a Blazor template.</span></span> <span data-ttu-id="1751f-174">A marcação HTML, o Razor código e o código C# estão no mesmo arquivo:</span><span class="sxs-lookup"><span data-stu-id="1751f-174">HTML markup, Razor code, and C# code are in the same file:</span></span>
 
 <span data-ttu-id="1751f-175">`Pages/Counter.razor`:</span><span class="sxs-lookup"><span data-stu-id="1751f-175">`Pages/Counter.razor`:</span></span>
 
@@ -166,7 +166,7 @@ ms.locfileid: "94507933"
 <span data-ttu-id="1751f-178">`Counter.razor.cs`:</span><span class="sxs-lookup"><span data-stu-id="1751f-178">`Counter.razor.cs`:</span></span>
 
 ```csharp
-namespace :::no-loc(Blazor):::Sample.Pages
+namespace BlazorSample.Pages
 {
     public partial class Counter
     {
@@ -180,7 +180,7 @@ namespace :::no-loc(Blazor):::Sample.Pages
 }
 ```
 
-<span data-ttu-id="1751f-179">Adicione quaisquer namespaces necessários ao arquivo de classe parcial, conforme necessário.</span><span class="sxs-lookup"><span data-stu-id="1751f-179">Add any required namespaces to the partial class file as needed.</span></span> <span data-ttu-id="1751f-180">Os namespaces típicos usados pelos :::no-loc(Razor)::: componentes incluem:</span><span class="sxs-lookup"><span data-stu-id="1751f-180">Typical namespaces used by :::no-loc(Razor)::: components include:</span></span>
+<span data-ttu-id="1751f-179">Adicione quaisquer namespaces necessários ao arquivo de classe parcial, conforme necessário.</span><span class="sxs-lookup"><span data-stu-id="1751f-179">Add any required namespaces to the partial class file as needed.</span></span> <span data-ttu-id="1751f-180">Os namespaces típicos usados pelos Razor componentes incluem:</span><span class="sxs-lookup"><span data-stu-id="1751f-180">Typical namespaces used by Razor components include:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
@@ -192,32 +192,32 @@ using Microsoft.AspNetCore.Components.Web;
 ```
 
 > [!IMPORTANT]
-> <span data-ttu-id="1751f-181">[`@using`][2] as diretivas no `_Imports.razor` arquivo são aplicadas somente a :::no-loc(Razor)::: arquivos ( `.razor` ), não a arquivos C# ( `.cs` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-181">[`@using`][2] directives in the `_Imports.razor` file are only applied to :::no-loc(Razor)::: files (`.razor`), not C# files (`.cs`).</span></span>
+> <span data-ttu-id="1751f-181">[`@using`][2] as diretivas no `_Imports.razor` arquivo são aplicadas somente a Razor arquivos ( `.razor` ), não a arquivos C# ( `.cs` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-181">[`@using`][2] directives in the `_Imports.razor` file are only applied to Razor files (`.razor`), not C# files (`.cs`).</span></span>
 
 ### <a name="specify-a-base-class"></a><span data-ttu-id="1751f-182">Especificar uma classe base</span><span class="sxs-lookup"><span data-stu-id="1751f-182">Specify a base class</span></span>
 
-<span data-ttu-id="1751f-183">A [`@inherits`][6] diretiva pode ser usada para especificar uma classe base para um componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-183">The [`@inherits`][6] directive can be used to specify a base class for a component.</span></span> <span data-ttu-id="1751f-184">O exemplo a seguir mostra como um componente pode herdar uma classe base, `:::no-loc(Blazor):::RocksBase` ,, para fornecer as propriedades e os métodos do componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-184">The following example shows how a component can inherit a base class, `:::no-loc(Blazor):::RocksBase`, to provide the component's properties and methods.</span></span> <span data-ttu-id="1751f-185">A classe base deve derivar de <xref:Microsoft.AspNetCore.Components.ComponentBase> .</span><span class="sxs-lookup"><span data-stu-id="1751f-185">The base class should derive from <xref:Microsoft.AspNetCore.Components.ComponentBase>.</span></span>
+<span data-ttu-id="1751f-183">A [`@inherits`][6] diretiva pode ser usada para especificar uma classe base para um componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-183">The [`@inherits`][6] directive can be used to specify a base class for a component.</span></span> <span data-ttu-id="1751f-184">O exemplo a seguir mostra como um componente pode herdar uma classe base, `BlazorRocksBase` ,, para fornecer as propriedades e os métodos do componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-184">The following example shows how a component can inherit a base class, `BlazorRocksBase`, to provide the component's properties and methods.</span></span> <span data-ttu-id="1751f-185">A classe base deve derivar de <xref:Microsoft.AspNetCore.Components.ComponentBase> .</span><span class="sxs-lookup"><span data-stu-id="1751f-185">The base class should derive from <xref:Microsoft.AspNetCore.Components.ComponentBase>.</span></span>
 
-<span data-ttu-id="1751f-186">`Pages/:::no-loc(Blazor):::Rocks.razor`:</span><span class="sxs-lookup"><span data-stu-id="1751f-186">`Pages/:::no-loc(Blazor):::Rocks.razor`:</span></span>
+<span data-ttu-id="1751f-186">`Pages/BlazorRocks.razor`:</span><span class="sxs-lookup"><span data-stu-id="1751f-186">`Pages/BlazorRocks.razor`:</span></span>
 
 ```razor
-@page "/:::no-loc(Blazor):::Rocks"
-@inherits :::no-loc(Blazor):::RocksBase
+@page "/BlazorRocks"
+@inherits BlazorRocksBase
 
-<h1>@:::no-loc(Blazor):::RocksText</h1>
+<h1>@BlazorRocksText</h1>
 ```
 
-<span data-ttu-id="1751f-187">`:::no-loc(Blazor):::RocksBase.cs`:</span><span class="sxs-lookup"><span data-stu-id="1751f-187">`:::no-loc(Blazor):::RocksBase.cs`:</span></span>
+<span data-ttu-id="1751f-187">`BlazorRocksBase.cs`:</span><span class="sxs-lookup"><span data-stu-id="1751f-187">`BlazorRocksBase.cs`:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components;
 
-namespace :::no-loc(Blazor):::Sample
+namespace BlazorSample
 {
-    public class :::no-loc(Blazor):::RocksBase : ComponentBase
+    public class BlazorRocksBase : ComponentBase
     {
-        public string :::no-loc(Blazor):::RocksText { get; set; } = 
-            ":::no-loc(Blazor)::: rocks the browser!";
+        public string BlazorRocksText { get; set; } = 
+            "Blazor rocks the browser!";
     }
 }
 ```
@@ -258,7 +258,7 @@ namespace :::no-loc(Blazor):::Sample
 
 <span data-ttu-id="1751f-207">`Components/ChildComponent.razor`:</span><span class="sxs-lookup"><span data-stu-id="1751f-207">`Components/ChildComponent.razor`:</span></span>
 
-[!code-razor[](../common/samples/5.x/:::no-loc(Blazor):::WebAssemblySample/Components/ChildComponent.razor?highlight=2,11-12)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=2,11-12)]
 
 <span data-ttu-id="1751f-208">No exemplo a seguir do aplicativo de exemplo, o `ParentComponent` define o valor da `Title` Propriedade do `ChildComponent` .</span><span class="sxs-lookup"><span data-stu-id="1751f-208">In the following example from the sample app, the `ParentComponent` sets the value of the `Title` property of the `ChildComponent`.</span></span>
 
@@ -277,7 +277,7 @@ namespace :::no-loc(Blazor):::Sample
 
 <span data-ttu-id="1751f-218">`Components/ChildComponent.razor`:</span><span class="sxs-lookup"><span data-stu-id="1751f-218">`Components/ChildComponent.razor`:</span></span>
 
-[!code-razor[](../common/samples/5.x/:::no-loc(Blazor):::WebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
 > <span data-ttu-id="1751f-219">A propriedade que recebe o <xref:Microsoft.AspNetCore.Components.RenderFragment> conteúdo deve ser nomeada `ChildContent` por convenção.</span><span class="sxs-lookup"><span data-stu-id="1751f-219">The property receiving the <xref:Microsoft.AspNetCore.Components.RenderFragment> content must be named `ChildContent` by convention.</span></span>
@@ -288,7 +288,7 @@ namespace :::no-loc(Blazor):::Sample
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=7-8)]
 
-<span data-ttu-id="1751f-222">Devido à maneira que :::no-loc(Blazor)::: renderiza conteúdo filho, os componentes de renderização dentro de um `for` loop exigirão uma variável de índice local se a variável de loop de incremento for usada no conteúdo do componente filho:</span><span class="sxs-lookup"><span data-stu-id="1751f-222">Due to the way that :::no-loc(Blazor)::: renders child content, rendering components inside a `for` loop requires a local index variable if the incrementing loop variable is used in the child component's content:</span></span>
+<span data-ttu-id="1751f-222">Devido à maneira que Blazor renderiza conteúdo filho, os componentes de renderização dentro de um `for` loop exigirão uma variável de índice local se a variável de loop de incremento for usada no conteúdo do componente filho:</span><span class="sxs-lookup"><span data-stu-id="1751f-222">Due to the way that Blazor renders child content, rendering components inside a `for` loop requires a local index variable if the incrementing loop variable is used in the child component's content:</span></span>
 >
 > ```razor
 > @for (int c = 0; c < 10; c++)
@@ -313,7 +313,7 @@ namespace :::no-loc(Blazor):::Sample
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a><span data-ttu-id="1751f-224">Atributo nivelamento e parâmetros arbitrários</span><span class="sxs-lookup"><span data-stu-id="1751f-224">Attribute splatting and arbitrary parameters</span></span>
 
-<span data-ttu-id="1751f-225">Os componentes podem capturar e renderizar atributos adicionais além dos parâmetros declarados do componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-225">Components can capture and render additional attributes in addition to the component's declared parameters.</span></span> <span data-ttu-id="1751f-226">Atributos adicionais podem ser capturados em um dicionário e, em seguida, *splatted* em um elemento quando o componente é renderizado usando a [`@attributes`][3] :::no-loc(Razor)::: diretiva.</span><span class="sxs-lookup"><span data-stu-id="1751f-226">Additional attributes can be captured in a dictionary and then *splatted* onto an element when the component is rendered using the [`@attributes`][3] :::no-loc(Razor)::: directive.</span></span> <span data-ttu-id="1751f-227">Esse cenário é útil ao definir um componente que produz um elemento de marcação que dá suporte a uma variedade de personalizações.</span><span class="sxs-lookup"><span data-stu-id="1751f-227">This scenario is useful when defining a component that produces a markup element that supports a variety of customizations.</span></span> <span data-ttu-id="1751f-228">Por exemplo, pode ser entediante definir atributos separadamente para um `<input>` que dê suporte a muitos parâmetros.</span><span class="sxs-lookup"><span data-stu-id="1751f-228">For example, it can be tedious to define attributes separately for an `<input>` that supports many parameters.</span></span>
+<span data-ttu-id="1751f-225">Os componentes podem capturar e renderizar atributos adicionais além dos parâmetros declarados do componente.</span><span class="sxs-lookup"><span data-stu-id="1751f-225">Components can capture and render additional attributes in addition to the component's declared parameters.</span></span> <span data-ttu-id="1751f-226">Atributos adicionais podem ser capturados em um dicionário e, em seguida, *splatted* em um elemento quando o componente é renderizado usando a [`@attributes`][3] Razor diretiva.</span><span class="sxs-lookup"><span data-stu-id="1751f-226">Additional attributes can be captured in a dictionary and then *splatted* onto an element when the component is rendered using the [`@attributes`][3] Razor directive.</span></span> <span data-ttu-id="1751f-227">Esse cenário é útil ao definir um componente que produz um elemento de marcação que dá suporte a uma variedade de personalizações.</span><span class="sxs-lookup"><span data-stu-id="1751f-227">This scenario is useful when defining a component that produces a markup element that supports a variety of customizations.</span></span> <span data-ttu-id="1751f-228">Por exemplo, pode ser entediante definir atributos separadamente para um `<input>` que dê suporte a muitos parâmetros.</span><span class="sxs-lookup"><span data-stu-id="1751f-228">For example, it can be tedious to define attributes separately for an `<input>` that supports many parameters.</span></span>
 
 <span data-ttu-id="1751f-229">No exemplo a seguir, o primeiro `<input>` elemento ( `id="useIndividualParams"` ) usa parâmetros de componente individuais, enquanto o segundo `<input>` elemento ( `id="useAttributesDict"` ) usa o atributo nivelamento:</span><span class="sxs-lookup"><span data-stu-id="1751f-229">In the following example, the first `<input>` element (`id="useIndividualParams"`) uses individual component parameters, while the second `<input>` element (`id="useAttributesDict"`) uses attribute splatting:</span></span>
 
@@ -468,9 +468,9 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ## <a name="synchronization-context"></a><span data-ttu-id="1751f-267">Contexto de sincronização</span><span class="sxs-lookup"><span data-stu-id="1751f-267">Synchronization context</span></span>
 
-<span data-ttu-id="1751f-268">:::no-loc(Blazor)::: usa um contexto de sincronização ( <xref:System.Threading.SynchronizationContext> ) para impor um único thread lógico de execução.</span><span class="sxs-lookup"><span data-stu-id="1751f-268">:::no-loc(Blazor)::: uses a synchronization context (<xref:System.Threading.SynchronizationContext>) to enforce a single logical thread of execution.</span></span> <span data-ttu-id="1751f-269">Os métodos de [ciclo de vida](xref:blazor/components/lifecycle) de um componente e quaisquer retornos de chamada de evento que são gerados pelo :::no-loc(Blazor)::: são executados no contexto de sincronização.</span><span class="sxs-lookup"><span data-stu-id="1751f-269">A component's [lifecycle methods](xref:blazor/components/lifecycle) and any event callbacks that are raised by :::no-loc(Blazor)::: are executed on the synchronization context.</span></span>
+<span data-ttu-id="1751f-268">Blazor usa um contexto de sincronização ( <xref:System.Threading.SynchronizationContext> ) para impor um único thread lógico de execução.</span><span class="sxs-lookup"><span data-stu-id="1751f-268">Blazor uses a synchronization context (<xref:System.Threading.SynchronizationContext>) to enforce a single logical thread of execution.</span></span> <span data-ttu-id="1751f-269">Os métodos de [ciclo de vida](xref:blazor/components/lifecycle) de um componente e quaisquer retornos de chamada de evento que são gerados pelo Blazor são executados no contexto de sincronização.</span><span class="sxs-lookup"><span data-stu-id="1751f-269">A component's [lifecycle methods](xref:blazor/components/lifecycle) and any event callbacks that are raised by Blazor are executed on the synchronization context.</span></span>
 
-<span data-ttu-id="1751f-270">:::no-loc(Blazor Server):::o contexto de sincronização do tenta emular um ambiente de thread único para que ele corresponda ao modelo Webassembly no navegador, que é um thread único.</span><span class="sxs-lookup"><span data-stu-id="1751f-270">:::no-loc(Blazor Server):::'s synchronization context attempts to emulate a single-threaded environment so that it closely matches the WebAssembly model in the browser, which is single threaded.</span></span> <span data-ttu-id="1751f-271">Em qualquer momento determinado, o trabalho é executado em exatamente um thread, dando a impressão de um único thread lógico.</span><span class="sxs-lookup"><span data-stu-id="1751f-271">At any given point in time, work is performed on exactly one thread, giving the impression of a single logical thread.</span></span> <span data-ttu-id="1751f-272">Duas operações não são executadas simultaneamente.</span><span class="sxs-lookup"><span data-stu-id="1751f-272">No two operations execute concurrently.</span></span>
+<span data-ttu-id="1751f-270">Blazor Servero contexto de sincronização do tenta emular um ambiente de thread único para que ele corresponda ao modelo Webassembly no navegador, que é um thread único.</span><span class="sxs-lookup"><span data-stu-id="1751f-270">Blazor Server's synchronization context attempts to emulate a single-threaded environment so that it closely matches the WebAssembly model in the browser, which is single threaded.</span></span> <span data-ttu-id="1751f-271">Em qualquer momento determinado, o trabalho é executado em exatamente um thread, dando a impressão de um único thread lógico.</span><span class="sxs-lookup"><span data-stu-id="1751f-271">At any given point in time, work is performed on exactly one thread, giving the impression of a single logical thread.</span></span> <span data-ttu-id="1751f-272">Duas operações não são executadas simultaneamente.</span><span class="sxs-lookup"><span data-stu-id="1751f-272">No two operations execute concurrently.</span></span>
 
 ### <a name="avoid-thread-blocking-calls"></a><span data-ttu-id="1751f-273">Evitar chamadas de bloqueio de thread</span><span class="sxs-lookup"><span data-stu-id="1751f-273">Avoid thread-blocking calls</span></span>
 
@@ -485,7 +485,7 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ### <a name="invoke-component-methods-externally-to-update-state"></a><span data-ttu-id="1751f-276">Invocar métodos de componente externamente para atualizar o estado</span><span class="sxs-lookup"><span data-stu-id="1751f-276">Invoke component methods externally to update state</span></span>
 
-<span data-ttu-id="1751f-277">No caso de um componente precisar ser atualizado com base em um evento externo, como um temporizador ou outras notificações, use o `InvokeAsync` método, que é expedido para o :::no-loc(Blazor)::: contexto de sincronização.</span><span class="sxs-lookup"><span data-stu-id="1751f-277">In the event a component must be updated based on an external event, such as a timer or other notifications, use the `InvokeAsync` method, which dispatches to :::no-loc(Blazor):::'s synchronization context.</span></span> <span data-ttu-id="1751f-278">Por exemplo, considere um *serviço de notificação* que pode notificar qualquer componente de escuta do estado atualizado:</span><span class="sxs-lookup"><span data-stu-id="1751f-278">For example, consider a *notifier service* that can notify any listening component of the updated state:</span></span>
+<span data-ttu-id="1751f-277">No caso de um componente precisar ser atualizado com base em um evento externo, como um temporizador ou outras notificações, use o `InvokeAsync` método, que é expedido para o Blazor contexto de sincronização.</span><span class="sxs-lookup"><span data-stu-id="1751f-277">In the event a component must be updated based on an external event, such as a timer or other notifications, use the `InvokeAsync` method, which dispatches to Blazor's synchronization context.</span></span> <span data-ttu-id="1751f-278">Por exemplo, considere um *serviço de notificação* que pode notificar qualquer componente de escuta do estado atualizado:</span><span class="sxs-lookup"><span data-stu-id="1751f-278">For example, consider a *notifier service* that can notify any listening component of the updated state:</span></span>
 
 ```csharp
 public class NotifierService
@@ -505,13 +505,13 @@ public class NotifierService
 
 <span data-ttu-id="1751f-279">Registre o `NotifierService` :</span><span class="sxs-lookup"><span data-stu-id="1751f-279">Register the `NotifierService`:</span></span>
 
-* <span data-ttu-id="1751f-280">No :::no-loc(Blazor WebAssembly)::: , registre o serviço como singleton no `Program.Main` :</span><span class="sxs-lookup"><span data-stu-id="1751f-280">In :::no-loc(Blazor WebAssembly):::, register the service as singleton in `Program.Main`:</span></span>
+* <span data-ttu-id="1751f-280">No Blazor WebAssembly , registre o serviço como singleton no `Program.Main` :</span><span class="sxs-lookup"><span data-stu-id="1751f-280">In Blazor WebAssembly, register the service as singleton in `Program.Main`:</span></span>
 
   ```csharp
   builder.Services.AddSingleton<NotifierService>();
   ```
 
-* <span data-ttu-id="1751f-281">No :::no-loc(Blazor Server)::: , registre o serviço como escopo em `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="1751f-281">In :::no-loc(Blazor Server):::, register the service as scoped in `Startup.ConfigureServices`:</span></span>
+* <span data-ttu-id="1751f-281">No Blazor Server , registre o serviço como escopo em `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="1751f-281">In Blazor Server, register the service as scoped in `Startup.ConfigureServices`:</span></span>
 
   ```csharp
   services.AddScoped<NotifierService>();
@@ -550,11 +550,11 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="1751f-283">No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify` fora do contexto de :::no-loc(Blazor)::: sincronização do.</span><span class="sxs-lookup"><span data-stu-id="1751f-283">In the preceding example, `NotifierService` invokes the component's `OnNotify` method outside of :::no-loc(Blazor):::'s synchronization context.</span></span> <span data-ttu-id="1751f-284">`InvokeAsync` é usado para alternar para o contexto correto e enfileirar uma renderização.</span><span class="sxs-lookup"><span data-stu-id="1751f-284">`InvokeAsync` is used to switch to the correct context and queue a render.</span></span>
+<span data-ttu-id="1751f-283">No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify` fora do contexto de Blazor sincronização do.</span><span class="sxs-lookup"><span data-stu-id="1751f-283">In the preceding example, `NotifierService` invokes the component's `OnNotify` method outside of Blazor's synchronization context.</span></span> <span data-ttu-id="1751f-284">`InvokeAsync` é usado para alternar para o contexto correto e enfileirar uma renderização.</span><span class="sxs-lookup"><span data-stu-id="1751f-284">`InvokeAsync` is used to switch to the correct context and queue a render.</span></span>
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a><span data-ttu-id="1751f-285">Use \@ a chave para controlar a preservação de elementos e componentes</span><span class="sxs-lookup"><span data-stu-id="1751f-285">Use \@key to control the preservation of elements and components</span></span>
 
-<span data-ttu-id="1751f-286">Ao renderizar uma lista de elementos ou componentes e os elementos ou componentes subsequentemente mudam, o :::no-loc(Blazor)::: algoritmo de diferenciação do deve decidir quais elementos ou componentes anteriores podem ser retidos e como os objetos de modelo devem ser mapeados para eles.</span><span class="sxs-lookup"><span data-stu-id="1751f-286">When rendering a list of elements or components and the elements or components subsequently change, :::no-loc(Blazor):::'s diffing algorithm must decide which of the previous elements or components can be retained and how model objects should map to them.</span></span> <span data-ttu-id="1751f-287">Normalmente, esse processo é automático e pode ser ignorado, mas há casos em que você talvez queira controlar o processo.</span><span class="sxs-lookup"><span data-stu-id="1751f-287">Normally, this process is automatic and can be ignored, but there are cases where you may want to control the process.</span></span>
+<span data-ttu-id="1751f-286">Ao renderizar uma lista de elementos ou componentes e os elementos ou componentes subsequentemente mudam, o Blazor algoritmo de diferenciação do deve decidir quais elementos ou componentes anteriores podem ser retidos e como os objetos de modelo devem ser mapeados para eles.</span><span class="sxs-lookup"><span data-stu-id="1751f-286">When rendering a list of elements or components and the elements or components subsequently change, Blazor's diffing algorithm must decide which of the previous elements or components can be retained and how model objects should map to them.</span></span> <span data-ttu-id="1751f-287">Normalmente, esse processo é automático e pode ser ignorado, mas há casos em que você talvez queira controlar o processo.</span><span class="sxs-lookup"><span data-stu-id="1751f-287">Normally, this process is automatic and can be ignored, but there are cases where you may want to control the process.</span></span>
 
 <span data-ttu-id="1751f-288">Considere o exemplo a seguir:</span><span class="sxs-lookup"><span data-stu-id="1751f-288">Consider the following example:</span></span>
 
@@ -601,7 +601,7 @@ public class NotifierService
 
 <span data-ttu-id="1751f-305">Normalmente, faz sentido usar [`@key`][5] sempre que uma lista é renderizada (por exemplo, em um bloco [foreach](/dotnet/csharp/language-reference/keywords/foreach-in) ) e um valor adequado existe para definir o [`@key`][5] .</span><span class="sxs-lookup"><span data-stu-id="1751f-305">Typically, it makes sense to use [`@key`][5] whenever a list is rendered (for example, in a [foreach](/dotnet/csharp/language-reference/keywords/foreach-in) block) and a suitable value exists to define the [`@key`][5].</span></span>
 
-<span data-ttu-id="1751f-306">Você também pode usar [`@key`][5] para evitar a :::no-loc(Blazor)::: preservação de uma subárvore de elemento ou componente quando um objeto for alterado:</span><span class="sxs-lookup"><span data-stu-id="1751f-306">You can also use [`@key`][5] to prevent :::no-loc(Blazor)::: from preserving an element or component subtree when an object changes:</span></span>
+<span data-ttu-id="1751f-306">Você também pode usar [`@key`][5] para evitar a Blazor preservação de uma subárvore de elemento ou componente quando um objeto for alterado:</span><span class="sxs-lookup"><span data-stu-id="1751f-306">You can also use [`@key`][5] to prevent Blazor from preserving an element or component subtree when an object changes:</span></span>
 
 ```razor
 <div @key="currentPerson">
@@ -609,13 +609,13 @@ public class NotifierService
 </div>
 ```
 
-<span data-ttu-id="1751f-307">Se `@currentPerson` forem alteradas, a [`@key`][5] diretiva de atributo forçará :::no-loc(Blazor)::: a descartar todo `<div>` e seus descendentes e recriará a subárvore dentro da interface do usuário com novos elementos e componentes.</span><span class="sxs-lookup"><span data-stu-id="1751f-307">If `@currentPerson` changes, the [`@key`][5] attribute directive forces :::no-loc(Blazor)::: to discard the entire `<div>` and its descendants and rebuild the subtree within the UI with new elements and components.</span></span> <span data-ttu-id="1751f-308">Isso pode ser útil se você precisar garantir que nenhum estado da interface do usuário seja preservado quando houver `@currentPerson` alterações.</span><span class="sxs-lookup"><span data-stu-id="1751f-308">This can be useful if you need to guarantee that no UI state is preserved when `@currentPerson` changes.</span></span>
+<span data-ttu-id="1751f-307">Se `@currentPerson` forem alteradas, a [`@key`][5] diretiva de atributo forçará Blazor a descartar todo `<div>` e seus descendentes e recriará a subárvore dentro da interface do usuário com novos elementos e componentes.</span><span class="sxs-lookup"><span data-stu-id="1751f-307">If `@currentPerson` changes, the [`@key`][5] attribute directive forces Blazor to discard the entire `<div>` and its descendants and rebuild the subtree within the UI with new elements and components.</span></span> <span data-ttu-id="1751f-308">Isso pode ser útil se você precisar garantir que nenhum estado da interface do usuário seja preservado quando houver `@currentPerson` alterações.</span><span class="sxs-lookup"><span data-stu-id="1751f-308">This can be useful if you need to guarantee that no UI state is preserved when `@currentPerson` changes.</span></span>
 
 ### <a name="when-not-to-use-key"></a><span data-ttu-id="1751f-309">Quando não usar a \@ chave</span><span class="sxs-lookup"><span data-stu-id="1751f-309">When not to use \@key</span></span>
 
 <span data-ttu-id="1751f-310">Há um custo de desempenho ao comparar com [`@key`][5] .</span><span class="sxs-lookup"><span data-stu-id="1751f-310">There's a performance cost when diffing with [`@key`][5].</span></span> <span data-ttu-id="1751f-311">O custo de desempenho não é grande, mas só especifica [`@key`][5] se controlar as regras de preservação de elementos ou componentes beneficiam o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="1751f-311">The performance cost isn't large, but only specify [`@key`][5] if controlling the element or component preservation rules benefit the app.</span></span>
 
-<span data-ttu-id="1751f-312">Mesmo que [`@key`][5] não seja usado, :::no-loc(Blazor)::: o preserva as instâncias de elemento filho e de componente o máximo possível.</span><span class="sxs-lookup"><span data-stu-id="1751f-312">Even if [`@key`][5] isn't used, :::no-loc(Blazor)::: preserves child element and component instances as much as possible.</span></span> <span data-ttu-id="1751f-313">A única vantagem de usar o [`@key`][5] é o controle sobre *como* as instâncias de modelo são mapeadas para as instâncias de componente preservadas, em vez do algoritmo diff, selecionando o mapeamento.</span><span class="sxs-lookup"><span data-stu-id="1751f-313">The only advantage to using [`@key`][5] is control over *how* model instances are mapped to the preserved component instances, instead of the diffing algorithm selecting the mapping.</span></span>
+<span data-ttu-id="1751f-312">Mesmo que [`@key`][5] não seja usado, Blazor o preserva as instâncias de elemento filho e de componente o máximo possível.</span><span class="sxs-lookup"><span data-stu-id="1751f-312">Even if [`@key`][5] isn't used, Blazor preserves child element and component instances as much as possible.</span></span> <span data-ttu-id="1751f-313">A única vantagem de usar o [`@key`][5] é o controle sobre *como* as instâncias de modelo são mapeadas para as instâncias de componente preservadas, em vez do algoritmo diff, selecionando o mapeamento.</span><span class="sxs-lookup"><span data-stu-id="1751f-313">The only advantage to using [`@key`][5] is control over *how* model instances are mapped to the preserved component instances, instead of the diffing algorithm selecting the mapping.</span></span>
 
 ### <a name="what-values-to-use-for-key"></a><span data-ttu-id="1751f-314">Quais valores usar para a \@ chave</span><span class="sxs-lookup"><span data-stu-id="1751f-314">What values to use for \@key</span></span>
 
@@ -624,11 +624,11 @@ public class NotifierService
 * <span data-ttu-id="1751f-316">Instâncias de objeto de modelo (por exemplo, uma `Person` instância como no exemplo anterior).</span><span class="sxs-lookup"><span data-stu-id="1751f-316">Model object instances (for example, a `Person` instance as in the earlier example).</span></span> <span data-ttu-id="1751f-317">Isso garante a preservação com base na igualdade de referência de objeto.</span><span class="sxs-lookup"><span data-stu-id="1751f-317">This ensures preservation based on object reference equality.</span></span>
 * <span data-ttu-id="1751f-318">Identificadores exclusivos (por exemplo, valores de chave primária do tipo `int` , `string` ou `Guid` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-318">Unique identifiers (for example, primary key values of type `int`, `string`, or `Guid`).</span></span>
 
-<span data-ttu-id="1751f-319">Verifique se os valores usados para [`@key`][5] não conflitam.</span><span class="sxs-lookup"><span data-stu-id="1751f-319">Ensure that values used for [`@key`][5] don't clash.</span></span> <span data-ttu-id="1751f-320">Se valores conflitantes forem detectados no mesmo elemento pai, :::no-loc(Blazor)::: o lançará uma exceção porque ele não pode mapear de forma determinística elementos ou componentes antigos para novos elementos ou componentes.</span><span class="sxs-lookup"><span data-stu-id="1751f-320">If clashing values are detected within the same parent element, :::no-loc(Blazor)::: throws an exception because it can't deterministically map old elements or components to new elements or components.</span></span> <span data-ttu-id="1751f-321">Use apenas valores distintos, como instâncias de objeto ou valores de chave primária.</span><span class="sxs-lookup"><span data-stu-id="1751f-321">Only use distinct values, such as object instances or primary key values.</span></span>
+<span data-ttu-id="1751f-319">Verifique se os valores usados para [`@key`][5] não conflitam.</span><span class="sxs-lookup"><span data-stu-id="1751f-319">Ensure that values used for [`@key`][5] don't clash.</span></span> <span data-ttu-id="1751f-320">Se valores conflitantes forem detectados no mesmo elemento pai, Blazor o lançará uma exceção porque ele não pode mapear de forma determinística elementos ou componentes antigos para novos elementos ou componentes.</span><span class="sxs-lookup"><span data-stu-id="1751f-320">If clashing values are detected within the same parent element, Blazor throws an exception because it can't deterministically map old elements or components to new elements or components.</span></span> <span data-ttu-id="1751f-321">Use apenas valores distintos, como instâncias de objeto ou valores de chave primária.</span><span class="sxs-lookup"><span data-stu-id="1751f-321">Only use distinct values, such as object instances or primary key values.</span></span>
 
 ## <a name="overwritten-parameters"></a><span data-ttu-id="1751f-322">Parâmetros substituídos</span><span class="sxs-lookup"><span data-stu-id="1751f-322">Overwritten parameters</span></span>
 
-<span data-ttu-id="1751f-323">A :::no-loc(Blazor)::: estrutura geralmente impõe uma atribuição de parâmetro pai-para-filho segura:</span><span class="sxs-lookup"><span data-stu-id="1751f-323">The :::no-loc(Blazor)::: framework generally imposes safe parent-to-child parameter assignment:</span></span>
+<span data-ttu-id="1751f-323">A Blazor estrutura geralmente impõe uma atribuição de parâmetro pai-para-filho segura:</span><span class="sxs-lookup"><span data-stu-id="1751f-323">The Blazor framework generally imposes safe parent-to-child parameter assignment:</span></span>
 
 * <span data-ttu-id="1751f-324">Os parâmetros não são substituídos inesperadamente.</span><span class="sxs-lookup"><span data-stu-id="1751f-324">Parameters aren't overwritten unexpectedly.</span></span>
 * <span data-ttu-id="1751f-325">Os efeitos colaterais são minimizados.</span><span class="sxs-lookup"><span data-stu-id="1751f-325">Side-effects are minimized.</span></span> <span data-ttu-id="1751f-326">Por exemplo, renderizações adicionais são evitadas porque podem criar loops de renderização infinitos.</span><span class="sxs-lookup"><span data-stu-id="1751f-326">For example, additional renders are avoided because they may create infinite rendering loops.</span></span>
@@ -734,11 +734,11 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="1751f-348">Para obter informações adicionais, consulte [ :::no-loc(Blazor)::: erro de associação bidirecional (dotNet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599).</span><span class="sxs-lookup"><span data-stu-id="1751f-348">For additional information, see [:::no-loc(Blazor)::: Two Way Binding Error (dotnet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599).</span></span> 
+<span data-ttu-id="1751f-348">Para obter informações adicionais, consulte [ Blazor erro de associação bidirecional (dotNet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599).</span><span class="sxs-lookup"><span data-stu-id="1751f-348">For additional information, see [Blazor Two Way Binding Error (dotnet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599).</span></span> 
 
 ## <a name="apply-an-attribute"></a><span data-ttu-id="1751f-349">Aplicar um atributo</span><span class="sxs-lookup"><span data-stu-id="1751f-349">Apply an attribute</span></span>
 
-<span data-ttu-id="1751f-350">Os atributos podem ser aplicados a :::no-loc(Razor)::: componentes com a [`@attribute`][7] diretiva.</span><span class="sxs-lookup"><span data-stu-id="1751f-350">Attributes can be applied to :::no-loc(Razor)::: components with the [`@attribute`][7] directive.</span></span> <span data-ttu-id="1751f-351">O exemplo a seguir aplica o [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) atributo à classe de componente:</span><span class="sxs-lookup"><span data-stu-id="1751f-351">The following example applies the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute to the component class:</span></span>
+<span data-ttu-id="1751f-350">Os atributos podem ser aplicados a Razor componentes com a [`@attribute`][7] diretiva.</span><span class="sxs-lookup"><span data-stu-id="1751f-350">Attributes can be applied to Razor components with the [`@attribute`][7] directive.</span></span> <span data-ttu-id="1751f-351">O exemplo a seguir aplica o [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) atributo à classe de componente:</span><span class="sxs-lookup"><span data-stu-id="1751f-351">The following example applies the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute to the component class:</span></span>
 
 ```razor
 @page "/"
@@ -795,9 +795,9 @@ public class NotifierService
 }
 ```
 
-## <a name="no-locrazor-templates"></a><span data-ttu-id="1751f-368">:::no-loc(Razor)::: modelo</span><span class="sxs-lookup"><span data-stu-id="1751f-368">:::no-loc(Razor)::: templates</span></span>
+## <a name="no-locrazor-templates"></a><span data-ttu-id="1751f-368">Razor modelo</span><span class="sxs-lookup"><span data-stu-id="1751f-368">Razor templates</span></span>
 
-<span data-ttu-id="1751f-369">Os fragmentos de renderização podem ser definidos usando a :::no-loc(Razor)::: sintaxe do modelo.</span><span class="sxs-lookup"><span data-stu-id="1751f-369">Render fragments can be defined using :::no-loc(Razor)::: template syntax.</span></span> <span data-ttu-id="1751f-370">:::no-loc(Razor)::: os modelos são uma maneira de definir um trecho de interface do usuário e assumir o seguinte formato:</span><span class="sxs-lookup"><span data-stu-id="1751f-370">:::no-loc(Razor)::: templates are a way to define a UI snippet and assume the following format:</span></span>
+<span data-ttu-id="1751f-369">Os fragmentos de renderização podem ser definidos usando a Razor sintaxe do modelo.</span><span class="sxs-lookup"><span data-stu-id="1751f-369">Render fragments can be defined using Razor template syntax.</span></span> <span data-ttu-id="1751f-370">Razor os modelos são uma maneira de definir um trecho de interface do usuário e assumir o seguinte formato:</span><span class="sxs-lookup"><span data-stu-id="1751f-370">Razor templates are a way to define a UI snippet and assume the following format:</span></span>
 
 ```razor
 @<{HTML tag}>...</{HTML tag}>
@@ -831,7 +831,7 @@ public class NotifierService
 
 ## <a name="static-assets"></a><span data-ttu-id="1751f-374">Ativos estáticos</span><span class="sxs-lookup"><span data-stu-id="1751f-374">Static assets</span></span>
 
-<span data-ttu-id="1751f-375">:::no-loc(Blazor):::segue a Convenção de ASP.NET Core aplicativos que posicionam ativos estáticos na [ `web root (wwwroot)` pasta](xref:fundamentals/index#web-root)do projeto.</span><span class="sxs-lookup"><span data-stu-id="1751f-375">:::no-loc(Blazor)::: follows the convention of ASP.NET Core apps placing static assets under the project's [`web root (wwwroot)` folder](xref:fundamentals/index#web-root).</span></span>
+<span data-ttu-id="1751f-375">Blazorsegue a Convenção de ASP.NET Core aplicativos que posicionam ativos estáticos na [ `web root (wwwroot)` pasta](xref:fundamentals/index#web-root)do projeto.</span><span class="sxs-lookup"><span data-stu-id="1751f-375">Blazor follows the convention of ASP.NET Core apps placing static assets under the project's [`web root (wwwroot)` folder](xref:fundamentals/index#web-root).</span></span>
 
 <span data-ttu-id="1751f-376">Use um caminho relativo de base ( `/` ) para se referir à raiz da Web para um ativo estático.</span><span class="sxs-lookup"><span data-stu-id="1751f-376">Use a base-relative path (`/`) to refer to the web root for a static asset.</span></span> <span data-ttu-id="1751f-377">No exemplo a seguir, `logo.png` está localizado fisicamente na `{PROJECT ROOT}/wwwroot/images` pasta:</span><span class="sxs-lookup"><span data-stu-id="1751f-377">In the following example, `logo.png` is physically located in the `{PROJECT ROOT}/wwwroot/images` folder:</span></span>
 
@@ -839,17 +839,17 @@ public class NotifierService
 <img alt="Company logo" src="/images/logo.png" />
 ```
 
-<span data-ttu-id="1751f-378">:::no-loc(Razor)::: os componentes **não** dão suporte a notação de barra de til ( `~/` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-378">:::no-loc(Razor)::: components do **not** support tilde-slash notation (`~/`).</span></span>
+<span data-ttu-id="1751f-378">Razor os componentes **não** dão suporte a notação de barra de til ( `~/` ).</span><span class="sxs-lookup"><span data-stu-id="1751f-378">Razor components do **not** support tilde-slash notation (`~/`).</span></span>
 
 <span data-ttu-id="1751f-379">Para obter informações sobre como definir o caminho base de um aplicativo, consulte <xref:blazor/host-and-deploy/index#app-base-path> .</span><span class="sxs-lookup"><span data-stu-id="1751f-379">For information on setting an app's base path, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
 
 ## <a name="tag-helpers-arent-supported-in-components"></a><span data-ttu-id="1751f-380">Não há suporte para auxiliares de marcas nos componentes</span><span class="sxs-lookup"><span data-stu-id="1751f-380">Tag Helpers aren't supported in components</span></span>
 
-<span data-ttu-id="1751f-381">[`Tag Helpers`](xref:mvc/views/tag-helpers/intro) Não tem suporte em :::no-loc(Razor)::: componentes ( `.razor` arquivos).</span><span class="sxs-lookup"><span data-stu-id="1751f-381">[`Tag Helpers`](xref:mvc/views/tag-helpers/intro) aren't supported in :::no-loc(Razor)::: components (`.razor` files).</span></span> <span data-ttu-id="1751f-382">Para fornecer a funcionalidade do tipo auxiliar de marca no :::no-loc(Blazor)::: , crie um componente com a mesma funcionalidade que o auxiliar de marca e use o componente em vez disso.</span><span class="sxs-lookup"><span data-stu-id="1751f-382">To provide Tag Helper-like functionality in :::no-loc(Blazor):::, create a component with the same functionality as the Tag Helper and use the component instead.</span></span>
+<span data-ttu-id="1751f-381">[`Tag Helpers`](xref:mvc/views/tag-helpers/intro) Não tem suporte em Razor componentes ( `.razor` arquivos).</span><span class="sxs-lookup"><span data-stu-id="1751f-381">[`Tag Helpers`](xref:mvc/views/tag-helpers/intro) aren't supported in Razor components (`.razor` files).</span></span> <span data-ttu-id="1751f-382">Para fornecer a funcionalidade do tipo auxiliar de marca no Blazor , crie um componente com a mesma funcionalidade que o auxiliar de marca e use o componente em vez disso.</span><span class="sxs-lookup"><span data-stu-id="1751f-382">To provide Tag Helper-like functionality in Blazor, create a component with the same functionality as the Tag Helper and use the component instead.</span></span>
 
 ## <a name="scalable-vector-graphics-svg-images"></a><span data-ttu-id="1751f-383">Imagens SVG (gráficos vetoriais escaláveis)</span><span class="sxs-lookup"><span data-stu-id="1751f-383">Scalable Vector Graphics (SVG) images</span></span>
 
-<span data-ttu-id="1751f-384">Como :::no-loc(Blazor)::: o renderiza as imagens html, com suporte para navegadores, incluindo imagens de vetores escalonáveis (SVG) `.svg` , há suporte por meio da `<img>` marca:</span><span class="sxs-lookup"><span data-stu-id="1751f-384">Since :::no-loc(Blazor)::: renders HTML, browser-supported images, including Scalable Vector Graphics (SVG) images (`.svg`), are supported via the `<img>` tag:</span></span>
+<span data-ttu-id="1751f-384">Como Blazor o renderiza as imagens html, com suporte para navegadores, incluindo imagens de vetores escalonáveis (SVG) `.svg` , há suporte por meio da `<img>` marca:</span><span class="sxs-lookup"><span data-stu-id="1751f-384">Since Blazor renders HTML, browser-supported images, including Scalable Vector Graphics (SVG) images (`.svg`), are supported via the `<img>` tag:</span></span>
 
 ```html
 <img alt="Example image" src="some-image.svg" />
@@ -863,11 +863,11 @@ public class NotifierService
 }
 ```
 
-<span data-ttu-id="1751f-386">No entanto, a marcação SVG embutida não tem suporte em todos os cenários.</span><span class="sxs-lookup"><span data-stu-id="1751f-386">However, inline SVG markup isn't supported in all scenarios.</span></span> <span data-ttu-id="1751f-387">Se você posicionar uma `<svg>` marca diretamente em um arquivo de componente ( `.razor` ), a renderização básica da imagem terá suporte, mas muitos cenários avançados ainda não têm suporte.</span><span class="sxs-lookup"><span data-stu-id="1751f-387">If you place an `<svg>` tag directly into a component file (`.razor`), basic image rendering is supported but many advanced scenarios aren't yet supported.</span></span> <span data-ttu-id="1751f-388">Por exemplo, as `<use>` marcas não são respeitadas atualmente e [`@bind`][10] não podem ser usadas com algumas marcas SVG.</span><span class="sxs-lookup"><span data-stu-id="1751f-388">For example, `<use>` tags aren't currently respected, and [`@bind`][10] can't be used with some SVG tags.</span></span> <span data-ttu-id="1751f-389">Para obter mais informações, consulte [suporte a SVG em :::no-loc(Blazor)::: (dotNet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).</span><span class="sxs-lookup"><span data-stu-id="1751f-389">For more information, see [SVG support in :::no-loc(Blazor)::: (dotnet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).</span></span>
+<span data-ttu-id="1751f-386">No entanto, a marcação SVG embutida não tem suporte em todos os cenários.</span><span class="sxs-lookup"><span data-stu-id="1751f-386">However, inline SVG markup isn't supported in all scenarios.</span></span> <span data-ttu-id="1751f-387">Se você posicionar uma `<svg>` marca diretamente em um arquivo de componente ( `.razor` ), a renderização básica da imagem terá suporte, mas muitos cenários avançados ainda não têm suporte.</span><span class="sxs-lookup"><span data-stu-id="1751f-387">If you place an `<svg>` tag directly into a component file (`.razor`), basic image rendering is supported but many advanced scenarios aren't yet supported.</span></span> <span data-ttu-id="1751f-388">Por exemplo, as `<use>` marcas não são respeitadas atualmente e [`@bind`][10] não podem ser usadas com algumas marcas SVG.</span><span class="sxs-lookup"><span data-stu-id="1751f-388">For example, `<use>` tags aren't currently respected, and [`@bind`][10] can't be used with some SVG tags.</span></span> <span data-ttu-id="1751f-389">Para obter mais informações, consulte [suporte a SVG em Blazor (dotNet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).</span><span class="sxs-lookup"><span data-stu-id="1751f-389">For more information, see [SVG support in Blazor (dotnet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="1751f-390">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="1751f-390">Additional resources</span></span>
 
-* <span data-ttu-id="1751f-391"><xref:blazor/security/server/threat-mitigation>: Inclui diretrizes sobre a criação de :::no-loc(Blazor Server)::: aplicativos que devem combater o esgotamento de recursos.</span><span class="sxs-lookup"><span data-stu-id="1751f-391"><xref:blazor/security/server/threat-mitigation>: Includes guidance on building :::no-loc(Blazor Server)::: apps that must contend with resource exhaustion.</span></span>
+* <span data-ttu-id="1751f-391"><xref:blazor/security/server/threat-mitigation>: Inclui diretrizes sobre a criação de Blazor Server aplicativos que devem combater o esgotamento de recursos.</span><span class="sxs-lookup"><span data-stu-id="1751f-391"><xref:blazor/security/server/threat-mitigation>: Includes guidance on building Blazor Server apps that must contend with resource exhaustion.</span></span>
 
 <!--Reference links in article-->
 [1]: <xref:mvc/views/razor#code>

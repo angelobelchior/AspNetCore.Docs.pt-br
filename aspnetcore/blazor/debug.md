@@ -1,23 +1,23 @@
 ---
-title: 'ASP.NET Core de depuração :::no-loc(Blazor WebAssembly):::'
+title: 'ASP.NET Core de depuração Blazor WebAssembly'
 author: guardrex
-description: 'Saiba como depurar :::no-loc(Blazor)::: aplicativos.'
+description: 'Saiba como depurar Blazor aplicativos.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/debug
 ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
 ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
@@ -26,11 +26,11 @@ ms.contentlocale: pt-BR
 ms.lasthandoff: 11/12/2020
 ms.locfileid: "94550511"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="a95cc-103">ASP.NET Core de depuração :::no-loc(Blazor WebAssembly):::</span><span class="sxs-lookup"><span data-stu-id="a95cc-103">Debug ASP.NET Core :::no-loc(Blazor WebAssembly):::</span></span>
+# <a name="debug-aspnet-core-no-locblazor-webassembly"></a><span data-ttu-id="a95cc-103">ASP.NET Core de depuração Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="a95cc-103">Debug ASP.NET Core Blazor WebAssembly</span></span>
 
 [<span data-ttu-id="a95cc-104">Daniel Roth</span><span class="sxs-lookup"><span data-stu-id="a95cc-104">Daniel Roth</span></span>](https://github.com/danroth27)
 
-<span data-ttu-id="a95cc-105">:::no-loc(Blazor WebAssembly)::: os aplicativos podem ser depurados usando as ferramentas de desenvolvimento do navegador em navegadores baseados em Chromium (borda/Chrome).</span><span class="sxs-lookup"><span data-stu-id="a95cc-105">:::no-loc(Blazor WebAssembly)::: apps can be debugged using the browser dev tools in Chromium-based browsers (Edge/Chrome).</span></span> <span data-ttu-id="a95cc-106">Você também pode depurar seu aplicativo usando os seguintes IDEs (ambientes de desenvolvimento integrado):</span><span class="sxs-lookup"><span data-stu-id="a95cc-106">You can also debug your app using the following integrated development environments (IDEs):</span></span>
+<span data-ttu-id="a95cc-105">Blazor WebAssembly os aplicativos podem ser depurados usando as ferramentas de desenvolvimento do navegador em navegadores baseados em Chromium (borda/Chrome).</span><span class="sxs-lookup"><span data-stu-id="a95cc-105">Blazor WebAssembly apps can be debugged using the browser dev tools in Chromium-based browsers (Edge/Chrome).</span></span> <span data-ttu-id="a95cc-106">Você também pode depurar seu aplicativo usando os seguintes IDEs (ambientes de desenvolvimento integrado):</span><span class="sxs-lookup"><span data-stu-id="a95cc-106">You can also debug your app using the following integrated development environments (IDEs):</span></span>
 
 * <span data-ttu-id="a95cc-107">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a95cc-107">Visual Studio</span></span>
 * <span data-ttu-id="a95cc-108">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="a95cc-108">Visual Studio for Mac</span></span>
@@ -70,7 +70,7 @@ ms.locfileid: "94550511"
 
 ## <a name="enable-debugging"></a><span data-ttu-id="a95cc-133">Habilitar depuração</span><span class="sxs-lookup"><span data-stu-id="a95cc-133">Enable debugging</span></span>
 
-<span data-ttu-id="a95cc-134">Para habilitar a depuração para um :::no-loc(Blazor WebAssembly)::: aplicativo existente, atualize o `launchSettings.json` arquivo no projeto de inicialização para incluir a seguinte `inspectUri` propriedade em cada perfil de inicialização:</span><span class="sxs-lookup"><span data-stu-id="a95cc-134">To enable debugging for an existing :::no-loc(Blazor WebAssembly)::: app, update the `launchSettings.json` file in the startup project to include the following `inspectUri` property in each launch profile:</span></span>
+<span data-ttu-id="a95cc-134">Para habilitar a depuração para um Blazor WebAssembly aplicativo existente, atualize o `launchSettings.json` arquivo no projeto de inicialização para incluir a seguinte `inspectUri` propriedade em cada perfil de inicialização:</span><span class="sxs-lookup"><span data-stu-id="a95cc-134">To enable debugging for an existing Blazor WebAssembly app, update the `launchSettings.json` file in the startup project to include the following `inspectUri` property in each launch profile:</span></span>
 
 ```json
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
@@ -82,16 +82,16 @@ ms.locfileid: "94550511"
 
 <span data-ttu-id="a95cc-136">A `inspectUri` Propriedade:</span><span class="sxs-lookup"><span data-stu-id="a95cc-136">The `inspectUri` property:</span></span>
 
-* <span data-ttu-id="a95cc-137">Permite que o IDE detecte que o aplicativo é um :::no-loc(Blazor WebAssembly)::: aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a95cc-137">Enables the IDE to detect that the app is a :::no-loc(Blazor WebAssembly)::: app.</span></span>
-* <span data-ttu-id="a95cc-138">Instrui a infraestrutura de depuração de script para se conectar ao navegador por meio :::no-loc(Blazor)::: do proxy de depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-138">Instructs the script debugging infrastructure to connect to the browser through :::no-loc(Blazor):::'s debugging proxy.</span></span>
+* <span data-ttu-id="a95cc-137">Permite que o IDE detecte que o aplicativo é um Blazor WebAssembly aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a95cc-137">Enables the IDE to detect that the app is a Blazor WebAssembly app.</span></span>
+* <span data-ttu-id="a95cc-138">Instrui a infraestrutura de depuração de script para se conectar ao navegador por meio Blazor do proxy de depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-138">Instructs the script debugging infrastructure to connect to the browser through Blazor's debugging proxy.</span></span>
 
 <span data-ttu-id="a95cc-139">Os valores de espaço reservado para o protocolo WebSockets ( `wsProtocol` ), host ( `url.hostname` ), porta ( `url.port` ) e URI do Inspetor no navegador iniciado ( `browserInspectUri` ) são fornecidos pela estrutura.</span><span class="sxs-lookup"><span data-stu-id="a95cc-139">The placeholder values for the WebSockets protocol (`wsProtocol`), host (`url.hostname`), port (`url.port`), and inspector URI on the launched browser (`browserInspectUri`) are provided by the framework.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="a95cc-140">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a95cc-140">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="a95cc-141">Para depurar um :::no-loc(Blazor WebAssembly)::: aplicativo no Visual Studio:</span><span class="sxs-lookup"><span data-stu-id="a95cc-141">To debug a :::no-loc(Blazor WebAssembly)::: app in Visual Studio:</span></span>
+<span data-ttu-id="a95cc-141">Para depurar um Blazor WebAssembly aplicativo no Visual Studio:</span><span class="sxs-lookup"><span data-stu-id="a95cc-141">To debug a Blazor WebAssembly app in Visual Studio:</span></span>
 
-1. <span data-ttu-id="a95cc-142">Crie um novo aplicativo hospedado ASP.NET Core :::no-loc(Blazor WebAssembly)::: .</span><span class="sxs-lookup"><span data-stu-id="a95cc-142">Create a new ASP.NET Core hosted :::no-loc(Blazor WebAssembly)::: app.</span></span>
+1. <span data-ttu-id="a95cc-142">Crie um novo aplicativo hospedado ASP.NET Core Blazor WebAssembly .</span><span class="sxs-lookup"><span data-stu-id="a95cc-142">Create a new ASP.NET Core hosted Blazor WebAssembly app.</span></span>
 1. <span data-ttu-id="a95cc-143">Pressione <kbd>F5</kbd> para executar o aplicativo no depurador.</span><span class="sxs-lookup"><span data-stu-id="a95cc-143">Press <kbd>F5</kbd> to run the app in the debugger.</span></span>
 
    > [!NOTE]
@@ -102,7 +102,7 @@ ms.locfileid: "94550511"
 1. <span data-ttu-id="a95cc-148">No Visual Studio, inspecione o valor do `currentCount` campo na janela **locais** .</span><span class="sxs-lookup"><span data-stu-id="a95cc-148">In Visual Studio, inspect the value of the `currentCount` field in the **Locals** window.</span></span>
 1. <span data-ttu-id="a95cc-149">Pressione <kbd>F5</kbd> para continuar a execução.</span><span class="sxs-lookup"><span data-stu-id="a95cc-149">Press <kbd>F5</kbd> to continue execution.</span></span>
 
-<span data-ttu-id="a95cc-150">Ao depurar um :::no-loc(Blazor WebAssembly)::: aplicativo, você também pode depurar o código do servidor:</span><span class="sxs-lookup"><span data-stu-id="a95cc-150">While debugging a :::no-loc(Blazor WebAssembly)::: app, you can also debug server code:</span></span>
+<span data-ttu-id="a95cc-150">Ao depurar um Blazor WebAssembly aplicativo, você também pode depurar o código do servidor:</span><span class="sxs-lookup"><span data-stu-id="a95cc-150">While debugging a Blazor WebAssembly app, you can also debug server code:</span></span>
 
 1. <span data-ttu-id="a95cc-151">Defina um ponto de interrupção na `Pages/FetchData.razor` página em <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> .</span><span class="sxs-lookup"><span data-stu-id="a95cc-151">Set a breakpoint in the `Pages/FetchData.razor` page in <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>.</span></span>
 1. <span data-ttu-id="a95cc-152">Defina um ponto de interrupção no `WeatherForecastController` `Get` Método Action.</span><span class="sxs-lookup"><span data-stu-id="a95cc-152">Set a breakpoint in the `WeatherForecastController` in the `Get` action method.</span></span>
@@ -157,17 +157,17 @@ ms.locfileid: "94550511"
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/OAT/_framework/debug/ws-proxy?browser={browserInspectUri}",
 ```
 
-<span data-ttu-id="a95cc-170">Para obter informações sobre como usar um caminho básico do aplicativo personalizado para :::no-loc(Blazor WebAssembly)::: aplicativos, consulte <xref:blazor/host-and-deploy/index#app-base-path> .</span><span class="sxs-lookup"><span data-stu-id="a95cc-170">For information on using a custom app base path for :::no-loc(Blazor WebAssembly)::: apps, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
+<span data-ttu-id="a95cc-170">Para obter informações sobre como usar um caminho básico do aplicativo personalizado para Blazor WebAssembly aplicativos, consulte <xref:blazor/host-and-deploy/index#app-base-path> .</span><span class="sxs-lookup"><span data-stu-id="a95cc-170">For information on using a custom app base path for Blazor WebAssembly apps, see <xref:blazor/host-and-deploy/index#app-base-path>.</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="a95cc-171">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="a95cc-171">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<h2 id="vscode"><span data-ttu-id="a95cc-172">Depurar autônomo :::no-loc(Blazor WebAssembly):::</span><span class="sxs-lookup"><span data-stu-id="a95cc-172">Debug standalone :::no-loc(Blazor WebAssembly):::</span></span></h2>
+<h2 id="vscode"><span data-ttu-id="a95cc-172">Depurar autônomo Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="a95cc-172">Debug standalone Blazor WebAssembly</span></span></h2>
 
-1. <span data-ttu-id="a95cc-173">Abra o :::no-loc(Blazor WebAssembly)::: aplicativo autônomo no vs Code.</span><span class="sxs-lookup"><span data-stu-id="a95cc-173">Open the standalone :::no-loc(Blazor WebAssembly)::: app in VS Code.</span></span>
+1. <span data-ttu-id="a95cc-173">Abra o Blazor WebAssembly aplicativo autônomo no vs Code.</span><span class="sxs-lookup"><span data-stu-id="a95cc-173">Open the standalone Blazor WebAssembly app in VS Code.</span></span>
 
    <span data-ttu-id="a95cc-174">Você pode receber uma notificação de que a configuração adicional é necessária para habilitar a depuração:</span><span class="sxs-lookup"><span data-stu-id="a95cc-174">You may receive a notification that additional setup is required to enable debugging:</span></span>
 
-   > <span data-ttu-id="a95cc-175">A configuração adicional é necessária para depurar :::no-loc(Blazor WebAssembly)::: aplicativos.</span><span class="sxs-lookup"><span data-stu-id="a95cc-175">Additional setup is required to debug :::no-loc(Blazor WebAssembly)::: applications.</span></span>
+   > <span data-ttu-id="a95cc-175">A configuração adicional é necessária para depurar Blazor WebAssembly aplicativos.</span><span class="sxs-lookup"><span data-stu-id="a95cc-175">Additional setup is required to debug Blazor WebAssembly applications.</span></span>
 
    <span data-ttu-id="a95cc-176">Se você receber a notificação:</span><span class="sxs-lookup"><span data-stu-id="a95cc-176">If you receive the notification:</span></span>
 
@@ -180,7 +180,7 @@ ms.locfileid: "94550511"
    > [!NOTE]
    > <span data-ttu-id="a95cc-186">Não há suporte para **Iniciar sem depuração** ( <kbd>Ctrl</kbd> + <kbd>F5</kbd>).</span><span class="sxs-lookup"><span data-stu-id="a95cc-186">**Start Without Debugging** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>) isn't supported.</span></span> <span data-ttu-id="a95cc-187">Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.</span><span class="sxs-lookup"><span data-stu-id="a95cc-187">When the app is run in Debug configuration, debugging overhead always results in a small performance reduction.</span></span>
 
-1. <span data-ttu-id="a95cc-188">Quando solicitado, selecione a opção de **:::no-loc(Blazor WebAssembly)::: depuração** para iniciar a depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-188">When prompted, select the **:::no-loc(Blazor WebAssembly)::: Debug** option to start debugging.</span></span>
+1. <span data-ttu-id="a95cc-188">Quando solicitado, selecione a opção de **Blazor WebAssembly depuração** para iniciar a depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-188">When prompted, select the **Blazor WebAssembly Debug** option to start debugging.</span></span>
 
 1. <span data-ttu-id="a95cc-189">O aplicativo autônomo é iniciado e um navegador de depuração é aberto.</span><span class="sxs-lookup"><span data-stu-id="a95cc-189">The standalone app is launched, and a debugging browser is opened.</span></span>
 
@@ -191,9 +191,9 @@ ms.locfileid: "94550511"
 > [!NOTE]
 > <span data-ttu-id="a95cc-192">Os pontos de interrupção **não** são atingidos durante a inicialização do aplicativo antes da execução do proxy de depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-192">Breakpoints are **not** hit during app startup before the debug proxy is running.</span></span> <span data-ttu-id="a95cc-193">Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a95cc-193">This includes breakpoints in `Program.Main` (`Program.cs`) and breakpoints in the [`OnInitialized{Async}` methods](xref:blazor/components/lifecycle#component-initialization-methods) of components that are loaded by the first page requested from the app.</span></span>
 
-## <a name="debug-hosted-no-locblazor-webassembly"></a><span data-ttu-id="a95cc-194">Depuração hospedada :::no-loc(Blazor WebAssembly):::</span><span class="sxs-lookup"><span data-stu-id="a95cc-194">Debug hosted :::no-loc(Blazor WebAssembly):::</span></span>
+## <a name="debug-hosted-no-locblazor-webassembly"></a><span data-ttu-id="a95cc-194">Depuração hospedada Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="a95cc-194">Debug hosted Blazor WebAssembly</span></span>
 
-1. <span data-ttu-id="a95cc-195">Abra a :::no-loc(Blazor WebAssembly)::: pasta de solução do aplicativo hospedado no vs Code.</span><span class="sxs-lookup"><span data-stu-id="a95cc-195">Open the hosted :::no-loc(Blazor WebAssembly)::: app's solution folder in VS Code.</span></span>
+1. <span data-ttu-id="a95cc-195">Abra a Blazor WebAssembly pasta de solução do aplicativo hospedado no vs Code.</span><span class="sxs-lookup"><span data-stu-id="a95cc-195">Open the hosted Blazor WebAssembly app's solution folder in VS Code.</span></span>
 
 1. <span data-ttu-id="a95cc-196">Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida.</span><span class="sxs-lookup"><span data-stu-id="a95cc-196">If there's no launch configuration set for the project, the following notification appears.</span></span> <span data-ttu-id="a95cc-197">Selecione **Sim**.</span><span class="sxs-lookup"><span data-stu-id="a95cc-197">Select **Yes**.</span></span>
 
@@ -205,13 +205,13 @@ ms.locfileid: "94550511"
 
 ## <a name="attach-to-an-existing-debugging-session"></a><span data-ttu-id="a95cc-202">Anexar a uma sessão de depuração existente</span><span class="sxs-lookup"><span data-stu-id="a95cc-202">Attach to an existing debugging session</span></span>
 
-<span data-ttu-id="a95cc-203">Para anexar a um aplicativo em execução :::no-loc(Blazor)::: , crie um `launch.json` arquivo com a seguinte configuração:</span><span class="sxs-lookup"><span data-stu-id="a95cc-203">To attach to a running :::no-loc(Blazor)::: app, create a `launch.json` file with the following configuration:</span></span>
+<span data-ttu-id="a95cc-203">Para anexar a um aplicativo em execução Blazor , crie um `launch.json` arquivo com a seguinte configuração:</span><span class="sxs-lookup"><span data-stu-id="a95cc-203">To attach to a running Blazor app, create a `launch.json` file with the following configuration:</span></span>
 
 ```json
 {
   "type": "blazorwasm",
   "request": "attach",
-  "name": "Attach to Existing :::no-loc(Blazor WebAssembly)::: Application"
+  "name": "Attach to Existing Blazor WebAssembly Application"
 }
 ```
 
@@ -224,11 +224,11 @@ ms.locfileid: "94550511"
 
 | <span data-ttu-id="a95cc-208">Opção</span><span class="sxs-lookup"><span data-stu-id="a95cc-208">Option</span></span>    | <span data-ttu-id="a95cc-209">Descrição</span><span class="sxs-lookup"><span data-stu-id="a95cc-209">Description</span></span> |
 | --------- | ----------- |
-| `request` | <span data-ttu-id="a95cc-210">Use `launch` para iniciar e anexar uma sessão de depuração a um :::no-loc(Blazor WebAssembly)::: aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução.</span><span class="sxs-lookup"><span data-stu-id="a95cc-210">Use `launch` to launch and attach a debugging session to a :::no-loc(Blazor WebAssembly)::: app or `attach` to attach a debugging session to an already-running app.</span></span> |
+| `request` | <span data-ttu-id="a95cc-210">Use `launch` para iniciar e anexar uma sessão de depuração a um Blazor WebAssembly aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução.</span><span class="sxs-lookup"><span data-stu-id="a95cc-210">Use `launch` to launch and attach a debugging session to a Blazor WebAssembly app or `attach` to attach a debugging session to an already-running app.</span></span> |
 | `url`     | <span data-ttu-id="a95cc-211">A URL a ser aberta no navegador durante a depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-211">The URL to open in the browser when debugging.</span></span> <span data-ttu-id="a95cc-212">Assume o padrão de `https://localhost:5001`.</span><span class="sxs-lookup"><span data-stu-id="a95cc-212">Defaults to `https://localhost:5001`.</span></span> |
 | `browser` | <span data-ttu-id="a95cc-213">O navegador a ser iniciado para a sessão de depuração.</span><span class="sxs-lookup"><span data-stu-id="a95cc-213">The browser to launch for the debugging session.</span></span> <span data-ttu-id="a95cc-214">Definir como `edge` ou `chrome`.</span><span class="sxs-lookup"><span data-stu-id="a95cc-214">Set to `edge` or `chrome`.</span></span> <span data-ttu-id="a95cc-215">Assume o padrão de `chrome`.</span><span class="sxs-lookup"><span data-stu-id="a95cc-215">Defaults to `chrome`.</span></span> |
 | `trace`   | <span data-ttu-id="a95cc-216">Usado para gerar logs do depurador JS.</span><span class="sxs-lookup"><span data-stu-id="a95cc-216">Used to generate logs from the JS debugger.</span></span> <span data-ttu-id="a95cc-217">Defina como `true` para gerar logs.</span><span class="sxs-lookup"><span data-stu-id="a95cc-217">Set to `true` to generate logs.</span></span> |
-| `hosted`  | <span data-ttu-id="a95cc-218">Deve ser definido como `true` se estiver iniciando e depurando um :::no-loc(Blazor WebAssembly)::: aplicativo hospedado.</span><span class="sxs-lookup"><span data-stu-id="a95cc-218">Must be set to `true` if launching and debugging a hosted :::no-loc(Blazor WebAssembly)::: app.</span></span> |
+| `hosted`  | <span data-ttu-id="a95cc-218">Deve ser definido como `true` se estiver iniciando e depurando um Blazor WebAssembly aplicativo hospedado.</span><span class="sxs-lookup"><span data-stu-id="a95cc-218">Must be set to `true` if launching and debugging a hosted Blazor WebAssembly app.</span></span> |
 | `webRoot` | <span data-ttu-id="a95cc-219">Especifica o caminho absoluto do servidor Web.</span><span class="sxs-lookup"><span data-stu-id="a95cc-219">Specifies the absolute path of the web server.</span></span> <span data-ttu-id="a95cc-220">Deve ser definido se um aplicativo for servido de uma sub-roteiro.</span><span class="sxs-lookup"><span data-stu-id="a95cc-220">Should be set if an app is served from a sub-route.</span></span> |
 | `timeout` | <span data-ttu-id="a95cc-221">O número de milissegundos a aguardar a sessão de depuração ser anexada.</span><span class="sxs-lookup"><span data-stu-id="a95cc-221">The number of milliseconds to wait for the debugging session to attach.</span></span> <span data-ttu-id="a95cc-222">O padrão é 30.000 milissegundos (30 segundos).</span><span class="sxs-lookup"><span data-stu-id="a95cc-222">Defaults to 30,000 milliseconds (30 seconds).</span></span> |
 | `program` | <span data-ttu-id="a95cc-223">Uma referência ao executável para executar o servidor do aplicativo hospedado.</span><span class="sxs-lookup"><span data-stu-id="a95cc-223">A reference to the executable to run the server of the hosted app.</span></span> <span data-ttu-id="a95cc-224">Deve ser definido se `hosted` for `true` .</span><span class="sxs-lookup"><span data-stu-id="a95cc-224">Must be set if `hosted` is `true`.</span></span> |
@@ -237,7 +237,7 @@ ms.locfileid: "94550511"
 
 ## <a name="example-launch-configurations"></a><span data-ttu-id="a95cc-229">Exemplo de configurações de inicialização</span><span class="sxs-lookup"><span data-stu-id="a95cc-229">Example launch configurations</span></span>
 
-### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a><span data-ttu-id="a95cc-230">Iniciar e depurar um :::no-loc(Blazor WebAssembly)::: aplicativo autônomo</span><span class="sxs-lookup"><span data-stu-id="a95cc-230">Launch and debug a standalone :::no-loc(Blazor WebAssembly)::: app</span></span>
+### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a><span data-ttu-id="a95cc-230">Iniciar e depurar um Blazor WebAssembly aplicativo autônomo</span><span class="sxs-lookup"><span data-stu-id="a95cc-230">Launch and debug a standalone Blazor WebAssembly app</span></span>
 
 ```json
 {
@@ -258,13 +258,13 @@ ms.locfileid: "94550511"
 }
 ```
 
-### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a><span data-ttu-id="a95cc-232">Iniciar e depurar um :::no-loc(Blazor WebAssembly)::: aplicativo hospedado com o Microsoft Edge</span><span class="sxs-lookup"><span data-stu-id="a95cc-232">Launch and debug a hosted :::no-loc(Blazor WebAssembly)::: app with Microsoft Edge</span></span>
+### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a><span data-ttu-id="a95cc-232">Iniciar e depurar um Blazor WebAssembly aplicativo hospedado com o Microsoft Edge</span><span class="sxs-lookup"><span data-stu-id="a95cc-232">Launch and debug a hosted Blazor WebAssembly app with Microsoft Edge</span></span>
 
 <span data-ttu-id="a95cc-233">A configuração do navegador usa como padrão o Google Chrome.</span><span class="sxs-lookup"><span data-stu-id="a95cc-233">Browser configuration defaults to Google Chrome.</span></span> <span data-ttu-id="a95cc-234">Ao usar o Microsoft Edge para depuração, defina `browser` como `edge` .</span><span class="sxs-lookup"><span data-stu-id="a95cc-234">When using Microsoft Edge for debugging, set `browser` to `edge`.</span></span> <span data-ttu-id="a95cc-235">Para usar o Google Chrome, não defina a `browser` opção ou defina o valor da opção como `chrome` .</span><span class="sxs-lookup"><span data-stu-id="a95cc-235">To use Google Chrome, either don't set the `browser` option or set the option's value to `chrome`.</span></span>
 
 ```json
 {
-  "name": "Launch and Debug Hosted :::no-loc(Blazor WebAssembly)::: App",
+  "name": "Launch and Debug Hosted Blazor WebAssembly App",
   "type": "blazorwasm",
   "request": "launch",
   "hosted": true,
@@ -278,9 +278,9 @@ ms.locfileid: "94550511"
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="a95cc-238">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="a95cc-238">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="a95cc-239">Para depurar um :::no-loc(Blazor WebAssembly)::: aplicativo no Visual Studio para Mac:</span><span class="sxs-lookup"><span data-stu-id="a95cc-239">To debug a :::no-loc(Blazor WebAssembly)::: app in Visual Studio for Mac:</span></span>
+<span data-ttu-id="a95cc-239">Para depurar um Blazor WebAssembly aplicativo no Visual Studio para Mac:</span><span class="sxs-lookup"><span data-stu-id="a95cc-239">To debug a Blazor WebAssembly app in Visual Studio for Mac:</span></span>
 
-1. <span data-ttu-id="a95cc-240">Crie um novo aplicativo hospedado ASP.NET Core :::no-loc(Blazor WebAssembly)::: .</span><span class="sxs-lookup"><span data-stu-id="a95cc-240">Create a new ASP.NET Core hosted :::no-loc(Blazor WebAssembly)::: app.</span></span>
+1. <span data-ttu-id="a95cc-240">Crie um novo aplicativo hospedado ASP.NET Core Blazor WebAssembly .</span><span class="sxs-lookup"><span data-stu-id="a95cc-240">Create a new ASP.NET Core hosted Blazor WebAssembly app.</span></span>
 1. <span data-ttu-id="a95cc-241">Pressione <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd> para executar o aplicativo no depurador.</span><span class="sxs-lookup"><span data-stu-id="a95cc-241">Press <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> to run the app in the debugger.</span></span>
 
    > [!NOTE]
@@ -294,7 +294,7 @@ ms.locfileid: "94550511"
 1. <span data-ttu-id="a95cc-247">No Visual Studio, inspecione o valor do `currentCount` campo na janela **locais** .</span><span class="sxs-lookup"><span data-stu-id="a95cc-247">In Visual Studio, inspect the value of the `currentCount` field in the **Locals** window.</span></span>
 1. <span data-ttu-id="a95cc-248">Pressione <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd> para continuar a execução.</span><span class="sxs-lookup"><span data-stu-id="a95cc-248">Press <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> to continue execution.</span></span>
 
-<span data-ttu-id="a95cc-249">Ao depurar um :::no-loc(Blazor WebAssembly)::: aplicativo, você também pode depurar o código do servidor:</span><span class="sxs-lookup"><span data-stu-id="a95cc-249">While debugging a :::no-loc(Blazor WebAssembly)::: app, you can also debug server code:</span></span>
+<span data-ttu-id="a95cc-249">Ao depurar um Blazor WebAssembly aplicativo, você também pode depurar o código do servidor:</span><span class="sxs-lookup"><span data-stu-id="a95cc-249">While debugging a Blazor WebAssembly app, you can also debug server code:</span></span>
 
 1. <span data-ttu-id="a95cc-250">Defina um ponto de interrupção na `Pages/FetchData.razor` página em <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> .</span><span class="sxs-lookup"><span data-stu-id="a95cc-250">Set a breakpoint in the `Pages/FetchData.razor` page in <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>.</span></span>
 1. <span data-ttu-id="a95cc-251">Defina um ponto de interrupção no `WeatherForecastController` `Get` Método Action.</span><span class="sxs-lookup"><span data-stu-id="a95cc-251">Set a breakpoint in the `WeatherForecastController` in the `Get` action method.</span></span>
@@ -336,11 +336,11 @@ ms.locfileid: "94550511"
 
 1. <span data-ttu-id="a95cc-269">No código do componente ( `.razor` arquivos) e em arquivos de código C# ( `.cs` ), os pontos de interrupção definidos por você são atingidos quando o código é executado.</span><span class="sxs-lookup"><span data-stu-id="a95cc-269">In component code (`.razor` files) and C# code files (`.cs`), breakpoints that you set are hit when code executes.</span></span> <span data-ttu-id="a95cc-270">Depois que um ponto de interrupção é atingido, a etapa única (<kbd>F10</kbd>) por meio da execução do código ou retomar (<kbd>F8</kbd>) normalmente.</span><span class="sxs-lookup"><span data-stu-id="a95cc-270">After a breakpoint is hit, single-step (<kbd>F10</kbd>) through the code or resume (<kbd>F8</kbd>) code execution normally.</span></span>
 
-<span data-ttu-id="a95cc-271">:::no-loc(Blazor)::: fornece um proxy de depuração que implementa o [protocolo devtools do Chrome](https://chromedevtools.github.io/devtools-protocol/) e aumenta o protocolo com o. Informações específicas de rede.</span><span class="sxs-lookup"><span data-stu-id="a95cc-271">:::no-loc(Blazor)::: provides a debugging proxy that implements the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) and augments the protocol with .NET-specific information.</span></span> <span data-ttu-id="a95cc-272">Quando o atalho de teclado de depuração é pressionado, :::no-loc(Blazor)::: o aponta para o Chrome devtools no proxy.</span><span class="sxs-lookup"><span data-stu-id="a95cc-272">When debugging keyboard shortcut is pressed, :::no-loc(Blazor)::: points the Chrome DevTools at the proxy.</span></span> <span data-ttu-id="a95cc-273">O proxy se conecta à janela do navegador que você está procurando depurar (portanto, a necessidade de habilitar a depuração remota).</span><span class="sxs-lookup"><span data-stu-id="a95cc-273">The proxy connects to the browser window you're seeking to debug (hence the need to enable remote debugging).</span></span>
+<span data-ttu-id="a95cc-271">Blazor fornece um proxy de depuração que implementa o [protocolo devtools do Chrome](https://chromedevtools.github.io/devtools-protocol/) e aumenta o protocolo com o. Informações específicas de rede.</span><span class="sxs-lookup"><span data-stu-id="a95cc-271">Blazor provides a debugging proxy that implements the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) and augments the protocol with .NET-specific information.</span></span> <span data-ttu-id="a95cc-272">Quando o atalho de teclado de depuração é pressionado, Blazor o aponta para o Chrome devtools no proxy.</span><span class="sxs-lookup"><span data-stu-id="a95cc-272">When debugging keyboard shortcut is pressed, Blazor points the Chrome DevTools at the proxy.</span></span> <span data-ttu-id="a95cc-273">O proxy se conecta à janela do navegador que você está procurando depurar (portanto, a necessidade de habilitar a depuração remota).</span><span class="sxs-lookup"><span data-stu-id="a95cc-273">The proxy connects to the browser window you're seeking to debug (hence the need to enable remote debugging).</span></span>
 
 ## <a name="browser-source-maps"></a><span data-ttu-id="a95cc-274">Mapas de origem do navegador</span><span class="sxs-lookup"><span data-stu-id="a95cc-274">Browser source maps</span></span>
 
-<span data-ttu-id="a95cc-275">Os mapas de origem do navegador permitem que o navegador mapeie arquivos compilados de volta para seus arquivos de origem originais e normalmente são usados para depuração do lado do cliente.</span><span class="sxs-lookup"><span data-stu-id="a95cc-275">Browser source maps allow the browser to map compiled files back to their original source files and are commonly used for client-side debugging.</span></span> <span data-ttu-id="a95cc-276">No entanto, o :::no-loc(Blazor)::: atualmente não mapeia C# diretamente para JavaScript/WASM.</span><span class="sxs-lookup"><span data-stu-id="a95cc-276">However, :::no-loc(Blazor)::: doesn't currently map C# directly to JavaScript/WASM.</span></span> <span data-ttu-id="a95cc-277">Em vez disso, a :::no-loc(Blazor)::: interpretação de Il no navegador, portanto, os mapas de origem não são relevantes.</span><span class="sxs-lookup"><span data-stu-id="a95cc-277">Instead, :::no-loc(Blazor)::: does IL interpretation within the browser, so source maps aren't relevant.</span></span>
+<span data-ttu-id="a95cc-275">Os mapas de origem do navegador permitem que o navegador mapeie arquivos compilados de volta para seus arquivos de origem originais e normalmente são usados para depuração do lado do cliente.</span><span class="sxs-lookup"><span data-stu-id="a95cc-275">Browser source maps allow the browser to map compiled files back to their original source files and are commonly used for client-side debugging.</span></span> <span data-ttu-id="a95cc-276">No entanto, o Blazor atualmente não mapeia C# diretamente para JavaScript/WASM.</span><span class="sxs-lookup"><span data-stu-id="a95cc-276">However, Blazor doesn't currently map C# directly to JavaScript/WASM.</span></span> <span data-ttu-id="a95cc-277">Em vez disso, a Blazor interpretação de Il no navegador, portanto, os mapas de origem não são relevantes.</span><span class="sxs-lookup"><span data-stu-id="a95cc-277">Instead, Blazor does IL interpretation within the browser, so source maps aren't relevant.</span></span>
 
 ## <a name="firewall-configuration"></a><span data-ttu-id="a95cc-278">Configuração do firewall</span><span class="sxs-lookup"><span data-stu-id="a95cc-278">Firewall configuration</span></span>
 
@@ -373,7 +373,7 @@ ms.locfileid: "94550511"
 
 ### <a name="breakpoints-in-oninitializedasync-not-hit"></a><span data-ttu-id="a95cc-305">Pontos de interrupção em `OnInitialized{Async}` não atingido</span><span class="sxs-lookup"><span data-stu-id="a95cc-305">Breakpoints in `OnInitialized{Async}` not hit</span></span>
 
-<span data-ttu-id="a95cc-306">O :::no-loc(Blazor)::: proxy de depuração da estrutura leva pouco tempo para ser iniciado, portanto, os pontos de interrupção no [ `OnInitialized{Async}` método de ciclo de vida](xref:blazor/components/lifecycle#component-initialization-methods) podem não ser atingidos.</span><span class="sxs-lookup"><span data-stu-id="a95cc-306">The :::no-loc(Blazor)::: framework's debugging proxy takes a short time to launch, so breakpoints in the [`OnInitialized{Async}` lifecycle method](xref:blazor/components/lifecycle#component-initialization-methods) might not be hit.</span></span> <span data-ttu-id="a95cc-307">É recomendável adicionar um atraso no início do corpo do método para dar ao proxy de depuração algum tempo para iniciar antes de o ponto de interrupção ser atingido.</span><span class="sxs-lookup"><span data-stu-id="a95cc-307">We recommend adding a delay at the start of the method body to give the debug proxy some time to launch before the breakpoint is hit.</span></span> <span data-ttu-id="a95cc-308">Você pode incluir o atraso com base em uma [ `if` diretiva de compilador](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if) para garantir que o atraso não esteja presente para uma compilação de versão do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a95cc-308">You can include the delay based on an [`if` compiler directive](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if) to ensure that the delay isn't present for a release build of the app.</span></span>
+<span data-ttu-id="a95cc-306">O Blazor proxy de depuração da estrutura leva pouco tempo para ser iniciado, portanto, os pontos de interrupção no [ `OnInitialized{Async}` método de ciclo de vida](xref:blazor/components/lifecycle#component-initialization-methods) podem não ser atingidos.</span><span class="sxs-lookup"><span data-stu-id="a95cc-306">The Blazor framework's debugging proxy takes a short time to launch, so breakpoints in the [`OnInitialized{Async}` lifecycle method](xref:blazor/components/lifecycle#component-initialization-methods) might not be hit.</span></span> <span data-ttu-id="a95cc-307">É recomendável adicionar um atraso no início do corpo do método para dar ao proxy de depuração algum tempo para iniciar antes de o ponto de interrupção ser atingido.</span><span class="sxs-lookup"><span data-stu-id="a95cc-307">We recommend adding a delay at the start of the method body to give the debug proxy some time to launch before the breakpoint is hit.</span></span> <span data-ttu-id="a95cc-308">Você pode incluir o atraso com base em uma [ `if` diretiva de compilador](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if) para garantir que o atraso não esteja presente para uma compilação de versão do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="a95cc-308">You can include the delay based on an [`if` compiler directive](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if) to ensure that the delay isn't present for a release build of the app.</span></span>
 
 <span data-ttu-id="a95cc-309"><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>:</span><span class="sxs-lookup"><span data-stu-id="a95cc-309"><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>:</span></span>
 
@@ -406,7 +406,7 @@ protected override async Task OnInitializedAsync()
 <span data-ttu-id="a95cc-312">Se o Visual Studio lançar uma exceção de que o adaptador de depuração falhou ao ser iniciado mencionando que o tempo limite foi atingido, você poderá ajustar o tempo limite com uma configuração de registro:</span><span class="sxs-lookup"><span data-stu-id="a95cc-312">If Visual Studio throws an exception that the debug adapter failed to launch mentioning that the timeout was reached, you can adjust the timeout with a Registry setting:</span></span>
 
 ```console
-VsRegEdit.exe set "<VSInstallFolder>" HKCU JSDebugger\Options\Debugging ":::no-loc(Blazor):::TimeoutInMilliseconds" dword {TIMEOUT}
+VsRegEdit.exe set "<VSInstallFolder>" HKCU JSDebugger\Options\Debugging "BlazorTimeoutInMilliseconds" dword {TIMEOUT}
 ```
 
 <span data-ttu-id="a95cc-313">O `{TIMEOUT}` espaço reservado no comando anterior é em milissegundos.</span><span class="sxs-lookup"><span data-stu-id="a95cc-313">The `{TIMEOUT}` placeholder in the preceding command is in milliseconds.</span></span> <span data-ttu-id="a95cc-314">Por exemplo, um minuto é atribuído como `60000` .</span><span class="sxs-lookup"><span data-stu-id="a95cc-314">For example, one minute is assigned as `60000`.</span></span>
