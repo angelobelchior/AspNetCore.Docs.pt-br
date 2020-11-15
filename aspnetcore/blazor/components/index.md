@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d78076eb29d6d09756e408b388fcf12b4b6460f6
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507933"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637698"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -244,11 +244,25 @@ Se um componente contiver um elemento HTML com uma letra maiúscula ou minúscul
 
 Os componentes podem receber parâmetros de rota do modelo de rota fornecido na [`@page`][9] diretiva. O roteador usa parâmetros de rota para preencher os parâmetros de componente correspondentes.
 
+::: moniker range=">= aspnetcore-5.0"
+
+Há suporte para parâmetros opcionais. No exemplo a seguir, o `text` parâmetro opcional atribui o valor do segmento de rota à propriedade do componente `Text` . Se o segmento não estiver presente, o valor de `Text` será definido como `fantastic` .
+
 `Pages/RouteParameter.razor`:
 
-[!code-razor[](index/samples_snapshot/RouteParameter.razor?highlight=2,7-8)]
+[!code-razor[](index/samples_snapshot/RouteParameter-5x.razor?highlight=1,6-7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+`Pages/RouteParameter.razor`:
+
+[!code-razor[](index/samples_snapshot/RouteParameter-3x.razor?highlight=2,7-8)]
 
 Não há suporte para parâmetros opcionais, portanto, duas [`@page`][9] diretivas são aplicadas no exemplo anterior. O primeiro permite a navegação para o componente sem um parâmetro. A segunda [`@page`][9] diretiva recebe o `{text}` parâmetro de rota e atribui o valor à `Text` propriedade.
+
+::: moniker-end
 
 Para obter informações sobre como capturar todos os parâmetros de rota ( `{*pageRoute}` ), que capturam caminhos entre vários limites de pasta, consulte <xref:blazor/fundamentals/routing#catch-all-route-parameters> .
 
@@ -265,6 +279,14 @@ No exemplo a seguir do aplicativo de exemplo, o `ParentComponent` define o valor
 `Pages/ParentComponent.razor`:
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
+
+Por convenção, um valor de atributo que consiste em código C# é atribuído a um parâmetro usando o [ Razor `@` símbolo reservado do](xref:mvc/views/razor#razor-syntax):
+
+* Campo ou propriedade pai: `Title="@{FIELD OR PROPERTY}` , em que o espaço reservado `{FIELD OR PROPERTY}` é um campo ou propriedade C# do componente pai.
+* Resultado de um método: `Title="@{METHOD}"` , em que o espaço reservado `{METHOD}` é um método C# do componente pai.
+* [Expressão implícita ou explícita](xref:mvc/views/razor#implicit-razor-expressions): `Title="@({EXPRESSION})"` , em que o espaço reservado `{EXPRESSION}` é uma expressão C#.
+  
+Para obter mais informações, consulte <xref:mvc/views/razor>.
 
 > [!WARNING]
 > Não crie componentes que gravam em seus próprios *parâmetros de componente* , use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos](#overwritten-parameters) .
@@ -294,7 +316,7 @@ Devido à maneira que Blazor renderiza conteúdo filho, os componentes de render
 > @for (int c = 0; c < 10; c++)
 > {
 >     var current = c;
->     <ChildComponent Param1="@c">
+>     <ChildComponent Title="@c">
 >         Child Content: Count: @current
 >     </ChildComponent>
 > }
@@ -305,7 +327,7 @@ Devido à maneira que Blazor renderiza conteúdo filho, os componentes de render
 > ```razor
 > @foreach(var c in Enumerable.Range(0,10))
 > {
->     <ChildComponent Param1="@c">
+>     <ChildComponent Title="@c">
 >         Child Content: Count: @c
 >     </ChildComponent>
 > }
@@ -650,7 +672,7 @@ Considere o seguinte componente com falha `Expander` que:
 * O componente grava diretamente no `Expanded` parâmetro, que demonstra o problema com parâmetros substituídos e deve ser evitado.
 
 ```razor
-<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
+<div @onclick="Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
         <h2 class="card-title">Toggle (<code>Expanded</code> = @Expanded)</h2>
 
@@ -702,7 +724,7 @@ O seguinte componente revisado `Expander` :
 * Usa o campo particular para manter seu estado de alternância interno, que demonstra como evitar gravar diretamente em um parâmetro.
 
 ```razor
-<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
+<div @onclick="Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
         <h2 class="card-title">Toggle (<code>expanded</code> = @expanded)</h2>
 

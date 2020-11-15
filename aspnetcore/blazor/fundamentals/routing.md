@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 8f0aa80d092b6678131a2b7152f21ecb8e168257
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 585b697aedf31bce2305df0ec5f84824c4019156
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430985"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637685"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
@@ -112,7 +112,31 @@ Use o <xref:Microsoft.AspNetCore.Components.Routing.Router.AdditionalAssemblies>
 
 ## <a name="route-parameters"></a>Parâmetros de rota
 
-O roteador usa parâmetros de rota para popular os parâmetros de componente correspondentes com o mesmo nome (não diferencia maiúsculas de minúsculas):
+O roteador usa parâmetros de rota para preencher os parâmetros de componente correspondentes com o mesmo nome (não diferencia maiúsculas de minúsculas).
+
+::: moniker range=">= aspnetcore-5.0"
+
+Há suporte para parâmetros opcionais. No exemplo a seguir, o `text` parâmetro opcional atribui o valor do segmento de rota à propriedade do componente `Text` . Se o segmento não estiver presente, o valor de `Text` será definido como `fantastic` :
+
+```razor
+@page "/RouteParameter/{text?}"
+
+<h1>Blazor is @Text!</h1>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Text = Text ?? "fantastic";
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ```razor
 @page "/RouteParameter"
@@ -133,6 +157,8 @@ O roteador usa parâmetros de rota para popular os parâmetros de componente cor
 
 Não há suporte para parâmetros opcionais. Duas `@page` diretivas são aplicadas no exemplo anterior. O primeiro permite a navegação para o componente sem um parâmetro. A segunda `@page` diretiva usa o `{text}` parâmetro de rota e atribui o valor à `Text` propriedade.
 
+::: moniker-end
+
 ## <a name="route-constraints"></a>Restrições de rota
 
 Uma restrição de rota impõe a correspondência de tipo em um segmento de rota para um componente.
@@ -148,14 +174,14 @@ As restrições de rota mostradas na tabela a seguir estão disponíveis. Para a
 
 | Constraint | Exemplo           | Correspondências de exemplo                                                                  | Constante<br>culture<br>correspondência |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
-| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
-| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
-| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
-| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Não                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Sim                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Sim                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Sim                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Sim                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Não                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Sim                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Sim                              |
 
 > [!WARNING]
 > As restrições de rota que verificam a URL e são convertidas em um tipo CLR (como `int` ou <xref:System.DateTime>) sempre usam a cultura invariável. Essas restrições consideram que a URL não é localizável.
