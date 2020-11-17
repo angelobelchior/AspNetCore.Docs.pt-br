@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051610"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673985"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Trabalhar com SameSite cookie s no ASP.NET Core
 
@@ -166,7 +166,7 @@ No `Startup.Configure` , adicione o código que chama <xref:Microsoft.AspNetCore
 
 No `Startup.ConfigureServices` , adicione um código semelhante ao seguinte:
 
-::: moniker range="= aspnetcore-3.1"
+::: moniker range=">= aspnetcore-3.1"
 
 [!code-csharp[](samesite/sample/Startup31.cs?name=snippet)]
 
@@ -202,7 +202,7 @@ Teste os aplicativos Web usando uma versão do cliente que pode aceitar o novo c
 
 ### <a name="test-with-chrome"></a>Teste com o Chrome
 
-O Chrome 78 + fornece resultados enganosos porque tem uma mitigação temporária em vigor. A atenuação do Chrome 78 + temporária permite que cookie s menos de dois minutos sejam antigas. O Chrome 76 ou 77 com os sinalizadores de teste apropriados habilitados fornece resultados mais precisos. Para testar o novo comportamento de SameSite, alterne `chrome://flags/#same-site-by-default-cookies` para **habilitado** . Versões mais antigas do Chrome (75 e inferior) são relatadas para falha com a nova `None` configuração. Consulte [suporte a navegadores mais antigos](#sob) neste documento.
+O Chrome 78 + fornece resultados enganosos porque tem uma mitigação temporária em vigor. A atenuação do Chrome 78 + temporária permite que cookie s menos de dois minutos sejam antigas. O Chrome 76 ou 77 com os sinalizadores de teste apropriados habilitados fornece resultados mais precisos. Para testar o novo comportamento de SameSite, alterne `chrome://flags/#same-site-by-default-cookies` para **habilitado**. Versões mais antigas do Chrome (75 e inferior) são relatadas para falha com a nova `None` configuração. Consulte [suporte a navegadores mais antigos](#sob) neste documento.
 
 O Google não disponibiliza versões mais antigas do Chrome. Siga as instruções em [baixar o Chromium](https://www.chromium.org/getting-involved/download-chromium) para testar versões anteriores do Chrome. **Não** Baixe o Chrome de links fornecidos pela pesquisa de versões mais antigas do Chrome.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 2efed6b76228227f032482346a36f528b3448de2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 833114a12c8c1ac67097b3592cf410d7a69bb628
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053560"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673972"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Autenticação e autorização no gRPC para ASP.NET Core
 
@@ -76,7 +76,7 @@ O cliente pode fornecer um token de acesso para autenticação. O servidor valid
 
 No servidor, a autenticação de token de portador é configurada usando o [middleware portador JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
 
-No cliente .NET gRPC, o token pode ser enviado com chamadas como um cabeçalho:
+No cliente .NET gRPC, o token pode ser enviado com chamadas usando a `Metadata` coleção. As entradas na `Metadata` coleção são enviadas com uma chamada gRPC como cabeçalhos http:
 
 ```csharp
 public bool DoAuthenticatedCall(
@@ -92,7 +92,9 @@ public bool DoAuthenticatedCall(
 }
 ```
 
-Configurar `ChannelCredentials` o em um canal é uma maneira alternativa de enviar o token para o serviço com chamadas gRPC. A credencial é executada cada vez que uma chamada gRPC é feita, o que evita a necessidade de escrever código em vários locais para passar o token por conta própria.
+Configurar `ChannelCredentials` o em um canal é uma maneira alternativa de enviar o token para o serviço com chamadas gRPC. Um `ChannelCredentials` pode incluir `CallCredentials` , que fornece uma maneira de definir automaticamente `Metadata` .
+
+`CallCredentials` é executado cada vez que uma chamada gRPC é feita, o que evita a necessidade de escrever código em vários locais para passar o token por conta própria. Observe que `CallCredentials` serão aplicadas somente se o canal estiver protegido com TLS. `CallCredentials` Não são aplicadas em canais não TLS não seguros.
 
 A credencial no exemplo a seguir configura o canal para enviar o token com cada chamada gRPC:
 

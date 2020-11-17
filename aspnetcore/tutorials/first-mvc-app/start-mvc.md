@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1c703cdbd168c2e83d09c40f7740689df8938dad
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: c96e7107c85bf36f55f6571c71c20d09bc94ddb3
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422768"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688461"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introdução ao ASP.NET Core MVC
 
@@ -75,7 +75,7 @@ No final, você terá um aplicativo que pode gerenciar e exibir dados de filmes.
     1. **ASP.NET Core aplicativo Web (Model-View-Controller)**.
     1. **Criar**
 
-![Criar um novo aplicativo Web ASP.NET Core ](start-mvc/_static/5/mvc.png)
+![Criar um novo aplicativo Web ASP.NET Core ](start-mvc/_static/mvcVS19v16.9.png)
 
 Para obter abordagens alternativas para criar o projeto, consulte [criar um novo projeto no Visual Studio](/visualstudio/ide/create-new-project).
 
@@ -112,7 +112,7 @@ O tutorial pressupõe familiaridade com VS Code. Consulte [Introdução ao VS Co
 * Na caixa de diálogo **configurar seu novo aplicativo Web** :
 
   * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 5. x mais recente.
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 5. x mais recente.
 
   Selecione **Avançar**.
 
@@ -132,7 +132,7 @@ Pressione **Ctrl+F5** para executar o aplicativo no modo sem depuração.
 
 * O Visual Studio inicia o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) e executa o aplicativo. Observe que a barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web.
 * Iniciar o aplicativo com Ctrl+F5 (modo de não depuração) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para iniciar o aplicativo rapidamente e exibir as alterações.
-* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar** :
+* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar**:
 
   ![Menu Depurar](start-mvc/_static/debug_menu.png)
 
@@ -142,7 +142,7 @@ Pressione **Ctrl+F5** para executar o aplicativo no modo sem depuração.
 
   A imagem a seguir mostra o aplicativo:
 
-  ![Página Inicial ou de Índice](start-mvc/_static/home2.2.png)
+  ![Página Inicial ou de Índice](start-mvc/_static/home50-vs.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -154,7 +154,7 @@ Pressione Ctrl + F5 para execução sem o depurador.
 
   Iniciar o aplicativo com Ctrl+F5 (modo de não depuração) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para atualizar a página e exibir alterações.
 
-  ![Página Inicial ou de Índice](start-mvc/_static/home2.2.png)
+  ![Página Inicial ou de Índice](start-mvc/_static/home50-port5001.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -265,7 +265,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 * Na caixa de diálogo **configurar seu novo aplicativo Web** :
 
   * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 3. x mais recente.
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 3. x mais recente.
 
   Selecione **Avançar**.
 
@@ -285,7 +285,7 @@ Pressione **Ctrl+F5** para executar o aplicativo no modo sem depuração.
 
 * O Visual Studio inicia o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) e executa o aplicativo. Observe que a barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web.
 * Iniciar o aplicativo com Ctrl+F5 (modo de não depuração) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para iniciar o aplicativo rapidamente e exibir as alterações.
-* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar** :
+* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar**:
 
   ![Menu Depurar](start-mvc/_static/debug_menu.png)
 
@@ -416,7 +416,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 * Na caixa de diálogo **configurar seu novo aplicativo Web** :
 
   * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 2. x mais recente.
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 2. x mais recente.
 
   Selecione **Avançar**.
 
@@ -434,7 +434,7 @@ Pressione **Ctrl+F5** para executar o aplicativo no modo sem depuração.
 
 * O Visual Studio inicia o [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) e executa o aplicativo. Observe que a barra de endereços mostra `localhost:port#` e não algo como `example.com`. Isso ocorre porque `localhost` é o nome do host padrão do computador local. Uma porta aleatória é usada para o servidor Web quando o Visual Studio cria um projeto Web.
 * Iniciar o aplicativo com Ctrl+F5 (modo de não depuração) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para iniciar o aplicativo rapidamente e exibir as alterações.
-* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar** :
+* Você pode iniciar o aplicativo no modo de não depuração ou de depuração por meio do item de menu **Depurar**:
 
   ![Menu Depurar](start-mvc/_static/debug_menu.png)
 

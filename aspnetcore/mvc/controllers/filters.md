@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d075faa951a34fb3856b54eb9e21593b6616b4f1
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058500"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673959"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros no ASP.NET Core
 
@@ -49,7 +49,7 @@ Este documento se aplica a Razor páginas, controladores de API e controladores 
 
 ## <a name="how-filters-work"></a>Como os filtros funcionam
 
-Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core* , às vezes chamado de *pipeline de filtros* . O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
+Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core*, às vezes chamado de *pipeline de filtros*. O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
 
 ![A solicitação é processada por meio de outro middleware, middleware de roteamento, seleção de ação e o pipeline de invocação de ação. O processamento de solicitações continua por meio da Seleção de Ação, do Middleware de Roteamento e de diversos Outros Middlewares antes de se tornar uma resposta enviada ao cliente.](filters/_static/filter-pipeline-1.png)
 
@@ -118,7 +118,7 @@ Os atributos permitem que os filtros aceitem argumentos, conforme mostrado no ex
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-Use uma ferramenta como as [ferramentas de desenvolvedor do navegador](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) para examinar os cabeçalhos. Em **cabeçalhos de resposta** , `author: Rick Anderson` é exibido.
+Use uma ferramenta como as [ferramentas de desenvolvedor do navegador](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) para examinar os cabeçalhos. Em **cabeçalhos de resposta**, `author: Rick Anderson` é exibido.
 
 O código a seguir implementa um `ActionFilterAttribute` que:
 
@@ -146,7 +146,7 @@ O código a seguir aplica o `MyActionFilterAttribute` ao `Index2` método:
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet2&highlight=9)]
 
-Em **cabeçalhos de resposta** , `author: Rick Anderson` e `Editor: Joe Smith` é exibido quando o `Sample/Index2` ponto de extremidade é chamado.
+Em **cabeçalhos de resposta**, `author: Rick Anderson` e `Editor: Joe Smith` é exibido quando o `Sample/Index2` ponto de extremidade é chamado.
 
 O código a seguir aplica o `MyActionFilterAttribute` e o `AddHeaderAttribute` à Razor página:
 
@@ -167,7 +167,7 @@ Atributos de filtro:
 
 ## <a name="filter-scopes-and-order-of-execution"></a>Escopos e ordem de execução dos filtros
 
-Um filtro pode ser adicionado ao pipeline com um de três *escopos* :
+Um filtro pode ser adicionado ao pipeline com um de três *escopos*:
 
 * Usando um atributo em uma ação do controlador. Atributos de filtro não podem ser aplicados a Razor métodos de manipulador de páginas.
 * Usando um atributo em um controlador ou uma Razor página.
@@ -179,7 +179,7 @@ Um filtro pode ser adicionado ao pipeline com um de três *escopos* :
 
 Quando há vários filtros para um determinado estágio do pipeline, o escopo determina a ordem padrão de execução dos filtros.  Filtros globais circundam filtros de classe, que, por sua vez, circundam filtros de método.
 
-Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior* . A sequência de filtro:
+Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior*. A sequência de filtro:
 
 * O código *anterior* dos filtros globais.
   * O código *anterior* de filtros de Razor página e controlador.
@@ -555,6 +555,18 @@ Por exemplo, o filtro a seguir sempre é executado e define o resultado de uma a
 
 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> implementa <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Portanto, uma instância `IFilterFactory` pode ser usada como uma instância `IFilterMetadata` em qualquer parte do pipeline de filtro. Quando o runtime se prepara para invocar o filtro, tenta convertê-lo em um `IFilterFactory`. Se essa conversão for bem-sucedida, o método <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> será chamado para criar a instância `IFilterMetadata` invocada. Isso fornece um design flexível, porque o pipeline de filtro preciso não precisa ser definido explicitamente quando o aplicativo é iniciado.
 
+`IFilterFactory.IsReusable`:
+
+* É uma dica pela fábrica que a instância de filtro criada pela fábrica pode ser reutilizada fora do escopo de solicitação em que foi criada.
+* ***Não** deve ser usado com um filtro que dependa de serviços com um tempo de vida diferente do singleton.
+
+O runtime do ASP.NET Core não garante:
+
+_ Uma única instância do filtro será criada.
+* Que o filtro não será solicitado novamente no contêiner de DI em algum momento posterior.
+
+[!WARNING] Somente configure `IFilterFactory.IsReusable` para retornar `true` se a origem dos filtros não for ambígua, se os filtros forem sem estado e forem seguros para uso em várias solicitações HTTP. Por exemplo, não retorne filtros de DI que são registrados como escopo ou transitório se `IFilterFactory.IsReusable` retorna `true`
+
 Implemente `IFilterFactory` usando implementações personalizadas de atributo como outra abordagem à criação de filtros:
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
@@ -638,7 +650,7 @@ Este documento se aplica a Razor páginas, controladores de API e controladores 
 
 ## <a name="how-filters-work"></a>Como os filtros funcionam
 
-Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core* , às vezes chamado de *pipeline de filtros* .  O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
+Os filtros são executados dentro do *pipeline de invocação de ações do ASP.NET Core*, às vezes chamado de *pipeline de filtros*.  O pipeline de filtros é executado após o ASP.NET Core selecionar a ação a ser executada.
 
 ![A solicitação é processada por meio de Outro Middleware, do Middleware de Roteamento, da Seleção de Ação e do Pipeline de Invocação de Ações do ASP.NET Core. O processamento de solicitações continua por meio da Seleção de Ação, do Middleware de Roteamento e de diversos Outros Middlewares antes de se tornar uma resposta enviada ao cliente.](filters/_static/filter-pipeline-1.png)
 
@@ -711,7 +723,7 @@ Atributos de filtro:
 
 ## <a name="filter-scopes-and-order-of-execution"></a>Escopos e ordem de execução dos filtros
 
-Um filtro pode ser adicionado ao pipeline com um de três *escopos* :
+Um filtro pode ser adicionado ao pipeline com um de três *escopos*:
 
 * Usando um atributo em uma ação.
 * Usando um atributo em um controlador.
@@ -723,9 +735,9 @@ O código anterior adiciona três filtros globalmente usando a coleção [MvcOpt
 
 ### <a name="default-order-of-execution"></a>Ordem padrão de execução
 
-Quando há vários filtros *do mesmo tipo* , o escopo determina a ordem padrão de execução do filtro.  Filtros globais envolvem filtros de classe. Filtros de classe envolvem filtros de método.
+Quando há vários filtros *do mesmo tipo*, o escopo determina a ordem padrão de execução do filtro.  Filtros globais envolvem filtros de classe. Filtros de classe envolvem filtros de método.
 
-Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior* . A sequência de filtro:
+Como resultado do aninhamento de filtro, o código *posterior* dos filtros é executado na ordem inversa do código *anterior*. A sequência de filtro:
 
 * O código *anterior* dos filtros globais.
   * O código *anterior* dos filtros de controlador.

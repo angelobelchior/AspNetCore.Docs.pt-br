@@ -3,7 +3,7 @@ title: Parte 4, adicionar um modelo a um aplicativo ASP.NET Core MVC
 author: rick-anderson
 description: Parte 4 da série de tutoriais no ASP.NET Core MVC.
 ms.author: riande
-ms.date: 01/13/2020
+ms.date: 11/16/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: fa1d79bed56f17afe69697a7e24ec200e6a0ab22
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: 16cef6cc9e772f494515942072c2aaf58913ce91
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422731"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688443"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>Parte 4, adicionar um modelo a um aplicativo ASP.NET Core MVC
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT) e [Tom Dykstra](https://github.com/tdykstra)
 
-Nesta seção, você adiciona classes para gerenciamento de filmes em um banco de dados. Essas classes serão a parte “ **M** odel” parte do aplicativo **M** VC.
+Nesta seção, você adiciona classes para gerenciamento de filmes em um banco de dados. Essas classes serão a parte “**M** odel” parte do aplicativo **M** VC.
 
 Você usa essas classes com o [Entity Framework Core](/ef/core) (EF Core) para trabalhar com um banco de dados. O EF Core é uma estrutura ORM (de mapeamento relacional de objetos) que simplifica o código de acesso a dados que você precisa escrever.
 
@@ -71,7 +71,7 @@ O <xref:System.ComponentModel.DataAnnotations.DataType> atributo em `ReleaseDate
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
+No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
 
 ![Menu do PMC](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -105,6 +105,14 @@ Repita as etapas acima para instalar os seguintes pacotes NuGet:
 * `Microsoft.EntityFrameworkCore.SqlServer`
 * `Microsoft.EntityFrameworkCore.Design`
 
+Execute o seguinte comando da CLI do .NET:
+
+```dotnetcli
+dotnet tool install --global dotnet-aspnet-codegenerator
+```
+
+O comando anterior adiciona a [ferramenta ASPNET-CodeGenerator scaffolding](xref:fundamentals/tools/dotnet-aspnet-codegenerator).
+
 ---
 
 <a name="dc"></a>
@@ -127,7 +135,7 @@ O código anterior cria uma [propriedade \<Movie> DbSet](/dotnet/api/microsoft.e
 
 O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection). Os serviços (como o contexto de BD do EF Core) devem ser registrados com a DI durante a inicialização do aplicativo. Os componentes que exigem esses serviços (como Razor páginas) são fornecidos a esses serviços por meio de parâmetros do construtor. O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial. Nesta seção, você registra o contexto do banco de dados com o contêiner DI.
 
-Adicione os demonstrativos do `using` a seguir à parte superior do *Startup.cs* :
+Adicione os demonstrativos do `using` a seguir à parte superior do *Startup.cs*:
 
 ```csharp
 using MvcMovie.Data;
@@ -138,11 +146,11 @@ Adicione o código realçado a seguir a `Startup.ConfigureServices`:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=6-7)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=6-7)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=5-6)]
 
 ---
 
@@ -156,11 +164,11 @@ Adicione uma cadeia de conexão ao *appsettings.json* arquivo:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-11)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-11)]
 
 ---
 
@@ -172,15 +180,15 @@ Use a ferramenta scaffolding para produzir páginas CRUD (criar, ler, atualizar 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta *Controladores***> Adicionar > Novo Item com Scaffold**.
+No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta *Controladores***> Adicionar > Novo Item com Scaffold**.
 
 ![exibição da etapa acima](adding-model/_static/add_controller21.png)
 
-Na caixa de diálogo **Adicionar Scaffold** , selecione **Controlador MVC com exibições, usando o Entity Framework > Adicionar**.
+Na caixa de diálogo **Adicionar Scaffold**, selecione **Controlador MVC com exibições, usando o Entity Framework > Adicionar**.
 
 ![Caixa de diálogo Adicionar Scaffold](adding-model/_static/add_scaffold21.png)
 
-Preencha a caixa de diálogo **Adicionar Controlador** :
+Preencha a caixa de diálogo **Adicionar Controlador**:
 
 * **Classe de modelo:** *Movie (MvcMovie.Models)*
 * **Classe de contexto de dados:** *MvcMovieContext (MvcMovie. Data)*
@@ -193,14 +201,14 @@ Preencha a caixa de diálogo **Adicionar Controlador** :
 
 O Visual Studio cria:
 
-* Um controlador de filmes ( *Controllers/MoviesController.cs* )
-* Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )
+* Um controlador de filmes (*Controllers/MoviesController.cs*)
+* Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas (*exibições/filmes/ \* . cshtml*)
 
 A criação automática desses arquivos é conhecida como *scaffolding*.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
 
 * No Linux, exporte o caminho da ferramenta Scaffold:
 
@@ -218,7 +226,7 @@ A criação automática desses arquivos é conhecida como *scaffolding*.
 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
 
 * Execute o seguinte comando:
 
@@ -242,7 +250,7 @@ Use o recurso [Migrações](xref:data/ef-mvc/migrations) do EF Core para criar o
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
+No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
 
 No PMC, insira os seguintes comandos:
 
@@ -253,7 +261,7 @@ Update-Database
 
 * `Add-Migration InitialCreate`: Gera um arquivo de migração de *migrações/{timestamp} _InitialCreate. cs* . O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado. Como essa é a primeira migração, a classe gerada contém o código para criar o esquema de banco de dados. O esquema de banco de dados é baseado no modelo especificado na classe `MvcMovieContext`.
 
-* `Update-Database`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs* , que cria o banco de dados.
+* `Update-Database`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs*, que cria o banco de dados.
 
   O comando de atualização de banco de dados gera o seguinte aviso: 
 
@@ -274,15 +282,15 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-* `ef migrations add InitialCreate`: Gera um arquivo de migração de *migrações/{timestamp} _InitialCreate. cs* . O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado. Como essa é a primeira migração, a classe gerada contém o código para criar o esquema de banco de dados. O esquema do banco de dados é baseado no modelo especificado na classe `MvcMovieContext` (no arquivo *Data/MvcMovieContext.cs* ).
+* `ef migrations add InitialCreate`: Gera um arquivo de migração de *migrações/{timestamp} _InitialCreate. cs* . O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado. Como essa é a primeira migração, a classe gerada contém o código para criar o esquema de banco de dados. O esquema do banco de dados é baseado no modelo especificado na classe `MvcMovieContext` (no arquivo *Data/MvcMovieContext.cs*).
 
-* `ef database update`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs* , que cria o banco de dados.
+* `ef database update`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs*, que cria o banco de dados.
 
 ---
 
 ### <a name="the-initialcreate-class"></a>A classe InitialCreate
 
-Examine o arquivo de migração *Migrations/{timestamp}_InitialCreate.cs* :
+Examine o arquivo de migração *Migrations/{timestamp}_InitialCreate.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Migrations/20190805165915_InitialCreate.cs?name=snippet)]
 
@@ -316,7 +324,7 @@ O método `Up` cria a tabela de filmes e configura `Id` como a chave primária. 
   > [!NOTE]
   > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades com idiomas diferentes do inglês que usam uma vírgula (",") para um ponto decimal e formatos de data diferentes do inglês dos EUA, o aplicativo precisa ser globalizado. Para obter instruções sobre a globalização, consulte [esse problema no GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Teste os links **Editar** , **Detalhes** e **Excluir**.
+* Teste os links **Editar**, **Detalhes** e **Excluir**.
 
 ## <a name="dependency-injection-in-the-controller"></a>Injeção de dependência no controlador
 
@@ -354,7 +362,7 @@ Anteriormente neste tutorial, você viu como um controlador pode passar dados ou
 
 O MVC também fornece a capacidade de passar objetos de modelo fortemente tipados para uma exibição. Essa abordagem fortemente tipada permite a verificação de código em tempo de compilação. O mecanismo de scaffolding usou essa abordagem (ou seja, passando um modelo fortemente tipado) com a classe `MoviesController` e as exibições.
 
-Examine o método `Details` gerado no arquivo *Controllers/MoviesController.cs* :
+Examine o método `Details` gerado no arquivo *Controllers/MoviesController.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_details)]
 
@@ -383,7 +391,7 @@ Se for encontrado um filme, uma instância do modelo `Movie` será passada para 
 return View(movie);
 ```
 
-Examine o conteúdo do arquivo *Views/Movies/Details.cshtml* :
+Examine o conteúdo do arquivo *Views/Movies/Details.cshtml*:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
@@ -393,19 +401,19 @@ A instrução `@model` na parte superior do arquivo de exibição especifica o t
 @model MvcMovie.Models.Movie
 ```
 
-Essa diretiva `@model` permite o acesso ao filme que o controlador passou para a exibição. O objeto `Model` é fortemente tipado. Por exemplo, na exibição *Details.cshtml* , o código passa cada campo de filme para os Auxiliares de HTML `DisplayNameFor` e `DisplayFor` com o objeto `Model` fortemente tipado. Os métodos `Create` e `Edit` e as exibições também passam um objeto de modelo `Movie`.
+Essa diretiva `@model` permite o acesso ao filme que o controlador passou para a exibição. O objeto `Model` é fortemente tipado. Por exemplo, na exibição *Details.cshtml*, o código passa cada campo de filme para os Auxiliares de HTML `DisplayNameFor` e `DisplayFor` com o objeto `Model` fortemente tipado. Os métodos `Create` e `Edit` e as exibições também passam um objeto de modelo `Movie`.
 
 Examine a exibição *Index.cshtml* e o método `Index` no controlador Movies. Observe como o código cria um objeto `List` quando ele chama o método `View`. O código passa esta lista `Movies` do método de ação `Index` para a exibição:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_index)]
 
-Quando o controlador de filmes foi criado, o scaffolding incluiu a seguinte instrução `@model` na parte superior do arquivo *Index.cshtml* :
+Quando o controlador de filmes foi criado, o scaffolding incluiu a seguinte instrução `@model` na parte superior do arquivo *Index.cshtml*:
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
-A diretiva `@model` permite acessar a lista de filmes que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Index.cshtml* , o código executa um loop pelos filmes com uma instrução `foreach` no objeto `Model` fortemente tipado:
+A diretiva `@model` permite acessar a lista de filmes que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Index.cshtml*, o código executa um loop pelos filmes com uma instrução `foreach` no objeto `Model` fortemente tipado:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
@@ -457,7 +465,7 @@ O <xref:System.ComponentModel.DataAnnotations.DataType> atributo em `ReleaseDate
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
+No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
 
 ![Menu do PMC](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -513,7 +521,7 @@ O código anterior cria uma [propriedade \<Movie> DbSet](/dotnet/api/microsoft.e
 
 O ASP.NET Core foi criado com a [DI (injeção de dependência)](xref:fundamentals/dependency-injection). Os serviços (como o contexto de BD do EF Core) devem ser registrados com a DI durante a inicialização do aplicativo. Os componentes que exigem esses serviços (como Razor páginas) são fornecidos a esses serviços por meio de parâmetros do construtor. O código de construtor que obtém uma instância de contexto do BD será mostrado mais adiante no tutorial. Nesta seção, você registra o contexto do banco de dados com o contêiner DI.
 
-Adicione os demonstrativos do `using` a seguir à parte superior do *Startup.cs* :
+Adicione os demonstrativos do `using` a seguir à parte superior do *Startup.cs*:
 
 ```csharp
 using MvcMovie.Data;
@@ -558,15 +566,15 @@ Use a ferramenta scaffolding para produzir páginas CRUD (criar, ler, atualizar 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta *Controladores***> Adicionar > Novo Item com Scaffold**.
+No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta *Controladores***> Adicionar > Novo Item com Scaffold**.
 
 ![exibição da etapa acima](adding-model/_static/add_controller21.png)
 
-Na caixa de diálogo **Adicionar Scaffold** , selecione **Controlador MVC com exibições, usando o Entity Framework > Adicionar**.
+Na caixa de diálogo **Adicionar Scaffold**, selecione **Controlador MVC com exibições, usando o Entity Framework > Adicionar**.
 
 ![Caixa de diálogo Adicionar Scaffold](adding-model/_static/add_scaffold21.png)
 
-Preencha a caixa de diálogo **Adicionar Controlador** :
+Preencha a caixa de diálogo **Adicionar Controlador**:
 
 * **Classe de modelo:** *Movie (MvcMovie.Models)*
 * **Classe de contexto de dados:** *MvcMovieContext (MvcMovie. Data)*
@@ -579,14 +587,14 @@ Preencha a caixa de diálogo **Adicionar Controlador** :
 
 O Visual Studio cria:
 
-* Um controlador de filmes ( *Controllers/MoviesController.cs* )
-* Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )
+* Um controlador de filmes (*Controllers/MoviesController.cs*)
+* Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas (*exibições/filmes/ \* . cshtml*)
 
 A criação automática desses arquivos é conhecida como *scaffolding*.
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
 
 * No Linux, exporte o caminho da ferramenta Scaffold:
 
@@ -604,7 +612,7 @@ A criação automática desses arquivos é conhecida como *scaffolding*.
 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
 
 * Execute o seguinte comando:
 
@@ -628,7 +636,7 @@ Use o recurso [Migrações](xref:data/ef-mvc/migrations) do EF Core para criar o
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
+No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
 
 No PMC, insira os seguintes comandos:
 
@@ -639,7 +647,7 @@ Update-Database
 
 * `Add-Migration InitialCreate`: Gera um arquivo de migração de *migrações/{timestamp} _InitialCreate. cs* . O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado. Como essa é a primeira migração, a classe gerada contém o código para criar o esquema de banco de dados. O esquema de banco de dados é baseado no modelo especificado na classe `MvcMovieContext`.
 
-* `Update-Database`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs* , que cria o banco de dados.
+* `Update-Database`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs*, que cria o banco de dados.
 
   O comando de atualização de banco de dados gera o seguinte aviso: 
 
@@ -660,15 +668,15 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-* `ef migrations add InitialCreate`: Gera um arquivo de migração de *migrações/{timestamp} _InitialCreate. cs* . O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado. Como essa é a primeira migração, a classe gerada contém o código para criar o esquema de banco de dados. O esquema do banco de dados é baseado no modelo especificado na classe `MvcMovieContext` (no arquivo *Data/MvcMovieContext.cs* ).
+* `ef migrations add InitialCreate`: Gera um arquivo de migração de *migrações/{timestamp} _InitialCreate. cs* . O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado. Como essa é a primeira migração, a classe gerada contém o código para criar o esquema de banco de dados. O esquema do banco de dados é baseado no modelo especificado na classe `MvcMovieContext` (no arquivo *Data/MvcMovieContext.cs*).
 
-* `ef database update`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs* , que cria o banco de dados.
+* `ef database update`: Atualiza o banco de dados para a migração mais recente, que o comando anterior criou. Esse comando executa o método `Up` no arquivo *Migrations/{time-stamp}_InitialCreate.cs*, que cria o banco de dados.
 
 ---
 
 ### <a name="the-initialcreate-class"></a>A classe InitialCreate
 
-Examine o arquivo de migração *Migrations/{timestamp}_InitialCreate.cs* :
+Examine o arquivo de migração *Migrations/{timestamp}_InitialCreate.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Migrations/20190805165915_InitialCreate.cs?name=snippet)]
 
@@ -702,7 +710,7 @@ O método `Up` cria a tabela de filmes e configura `Id` como a chave primária. 
   > [!NOTE]
   > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades com idiomas diferentes do inglês que usam uma vírgula (",") para um ponto decimal e formatos de data diferentes do inglês dos EUA, o aplicativo precisa ser globalizado. Para obter instruções sobre a globalização, consulte [esse problema no GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Teste os links **Editar** , **Detalhes** e **Excluir**.
+* Teste os links **Editar**, **Detalhes** e **Excluir**.
 
 ## <a name="dependency-injection-in-the-controller"></a>Injeção de dependência no controlador
 
@@ -740,7 +748,7 @@ Anteriormente neste tutorial, você viu como um controlador pode passar dados ou
 
 O MVC também fornece a capacidade de passar objetos de modelo fortemente tipados para uma exibição. Essa abordagem fortemente tipada permite a verificação de código em tempo de compilação. O mecanismo de scaffolding usou essa abordagem (ou seja, passando um modelo fortemente tipado) com a classe `MoviesController` e as exibições.
 
-Examine o método `Details` gerado no arquivo *Controllers/MoviesController.cs* :
+Examine o método `Details` gerado no arquivo *Controllers/MoviesController.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_details)]
 
@@ -769,7 +777,7 @@ Se for encontrado um filme, uma instância do modelo `Movie` será passada para 
 return View(movie);
 ```
 
-Examine o conteúdo do arquivo *Views/Movies/Details.cshtml* :
+Examine o conteúdo do arquivo *Views/Movies/Details.cshtml*:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
@@ -779,19 +787,19 @@ A instrução `@model` na parte superior do arquivo de exibição especifica o t
 @model MvcMovie.Models.Movie
 ```
 
-Essa diretiva `@model` permite o acesso ao filme que o controlador passou para a exibição. O objeto `Model` é fortemente tipado. Por exemplo, na exibição *Details.cshtml* , o código passa cada campo de filme para os Auxiliares de HTML `DisplayNameFor` e `DisplayFor` com o objeto `Model` fortemente tipado. Os métodos `Create` e `Edit` e as exibições também passam um objeto de modelo `Movie`.
+Essa diretiva `@model` permite o acesso ao filme que o controlador passou para a exibição. O objeto `Model` é fortemente tipado. Por exemplo, na exibição *Details.cshtml*, o código passa cada campo de filme para os Auxiliares de HTML `DisplayNameFor` e `DisplayFor` com o objeto `Model` fortemente tipado. Os métodos `Create` e `Edit` e as exibições também passam um objeto de modelo `Movie`.
 
 Examine a exibição *Index.cshtml* e o método `Index` no controlador Movies. Observe como o código cria um objeto `List` quando ele chama o método `View`. O código passa esta lista `Movies` do método de ação `Index` para a exibição:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_index)]
 
-Quando o controlador de filmes foi criado, o scaffolding incluiu a seguinte instrução `@model` na parte superior do arquivo *Index.cshtml* :
+Quando o controlador de filmes foi criado, o scaffolding incluiu a seguinte instrução `@model` na parte superior do arquivo *Index.cshtml*:
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
-A diretiva `@model` permite acessar a lista de filmes que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Index.cshtml* , o código executa um loop pelos filmes com uma instrução `foreach` no objeto `Model` fortemente tipado:
+A diretiva `@model` permite acessar a lista de filmes que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Index.cshtml*, o código executa um loop pelos filmes com uma instrução `foreach` no objeto `Model` fortemente tipado:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
@@ -833,15 +841,15 @@ Nesta seção, é feito o scaffold do modelo de filme. Ou seja, a ferramenta de 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No **Gerenciador de Soluções** , clique com o botão direito do mouse na pasta *Controladores***> Adicionar > Novo Item com Scaffold**.
+No **Gerenciador de Soluções**, clique com o botão direito do mouse na pasta *Controladores***> Adicionar > Novo Item com Scaffold**.
 
 ![exibição da etapa acima](adding-model/_static/add_controller21.png)
 
-Na caixa de diálogo **Adicionar Scaffold** , selecione **Controlador MVC com exibições, usando o Entity Framework > Adicionar**.
+Na caixa de diálogo **Adicionar Scaffold**, selecione **Controlador MVC com exibições, usando o Entity Framework > Adicionar**.
 
 ![Caixa de diálogo Adicionar Scaffold](adding-model/_static/add_scaffold21.png)
 
-Preencha a caixa de diálogo **Adicionar Controlador** :
+Preencha a caixa de diálogo **Adicionar Controlador**:
 
 * **Classe de modelo:** *Movie (MvcMovie.Models)*
 * **Classe de contexto de dados:** selecione o ícone **+** e adicione o **MvcMovie.Models.MvcMovieContext** padrão
@@ -856,9 +864,9 @@ Preencha a caixa de diálogo **Adicionar Controlador** :
 
 O Visual Studio cria:
 
-* Uma [classe de contexto de banco de dados](xref:data/ef-mvc/intro#create-the-database-context) do Entity Framework Core ( *Data/MvcMovieContext.cs* )
-* Um controlador de filmes ( *Controllers/MoviesController.cs* )
-* Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas ( *exibições/filmes/ \* . cshtml* )
+* Uma [classe de contexto de banco de dados](xref:data/ef-mvc/intro#create-the-database-context) do Entity Framework Core (*Data/MvcMovieContext.cs*)
+* Um controlador de filmes (*Controllers/MoviesController.cs*)
+* Razor exibir arquivos para criar, excluir, detalhes, editar e indexar páginas (*exibições/filmes/ \* . cshtml*)
 
 A criação automática do contexto de banco de dados e das exibições e métodos de ação [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (criar, ler, atualizar e excluir) é conhecida como *scaffolding*.
 
@@ -867,7 +875,7 @@ A criação automática do contexto de banco de dados e das exibições e métod
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
 * Instale a ferramenta de scaffolding:
 
   ```dotnetcli
@@ -892,7 +900,7 @@ A criação automática do contexto de banco de dados e das exibições e métod
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs* , *Startup.cs* e *.csproj* ).
+* Abra uma janela de comando no diretório do projeto (o diretório que contém os arquivos *Program.cs*, *Startup.cs* e *.csproj*).
 * Instale a ferramenta de scaffolding:
 
   ```dotnetcli
@@ -911,7 +919,7 @@ A criação automática do contexto de banco de dados e das exibições e métod
 
 <!-- End of VS tabs                  -->
 
-Se você executar o aplicativo e clicar no link **Filme do MVC** , receberá um erro semelhante ao seguinte:
+Se você executar o aplicativo e clicar no link **Filme do MVC**, receberá um erro semelhante ao seguinte:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -948,7 +956,7 @@ Nesta seção, há estas tarefas:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
+1. No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes** (PMC).
 
    ![Menu do PMC](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -971,7 +979,7 @@ Nesta seção, há estas tarefas:
 
 O comando `ef migrations add InitialCreate` gera código para criar o esquema de banco de dados inicial.
 
-O esquema do banco de dados é baseado no modelo especificado na classe `MvcMovieContext` (no arquivo *Data/MvcMovieContext.cs* ). O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado.
+O esquema do banco de dados é baseado no modelo especificado na classe `MvcMovieContext` (no arquivo *Data/MvcMovieContext.cs*). O argumento `InitialCreate` é o nome da migração. Qualquer nome pode ser usado, mas, por convenção, um nome que descreve a migração é selecionado.
 
 ---
 
@@ -1021,7 +1029,7 @@ Você perdeu a [etapa de migrações](#pmc).
   > [!NOTE]
   > Talvez você não consiga inserir casas decimais ou vírgulas no campo `Price`. Para dar suporte à [validação do jQuery](https://jqueryvalidation.org/) para localidades com idiomas diferentes do inglês que usam uma vírgula (",") para um ponto decimal e formatos de data diferentes do inglês dos EUA, o aplicativo precisa ser globalizado. Para obter instruções sobre a globalização, consulte [esse problema no GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Teste os links **Editar** , **Detalhes** e **Excluir**.
+* Teste os links **Editar**, **Detalhes** e **Excluir**.
 
 Examine a classe `Startup`:
 
@@ -1049,7 +1057,7 @@ Anteriormente neste tutorial, você viu como um controlador pode passar dados ou
 
 O MVC também fornece a capacidade de passar objetos de modelo fortemente tipados para uma exibição. Essa abordagem fortemente tipada habilita uma melhor verificação do tempo de compilação do código. O mecanismo de scaffolding usou essa abordagem (ou seja, passando um modelo fortemente tipado) com a classe `MoviesController` e as exibições quando ele criou os métodos e as exibições.
 
-Examine o método `Details` gerado no arquivo *Controllers/MoviesController.cs* :
+Examine o método `Details` gerado no arquivo *Controllers/MoviesController.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_details)]
 
@@ -1078,29 +1086,29 @@ Se for encontrado um filme, uma instância do modelo `Movie` será passada para 
 return View(movie);
    ```
 
-Examine o conteúdo do arquivo *Views/Movies/Details.cshtml* :
+Examine o conteúdo do arquivo *Views/Movies/Details.cshtml*:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
-Incluindo uma instrução `@model` na parte superior do arquivo de exibição, você pode especificar o tipo de objeto esperado pela exibição. Quando você criou o controlador de filmes, a seguinte instrução `@model` foi automaticamente incluída na parte superior do arquivo *Details.cshtml* :
+Incluindo uma instrução `@model` na parte superior do arquivo de exibição, você pode especificar o tipo de objeto esperado pela exibição. Quando você criou o controlador de filmes, a seguinte instrução `@model` foi automaticamente incluída na parte superior do arquivo *Details.cshtml*:
 
 ```cshtml
 @model MvcMovie.Models.Movie
 ```
 
-Esta diretiva `@model` permite acessar o filme que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Details.cshtml* , o código passa cada campo de filme para os Auxiliares de HTML `DisplayNameFor` e `DisplayFor` com o objeto `Model` fortemente tipado. Os métodos `Create` e `Edit` e as exibições também passam um objeto de modelo `Movie`.
+Esta diretiva `@model` permite acessar o filme que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Details.cshtml*, o código passa cada campo de filme para os Auxiliares de HTML `DisplayNameFor` e `DisplayFor` com o objeto `Model` fortemente tipado. Os métodos `Create` e `Edit` e as exibições também passam um objeto de modelo `Movie`.
 
 Examine a exibição *Index.cshtml* e o método `Index` no controlador Movies. Observe como o código cria um objeto `List` quando ele chama o método `View`. O código passa esta lista `Movies` do método de ação `Index` para a exibição:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Controllers/MC1.cs?name=snippet_index)]
 
-Quando você criou o controlador de filmes, o scaffolding incluiu automaticamente a seguinte instrução `@model` na parte superior do arquivo *Index.cshtml* :
+Quando você criou o controlador de filmes, o scaffolding incluiu automaticamente a seguinte instrução `@model` na parte superior do arquivo *Index.cshtml*:
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
-A diretiva `@model` permite acessar a lista de filmes que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Index.cshtml* , o código executa um loop pelos filmes com uma instrução `foreach` no objeto `Model` fortemente tipado:
+A diretiva `@model` permite acessar a lista de filmes que o controlador passou para a exibição usando um objeto `Model` fortemente tipado. Por exemplo, na exibição *Index.cshtml*, o código executa um loop pelos filmes com uma instrução `foreach` no objeto `Model` fortemente tipado:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
