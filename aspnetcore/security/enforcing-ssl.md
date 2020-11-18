@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: aa109aaa89003fd7566e7dc219ecc9799b077355
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703664"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Impor HTTPS em ASP.NET Core
 
@@ -136,7 +136,7 @@ Especifique a porta HTTPS usando qualquer uma das seguintes abordagens:
 
 ::: moniker-end
 
-* Em desenvolvimento, defina uma URL HTTPS no *launchsettings.jsem* . Habilite HTTPS quando IIS Express for usado.
+* Em desenvolvimento, defina uma URL HTTPS no *launchsettings.jsem*. Habilite HTTPS quando IIS Express for usado.
 
 * Configure um ponto de extremidade de URL HTTPS para uma implantação de borda voltada para o público do [Kestrel](xref:fundamentals/servers/kestrel) Server ou do servidor de [HTTP.sys](xref:fundamentals/servers/httpsys) . Somente **uma porta https** é usada pelo aplicativo. O middleware descobre a porta por meio de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .
 
@@ -193,7 +193,7 @@ O padrão do middleware é enviar um [Status307TemporaryRedirect](/dotnet/api/mi
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Ao configurar serviços no *Startup.cs* :
+Ao configurar serviços no *Startup.cs*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -214,7 +214,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Ao configurar serviços no *Startup.cs* :
+Ao configurar serviços no *Startup.cs*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -413,7 +413,7 @@ Os comandos anteriores resolvem a maioria dos problemas de confiança do navegad
 ### <a name="docker---certificate-not-trusted"></a>Docker-certificado não confiável
 
 * Exclua a pasta *C:\Users \{ User} \AppData\Roaming\ASP.NET\Https*
-* Limpe a solução. Exclua as pastas *bin* e *obj* .
+* Limpe a solução. Exclua as pastas *bin* e *obj*.
 * Reinicie a ferramenta de desenvolvimento. Por exemplo, Visual Studio, Visual Studio Code ou Visual Studio para Mac.
 
 ### <a name="windows---certificate-not-trusted"></a>Windows-certificado não confiável
@@ -450,6 +450,20 @@ Consulte [erro de HTTPS usando IIS Express (dotNet/AspNetCore #16892)](https://g
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>IIS Express certificado SSL usado com o Visual Studio
 
 Para corrigir problemas com o certificado de IIS Express, selecione **reparar** no instalador do Visual Studio. Para obter mais informações, consulte [este problema do GitHub](https://github.com/dotnet/aspnetcore/issues/16892).
+
+<a name="trust-ff"></a>
+
+### <a name="firefox-sec_error_inadequate_key_usage-certificate-error"></a>Erro de certificado de SEC_ERROR_INADEQUATE_KEY_USAGE do Firefox
+
+O navegador Firefox usa seu próprio repositório de certificados e, portanto, não confia nos certificados de desenvolvedor [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) ou [Kestrel](xref:fundamentals/servers/kestrel) .
+
+Para usar o Firefox com IIS Express ou Kestrel, defina  `security.enterprise_roots.enabled` = `true`
+
+1. Insira `about:config` no navegador Firefox.
+1. Selecione **aceitar o risco e continuar** se você aceitar o risco.
+1. Selecione **Mostrar tudo**
+1. Definição `security.enterprise_roots.enabled` = `true`
+1. Sair e reiniciar o Firefox
 
 ## <a name="additional-information"></a>Informações adicionais
 
