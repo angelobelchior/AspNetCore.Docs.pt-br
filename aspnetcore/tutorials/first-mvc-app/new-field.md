@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 84e344aabc9171020c0117d55eaf1a95e6b768db
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: ce119d79bc96f01803b63c715332ec3d287473ff
+ms.sourcegitcommit: df808efa68574dd674f1985aa9d03f4f5fab883f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422529"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94851176"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Parte 8, adicionar um novo campo a um aplicativo ASP.NET Core MVC
 
@@ -41,7 +41,7 @@ Ao usar o Code First do EF para criar automaticamente um banco de dados, o Code 
 
 ## <a name="add-a-rating-property-to-the-movie-model"></a>Adicionar uma Propriedade de Classificação ao Modelo de Filme
 
-Adicionar uma propriedade `Rating` a *Models/Movie.cs* :
+Adicionar uma propriedade `Rating` a *Models/Movie.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?name=snippet)]
 
@@ -63,7 +63,7 @@ Command ⌘ + B
 
 ------
 
-Como você adicionou um novo campo à `Movie` classe, será necessário atualizar a lista de associação de propriedade para que essa nova propriedade seja incluída. Em *MoviesController.cs* , atualize o atributo `[Bind]` dos métodos de ação `Create` e `Edit` para incluir a propriedade `Rating`:
+Como você adicionou um novo campo à `Movie` classe, será necessário atualizar a lista de associação de propriedade para que essa nova propriedade seja incluída. Em *MoviesController.cs*, atualize o atributo `[Bind]` dos métodos de ação `Create` e `Edit` para incluir a propriedade `Rating`:
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -75,13 +75,13 @@ Edite o arquivo */Views/Movies/Index.cshtml* e adicione um campo `Rating`:
 
 ::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
-[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-63)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Views/Movies/Index.cshtml?highlight=28-49&range=12-51)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-63)]
 
 ::: moniker-end
 
@@ -123,7 +123,7 @@ Para este tutorial, as Migrações do Code First são usadas.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
- No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 
   ![Menu do PMC](adding-model/_static/pmc.png)
 
