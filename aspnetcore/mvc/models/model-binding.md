@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 49300d32096e577db9b13a0510cc310b91ddb51d
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365347"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981928"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Model binding no ASP.NET Core
 
@@ -211,7 +211,7 @@ Os tipos simples em que o associador de modelos pode converter cadeias de caract
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enumeração](xref:System.ComponentModel.EnumConverter)
+* [Enumera](xref:System.ComponentModel.EnumConverter)
 * [Volume](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
@@ -280,7 +280,7 @@ Vários atributos internos estão disponíveis para controlar o model binding de
 * `[BindNever]`
 
 > [!WARNING]
-> Esses atributos afetam o model binding quando os dados de formulário postados são a origem dos valores. Eles * **não** afetam os formatadores de entrada, que processam os corpos de solicitação JSON e XML lançados. O formatadores de entrada são explicados [posteriormente neste artigo](#input-formatters).
+> Esses atributos afetam o model binding quando os dados de formulário postados são a origem dos valores. Eles ***não** afetam os formatadores de entrada, que processam os corpos de solicitação JSON e XML lançados. O formatadores de entrada são explicados [posteriormente neste artigo](#input-formatters).
 
 ### <a name="bind-attribute"></a>Atributo [Bind]
 
@@ -488,7 +488,7 @@ Um arquivo carregado incluído na solicitação HTTP.  Também compatível com `
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-usado para cancelar a atividade em controladores assíncronos.
+As ações podem, opcionalmente, associar um `CancellationToken` como parâmetro. Isso associa os <xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted> sinais quando a conexão subjacente à solicitação HTTP é anulada. As ações podem usar esse parâmetro para cancelar operações assíncronas de execução longa que são executadas como parte das ações do controlador.
 
 ### <a name="formcollection"></a>FormCollection
 
@@ -760,7 +760,7 @@ Os tipos simples em que o associador de modelos pode converter cadeias de caract
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enumeração](xref:System.ComponentModel.EnumConverter)
+* [Enumera](xref:System.ComponentModel.EnumConverter)
 * [Volume](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)

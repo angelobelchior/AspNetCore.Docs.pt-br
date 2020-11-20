@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637698"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981863"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
@@ -268,7 +268,7 @@ Para obter informações sobre como capturar todos os parâmetros de rota ( `{*p
 
 ### <a name="component-parameters"></a>Parâmetros do componente
 
-Os componentes podem ter *parâmetros de componente* , que são definidos usando propriedades públicas na classe de componente com o [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) atributo. Use atributos para especificar argumentos para um componente na marcação.
+Os componentes podem ter *parâmetros de componente*, que são definidos usando propriedades públicas simples ou complexas na classe de componente com o [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) atributo. Use atributos para especificar argumentos para um componente na marcação.
 
 `Components/ChildComponent.razor`:
 
@@ -289,7 +289,7 @@ Por convenção, um valor de atributo que consiste em código C# é atribuído a
 Para obter mais informações, consulte <xref:mvc/views/razor>.
 
 > [!WARNING]
-> Não crie componentes que gravam em seus próprios *parâmetros de componente* , use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos](#overwritten-parameters) .
+> Não crie componentes que gravam em seus próprios *parâmetros de componente*, use um campo particular em vez disso. Para obter mais informações, consulte a seção [parâmetros substituídos](#overwritten-parameters) .
 
 ## <a name="child-content"></a>Conteúdo filho
 

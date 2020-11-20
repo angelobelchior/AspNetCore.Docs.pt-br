@@ -19,16 +19,19 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 680b44a705b66be0aab824487119cdb118b44d0f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055302"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981876"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory (AAD) grupos, funções de administrador e funções definidas pelo usuário
 
 De [Luke Latham](https://github.com/guardrex) e [Javier Calvarro Nelson](https://github.com/javiercn)
+
+> [!NOTE]
+> Este artigo se aplica a Blazor ASP.NET Core aplicativos versão 3,1 com o Microsoft Identity v 1.0 e está agendado para atualização para 5,0 com Identity v 2.0. Para obter mais informações, consulte [ Blazor WASM com grupos e funções do AAD/B2C (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683).
 
 Azure Active Directory (AAD) fornece várias abordagens de autorização que podem ser combinadas com ASP.NET Core Identity :
 
@@ -506,7 +509,7 @@ Além de autorizar usuários no aplicativo Webassembly do lado do cliente para a
 > [!NOTE]
 > Atualmente, essas diretrizes não incluem a autorização de usuários com base em suas [funções do AAD definidas pelo usuário](#user-defined-roles).
 
-As diretrizes nesta seção configuram o aplicativo de API do servidor como um [*aplicativo de daemon*](/azure/active-directory/develop/scenario-daemon-overview) para a chamada à API Microsoft Graph. Essa abordagem **não** :
+As diretrizes nesta seção configuram o aplicativo de API do servidor como um [*aplicativo de daemon*](/azure/active-directory/develop/scenario-daemon-overview) para a chamada à API Microsoft Graph. Essa abordagem **não**:
 
 * Exigir o `access_as_user` escopo.
 * Acesse API do Graph em nome do usuário/cliente que faz a solicitação de API.
@@ -515,7 +518,7 @@ A chamada para API do Graph pelo aplicativo de API de servidor requer apenas um 
 
 ### <a name="azure-configuration"></a>Configuração do Azure
 
-* Confirme se o registro do aplicativo do *servidor* recebeu o escopo de API do Graph de **aplicativo** (não **delegado** ) para `Directory.Read.All` , que é o nível de acesso com privilégios mínimos para grupos de segurança. Confirme se o consentimento do administrador é aplicado ao escopo depois de fazer a atribuição de escopo.
+* Confirme se o registro do aplicativo do *servidor* recebeu o escopo de API do Graph de **aplicativo** (não **delegado**) para `Directory.Read.All` , que é o nível de acesso com privilégios mínimos para grupos de segurança. Confirme se o consentimento do administrador é aplicado ao escopo depois de fazer a atribuição de escopo.
 * Atribua um novo segredo do cliente ao aplicativo do *servidor* . Observe o segredo para a configuração do aplicativo na seção [configurações do aplicativo](#app-settings) .
 
 ### <a name="app-settings"></a>Configurações do aplicativo

@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 84747e2d13275a23e83dc2dc0f666cb0c8d001b1
-ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
+ms.openlocfilehash: 7f90e4c424aa4bb76be7c226acd2f16261e0dfe6
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634620"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981941"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>O que há de novo no ASP.NET Core 5,0
 
@@ -148,7 +148,7 @@ Blazor tem `InputRadio` componentes internos e `InputRadioGroup` que simplificam
 
 ### <a name="component-virtualization"></a>Virtualização de componente
 
-Melhore o desempenho percebido da renderização de componentes usando o Blazor suporte interno à virtualização da estrutura. Para obter mais informações, consulte <xref:blazor/forms-validation#radio-buttons>.
+Melhore o desempenho percebido da renderização de componentes usando o Blazor suporte interno à virtualização da estrutura. Para obter mais informações, consulte <xref:blazor/components/virtualization>.
 
 ### <a name="ontoggle-event-support"></a>`ontoggle` suporte a eventos
 
@@ -390,7 +390,7 @@ Consulte [autenticação Kerberos e RBAC (controle de acesso baseado em função
 
 Os dados JSON podem ser lidos e gravados de um `HttpRequest` e `HttpResponse` usando os <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> métodos New e `WriteAsJsonAsync` extension. Esses métodos de extensão usam o [System.Text.Jsno](xref:System.Text.Json) serializador para manipular os dados JSON. O novo `HasJsonContentType` método de extensão também pode verificar se uma solicitação tem um tipo de conteúdo JSON.
 
-Os métodos de extensão JSON podem ser combinados com o [Roteamento de ponto de extremidade](xref:fundamentals/routing) para criar APIs JSON em um estilo de programação que chamamos * **de rota para o código** _. É uma nova opção para os desenvolvedores que desejam criar APIs JSON básicas de forma leve. Por exemplo, um aplicativo Web que tem apenas alguns pontos de extremidade pode optar por usar a rota para código em vez da funcionalidade completa do ASP.NET Core MVC:
+Os métodos de extensão JSON podem ser combinados com o [Roteamento de ponto de extremidade](xref:fundamentals/routing) para criar APIs JSON em um estilo de programação que chamamos ***de rota para o código** _. É uma nova opção para os desenvolvedores que desejam criar APIs JSON básicas de forma leve. Por exemplo, um aplicativo Web que tem apenas alguns pontos de extremidade pode optar por usar a rota para código em vez da funcionalidade completa do ASP.NET Core MVC:
 
 ```csharp
 endpoints.MapGet("/weather/{city:alpha}", async context =>

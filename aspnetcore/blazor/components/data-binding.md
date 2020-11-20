@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 004a15bf63c34144049a45f9d5fca8852fa36a3f
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 7def253a0676e65f8f96209b3f3b7f7a700c4ebe
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94463815"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981902"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>ASP.NET Core Blazor Associação de dados
 
@@ -146,7 +146,7 @@ Não é recomendável especificar um formato para o `date` tipo de campo porque 
 
 Um cenário comum é vincular uma propriedade em um componente filho a uma propriedade em seu pai. Esse cenário é chamado de *Associação encadeada* porque vários níveis de associação ocorrem simultaneamente.
 
-Os parâmetros de componente permitem a associação de propriedades e campos de um componente pai com `@bind-{PROPERTY OR FIELD}` sintaxe.
+Os [parâmetros de componente](xref:blazor/components/index#component-parameters) permitem a associação de propriedades e campos de um componente pai com `@bind-{PROPERTY OR FIELD}` sintaxe.
 
 As associações encadeadas não podem ser implementadas com [`@bind`](xref:mvc/views/razor#bind) a sintaxe no componente filho. Um manipulador de eventos e um valor devem ser especificados separadamente para dar suporte à atualização da propriedade no pai a partir do componente filho.
 
